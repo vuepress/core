@@ -21,7 +21,7 @@ import {
   useThemeLocaleData,
   useSiteLocaleData,
 } from '@vuepress/client'
-import { isString } from '@vuepress/shared'
+import { isLinkHttp, isString } from '@vuepress/shared'
 import { useNavLink } from '../composables'
 import type {
   DefaultThemeOptions,
@@ -109,7 +109,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
   )
 
   const repoLink = computed(() => {
-    if (repoType.value === 'GitHub') {
+    if (repo.value && !isLinkHttp(repo.value)) {
       return `https://github.com/${repo.value}`
     }
     return repo.value
