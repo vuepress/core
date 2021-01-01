@@ -5,9 +5,11 @@
     <slot name="top" />
 
     <ul class="sidebar-links">
-      <template v-for="item in sidebarItems" :key="item.link">
-        <SidebarChild :item="item" />
-      </template>
+      <SidebarChild
+        v-for="item in sidebarItems"
+        :key="item.link"
+        :item="item"
+      />
     </ul>
 
     <slot name="bottom" />

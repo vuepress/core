@@ -2,7 +2,11 @@
   <header ref="navbar" class="navbar">
     <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
-    <RouterLink :to="$themeLocale.home || $routeLocale" class="home-link">
+    <RouterLink
+      ref="siteInfo"
+      :to="$themeLocale.home || $routeLocale"
+      class="home-link"
+    >
       <img
         v-if="$themeLocale.logo"
         class="logo"
@@ -12,7 +16,6 @@
 
       <span
         v-if="$siteLocale.title"
-        ref="siteName"
         class="site-name"
         :class="{ 'can-hide': $themeLocale.logo }"
       >
@@ -46,7 +49,7 @@ export default defineComponent({
 
   setup() {
     const navbar = ref<HTMLElement | null>(null)
-    const siteName = ref<HTMLElement | null>(null)
+    const siteInfo = ref<HTMLElement | null>(null)
     const linksWrapperMaxWidth = ref(0)
     const linksWrapperStyle = computed(() => {
       if (!linksWrapperMaxWidth.value) {
@@ -62,7 +65,7 @@ export default defineComponent({
       // TODO: migrate to css var
       // refer to config.styl
       const MOBILE_DESKTOP_BREAKPOINT = 719
-      const NAVBAR_VERTICAL_PADDING =
+      const NAVBAR_HORIZONTAL_PADDING =
         getCssValue(navbar.value, 'paddingLeft') +
         getCssValue(navbar.value, 'paddingRight')
       const handleLinksWrapWidth = (): void => {
@@ -71,17 +74,18 @@ export default defineComponent({
         } else {
           linksWrapperMaxWidth.value =
             navbar.value!.offsetWidth -
-            NAVBAR_VERTICAL_PADDING -
-            (siteName.value?.offsetWidth || 0)
+            NAVBAR_HORIZONTAL_PADDING -
+            (siteInfo.value?.offsetWidth || 0)
         }
       }
       handleLinksWrapWidth()
       window.addEventListener('resize', handleLinksWrapWidth, false)
+      window.addEventListener('orientationchange', handleLinksWrapWidth, false)
     })
 
     return {
       navbar,
-      siteName,
+      siteInfo,
       linksWrapperStyle,
     }
   },
