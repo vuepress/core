@@ -27,8 +27,8 @@ const config: UserConfig<DefaultThemeOptions> = {
       },
     ],
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-    ['meta', { name: 'application-name', content: 'VuePress' }],
-    ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
+    ['meta', { name: 'application-name', content: 'VuePress Next' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress Next' }],
     [
       'meta',
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
@@ -53,12 +53,12 @@ const config: UserConfig<DefaultThemeOptions> = {
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress',
+      title: 'VuePress Next',
       description: 'Vue-powered Static Site Generator',
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress',
+      title: 'VuePress Next',
       description: 'Vue 驱动的静态网站生成器',
     },
   },
