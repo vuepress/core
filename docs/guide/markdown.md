@@ -61,12 +61,14 @@ Take our documentation source files as an example:
 **Converted to**
 
 ```vue
-<RouterLink to="/">Home</RouterLink>
-<RouterLink to="/reference/config.html">Config Reference</RouterLink>
-<RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
-<RouterLink to="/guide/">Guide</RouterLink>
-<RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
-<a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+<template>
+  <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/reference/config.html">Config Reference</RouterLink>
+  <RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
+  <RouterLink to="/guide/">Guide</RouterLink>
+  <RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
+  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+</template>
 ```
 
 **Rendered as**
@@ -147,44 +149,6 @@ Config reference: [markdown.toc](../reference/config.md#markdown-toc)
 ### Code Blocks
 
 Following code blocks extensions are implemented during markdown parsing in Node side. That means, the code blocks won't be processed in client side.
-
-If you want to implement client-side syntax highlighting via [prism.js](https://prismjs.com/#basic-usage) or [highlight.js](https://highlightjs.org/), you could disable our code blocks extensions, and introduce your library manually in client side. 
-
-#### Syntax Highlighting
-
-VuePress uses [Prism](https://prismjs.com/) to highlight language syntax in Markdown code blocks, using coloured text.
-
-Prism supports a wide variety of programming languages. For a full list of available languages, check out [Prism supported languages](https://prismjs.com/#supported-languages).
-
-You can add an optional language identifier to enable syntax highlighting in your fenced code blocks:
-
-**Input**
-
-````md
-```ts
-import type { UserConfig } from '@vuepress/cli'
-
-export const config: UserConfig = {
-  title: 'Hello, VuePress',
-}
-```
-````
-
-**Output**
-
-```ts
-import type { UserConfig } from '@vuepress/cli'
-
-export const config: UserConfig = {
-  title: 'Hello, VuePress',
-}
-```
-
-::: tip
-This syntax highlighting extension is supported by our built-in plugin.
-
-Config reference: [markdown.code.highlight](../reference/config.md#markdown-code-highlight)
-:::
 
 #### Line Highlighting
 

@@ -1,25 +1,28 @@
 import * as Prism from 'prismjs'
-import * as loadLanguages from 'prismjs/components/index'
-import type { HighlightLanguage } from './languages'
+import { loadLanguages } from './loadLanguages'
 
-// prevent warning messages
-// eslint-disable-next-line no-import-assign
-loadLanguages.silent = true
+const languageNameMap = {
+  html: 'markup',
+  vue: 'markup',
+}
 
-// load some commonly used languages to partially avoid the following issue
-// @see https://github.com/PrismJS/prism/issues/2716
-loadLanguages(['markdown', 'jsdoc', 'yaml'])
+// documentation language of corresponding language
+const docLangMap = {
+  csharp: 'xml-doc',
+  fsharp: 'xml-doc',
+  java: 'javadoc',
+  javascript: 'jsdoc',
+  php: 'phpdoc',
+  typescript: 'jsdoc',
+}
 
 export type Highlighter = (code: string) => string
 
 /**
  * Resolve syntax highlighter for corresponding language
  */
-export const resolveHighlighter = (
-  language: HighlightLanguage
-): Highlighter | null => {
-  const lang = language.name
-  const docLang = language.docLang
+export const resolveHighlighter = (language: string): Highlighter | null => {
+  const lang = languageNameMap[language] || language
 
   // get the languages that need to be loaded
   const langsToLoad: string[] = []
@@ -30,6 +33,7 @@ export const resolveHighlighter = (
   }
 
   // doc language of current language
+  const docLang = docLangMap[lang]
   if (docLang && !Prism.languages[docLang]) {
     langsToLoad.push(docLang)
   }
