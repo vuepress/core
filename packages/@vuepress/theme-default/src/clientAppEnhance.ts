@@ -3,12 +3,31 @@ import Badge from './components/global/Badge.vue'
 import CodeGroup from './components/global/CodeGroup.vue'
 import CodeGroupItem from './components/global/CodeGroupItem.vue'
 import OutboundLink from './components/global/OutboundLink.vue'
+import { scrollWaiter } from './utils'
 
 import './styles/index.scss'
 
 declare const DOCSEARCH_PROPS: unknown
 
-export default defineClientAppEnhance(({ app }) => {
+export default defineClientAppEnhance(({ app, router }) => {
+  // block `scrollBehavior` when initializing rendering
+  scrollWaiter.add()
+  // override the built-in scrollBehavior
+  router.options.scrollBehavior = async (to, from, savedPosition) => {
+    // wait for the transition animation to end
+    await scrollWaiter.promise
+
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    if (to.hash) {
+      return { el: to.hash }
+    }
+
+    return { top: 0 }
+  }
+
   /* eslint-disable vue/match-component-file-name */
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)

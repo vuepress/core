@@ -27,7 +27,14 @@
 
     <Home v-if="$frontmatter.home" />
 
-    <Transition v-else name="fade-slide-y" mode="out-in">
+    <Transition
+      v-else
+      name="fade-slide-y"
+      mode="out-in"
+      appear
+      @after-enter="flushWaiter"
+      @before-leave="setupWaiter"
+    >
       <Page :key="$page.path">
         <template #top>
           <slot name="page-top" />
@@ -56,6 +63,7 @@ import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
 import { useSidebarItems, useThemeLocaleData } from '../composables'
+import { scrollWaiter } from '../utils'
 
 export default defineComponent({
   name: 'Layout',
@@ -126,6 +134,8 @@ export default defineComponent({
       toggleSidebar,
       onTouchStart,
       onTouchEnd,
+      flushWaiter: scrollWaiter.flush,
+      setupWaiter: scrollWaiter.add,
     }
   },
 })
