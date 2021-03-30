@@ -89,7 +89,7 @@ module.exports = {
     // two-element tuple
     ['vuepress-plugin-foo', false],
     ['bar', true],
-    ['/path/to/local/plugin', { /* options */ }],
+    [path.resolve(__dirname, './path/to/local/plugin'), { /* options */ }],
     [require('vuepress-plugin-baz'), true],
 
     // only use the first element
@@ -118,7 +118,7 @@ module.exports = {
 ```js
 module.exports = {
   alias: {
-    '@alias': '/path/to/alias',
+    '@alias': path.resolve(__dirname, './path/to/alias'),
   },
 }
 ```
@@ -249,9 +249,12 @@ export default {
 
 ```js
 module.exports = {
-  clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
+  clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.js'),
 }
 ```
+
+- Also see:
+  - [Client API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
 
 ### clientAppRootComponentFiles
 
@@ -267,7 +270,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  clientAppRootComponentFiles: '/path/to/RootComponent.vue',
+  clientAppRootComponentFiles: path.resolve(__dirname, './path/to/RootComponent.vue'),
 }
 ```
 
@@ -285,9 +288,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  clientAppSetupFiles: '/path/to/clientAppSetup.js',
+  clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }
 ```
+
+- Also see:
+  - [Client API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## Lifecycle Hooks
 

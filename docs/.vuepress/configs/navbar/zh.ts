@@ -35,6 +35,7 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/frontmatter.md',
           '/zh/reference/default-theme/components.md',
           '/zh/reference/default-theme/markdown.md',
+          '/zh/reference/default-theme/styles.md',
         ],
       },
       {
@@ -48,15 +49,6 @@ export const zh: NavbarConfig = [
     text: '了解更多',
     children: [
       {
-        text: '深入',
-        children: [
-          '/zh/guide/advanced/architecture.md',
-          '/zh/guide/advanced/plugin.md',
-          '/zh/guide/advanced/theme.md',
-          '/zh/guide/advanced/markdown.md',
-        ],
-      },
-      {
         text: '其他资源',
         children: [
           '/zh/contributing.md',
@@ -69,6 +61,11 @@ export const zh: NavbarConfig = [
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
+        ],
+      },
+      {
+        text: '旧版本',
+        children: [
           {
             text: 'v1 文档',
             link: 'https://v1.vuepress.vuejs.org/zh/',

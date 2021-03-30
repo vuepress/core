@@ -25,10 +25,16 @@
       </template>
     </Sidebar>
 
-    <Home v-if="$frontmatter.home" />
+    <Home v-if="frontmatter.home" />
 
-    <Transition v-else name="fade-slide-y" mode="out-in">
-      <Page :key="$page.path">
+    <Transition
+      v-else
+      name="fade-slide-y"
+      mode="out-in"
+      @before-enter="onBeforeEnter"
+      @before-leave="onBeforeLeave"
+    >
+      <Page :key="page.path">
         <template #top>
           <slot name="page-top" />
         </template>
@@ -50,12 +56,16 @@ import {
   Transition,
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageFrontmatter } from '@vuepress/client'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
-import { useSidebarItems, useThemeLocaleData } from '../composables'
+import {
+  useScrollPromise,
+  useSidebarItems,
+  useThemeLocaleData,
+} from '../composables'
 
 export default defineComponent({
   name: 'Layout',
@@ -69,6 +79,7 @@ export default defineComponent({
   },
 
   setup() {
+    const page = usePageData()
     const frontmatter = usePageFrontmatter()
     const themeLocale = useThemeLocaleData()
 
@@ -120,12 +131,21 @@ export default defineComponent({
       unregisterRouterHook()
     })
 
+    // handle scrollBehavior with transition
+    const scrollPromise = useScrollPromise()
+    const onBeforeEnter = scrollPromise.resolve
+    const onBeforeLeave = scrollPromise.pending
+
     return {
+      frontmatter,
+      page,
       containerClass,
       shouldShowNavbar,
       toggleSidebar,
       onTouchStart,
       onTouchEnd,
+      onBeforeEnter,
+      onBeforeLeave,
     }
   },
 })
