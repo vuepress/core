@@ -2,25 +2,9 @@
 
 With the help of [Plugin API](../reference/plugin-api.md), VuePress plugin can provide different features for you.
 
-## Official Plugin
-
-VuePress team also maintains some official plugins under the [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) scope.
-
-Currently, you need to specify the `@next` [dist-tag](https://docs.npmjs.com/cli/v7/commands/npm-dist-tag) when installing the official plug-in, for example:
-
-```shell
-# NPM
-npm install @vuepress/plugin-pwa@next
-
-# Yarn
-yarn add @vuepress/plugin-pwa@next
-```
-
 ## Community Plugin
 
-Community users have created lots of plugins and published them to [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin). You should check the plugin's own documentation for detailed guide.
-
-## Configure
+Community users have created lots of plugins and published them to [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin). VuePress team also maintains some official plugins under the [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) scope. You should check the plugin's own documentation for detailed guide.
 
 In general, you need to specify the name of the plugin to use in [plugins](../reference/plugin-api.md#plugins) option:
 

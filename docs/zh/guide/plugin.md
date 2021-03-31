@@ -2,25 +2,9 @@
 
 借助于 [Plugin API](../reference/plugin-api.md) ， VuePress 插件可以为你提供各种不同的功能。
 
-## 官方插件
-
-VuePress 团队在 [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) Scope 下维护了一些 [官方插件](../reference/plugin/README.md)。
-
-目前安装官方插件时需要指定 `@next` [发布标签](https://docs.npmjs.com/cli/v7/commands/npm-dist-tag)，例如：
-
-```shell
-# NPM
-npm install @vuepress/plugin-pwa@next
-
-# Yarn
-yarn add @vuepress/plugin-pwa@next
-```
-
 ## 社区插件
 
-社区用户创建了很多插件，并将它们发布到了 [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin) 上。 查看插件本身的文档可以获取更详细的指引。
-
-## 配置
+社区用户创建了很多插件，并将它们发布到了 [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin) 上。 VuePress 团队也在 [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) Scope 下维护了一些官方插件。查看插件本身的文档可以获取更详细的指引。
 
 一般而言，你需要在 [plugins](../reference/plugin-api.md#plugins) 配置项中设置你要使用的插件名称：
 
