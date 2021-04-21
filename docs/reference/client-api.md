@@ -84,6 +84,27 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 })
 ```
 
+::: tip
+
+Environment variables `__SSR__` and `__DEV__` are availalbe in the callback function.
+
+:::
+
+You can use async import to load any global features that are not SSR-friendly:
+
+```ts
+export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+  if (!__SSR__) {
+    // register client-side plugins with async imports
+    const module = await import('non-ssr-friendly-plugin')
+    const plugin = module.default
+    app.use(plugin)
+    // ...
+  }
+})
+```
+
 ### defineClientAppSetup
 
 - Details:
