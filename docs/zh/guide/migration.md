@@ -103,7 +103,7 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 移除。
 
 改为使用 [head](../reference/frontmatter.md#head) 。例如：
-  
+
 ```yaml
 head:
   - - meta
