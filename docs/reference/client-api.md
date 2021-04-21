@@ -93,7 +93,7 @@ Environment variables `__SSR__` and `__DEV__` are availalbe in the callback func
 You can use async import to load any global features that are not SSR-friendly:
 
 ```ts
-export default defineClientAppEnhance(({ app, router, siteData }) => {
+export default defineClientAppEnhance( async ({ app, router, siteData }) => {
   // ...
   if (!__SSR__) {
     // register client-side plugins with async imports
