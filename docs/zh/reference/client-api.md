@@ -84,6 +84,27 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 })
 ```
 
+::: tip
+
+回调函数中提供了环境变量`__SSR__`和`__DEV__`
+
+:::
+
+您可以使用异步导入来加载任何不支持SSR的全局功能:
+
+```ts
+export default defineClientAppEnhance( async ({ app, router, siteData }) => {
+  // ...
+  if (!__SSR__) {
+    // 用异步导入注册客户端插件
+    const module = await import('non-ssr-friendly-plugin')
+    const plugin = module.default
+    app.use(plugin)
+    // ...
+  }
+})
+```
+
 ### defineClientAppSetup
 
 - 详情：
