@@ -149,11 +149,11 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(env.links).toBeUndefined()
       })
 
-      it('should render `<OutboundLink/>` with frontmatter.externalIcon = true', () => {
+      it('frontmatter.externalIcon should override markdown.links.externalIcon', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
-          externalIcon: true,
+          externalIcon: false,
         })
-        const env: MarkdownEnv = { frontmatter: { externalIcon: false } }
+        const env: MarkdownEnv = { frontmatter: { externalIcon: true } }
 
         const rendered = md.render(source, env)
 
