@@ -75,7 +75,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const hrefLink = hrefAttr[1]
 
     // get `base` and `filePathRelative` from `env`
-    const { base = '/', filePathRelative = null, frontmatter: { externalIcon } } = env
+    const { base = '/', filePathRelative = null, frontmatter } = env
 
     // check if a link is an external link
     if (isLinkExternal(hrefLink, base)) {
@@ -85,7 +85,11 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       )
 
       // check if we should render an `<OutboundLink/>`
-      if (options.externalIcon === false && !externalIcon || externalIcon === false) return
+      if (
+        (options.externalIcon === false && !frontmatter.externalIcon) ||
+        frontmatter.externalIcon === false
+      )
+        return
 
       // only when an external link has `target="_blank"`
       // should we add `<OutboundLink/>` before ending tag

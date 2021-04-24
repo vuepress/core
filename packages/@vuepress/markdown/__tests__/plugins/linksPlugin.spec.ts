@@ -108,7 +108,9 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
       })
 
       it('should not render `<OutboundLink/>` with markdown.links.externalIcon = false', () => {
-        const md = MarkdownIt({ html: true }).use(linksPlugin, { externalIcon: false })
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          externalIcon: false,
+        })
         const env: MarkdownEnv = {}
 
         const rendered = md.render(source, env)
@@ -148,7 +150,9 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
       })
 
       it('should render `<OutboundLink/>` with frontmatter.externalIcon = true', () => {
-        const md = MarkdownIt({ html: true }).use(linksPlugin, { externalIcon: true })
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          externalIcon: true,
+        })
         const env: MarkdownEnv = { externalIcon: false }
 
         const rendered = md.render(source, env)
