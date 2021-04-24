@@ -75,7 +75,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const hrefLink = hrefAttr[1]
 
     // get `base` and `filePathRelative` from `env`
-    const { base = '/', filePathRelative = null, frontmatter } = env
+    const { base = '/', filePathRelative = null, frontmatter = {} } = env
 
     // check if a link is an external link
     if (isLinkExternal(hrefLink, base)) {
