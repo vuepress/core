@@ -5,11 +5,29 @@ import type { MarkdownEnv } from '../../types'
 import { resolvePaths } from './resolvePaths'
 
 export interface LinksPluginOptions {
-  // tag of internal links
+  /**
+   * tag of internal links
+   * @default RouterLink
+   */
   internalTag?: 'a' | 'RouterLink'
 
-  // extra attrs on external links
+  /**
+   * extra attrs on external links
+   * @default
+   * ```js
+   * ({
+   *   target: '_blank',
+   *   rel: 'noopener noreferrer',
+   * })
+   * ```
+   */
   externalAttrs?: Record<string, string>
+
+  /**
+   * render external links with an outbound icon
+   * @default true
+   */
+  externalIcon?: boolean
 }
 
 /**
@@ -57,7 +75,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const hrefLink = hrefAttr[1]
 
     // get `base` and `filePathRelative` from `env`
-    const { base = '/', filePathRelative = null } = env
+    const { base = '/', filePathRelative = null, frontmatter } = env
 
     // check if a link is an external link
     if (isLinkExternal(hrefLink, base)) {
@@ -65,6 +83,9 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       Object.entries(externalAttrs).forEach(([key, val]) =>
         token.attrSet(key, val)
       )
+
+      // check if we should render an `<OutboundLink/>`
+      if (options.externalIcon === false && !frontmatter.externalIcon || frontmatter.externalIcon === false) return
 
       // only when an external link has `target="_blank"`
       // should we add `<OutboundLink/>` before ending tag
