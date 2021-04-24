@@ -4,7 +4,7 @@
 
 - Props:
   - type
-    - Type: `'tip' | 'warning' | 'danger'`
+    - Type: `'tip' | 'warning' | 'error'`
     - Default: `'tip'`
   - text
     - Type: `string`
@@ -20,14 +20,14 @@
 ```md
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
-- VuePress - <Badge type="danger" text="v2" vertical="bottom" />
+- VuePress - <Badge type="error" text="v2" vertical="bottom" />
 ```
 
 **Output**
 
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
-- VuePress - <Badge type="danger" text="v2" vertical="bottom" />
+- VuePress - <Badge type="error" text="v2" vertical="bottom" />
 
 ## CodeGroup
 
