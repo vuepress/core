@@ -429,14 +429,14 @@ module.exports = {
 
 - 详情：
 
-  VuePress 内置的 markdown-it links 插件的配置项。
+  VuePress 内置的 markdown-it 链接插件的配置项。
 
-  它将会把站内链接转换为 `<RouterLink>` ，并且会在站外链接上添加额外的属性。
+  它可以把站内链接转换为 `<RouterLink>` ，并且可以在站外链接上添加额外的属性和图标。
 
   设置为 `false` 可以禁用该插件。
 
 - 参考：
-  - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
+  - [指南 > Markdown > 语法扩展 > 链接](../guide/markdown.md#链接)
 
 ### markdown.links.internalTag
 
@@ -448,6 +448,8 @@ module.exports = {
 
   内部链接所使用的标签。
 
+  默认情况下，该插件会把内部链接转换为 `<RouterLink>` 。你可以把该选项设置为 `'a'` 来禁用这个功能。
+
 ### markdown.links.externalAttrs
 
 - 类型： `Record<string, string>`
@@ -456,7 +458,7 @@ module.exports = {
 
 - 详情：
 
-  为外部链接额外提供的属性。
+  为外部链接添加额外的属性。
 
 ### markdown.links.externalIcon
 
@@ -466,7 +468,9 @@ module.exports = {
 
 - 详情：
 
-  是否在每个外部链接的后面添加 <OutboundLink /> 图标。
+  是否在外部链接的后面添加 <OutboundLink /> 图标。
+
+  你可以通过页面的 [externalIcon](./frontmatter.md#externalicon) frontmatter 来覆盖这个全局配置。
 
 ### markdown.toc
 

@@ -189,8 +189,11 @@ layout: CustomLayout
 
 ## externalIcon
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  是否在每个外部链接的后面添加 <OutboundLink /> 图标。这个值将会覆盖 [markdown.links.externalIcon](./config.md#markdown-links-externalicon)。
+  是否在当前页面的外部链接的后面添加 <OutboundLink /> 图标。
+
+- 参考：
+  - [配置 > markdown.links.externalIcon](./config.md#markdown-links-externalicon)

@@ -449,6 +449,8 @@ You should not configure it unless you understand what it is for.
 
   Tag for internal links.
 
+  By default, this plugin will transform internal links to `<RouterLink>`. You can set this option to `'a'` to disable this feature.
+
 ### markdown.links.externalAttrs
 
 - Type: `Record<string, string>`
@@ -468,6 +470,8 @@ You should not configure it unless you understand what it is for.
 - Details:
 
   Whether to append an <OutboundLink /> icon to external links.
+
+  You can override this global option via [externalIcon](./frontmatter.md#externalicon) frontmatter in your pages.
 
 ### markdown.toc
 

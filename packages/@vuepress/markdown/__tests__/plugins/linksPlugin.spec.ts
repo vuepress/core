@@ -107,7 +107,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(env.links).toBeUndefined()
       })
 
-      it('should not render `<OutboundLink/>` with markdown.links.externalIcon = false', () => {
+      it('should not render `<OutboundLink/>` with `externalIcon = false', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
           externalIcon: false,
         })
@@ -129,7 +129,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(env.links).toBeUndefined()
       })
 
-      it('should not render `<OutboundLink/>` with frontmatter.externalIcon = false', () => {
+      it('should not render `<OutboundLink/>` with `frontmatter.externalIcon = false`', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = { frontmatter: { externalIcon: false } }
 
@@ -149,7 +149,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(env.links).toBeUndefined()
       })
 
-      it('frontmatter.externalIcon should override markdown.links.externalIcon', () => {
+      it('`frontmatter.externalIcon` should override `externalIcon` option', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
           externalIcon: false,
         })
