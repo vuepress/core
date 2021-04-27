@@ -377,6 +377,8 @@ module.exports = {
 
   VuePress 内置的 markdown-it links 插件的配置项。
 
+  它将会把站内链接转换为 `<RouterLink>` ，并且会在站外链接上添加额外的属性。
+
   设置为 `false` 可以禁用该插件。
 
 - 参考：
@@ -465,21 +467,6 @@ module.exports = {
 
 - 参考：
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
-
-### markdown.links
-
-- 类型： `LinksPluginOptions | false`
-
-- 详情：
-
-  VuePress 内置的 markdown-it 链接插件的配置项。
-
-  它将会把站内链接转换为 `<RouterLink>` ，并且会在站外链接上添加额外的属性。
-
-  设置为 `false` 可以禁用该插件。
-
-- 参考：
-  - [指南 > Markdown > 语法扩展 > 链接](../guide/markdown.md#链接)
 
 ### markdown.toc
 

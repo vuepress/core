@@ -378,6 +378,8 @@ You can disable it if you want to implement them in client side. For example, [P
 
   Options for VuePress built-in markdown-it links plugin.
 
+  It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
+
   Set to `false` to disable this plugin.
 
 - Also see:
@@ -466,21 +468,6 @@ You should not configure it unless you understand what it is for.
 
 - Also see:
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
-
-### markdown.links
-
-- Type: `LinksPluginOptions | false`
-
-- Details:
-
-  Options for VuePress built-in markdown-it links plugin.
-
-  It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
-
-  Set to `false` to disable this plugin.
-
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
 ### markdown.toc
 
