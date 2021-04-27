@@ -369,6 +369,49 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)
 
+### markdown.link
+
+- 类型： `LinkPluginOptions | false`
+
+- 详情：
+
+  VuePress 内置的 markdown-it link 插件的配置项。
+
+  设置为 `false` 可以禁用该插件。
+
+- 参考：
+  - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
+
+### markdown.link.internalTag
+
+- 类型： `string`
+
+- 默认值： `'RouterLink'`
+
+- 详情：
+
+  内部链接所使用的标签。
+
+### markdown.link.externalAttrs
+
+- 类型： `Record<string, string>`
+
+- 默认值： `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+- 详情：
+
+  为外部链接额外提供的属性。
+
+### markdown.link.externalIcon
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在每个外部链接的后面添加 <OutboundLink /> 图标。
+
 ### markdown.customComponent
 
 - 类型： `undefined | false`

@@ -370,6 +370,49 @@ You can disable it if you want to implement them in client side. For example, [P
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
 
+### markdown.link
+
+- Type: `LinkPluginOptions | false`
+
+- Details:
+
+  Options for VuePress built-in markdown-it link plugin.
+
+  Set to `false` to disable this plugin.
+
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
+
+### markdown.link.internalTag
+
+- Type: `string`
+
+- Default: `'RouterLink'`
+
+- Details:
+
+  Tag for internal links.
+
+### markdown.link.externalAttrs
+
+- Type: `Record<string, string>`
+
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+- Details:
+
+  Additional attributes for external links.
+
+### markdown.link.externalIcon
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether to append an <OutboundLink /> icon to external links.
+
 ### markdown.customComponent
 
 - Type: `undefined | false`
