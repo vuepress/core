@@ -1,7 +1,13 @@
-import { computed, h } from 'vue'
-import type { CreateAppFunction, App, ComponentOptions } from 'vue'
-import { createRouter, RouterView, START_LOCATION } from 'vue-router'
-import type { Router, RouterHistory } from 'vue-router'
+import { createApp, createSSRApp, computed, h } from 'vue'
+import type { App, ComponentOptions } from 'vue'
+import {
+  createRouter,
+  createWebHistory,
+  createMemoryHistory,
+  RouterView,
+  START_LOCATION,
+} from 'vue-router'
+import type { Router } from 'vue-router'
 import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppRootComponents } from '@internal/clientAppRootComponents'
@@ -26,31 +32,31 @@ import {
   resolveSiteLocaleData,
   useUpdateHead,
 } from './injections'
-import { Content, OutboundLink } from './components'
+import { ClientOnly, Content, OutboundLink } from './components'
 import { withBase } from './utils'
 
-export type AppCreator = CreateAppFunction<Element>
-export type HistoryCreator = (base?: string) => RouterHistory
-export type CreateVueAppResult = {
-  app: App
-  router: Router
-}
+/**
+ * - use `createApp` in dev mode
+ * - use `createSSRApp` in build mode
+ */
+const appCreator = __DEV__ ? createApp : createSSRApp
 
 /**
- * Create a vue app
- *
- * Accepting different app creator and history creator, so it
- * can be reused for both client side and server side
+ * - use `createWebHistory` in dev mode and build mode client bundle
+ * - use `createMemoryHistory` in build mode server bundle
  */
-export const createVueApp = async ({
-  appCreator,
-  historyCreator,
-}: {
-  appCreator: AppCreator
-  historyCreator: HistoryCreator
-}): Promise<CreateVueAppResult> => {
+const historyCreator = __SSR__ ? createMemoryHistory : createWebHistory
+
+export type CreateVueAppFunction = () => Promise<{
+  app: App
+  router: Router
+}>
+
+export const createVueApp: CreateVueAppFunction = async () => {
   // options to create vue app
   const appOptions: ComponentOptions = {
+    name: 'VuepressApp',
+
     setup() {
       // auto update head
       useUpdateHead()
@@ -172,10 +178,7 @@ export const createVueApp = async ({
 
   // register built-in components
   /* eslint-disable vue/match-component-file-name */
-  app.component(
-    'ClientOnly',
-    __SSR__ ? () => null : (_, ctx) => ctx.slots.default?.()
-  )
+  app.component('ClientOnly', ClientOnly)
   app.component('Content', Content)
   app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
@@ -196,4 +199,13 @@ export const createVueApp = async ({
     app,
     router,
   }
+}
+
+// mount app in client bundle
+if (!__SSR__) {
+  createVueApp().then(({ app, router }) => {
+    router.isReady().then(() => {
+      app.mount('#app')
+    })
+  })
 }
