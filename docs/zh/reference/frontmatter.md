@@ -186,3 +186,11 @@ export default defineClientAppEnhance(({ app }) => {
 layout: CustomLayout
 ---
 ```
+
+## externalIcon
+
+- Type: `boolean`
+
+- Details:
+
+  是否在每个外部链接的后面添加 <OutboundLink /> 图标。这个值将会覆盖 [`markdown.link.externalIcon`](./config.md#markdown-link-externalicon)。
