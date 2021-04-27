@@ -426,13 +426,13 @@ You should not configure it unless you understand what it is for.
 
 ### markdown.links
 
-- Type: `LinkPluginOptions | false`
+- Type: `LinksPluginOptions | false`
 
 - Details:
 
   Options for VuePress built-in markdown-it links plugin.
 
-  It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
+  It will convert internal links to `<RouterLink>`, and add extra attributes and icon to external links.
 
   Set to `false` to disable this plugin.
 
@@ -441,7 +441,7 @@ You should not configure it unless you understand what it is for.
 
 ### markdown.links.internalTag
 
-- Type: `string`
+- Type: `'a' | 'RouterLink'`
 
 - Default: `'RouterLink'`
 
