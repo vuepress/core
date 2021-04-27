@@ -193,4 +193,4 @@ layout: CustomLayout
 
 - Details:
 
-  Whether to append an <OutboundLink /> icon to external links. It will override [`markdown.link.externalIcon`](./config.md#markdown-link-externalicon).
+  Whether to append an <OutboundLink /> icon to external links. It will override [markdown.links.externalIcon](./config.md#markdown-links-externalicon).

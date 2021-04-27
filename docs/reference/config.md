@@ -370,20 +370,20 @@ You can disable it if you want to implement them in client side. For example, [P
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
 
-### markdown.link
+### markdown.links
 
 - Type: `LinkPluginOptions | false`
 
 - Details:
 
-  Options for VuePress built-in markdown-it link plugin.
+  Options for VuePress built-in markdown-it links plugin.
 
   Set to `false` to disable this plugin.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
-### markdown.link.internalTag
+### markdown.links.internalTag
 
 - Type: `string`
 
@@ -393,7 +393,7 @@ You can disable it if you want to implement them in client side. For example, [P
 
   Tag for internal links.
 
-### markdown.link.externalAttrs
+### markdown.links.externalAttrs
 
 - Type: `Record<string, string>`
 
@@ -403,7 +403,7 @@ You can disable it if you want to implement them in client side. For example, [P
 
   Additional attributes for external links.
 
-### markdown.link.externalIcon
+### markdown.links.externalIcon
 
 - Type: `boolean`
 
