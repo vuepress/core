@@ -127,7 +127,7 @@ export const resolveArraySidebarItems = (
       childItem = item as ResolvedSidebarItem
     }
 
-    if (childItem.isGroup && childItem.children) {
+    if (childItem.children) {
       return {
         ...childItem,
         children: childItem.children.map(handleChildItem),
@@ -154,14 +154,14 @@ export const resolveArraySidebarItems = (
       if (isString(item)) {
         return useNavLink(item)
       }
-      if (!item.isGroup) {
-        return item as ResolvedSidebarItem
+      if (item.children) {
+        return {
+          ...item,
+          children: item.children.map(handleChildItem),
+        }
       }
 
-      return {
-        ...item,
-        children: item.children.map(handleChildItem),
-      }
+      return item as ResolvedSidebarItem
     }
   )
 }
