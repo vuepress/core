@@ -1,4 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
+import { decode } from 'mdurl'
 import { path } from '@vuepress/utils'
 import type { MarkdownEnv } from '../types'
 
@@ -29,7 +30,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       // add `@source` alias to the link
       const resolvedLink = `${relativePathPrefix}/${path.join(
         path.dirname(env.filePathRelative),
-        link
+        // decode link to the origin one so that bundler can find the file correctly
+        decode(link)
       )}`
 
       // replace the original link with absolute path

@@ -15,6 +15,8 @@ const source = [
   '![empty]()',
   '![alias](@alias/foo.png)',
   '![~alias](~@alias/foo.png)',
+  '![中国](./中国.png)',
+  '![finish](./100%.png)',
 ].join('\n\n')
 
 describe('@vuepress/markdown > plugins > assetsPlugin', () => {
@@ -40,6 +42,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         '<img src="@alias/foo.png" alt="alias">',
         '<img src="~@alias/foo.png" alt="~alias">',
+        '<img src="@source/sub/中国.png" alt="中国">',
+        '<img src="@source/sub/100%.png" alt="finish">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
@@ -70,6 +74,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         '<img src="@alias/foo.png" alt="alias">',
         '<img src="~@alias/foo.png" alt="~alias">',
+        '<img src="@foo/sub/中国.png" alt="中国">',
+        '<img src="@foo/sub/100%.png" alt="finish">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
@@ -96,6 +102,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         '<img src="@alias/foo.png" alt="alias">',
         '<img src="~@alias/foo.png" alt="~alias">',
+        '<img src="./%E4%B8%AD%E5%9B%BD.png" alt="中国">',
+        '<img src="./100%25.png" alt="finish">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
