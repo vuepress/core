@@ -5,6 +5,7 @@ import type { RepoType } from './resolveRepoType'
 export const editLinkPatterns: Record<Exclude<RepoType, null>, string> = {
   GitHub: ':repo/edit/:branch/:path',
   GitLab: ':repo/-/edit/:branch/:path',
+  Gitee: ':repo/edit/:branch/:path',
   Bitbucket:
     ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default',
 }
@@ -37,7 +38,7 @@ export const resolveEditLink = ({
   return pattern
     .replace(
       /:repo/,
-      repoType === 'GitHub' ? `https://github.com/${docsRepo}` : docsRepo
+      docsRepo.startsWith('http') ? docsRepo : `https://github.com/${docsRepo}`
     )
     .replace(/:branch/, docsBranch)
     .replace(
