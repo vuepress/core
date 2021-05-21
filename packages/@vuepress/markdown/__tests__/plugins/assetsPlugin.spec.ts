@@ -64,8 +64,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         // invalid paths
         '<img src=".../invalid.png" alt="invalid">',
-        '<img src=".../%E6%B1%89%E5%AD%97.png" alt="汉字">',
-        '<img src=".../100%25.png" alt="100%">',
+        '<img src=".../汉字.png" alt="汉字">',
+        '<img src=".../100%.png" alt="100%">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
@@ -107,8 +107,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         // invalid paths
         '<img src=".../invalid.png" alt="invalid">',
-        '<img src=".../%E6%B1%89%E5%AD%97.png" alt="汉字">',
-        '<img src=".../100%25.png" alt="100%">',
+        '<img src=".../汉字.png" alt="汉字">',
+        '<img src=".../100%.png" alt="100%">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
@@ -130,8 +130,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="../sub/foo/bar.png" alt="foo-bar2">',
         '<img src="../baz.png" alt="baz">',
         '<img src="../../out.png" alt="out">',
-        '<img src="./%E6%B1%89%E5%AD%97.png" alt="汉字">',
-        '<img src="./100%25.png" alt="100%">',
+        '<img src="./汉字.png" alt="汉字">',
+        '<img src="./100%.png" alt="100%">',
         // aliases
         '<img src="@alias/foo.png" alt="alias">',
         '<img src="@alias/汉字.png" alt="汉字">',
@@ -146,8 +146,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="" alt="empty">',
         // invalid paths
         '<img src=".../invalid.png" alt="invalid">',
-        '<img src=".../%E6%B1%89%E5%AD%97.png" alt="汉字">',
-        '<img src=".../100%25.png" alt="100%">',
+        '<img src=".../汉字.png" alt="汉字">',
+        '<img src=".../100%.png" alt="100%">',
       ]
         .map((item) => `<p>${item}</p>`)
         .join('\n') + '\n'
