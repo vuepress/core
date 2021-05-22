@@ -37,7 +37,7 @@ export const resolveEditLink = ({
   return pattern
     .replace(
       /:repo/,
-      repoType === 'GitHub' ? `https://github.com/${docsRepo}` : docsRepo
+      docsRepo.startsWith('http') ? docsRepo : `https://github.com/${docsRepo}`
     )
     .replace(/:branch/, docsBranch)
     .replace(
