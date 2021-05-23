@@ -5,7 +5,7 @@ import type { App } from '../../types'
  */
 export const prepareLayoutComponents = async (app: App): Promise<void> => {
   const content = `\
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from '${require.resolve('vue')}'
 
 export const layoutComponents = {\
 ${app.themeApi.layouts

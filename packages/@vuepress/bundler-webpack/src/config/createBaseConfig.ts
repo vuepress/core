@@ -3,6 +3,7 @@ import type { App } from '@vuepress/core'
 import type { WebpackBundlerOptions } from '../types'
 import { handleDevtool } from './handleDevtool'
 import { handleEntry } from './handleEntry'
+import { handleContext } from './handleContext'
 import { handleMode } from './handleMode'
 import { handleModule } from './handleModule'
 import { handleNode } from './handleNode'
@@ -28,6 +29,11 @@ export const createBaseConfig = async ({
    * entry
    */
   handleEntry({ app, config })
+
+  /**
+   * context
+   */
+  handleContext({ config })
 
   /**
    * mode

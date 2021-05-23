@@ -6,7 +6,7 @@ import type { App } from '../../types'
 export const preparePagesComponents = async (app: App): Promise<void> => {
   // generate page component map file
   const content = `\
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from '${require.resolve('vue')}'
 
 export const pagesComponents = {\
 ${app.pages

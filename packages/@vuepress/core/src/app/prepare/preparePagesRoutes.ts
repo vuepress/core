@@ -13,7 +13,9 @@ type RouteItem = [
  */
 export const preparePagesRoutes = async (app: App): Promise<void> => {
   const content = `\
-import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
+import { Vuepress } from '${require.resolve(
+    '@vuepress/client/lib/components/Vuepress'
+  )}'
 
 const routeItems = [\
 ${app.pages
