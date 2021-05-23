@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "@vuepress/shared": "2.0.0-beta.7",
-    "vite": "^2.3.3",
     "vue": "^3.0.11",
     "vue-router": "^4.0.6"
+  },
+  "devDependencies": {
+    "vite": "^2.3.3"
   },
   "publishConfig": {
     "access": "public"

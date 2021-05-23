@@ -32,7 +32,6 @@
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.34",
     "@docsearch/js": "3.0.0-alpha.34",
-    "@docsearch/react": "3.0.0-alpha.34",
     "@types/react": "^17.0.0",
     "@vuepress/client": "2.0.0-beta.12",
     "@vuepress/core": "2.0.0-beta.14",
@@ -41,6 +40,9 @@
     "preact": "^10.0.0",
     "vue": "^3.0.11",
     "vue-router": "^4.0.6"
+  },
+  "devDependencies": {
+    "@docsearch/react": "3.0.0-alpha.34"
   },
   "publishConfig": {
     "access": "public"
