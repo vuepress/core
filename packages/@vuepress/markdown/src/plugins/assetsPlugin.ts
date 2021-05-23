@@ -22,25 +22,27 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md.renderer.rules.image = (tokens, idx, options, env: MarkdownEnv, self) => {
     const token = tokens[idx]
 
-    // get the image link and decode link to the origin one
-    // so that bundler can find the file correctly
+    // get the image link
     const link = token.attrGet('src')
 
-    if (link) {
-      if (/^\.{1,2}\//.test(link) && env.filePathRelative) {
-        // if the link is relative path, and the `env.filePathRelative` exists
-        // add `@source` alias to the link
-        const resolvedLink = `${relativePathPrefix}/${path.join(
-          path.dirname(env.filePathRelative),
-          decode(link)
-        )}`
-
-        // replace the original link with absolute path
-        token.attrSet('src', resolvedLink)
-      } else {
-        token.attrSet('src', decode(link))
-      }
+    if (!link) {
+      return rawRule(tokens, idx, options, env, self)
     }
+
+    // decode link to ensure bundler can find the file correctly
+    let resolvedLink = decode(link)
+
+    // if the link is relative path, and the `env.filePathRelative` exists
+    // add `@source` alias to the link
+    if (/^\.{1,2}\//.test(link) && env.filePathRelative) {
+      resolvedLink = `${relativePathPrefix}/${path.join(
+        path.dirname(env.filePathRelative),
+        resolvedLink
+      )}`
+    }
+
+    // replace the original link with resolved link
+    token.attrSet('src', resolvedLink)
 
     return rawRule(tokens, idx, options, env, self)
   }
