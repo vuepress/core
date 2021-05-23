@@ -32,7 +32,9 @@
     "@vuepress/client": "2.0.0-beta.12",
     "@vuepress/core": "2.0.0-beta.14",
     "@vuepress/shared": "2.0.0-beta.7",
-    "@vuepress/utils": "2.0.0-beta.11"
+    "@vuepress/utils": "2.0.0-beta.11",
+    "vite": "^2.3.3",
+    "vue": "^3.0.11"
   },
   "publishConfig": {
     "access": "public"
