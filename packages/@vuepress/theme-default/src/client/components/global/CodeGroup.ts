@@ -7,6 +7,7 @@ export default defineComponent({
   setup(_, { slots }) {
     // index of current active item
     const activeIndex = ref(-1)
+    const tabRefs = ref<HTMLButtonElement[]>([])
 
     return () => {
       // NOTICE: here we put the `slots.default()` inside the render function to make
@@ -63,12 +64,36 @@ export default defineComponent({
                 h(
                   'button',
                   {
+                    ref: (element) => {
+                      if (element)
+                        tabRefs.value[i] = element as HTMLButtonElement
+                    },
                     class: `code-group__nav-tab${
                       i === activeIndex.value
                         ? ' code-group__nav-tab-active'
                         : ''
                     }`,
+                    ariaPressed: i === activeIndex.value,
+                    ariaExpanded: i === activeIndex.value,
                     onClick: () => (activeIndex.value = i),
+                    onKeydown: (event: KeyboardEvent) => {
+                      if (event.key === ' ' || event.key === 'Enter') {
+                        event.preventDefault()
+                        activeIndex.value = i
+                      } else if (event.key === 'ArrowRight') {
+                        event.preventDefault()
+                        if (i + 1 < items.length) {
+                          activeIndex.value = i + 1
+                          tabRefs.value[i + 1].focus()
+                        }
+                      } else if (event.key === 'ArrowLeft') {
+                        event.preventDefault()
+                        if (i - 1 >= 0) {
+                          activeIndex.value = i - 1
+                          tabRefs.value[i - 1].focus()
+                        }
+                      }
+                    },
                   },
                   vnode.props.title
                 )
