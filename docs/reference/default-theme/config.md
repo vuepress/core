@@ -146,7 +146,7 @@ module.exports = {
     // If you set it in the form of `organization/repository`
     // we will take it as a GitHub repo
     repo: 'vuejs/vuepress',
-    // Use url directly if you are not using GitHub
+    // You can also set it to a URL directly
     repo: 'https://gitlab.com/foo/bar',
   },
 }

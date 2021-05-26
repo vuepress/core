@@ -146,7 +146,7 @@ module.exports = {
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
     repo: 'vuejs/vuepress',
-    // 如果你使用的不是 GitHub ，可以直接使用 URL
+    // 你也可以直接将它设置为一个 URL
     repo: 'https://gitlab.com/foo/bar',
   },
 }
