@@ -362,7 +362,7 @@ module.exports = {
 
   它将会用于生成 _编辑此页_ 的链接。
 
-  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
+  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Gitee 、 Bitbucket 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
 
 - 用法：
 

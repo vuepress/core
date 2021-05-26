@@ -362,7 +362,7 @@ module.exports = {
 
   This will be used for generating the _edit this page_ link.
 
-  If you don't set this option, the pattern will be inferred from the [docsRepo](#docsrepo) option. But if your documentation repository is not hosted on a common platform, for example, GitHub, GitLab, Bitbucket, etc., you have to set this option explicitly to make the _edit this page_ link work.
+  If you don't set this option, the pattern will be inferred from the [docsRepo](#docsrepo) option. But if your documentation repository is not hosted on a common platform, for example, GitHub, GitLab, Bitbucket, Gitee, etc., you have to set this option explicitly to make the _edit this page_ link work.
 
 - Usage:
 
