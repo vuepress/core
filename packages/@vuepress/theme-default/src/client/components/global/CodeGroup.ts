@@ -65,8 +65,9 @@ export default defineComponent({
                   'button',
                   {
                     ref: (element) => {
-                      if (element)
+                      if (element) {
                         tabRefs.value[i] = element as HTMLButtonElement
+                      }
                     },
                     class: `code-group__nav-tab${
                       i === activeIndex.value
