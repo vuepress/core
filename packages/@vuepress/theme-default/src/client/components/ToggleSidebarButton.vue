@@ -1,5 +1,9 @@
 <template>
-  <div class="toggle-sidebar-button" @click="$emit('toggle')">
+  <div
+    class="toggle-sidebar-button"
+    title="Toggle Sidebar"
+    @click="$emit('toggle')"
+  >
     <svg
       class="icon"
       xmlns="http://www.w3.org/2000/svg"
