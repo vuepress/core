@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-back-to-top",
-  "version": "2.0.0-beta.14",
+  "version": "2.0.0-beta.16",
   "description": "VuePress plugin - back to top",
   "keywords": [
     "vuepress-plugin",
@@ -26,11 +26,11 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo",
-    "copy": "cpx \"src/**/*.vue\" lib"
+    "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.14",
-    "@vuepress/utils": "2.0.0-beta.11",
+    "@vuepress/core": "2.0.0-beta.15",
+    "@vuepress/utils": "2.0.0-beta.15",
     "ts-debounce": "^3.0.0",
     "vue": "^3.0.11"
   },

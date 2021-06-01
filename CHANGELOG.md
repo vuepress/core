@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
+
+
+### Bug Fixes
+
+* **plugin-pwa-popup:** increase default z-index ([67242e8](https://github.com/vuepress/vuepress-next/commit/67242e896f52c09c1e42566a32ae10291d0fb648))
+* **theme-default:** increase medium-zoom delay ([9c92443](https://github.com/vuepress/vuepress-next/commit/9c9244385f4fe6f65115cab6ba08f47dffc1580a))
+
+
+### Features
+
+* **bundler-vite:** configure postcss by default ([6197578](https://github.com/vuepress/vuepress-next/commit/61975781151ace783f3021bd6a3c55c4fa7b12bd))
+* **plugin-back-to-top:** add z-index variable ([3d7d4a4](https://github.com/vuepress/vuepress-next/commit/3d7d4a4ba173dab4c3ad80abea5ac96cc1eb0bde))
+* **plugin-medium-zoom:** add more css variables (close [#174](https://github.com/vuepress/vuepress-next/issues/174)) ([d717800](https://github.com/vuepress/vuepress-next/commit/d71780094839db02424b60f3a2877871e34eaf64))
+* **plugin-nprogress:** add z-index variable ([151e087](https://github.com/vuepress/vuepress-next/commit/151e087c289a387d7ff77654059de9d71910263a))
+* **plugin-pwa-popup:** add more css variables ([3ae6f72](https://github.com/vuepress/vuepress-next/commit/3ae6f72a1fb981ff132325637d5996c5c07b52f2))
+
+
+
+
+
+# [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
+
+
+### Bug Fixes
+
+* **markdown:** decode assets link to ensure bundler can find the file ([#144](https://github.com/vuepress/vuepress-next/issues/144)) ([d3e5409](https://github.com/vuepress/vuepress-next/commit/d3e5409246a47edae93209c9ce5dd2614e14c936))
+* **theme-default:** handle rotate events on iPad ([#150](https://github.com/vuepress/vuepress-next/issues/150)) ([bbdda60](https://github.com/vuepress/vuepress-next/commit/bbdda60bba0a56590535f3e762dec55767ec031c))
+* **theme-default:** show header anchors when being focused ([#164](https://github.com/vuepress/vuepress-next/issues/164)) ([8de5f0f](https://github.com/vuepress/vuepress-next/commit/8de5f0fa2873f64be0622aced46e1512c7f4fac5))
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0-beta.3 ([2e86826](https://github.com/vuepress/vuepress-next/commit/2e8682680eba7736bcf3325014a927a87503ba0b))
+* **cli:** allow setting default app config ([41f9dc6](https://github.com/vuepress/vuepress-next/commit/41f9dc612d65a7aae777a75ee00715f0b7bab7c6))
+* **plugin-search:** add --search-bg-color variable ([6c778a8](https://github.com/vuepress/vuepress-next/commit/6c778a83b5d26529c830057aadc9c6fde8dc1805))
+* **plugin-search:** improve a11y support ([#165](https://github.com/vuepress/vuepress-next/issues/165)) ([205aafe](https://github.com/vuepress/vuepress-next/commit/205aafe4e6600987e06730b926abe2be3e4d5d73))
+* **theme-default:** support dark mode (close [#29](https://github.com/vuepress/vuepress-next/issues/29)) ([680e429](https://github.com/vuepress/vuepress-next/commit/680e4298a80ddb06b0381af48644124ffb0b0c4c))
+* **theme-default:** support full link for github repo ([#152](https://github.com/vuepress/vuepress-next/issues/152)) ([8a5055b](https://github.com/vuepress/vuepress-next/commit/8a5055b57d2068e73b4a1c52601c94bdbbc1a7c5))
+* **theme-default:** support Gitee repo ([5cad664](https://github.com/vuepress/vuepress-next/commit/5cad664bd7224a08e679dc06f61f17af6c790b97))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** most sass variables are migrated to css variables
+
+
+
+
+
 # [2.0.0-beta.14](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2021-05-12)
 
 

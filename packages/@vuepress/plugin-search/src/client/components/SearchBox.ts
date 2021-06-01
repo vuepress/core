@@ -9,7 +9,6 @@ import {
   useSearchSuggestions,
   useSuggestionsFocus,
 } from '../composables'
-import './SearchBox.css'
 
 export type SearchBoxLocales = LocaleConfig<{
   placeholder: string
@@ -94,13 +93,15 @@ export const SearchBox = defineComponent({
 
     return () =>
       h(
-        'div',
+        'form',
         {
           class: 'search-box',
+          role: 'search',
         },
         [
           h('input', {
             ref: input,
+            type: 'search',
             placeholder: locale.value.placeholder,
             autocomplete: 'off',
             spellcheck: false,
