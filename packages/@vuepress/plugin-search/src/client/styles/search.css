@@ -1,15 +1,3 @@
-:root {
-  --search-accent-color: #3eaf7c;
-  --search-text-color: #2c3e50;
-  --search-border-color: #eaecef;
-
-  --search-item-text-color: #5d81a5;
-  --search-item-focus-bg-color: #f3f4f5;
-
-  --search-input-width: 8rem;
-  --search-result-width: 20rem;
-}
-
 .search-box {
   display: inline-block;
   position: relative;
@@ -29,7 +17,7 @@
   padding: 0 0.5rem 0 2rem;
   outline: none;
   transition: all 0.2s ease;
-  background: #fff url('search.svg') 0.6rem 0.5rem no-repeat;
+  background: var(--search-bg-color) url('search.svg') 0.6rem 0.5rem no-repeat;
   background-size: 1rem;
 }
 
@@ -39,7 +27,7 @@
 }
 
 .search-box .suggestions {
-  background: #fff;
+  background: var(--search-bg-color);
   width: var(--search-result-width);
   position: absolute;
   top: 2rem;

@@ -146,7 +146,7 @@ module.exports = {
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
     repo: 'vuejs/vuepress',
-    // 如果你使用的不是 GitHub ，可以直接使用 URL
+    // 你也可以直接将它设置为一个 URL
     repo: 'https://gitlab.com/foo/bar',
   },
 }
@@ -362,7 +362,7 @@ module.exports = {
 
   它将会用于生成 _编辑此页_ 的链接。
 
-  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
+  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 、 Gitee 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
 
 - 用法：
 
@@ -495,7 +495,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'WARNING'`
+- 默认值： `'DANGER'`
 
 - 详情：
 
@@ -535,7 +535,7 @@ module.exports = {
 
   它主要是为了站点的可访问性 (a11y) 。
 
-## 插件
+## 插件配置
 
 ### themePlugins
 
@@ -545,7 +545,7 @@ module.exports = {
 
   默认主题使用了一些插件，如果你确实不需要该插件，你可以选择禁用它。在禁用插件之前，请确保你已了解它的用途。
 
-#### themePlugins.activeHeaderLinks
+### themePlugins.activeHeaderLinks
 
 - 类型： `boolean`
 
@@ -565,7 +565,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-back-to-top](../plugin/back-to-top.md) 。
 
-#### themePlugins.container
+### themePlugins.container
 
 - 类型： `Record<ContainerType, boolean>`
 
@@ -585,7 +585,7 @@ module.exports = {
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
 
-#### themePlugins.git
+### themePlugins.git
 
 - 类型： `boolean`
 
@@ -595,7 +595,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-git](../plugin/git.md) 。
 
-#### themePlugins.mediumZoom
+### themePlugins.mediumZoom
 
 - 类型： `boolean`
 
@@ -605,7 +605,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-medium-zoom](../plugin/medium-zoom.md) 。
 
-#### themePlugins.nprogress
+### themePlugins.nprogress
 
 - 类型： `boolean`
 
