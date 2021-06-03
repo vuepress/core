@@ -24,6 +24,25 @@ export default defineComponent({
           return vnode as VNode & { props: Exclude<VNode['props'], null> }
         })
 
+      const keyboardHandler = (event: KeyboardEvent, i: number): void => {
+        if (event.key === ' ' || event.key === 'Enter') {
+          event.preventDefault()
+          activeIndex.value = i
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault()
+          if (i + 1 < items.length) {
+            activeIndex.value = i + 1
+            tabRefs.value[i + 1].focus()
+          }
+        } else if (event.key === 'ArrowLeft') {
+          event.preventDefault()
+          if (i - 1 >= 0) {
+            activeIndex.value = i - 1
+            tabRefs.value[i - 1].focus()
+          }
+        }
+      }
+
       // do not render anything if there is no code-group-item
       if (items.length === 0) {
         return null
@@ -57,8 +76,10 @@ export default defineComponent({
           h(
             'ul',
             { class: 'code-group__ul' },
-            items.map((vnode, i) =>
-              h(
+            items.map((vnode, i) => {
+              const isActive = i === activeIndex.value
+
+              return h(
                 'li',
                 { class: 'code-group__li' },
                 h(
@@ -69,37 +90,19 @@ export default defineComponent({
                         tabRefs.value[i] = element as HTMLButtonElement
                       }
                     },
-                    class: `code-group__nav-tab${
-                      i === activeIndex.value
-                        ? ' code-group__nav-tab-active'
-                        : ''
-                    }`,
-                    ariaPressed: i === activeIndex.value,
-                    ariaExpanded: i === activeIndex.value,
-                    onClick: () => (activeIndex.value = i),
-                    onKeydown: (event: KeyboardEvent) => {
-                      if (event.key === ' ' || event.key === 'Enter') {
-                        event.preventDefault()
-                        activeIndex.value = i
-                      } else if (event.key === 'ArrowRight') {
-                        event.preventDefault()
-                        if (i + 1 < items.length) {
-                          activeIndex.value = i + 1
-                          tabRefs.value[i + 1].focus()
-                        }
-                      } else if (event.key === 'ArrowLeft') {
-                        event.preventDefault()
-                        if (i - 1 >= 0) {
-                          activeIndex.value = i - 1
-                          tabRefs.value[i - 1].focus()
-                        }
-                      }
+                    class: {
+                      'code-group__nav-tab': true,
+                      'code-group__nav-tab-active': isActive,
                     },
+                    ariaPressed: isActive,
+                    ariaExpanded: isActive,
+                    onClick: () => (activeIndex.value = i),
+                    onKeydown: (e) => keyboardHandler(e, i),
                   },
                   vnode.props.title
                 )
               )
-            )
+            })
           )
         ),
         items,
