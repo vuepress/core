@@ -69,7 +69,7 @@ export default defineComponent({
       }
 
       if (activeIndex.value < 0 || activeIndex.value > items.length - 1) {
-        // if `activeIndex` is not valid
+        // if `activeIndex` is invalid
 
         // find the index of the code-group-item with `active` props
         activeIndex.value = items.findIndex(
