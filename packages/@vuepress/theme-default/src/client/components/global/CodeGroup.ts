@@ -7,7 +7,43 @@ export default defineComponent({
   setup(_, { slots }) {
     // index of current active item
     const activeIndex = ref(-1)
+
+    // refs of the tab buttons
     const tabRefs = ref<HTMLButtonElement[]>([])
+
+    // activate next tab
+    const activateNext = (i = activeIndex.value): void => {
+      if (i < tabRefs.value.length - 1) {
+        activeIndex.value = i + 1
+      } else {
+        activeIndex.value = 0
+      }
+      tabRefs.value[activeIndex.value].focus()
+    }
+
+    // activate previous tab
+    const activatePrev = (i = activeIndex.value): void => {
+      if (i > 0) {
+        activeIndex.value = i - 1
+      } else {
+        activeIndex.value = tabRefs.value.length - 1
+      }
+      tabRefs.value[activeIndex.value].focus()
+    }
+
+    // handle keyboard event
+    const keyboardHandler = (event: KeyboardEvent, i: number): void => {
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault()
+        activeIndex.value = i
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        activateNext(i)
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        activatePrev(i)
+      }
+    }
 
     return () => {
       // NOTICE: here we put the `slots.default()` inside the render function to make
@@ -24,32 +60,16 @@ export default defineComponent({
           return vnode as VNode & { props: Exclude<VNode['props'], null> }
         })
 
-      const keyboardHandler = (event: KeyboardEvent, i: number): void => {
-        if (event.key === ' ' || event.key === 'Enter') {
-          event.preventDefault()
-          activeIndex.value = i
-        } else if (event.key === 'ArrowRight') {
-          event.preventDefault()
-          if (i + 1 < items.length) {
-            activeIndex.value = i + 1
-            tabRefs.value[i + 1].focus()
-          }
-        } else if (event.key === 'ArrowLeft') {
-          event.preventDefault()
-          if (i - 1 >= 0) {
-            activeIndex.value = i - 1
-            tabRefs.value[i - 1].focus()
-          }
-        }
-      }
+      // clear tabRefs for HMR
+      tabRefs.value = []
 
       // do not render anything if there is no code-group-item
       if (items.length === 0) {
         return null
       }
 
-      if (activeIndex.value === -1) {
-        // initial state
+      if (activeIndex.value < 0 || activeIndex.value > items.length - 1) {
+        // if `activeIndex` is not valid
 
         // find the index of the code-group-item with `active` props
         activeIndex.value = items.findIndex(
@@ -61,8 +81,6 @@ export default defineComponent({
           activeIndex.value = 0
         }
       } else {
-        // re-render triggered by modifying `activeIndex` ref
-
         // set the active item
         items.forEach((vnode, i) => {
           vnode.props.active = i === activeIndex.value
