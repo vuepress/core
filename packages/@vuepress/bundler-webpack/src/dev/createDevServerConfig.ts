@@ -28,17 +28,17 @@ export const createDevServerConfig = (
     },
     host: app.options.host,
     hot: true,
-    onAfterSetupMiddleware: ({ app }, server) => {
+    onAfterSetupMiddleware: ({ app: expressApp }, server) => {
       // plugin hook: afterDevServer
-      options.afterDevServer?.(app, server)
+      options.afterDevServer?.(expressApp, server)
     },
-    onBeforeSetupMiddleware: ({ app }, server) => {
+    onBeforeSetupMiddleware: ({ app: expressApp }, server) => {
       // use trailing slash middleware to support vuepress routing in dev-server
       // it will be handled by most of the deployment platforms
-      app.use(trailingSlashMiddleware)
+      expressApp.use(trailingSlashMiddleware)
 
       // plugin hook: beforeDevServer
-      options.beforeDevServer?.(app, server)
+      options.beforeDevServer?.(expressApp, server)
     },
     open: app.options.open,
     port: app.options.port,
