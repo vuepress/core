@@ -1,4 +1,5 @@
 export * from './useDarkMode'
+export * from './useMetaThemeColor'
 export * from './useNavLink'
 export * from './useResolveRouteWithRedirect'
 export * from './useScrollPromise'

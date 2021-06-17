@@ -42,10 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from '../composables'
+import { useDarkMode, useMetaThemeColor } from '../composables'
 
 const isDarkMode = useDarkMode()
 const toggleDarkMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }
+useMetaThemeColor(isDarkMode)
 </script>
