@@ -34,7 +34,7 @@ export const useMetaThemeColor = (isDarkMode: Ref<boolean>): void => {
     watch(
       isDarkMode,
       () => {
-        if (!isDarkMode.value) {
+        if (isDarkMode.value) {
           updateMetaThemeColor(getBgColor())
         } else {
           updateMetaThemeColor()
