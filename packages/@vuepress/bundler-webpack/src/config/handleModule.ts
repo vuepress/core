@@ -30,7 +30,7 @@ export const handleModule = ({
   )
 
   // vue files
-  handleModuleVue({ app, config, isServer })
+  handleModuleVue({ app, options, config, isServer })
 
   // pug files, for templates
   handleModulePug({ config })

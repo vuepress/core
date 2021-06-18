@@ -1,9 +1,15 @@
+import type { VueLoaderOptions } from 'vue-loader'
 import type { Configuration as WebpackConfiguration } from 'webpack'
 import type * as WebpackChainConfig from 'webpack-chain'
 import type { LoaderContext } from './types.webpack'
 import type { WebpackDevServer } from './types.webpack-dev-server'
 
-export type { WebpackConfiguration, WebpackChainConfig, WebpackDevServer }
+export type {
+  VueLoaderOptions,
+  WebpackConfiguration,
+  WebpackChainConfig,
+  WebpackDevServer,
+}
 
 /**
  * Options for bundler-webpack
@@ -36,6 +42,11 @@ export interface WebpackBundlerOptions {
    * hook that to be called in `devServer.after`
    */
   afterDevServer?: (server: WebpackDevServer) => void
+
+  /**
+   * vue-loader options
+   */
+  vue?: VueLoaderOptions
 
   /**
    * postcss-loader options

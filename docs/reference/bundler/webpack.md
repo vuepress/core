@@ -48,6 +48,17 @@
 - Also see:
   - [Webpack > Configuration > DevServer > devServer.after](https://webpack.js.org/configuration/dev-server/#devserverafter)
 
+## vue
+
+- Type: `VueLoaderOptions`
+
+- Details:
+
+  Options for `vue-loader`.
+
+- Also see:
+  - [vue-loader > Options Reference](https://vue-loader.vuejs.org/options.html)
+
 ## postcss
 
 - Type: `PostcssLoaderOptions`

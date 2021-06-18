@@ -48,6 +48,17 @@
 - 参考：
   - [Webpack > Configuration > DevServer > devServer.after](https://webpack.js.org/configuration/dev-server/#devserverafter)
 
+## vue
+
+- 类型： `VueLoaderOptions`
+
+- 详情：
+
+  `vue-loader` 的配置项。
+
+- 参考：
+  - [vue-loader > 选项参考](https://vue-loader.vuejs.org/zh/options.html)
+
 ## postcss
 
 - 类型： `PostcssLoaderOptions`
