@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-palette",
-  "version": "2.0.0-beta.18",
+  "version": "2.0.0-beta.19",
   "description": "VuePress plugin - palette",
   "keywords": [
     "vuepress-plugin",
@@ -33,8 +33,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.18",
-    "@vuepress/utils": "2.0.0-beta.18",
+    "@vuepress/core": "2.0.0-beta.19",
+    "@vuepress/utils": "2.0.0-beta.19",
     "chokidar": "^3.5.1"
   },
   "publishConfig": {
