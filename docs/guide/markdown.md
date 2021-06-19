@@ -412,3 +412,18 @@ Check out the [Built-in Components](../reference/components.md) for a full list 
 
 Check out the [Default Theme > Built-in Components](../reference/default-theme/components.md) for a full list of default theme built-in components.
 :::
+
+## Cautions
+
+### Deprecated HTML Tags
+
+Deprecated HTML tags such as [\<center>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center) and [\<font>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font) are not allowed in VuePress markdown by default.
+
+Those tags would not be recognized as native HTML tags by Vue template compiler. Instead, Vue will try to resolve those tags as Vue components, and obviously these components usually don't exist.
+
+::: tip
+You should always avoid using deprecated HTML tags. However, if you want to use those tags anyway, you can set [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) to tell Vue template compiler not try to resolve them.
+
+- For `@bundler-webpack`, set [vue.compilerOptions](../reference/bundler/webpack.md#vue)
+- For `@bundler-vite`, set [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)
+:::
