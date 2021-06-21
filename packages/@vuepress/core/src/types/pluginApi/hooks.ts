@@ -45,7 +45,7 @@ export type ExtendsMarkdownHook = Hook<
 
 // page hook
 export type ExtendsPageOptionsHook = Hook<
-  (filePath: string, app: App) => PromiseOrNot<PageOptions>
+  (options: PageOptions, app: App) => PromiseOrNot<PageOptions>
 >
 export type ExtendsPageDataHook = Hook<
   (page: Page, app: App) => PromiseOrNot<Record<string, any>>

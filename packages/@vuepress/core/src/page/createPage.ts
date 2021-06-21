@@ -12,14 +12,18 @@ import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
+import { resolvePageOptions } from './resolvePageOptions'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageSlug } from './resolvePageSlug'
 
 export const createPage = async (
   app: App,
-  options: PageOptions
+  optionsRaw: PageOptions
 ): Promise<Page> => {
+  // resolve page options from raw options
+  const options = await resolvePageOptions({ app, optionsRaw })
+
   // resolve page file absolute path and relative path
   const { filePath, filePathRelative } = resolvePageFilePath({
     app,
