@@ -169,6 +169,10 @@ This directory will not be used as local theme implicitly if it is existed.
 
 You need to set the path to the local theme explicitly via [theme](../reference/config.md#theme) option.
 
+### Markdown slot Change
+
+Markdown slot is no longer supported.
+
 ### Plugin API Change
 
 - `plugins`: removed

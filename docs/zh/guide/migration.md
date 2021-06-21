@@ -169,6 +169,10 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 你需要在 [theme](../reference/config.md#theme) 配置项中显式声明本地主题的路径。
 
+### Markdown 插槽变更
+
+Markdown 插槽不再被支持。
+
 ### 插件 API 变更
 
 - `plugins`：移除
