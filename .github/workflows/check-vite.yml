@@ -1,4 +1,4 @@
-name: check
+name: check-vite
 
 on:
   push:
@@ -46,14 +46,10 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Lint
-        run: yarn lint
+      - name: Copy and build
+        run: yarn copy && yarn build
 
-      - name: Copy
-        run: yarn copy
-
-      - name: Build
-        run: yarn build
-
-      - name: Test
-        run: yarn test
+      - name: Build docs with vite
+        run: yarn docs:build
+        env:
+          DOCS_BUNDLER: '@vuepress/vite'
