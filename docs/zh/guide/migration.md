@@ -157,6 +157,8 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 函数接收的参数也有改动。
 
+参考 [客户端 API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance) 。
+
 #### .vuepress/components/
 
 在该目录下的文件不会被自动注册为 Vue 组件。
@@ -209,7 +211,9 @@ Markdown 插槽不再被支持。
 
 你仍然可以通过 `extends: 'parent-theme'` 来继承一个父主题，这将会继承其插件和布局等。
 
-但是，`@theme` 和 `@parent-theme` 别名不再生效。
+`@theme` 和 `@parent-theme` 别名不再生效。
+
+现在支持主题的多级继承。
 
 ### CLI 变更
 
