@@ -28,17 +28,16 @@
     }
   }
 
-  & > .sidebar-links {
+  .sidebar-links {
     padding: 1.5rem 0;
 
-    & > li > a.sidebar-link {
-      font-size: 1.1em;
-      line-height: 1.7;
-      font-weight: bold;
+    > li:not(:first-child) {
+      margin-top: 0.75rem;
     }
 
-    & > li:not(:first-child) {
-      margin-top: 0.75rem;
+    .sidebar-sub-items {
+      padding-left: 1rem;
+      font-size: 0.95em;
     }
   }
 }
@@ -56,26 +55,8 @@
       }
     }
 
-    & > .sidebar-links {
+    .sidebar-links {
       padding: 1rem 0;
-    }
-  }
-}
-
-/**
- * sidebar child
- */
-.sidebar-group {
-  .sidebar-links > &:not(:first-child) {
-    margin-top: 0.75rem;
-  }
-  .sidebar-group {
-    & > .sidebar-heading {
-      opacity: 0.5;
-      font-size: 0.95em;
-      line-height: 1.4;
-      font-weight: normal;
-      padding-left: 2rem;
     }
   }
 }
@@ -92,11 +73,6 @@
   margin: 0;
   border-left: 0.25rem solid transparent;
 
-  &.open,
-  &:hover {
-    color: inherit;
-  }
-
   .arrow {
     position: relative;
     top: -0.12em;
@@ -104,41 +80,33 @@
   }
 }
 
-.sidebar .sidebar-sub-headers {
-  padding-left: 1rem;
-  font-size: 0.95em;
-}
-
-.sidebar-link {
+.sidebar-item:not(.sidebar-heading) {
   font-size: 1em;
   font-weight: 400;
   display: inline-block;
   color: var(--c-text);
   border-left: 0.25rem solid transparent;
   margin: 0;
-  padding: 0.35rem 1rem 0.35rem 1.25rem;
+  padding: 0.35rem 1rem 0.35rem 2rem;
   line-height: 1.4;
   width: 100%;
   box-sizing: border-box;
 
-  .sidebar-group & {
-    padding-left: 2rem;
+  .sidebar-links > &:not(:first-child) {
+    margin-top: 0.75rem;
   }
 
-  .sidebar-sub-headers & {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    border-left: none;
-
-    &.active {
-      font-weight: 500;
-    }
+  .sidebar-sub-items & {
+    padding: 0.25rem 1rem 0.25rem 1.75rem;
   }
 }
 
-a.sidebar-heading,
-a.sidebar-link {
+a.sidebar-item {
   cursor: pointer;
+
+  &:hover {
+    color: var(--c-text-accent);
+  }
 
   &.active {
     font-weight: 600;
@@ -146,7 +114,13 @@ a.sidebar-link {
     border-left-color: var(--c-text-accent);
   }
 
-  &:hover {
-    color: var(--c-text-accent);
+  &.sidebar-heading.active {
+    font-weight: bold;
+    border-left-color: transparent;
+  }
+
+  .sidebar-sub-items &.active {
+    font-weight: 500;
+    border-left-color: transparent;
   }
 }
