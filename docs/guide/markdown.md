@@ -106,7 +106,7 @@ Also see: [Built-in Components > OutboundLink](../reference/components.md#outbou
 
 You can add emoji to your Markdown content by typing `:EMOJICODE:`.
 
-For a full list of available emoji and codes, check out [emoji-cheat-sheet.com](https://emoji-cheat-sheet.com/).
+For a full list of available emoji and codes, check out [emoji-cheat-sheet.com](https://www.webfx.com/tools/emoji-cheat-sheet/).
 
 **Input**
 
