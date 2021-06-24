@@ -7,5 +7,13 @@ export const preparePageComponent = async (
   app: App,
   page: Page
 ): Promise<void> => {
-  await app.writeTemp(page.componentFilePathRelative, page.componentFileContent)
+  await app.writeTemp(
+    page.componentFilePathRelative,
+    [
+      // take the rendered markdown content as <template>
+      `<template>${page.contentRendered}</template>\n`,
+      // hoist `<script>`, `<style>` and other custom blocks
+      ...page.hoistedTags,
+    ].join('\n')
+  )
 }

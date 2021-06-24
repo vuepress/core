@@ -52,7 +52,7 @@ export const createPage = async (
 
   // render page content and extract information
   const {
-    renderedContent,
+    contentRendered,
     deps,
     headers,
     hoistedTags,
@@ -103,11 +103,9 @@ export const createPage = async (
   const {
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
   } = await resolvePageComponentInfo({
     app,
-    renderedContent,
     hoistedTags,
     htmlFilePathRelative,
     key,
@@ -130,20 +128,22 @@ export const createPage = async (
     headers,
 
     // extra data
-    pathInferred,
-    pathLocale,
     content,
-    slug,
+    contentRendered,
     date,
     deps,
+    hoistedTags,
     links,
+    pathInferred,
+    pathLocale,
+    permalink,
+    slug,
 
     // file info
     filePath,
     filePathRelative,
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
     dataFilePath,
     dataFilePathRelative,

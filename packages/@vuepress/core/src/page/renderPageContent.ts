@@ -21,7 +21,7 @@ export const renderPageContent = async ({
   filePath: string | null
   filePathRelative: string | null
 }): Promise<{
-  renderedContent: string
+  contentRendered: string
   deps: string[]
   headers: MarkdownHeader[]
   hoistedTags: string[]
@@ -35,7 +35,7 @@ export const renderPageContent = async ({
     frontmatter,
   }
 
-  const renderedContent = app.markdown.render(content, markdownEnv)
+  const contentRendered = app.markdown.render(content, markdownEnv)
 
   /* istanbul ignore next */
   const {
@@ -47,7 +47,7 @@ export const renderPageContent = async ({
   } = markdownEnv
 
   return {
-    renderedContent,
+    contentRendered,
     deps: importedFiles,
     headers,
     hoistedTags,
