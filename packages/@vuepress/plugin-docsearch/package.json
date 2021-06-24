@@ -33,14 +33,14 @@
     "@docsearch/css": "3.0.0-alpha.34",
     "@docsearch/js": "3.0.0-alpha.34",
     "@docsearch/react": "3.0.0-alpha.34",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.11",
     "@vuepress/client": "2.0.0-beta.19",
     "@vuepress/core": "2.0.0-beta.19",
     "@vuepress/shared": "2.0.0-beta.19",
     "@vuepress/utils": "2.0.0-beta.19",
-    "preact": "^10.0.0",
-    "vue": "^3.1.1",
-    "vue-router": "^4.0.8"
+    "preact": "^10.5.13",
+    "vue": "^3.1.2",
+    "vue-router": "^4.0.10"
   },
   "publishConfig": {
     "access": "public"

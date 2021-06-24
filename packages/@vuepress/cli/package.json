@@ -33,9 +33,9 @@
     "@vuepress/core": "2.0.0-beta.19",
     "@vuepress/utils": "2.0.0-beta.19",
     "cac": "^6.7.3",
-    "chokidar": "^3.5.1",
+    "chokidar": "^3.5.2",
     "envinfo": "^7.8.1",
-    "esbuild": "^0.11.20"
+    "esbuild": "^0.12.9"
   },
   "publishConfig": {
     "access": "public"

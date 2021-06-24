@@ -42,10 +42,10 @@
     "@vuepress/plugin-theme-data": "2.0.0-beta.19",
     "@vuepress/shared": "2.0.0-beta.19",
     "@vuepress/utils": "2.0.0-beta.19",
-    "sass": "^1.34.1",
+    "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
-    "vue": "^3.1.1",
-    "vue-router": "^4.0.8"
+    "vue": "^3.1.2",
+    "vue-router": "^4.0.10"
   },
   "publishConfig": {
     "access": "public"
