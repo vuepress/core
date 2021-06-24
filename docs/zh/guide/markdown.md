@@ -107,7 +107,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 你可以在你的 Markdown 内容中输入 `:EMOJICODE:` 来添加 Emoji 表情。
 
-前往 [emoji-cheat-sheet.com](https://emoji-cheat-sheet.com/) 来查看所有可用的 Emoji 表情和对应代码。
+前往 [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet) 来查看所有可用的 Emoji 表情和对应代码。
 
 **输入**
 
