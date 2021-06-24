@@ -266,10 +266,9 @@ module.exports = {
 
   If you set it to `'auto'`, the sidebar will be automatically generated from the page headers.
 
-  To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object, a `SidebarGroup` object, or a string:
+  To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
 
-  - A `SidebarItem` object should have a `text` field, a `link` field, and a `children` field. The `children` field should be an array of `SidebarItem` or string.
-  - A `SidebarGroup` object should set `isGroup` field to `true`, and should have a `text` field and a `children` field. The `children` field should be an array of `SidebarItem` or string.
+  - A `SidebarItem` object should have a `text` field, could have an optional `link` field and an optional `children` field. The `children` field should be a _sidebar array_.
   - A string should be the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, and `children` is automatically generated from the page headers.
 
   If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
@@ -300,12 +299,6 @@ module.exports = {
           '/foo/bar.md',
         ],
       },
-      // SidebarGroup
-      {
-        isGroup: true,
-        text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
-      },
       // string - page file path
       '/bar/README.md',
     ],
@@ -323,14 +316,12 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          isGroup: true,
           text: 'Guide',
           children: ['/guide/README.md', '/guide/getting-started.md'],
         },
       ],
       '/reference/': [
         {
-          isGroup: true,
           text: 'Reference',
           children: ['/reference/cli.md', '/reference/config.md'],
         },
