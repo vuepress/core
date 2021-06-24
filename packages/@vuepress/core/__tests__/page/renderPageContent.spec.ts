@@ -17,7 +17,7 @@ describe('core > page > renderPageContent', () => {
     })
 
     expect(resolved).toEqual({
-      renderedContent: '<p>foobar</p>\n',
+      contentRendered: '<p>foobar</p>\n',
       deps: [],
       headers: [],
       hoistedTags: [],
