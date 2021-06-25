@@ -31,7 +31,7 @@
     "@vuepress/client": "2.0.0-beta.19",
     "@vuepress/core": "2.0.0-beta.19",
     "@vuepress/utils": "2.0.0-beta.19",
-    "mitt": "^2.1.0",
+    "mitt": "^3.0.0",
     "register-service-worker": "^1.7.2",
     "vue": "^3.1.2",
     "workbox-build": "^6.1.5"
