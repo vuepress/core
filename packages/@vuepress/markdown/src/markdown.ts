@@ -12,6 +12,17 @@ import {
   linksPlugin,
   tocPlugin,
 } from './plugins'
+import type {
+  AnchorPluginOptions,
+  AssetsPluginOptions,
+  CodePluginOptions,
+  EmojiPluginOptions,
+  ExtractHeadersPluginOptions,
+  HoistTagsPluginOptions,
+  ImportCodePluginOptions,
+  LinksPluginOptions,
+  TocPluginOptions,
+} from './plugins'
 import type { Markdown, MarkdownOptions } from './types'
 import { slugify } from './utils'
 
@@ -45,24 +56,27 @@ export const createMarkdown = ({
 
   // parse emoji
   if (emoji !== false) {
-    md.use(emojiPlugin, emoji)
+    md.use<EmojiPluginOptions>(emojiPlugin, emoji)
   }
 
   // add anchor to headers
   if (anchor !== false) {
-    md.use(anchorPlugin, {
+    md.use<AnchorPluginOptions>(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
-      permalink: true,
-      permalinkBefore: true,
-      permalinkSymbol: '#',
+      permalink: anchorPlugin.permalink.ariaHidden({
+        class: 'header-anchor',
+        symbol: '#',
+        space: true,
+        placement: 'before',
+      }),
       ...anchor,
     })
   }
 
   // allow toc syntax
   if (toc !== false) {
-    md.use(tocPlugin, {
+    md.use<TocPluginOptions>(tocPlugin, {
       level: [2, 3],
       slugify,
       linkTag: 'RouterLink',
@@ -72,7 +86,7 @@ export const createMarkdown = ({
 
   // extract headers into env
   if (extractHeaders !== false) {
-    md.use(extractHeadersPlugin, {
+    md.use<ExtractHeadersPluginOptions>(extractHeadersPlugin, {
       level: [2, 3],
       slugify,
       ...extractHeaders,
@@ -95,27 +109,27 @@ export const createMarkdown = ({
 
   // replace relative link of assets with absolute link
   if (assets !== false) {
-    md.use(assetsPlugin, assets)
+    md.use<AssetsPluginOptions>(assetsPlugin, assets)
   }
 
   // hoist vue SFC blocks and extract them into env
   if (hoistTags !== false) {
-    md.use(hoistTagsPlugin, hoistTags)
+    md.use<HoistTagsPluginOptions>(hoistTagsPlugin, hoistTags)
   }
 
   // process external and internal links
   if (links !== false) {
-    md.use(linksPlugin, links)
+    md.use<LinksPluginOptions>(linksPlugin, links)
   }
 
   // process code fence
   if (code !== false) {
-    md.use(codePlugin, code)
+    md.use<CodePluginOptions>(codePlugin, code)
   }
 
   // handle import_code syntax
   if (importCode !== false) {
-    md.use(importCodePlugin, importCode)
+    md.use<ImportCodePluginOptions>(importCodePlugin, importCode)
   }
 
   return md

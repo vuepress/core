@@ -156,7 +156,7 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
       it(`case ${i}`, () => {
         expect(md.render(source)).toEqual(`\
 <nav class="table-of-contents"><ul><li><a href="#${expected.slug}">${expected.title}</a></li></ul></nav>
-<h2 id="${expected.slug}">${expected.h2}</h2>
+<h2 id="${expected.slug}" tabindex="-1">${expected.h2}</h2>
 `)
       })
     )

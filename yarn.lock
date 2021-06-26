@@ -7495,10 +7495,10 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.2.1.tgz#e4ea399dbc979ae735c83c863dd31bdf364277b7"
   integrity sha512-+WA2/1sPmDj1dlvvJmB5G6JKfY9dpn7EVBUL06+y6PoljPkh+6V1QihwxNkbcGxCRjt2b0F9K0taiCuo7MbdFQ==
 
-markdown-it-anchor@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-7.1.0.tgz#30fb21497bf59e83ff4d1ddc052d821962e2489e"
-  integrity sha512-loQggrwsIkkP7TOrESvmYkV2ikbQNNKhHcWyqC7/C2CmfHl1tkUizJJU8C5aGgg7J6oXVQJx17gk7i47tNn/lQ==
+markdown-it-anchor@^8.0.4:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-8.0.4.tgz#58b8dec4e98c476c59255885aaddae3b9849b0b1"
+  integrity sha512-/WzolvDEyPiLfmvyWirPerHZX41o4ObHhsz4DrYqTvafXie1ItqWlEajiq77qFAibowAXL9UExb1yeICLUT0+w==
 
 markdown-it-container@^3.0.0:
   version "3.0.0"
