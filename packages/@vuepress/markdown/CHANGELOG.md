@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+
+### Features
+
+* **markdown:** bump markdown-it-anchor to 8.0.4 ([41338f7](https://github.com/vuepress/vuepress-next/commit/41338f7d656bf9e692c3ff22e05e4b3c1a9cbd6f))
+
+
+### BREAKING CHANGES
+
+* **markdown:** `markdown.anchor` has changed, see changelog of markdown-it-anchor 8.0.0
+
+
+
+
+
 # [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
 
 **Note:** Version bump only for package @vuepress/markdown

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+
+### Bug Fixes
+
+* **core:** invoke extendsPageOptions hook in createPage ([76292aa](https://github.com/vuepress/vuepress-next/commit/76292aac7000e2bf924c563ff7452624008102cd))
+
+
+### Features
+
+* **markdown:** bump markdown-it-anchor to 8.0.4 ([41338f7](https://github.com/vuepress/vuepress-next/commit/41338f7d656bf9e692c3ff22e05e4b3c1a9cbd6f))
+* **plugin-pwa:** bump mitt to 3.0.0 ([8e2eb33](https://github.com/vuepress/vuepress-next/commit/8e2eb3358baa91c410adffb01f218404c4a4f393))
+* **theme-default:** refine sidebar config ([ea7c4bb](https://github.com/vuepress/vuepress-next/commit/ea7c4bbac269f2f9ade4d58cb77dad27055d9bc0))
+
+
+### BREAKING CHANGES
+
+* **markdown:** `markdown.anchor` has changed, see changelog of markdown-it-anchor 8.0.0
+* **theme-default:** `isGroup` field of sidebar config is removed
+* **core:** extendsPageOptions now accept page options as the first argument
+
+
+
+
+
 # [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
 
 
