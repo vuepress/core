@@ -150,7 +150,7 @@
   }
 }
 
-@media (min-width: $MQMobile) {
+@media (min-width: ($MQMobile + 1)) {
   .dropdown-wrapper {
     height: 1.8rem;
 
