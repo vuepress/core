@@ -64,7 +64,6 @@
 .sidebar-heading {
   color: var(--c-text);
   transition: color 0.15s ease;
-  cursor: default;
   font-size: 1.1em;
   font-weight: bold;
   padding: 0.35rem 1.5rem 0.35rem 1.25rem;
@@ -99,6 +98,10 @@
   .sidebar-sub-items & {
     padding: 0.25rem 1rem 0.25rem 1.75rem;
   }
+}
+
+.sidebar-item {
+  cursor: default;
 }
 
 a.sidebar-item {
