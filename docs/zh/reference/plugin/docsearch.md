@@ -161,7 +161,7 @@
 module.exports = {
   plugins: [
     [
-      '@vuepress/docsearch',
+      '@vuepress/plugin-docsearch',
       {
         apiKey: '<API_KEY>',
         indexName: '<INDEX_NAME>',

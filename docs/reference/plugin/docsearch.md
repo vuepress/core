@@ -161,7 +161,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 module.exports = {
   plugins: [
     [
-      '@vuepress/docsearch',
+      '@vuepress/plugin-docsearch',
       {
         apiKey: '<API_KEY>',
         indexName: '<INDEX_NAME>',
