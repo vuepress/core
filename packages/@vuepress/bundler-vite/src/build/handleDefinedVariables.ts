@@ -8,7 +8,7 @@ import type { ViteBundlerOptions } from '../types'
 export async function handleDefinedVariables(
   app: App,
   options: ViteBundlerOptions
-) {
+): Promise<void> {
   const defines = [
     // client constants
     '__VERSION__',
