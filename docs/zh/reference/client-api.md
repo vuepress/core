@@ -116,7 +116,6 @@ export default defineClientAppSetup(() => {
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
 
-
 ## 常量
 
 在客户端代码中有一些常量可以使用。
@@ -133,7 +132,7 @@ export default defineClientAppSetup(() => {
 
 ### VERSION
 
-- 常量名： <span class="fake-code">\__<wbr>VERSION__</span>
+- 常量名： `__VERSION__`
 
 - 类型： `string`
 
@@ -143,7 +142,7 @@ export default defineClientAppSetup(() => {
 
 ### DEV
 
-- 常量名： <span class="fake-code">\__<wbr>DEV__</span>
+- 常量名： `__DEV__`
 
 - 类型： `boolean`
 
@@ -153,7 +152,7 @@ export default defineClientAppSetup(() => {
 
 ### SSR
 
-- 常量名： <span class="fake-code">\__<wbr>SSR__</span>
+- 常量名： `__SSR__`
 
 - 类型： `boolean`
 
