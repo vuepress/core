@@ -421,9 +421,9 @@ Deprecated HTML tags such as [\<center>](https://developer.mozilla.org/en-US/doc
 
 Those tags would not be recognized as native HTML tags by Vue template compiler. Instead, Vue will try to resolve those tags as Vue components, and obviously these components usually don't exist.
 
-::: tip
-You should always avoid using deprecated HTML tags. However, if you want to use those tags anyway, you can set [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) to tell Vue template compiler not try to resolve them.
+You should try to avoid using deprecated HTML tags. However, if you want to use those tags anyway, try either of the following workarounds:
 
-- For `@bundler-webpack`, set [vue.compilerOptions](../reference/bundler/webpack.md#vue)
-- For `@bundler-vite`, set [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)
-:::
+- Adding a [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) directive to skip the compilation of the element and its children. Notice that the template syntax would also be invalid.
+- Using [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) to tell Vue template compiler not try to resolve them as components.
+  - For `@bundler-webpack`, set [vue.compilerOptions](../reference/bundler/webpack.md#vue)
+  - For `@bundler-vite`, set [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)

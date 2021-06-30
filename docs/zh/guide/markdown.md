@@ -424,9 +424,9 @@ module.exports = {
 
 这些标签不会被 Vue 模板编译器识别成原生 HTML 标签。相反，Vue 会尝试将这些标签解析为 Vue 组件，而显然这些组件通常是不存在的。
 
-::: tip
-你应该始终避免使用已废弃的 HTML 标签。不过，如果你无论如何都要使用这些标签的话，你可以通过设置 [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) 来告诉 Vue 模板编译器不要尝试解析它们。
+你应该尽量避免使用已废弃的 HTML 标签。不过，如果你无论如何都要使用这些标签的话，可以尝试下面两种方法之一：
 
-- 对于 `@bundler-webpack` ，设置 [vue.compilerOptions](../reference/bundler/webpack.md#vue)
-- 对于 `@bundler-vite` ，设置 [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)
-:::
+- 添加一个 [v-pre](https://v3.cn.vuejs.org/api/directives.html#v-pre) 指令来跳过这个元素和它的子元素的编译过程。注意所有的模板语法也都会失效。
+- 设置 [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) 来告诉 Vue 模板编译器不要尝试作为组件来解析它们。
+  - 对于 `@bundler-webpack` ，设置 [vue.compilerOptions](../reference/bundler/webpack.md#vue)
+  - 对于 `@bundler-vite` ，设置 [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)
