@@ -133,7 +133,7 @@ export default defineClientAppSetup(() => {
 
 ### VERSION
 
-- 常量名： <span class="code">\__<wbr>VERSION__</span>
+- 常量名： <span class="fake-code">\__<wbr>VERSION__</span>
 
 - 类型： `string`
 
@@ -143,7 +143,7 @@ export default defineClientAppSetup(() => {
 
 ### DEV
 
-- 常量名： <span class="code">\__<wbr>DEV__</span>
+- 常量名： <span class="fake-code">\__<wbr>DEV__</span>
 
 - 类型： `boolean`
 
@@ -153,7 +153,7 @@ export default defineClientAppSetup(() => {
 
 ### SSR
 
-- 常量名： <span class="code">\__<wbr>SSR__</span>
+- 常量名： <span class="fake-code">\__<wbr>SSR__</span>
 
 - 类型： `boolean`
 

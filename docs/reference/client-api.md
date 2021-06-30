@@ -132,7 +132,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
 ### VERSION
 
-- Constant: <span class="code">\__<wbr>VERSION__</span>
+- Constant: <span class="fake-code">\__<wbr>VERSION__</span>
 
 - Type: `string`
 
@@ -142,7 +142,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
 ### DEV
 
-- Constant: <span class="code">\__<wbr>DEV__</span>
+- Constant: <span class="fake-code">\__<wbr>DEV__</span>
 
 - Type: `boolean`
 
@@ -152,7 +152,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
 ### SSR
 
-- Constant: <span class="code">\__<wbr>SSR__</span>
+- Constant: <span class="fake-code">\__<wbr>SSR__</span>
 
 - Type: `boolean`
 
