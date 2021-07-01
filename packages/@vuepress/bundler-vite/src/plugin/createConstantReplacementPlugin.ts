@@ -12,7 +12,7 @@ export const createConstantReplacementPlugin = (): Plugin => {
     apply: 'build',
     configResolved(resolvedConfig) {
       if (resolvedConfig.define) {
-        const define = Reflect.ownKeys(resolvedConfig.define) as string[]
+        const define = Object.keys(resolvedConfig.define)
         defineRegex = new RegExp(
           `\\b(${define
             .map((key) => key.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&'))
