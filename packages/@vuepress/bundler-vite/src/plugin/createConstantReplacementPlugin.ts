@@ -22,33 +22,33 @@ export const createConstantReplacementPlugin = (): Plugin => {
       }
     },
     transform(code, id) {
-      if (fileRegexp.test(id)) {
-        const match = code.match(templateRegexp)
-        if (match) {
-          let html = match[0]
+      if (fileRegexp.test(id)) return
 
-          // avoid env variables being replaced by vite
-          html = html
-            .replace(/\bimport\.meta/g, 'import.<wbr/>meta')
-            .replace(/\bprocess\.env/g, 'process.<wbr/>env')
+      const match = code.match(templateRegexp)
+      if (!match) return
 
-          // also avoid replacing vite user defines
-          if (defineRegex) {
-            html = html.replace(
-              defineRegex,
-              (a) => `${a[0]}<wbr/>${a.slice(1)}`
-            )
-          }
+      let html = match[0]
 
-          const index = match.index!
-          code =
-            code.substring(0, index) +
-            html +
-            code.substring(index + match[0].length)
-        }
+      // avoid env variables being replaced by vite
+      html = html
+        .replace(/\bimport\.meta/g, 'import.<wbr/>meta')
+        .replace(/\bprocess\.env/g, 'process.<wbr/>env')
 
-        return code
+      // also avoid replacing vite user defines
+      if (defineRegex) {
+        html = html.replace(
+          defineRegex,
+          (define) => `${define[0]}<wbr/>${define.slice(1)}`
+        )
       }
+
+      const index = match.index!
+      code =
+        code.substring(0, index) +
+        html +
+        code.substring(index + match[0].length)
+
+      return code
     },
   }
 }
