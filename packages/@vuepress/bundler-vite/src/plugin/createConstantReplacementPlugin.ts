@@ -44,7 +44,7 @@ export const createConstantReplacementPlugin = (): Plugin => {
           code =
             code.substring(0, index) +
             html +
-            code.substring(index + html.length)
+            code.substring(index + match[0].length)
         }
 
         return code
