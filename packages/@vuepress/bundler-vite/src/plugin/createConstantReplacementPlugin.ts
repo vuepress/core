@@ -22,10 +22,10 @@ export const createConstantReplacementPlugin = (): Plugin => {
       }
     },
     transform(code, id) {
-      if (fileRegexp.test(id)) return
+      if (!fileRegexp.test(id)) return code
 
       const match = code.match(templateRegexp)
-      if (!match) return
+      if (match === null) return code
 
       let html = match[0]
 
