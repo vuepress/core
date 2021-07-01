@@ -98,7 +98,16 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
     const md = MarkdownIt({
       html: true,
     })
-      .use(anchorPlugin, { slugify })
+      .use(anchorPlugin, {
+        level: [1, 2, 3, 4, 5, 6],
+        slugify,
+        permalink: anchorPlugin.permalink.ariaHidden({
+          class: 'header-anchor',
+          symbol: '#',
+          space: true,
+          placement: 'before',
+        }),
+      })
       .use(tocPlugin, { slugify })
 
     const testCases: [string, { slug: string; title: string; h2: string }][] = [
@@ -156,7 +165,7 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
       it(`case ${i}`, () => {
         expect(md.render(source)).toEqual(`\
 <nav class="table-of-contents"><ul><li><a href="#${expected.slug}">${expected.title}</a></li></ul></nav>
-<h2 id="${expected.slug}" tabindex="-1">${expected.h2}</h2>
+<h2 id="${expected.slug}" tabindex="-1"><a class="header-anchor" href="#${expected.slug}" aria-hidden="true">#</a> ${expected.h2}</h2>
 `)
       })
     )
