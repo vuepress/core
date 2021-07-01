@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 
-const fileRegex = /\.html\.vue$/
-const templateRegex = /<template>[\s\S]*<\/template>/g
+const fileRegexp = /\.html\.vue$/
+const templateRegexp = /<template>[\s\S]*<\/template>/g
 
 export const createConstantReplacementPlugin = (): Plugin => {
   let defineRegex: RegExp | null = null
@@ -22,8 +22,8 @@ export const createConstantReplacementPlugin = (): Plugin => {
       }
     },
     transform(code, id) {
-      if (fileRegex.test(id)) {
-        for (const match of code.matchAll(templateRegex)) {
+      if (fileRegexp.test(id)) {
+        for (const match of code.matchAll(templateRegexp)) {
           let html = match[0]
 
           // avoid env variables being replaced by vite
@@ -35,7 +35,7 @@ export const createConstantReplacementPlugin = (): Plugin => {
           if (defineRegex) {
             html = html.replace(
               defineRegex,
-              (_) => `${_[0]}<wbr/>${_.slice(1)}`
+              (a) => `${a[0]}<wbr/>${a.slice(1)}`
             )
           }
 
