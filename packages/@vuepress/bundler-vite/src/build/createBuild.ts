@@ -6,13 +6,10 @@ import { chalk, fs, ora, withSpinner } from '@vuepress/utils'
 import type { ViteBundlerOptions } from '../types'
 import { renderPage } from './renderPage'
 import { resolveViteConfig } from './resolveViteConfig'
-import { handleDefinedVariables } from './handleDefinedVariables'
 
 export const createBuild = (
   options: ViteBundlerOptions
 ): Bundler['build'] => async (app: App) => {
-  await handleDefinedVariables(app, options)
-
   // vite compile
   let clientOutput!: RollupOutput
   let serverOutput!: RollupOutput

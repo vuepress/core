@@ -4,6 +4,7 @@ import type { App } from '@vuepress/core'
 import type { ViteBundlerOptions } from '../types'
 import { createVuepressPlugin } from './createVuepressPlugin'
 import { createWorkaroundPlugin } from './createWorkaroundPlugin'
+import { createConstantReplacementPlugin } from './createConstantReplacementPlugin'
 
 export const createPlugin = ({
   app,
@@ -16,6 +17,7 @@ export const createPlugin = ({
   isServer: boolean
   isBuild: boolean
 }): Plugin[] => [
+  createConstantReplacementPlugin(),
   createVuePlugin(options.vuePluginOptions),
   createWorkaroundPlugin(),
   createVuepressPlugin({
