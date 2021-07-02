@@ -130,9 +130,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 }
 ```
 
-### VERSION
-
-- Constant: `__VERSION__`
+### `__VERSION__`
 
 - Type: `string`
 
@@ -140,9 +138,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
   Version of VuePress core package.
 
-### DEV
-
-- Constant: `__DEV__`
+### `__DEV__`
 
 - Type: `boolean`
 
@@ -150,9 +146,7 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
   An environment flag indicating whether it is currently running in `dev` mode.
 
-### SSR
-
-- Constant: `__SSR__`
+### `__SSR__`
 
 - Type: `boolean`
 
