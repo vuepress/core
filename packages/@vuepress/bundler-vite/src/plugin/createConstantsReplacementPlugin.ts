@@ -10,8 +10,9 @@ const vueTemplateBreaker = '<wbr>'
  * Global constants and env variables will be statically replaced in
  * production mode, even in JavaScript string and Vue template.
  *
- * To avoid that behavior in Vue template, we use this plugin to insert
- * `<wbr>` tag into the constant string.
+ * To avoid that behavior, we use this plugin to insert `'\u200b'` char into
+ * constant strings in page data, and insert `<wbr>` tag into constant strings
+ * in template of page component.
  *
  * @see https://vitejs.dev/guide/env-and-mode.html#production-replacement
  */
@@ -26,7 +27,7 @@ export const createConstantsReplacementPlugin = (app: App): Plugin => {
     )
 
   return {
-    name: 'vuepress:constant-replacement',
+    name: 'vuepress:constants-replacement',
 
     enforce: 'pre',
 
