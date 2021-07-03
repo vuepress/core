@@ -1,10 +1,10 @@
 import type { Plugin, ViteDevServer, DepOptimizationMetadata } from 'vite'
 
 /**
- * Workaround for https://github.com/vitejs/vite/issues/2503
+ * Vite will inject version hash into file queries, which does not work
+ * well with VuePress.
  *
- * Although the issue was closed in vite 2.3.0, there are still
- * some problems with the version hash
+ * As a workaround, we remove the version hash to avoid the injection.
  */
 export const createWorkaroundPlugin = (): Plugin => {
   let server:

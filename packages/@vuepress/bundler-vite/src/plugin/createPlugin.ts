@@ -3,7 +3,7 @@ import createVuePlugin from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
 import type { ViteBundlerOptions } from '../types'
 import { createConstantsReplacementPlugin } from './createConstantsReplacementPlugin'
-import { createVuepressPlugin } from './createVuepressPlugin'
+import { createMainPlugin } from './createMainPlugin'
 import { createWorkaroundPlugin } from './createWorkaroundPlugin'
 
 export const createPlugin = ({
@@ -17,9 +17,12 @@ export const createPlugin = ({
   isServer: boolean
   isBuild: boolean
 }): Plugin[] => [
-  createConstantsReplacementPlugin(app),
+  // official vue plugin
   createVuePlugin(options.vuePluginOptions),
-  createVuepressPlugin({
+
+  // vuepress custom plugin
+  createConstantsReplacementPlugin(app),
+  createMainPlugin({
     app,
     options,
     isServer,
