@@ -116,7 +116,6 @@ export default defineClientAppSetup(() => {
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
 
-
 ## 常量
 
 在客户端代码中有一些常量可以使用。
@@ -131,9 +130,7 @@ export default defineClientAppSetup(() => {
 }
 ```
 
-### VERSION
-
-- 常量名： <span class="fake-code">\__<wbr>VERSION__</span>
+### `__VERSION__`
 
 - 类型： `string`
 
@@ -141,9 +138,7 @@ export default defineClientAppSetup(() => {
 
   VuePress Core 的版本号。
 
-### DEV
-
-- 常量名： <span class="fake-code">\__<wbr>DEV__</span>
+### `__DEV__`
 
 - 类型： `boolean`
 
@@ -151,9 +146,7 @@ export default defineClientAppSetup(() => {
 
   一个环境标记，用于标识当前是否运行在 `dev` 模式下。
 
-### SSR
-
-- 常量名： <span class="fake-code">\__<wbr>SSR__</span>
+### `__SSR__`
 
 - 类型： `boolean`
 

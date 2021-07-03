@@ -1,15 +1,3 @@
 :root {
   scroll-behavior: smooth;
 }
-
-// forked from normalized.scss of default theme
-.fake-code {
-  font-family: var(--font-family-code);
-  color: var(--c-text-lighter);
-  padding: 0.25rem 0.5rem;
-  margin: 0;
-  font-size: 0.85em;
-  background-color: var(--c-bg-light);
-  border-radius: 3px;
-  overflow-wrap: break-word;
-}
