@@ -44,7 +44,7 @@
     "@vuepress/utils": "2.0.0-beta.20",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
-    "vue": "^3.1.2",
+    "vue": "^3.1.4",
     "vue-router": "^4.0.10"
   },
   "publishConfig": {
