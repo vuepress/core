@@ -37,7 +37,7 @@
     "workbox-build": "^6.1.5"
   },
   "devDependencies": {
-    "@types/workbox-build": "^5.0.0"
+    "@types/workbox-build": "^5.0.1"
   },
   "publishConfig": {
     "access": "public"

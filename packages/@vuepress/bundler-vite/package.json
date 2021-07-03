@@ -28,7 +28,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^1.2.3",
+    "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.1.2",
     "@vue/server-renderer": "^3.1.2",
     "@vuepress/client": "2.0.0-beta.20",
@@ -38,7 +38,7 @@
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
     "postcss-csso": "^5.0.1",
-    "rollup": "^2.52.2",
+    "rollup": "^2.52.7",
     "vite": "^2.3.8",
     "vue": "^3.1.2",
     "vue-router": "^4.0.10"

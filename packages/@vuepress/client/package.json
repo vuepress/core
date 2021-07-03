@@ -34,7 +34,7 @@
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
-    "@types/webpack-env": "^1.16.0",
+    "@types/webpack-env": "^1.16.2",
     "vite": "^2.3.8"
   },
   "publishConfig": {
