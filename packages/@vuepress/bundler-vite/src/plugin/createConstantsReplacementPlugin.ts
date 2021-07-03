@@ -1,8 +1,9 @@
 import type { App } from '@vuepress/core'
 import type { Plugin } from 'vite'
 
-const pageComponentRegexp = /\.html\.vue$/
-const templateRegexp = /<template>[\s\S]*<\/template>/
+const pageComponentFileRegexp = /\.html\.vue$/
+const vueTemplateRegexp = /<template>[\s\S]*<\/template>/
+
 const jsStringBreaker = '\u200b'
 const vueTemplateBreaker = '<wbr>'
 
@@ -23,7 +24,7 @@ export const createConstantsReplacementPlugin = (app: App): Plugin => {
   const replaceConstants = (code: string, breaker: string): string =>
     code.replace(
       constantsRegexp,
-      (define) => `${define[0]}${breaker}${define.slice(1)}`
+      (constant) => `${constant[0]}${breaker}${constant.slice(1)}`
     )
 
   return {
@@ -53,12 +54,12 @@ export const createConstantsReplacementPlugin = (app: App): Plugin => {
       if (!id.startsWith(pagesDirPrefix)) return
 
       // handle page data
-      if (!pageComponentRegexp.test(id)) {
+      if (!pageComponentFileRegexp.test(id)) {
         return replaceConstants(code, jsStringBreaker)
       }
 
       // handle page component
-      const match = code.match(templateRegexp)
+      const match = code.match(vueTemplateRegexp)
       if (match === null) return
       return (
         code.substring(0, match.index!) +
