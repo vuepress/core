@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-beta.20",
+  "version": "2.0.0-beta.21",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
@@ -29,10 +29,10 @@
     "copy": "cpx \"src/**/*.{d.ts,css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.20",
-    "@vuepress/core": "2.0.0-beta.20",
-    "@vuepress/shared": "2.0.0-beta.20",
-    "@vuepress/utils": "2.0.0-beta.20",
+    "@vuepress/client": "2.0.0-beta.21",
+    "@vuepress/core": "2.0.0-beta.21",
+    "@vuepress/shared": "2.0.0-beta.21",
+    "@vuepress/utils": "2.0.0-beta.21",
     "chokidar": "^3.5.2",
     "vue": "^3.1.4",
     "vue-router": "^4.0.10"
