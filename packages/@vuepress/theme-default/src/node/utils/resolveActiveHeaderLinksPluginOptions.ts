@@ -12,7 +12,7 @@ export const resolveActiveHeaderLinksPluginOptions = (
   }
 
   return {
-    headerLinkSelector: '.sidebar-link',
+    headerLinkSelector: '.sidebar-item',
     headerAnchorSelector: '.header-anchor',
   }
 }
