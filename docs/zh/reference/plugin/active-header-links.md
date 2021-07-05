@@ -12,7 +12,7 @@
 
 - 类型： `string`
 
-- 默认值： `'.sidebar-item'`
+- 默认值： `'a.sidebar-item'`
 
 - 详情：
 
