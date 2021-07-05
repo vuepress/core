@@ -12,7 +12,7 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 
 - Type: `string`
 
-- Default: `'.sidebar-item'`
+- Default: `'a.sidebar-item'`
 
 - Details:
 
