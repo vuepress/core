@@ -1,3 +1,4 @@
+import * as history from 'connect-history-api-fallback'
 import type { Plugin } from 'vite'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
@@ -119,6 +120,22 @@ import '@vuepress/client/lib/app.js'
           delete bundle[key]
         }
       })
+    }
+  },
+
+  configureServer(server) {
+    return () => {
+      // fallback all `.html` requests to `/index.html`
+      server.middlewares.use(
+        history({
+          rewrites: [
+            {
+              from: /\.html$/,
+              to: '/index.html',
+            },
+          ],
+        })
+      )
     }
   },
 })
