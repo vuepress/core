@@ -24,7 +24,14 @@ export const hoistTagsPlugin: PluginWithOptions<HoistTagsPluginOptions> = (
     'i'
   )
 
-  md.renderer.rules.html_block = (tokens, idx, _, env: MarkdownEnv) => {
+  const rawRule = md.renderer.rules.html_block!
+  md.renderer.rules.html_block = (
+    tokens,
+    idx,
+    options,
+    env: MarkdownEnv,
+    self
+  ) => {
     const content = tokens[idx].content
     const hoistedTags = env.hoistedTags || (env.hoistedTags = [])
 
@@ -34,6 +41,6 @@ export const hoistTagsPlugin: PluginWithOptions<HoistTagsPluginOptions> = (
       return ''
     }
 
-    return content
+    return rawRule(tokens, idx, options, env, self)
   }
 }
