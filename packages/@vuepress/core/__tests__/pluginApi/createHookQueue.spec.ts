@@ -109,12 +109,12 @@ describe('core > pluginApi > createHookQueue', () => {
         pluginName: 'test2',
         hook: func2,
       })
-      const result = await hook.process('foo.md', app)
+      const result = await hook.process({ filePath: 'foo.md' }, app)
 
       expect(func1).toHaveBeenCalledTimes(1)
-      expect(func1).toHaveBeenCalledWith('foo.md', app)
+      expect(func1).toHaveBeenCalledWith({ filePath: 'foo.md' }, app)
       expect(func2).toHaveBeenCalledTimes(1)
-      expect(func2).toHaveBeenCalledWith('foo.md', app)
+      expect(func2).toHaveBeenCalledWith({ filePath: 'foo.md' }, app)
       expect(result).toEqual([{ content: 'foo' }, { content: 'bar' }])
     })
 

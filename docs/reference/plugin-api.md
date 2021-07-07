@@ -142,13 +142,13 @@ module.exports = {
 
 ### extendsPageOptions
 
-- Type: `(filePath: string, app: App) => PageOptions | Promise<PageOptions>`
+- Type: `(options: PageOptions, app: App) => PageOptions | Promise<PageOptions>`
 
 - Details:
 
   Page options extension.
 
-  This hook accepts a function that will receive the relative file path of the page. The returned object will be merged into page options, which will be used to create the page.
+  This hook accepts a function that will receive the raw options of the page. The returned object will be merged into page options, which will be used to create the page.
 
 - Example:
 
@@ -156,8 +156,8 @@ Set permalink pattern for pages in `_posts` directory:
 
 ```js
 module.exports = {
-  extendsPageOptions: (filePath) => {
-    if (filePath.startsWith('_posts/')) {
+  extendsPageOptions: ({ filePath }) => {
+    if (filePath?.startsWith('_posts/')) {
       return {
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug.html',

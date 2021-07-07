@@ -1,4 +1,4 @@
-import { isLinkHttp } from '@vuepress/shared'
+import { isLinkHttp, removeLeadingSlash } from '@vuepress/shared'
 import { useSiteData } from '../injections'
 
 /**
@@ -7,5 +7,5 @@ import { useSiteData } from '../injections'
 export const withBase = (url: string): string => {
   if (isLinkHttp(url)) return url
   const base = useSiteData().value.base
-  return `${base}${url}`.replace(/\/+/, '/')
+  return `${base}${removeLeadingSlash(url)}`
 }

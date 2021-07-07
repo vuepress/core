@@ -32,13 +32,16 @@ describe('core > page > createPage', () => {
     expect(page.headers).toEqual([])
 
     // extra data
-    expect(page.pathInferred).toBeNull()
-    expect(page.pathLocale).toBe('/')
     expect(page.content).toBe('')
-    expect(page.slug).toBe('')
+    expect(page.contentRendered).toBe('')
     expect(page.date).toBe('0000-00-00')
     expect(page.deps).toEqual([])
+    expect(page.hoistedTags).toEqual([])
     expect(page.links).toEqual([])
+    expect(page.pathInferred).toBeNull()
+    expect(page.pathLocale).toBe('/')
+    expect(page.permalink).toBeNull()
+    expect(page.slug).toBe('')
 
     // file info
     expect(page.filePath).toBeNull()
@@ -51,7 +54,6 @@ describe('core > page > createPage', () => {
     expect(page.componentFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.vue`
     )
-    expect(page.componentFileContent).toBe(`<template></template>`)
     expect(page.componentFileChunkName).toBe(page.key)
     expect(page.dataFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.js`)

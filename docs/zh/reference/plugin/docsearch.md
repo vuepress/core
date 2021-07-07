@@ -26,7 +26,7 @@
   "stop_urls": [],
   "selectors": {
     "lvl0": {
-      "selector": "p.sidebar-heading.active",
+      "selector": ".sidebar-heading.active",
       "global": true,
       "default_value": "Documentation"
     },

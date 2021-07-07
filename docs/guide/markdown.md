@@ -106,7 +106,7 @@ Also see: [Built-in Components > OutboundLink](../reference/components.md#outbou
 
 You can add emoji to your Markdown content by typing `:EMOJICODE:`.
 
-For a full list of available emoji and codes, check out [emoji-cheat-sheet.com](https://emoji-cheat-sheet.com/).
+For a full list of available emoji and codes, check out [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet).
 
 **Input**
 
@@ -412,3 +412,18 @@ Check out the [Built-in Components](../reference/components.md) for a full list 
 
 Check out the [Default Theme > Built-in Components](../reference/default-theme/components.md) for a full list of default theme built-in components.
 :::
+
+## Cautions
+
+### Deprecated HTML Tags
+
+Deprecated HTML tags such as [\<center>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center) and [\<font>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font) are not allowed in VuePress markdown by default.
+
+Those tags would not be recognized as native HTML tags by Vue template compiler. Instead, Vue will try to resolve those tags as Vue components, and obviously these components usually don't exist.
+
+You should try to avoid using deprecated HTML tags. However, if you want to use those tags anyway, try either of the following workarounds:
+
+- Adding a [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) directive to skip the compilation of the element and its children. Notice that the template syntax would also be invalid.
+- Using [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) to tell Vue template compiler not try to resolve them as components.
+  - For `@bundler-webpack`, set [vue.compilerOptions](../reference/bundler/webpack.md#vue)
+  - For `@bundler-vite`, set [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)

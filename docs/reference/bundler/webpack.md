@@ -2,7 +2,11 @@
 
 <NpmBadge package="@vuepress/bundler-webpack" />
 
-## configureWebpack
+## Options
+
+Reference of webpack bundler config, which can be set via [bundlerConfig](../config.md#bundlerconfig).
+
+### configureWebpack
 
 - Type: `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration`
 
@@ -12,7 +16,7 @@
   
   This option accepts a function that will receive a webpack config object as the 1st argument, an `isServer` flag as the 2nd argument and an `isBuild` flag as the 3rd argument. You can either mutate the config directly, or return an object to be merged by [webpack-merge](https://github.com/survivejs/webpack-merge).
 
-## chainWebpack
+### chainWebpack
 
 - Type: `(config: WebpackChainConfig, isServer: boolean, isBuild: boolean) => void`
 
@@ -22,7 +26,7 @@
 
   This option accepts a function that will receive a `Config` instance that provided by `webpack-chain` as the 1st argument an `isServer` flag as the 2nd argument and an `isBuild` flag as the 3rd argument.
 
-## beforeDevServer
+### beforeDevServer
 
 - Type: `(server: WebpackDevServer) => void`
 
@@ -35,7 +39,7 @@
 - Also see:
   - [Webpack > Configuration > DevServer > devServer.before](https://webpack.js.org/configuration/dev-server/#devserverbefore)
 
-## afterDevServer
+### afterDevServer
 
 - Type: `(server: WebpackDevServer) => void`
 
@@ -48,7 +52,18 @@
 - Also see:
   - [Webpack > Configuration > DevServer > devServer.after](https://webpack.js.org/configuration/dev-server/#devserverafter)
 
-## postcss
+### vue
+
+- Type: `VueLoaderOptions`
+
+- Details:
+
+  Options for `vue-loader`.
+
+- Also see:
+  - [vue-loader > Options Reference](https://vue-loader.vuejs.org/options.html)
+
+### postcss
 
 - Type: `PostcssLoaderOptions`
 
@@ -59,7 +74,7 @@
 - Also see:
   - [postcss-loader > Options](https://github.com/webpack-contrib/postcss-loader#options)
 
-## stylus
+### stylus
 
 - Type: `StylusLoaderOptions`
 
@@ -70,7 +85,7 @@
 - Also see:
   - [stylus-loader > Options](https://github.com/webpack-contrib/stylus-loader#options)
 
-## scss
+### scss
 
 - Type: `SassLoaderOptions`
 
@@ -81,7 +96,7 @@
 - Also see:
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
-## sass
+### sass
 
 - Type: `SassLoaderOptions`
 
@@ -92,7 +107,7 @@
 - Also see:
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
-## less
+### less
 
 - Type: `LessLoaderOptions`
 

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-medium-zoom",
-  "version": "2.0.0-beta.18",
+  "version": "2.0.0-beta.21",
   "description": "VuePress plugin - medium-zoom",
   "keywords": [
     "vuepress-plugin",
@@ -31,11 +31,11 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.18",
-    "@vuepress/core": "2.0.0-beta.18",
-    "@vuepress/utils": "2.0.0-beta.18",
+    "@vuepress/client": "2.0.0-beta.21",
+    "@vuepress/core": "2.0.0-beta.21",
+    "@vuepress/utils": "2.0.0-beta.21",
     "medium-zoom": "^1.0.6",
-    "vue": "^3.1.1"
+    "vue": "^3.1.4"
   },
   "publishConfig": {
     "access": "public"

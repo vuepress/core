@@ -3,7 +3,6 @@ import type { SidebarConfig } from '@vuepress/theme-default'
 export const zh: SidebarConfig = {
   '/zh/guide/': [
     {
-      isGroup: true,
       text: '指南',
       children: [
         '/zh/guide/README.md',
@@ -23,7 +22,6 @@ export const zh: SidebarConfig = {
   ],
   '/zh/advanced/': [
     {
-      isGroup: true,
       text: '深入',
       children: [
         '/zh/advanced/architecture.md',
@@ -32,7 +30,6 @@ export const zh: SidebarConfig = {
       ],
     },
     {
-      isGroup: true,
       text: 'Cookbook',
       children: [
         '/zh/advanced/cookbook/README.md',
@@ -46,7 +43,6 @@ export const zh: SidebarConfig = {
   ],
   '/zh/reference/': [
     {
-      isGroup: true,
       text: 'VuePress 参考',
       children: [
         '/zh/reference/cli.md',
@@ -62,7 +58,6 @@ export const zh: SidebarConfig = {
   ],
   '/zh/reference/bundler/': [
     {
-      isGroup: true,
       text: '打包工具参考',
       children: [
         '/zh/reference/bundler/webpack.md',
@@ -72,7 +67,6 @@ export const zh: SidebarConfig = {
   ],
   '/zh/reference/default-theme/': [
     {
-      isGroup: true,
       text: '默认主题参考',
       children: [
         '/zh/reference/default-theme/config.md',
@@ -85,11 +79,9 @@ export const zh: SidebarConfig = {
   ],
   '/zh/reference/plugin/': [
     {
-      isGroup: true,
       text: '官方插件参考',
       children: [
         {
-          isGroup: true,
           text: '常用功能',
           children: [
             '/zh/reference/plugin/back-to-top.md',
@@ -105,7 +97,6 @@ export const zh: SidebarConfig = {
           ],
         },
         {
-          isGroup: true,
           text: '语法高亮',
           children: [
             '/zh/reference/plugin/prismjs.md',
@@ -113,7 +104,6 @@ export const zh: SidebarConfig = {
           ],
         },
         {
-          isGroup: true,
           text: '主题开发',
           children: [
             '/zh/reference/plugin/active-header-links.md',

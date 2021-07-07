@@ -2,7 +2,11 @@
 
 <NpmBadge package="@vuepress/bundler-vite" />
 
-## viteOptions
+## Options
+
+Reference of webpack bundler config, which can be set via [bundlerConfig](../config.md#bundlerconfig).
+
+### viteOptions
 
 - Details:
 
@@ -11,7 +15,7 @@
 - Also see:
   - [Vite > Config](https://vitejs.dev/config/)
 
-## vuePluginOptions
+### vuePluginOptions
 
 - Details:
 

@@ -36,14 +36,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineEmit, onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
-defineEmit(['toggle-sidebar'])
+defineEmits(['toggle-sidebar'])
 
 const routeLocale = useRouteLocale()
 const siteLocale = useSiteLocaleData()
@@ -76,7 +76,7 @@ onMounted(() => {
     getCssValue(navbar.value, 'paddingLeft') +
     getCssValue(navbar.value, 'paddingRight')
   const handleLinksWrapWidth = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
+    if (window.innerWidth <= MOBILE_DESKTOP_BREAKPOINT) {
       linksWrapperMaxWidth.value = 0
     } else {
       linksWrapperMaxWidth.value =

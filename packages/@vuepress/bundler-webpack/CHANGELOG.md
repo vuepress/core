@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
+
+**Note:** Version bump only for package @vuepress/bundler-webpack
+
+
+
+
+
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+**Note:** Version bump only for package @vuepress/bundler-webpack
+
+
+
+
+
+# [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** sync types of webpack-dev-server 4 (close [#208](https://github.com/vuepress/vuepress-next/issues/208)) ([207014b](https://github.com/vuepress/vuepress-next/commit/207014b087d29f43bd01604954e33277b6b19150))
+
+
+### Features
+
+* **bundler-webpack:** support vue-loader options ([5a51912](https://github.com/vuepress/vuepress-next/commit/5a51912d974ba4a83a9586b40cb7cb7982c6c81b))
+
+
+
+
+
 # [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
 
 **Note:** Version bump only for package @vuepress/bundler-webpack

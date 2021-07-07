@@ -23,7 +23,7 @@
 
     如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
-2. 选项你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
+2. 选择你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
 
     创建 `.github/workflows/docs.yml` 文件来配置工作流。
 
@@ -83,6 +83,9 @@ jobs:
           target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 :::
 

@@ -142,13 +142,13 @@ module.exports = {
 
 ### extendsPageOptions
 
-- 类型： `(filePath: string, app: App) => PageOptions | Promise<PageOptions>`
+- 类型： `(options: PageOptions, app: App) => PageOptions | Promise<PageOptions>`
 
 - 详情：
 
   页面配置项扩展。
 
-  该 Hook 接收一个函数，在参数中会收到页面文件的相对路径。返回的对象会被合并到页面配置项中，用以创建页面。
+  该 Hook 接收一个函数，在参数中会收到页面的原始配置。返回的对象会被合并到页面配置项中，用以创建页面。
 
 - 示例：
 
@@ -156,8 +156,8 @@ module.exports = {
 
 ```js
 module.exports = {
-  extendsPageOptions: (filePath) => {
-    if (filePath.startsWith('_posts/')) {
+  extendsPageOptions: ({ filePath }) => {
+    if (filePath?.startsWith('_posts/')) {
       return {
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug.html',

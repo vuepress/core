@@ -2,7 +2,11 @@
 
 <NpmBadge package="@vuepress/bundler-webpack" />
 
-## configureWebpack
+## 配置项
+
+Webpack 打包工具配置的参考文档，可以通过 [bundlerConfig](../config.md#bundlerconfig) 来设置这些配置。
+
+### configureWebpack
 
 - 类型： `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration`
 
@@ -12,7 +16,7 @@
 
   该配置项接收一个函数，该函数的第一个参数是 Webpack 配置对象，第二个参数是 `isServer` 标志位，第三个参数是 `isBuild` 标志位。
 
-## chainWebpack
+### chainWebpack
 
 - 类型： `(config: WebpackChainConfig, isServer: boolean, isBuild: boolean) => void`
 
@@ -22,7 +26,7 @@
 
   该配置项接收一个函数，该函数的第一个参数是由 `webpack-chain` 提供的 `Config` 实例，第二个参数是 `isServer` 标志位，第三个参数是 `isBuild` 标志位。
 
-## beforeDevServer
+### beforeDevServer
 
 - 类型： `(server: WebpackDevServer) => void`
 
@@ -35,7 +39,7 @@
 - 参考：
   - [Webpack > Configuration > DevServer > devServer.before](https://webpack.js.org/configuration/dev-server/#devserverbefore)
 
-## afterDevServer
+### afterDevServer
 
 - 类型： `(server: WebpackDevServer) => void`
 
@@ -48,7 +52,18 @@
 - 参考：
   - [Webpack > Configuration > DevServer > devServer.after](https://webpack.js.org/configuration/dev-server/#devserverafter)
 
-## postcss
+### vue
+
+- 类型： `VueLoaderOptions`
+
+- 详情：
+
+  `vue-loader` 的配置项。
+
+- 参考：
+  - [vue-loader > 选项参考](https://vue-loader.vuejs.org/zh/options.html)
+
+### postcss
 
 - 类型： `PostcssLoaderOptions`
 
@@ -59,7 +74,7 @@
 - 参考：
   - [postcss-loader > Options](https://github.com/webpack-contrib/postcss-loader#options)
 
-## stylus
+### stylus
 
 - 类型： `StylusLoaderOptions`
 
@@ -70,7 +85,7 @@
 - 参考：
   - [stylus-loader > Options](https://github.com/webpack-contrib/stylus-loader#options)
 
-## scss
+### scss
 
 - 类型： `SassLoaderOptions`
 
@@ -81,7 +96,7 @@
 - 参考：
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
-## sass
+### sass
 
 - 类型： `SassLoaderOptions`
 
@@ -92,7 +107,7 @@
 - 参考：
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
-## less
+### less
 
 - 类型： `LessLoaderOptions`
 

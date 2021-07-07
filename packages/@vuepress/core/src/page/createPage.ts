@@ -12,14 +12,18 @@ import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
+import { resolvePageOptions } from './resolvePageOptions'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageSlug } from './resolvePageSlug'
 
 export const createPage = async (
   app: App,
-  options: PageOptions
+  optionsRaw: PageOptions
 ): Promise<Page> => {
+  // resolve page options from raw options
+  const options = await resolvePageOptions({ app, optionsRaw })
+
   // resolve page file absolute path and relative path
   const { filePath, filePathRelative } = resolvePageFilePath({
     app,
@@ -48,7 +52,7 @@ export const createPage = async (
 
   // render page content and extract information
   const {
-    renderedContent,
+    contentRendered,
     deps,
     headers,
     hoistedTags,
@@ -99,11 +103,9 @@ export const createPage = async (
   const {
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
   } = await resolvePageComponentInfo({
     app,
-    renderedContent,
     hoistedTags,
     htmlFilePathRelative,
     key,
@@ -126,20 +128,22 @@ export const createPage = async (
     headers,
 
     // extra data
-    pathInferred,
-    pathLocale,
     content,
-    slug,
+    contentRendered,
     date,
     deps,
+    hoistedTags,
     links,
+    pathInferred,
+    pathLocale,
+    permalink,
+    slug,
 
     // file info
     filePath,
     filePathRelative,
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
     dataFilePath,
     dataFilePathRelative,

@@ -30,6 +30,10 @@ module.exports = {
     },
     {
       files: ['*.vue'],
+      globals: {
+        defineEmits: 'readonly',
+        defineProps: 'readonly',
+      },
       rules: {
         // disable for setup script
         '@typescript-eslint/no-unused-vars': 'off',

@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
+
+
+### Features
+
+* **bundler-vite:** avoid global constants being replaced by vite (close [#244](https://github.com/vuepress/vuepress-next/issues/244)) ([#245](https://github.com/vuepress/vuepress-next/issues/245)) ([0c86968](https://github.com/vuepress/vuepress-next/commit/0c869684c4e179347eebc38d916a0dfd2115b321))
+
+
+
+
+
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+**Note:** Version bump only for package @vuepress/bundler-vite
+
+
+
+
+
+# [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
+
+
+### Bug Fixes
+
+* **bundler-vite:** resolve client entry url correctly (close [#190](https://github.com/vuepress/vuepress-next/issues/190)) ([36babba](https://github.com/vuepress/vuepress-next/commit/36babba394eccc070838c6d0861e91924d305e26))
+
+
+
+
+
 # [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
 
 

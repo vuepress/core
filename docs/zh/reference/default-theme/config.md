@@ -266,11 +266,10 @@ module.exports = {
 
   如果你设置为 `'auto'`，侧边栏会根据页面标题自动生成。
 
-  为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是 `SidebarItem` 对象、 `SidebarGroup` 对象、或者字符串：
+  为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
-  - `SidebarItem` 对象应该有一个 `text` 字段、一个 `link` 字段和一个 `children` 字段。 `children` 字段是一个由 `SidebarItem` 或者字符串组成的数组。
-  - `SidebarGroup` 对象应将 `isGroup` 字段设为 `true` ，并且应该有一个 `text` 字段和一个`children` 字段。 `children` 字段是一个由 `SidebarItem` 或者字符串组成的数组。
-  - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面标题自动生成 `children` 。
+  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段和一个可选的 `children` 字段。 `children` 字段同样是一个 _侧边栏数组_ 。
+  - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面小标题自动生成 `children` 。
 
   如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_ ：
 
@@ -300,12 +299,6 @@ module.exports = {
           '/foo/bar.md',
         ],
       },
-      // SidebarGroup
-      {
-        isGroup: true,
-        text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
-      },
       // 字符串 - 页面文件路径
       '/bar/README.md',
     ],
@@ -323,14 +316,12 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          isGroup: true,
           text: 'Guide',
           children: ['/guide/README.md', '/guide/getting-started.md'],
         },
       ],
       '/reference/': [
         {
-          isGroup: true,
           text: 'Reference',
           children: ['/reference/cli.md', '/reference/config.md'],
         },

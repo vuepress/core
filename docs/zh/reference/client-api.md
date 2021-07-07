@@ -116,7 +116,6 @@ export default defineClientAppSetup(() => {
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
 
-
 ## 常量
 
 在客户端代码中有一些常量可以使用。

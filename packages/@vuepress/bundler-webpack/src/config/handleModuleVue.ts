@@ -2,16 +2,19 @@ import * as Config from 'webpack-chain'
 import { VueLoaderPlugin } from 'vue-loader'
 import type { VueLoaderOptions } from 'vue-loader'
 import type { App } from '@vuepress/core'
+import type { WebpackBundlerOptions } from '../types'
 
 /**
  * Set webpack module to handle vue files
  */
 export const handleModuleVue = ({
   app,
+  options,
   config,
   isServer,
 }: {
   app: App
+  options: WebpackBundlerOptions
   config: Config
   isServer: boolean
 }): void => {
@@ -23,6 +26,7 @@ export const handleModuleVue = ({
     .use('vue-loader')
     .loader('vue-loader')
     .options({
+      ...options.vue,
       isServerBuild: isServer,
     } as VueLoaderOptions)
     .end()

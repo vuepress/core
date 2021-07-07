@@ -6,6 +6,38 @@ import type { PageData, PageFrontmatter } from '@vuepress/shared'
  */
 export interface Page extends PageData {
   /**
+   * Raw Content of the page
+   */
+  content: string
+
+  /**
+   * Rendered content of the page
+   */
+  contentRendered: string
+
+  /**
+   * Date of the page, in 'yyyy-MM-dd' format
+   *
+   * @example '2020-09-09'
+   */
+  date: string
+
+  /**
+   * Dependencies of the page
+   */
+  deps: string[]
+
+  /**
+   * Hoisted tags of the page
+   */
+  hoistedTags: string[]
+
+  /**
+   * Links of the page
+   */
+  links: MarkdownLink[]
+
+  /**
    * Path of the page that inferred from file path
    *
    * If the page does not come from a file, it would be `null`
@@ -24,6 +56,18 @@ export interface Page extends PageData {
   pathLocale: string
 
   /**
+   * Permalink of the page
+   *
+   * If the page does not have a permalink, it would be `null`
+   */
+  permalink: string | null
+
+  /**
+   * Slug of the page
+   */
+  slug: string
+
+  /**
    * Source file path
    *
    * If the page does not come from a file, it would be `null`
@@ -38,16 +82,6 @@ export interface Page extends PageData {
   filePathRelative: string | null
 
   /**
-   * Rendered html file path
-   */
-  htmlFilePath: string
-
-  /**
-   * Rendered html file path relative to dest directory
-   */
-  htmlFilePathRelative: string
-
-  /**
    * Component file path
    */
   componentFilePath: string
@@ -56,11 +90,6 @@ export interface Page extends PageData {
    * Component file path relative to temp directory
    */
   componentFilePathRelative: string
-
-  /**
-   * Component file content that generated from the source file
-   */
-  componentFileContent: string
 
   /**
    * Component file chunk name
@@ -87,31 +116,14 @@ export interface Page extends PageData {
   dataFileChunkName: string
 
   /**
-   * Content of the page
+   * Rendered html file path
    */
-  content: string
+  htmlFilePath: string
 
   /**
-   * Slug of the page
+   * Rendered html file path relative to dest directory
    */
-  slug: string
-
-  /**
-   * Date of the page, in 'yyyy-MM-dd' format
-   *
-   * @example '2020-09-09'
-   */
-  date: string
-
-  /**
-   * Dependencies of the page
-   */
-  deps: string[]
-
-  /**
-   * Links of the page
-   */
-  links: MarkdownLink[]
+  htmlFilePathRelative: string
 }
 
 /**

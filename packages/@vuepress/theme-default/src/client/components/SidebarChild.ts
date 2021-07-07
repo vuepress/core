@@ -71,7 +71,7 @@ const renderChildren = (
     'ul',
     {
       class: {
-        'sidebar-sub-headers': depth > 0,
+        'sidebar-sub-items': depth > 0,
       },
     },
     item.children.map((child) =>
@@ -89,39 +89,15 @@ const renderChildren = (
 export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
   depth?: number
-}> = ({
-  item,
-  // group depth should start from 0
-  // otherwise start from 1
-  depth = item.isGroup ? 0 : 1,
-}) => {
+}> = ({ item, depth = 0 }) => {
   const route = useRoute()
   const active = isActiveItem(route, item)
-
-  if (item.isGroup) {
-    return [
-      h(
-        'section',
-        {
-          class: 'sidebar-group',
-        },
-        [
-          renderItem(item, {
-            class: {
-              'sidebar-heading': true,
-              active,
-            },
-          }),
-          renderChildren(item, depth),
-        ]
-      ),
-    ]
-  }
 
   return [
     renderItem(item, {
       class: {
-        'sidebar-link': true,
+        'sidebar-heading': depth === 0,
+        'sidebar-item': true,
         active,
       },
     }),

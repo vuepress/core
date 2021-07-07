@@ -10,7 +10,7 @@ export interface ActiveHeaderLinksPluginOptions {
 
 export const activeHeaderLinksPlugin: Plugin<ActiveHeaderLinksPluginOptions> = (
   {
-    headerLinkSelector = '.sidebar-link',
+    headerLinkSelector = 'a.sidebar-item',
     headerAnchorSelector = '.header-anchor',
     delay = 200,
     offset = 5,

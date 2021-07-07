@@ -6,30 +6,19 @@ import type { App } from '../types'
  */
 export const resolvePageComponentInfo = async ({
   app,
-  renderedContent,
   hoistedTags,
   htmlFilePathRelative,
   key,
 }: {
   app: App
-  renderedContent: string
   hoistedTags: string[]
   htmlFilePathRelative: string
   key: string
 }): Promise<{
   componentFilePath: string
   componentFilePathRelative: string
-  componentFileContent: string
   componentFileChunkName: string
 }> => {
-  // resolve component file content
-  // take the rendered markdown content as <template>
-  // hoist `<script>`, `<style>` and other custom blocks
-  const componentFileContent = [
-    `<template>${renderedContent}</template>`,
-    ...hoistedTags,
-  ].join('\n\n')
-
   // resolve component file path
   const componentFilePathRelative = path.join(
     'pages',
@@ -41,7 +30,6 @@ export const resolvePageComponentInfo = async ({
   return {
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
   }
 }

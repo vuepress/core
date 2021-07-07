@@ -145,7 +145,7 @@ The stylus palette system of VuePress v1 (i.e. `styles/palette.styl` and `styles
 
 The palette system is extracted to [@vuepress/plugin-palette](../reference/plugin/palette.md).
 
-Theme authors can use their own way to allow users to custom styles, and not be limited with stylus.
+Theme authors can use their own way to allow users to customize styles, and not be limited with stylus.
 
 If you are using default theme, the palette system is still available but migrated to SASS, while most variables have been migrated to CSS variables. See [Default Theme > Styles](../reference/default-theme/styles.md).
 
@@ -156,6 +156,8 @@ If you are using default theme, the palette system is still available but migrat
 Renamed to `.vuepress/clientAppEnhance.{js,ts}`.
 
 The arguments of the function are changed, too.
+
+See [Client API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance).
 
 #### .vuepress/components/
 
@@ -168,6 +170,10 @@ You need to use [@vuepress/plugin-register-components](../reference/plugin/regis
 This directory will not be used as local theme implicitly if it is existed.
 
 You need to set the path to the local theme explicitly via [theme](../reference/config.md#theme) option.
+
+### Markdown slot Change
+
+Markdown slot is no longer supported.
 
 ### Plugin API Change
 
@@ -205,7 +211,9 @@ Renamed to `extends`.
 
 You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
 
-However, the `@theme` and `@parent-theme` aliases are not available now.
+The `@theme` and `@parent-theme` aliases are not available now.
+
+Now multi-level theme inheritance is supported.
 
 ### CLI Change
 

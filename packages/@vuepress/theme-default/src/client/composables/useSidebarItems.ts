@@ -14,7 +14,6 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   SidebarConfigArray,
   SidebarConfigObject,
-  SidebarGroup,
   SidebarItem,
   ResolvedSidebarItem,
 } from '../../shared'
@@ -100,7 +99,6 @@ export const resolveAutoSidebarItems = (
 
   return [
     {
-      isGroup: true,
       text: page.value.title,
       children: headersToSidebarItemChildren(page.value.headers, sidebarDepth),
     },
@@ -118,7 +116,7 @@ export const resolveArraySidebarItems = (
   const page = usePageData()
 
   const handleChildItem = (
-    item: ResolvedSidebarItem | SidebarGroup | SidebarItem | string
+    item: ResolvedSidebarItem | SidebarItem | string
   ): ResolvedSidebarItem => {
     let childItem: ResolvedSidebarItem
     if (isString(item)) {

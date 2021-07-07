@@ -3,7 +3,6 @@ import type { SidebarConfig } from '@vuepress/theme-default'
 export const en: SidebarConfig = {
   '/guide/': [
     {
-      isGroup: true,
       text: 'Guide',
       children: [
         '/guide/README.md',
@@ -23,7 +22,6 @@ export const en: SidebarConfig = {
   ],
   '/advanced/': [
     {
-      isGroup: true,
       text: 'Advanced',
       children: [
         '/advanced/architecture.md',
@@ -32,7 +30,6 @@ export const en: SidebarConfig = {
       ],
     },
     {
-      isGroup: true,
       text: 'Cookbook',
       children: [
         '/advanced/cookbook/README.md',
@@ -46,7 +43,6 @@ export const en: SidebarConfig = {
   ],
   '/reference/': [
     {
-      isGroup: true,
       text: 'VuePress Reference',
       children: [
         '/reference/cli.md',
@@ -62,14 +58,12 @@ export const en: SidebarConfig = {
   ],
   '/reference/bundler/': [
     {
-      isGroup: true,
       text: 'Bundlers Reference',
       children: ['/reference/bundler/webpack.md', '/reference/bundler/vite.md'],
     },
   ],
   '/reference/default-theme/': [
     {
-      isGroup: true,
       text: 'Default Theme Reference',
       children: [
         '/reference/default-theme/config.md',
@@ -82,11 +76,9 @@ export const en: SidebarConfig = {
   ],
   '/reference/plugin/': [
     {
-      isGroup: true,
       text: 'Official Plugins Reference',
       children: [
         {
-          isGroup: true,
           text: 'Common Features',
           children: [
             '/reference/plugin/back-to-top.md',
@@ -102,7 +94,6 @@ export const en: SidebarConfig = {
           ],
         },
         {
-          isGroup: true,
           text: 'Syntax Highlighting',
           children: [
             '/reference/plugin/prismjs.md',
@@ -110,7 +101,6 @@ export const en: SidebarConfig = {
           ],
         },
         {
-          isGroup: true,
           text: 'Theme Development',
           children: [
             '/reference/plugin/active-header-links.md',
