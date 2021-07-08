@@ -1,28 +1,53 @@
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 import type { Ref } from 'vue'
-import { useSiteLocaleData } from '@vuepress/client'
-import { isString } from '@vuepress/shared'
-
-const getBgColor = (): string =>
-  window
-    .getComputedStyle(window.document.documentElement)
-    .getPropertyValue('--c-bg')
-    .trim()
+import { useSiteData, createHeadTag } from '@vuepress/client'
+import { useThemeData } from '.'
+import { HeadConfig, isString } from '@vuepress/shared'
 
 export const useMetaThemeColor = (isDarkMode: Ref<boolean>): void => {
-  const siteLocale = useSiteLocaleData()
+  const siteData = useSiteData()
+  const themeData = useThemeData()
 
-  const themeColorHead = computed(() =>
-    siteLocale.value.head.find(
+  const enableThemeColor = computed(() => themeData.value.themeColor)
+  const themeColorLight = computed<string | null>(
+    () => (themeData.value.themeColorLight as string) ?? null
+  )
+  const themeColorDark = computed<string | null>(
+    () => (themeData.value.themeColorDark as string) ?? null
+  )
+  const themeColorHeadIdx = computed(() =>
+    siteData.value.head.findIndex(
       ([tag, { name, content }]) =>
         tag === 'meta' && name === 'theme-color' && isString(content)
     )
   )
-  const themeColorHeadContent = computed<string | null>(
-    () => (themeColorHead.value?.[1].content as string) ?? null
-  )
+  const headConfig: HeadConfig = ['meta', { name: 'theme-color', content: '' }]
 
-  const updateMetaThemeColor = (color = themeColorHeadContent.value): void => {
+  const setSiteDataHead = (color = themeColorLight.value): void => {
+    if (color && enableThemeColor.value && themeColorHeadIdx.value === -1) {
+      headConfig[1].content = color
+      siteData.value.head.push(headConfig)
+    }
+  }
+
+  const setMetaThemeColor = (color = themeColorLight.value): void => {
+    if (color && enableThemeColor.value) {
+      headConfig[1].content = color
+      const headTag = createHeadTag(headConfig)
+      if (headTag) {
+        window?.document.head.appendChild(headTag)
+      }
+    }
+  }
+
+  const updateSiteDataHead = (color = themeColorLight.value): void => {
+    if (color && themeColorHeadIdx.value !== -1) {
+      headConfig[1].content = color
+      siteData.value.head[themeColorHeadIdx.value] = headConfig
+    }
+  }
+
+  const updateMetaThemeColor = (color = themeColorLight.value): void => {
     if (color) {
       window?.document
         .querySelector('meta[name="theme-color"]')
@@ -31,12 +56,16 @@ export const useMetaThemeColor = (isDarkMode: Ref<boolean>): void => {
   }
 
   onMounted(() => {
+    setSiteDataHead()
+    setMetaThemeColor()
     watch(
       isDarkMode,
       () => {
         if (isDarkMode.value) {
-          updateMetaThemeColor(getBgColor())
+          updateSiteDataHead(themeColorDark.value)
+          updateMetaThemeColor(themeColorDark.value)
         } else {
+          updateSiteDataHead()
           updateMetaThemeColor()
         }
       },
