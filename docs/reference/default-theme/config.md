@@ -161,6 +161,38 @@ module.exports = {
   
   If set to `true`, a button to switch dark mode will be displayed in the navbar, and the initial mode will be automatically set according to [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
+### themeColor
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable `theme-color` meta tag in HTML `<head>` or not.
+  
+  If set to `true`, a meta tag like `<meta name="theme-color" content="#3eaf7c">` would be added to `<head>` for all the pages, which indicates a suggested color that user agents should use to customize the display of the page or of the surrounding user interface.
+
+### themeColorLight
+
+- Type: `string`
+
+- Default: `#3eaf7c`
+
+- Details:
+
+  The color HEX of `theme-color` meta tag content in light mode, this option will only take effect while `themeColor` is set to `true` and current theme mode is light (dark mode off).
+
+### themeColorDark
+
+- Type: `string`
+
+- Default: `#22272e`
+
+- Details:
+
+  The color HEX of `theme-color` meta tag content in dark mode, this option will only take effect while `themeColor` is set to `true` and current theme mode is dark (dark mode on).
+
 ### repo
 
 - Type: `string`

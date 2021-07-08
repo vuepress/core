@@ -161,6 +161,38 @@ module.exports = {
 
   如果设置为 `true` ，将会在导航栏展示一个切换夜间模式的按钮，并会根据 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) 自动设置初始模式。
 
+### themeColor
+
+- 类型: `boolean`。
+
+- 默认值: `true`。
+
+- 详情：
+
+  是否在 HTML `<head>` 中启用 `theme-color` 元标签。
+  
+  如果设置为 `true`，一个像 `<meta name="theme-color" content="#3eaf7c">` 的元标签将被添加到所有页面的 `<head>` 中，可为用户浏览器界面或窗口周围的界面提供一个建议使用的颜色。
+
+### themeColorLight
+
+- 类型: `string`
+
+- 默认值: `#3eaf7c`
+
+- 详情：
+
+  浅色模式下 `theme-color` 元标签 content 中的 HEX 颜色，该选项只在 `themeColor` 被设置为 `true` 且当前主题模式为浅色时生效 (夜间模式关闭) 。
+
+### themeColorDark
+
+- 类型: `string`
+
+- 默认值: `#22272e`
+
+- 详情：
+
+  深色模式下 `theme-color` 元标签 content 中的 HEX 颜色，该选项只在 `themeColor` 被设置为 `true` 且当前主题模式为深色时生效 (夜间模式开启) 。
+
 ### repo
 
 - 类型： `string`

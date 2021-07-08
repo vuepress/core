@@ -216,21 +216,21 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * HTML meta - theme-color meta tag config
    *
-   * Enable theme-color meta in HTML <head> or not
+   * Enable `theme-color` meta tag in HTML `<head>` or not
    */
   themeColor?: boolean
 
   /**
    * HTML meta - theme-color meta tag for light mode
    *
-   * The color HEX of theme-color meta tag content in light mode
+   * The color HEX of `theme-color` meta tag content in light mode
    */
   themeColorLight?: null | string
 
   /**
    * HTML meta - theme-color meta tag for dark mode
    *
-   * The color HEX of theme-color meta tag content in dark mode
+   * The color HEX of `theme-color` meta tag content in dark mode
    */
   themeColorDark?: null | string
 
