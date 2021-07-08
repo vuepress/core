@@ -47,7 +47,6 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
     ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
 
   // site-level locales config

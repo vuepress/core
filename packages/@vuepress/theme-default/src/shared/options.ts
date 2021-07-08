@@ -214,6 +214,27 @@ export interface DefaultThemeLocaleData extends LocaleData {
   contributorsText?: string
 
   /**
+   * HTML meta - theme-color meta tag config
+   *
+   * Enable theme-color meta in HTML <head> or not
+   */
+  themeColor?: boolean
+
+  /**
+   * HTML meta - theme-color meta tag for light mode
+   *
+   * The color HEX of theme-color meta tag content in light mode
+   */
+  themeColorLight?: null | string
+
+  /**
+   * HTML meta - theme-color meta tag for dark mode
+   *
+   * The color HEX of theme-color meta tag content in dark mode
+   */
+  themeColorDark?: null | string
+
+  /**
    * Custom block config
    *
    * Default title of TIP custom block

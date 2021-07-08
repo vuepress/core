@@ -24,6 +24,11 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   contributors: true,
   contributorsText: 'Contributors',
 
+  // html meta
+  themeColor: true,
+  themeColorLight: '#3eaf7c',
+  themeColorDark: '#22272e',
+
   // 404 page messages
   notFound: [
     `There's nothing here.`,
