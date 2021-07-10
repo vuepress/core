@@ -18,6 +18,7 @@ a {
   font-weight: 500;
   color: var(--c-text-accent);
   text-decoration: none;
+  overflow-wrap: break-word;
 }
 
 p a code {
@@ -42,6 +43,7 @@ code {
   font-size: 0.85em;
   background-color: var(--c-bg-light);
   border-radius: 3px;
+  overflow-wrap: break-word;
 }
 
 blockquote {

@@ -10,7 +10,6 @@
 
 - [name](#name)
 - [multiple](#multiple)
-- [plugins](#plugins)
 
 下列 Hooks 会在初始化 App 时处理：
 
@@ -71,43 +70,6 @@
 
 - 参考：
   - [插件 API > name](#name)
-
-### plugins
-
-- 类型： `PluginConfig[]`
-
-- 详情：
-
-  要使用的插件。
-
-  一个插件可以通过该选项来使用其他的插件。
-
-  该配置项接收一个数组，其中的每一个数组项是一个包含两个元素的元组：
-
-  - 第一个元素是插件名称或插件本身。它可以接收插件名称、插件简称、插件的绝对路径或插件对象。
-  - 第二个元素是插件选项。它可以接收布尔值或一个对象。设置为 `false` 可以禁用该插件。设置为 `true` 可以启用该插件但不设置任何选项。使用对象可以启用该插件并且传入选项。
-
-  为了简便起见，你可以将上述元组的第一个元素直接作为数组项，它等价于启用该插件但不设置任何选项。
-
-- 示例：
-
-```js
-module.exports = {
-  plugins: [
-    // 包含两个元素的元组
-    ['vuepress-plugin-foo', false],
-    ['bar', true],
-    [path.resolve(__dirname, './path/to/local/plugin'), { /* 选项 */ }],
-    [require('vuepress-plugin-baz'), true],
-
-    // 只使用第一个元素
-    'foobar', // 等价于 ['foobar', true]
-  ],
-}
-```
-
-- 参考：
-  - [指南 > 插件](../guide/plugin.md)
 
 ## 开发 Hooks
 
@@ -180,13 +142,13 @@ module.exports = {
 
 ### extendsPageOptions
 
-- 类型： `(filePath: string, app: App) => PageOptions | Promise<PageOptions>`
+- 类型： `(options: PageOptions, app: App) => PageOptions | Promise<PageOptions>`
 
 - 详情：
 
   页面配置项扩展。
 
-  该 Hook 接收一个函数，在参数中会收到页面文件的相对路径。返回的对象会被合并到页面配置项中，用以创建页面。
+  该 Hook 接收一个函数，在参数中会收到页面的原始配置。返回的对象会被合并到页面配置项中，用以创建页面。
 
 - 示例：
 
@@ -194,8 +156,8 @@ module.exports = {
 
 ```js
 module.exports = {
-  extendsPageOptions: (filePath) => {
-    if (filePath.startsWith('_posts/')) {
+  extendsPageOptions: ({ filePath }) => {
+    if (filePath?.startsWith('_posts/')) {
       return {
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug.html',

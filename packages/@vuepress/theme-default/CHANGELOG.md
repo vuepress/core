@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
+
+
+### Bug Fixes
+
+* **theme-default:** fix nav glitch at exactly 719px screen width ([#238](https://github.com/vuepress/vuepress-next/issues/238)) ([3154fbb](https://github.com/vuepress/vuepress-next/commit/3154fbbc5c3b11e5f2a2310a0895538491fbec8f))
+* **theme-default:** use default cursor on non-link sidebar items ([ca22d4f](https://github.com/vuepress/vuepress-next/commit/ca22d4fe7ade66571f34dc80343f4ec57483b44a))
+
+
+
+
+
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+
+### Features
+
+* **theme-default:** refine sidebar config ([ea7c4bb](https://github.com/vuepress/vuepress-next/commit/ea7c4bbac269f2f9ade4d58cb77dad27055d9bc0))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** `isGroup` field of sidebar config is removed
+
+
+
+
+
+# [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
+
+
+### Features
+
+* **theme-default:** support activeMatch in navbar config ([ab0c6d1](https://github.com/vuepress/vuepress-next/commit/ab0c6d1544e62b505547c45afe6347fdb735c011))
+* **theme-default:** support disabling dark mode ([6517ce1](https://github.com/vuepress/vuepress-next/commit/6517ce1c66219fc45f0cb645f3db30e275e592bf))
+
+
+
+
+
+# [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
+
+
+### Bug Fixes
+
+* **theme-default:** exclude h1 header in sidebar ([280626d](https://github.com/vuepress/vuepress-next/commit/280626dd33f5006d6611f6e121eb5edfad8a258e))
+* **theme-default:** show outline of toggle-dark-button ([bc94de0](https://github.com/vuepress/vuepress-next/commit/bc94de0cb3a9454ac0a3e72f3df07326568057d2))
+
+
+
+
+
+# [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid long inline code breaking the layout ([#180](https://github.com/vuepress/vuepress-next/issues/180)) ([ada2e2a](https://github.com/vuepress/vuepress-next/commit/ada2e2a884749d9654c3550c4bb92611ea29906c))
+* **theme-default:** fix error of sidebar resolving (close [#185](https://github.com/vuepress/vuepress-next/issues/185)) ([6a96af0](https://github.com/vuepress/vuepress-next/commit/6a96af0b480b04a3c2564739e87a0ae786756581))
+* **theme-default:** respect root-level custom container config (close [#175](https://github.com/vuepress/vuepress-next/issues/175)) ([f2ad5f0](https://github.com/vuepress/vuepress-next/commit/f2ad5f0e988b075cfa37726d67feb8fa54f6176b))
+
+
+### Features
+
+* **theme-default:** improve a11y of CodeGroup ([#163](https://github.com/vuepress/vuepress-next/issues/163)) ([2b76463](https://github.com/vuepress/vuepress-next/commit/2b7646399116114a967a5df64266c6879babb10f))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** default title of danger container is changed to "DANGER"
+
+
+
+
+
 # [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
 
 

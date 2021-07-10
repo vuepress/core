@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
+
+
+### Bug Fixes
+
+* **client:** avoid duplicate slash after base in withBase util (close [#246](https://github.com/vuepress/vuepress-next/issues/246)) ([af9ceff](https://github.com/vuepress/vuepress-next/commit/af9ceff912466ce538da756dd90d56f697f9ea2d))
+* **markdown:** filter permalink symbol in toc (close [#251](https://github.com/vuepress/vuepress-next/issues/251)) ([5a35806](https://github.com/vuepress/vuepress-next/commit/5a3580656336349c29abb033a3d732646e111bfd))
+* **theme-default:** fix nav glitch at exactly 719px screen width ([#238](https://github.com/vuepress/vuepress-next/issues/238)) ([3154fbb](https://github.com/vuepress/vuepress-next/commit/3154fbbc5c3b11e5f2a2310a0895538491fbec8f))
+* **theme-default:** use default cursor on non-link sidebar items ([ca22d4f](https://github.com/vuepress/vuepress-next/commit/ca22d4fe7ade66571f34dc80343f4ec57483b44a))
+
+
+### Features
+
+* **bundler-vite:** avoid global constants being replaced by vite (close [#244](https://github.com/vuepress/vuepress-next/issues/244)) ([#245](https://github.com/vuepress/vuepress-next/issues/245)) ([0c86968](https://github.com/vuepress/vuepress-next/commit/0c869684c4e179347eebc38d916a0dfd2115b321))
+
+
+
+
+
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+
+### Bug Fixes
+
+* **core:** invoke extendsPageOptions hook in createPage ([76292aa](https://github.com/vuepress/vuepress-next/commit/76292aac7000e2bf924c563ff7452624008102cd))
+
+
+### Features
+
+* **markdown:** bump markdown-it-anchor to 8.0.4 ([41338f7](https://github.com/vuepress/vuepress-next/commit/41338f7d656bf9e692c3ff22e05e4b3c1a9cbd6f))
+* **plugin-pwa:** bump mitt to 3.0.0 ([8e2eb33](https://github.com/vuepress/vuepress-next/commit/8e2eb3358baa91c410adffb01f218404c4a4f393))
+* **theme-default:** refine sidebar config ([ea7c4bb](https://github.com/vuepress/vuepress-next/commit/ea7c4bbac269f2f9ade4d58cb77dad27055d9bc0))
+
+
+### BREAKING CHANGES
+
+* **markdown:** `markdown.anchor` has changed, see changelog of markdown-it-anchor 8.0.0
+* **theme-default:** `isGroup` field of sidebar config is removed
+* **core:** extendsPageOptions now accept page options as the first argument
+
+
+
+
+
+# [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
+
+
+### Bug Fixes
+
+* **bundler-vite:** resolve client entry url correctly (close [#190](https://github.com/vuepress/vuepress-next/issues/190)) ([36babba](https://github.com/vuepress/vuepress-next/commit/36babba394eccc070838c6d0861e91924d305e26))
+* **bundler-webpack:** sync types of webpack-dev-server 4 (close [#208](https://github.com/vuepress/vuepress-next/issues/208)) ([207014b](https://github.com/vuepress/vuepress-next/commit/207014b087d29f43bd01604954e33277b6b19150))
+
+
+### Features
+
+* **bundler-webpack:** support vue-loader options ([5a51912](https://github.com/vuepress/vuepress-next/commit/5a51912d974ba4a83a9586b40cb7cb7982c6c81b))
+* **theme-default:** support activeMatch in navbar config ([ab0c6d1](https://github.com/vuepress/vuepress-next/commit/ab0c6d1544e62b505547c45afe6347fdb735c011))
+* **theme-default:** support disabling dark mode ([6517ce1](https://github.com/vuepress/vuepress-next/commit/6517ce1c66219fc45f0cb645f3db30e275e592bf))
+
+
+
+
+
+# [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
+
+
+### Bug Fixes
+
+* **plugin-search:** disable default form action on Enter key ([#189](https://github.com/vuepress/vuepress-next/issues/189)) ([81b5b24](https://github.com/vuepress/vuepress-next/commit/81b5b24379c44ddcf83b38b086f6f2905453f58b))
+* **plugin-toc:** exclude h1 header in toc ([5e96641](https://github.com/vuepress/vuepress-next/commit/5e96641b8d2dd947372222e0af2ea47729afbada))
+* **theme-default:** exclude h1 header in sidebar ([280626d](https://github.com/vuepress/vuepress-next/commit/280626dd33f5006d6611f6e121eb5edfad8a258e))
+* **theme-default:** show outline of toggle-dark-button ([bc94de0](https://github.com/vuepress/vuepress-next/commit/bc94de0cb3a9454ac0a3e72f3df07326568057d2))
+
+
+### Code Refactoring
+
+* **core:** drop support for plugin nesting ([f7da97f](https://github.com/vuepress/vuepress-next/commit/f7da97f7f0ff24984cc6a2d0926b5fdf3af274c5))
+* **core:** resolve page title from markdown env ([09d08a4](https://github.com/vuepress/vuepress-next/commit/09d08a4b89af16fcb833774e902b4d5404181689))
+
+
+### Features
+
+* **cli:** watch dependencies of user config file ([b220524](https://github.com/vuepress/vuepress-next/commit/b220524f1534a1ada3b896854dba181e8ea36221))
+* **markdown:** add extract-title plugin ([e0a1556](https://github.com/vuepress/vuepress-next/commit/e0a1556a1469cd71469f5c81e2d058a5e9b9d801))
+
+
+### Performance Improvements
+
+* **bundler-vite:** make server build lighter ([a6ddea5](https://github.com/vuepress/vuepress-next/commit/a6ddea5fd1a1979f5d3a7cc460e1602cb5254f08))
+
+
+### BREAKING CHANGES
+
+* **core:** a plugin cannot use other plugins anymore
+* **core:** markdown emoji syntax is not supported in frontmatter title
+
+
+
+
+
+# [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid long inline code breaking the layout ([#180](https://github.com/vuepress/vuepress-next/issues/180)) ([ada2e2a](https://github.com/vuepress/vuepress-next/commit/ada2e2a884749d9654c3550c4bb92611ea29906c))
+* **theme-default:** fix error of sidebar resolving (close [#185](https://github.com/vuepress/vuepress-next/issues/185)) ([6a96af0](https://github.com/vuepress/vuepress-next/commit/6a96af0b480b04a3c2564739e87a0ae786756581))
+* **theme-default:** respect root-level custom container config (close [#175](https://github.com/vuepress/vuepress-next/issues/175)) ([f2ad5f0](https://github.com/vuepress/vuepress-next/commit/f2ad5f0e988b075cfa37726d67feb8fa54f6176b))
+
+
+### Features
+
+* **core:** support multi-level theme inheritance ([5df8662](https://github.com/vuepress/vuepress-next/commit/5df86621cfcd7b138e473d40dc622e6ff8e0795f))
+* **theme-default:** improve a11y of CodeGroup ([#163](https://github.com/vuepress/vuepress-next/issues/163)) ([2b76463](https://github.com/vuepress/vuepress-next/commit/2b7646399116114a967a5df64266c6879babb10f))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** default title of danger container is changed to "DANGER"
+
+
+
+
+
 # [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
 
 

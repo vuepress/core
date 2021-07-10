@@ -157,6 +157,8 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 函数接收的参数也有改动。
 
+参考 [客户端 API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance) 。
+
 #### .vuepress/components/
 
 在该目录下的文件不会被自动注册为 Vue 组件。
@@ -169,8 +171,13 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 你需要在 [theme](../reference/config.md#theme) 配置项中显式声明本地主题的路径。
 
+### Markdown 插槽变更
+
+Markdown 插槽不再被支持。
+
 ### 插件 API 变更
 
+- `plugins`：移除
 - `ready`：重命名为 `onPrepared`
 - `updated`：重命名为 `onWatched`
 - `generated`：重命名为 `onGenerated`
@@ -204,7 +211,9 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 你仍然可以通过 `extends: 'parent-theme'` 来继承一个父主题，这将会继承其插件和布局等。
 
-但是，`@theme` 和 `@parent-theme` 别名不再生效。
+`@theme` 和 `@parent-theme` 别名不再生效。
+
+现在支持主题的多级继承。
 
 ### CLI 变更
 
@@ -254,12 +263,15 @@ v1 的主题和插件和 v2 并不兼容。
 
 一些主要的 Breaking Changes ：
 
+- 你不能再在你的插件中使用其他插件了，这避免了很多由于插件嵌套引发的问题。如果你的插件依赖于别的插件，你应在文档中列出他们。
 - 大部分 v1 Hook 都在 v2 中存在等效的 Hook 或实现方式。唯一的例外是 `extendsCli` ，它被移除了。
-- Webpack 相关的 v1 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。如果你仍然想要在插件中修改 Webpack 配置，可以尝试在 `onInitialized` Hook 中处理 `app.options.bundlerConfig` 。
+- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。如果你仍然想要在插件中修改 Webpack 配置，可以尝试直接修改 `app.options.bundlerConfig` 。
 
 ## 给主题作者
 
 请先浏览 [插件 API 变更](#插件-api-变更) 和 [主题 API 变更](#主题-api-变更)。
+
+虽然我们不允许在插件中使用其他插件了，但是你仍然可以在你的主题中使用插件。
 
 一些主要的 Breaking Changes ：
 

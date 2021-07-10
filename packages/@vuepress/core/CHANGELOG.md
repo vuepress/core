@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
+
+**Note:** Version bump only for package @vuepress/core
+
+
+
+
+
+# [2.0.0-beta.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2021-06-26)
+
+
+### Bug Fixes
+
+* **core:** invoke extendsPageOptions hook in createPage ([76292aa](https://github.com/vuepress/vuepress-next/commit/76292aac7000e2bf924c563ff7452624008102cd))
+
+
+### BREAKING CHANGES
+
+* **core:** extendsPageOptions now accept page options as the first argument
+
+
+
+
+
+# [2.0.0-beta.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2021-06-19)
+
+**Note:** Version bump only for package @vuepress/core
+
+
+
+
+
+# [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
+
+
+### Code Refactoring
+
+* **core:** drop support for plugin nesting ([f7da97f](https://github.com/vuepress/vuepress-next/commit/f7da97f7f0ff24984cc6a2d0926b5fdf3af274c5))
+* **core:** resolve page title from markdown env ([09d08a4](https://github.com/vuepress/vuepress-next/commit/09d08a4b89af16fcb833774e902b4d5404181689))
+
+
+### BREAKING CHANGES
+
+* **core:** a plugin cannot use other plugins anymore
+* **core:** markdown emoji syntax is not supported in frontmatter title
+
+
+
+
+
+# [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
+
+
+### Features
+
+* **core:** support multi-level theme inheritance ([5df8662](https://github.com/vuepress/vuepress-next/commit/5df86621cfcd7b138e473d40dc622e6ff8e0795f))
+
+
+### BREAKING CHANGES
+
+* **core:** `app.themeApi` is removed
+
+
+
+
+
 # [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
 
 **Note:** Version bump only for package @vuepress/core

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0-beta.21",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
@@ -28,8 +28,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.15",
-    "execa": "^5.0.0"
+    "@vuepress/core": "2.0.0-beta.21",
+    "execa": "^5.1.1"
   },
   "publishConfig": {
     "access": "public"

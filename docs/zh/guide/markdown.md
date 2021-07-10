@@ -107,7 +107,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 你可以在你的 Markdown 内容中输入 `:EMOJICODE:` 来添加 Emoji 表情。
 
-前往 [emoji-cheat-sheet.com](https://emoji-cheat-sheet.com/) 来查看所有可用的 Emoji 表情和对应代码。
+前往 [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet) 来查看所有可用的 Emoji 表情和对应代码。
 
 **输入**
 
@@ -415,3 +415,18 @@ module.exports = {
 
 前往 [默认主题 > 内置组件](../reference/default-theme/components.md) 查看默认主题中的所有内置组件。
 :::
+
+## 注意事项
+
+### 已废弃的 HTML 标签
+
+已废弃的 HTML 标签默认不允许在 VuePress 的 Markdown 中使用，比如 [\<center>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center) 和 [\<font>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font) 等。
+
+这些标签不会被 Vue 模板编译器识别成原生 HTML 标签。相反，Vue 会尝试将这些标签解析为 Vue 组件，而显然这些组件通常是不存在的。
+
+你应该尽量避免使用已废弃的 HTML 标签。不过，如果你无论如何都要使用这些标签的话，可以尝试下面两种方法之一：
+
+- 添加一个 [v-pre](https://v3.cn.vuejs.org/api/directives.html#v-pre) 指令来跳过这个元素和它的子元素的编译过程。注意所有的模板语法也都会失效。
+- 设置 [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) 来告诉 Vue 模板编译器不要尝试作为组件来解析它们。
+  - 对于 `@bundler-webpack` ，设置 [vue.compilerOptions](../reference/bundler/webpack.md#vue)
+  - 对于 `@bundler-vite` ，设置 [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)

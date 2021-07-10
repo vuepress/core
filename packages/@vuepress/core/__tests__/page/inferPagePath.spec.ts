@@ -1,17 +1,18 @@
-import { createApp, inferPagePath } from '@vuepress/core'
+import { createBaseApp, inferPagePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
-const app = createApp({
-  source,
+const app = createBaseApp({
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
   locales: {
     '/': {},
     '/en/': {},
     '/zh/': {},
   },
 })
-const appWithoutLocales = createApp({
-  source,
+const appWithoutLocales = createBaseApp({
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
 const testCases: [string, ReturnType<typeof inferPagePath>][] = [

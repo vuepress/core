@@ -1,6 +1,6 @@
 import { debug, globby } from '@vuepress/utils'
 import { createPage } from '../page'
-import type { App, Page, PageOptions } from '../types'
+import type { App, Page } from '../types'
 
 const log = debug('vuepress:core/app')
 
@@ -17,18 +17,7 @@ export const createAppPages = async (app: App): Promise<Page[]> => {
 
   // create pages from files
   const pages = await Promise.all(
-    pagePaths.map(async (filePath) => {
-      const pageOptions: PageOptions = { filePath }
-
-      // plugin hook: extendsPageOptions
-      const extendsPageOptions = await app.pluginApi.hooks.extendsPageOptions.process(
-        filePath,
-        app
-      )
-      extendsPageOptions.forEach((item) => Object.assign(pageOptions, item))
-
-      return createPage(app, pageOptions)
-    })
+    pagePaths.map((filePath) => createPage(app, { filePath }))
   )
 
   // if there is no 404 page, add one

@@ -1,25 +1,29 @@
 import type { App, Page, PageOptions } from '../types'
 import { inferPagePath } from './inferPagePath'
+import { renderPageContent } from './renderPageContent'
+import { renderPageExcerpt } from './renderPageExcerpt'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo'
 import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDataInfo } from './resolvePageDataInfo'
 import { resolvePageDate } from './resolvePageDate'
-import { resolvePageExcerpt } from './resolvePageExcerpt'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
 import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
+import { resolvePageOptions } from './resolvePageOptions'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageSlug } from './resolvePageSlug'
-import { resolvePageTitle } from './resolvePageTitle'
 
 export const createPage = async (
   app: App,
-  options: PageOptions
+  optionsRaw: PageOptions
 ): Promise<Page> => {
+  // resolve page options from raw options
+  const options = await resolvePageOptions({ app, optionsRaw })
+
   // resolve page file absolute path and relative path
   const { filePath, filePathRelative } = resolvePageFilePath({
     app,
@@ -37,10 +41,26 @@ export const createPage = async (
   // resolve frontmatter from raw frontmatter and page options
   const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
 
-  // resolve excerpt from raw excerpt
-  const excerpt = resolvePageExcerpt({
+  // render excerpt
+  const excerpt = renderPageExcerpt({
     app,
     excerptRaw,
+    filePath,
+    filePathRelative,
+    frontmatter,
+  })
+
+  // render page content and extract information
+  const {
+    contentRendered,
+    deps,
+    headers,
+    hoistedTags,
+    links,
+    title,
+  } = await renderPageContent({
+    app,
+    content,
     filePath,
     filePathRelative,
     frontmatter,
@@ -81,19 +101,12 @@ export const createPage = async (
 
   // resolve page component and extract headers & links
   const {
-    deps,
-    headers,
-    links,
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
   } = await resolvePageComponentInfo({
     app,
-    content,
-    filePath,
-    filePathRelative,
-    frontmatter,
+    hoistedTags,
     htmlFilePathRelative,
     key,
   })
@@ -103,9 +116,6 @@ export const createPage = async (
     dataFilePathRelative,
     dataFileChunkName,
   } = resolvePageDataInfo({ app, htmlFilePathRelative, key })
-
-  // resolve title from frontmatter and headers
-  const title = resolvePageTitle({ content, frontmatter, headers })
 
   return {
     // page data
@@ -118,20 +128,22 @@ export const createPage = async (
     headers,
 
     // extra data
-    pathInferred,
-    pathLocale,
     content,
-    slug,
+    contentRendered,
     date,
     deps,
+    hoistedTags,
     links,
+    pathInferred,
+    pathLocale,
+    permalink,
+    slug,
 
     // file info
     filePath,
     filePathRelative,
     componentFilePath,
     componentFilePathRelative,
-    componentFileContent,
     componentFileChunkName,
     dataFilePath,
     dataFilePathRelative,

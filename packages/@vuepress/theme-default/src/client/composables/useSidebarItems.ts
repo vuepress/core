@@ -14,7 +14,6 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   SidebarConfigArray,
   SidebarConfigObject,
-  SidebarGroup,
   SidebarItem,
   ResolvedSidebarItem,
 } from '../../shared'
@@ -100,7 +99,6 @@ export const resolveAutoSidebarItems = (
 
   return [
     {
-      isGroup: true,
       text: page.value.title,
       children: headersToSidebarItemChildren(page.value.headers, sidebarDepth),
     },
@@ -118,7 +116,7 @@ export const resolveArraySidebarItems = (
   const page = usePageData()
 
   const handleChildItem = (
-    item: ResolvedSidebarItem | SidebarGroup | SidebarItem | string
+    item: ResolvedSidebarItem | SidebarItem | string
   ): ResolvedSidebarItem => {
     let childItem: ResolvedSidebarItem
     if (isString(item)) {
@@ -127,43 +125,31 @@ export const resolveArraySidebarItems = (
       childItem = item as ResolvedSidebarItem
     }
 
-    if (childItem.isGroup && childItem.children) {
+    if (childItem.children) {
       return {
         ...childItem,
-        children: childItem.children.map(handleChildItem),
+        children: childItem.children.map((item) => handleChildItem(item)),
       }
     }
 
     // if the sidebar item is current page and children is not set
     // use headers of current page as children
-    if (childItem.link === route.path && childItem.children === undefined) {
+    if (childItem.link === route.path) {
+      // skip h1 header
+      const headers =
+        page.value.headers[0]?.level === 1
+          ? page.value.headers[0].children
+          : page.value.headers
       return {
         ...childItem,
-        children: headersToSidebarItemChildren(
-          page.value.headers,
-          sidebarDepth
-        ),
+        children: headersToSidebarItemChildren(headers, sidebarDepth),
       }
     }
 
     return childItem
   }
 
-  return sidebarConfig.map(
-    (item): ResolvedSidebarItem => {
-      if (isString(item)) {
-        return useNavLink(item)
-      }
-      if (!item.isGroup) {
-        return item as ResolvedSidebarItem
-      }
-
-      return {
-        ...item,
-        children: item.children.map(handleChildItem),
-      }
-    }
-  )
+  return sidebarConfig.map((item) => handleChildItem(item))
 }
 
 /**

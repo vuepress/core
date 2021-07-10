@@ -1,4 +1,5 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
+import { version } from '../meta'
 
 export const zh: NavbarConfig = [
   {
@@ -38,10 +39,43 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/styles.md',
         ],
       },
+    ],
+  },
+  {
+    text: '插件',
+    children: [
       {
-        text: '官方插件',
-        link: '/zh/reference/plugin/',
-        children: [],
+        text: '常用功能',
+        children: [
+          '/zh/reference/plugin/back-to-top.md',
+          '/zh/reference/plugin/container.md',
+          '/zh/reference/plugin/docsearch.md',
+          '/zh/reference/plugin/google-analytics.md',
+          '/zh/reference/plugin/medium-zoom.md',
+          '/zh/reference/plugin/nprogress.md',
+          '/zh/reference/plugin/pwa.md',
+          '/zh/reference/plugin/pwa-popup.md',
+          '/zh/reference/plugin/register-components.md',
+          '/zh/reference/plugin/search.md',
+        ],
+      },
+      {
+        text: '语法高亮',
+        children: [
+          '/zh/reference/plugin/prismjs.md',
+          '/zh/reference/plugin/shiki.md',
+        ],
+      },
+      {
+        text: '主题开发',
+        children: [
+          '/zh/reference/plugin/active-header-links.md',
+          '/zh/reference/plugin/debug.md',
+          '/zh/reference/plugin/git.md',
+          '/zh/reference/plugin/palette.md',
+          '/zh/reference/plugin/theme-data.md',
+          '/zh/reference/plugin/toc.md',
+        ],
       },
     ],
   },
@@ -65,11 +99,6 @@ export const zh: NavbarConfig = [
         children: [
           '/zh/contributing.md',
           {
-            text: '更新日志',
-            link:
-              'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-          },
-          {
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
@@ -78,15 +107,20 @@ export const zh: NavbarConfig = [
     ],
   },
   {
-    text: 'v2.x',
+    text: `v${version}`,
     children: [
       {
+        text: '更新日志',
+        link:
+          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+      },
+      {
         text: 'v1.x',
-        link: 'https://v1.vuepress.vuejs.org',
+        link: 'https://v1.vuepress.vuejs.org/zh/',
       },
       {
         text: 'v0.x',
-        link: 'https://v0.vuepress.vuejs.org',
+        link: 'https://v0.vuepress.vuejs.org/zh/',
       },
     ],
   },

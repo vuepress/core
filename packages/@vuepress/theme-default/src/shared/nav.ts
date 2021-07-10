@@ -20,6 +20,7 @@ export interface NavLink extends NavItem {
   link: string
   rel?: string
   target?: string
+  activeMatch?: string
 }
 
 /**
@@ -36,20 +37,13 @@ export type ResolvedNavbarItem = NavbarItem | NavGroup<ResolvedNavbarItem>
  * Sidebar types
  */
 // user config
-export interface SidebarItem
-  extends NavLink,
-    NavGroup<NavLink | SidebarItem | string> {
-  isGroup?: false
-}
-export interface SidebarGroup
-  extends NavGroup<SidebarGroup | NavLink | SidebarItem | string> {
-  isGroup: true
-}
-export type SidebarConfigArray = (SidebarGroup | SidebarItem | string)[]
+export type SidebarItem = NavItem &
+  Partial<NavLink> &
+  Partial<Pick<NavGroup<NavLink | SidebarItem | string>, 'children'>>
+export type SidebarConfigArray = (SidebarItem | string)[]
 export type SidebarConfigObject = Record<string, SidebarConfigArray>
 export type SidebarConfig = SidebarConfigArray | SidebarConfigObject
 // resolved
-export interface ResolvedSidebarItem extends Partial<NavLink> {
-  isGroup?: boolean
-  children?: ResolvedSidebarItem[]
-}
+export type ResolvedSidebarItem = NavItem &
+  Partial<NavLink> &
+  Partial<Pick<NavGroup<ResolvedSidebarItem>, 'children'>>

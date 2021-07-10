@@ -1,9 +1,9 @@
-import { createApp, resolvePageFilePath } from '@vuepress/core'
+import { createBaseApp, resolvePageFilePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
-const app = createApp({
-  source,
+const app = createBaseApp({
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
 describe('core > page > resolvePageFilePath', () => {
@@ -18,7 +18,7 @@ describe('core > page > resolvePageFilePath', () => {
     })
   })
 
-  const absoluteFilePath = path.resolve(source, 'file.md')
+  const absoluteFilePath = app.dir.source('file.md')
   const relativeFilePath = 'file.md'
 
   it('should resolve path correctly if filePath is absolute', () => {

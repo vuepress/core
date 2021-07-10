@@ -407,9 +407,25 @@ module.exports = {
 
   VuePress 内置的 markdown-it extract-headers 插件的配置项。
 
-  它将会把页面的标题提取到 Page Data 中，可以用于生成侧边栏、目录等。比如当前页面的侧边栏，就是由这个插件提取出的标题来自动生成的。
+  它将会把页面的子标题提取到 Page Data 中，可以用于生成侧边栏、目录等。比如当前页面的侧边栏，就是由这个插件提取出的标题来自动生成的。
 
   设置为 `false` 可以禁用该插件。
+
+### markdown.extractTitle
+
+- 类型： `undefined | false`
+
+- 详情：
+
+  VuePress 内置的 markdown-it extract-title 插件的配置项。
+
+  它将会把大标题提取到 Page Data 中，将会被用作页面标题。
+
+  设置为 `false` 可以禁用该插件。
+
+::: danger
+除非你了解它的用途，否则你不应该设置该配置项。
+:::
 
 ### markdown.hoistTags
 
@@ -608,6 +624,43 @@ module.exports = {
   一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
 
   如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
+
+## 插件配置
+
+### plugins
+
+- 类型： `PluginConfig[]`
+
+- 详情：
+
+  要使用的插件。
+
+  该配置项接收一个数组，其中的每一个数组项是一个包含两个元素的元组：
+
+  - 第一个元素是插件名称或插件本身。它可以接收插件名称、插件简称、插件的绝对路径或插件对象。
+  - 第二个元素是插件选项。它可以接收布尔值或一个对象。设置为 `false` 可以跳过该插件。设置为 `true` 可以启用该插件但不设置任何选项。使用对象可以启用该插件并且传入选项。
+
+  为了简便起见，你可以将上述元组的第一个元素直接作为数组项，它等价于启用该插件但不设置任何选项。
+
+- 示例：
+
+```js
+module.exports = {
+  plugins: [
+    // 包含两个元素的元组
+    ['vuepress-plugin-foo', false],
+    ['bar', true],
+    [path.resolve(__dirname, './path/to/local/plugin'), { /* 选项 */ }],
+    [require('vuepress-plugin-baz'), true],
+
+    // 只使用第一个元素
+    'foobar', // 等价于 ['foobar', true]
+  ],
+}
+```
+
+- 参考：
+  - [指南 > 插件](../guide/plugin.md)
 
 ## 插件 API
 

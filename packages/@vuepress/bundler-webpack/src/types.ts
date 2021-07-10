@@ -1,10 +1,15 @@
-import type { Application } from 'express'
+import type { VueLoaderOptions } from 'vue-loader'
 import type { Configuration as WebpackConfiguration } from 'webpack'
 import type * as WebpackChainConfig from 'webpack-chain'
-import type * as WebpackDevServer from 'webpack-dev-server'
 import type { LoaderContext } from './types.webpack'
+import type { WebpackDevServer } from './types.webpack-dev-server'
 
-export type { WebpackConfiguration, WebpackChainConfig, WebpackDevServer }
+export type {
+  VueLoaderOptions,
+  WebpackConfiguration,
+  WebpackChainConfig,
+  WebpackDevServer,
+}
 
 /**
  * Options for bundler-webpack
@@ -31,12 +36,17 @@ export interface WebpackBundlerOptions {
   /**
    * hook that to be called in `devServer.before`
    */
-  beforeDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+  beforeDevServer?: (server: WebpackDevServer) => void
 
   /**
    * hook that to be called in `devServer.after`
    */
-  afterDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+  afterDevServer?: (server: WebpackDevServer) => void
+
+  /**
+   * vue-loader options
+   */
+  vue?: VueLoaderOptions
 
   /**
    * postcss-loader options
@@ -95,6 +105,7 @@ export type StylePreprocessorOptions<
 export interface PostcssLoaderOptions extends Pick<LoaderOptions, 'sourceMap'> {
   execute?: boolean
   postcssOptions?: StylePreprocessorOptions
+  implementation?: ((...args: any) => any) | string
 }
 
 /**
@@ -112,7 +123,7 @@ export interface StylusLoaderOptions extends LoaderOptions {
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
 export interface SassLoaderOptions extends LoaderOptions {
-  implementation?: any
+  implementation?: Record<string, any> | string
   sassOptions?: StylePreprocessorOptions
 }
 

@@ -1,4 +1,5 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
+import { version } from '../meta'
 
 export const en: NavbarConfig = [
   {
@@ -41,10 +42,43 @@ export const en: NavbarConfig = [
           '/reference/default-theme/styles.md',
         ],
       },
+    ],
+  },
+  {
+    text: 'Plugins',
+    children: [
       {
-        text: 'Official Plugins',
-        link: '/reference/plugin/',
-        children: [],
+        text: 'Common Features',
+        children: [
+          '/reference/plugin/back-to-top.md',
+          '/reference/plugin/container.md',
+          '/reference/plugin/docsearch.md',
+          '/reference/plugin/google-analytics.md',
+          '/reference/plugin/medium-zoom.md',
+          '/reference/plugin/nprogress.md',
+          '/reference/plugin/pwa.md',
+          '/reference/plugin/pwa-popup.md',
+          '/reference/plugin/register-components.md',
+          '/reference/plugin/search.md',
+        ],
+      },
+      {
+        text: 'Syntax Highlighting',
+        children: [
+          '/reference/plugin/prismjs.md',
+          '/reference/plugin/shiki.md',
+        ],
+      },
+      {
+        text: 'Theme Development',
+        children: [
+          '/reference/plugin/active-header-links.md',
+          '/reference/plugin/debug.md',
+          '/reference/plugin/git.md',
+          '/reference/plugin/palette.md',
+          '/reference/plugin/theme-data.md',
+          '/reference/plugin/toc.md',
+        ],
       },
     ],
   },
@@ -68,11 +102,6 @@ export const en: NavbarConfig = [
         children: [
           '/contributing.md',
           {
-            text: 'Changelog',
-            link:
-              'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-          },
-          {
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
@@ -81,8 +110,13 @@ export const en: NavbarConfig = [
     ],
   },
   {
-    text: 'v2.x',
+    text: `v${version}`,
     children: [
+      {
+        text: 'Changelog',
+        link:
+          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+      },
       {
         text: 'v1.x',
         link: 'https://v1.vuepress.vuejs.org',

@@ -1,9 +1,9 @@
-import { createApp, resolvePageHtmlInfo } from '@vuepress/core'
+import { createBaseApp, resolvePageHtmlInfo } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
-const app = createApp({
-  source,
+const app = createBaseApp({
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
 const testCases: [string, string][] = [

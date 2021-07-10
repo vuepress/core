@@ -408,9 +408,25 @@ You should not configure it unless you understand what it is for.
 
   Options for VuePress built-in markdown-it extract-headers plugin.
 
-  It will extract page headers to page data, which will be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
+  It will extract page headers to page data, which would be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
 
   Set to `false` to disable this plugin.
+
+### markdown.extractTitle
+
+- Type: `undefined | false`
+
+- Details:
+
+  Options for VuePress built-in markdown-it extract-title plugin.
+
+  It will extract title to page data, which will be used as the page title.
+
+  Set to `false` to disable this plugin.
+
+::: danger
+You should not configure it unless you understand what it is for.
+:::
 
 ### markdown.hoistTags
 
@@ -609,6 +625,43 @@ You should not configure it unless you understand what it is for.
   A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
 
   If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
+
+## Plugin Config
+
+### plugins
+
+- Type: `PluginConfig[]`
+
+- Details:
+
+  Plugins to use.
+
+  This option accepts an array, each item of which is a two-element tuple:
+
+  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
+  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to skip the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
+
+  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
+
+- Example:
+
+```js
+module.exports = {
+  plugins: [
+    // two-element tuple
+    ['vuepress-plugin-foo', false],
+    ['bar', true],
+    [path.resolve(__dirname, './path/to/local/plugin'), { /* options */ }],
+    [require('vuepress-plugin-baz'), true],
+
+    // only use the first element
+    'foobar', // equals to ['foobar', true]
+  ],
+}
+```
+
+- Also see:
+  - [Guide > Plugin](../guide/plugin.md)
 
 ## Plugin API
 

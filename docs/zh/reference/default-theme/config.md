@@ -56,7 +56,7 @@
 
   为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarItem` 对象、 `NavbarGroup` 对象、或者字符串：
 
-  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段。
+  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
   - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段。 `children` 字段同样是一个 _导航栏数组_ 。
   - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
@@ -99,6 +99,25 @@ module.exports = {
           },
         ],
       },
+      // 控制元素何时被激活
+      {
+        text: 'Group 2',
+        children: [
+          {
+            text: 'Always active',
+            link: '/',
+            // 该元素将一直处于激活状态
+            activeMatch: '/',
+          },
+          {
+            text: 'Active on /foo/',
+            link: '/not-foo/',
+            // 该元素在当前路由路径是 /foo/ 开头时激活
+            // 支持正则表达式
+            activeMatch: '^/foo/',
+          },
+        ],
+      },
     ],
   },
 }
@@ -129,6 +148,18 @@ module.exports = {
 
 - 参考：
   - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
+
+### darkMode
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用切换夜间模式的功能。
+
+  如果设置为 `true` ，将会在导航栏展示一个切换夜间模式的按钮，并会根据 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) 自动设置初始模式。
 
 ### repo
 
@@ -235,11 +266,10 @@ module.exports = {
 
   如果你设置为 `'auto'`，侧边栏会根据页面标题自动生成。
 
-  为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是 `SidebarItem` 对象、 `SidebarGroup` 对象、或者字符串：
+  为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
-  - `SidebarItem` 对象应该有一个 `text` 字段、一个 `link` 字段和一个 `children` 字段。 `children` 字段是一个由 `SidebarItem` 或者字符串组成的数组。
-  - `SidebarGroup` 对象应将 `isGroup` 字段设为 `true` ，并且应该有一个 `text` 字段和一个`children` 字段。 `children` 字段是一个由 `SidebarItem` 或者字符串组成的数组。
-  - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面标题自动生成 `children` 。
+  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段和一个可选的 `children` 字段。 `children` 字段同样是一个 _侧边栏数组_ 。
+  - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面小标题自动生成 `children` 。
 
   如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_ ：
 
@@ -269,12 +299,6 @@ module.exports = {
           '/foo/bar.md',
         ],
       },
-      // SidebarGroup
-      {
-        isGroup: true,
-        text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
-      },
       // 字符串 - 页面文件路径
       '/bar/README.md',
     ],
@@ -292,14 +316,12 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          isGroup: true,
           text: 'Guide',
           children: ['/guide/README.md', '/guide/getting-started.md'],
         },
       ],
       '/reference/': [
         {
-          isGroup: true,
           text: 'Reference',
           children: ['/reference/cli.md', '/reference/config.md'],
         },

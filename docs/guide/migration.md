@@ -145,7 +145,7 @@ The stylus palette system of VuePress v1 (i.e. `styles/palette.styl` and `styles
 
 The palette system is extracted to [@vuepress/plugin-palette](../reference/plugin/palette.md).
 
-Theme authors can use their own way to allow users to custom styles, and not be limited with stylus.
+Theme authors can use their own way to allow users to customize styles, and not be limited with stylus.
 
 If you are using default theme, the palette system is still available but migrated to SASS, while most variables have been migrated to CSS variables. See [Default Theme > Styles](../reference/default-theme/styles.md).
 
@@ -156,6 +156,8 @@ If you are using default theme, the palette system is still available but migrat
 Renamed to `.vuepress/clientAppEnhance.{js,ts}`.
 
 The arguments of the function are changed, too.
+
+See [Client API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance).
 
 #### .vuepress/components/
 
@@ -169,8 +171,13 @@ This directory will not be used as local theme implicitly if it is existed.
 
 You need to set the path to the local theme explicitly via [theme](../reference/config.md#theme) option.
 
+### Markdown slot Change
+
+Markdown slot is no longer supported.
+
 ### Plugin API Change
 
+- `plugins`: removed
 - `ready`: renamed to `onPrepared`
 - `updated`: renamed to `onWatched`
 - `generated`: renamed to `onGenerated`
@@ -204,7 +211,9 @@ Renamed to `extends`.
 
 You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
 
-However, the `@theme` and `@parent-theme` aliases are not available now.
+The `@theme` and `@parent-theme` aliases are not available now.
+
+Now multi-level theme inheritance is supported.
 
 ### CLI Change
 
@@ -254,12 +263,15 @@ Read the [Plugin API Change](#plugin-api-change) first.
 
 Some major breaking changes:
 
+- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you should list them in the docs.
 - Most of the v1 hooks have equivalents in v2. The only exception is `extendsCli`, which has been removed.
-- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. If you still want to modify webpack config in plugin, try to handle `app.options.bundlerConfig` in `onInitialized` hook.
+- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. If you still want to modify webpack config in plugin, try modifying `app.options.bundlerConfig` directly.
 
 ## For Theme Authors
 
 Read the [Plugin API Change](#plugin-api-change) and [Theme API Change](#theme-api-change) first.
+
+Although we do not allow using other plugins in a plugin, you can still use plugins in your theme.
 
 Some major breaking changes:
 

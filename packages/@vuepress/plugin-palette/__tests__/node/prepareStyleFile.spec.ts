@@ -1,12 +1,10 @@
-import { createApp } from '@vuepress/core'
+import { createBaseApp } from '@vuepress/core'
 import { prepareStyleFile, presetOptions } from '@vuepress/plugin-palette'
 import { fs, path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
-const temp = path.resolve(__dirname, '../__fixtures__/.temp')
-const app = createApp({
-  source,
-  temp,
+const app = createBaseApp({
+  source: path.resolve(__dirname, 'fake-source'),
+  temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 
 describe('plugin-palette > node > prepareStyleFile', () => {

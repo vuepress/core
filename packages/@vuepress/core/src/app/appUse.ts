@@ -1,6 +1,6 @@
 import { chalk, debug, warn } from '@vuepress/utils'
 import type { App, Plugin, PluginOptions } from '../types'
-import { normalizePlugin } from './normalizePlugin'
+import { resolvePlugin } from './resolvePlugin'
 
 const log = debug('vuepress:core/app')
 
@@ -8,9 +8,8 @@ export const appUse = <T extends PluginOptions>(
   app: App,
   rawPlugin: Plugin<T> | string,
   config?: Partial<T>
-): void => {
-  // normalize plugin
-  const plugin = normalizePlugin(app, rawPlugin, config)
+): App => {
+  const plugin = resolvePlugin(app, rawPlugin, config)
 
   log(`use plugin ${chalk.magenta(plugin.name)}`)
 
@@ -34,10 +33,5 @@ export const appUse = <T extends PluginOptions>(
   // use plugin
   app.pluginApi.plugins.push(plugin)
 
-  // TODO: nested plugins with `multiple` may cause potential problems
-
-  // if the plugin uses other plugins
-  if (plugin.plugins) {
-    plugin.plugins.forEach(app.useByConfig)
-  }
+  return app
 }
