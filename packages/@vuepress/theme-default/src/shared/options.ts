@@ -252,4 +252,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * sr-only message in `<OutboundLink>`
    */
   openInNewWindow?: string
+
+  /**
+   * Toggle sidebar button a11y text
+   */
+  sidebarButtonText?: string
 }

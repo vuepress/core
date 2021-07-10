@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="toggle-sidebar-button"
-    title="Toggle Sidebar"
-    @click="$emit('toggle')"
-  >
+  <div class="toggle-sidebar-button" :title="title" @click="$emit('toggle')">
     <svg
       class="icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -20,11 +16,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
+import { useThemeLocaleData } from '../composables'
 
 export default defineComponent({
   name: 'ToggleSidebarButton',
 
   emits: ['toggle'],
+
+  setup() {
+    const title = computed(() => {
+      const themeLocale = useThemeLocaleData()
+
+      return themeLocale.value.sidebarButtonText || 'Toggle Sidebar'
+    })
+
+    return {
+      title,
+    }
+  },
 })
 </script>
