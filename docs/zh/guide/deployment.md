@@ -19,92 +19,95 @@
 
 1. 设置正确的 [base](../reference/config.md#base) 选项。
 
-    如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
+   如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
 
-    如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
+   如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
 2. 选择你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
 
-    创建 `.github/workflows/docs.yml` 文件来配置工作流。
+   创建 `.github/workflows/docs.yml` 文件来配置工作流。
 
-::: details 点击展开配置样例
-```yaml
-name: docs
+   ::: details 点击展开配置样例
 
-on:
-  # 每当 push 到 main 分支时触发部署
-  push:
-    branches: [main]
-  # 手动触发部署
-  workflow_dispatch:
+   ```yaml
+   name: docs
 
-jobs:
-  docs:
-    runs-on: ubuntu-latest
+   on:
+     # 每当 push 到 main 分支时触发部署
+     push:
+       branches: [main]
+     # 手动触发部署
+     workflow_dispatch:
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
-          fetch-depth: 0
+   jobs:
+     docs:
+       runs-on: ubuntu-latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          # 选择要使用的 node 版本
-          node-version: '14'
+       steps:
+         - uses: actions/checkout@v2
+           with:
+             # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+             fetch-depth: 0
 
-      # 缓存 node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+         - name: Setup Node.js
+           uses: actions/setup-node@v1
+           with:
+             # 选择要使用的 node 版本
+             node-version: '14'
 
-      # 如果缓存没有命中，安装依赖
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+         # 缓存 node_modules
+         - name: Cache dependencies
+           uses: actions/cache@v2
+           id: yarn-cache
+           with:
+             path: |
+               **/node_modules
+             key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+             restore-keys: |
+               ${{ runner.os }}-yarn-
 
-      # 运行构建脚本
-      - name: Build VuePress site
-        run: yarn docs:build
+         # 如果缓存没有命中，安装依赖
+         - name: Install dependencies
+           if: steps.yarn-cache.outputs.cache-hit != 'true'
+           run: yarn --frozen-lockfile
 
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          # 部署到 gh-pages 分支
-          target_branch: gh-pages
-          # 部署目录为 VuePress 的默认输出目录
-          build_dir: docs/.vuepress/dist
-        env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-:::
+         # 运行构建脚本
+         - name: Build VuePress site
+           run: yarn docs:build
 
+         # 查看 workflow 的文档来获取更多信息
+         # @see https://github.com/peaceiris/actions-gh-pages
+         - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             # 部署目录为 VuePress 的默认输出目录
+             publish_dir: docs/.vuepress/dist
+             # gh-pages 仅保留最新 commit 版本
+             force_orphan: true
+             # 默认部署到 gh-pages 分支
+             # publish_branch: your-branch  # default: gh-pages
+   ```
 
-::: tip
-请参考 [GitHub Pages 官方指南](https://pages.github.com/) 来获取更多信息。
-:::
+   :::
+
+   ::: tip
+   请参考 [GitHub Pages 官方指南](https://pages.github.com/) 来获取更多信息。
+   :::
 
 ## GitLab Pages
 
 1. 设置正确的 [base](../reference/config.md#base) 选项。
 
-    如果你准备发布到 `https://<USERNAME>.gitlab.io/` ，你可以省略这一步，因此 `base` 默认就是 `"/"` 。
+   如果你准备发布到 `https://<USERNAME>.gitlab.io/` ，你可以省略这一步，因此 `base` 默认就是 `"/"` 。
 
-    如果你准备发布到 `https://<USERNAME>.gitlab.io/<REPO>/` ，也就是说你的仓库地址是 `https://gitlab.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
+   如果你准备发布到 `https://<USERNAME>.gitlab.io/<REPO>/` ，也就是说你的仓库地址是 `https://gitlab.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
 2. 创建 `.gitlab-ci.yml` 文件来配置 [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) 工作流。
 
 ::: details 点击展开配置样例
+
 ```yaml
 # 选择你要使用的 docker 镜像
 image: node:14-buster
@@ -112,22 +115,23 @@ image: node:14-buster
 pages:
   # 每当 push 到 main 分支时触发部署
   only:
-  - main
+    - main
 
   # 缓存 node_modules
   cache:
     paths:
-    - node_modules/
+      - node_modules/
 
   # 安装依赖并运行构建脚本
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - yarn --frozen-lockfile
+    - yarn docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
+
 :::
 
 ::: tip
@@ -140,32 +144,32 @@ pages:
 
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
-`firebase.json`:
+   `firebase.json`:
 
-```json
-{
-  "hosting": {
-    "public": "./docs/.vuepress/dist",
-    "ignore": []
-  }
-}
-```
+   ```json
+   {
+     "hosting": {
+       "public": "./docs/.vuepress/dist",
+       "ignore": []
+     }
+   }
+   ```
 
-`.firebaserc`:
+   `.firebaserc`:
 
-```json
-{
-  "projects": {
-    "default": "<YOUR_FIREBASE_ID>"
-  }
-}
-```
+   ```json
+   {
+     "projects": {
+       "default": "<YOUR_FIREBASE_ID>"
+     }
+   }
+   ```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
-::: tip
-请参考 [Firebase CLI 官方指南](https://firebase.google.com/docs/cli) 来获取更多信息。
-:::
+   ::: tip
+   请参考 [Firebase CLI 官方指南](https://firebase.google.com/docs/cli) 来获取更多信息。
+   :::
 
 ## Heroku
 
@@ -175,32 +179,32 @@ pages:
 
 3. 运行 `heroku login` 并填写你的 Heroku 认证信息：
 
-```bash
-heroku login
-```
+   ```bash
+   heroku login
+   ```
 
 4. 在你的项目根目录中，创建一个名为 `static.json` 的文件，并包含下述内容：
 
-`static.json`:
+   `static.json`:
 
-```json
-{
-  "root": "./docs/.vuepress/dist"
-}
-```
+   ```json
+   {
+     "root": "./docs/.vuepress/dist"
+   }
+   ```
 
-这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
+   这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
 
 ## Netlify
 
 1. 前往 [Netlify](https://netlify.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `yarn docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. 点击 deploy 按钮。
 
@@ -216,26 +220,26 @@ heroku login
 
 1. 全局安装 CloudBase CLI ：
 
-```bash
-npm install -g @cloudbase/cli
-```
+   ```bash
+   npm install -g @cloudbase/cli
+   ```
 
 2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
 
-```bash
-cloudbase init --without-template
-cloudbase framework:deploy
-```
+   ```bash
+   cloudbase init --without-template
+   cloudbase framework:deploy
+   ```
 
-  CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
+   CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+   确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
 
-  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+   也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
-::: tip
-更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
-:::
+   ::: tip
+   更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
+   :::
 
 ## 21 云盒子
 

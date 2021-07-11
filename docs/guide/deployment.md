@@ -19,119 +19,124 @@ The following guides are based on some shared assumptions:
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Choose your preferred CI tools. Here we take [GitHub Actions](https://github.com/features/actions) as an example.
 
-    Create `.github/workflows/docs.yml` to set up the workflow.
+   Create `.github/workflows/docs.yml` to set up the workflow.
 
-::: details Click to expand sample config
-```yaml
-name: docs
+   ::: details Click to expand sample config
 
-on:
-  # trigger deployment on every push to main branch
-  push:
-    branches: [main]
-  # trigger deployment manually
-  workflow_dispatch:
+   ```yaml
+   name: docs
 
-jobs:
-  docs:
-    runs-on: ubuntu-latest
+   on:
+     # trigger deployment on every push to main branch
+     push:
+       branches: [main]
+     # trigger deployment manually
+     workflow_dispatch:
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # fetch all commits to get last updated time or other git log info
-          fetch-depth: 0
+   jobs:
+     docs:
+       runs-on: ubuntu-latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          # choose node.js version to use
-          node-version: '14'
+       steps:
+         - uses: actions/checkout@v2
+           with:
+             # fetch all commits to get last updated time or other git log info
+             fetch-depth: 0
 
-      # cache node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+         - name: Setup Node.js
+           uses: actions/setup-node@v1
+           with:
+             # choose node.js version to use
+             node-version: '14'
 
-      # install dependencies if the cache did not hit
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+         # cache node_modules
+         - name: Cache dependencies
+           uses: actions/cache@v2
+           id: yarn-cache
+           with:
+             path: |
+               **/node_modules
+             key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+             restore-keys: |
+               ${{ runner.os }}-yarn-
 
-      # run build script
-      - name: Build VuePress site
-        run: yarn docs:build
+         # install dependencies if the cache did not hit
+         - name: Install dependencies
+           if: steps.yarn-cache.outputs.cache-hit != 'true'
+           run: yarn --frozen-lockfile
 
-      # please check out the docs of the workflow for more details
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          # deploy to gh-pages branch
-          target_branch: gh-pages
-          # deploy the default output dir of VuePress
-          build_dir: docs/.vuepress/dist
-        env:
-          # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-:::
+         # run build script
+         - name: Build VuePress site
+           run: yarn docs:build
 
-::: tip
-Please refer to [GitHub Pages official guide](https://pages.github.com/) for more details.
-:::
+         # please check out the docs of the workflow for more details
+         # @see https://github.com/peaceiris/actions-gh-pages
+         - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             # deploy the default output dir of VuePress
+             publish_dir: docs/.vuepress/dist
+             # This allows you to make your publish branch with only the latest commit.
+             force_orphan: true
+             # deploy to gh-pages branch
+             # publish_branch: your-branch  # default: gh-pages
+   ```
+
+   :::
+
+   ::: tip
+   Please refer to [GitHub Pages official guide](https://pages.github.com/) for more details.
+   :::
 
 ## GitLab Pages
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
 
-::: details Click to expand sample config
-```yaml
-# choose a docker image to use
-image: node:14-buster
+   ::: details Click to expand sample config
 
-pages:
-  # trigger deployment on every push to main branch
-  only:
-  - main
+   ```yaml
+   # choose a docker image to use
+   image: node:14-buster
 
-  # cache node_modules
-  cache:
-    paths:
-    - node_modules/
+   pages:
+     # trigger deployment on every push to main branch
+     only:
+       - main
 
-  # install dependencies and run build script
-  script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+     # cache node_modules
+     cache:
+       paths:
+         - node_modules/
 
-  artifacts:
-    paths:
-    - public
-```
-:::
+     # install dependencies and run build script
+     script:
+       - yarn --frozen-lockfile
+       - yarn docs:build --dest public
 
-::: tip
-Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/project/pages/#getting-started) for more details.
-:::
+     artifacts:
+       paths:
+         - public
+   ```
+
+   :::
+
+   ::: tip
+   Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/project/pages/#getting-started) for more details.
+   :::
 
 ## Google Firebase
 
@@ -139,32 +144,32 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 
 2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
 
-`firebase.json`:
+   `firebase.json`:
 
-```json
-{
-  "hosting": {
-    "public": "./docs/.vuepress/dist",
-    "ignore": []
-  }
-}
-```
+   ```json
+   {
+     "hosting": {
+       "public": "./docs/.vuepress/dist",
+       "ignore": []
+     }
+   }
+   ```
 
-`.firebaserc`:
+   `.firebaserc`:
 
-```json
-{
-  "projects": {
-    "default": "<YOUR_FIREBASE_ID>"
-  }
-}
-```
+   ```json
+   {
+     "projects": {
+       "default": "<YOUR_FIREBASE_ID>"
+     }
+   }
+   ```
 
 3. After running `yarn docs:build`, deploy using the command `firebase deploy`.
 
-::: tip
-Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
-:::
+   ::: tip
+   Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
+   :::
 
 ## Heroku
 
@@ -174,32 +179,32 @@ Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/c
 
 3. Run `heroku login` and fill in your Heroku credentials:
 
-```bash
-heroku login
-```
+   ```bash
+   heroku login
+   ```
 
 4. Create a file called `static.json` in the root of your project with the below content:
 
-`static.json`:
+   `static.json`:
 
-```json
-{
-  "root": "./docs/.vuepress/dist"
-}
-```
+   ```json
+   {
+     "root": "./docs/.vuepress/dist"
+   }
+   ```
 
-This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+   This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
 ## Netlify
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `yarn docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. Hit the deploy button.
 
