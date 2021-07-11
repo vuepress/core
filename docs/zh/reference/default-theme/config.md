@@ -388,10 +388,10 @@ module.exports = {
 
 - 用法：
 
-  |  Pattern  |         描述                                                   |
-  |-----------|----------------------------------------------------------------|
-  | `:repo`   | 文档仓库 URL ，即 [docsRepo](#docsrepo)                         |
-  | `:branch` | 文档仓库分支 ，即 [docsBranch](#docsbranch)                     |
+  | Pattern   | 描述                                                              |
+  | --------- | ----------------------------------------------------------------- |
+  | `:repo`   | 文档仓库 URL ，即 [docsRepo](#docsrepo)                           |
+  | `:branch` | 文档仓库分支 ，即 [docsBranch](#docsbranch)                       |
   | `:path`   | 页面源文件的路径，即 [docsDir](#docsdir) 拼接上页面文件的相对路径 |
 
 - 示例：
@@ -407,7 +407,7 @@ module.exports = {
 }
 ```
 
-  则会生成类似于 `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'` 的链接。
+则会生成类似于 `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'` 的链接。
 
 ### docsRepo
 
@@ -544,6 +544,18 @@ module.exports = {
 - 详情：
 
   404 页面中 _返回首页_ 链接的文字。
+
+### darkModeText
+
+- 类型： `string`
+
+- 默认值： `'Toggle DarkMode'`
+
+- 详情：
+
+  切换夜间模式按钮的标题文字。
+
+  它主要是为了站点的可访问性 (a11y) 。
 
 ### openInNewWindow
 

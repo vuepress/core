@@ -18,7 +18,7 @@ Reference of default theme config, which can be set via [themeConfig](../config.
 
   All the options inside the [Locale Config](#locale-config) section can be used in locales.
 
-  This option will only take effect in default theme, so don't confuse with `locales` in [Site Config](../config.md#locales). 
+  This option will only take effect in default theme, so don't confuse with `locales` in [Site Config](../config.md#locales).
 
 - Also see:
   - [Guide > I18n](../../guide/i18n.md)
@@ -158,7 +158,7 @@ module.exports = {
 - Details:
 
   Enable dark mode switching or not.
-  
+
   If set to `true`, a button to switch dark mode will be displayed in the navbar, and the initial mode will be automatically set according to [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 ### repo
@@ -388,8 +388,8 @@ module.exports = {
 
 - Usage:
 
-  |  Pattern  |         Description                                                                                 |
-  |-----------|-----------------------------------------------------------------------------------------------------|
+  | Pattern   | Description                                                                                         |
+  | --------- | --------------------------------------------------------------------------------------------------- |
   | `:repo`   | The docs repo url, i.e. [docsRepo](#docsrepo)                                                       |
   | `:branch` | The docs repo branch, i.e. [docsBranch](#docsbranch)                                                |
   | `:path`   | The path of the page source file, i.e. [docsDir](#docsdir) joins the relative path of the page file |
@@ -407,7 +407,7 @@ module.exports = {
 }
 ```
 
-  The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'`.
+The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'`.
 
 ### docsRepo
 
@@ -544,6 +544,18 @@ module.exports = {
 - Details:
 
   Specify the text of the _back to home_ link in the 404 page.
+
+### darkModeText
+
+- Type: `string`
+
+- Default: `'Toggle DarkMode'`
+
+- Details:
+
+  Title text for darkmode button.
+
+  This is mainly for a11y purpose.
 
 ### openInNewWindow
 
