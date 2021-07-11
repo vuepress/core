@@ -174,7 +174,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * Page meta - edit link config
    *
-   * Set this config if the branch of your docs is not 'master'
+   * Set this config if the branch of your docs is not 'main'
    */
   docsBranch?: string
 
