@@ -333,13 +333,18 @@ You should not configure it unless you understand what it is for.
 
 #### markdown.code.lineNumbers
 
-- Type: `boolean`
+- Type: `boolean | number`
 
 - Default: `true`
 
 - Details:
 
   Enable code line numbers or not.
+
+  - `boolean` means enable code line numbers or not.
+  - `number` means the threshold code lines enabling it
+
+    E.g.: `4` means only enable it when code block contains >=4 lines
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
@@ -651,7 +656,12 @@ module.exports = {
     // two-element tuple
     ['vuepress-plugin-foo', false],
     ['bar', true],
-    [path.resolve(__dirname, './path/to/local/plugin'), { /* options */ }],
+    [
+      path.resolve(__dirname, './path/to/local/plugin'),
+      {
+        /* options */
+      },
+    ],
     [require('vuepress-plugin-baz'), true],
 
     // only use the first element

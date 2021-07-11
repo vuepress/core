@@ -332,13 +332,17 @@ module.exports = {
 
 #### markdown.code.lineNumbers
 
-- 类型： `boolean`
+- 类型： `boolean | number`
 
 - 默认值： `true`
 
 - 详情：
 
   是否启用代码块行号。
+
+  布尔值意味着是否启用代码块行号。
+
+  数字意味着显示行号所需的最少行数。例如 `4` 意味着只有代码块行数大于等于 4 时才显示行号。
 
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 行号](../guide/markdown.md#行号)
@@ -650,7 +654,12 @@ module.exports = {
     // 包含两个元素的元组
     ['vuepress-plugin-foo', false],
     ['bar', true],
-    [path.resolve(__dirname, './path/to/local/plugin'), { /* 选项 */ }],
+    [
+      path.resolve(__dirname, './path/to/local/plugin'),
+      {
+        /* 选项 */
+      },
+    ],
     [require('vuepress-plugin-baz'), true],
 
     // 只使用第一个元素

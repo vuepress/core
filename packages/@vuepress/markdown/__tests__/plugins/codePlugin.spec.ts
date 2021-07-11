@@ -53,9 +53,25 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
+    it('should enable `lineNumbers`', () => {
+      const md = MarkdownIt().use(codePlugin, {
+        lineNumbers: true,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
     it('should disable `lineNumbers`', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should accpet numbers as `lineNumbers`', () => {
+      const md = MarkdownIt().use(codePlugin, {
+        lineNumbers: 4,
       })
 
       expect(md.render(source)).toMatchSnapshot()
@@ -182,6 +198,14 @@ ${codeFence}
     it('should work properly if `lineNumbers` is disabled by default', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `lineNumbers` is set to a threshold', () => {
+      const md = MarkdownIt().use(codePlugin, {
+        lineNumbers: 4,
       })
 
       expect(md.render(source)).toMatchSnapshot()
