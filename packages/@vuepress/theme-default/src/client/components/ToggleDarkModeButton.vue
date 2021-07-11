@@ -1,5 +1,9 @@
 <template>
-  <button class="toggle-dark-button" @click="toggleDarkMode">
+  <button
+    class="toggle-dark-button"
+    :title="title"
+    @click="themeLocale.darkModeText"
+  >
     <svg
       v-show="!isDarkMode"
       class="icon"
@@ -42,9 +46,11 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from '../composables'
+import { useDarkMode, useThemeLocaleData } from '../composables'
 
 const isDarkMode = useDarkMode()
+const themeLocale = useThemeLocaleData()
+
 const toggleDarkMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }

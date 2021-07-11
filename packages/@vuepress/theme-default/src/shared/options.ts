@@ -80,6 +80,11 @@ export interface DefaultThemeLocaleData extends LocaleData {
   darkMode?: boolean
 
   /**
+   * A11y text for darkmode toggle button
+   */
+  darkModeText?: string
+
+  /**
    * Navbar repository config
    *
    * Used for the repository link of navbar

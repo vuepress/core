@@ -33,6 +33,9 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   ],
   backToHome: 'Take me home',
 
+  // a11y only
+  darkModeText: 'Toggle DarkMode',
+
   // `<OutboundLink>` sr-only
   openInNewWindow: 'open in new window',
 }
