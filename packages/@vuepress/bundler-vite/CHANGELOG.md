@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
+
+
+### Bug Fixes
+
+* **bundler-vite:** fallback html requests to index.html (close [#265](https://github.com/vuepress/vuepress-next/issues/265)) ([665cda3](https://github.com/vuepress/vuepress-next/commit/665cda3b84f53a62177083af8af6d034b7e1c147))
+
+
+
+
+
 # [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
 
 

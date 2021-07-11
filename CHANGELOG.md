@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
+
+
+### Bug Fixes
+
+* **bundler-vite:** fallback html requests to index.html (close [#265](https://github.com/vuepress/vuepress-next/issues/265)) ([665cda3](https://github.com/vuepress/vuepress-next/commit/665cda3b84f53a62177083af8af6d034b7e1c147))
+* **markdown:** resolve assets links in html img tags (close [#254](https://github.com/vuepress/vuepress-next/issues/254)) ([7cbb163](https://github.com/vuepress/vuepress-next/commit/7cbb163bf19cbe8e8d682ef9707c3f738486e089))
+* **plugin-active-header-links:** update active header link selector ([#259](https://github.com/vuepress/vuepress-next/issues/259)) ([adaeed5](https://github.com/vuepress/vuepress-next/commit/adaeed5b71b2746b8d30e0eac7be55a736eefb11))
+* **theme-default:** break long links on overflow (close [#266](https://github.com/vuepress/vuepress-next/issues/266)) ([#273](https://github.com/vuepress/vuepress-next/issues/273)) ([eb970c3](https://github.com/vuepress/vuepress-next/commit/eb970c3aa4c4d650cd964b0c1f60d423a7d55125))
+
+
+
+
+
 # [2.0.0-beta.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2021-07-03)
 
 
