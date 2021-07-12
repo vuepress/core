@@ -545,18 +545,6 @@ module.exports = {
 
   404 页面中 _返回首页_ 链接的文字。
 
-### darkModeText
-
-- 类型： `string`
-
-- 默认值： `'Toggle DarkMode'`
-
-- 详情：
-
-  切换夜间模式按钮的标题文字。
-
-  它主要是为了站点的可访问性 (a11y) 。
-
 ### openInNewWindow
 
 - 类型： `string`
@@ -566,6 +554,18 @@ module.exports = {
 - 详情：
 
   [OutboundLink](../components.md#outboundlink) 链接内的 `sr-only` 文字。
+
+  它主要是为了站点的可访问性 (a11y) 。
+
+### toggleDarkMode
+
+- 类型： `string`
+
+- 默认值： `'toggle dark mode'`
+
+- 详情：
+
+  切换夜间模式按钮的标题文字。
 
   它主要是为了站点的可访问性 (a11y) 。
 

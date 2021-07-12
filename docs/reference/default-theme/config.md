@@ -545,18 +545,6 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   Specify the text of the _back to home_ link in the 404 page.
 
-### darkModeText
-
-- Type: `string`
-
-- Default: `'Toggle DarkMode'`
-
-- Details:
-
-  Title text for darkmode button.
-
-  This is mainly for a11y purpose.
-
 ### openInNewWindow
 
 - Type: `string`
@@ -566,6 +554,18 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 - Details:
 
   Specify the `sr-only` text of the [OutboundLink](../components.md#outboundlink).
+
+  This is mainly for a11y purpose.
+
+### toggleDarkMode
+
+- Type: `string`
+
+- Default: `'toggle dark mode'`
+
+- Details:
+
+  Title text for dark mode toggle button.
 
   This is mainly for a11y purpose.
 

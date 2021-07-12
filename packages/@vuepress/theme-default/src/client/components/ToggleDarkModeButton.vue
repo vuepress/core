@@ -1,8 +1,8 @@
 <template>
   <button
     class="toggle-dark-button"
-    :title="title"
-    @click="themeLocale.darkModeText"
+    :title="themeLocale.toggleDarkMode"
+    @click="toggleDarkMode"
   >
     <svg
       v-show="!isDarkMode"

@@ -80,11 +80,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
   darkMode?: boolean
 
   /**
-   * A11y text for darkmode toggle button
-   */
-  darkModeText?: string
-
-  /**
    * Navbar repository config
    *
    * Used for the repository link of navbar
@@ -254,7 +249,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
   backToHome?: string
 
   /**
-   * sr-only message in `<OutboundLink>`
+   * A11y text for `<OutboundLink>`
    */
   openInNewWindow?: string
+
+  /**
+   * A11y text for dark mode toggle button
+   */
+  toggleDarkMode?: string
 }
