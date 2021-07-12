@@ -249,7 +249,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
   backToHome?: string
 
   /**
-   * sr-only message in `<OutboundLink>`
+   * A11y text for `<OutboundLink>`
    */
   openInNewWindow?: string
+
+  /**
+   * A11y text for dark mode toggle button
+   */
+  toggleDarkMode?: string
 }

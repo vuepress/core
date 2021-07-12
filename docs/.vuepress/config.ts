@@ -128,8 +128,9 @@ export default defineUserConfig<DefaultThemeOptions>({
         ],
         backToHome: '返回首页',
 
-        // other
+        // a11y
         openInNewWindow: '在新窗口打开',
+        toggleDarkMode: '切换夜间模式',
       },
     },
 
