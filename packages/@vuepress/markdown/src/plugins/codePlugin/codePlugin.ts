@@ -1,6 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
 import { isHighlightLine, resolveHighlightLines } from './resolveHighlightLines'
-import type { HighlightLinesRange } from './resolveHighlightLines'
 import { resolveLanguage } from './resolveLanguage'
 import { resolveLineNumbers } from './resolveLineNumbers'
 import { resolveVPre } from './resolveVPre'
@@ -51,35 +50,22 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
 
-    // resolve highlight line ranges from token info
-    let highlightLinesRanges: HighlightLinesRange[] | null = null
-    if (highlightLines) {
-      highlightLinesRanges = resolveHighlightLines(info)
-    }
-
-    // resolve line-numbers mark from token info
-    const useLineNumbers = resolveLineNumbers(info) ?? lineNumbers
-
-    // resolve v-pre mark from token info
-    const useVPre = resolveVPre(info) ?? vPre
-
     // resolve language from token info
     const language = resolveLanguage(info)
-
-    // the result of code and lang
-    let code = token.content
-
-    // try to highlight code
-    code =
-      options.highlight?.(code, language.name, '') || md.utils.escapeHtml(code)
-
     const languageClass = `${options.langPrefix}${language.name}`
+
+    // try to get highlighted code
+    const code =
+      options.highlight?.(token.content, language.name, '') ||
+      md.utils.escapeHtml(token.content)
 
     // wrap highlighted code with `<pre>` and `<code>`
     let result = code.startsWith('<pre')
       ? code
       : `<pre class="${languageClass}"><code>${code}</code></pre>`
 
+    // resolve v-pre mark from token info
+    const useVPre = resolveVPre(info) ?? vPre
     if (useVPre) {
       result = `<pre v-pre${result.slice('<pre'.length)}`
     }
@@ -92,13 +78,15 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     // code fences always have an ending `\n`, so we should trim the last line
     const lines = code.split('\n').slice(0, -1)
 
+    // resolve highlight line ranges from token info
+    const highlightLinesRanges = highlightLines
+      ? resolveHighlightLines(info)
+      : null
     // generate highlight lines
     if (highlightLinesRanges) {
-      const ranges = highlightLinesRanges
-
       const highlightLinesCode = lines
         .map((_, index) => {
-          if (isHighlightLine(index + 1, ranges)) {
+          if (isHighlightLine(index + 1, highlightLinesRanges)) {
             return '<div class="highlight-line">&nbsp;</div>'
           }
           return '<br>'
@@ -108,6 +96,8 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       result = `${result}<div class="highlight-lines">${highlightLinesCode}</div>`
     }
 
+    // resolve line-numbers mark from token info
+    const useLineNumbers = resolveLineNumbers(info) ?? lineNumbers
     // generate line numbers
     if (useLineNumbers) {
       // generate line numbers code
