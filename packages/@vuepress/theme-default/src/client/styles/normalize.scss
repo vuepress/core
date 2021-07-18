@@ -44,7 +44,9 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: background-color color ease 0.3s;
+  transition:
+    background-color ease 0.3s,
+    color ease 0.3s;
 }
 
 blockquote {
