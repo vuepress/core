@@ -61,6 +61,14 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
+    it('should enable `lineNumbers` according to number of code lines', () => {
+      const md = MarkdownIt().use(codePlugin, {
+        lineNumbers: 4,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
     it('should disable `preWrapper`', () => {
       const md = MarkdownIt().use(codePlugin, {
         preWrapper: false,
@@ -182,6 +190,14 @@ ${codeFence}
     it('should work properly if `lineNumbers` is disabled by default', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `lineNumbers` is set to a number by default', () => {
+      const md = MarkdownIt().use(codePlugin, {
+        lineNumbers: 4,
       })
 
       expect(md.render(source)).toMatchSnapshot()

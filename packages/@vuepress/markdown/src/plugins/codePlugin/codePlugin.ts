@@ -12,8 +12,11 @@ export interface CodePluginOptions {
 
   /**
    * Enable line numbers or not
+   *
+   * - A `boolean` value is to enable line numbers or not.
+   * - A `number` value is the minimum number of lines to enable line numbers
    */
-  lineNumbers?: boolean
+  lineNumbers?: boolean | number
 
   /**
    * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
@@ -97,7 +100,11 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }
 
     // resolve line-numbers mark from token info
-    const useLineNumbers = resolveLineNumbers(info) ?? lineNumbers
+    const useLineNumbers =
+      resolveLineNumbers(info) ??
+      (typeof lineNumbers === 'number'
+        ? lines.length >= lineNumbers
+        : lineNumbers)
     // generate line numbers
     if (useLineNumbers) {
       // generate line numbers code
