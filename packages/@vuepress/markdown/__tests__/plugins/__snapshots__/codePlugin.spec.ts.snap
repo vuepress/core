@@ -141,7 +141,7 @@ function bar () {
 </div>
 `;
 
-exports[`@vuepress/markdown > plugins > codePlugin :line-numbers / :no-line-numbers should work properly if \`lineNumbers\` is set to a threshold 1`] = `
+exports[`@vuepress/markdown > plugins > codePlugin :line-numbers / :no-line-numbers should work properly if \`lineNumbers\` is set to a number by default 1`] = `
 <div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
 </div>
@@ -362,51 +362,6 @@ function bar () {
 </div>
 `;
 
-exports[`@vuepress/markdown > plugins > codePlugin plugin options should accpet numbers as \`lineNumbers\` 1`] = `
-<div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
-</code></pre>
-</div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-</code></pre>
-  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
-</div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-</code></pre>
-  <div class="highlight-lines">
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div><br><br><br>
-  </div>
-  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
-</div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-
-const baz = () =&gt; {
-  return 2048
-}
-</code></pre>
-  <div class="highlight-lines">
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div><br><br><br><br>
-  </div>
-  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div>
-</div>
-`;
-
 exports[`@vuepress/markdown > plugins > codePlugin plugin options should disable \`highlightLines\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
@@ -554,10 +509,9 @@ const baz = () =&gt; {
 </div>
 `;
 
-exports[`@vuepress/markdown > plugins > codePlugin plugin options should enable \`lineNumbers\` 1`] = `
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
+exports[`@vuepress/markdown > plugins > codePlugin plugin options should enable \`lineNumbers\` according to number of code lines 1`] = `
+<div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers"><span class="line-number">1</span><br></div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 

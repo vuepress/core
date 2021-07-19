@@ -53,14 +53,6 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should enable `lineNumbers`', () => {
-      const md = MarkdownIt().use(codePlugin, {
-        lineNumbers: true,
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-
     it('should disable `lineNumbers`', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: false,
@@ -69,7 +61,7 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should accpet numbers as `lineNumbers`', () => {
+    it('should enable `lineNumbers` according to number of code lines', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: 4,
       })
@@ -203,7 +195,7 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is set to a threshold', () => {
+    it('should work properly if `lineNumbers` is set to a number by default', () => {
       const md = MarkdownIt().use(codePlugin, {
         lineNumbers: 4,
       })
