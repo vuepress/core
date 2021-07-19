@@ -13,8 +13,8 @@ export interface CodePluginOptions {
   /**
    * Enable line numbers or not
    *
-   * - a `boolean` value is to enable line numbers or not.
-   * - a `number` value is the minimum number of lines to enable line numbers
+   * - A `boolean` value is to enable line numbers or not.
+   * - A `number` value is the minimum number of lines to enable line numbers
    */
   lineNumbers?: boolean | number
 

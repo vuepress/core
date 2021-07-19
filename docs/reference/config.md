@@ -339,12 +339,10 @@ You should not configure it unless you understand what it is for.
 
 - Details:
 
-  Enable code line numbers or not.
+  Configure code line numbers.
 
-  - `boolean` means enable code line numbers or not.
-  - `number` means the threshold code lines enabling it
-
-    E.g.: `4` means only enable it when code block contains >=4 lines
+  - A `boolean` value is to enable line numbers or not.
+  - A `number` value is the minimum number of lines to enable line numbers. For example, if you set it to `4`, line numbers will only be enabled when your code block has at least 4 lines of code.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
