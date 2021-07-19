@@ -6,6 +6,10 @@ body {
   transition: background-color ease 0.3s;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
