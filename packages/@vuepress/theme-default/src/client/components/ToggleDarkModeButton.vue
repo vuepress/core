@@ -48,12 +48,14 @@
 <script setup lang="ts">
 import {
   useDarkMode,
+  useDocumentClass,
   usePrefersColorScheme,
   useThemeLocaleData,
 } from '../composables'
 
 const isDarkMode = useDarkMode()
 const themeLocale = useThemeLocaleData()
+useDocumentClass(isDarkMode)
 usePrefersColorScheme(isDarkMode)
 
 const toggleDarkMode = (): void => {
