@@ -30,13 +30,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-} from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
@@ -45,7 +39,7 @@ import Navbar from './Navbar.vue'
 import Sidebar from './Sidebar.vue'
 
 export default defineComponent({
-  name: 'Layout',
+  name: 'LayoutFrame',
 
   components: { Navbar, Sidebar },
 
