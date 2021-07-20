@@ -1,9 +1,9 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import type { Ref } from 'vue'
 
-export const useDarkMode = (): Ref<boolean> => {
-  const isDarkMode = ref(false)
+const isDarkMode = ref(false)
 
+export const useDarkMode = (): Ref<boolean> => {
   const updateDarkModeClass = (value = isDarkMode.value): void => {
     // set `class="dark"` on `<html>` element
     const htmlEl = window?.document.querySelector('html')
