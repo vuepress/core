@@ -174,7 +174,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * Page meta - edit link config
    *
-   * Set this config if the branch of your docs is not 'master'
+   * Set this config if the branch of your docs is not 'main'
    */
   docsBranch?: string
 
@@ -270,7 +270,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
   backToHome?: string
 
   /**
-   * sr-only message in `<OutboundLink>`
+   * A11y text for `<OutboundLink>`
    */
   openInNewWindow?: string
+
+  /**
+   * A11y text for dark mode toggle button
+   */
+  toggleDarkMode?: string
 }

@@ -38,8 +38,9 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   ],
   backToHome: 'Take me home',
 
-  // `<OutboundLink>` sr-only
+  // a11y
   openInNewWindow: 'open in new window',
+  toggleDarkMode: 'toggle dark mode',
 }
 
 const defaultLocaleData: DefaultThemeLocaleData = {

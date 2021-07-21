@@ -1,4 +1,9 @@
 .custom-container {
+  transition:
+    background-color ease 0.3s,
+    border-color ease 0.3s,
+    color ease 0.3s;
+
   .custom-container-title {
     font-weight: 600;
     margin-bottom: -0.4rem;

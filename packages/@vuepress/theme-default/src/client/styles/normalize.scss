@@ -6,6 +6,10 @@ body {
   transition: background-color ease 0.3s;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
@@ -18,6 +22,7 @@ a {
   font-weight: 500;
   color: var(--c-text-accent);
   text-decoration: none;
+  overflow-wrap: break-word;
 }
 
 p a code {
@@ -43,6 +48,9 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
+  transition:
+    background-color ease 0.3s,
+    color ease 0.3s;
 }
 
 blockquote {
