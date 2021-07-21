@@ -1,5 +1,5 @@
 export * from './useDarkMode'
-export * from './useHTMLClass'
+export * from './useHtmlDarkClass'
 export * from './useNavLink'
 export * from './usePrefersColorScheme'
 export * from './useResolveRouteWithRedirect'
