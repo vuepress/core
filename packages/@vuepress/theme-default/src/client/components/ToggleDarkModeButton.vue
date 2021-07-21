@@ -60,7 +60,7 @@ const isDarkMode = useDarkMode()
 const toggleDarkMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }
-useHtmlDarkClass(isDarkMode)
 usePrefersColorScheme(isDarkMode)
+useHtmlDarkClass(isDarkMode)
 useMetaThemeColor(isDarkMode)
 </script>
