@@ -24,7 +24,7 @@ Take the `docs` directory as your [sourceDir](../reference/cli.md), e.g. your ar
 | `/README.md`       | `/`                  |
 | `/contributing.md` | `/contributing.html` |
 | `/guide/README.md` | `/guide/`            |
-| `/guide/page.md`   | `/guide/page.html`   |
+| `/guide/getting-started.md`   | `/guide/getting-started.html`   |
 
 ## Frontmatter
 
