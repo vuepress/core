@@ -1,5 +1,9 @@
 # Migrating from v1
 
+::: warning
+Plugins and themes of VuePress v1 are not compatible with VuePress v2. You need to update them to corresponding v2 version.
+:::
+
 Some major changes and enhancements of VuePress v2:
 
 - VuePress v2 is now using Vue 3, so make sure your components and other client files are compatible with Vue 3.

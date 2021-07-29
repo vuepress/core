@@ -1,5 +1,9 @@
 # 从 v1 迁移
 
+::: warning
+VuePress v1 的插件和主题与 VuePress v2 不兼容。你需要将它们升级到与 v2 对应的版本。
+:::
+
 VuePress v2 的一些主要改动和优化：
 
 - VuePress v2 现在使用 Vue 3 ，因此你要保证你的组件和其他客户端文件是适用于 Vue 3 的。
