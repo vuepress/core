@@ -15,11 +15,10 @@ The following hooks will be processed when initializing app:
 
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
+- [extendsPageData](#extendspagedata)
 - [onInitialized](#oninitialized)
 
 The following hooks will be processed when preparing files:
-
-- [extendsPageData](#extendspagedata)
 - [clientAppEnhanceFiles](#clientappenhancefiles)
 - [clientAppRootComponentFiles](#clientapprootcomponentfiles)
 - [clientAppSetupFiles](#clientappsetupfiles)
@@ -171,13 +170,13 @@ module.exports = {
 
 ### extendsPageData
 
-- Type: `(page: Page, app: App) => Record<string, any> | Promise<Record<string, any>>`
+- Type: `(page: Omit<Page, 'data'>, app: App) => Record<string, any> | Promise<Record<string, any>>`
 
 - Details:
 
   Page data extension.
 
-  This hook accepts a function that will receive an instance of `Page`. The returned object will be merged into page data, which can be used in client side code.
+  This hook accepts a function that will receive an instance of `Page` (excluding the `data` property). The returned object will be merged into page data, which can be used in client side code.
 
 - Example:
 

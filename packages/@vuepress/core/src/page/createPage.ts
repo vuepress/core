@@ -5,6 +5,7 @@ import { renderPageExcerpt } from './renderPageExcerpt'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo'
 import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDataInfo } from './resolvePageDataInfo'
+import { resolvePageData } from './resolvePageData'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
@@ -117,8 +118,8 @@ export const createPage = async (
     dataFileChunkName,
   } = resolvePageDataInfo({ app, htmlFilePathRelative, key })
 
-  return {
-    // page data
+  const page = {
+    // base fields
     key,
     path,
     title,
@@ -127,7 +128,7 @@ export const createPage = async (
     excerpt,
     headers,
 
-    // extra data
+    // extra fields
     content,
     contentRendered,
     date,
@@ -150,5 +151,10 @@ export const createPage = async (
     dataFileChunkName,
     htmlFilePath,
     htmlFilePathRelative,
-  }
+  } as Page
+
+  // resolve page data
+  page.data = await resolvePageData({ app, page })
+
+  return page
 }

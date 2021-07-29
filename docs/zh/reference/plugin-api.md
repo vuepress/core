@@ -15,11 +15,11 @@
 
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
+- [extendsPageData](#extendspagedata)
 - [onInitialized](#oninitialized)
 
 下列 Hooks 会在准备文件时处理：
 
-- [extendsPageData](#extendspagedata)
 - [clientAppEnhanceFiles](#clientappenhancefiles)
 - [clientAppRootComponentFiles](#clientapprootcomponentfiles)
 - [clientAppSetupFiles](#clientappsetupfiles)
@@ -171,13 +171,13 @@ module.exports = {
 
 ### extendsPageData
 
-- 类型： `(page: Page, app: App) => Record<string, any> | Promise<Record<string, any>>`
+- 类型： `(page: Omit<Page, 'data'>, app: App) => Record<string, any> | Promise<Record<string, any>>`
 
 - 详情：
 
   页面数据扩展。
 
-  该 Hook 接收一个函数，在参数中会收到一个 `Page` 实例。返回的对象会被合并到页面数据中，可以在客户端代码中使用。
+  该 Hook 接收一个函数，在参数中会收到一个 `Page` 实例 （不包含 `data` 属性）。返回的对象会被合并到页面数据中，可以在客户端代码中使用。
 
 - 示例：
 

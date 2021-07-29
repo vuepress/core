@@ -48,7 +48,7 @@ export type ExtendsPageOptionsHook = Hook<
   (options: PageOptions, app: App) => PromiseOrNot<PageOptions>
 >
 export type ExtendsPageDataHook = Hook<
-  (page: Page, app: App) => PromiseOrNot<Record<string, any>>
+  (page: Omit<Page, 'data'>, app: App) => PromiseOrNot<Record<string, any>>
 >
 
 /**

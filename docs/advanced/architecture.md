@@ -23,7 +23,9 @@ The above figure shows the core process of VuePress Node App and the hooks of [P
 - In the **init** stage:
   - Theme and plugins will be loaded. That means all the plugins should be used before initialization.
   - As we are using markdown-it to parse the markdown file, the [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) hook will be processed before loading page files.
-  - Page files will be loaded, and [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) hook will be processed to create pages.
+  - Page files will be loaded:
+    - [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) hook will be processed to create pages.
+    - [extendsPageData](../reference/plugin-api.md#extendspagedata) hook will be processed to generate data of pages.
 - In the **prepare** stage:
   - Temp files will be generated, so all hooks related to client files will be processed here.
 - In the **dev / build** stage:

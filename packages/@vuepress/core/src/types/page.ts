@@ -4,7 +4,12 @@ import type { PageData, PageFrontmatter } from '@vuepress/shared'
 /**
  * Vuepress Page
  */
-export interface Page extends PageData {
+export interface Page<T extends PageData = PageData> extends PageData {
+  /**
+   * Data of the page, which will be available in client code
+   */
+  data: T
+
   /**
    * Raw Content of the page
    */
