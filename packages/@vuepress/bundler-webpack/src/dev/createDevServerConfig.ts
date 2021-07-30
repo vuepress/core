@@ -10,13 +10,13 @@ export const createDevServerConfig = (
   app: App,
   options: WebpackBundlerOptions
 ): WebpackOptionsNormalized['devServer'] => ({
+  allowedHosts: 'all',
   compress: true,
   devMiddleware: {
     publicPath: app.options.base,
     writeToDisk: false,
     stats: app.env.isDebug ? 'normal' : 'errors-warnings',
   },
-  firewall: false,
   headers: {
     'access-control-allow-origin': '*',
   },
