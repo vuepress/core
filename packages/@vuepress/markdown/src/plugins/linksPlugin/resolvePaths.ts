@@ -24,7 +24,11 @@ export const resolvePaths = (
       // if `filePathRelative` is available
 
       // resolve relative path according to `filePathRelative`
-      relativePath = path.join(path.dirname(filePathRelative), rawPath)
+      relativePath = path.join(
+        // file path may contain non-ASCII characters
+        path.dirname(encodeURI(filePathRelative)),
+        rawPath
+      )
       // resolve absolute path according to `base`
       absolutePath = path.join(base, relativePath)
     } else {

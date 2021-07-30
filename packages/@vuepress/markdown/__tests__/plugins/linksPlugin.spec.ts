@@ -602,6 +602,135 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         ])
       })
 
+      it('should convert to absolute links correctly if the file path contains non-ASCII characters', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          filePathRelative: '中/文/路径.md',
+        }
+        const encoded中 = encodeURI('中')
+        const encoded文 = encodeURI('文')
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            `<RouterLink to="/${encoded中}/${encoded文}/foo.html">foo1</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/foo.html#hash">foo2</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/foo.html">foo3</RouterLink>`,
+            `<RouterLink to="/${encoded中}/bar.html">bar1</RouterLink>`,
+            `<RouterLink to="/${encoded中}/bar.html#hash">bar2</RouterLink>`,
+            `<RouterLink to="/${encoded中}/bar.html">bar3</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/foo/bar.html">foobar1</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/foo/bar.html#hash">foobar2</RouterLink>`,
+            `<RouterLink to="/${encoded中}/foo/bar.html">foobar3</RouterLink>`,
+            `<RouterLink to="/${encoded中}/foo/bar.html#hash">foobar4</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/">index1</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/#hash">index2</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/">index3</RouterLink>`,
+            `<RouterLink to="/${encoded中}/">index4</RouterLink>`,
+            `<RouterLink to="/${encoded中}/foo/bar/">index5</RouterLink>`,
+            `<RouterLink to="/${encoded中}/${encoded文}/">readme1</RouterLink>`,
+            `<RouterLink to="/${encoded中}/#hash">readme2</RouterLink>`,
+            `<RouterLink to="/${encoded中}/foo/bar/">readme3</RouterLink>`,
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: 'foo.md',
+            relative: `${encoded中}/${encoded文}/foo.md`,
+            absolute: `/${encoded中}/${encoded文}/foo.md`,
+          },
+          {
+            raw: 'foo.md#hash',
+            relative: `${encoded中}/${encoded文}/foo.md`,
+            absolute: `/${encoded中}/${encoded文}/foo.md`,
+          },
+          {
+            raw: './foo.md',
+            relative: `${encoded中}/${encoded文}/foo.md`,
+            absolute: `/${encoded中}/${encoded文}/foo.md`,
+          },
+          {
+            raw: '../bar.md',
+            relative: `${encoded中}/bar.md`,
+            absolute: `/${encoded中}/bar.md`,
+          },
+          {
+            raw: '../bar.md#hash',
+            relative: `${encoded中}/bar.md`,
+            absolute: `/${encoded中}/bar.md`,
+          },
+          {
+            raw: './../bar.md',
+            relative: `${encoded中}/bar.md`,
+            absolute: `/${encoded中}/bar.md`,
+          },
+          {
+            raw: 'foo/bar.md',
+            relative: `${encoded中}/${encoded文}/foo/bar.md`,
+            absolute: `/${encoded中}/${encoded文}/foo/bar.md`,
+          },
+          {
+            raw: 'foo/bar.md#hash',
+            relative: `${encoded中}/${encoded文}/foo/bar.md`,
+            absolute: `/${encoded中}/${encoded文}/foo/bar.md`,
+          },
+          {
+            raw: '../foo/bar.md',
+            relative: `${encoded中}/foo/bar.md`,
+            absolute: `/${encoded中}/foo/bar.md`,
+          },
+          {
+            raw: '../foo/bar.md#hash',
+            relative: `${encoded中}/foo/bar.md`,
+            absolute: `/${encoded中}/foo/bar.md`,
+          },
+          {
+            raw: 'index.md',
+            relative: `${encoded中}/${encoded文}/index.md`,
+            absolute: `/${encoded中}/${encoded文}/index.md`,
+          },
+          {
+            raw: 'index.md#hash',
+            relative: `${encoded中}/${encoded文}/index.md`,
+            absolute: `/${encoded中}/${encoded文}/index.md`,
+          },
+          {
+            raw: './index.md',
+            relative: `${encoded中}/${encoded文}/index.md`,
+            absolute: `/${encoded中}/${encoded文}/index.md`,
+          },
+          {
+            raw: '../index.md',
+            relative: `${encoded中}/index.md`,
+            absolute: `/${encoded中}/index.md`,
+          },
+          {
+            raw: '../foo/bar/index.md',
+            relative: `${encoded中}/foo/bar/index.md`,
+            absolute: `/${encoded中}/foo/bar/index.md`,
+          },
+          {
+            raw: 'readme.md',
+            relative: `${encoded中}/${encoded文}/readme.md`,
+            absolute: `/${encoded中}/${encoded文}/readme.md`,
+          },
+          {
+            raw: '../readme.md#hash',
+            relative: `${encoded中}/readme.md`,
+            absolute: `/${encoded中}/readme.md`,
+          },
+          {
+            raw: '../foo/bar/readme.md',
+            relative: `${encoded中}/foo/bar/readme.md`,
+            absolute: `/${encoded中}/foo/bar/readme.md`,
+          },
+        ])
+      })
+
       it('should not conflict with base', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = {
