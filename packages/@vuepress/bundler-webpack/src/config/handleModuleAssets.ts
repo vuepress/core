@@ -7,11 +7,9 @@ import type { App } from '@vuepress/core'
 export const handleModuleAssets = ({
   app,
   config,
-  inlineLimit = 10000,
 }: {
   app: App
   config: Config
-  inlineLimit?: number
 }): void => {
   // images
   config.module
