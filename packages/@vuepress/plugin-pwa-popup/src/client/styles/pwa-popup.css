@@ -26,7 +26,7 @@
 
 .pwa-popup-enter-active,
 .pwa-popup-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
+  transition: var(--t-opacity), var(--t-transform);
 }
 
 .pwa-popup-enter-from,

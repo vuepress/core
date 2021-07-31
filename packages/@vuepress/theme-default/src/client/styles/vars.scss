@@ -65,6 +65,17 @@
   --sidebar-width-mobile: calc(var(--sidebar-width) * 0.82);
   --content-width: 740px;
   --homepage-width: 960px;
+
+  // transition vars
+  --t-duration: 0.3s;
+  --t-all: all var(--t-duration);
+  --t-opacity: opacity var(--t-duration);
+  --t-color: color var(--t-duration);
+  --t-border-color: border-color var(--t-duration);
+  --t-background-color: background-color var(--t-duration);
+  --t-color-all: var(--t-color), var(--t-border-color),
+    var(--t-background-color);
+  --t-transform: transform var(--t-duration);
 }
 
 // plugin-back-to-top

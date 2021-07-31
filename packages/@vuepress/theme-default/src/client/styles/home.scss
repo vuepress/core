@@ -40,7 +40,7 @@
       border-width: 2px;
       border-style: solid;
       border-radius: 4px;
-      transition: background-color 0.1s ease;
+      transition: var(--t-color-all);
       box-sizing: border-box;
 
       &:not(:first-child) {
@@ -103,7 +103,7 @@
     border-top: 1px solid var(--c-border);
     text-align: center;
     color: var(--c-text-lighter);
-    transition: border-top-color 0.3s ease;
+    transition: var(--t-color-all);
   }
 }
 
