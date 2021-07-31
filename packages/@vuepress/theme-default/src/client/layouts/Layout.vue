@@ -25,24 +25,26 @@
       </template>
     </Sidebar>
 
-    <Home v-if="frontmatter.home" />
+    <slot name="page">
+      <Home v-if="frontmatter.home" />
 
-    <Transition
-      v-else
-      name="fade-slide-y"
-      mode="out-in"
-      @before-enter="onBeforeEnter"
-      @before-leave="onBeforeLeave"
-    >
-      <Page :key="page.path">
-        <template #top>
-          <slot name="page-top" />
-        </template>
-        <template #bottom>
-          <slot name="page-bottom" />
-        </template>
-      </Page>
-    </Transition>
+      <Transition
+        v-else
+        name="fade-slide-y"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+        @before-leave="onBeforeLeave"
+      >
+        <Page :key="page.path">
+          <template #top>
+            <slot name="page-top" />
+          </template>
+          <template #bottom>
+            <slot name="page-bottom" />
+          </template>
+        </Page>
+      </Transition>
+    </slot>
   </div>
 </template>
 
