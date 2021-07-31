@@ -102,6 +102,7 @@
     border-top: 1px solid var(--c-border);
     text-align: center;
     color: var(--c-text-lighter);
+    transition: border-top-color 0.3s ease;
   }
 }
 

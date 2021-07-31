@@ -96,6 +96,7 @@ h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--c-border);
+  transition: border-bottom-color 0.3s ease;
 }
 
 h3 {
