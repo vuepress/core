@@ -22,7 +22,7 @@
 
 .back-to-top-enter-active,
 .back-to-top-leave-active {
-  transition: var(--t-opacity);
+  transition: opacity 0.3s;
 }
 
 .back-to-top-enter-from,
