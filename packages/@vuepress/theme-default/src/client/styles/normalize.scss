@@ -48,7 +48,7 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: var(--t-color-all);
+  transition: var(--t-background-color), var(--t-color);
 }
 
 blockquote {
