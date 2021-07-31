@@ -27,7 +27,7 @@ ${app.pages
     // redirect from decoded path
     redirectsSet.add(decodeURI(path))
 
-    if (/\/$/.test(path)) {
+    if (path.endsWith('/')) {
       // redirect from index path
       redirectsSet.add(path + 'index.html')
     } else {
