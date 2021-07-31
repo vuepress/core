@@ -68,6 +68,7 @@
 
   // transition vars
   --t-duration: 0.3s;
+  --t-duration-slide: 0.3s;
   --t-all: all var(--t-duration);
   --t-opacity: opacity var(--t-duration);
   --t-color: color var(--t-duration);

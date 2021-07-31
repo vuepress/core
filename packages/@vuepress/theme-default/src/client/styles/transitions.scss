@@ -1,9 +1,9 @@
 .fade-slide-y-enter-active {
-  transition: all var(--t-duration) ease;
+  transition: all var(--t-duration-slide) ease;
 }
 
 .fade-slide-y-leave-active {
-  transition: all var(--t-duration) cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all var(--t-duration-slide) cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .fade-slide-y-enter-from,
