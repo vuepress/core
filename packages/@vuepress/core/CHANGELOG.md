@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Features
+
+* **core:** store page data in page object (close [#319](https://github.com/vuepress/vuepress-next/issues/319)) ([c7d3710](https://github.com/vuepress/vuepress-next/commit/c7d3710f451e2d40ed09a1b2ae516adca0a7ab99))
+* **core:** support paths without html extension (close [#292](https://github.com/vuepress/vuepress-next/issues/292)) ([#324](https://github.com/vuepress/vuepress-next/issues/324)) ([1d41365](https://github.com/vuepress/vuepress-next/commit/1d41365f56425384c0c8b919008c344b03ab9431))
+
+
+### BREAKING CHANGES
+
+* **core:** now `extendsPageData` hook is processed before `onInitialized` hook
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 **Note:** Version bump only for package @vuepress/core

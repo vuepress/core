@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Bug Fixes
+
+* **markdown:** encode file path when coverting links (close [#306](https://github.com/vuepress/vuepress-next/issues/306)) ([920c9ac](https://github.com/vuepress/vuepress-next/commit/920c9ac9864ad6877606e0839ae0f35695fe5e0c))
+* **theme-default:** use constant color for inserted token (close [#296](https://github.com/vuepress/vuepress-next/issues/296)) ([4596028](https://github.com/vuepress/vuepress-next/commit/459602898cee7c3ecd5d3c05c83a7db97729a14f))
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0-rc.0 ([816da00](https://github.com/vuepress/vuepress-next/commit/816da009ea1597e170b754c54253c0797208db1b))
+* **core:** store page data in page object (close [#319](https://github.com/vuepress/vuepress-next/issues/319)) ([c7d3710](https://github.com/vuepress/vuepress-next/commit/c7d3710f451e2d40ed09a1b2ae516adca0a7ab99))
+* **core:** support paths without html extension (close [#292](https://github.com/vuepress/vuepress-next/issues/292)) ([#324](https://github.com/vuepress/vuepress-next/issues/324)) ([1d41365](https://github.com/vuepress/vuepress-next/commit/1d41365f56425384c0c8b919008c344b03ab9431))
+* **markdown:** support `code.lineNumbers` to be set to number (close [#231](https://github.com/vuepress/vuepress-next/issues/231)) ([#276](https://github.com/vuepress/vuepress-next/issues/276)) ([a7fbdec](https://github.com/vuepress/vuepress-next/commit/a7fbdec893e01937b392ba40ed9dc8888415f9ed))
+* **theme-default:** add `toggleDarkMode` locale option ([#275](https://github.com/vuepress/vuepress-next/issues/275)) ([a685a1b](https://github.com/vuepress/vuepress-next/commit/a685a1b9e47ef91da40c27194e927daa63343520))
+* **theme-default:** add missing transitions ([066c6e4](https://github.com/vuepress/vuepress-next/commit/066c6e413986f4246b1812ae88c828254404e5c5))
+* **theme-default:** enhance color transitions ([#287](https://github.com/vuepress/vuepress-next/issues/287)) ([9b96871](https://github.com/vuepress/vuepress-next/commit/9b968719bee5742cb6e3feb8d7dfbd00d13d0785))
+* **theme-default:** enhance color transitions ([#321](https://github.com/vuepress/vuepress-next/issues/321)) ([aeaa3ba](https://github.com/vuepress/vuepress-next/commit/aeaa3ba8362af7e4013d419af1db246c657646ff))
+* **theme-default:** set dark mode color-scheme ([#289](https://github.com/vuepress/vuepress-next/issues/289)) ([0b3abd3](https://github.com/vuepress/vuepress-next/commit/0b3abd37f1201176d057d8bdd870dcbc1ea25079))
+* **theme-default:** support page slot for Layout.vue ([a8de0a9](https://github.com/vuepress/vuepress-next/commit/a8de0a990711a2732f2f85b086e733fbd8a74110))
+
+
+### BREAKING CHANGES
+
+* **core:** now `extendsPageData` hook is processed before `onInitialized` hook
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 
