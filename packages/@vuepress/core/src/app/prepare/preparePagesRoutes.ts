@@ -27,10 +27,12 @@ ${app.pages
     // redirect from decoded path
     redirectsSet.add(decodeURI(path))
 
-    // redirect from index path
-    if (/\/$/.test(path)) {
-      const indexPath = path + 'index.html'
-      redirectsSet.add(indexPath)
+    if (path.endsWith('/')) {
+      // redirect from index path
+      redirectsSet.add(path + 'index.html')
+    } else {
+      // redirect from the path that does not end with `.html`
+      redirectsSet.add(path.replace(/.html$/, ''))
     }
 
     // redirect from inferred path
