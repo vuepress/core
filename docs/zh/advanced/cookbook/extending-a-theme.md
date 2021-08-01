@@ -77,9 +77,9 @@ export default {
 - `navbar-after`
 - `sidebar-top`
 - `sidebar-bottom`
+- `page`
 - `page-top`
 - `page-bottom`
-- `page`
 
 ## 使你的主题可以被继承
 
