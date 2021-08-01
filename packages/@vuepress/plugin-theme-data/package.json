@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/webpack-env": "^1.16.2",
-    "vite": "^2.4.3"
+    "vite": "^2.4.4"
   },
   "publishConfig": {
     "access": "public"

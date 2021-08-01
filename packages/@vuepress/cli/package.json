@@ -35,7 +35,7 @@
     "cac": "^6.7.3",
     "chokidar": "^3.5.2",
     "envinfo": "^7.8.1",
-    "esbuild": "^0.12.15"
+    "esbuild": "^0.12.17"
   },
   "publishConfig": {
     "access": "public"
