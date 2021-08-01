@@ -79,6 +79,7 @@ Here are all the slots that provided by the `Layout` of default theme:
 - `sidebar-bottom`
 - `page-top`
 - `page-bottom`
+- `page`
 
 ## Make Your Theme Extendable
 
