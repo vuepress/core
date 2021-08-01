@@ -79,6 +79,7 @@ export default {
 - `sidebar-bottom`
 - `page-top`
 - `page-bottom`
+- `page`
 
 ## 使你的主题可以被继承
 
