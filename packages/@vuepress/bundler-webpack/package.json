@@ -50,9 +50,9 @@
     "postcss-loader": "^6.1.1",
     "style-loader": "^3.2.1",
     "vue": "^3.1.5",
-    "vue-loader": "^16.4.0",
+    "vue-loader": "^16.4.1",
     "vue-router": "^4.0.10",
-    "webpack": "^5.47.1",
+    "webpack": "^5.48.0",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "4.0.0-rc.0",
     "webpack-merge": "^5.8.0"
