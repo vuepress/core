@@ -77,6 +77,7 @@ Here are all the slots that provided by the `Layout` of default theme:
 - `navbar-after`
 - `sidebar-top`
 - `sidebar-bottom`
+- `page`
 - `page-top`
 - `page-bottom`
 
