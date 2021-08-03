@@ -4,7 +4,6 @@ import type { SiteData } from '@vuepress/shared'
 import type { RouteLocale } from './routeLocale'
 
 export type SiteLocaleData = SiteData
-
 export type SiteLocaleDataRef = ComputedRef<SiteLocaleData>
 
 export const siteLocaleDataSymbol: InjectionKey<SiteLocaleDataRef> = Symbol(

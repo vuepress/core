@@ -120,6 +120,7 @@ export const useUpdateHead = (): void => {
   onMounted(() => {
     loadHead()
     updateHead()
+    // only update head on route change
     watch(
       () => route.path,
       () => updateHead()

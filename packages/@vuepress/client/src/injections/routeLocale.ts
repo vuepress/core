@@ -4,7 +4,6 @@ import { resolveLocalePath } from '@vuepress/shared'
 import type { SiteData } from '@vuepress/shared'
 
 export type RouteLocale = string
-
 export type RouteLocaleRef = ComputedRef<RouteLocale>
 
 export const routeLocaleSymbol: InjectionKey<RouteLocaleRef> = Symbol(
