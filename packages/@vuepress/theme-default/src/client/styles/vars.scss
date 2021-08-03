@@ -69,14 +69,16 @@
   // transition vars
   --t-duration: 0.3s;
   --t-duration-slide: 0.3s;
-  --t-all: all var(--t-duration);
-  --t-opacity: opacity var(--t-duration);
-  --t-color: color var(--t-duration);
-  --t-border-color: border-color var(--t-duration);
-  --t-background-color: background-color var(--t-duration);
+  --t-timing-function: ease;
+  --t-all: all var(--t-duration) var(--t-timing-function);
+  --t-opacity: opacity var(--t-duration) var(--t-timing-function);
+  --t-color: color var(--t-duration) var(--t-timing-function);
+  --t-border-color: border-color var(--t-duration) var(--t-timing-function);
+  --t-background-color: background-color var(--t-duration)
+    var(--t-timing-function);
   --t-color-all: var(--t-color), var(--t-border-color),
     var(--t-background-color);
-  --t-transform: transform var(--t-duration);
+  --t-transform: transform var(--t-duration) var(--t-timing-function);
 }
 
 // plugin-back-to-top
