@@ -414,6 +414,40 @@ module.exports = {
 
   设置为 `false` 可以禁用该插件。
 
+#### markdown.extractHeaders.level
+
+- 类型： `number[]`
+
+- 默认值： `[2, 3]`
+
+- 详情：
+
+  需要提取的子标题层级。
+
+  举例来说，如果你把该选项设为 `[2]` ，那么只会提取 `##` 子标题。
+
+  它应该是 [markdown.anchor.level](#markdownanchor) 选项的一个子集，以便确保提取出来的链接是存在的。
+
+#### markdown.extractHeaders.slugify
+
+- 类型： `(str: string) => string`
+
+- 详情：
+
+  一个函数，根据原始的子标题来获取提取出的子标题 slug 。
+
+  它应该使用和 [markdown.anchor.slugify](#markdownanchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+
+#### markdown.extractHeaders.format
+
+- 类型： `((str: string) => string) | undefined`
+
+- 默认值： `undefined`
+
+- 详情：
+
+  一个函数，将原始的子标题格式化为提取出的标题。
+
 ### markdown.extractTitle
 
 - 类型： `undefined | false`
@@ -438,12 +472,26 @@ module.exports = {
 
   VuePress 内置的 markdown-it hoist-tags 插件的配置项。
 
-  它将会把你的 Markdown 中特定的 HTML 标签提升到 SFC 的顶层。默认情况下，只有 `<script>` 和 `<style>` 标签会被提升。你可以通过这个配置项，在 Markdown 中使用 SFC 自定义块。
+  它将会把你的 Markdown 中特定的 HTML 标签提升到 SFC 的顶层。
 
   设置为 `false` 可以禁用该插件。
 
 - 参考：
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+
+### markdown.hoistTags.customBlocks
+
+- 类型： `string[]`
+
+- 默认值： `[]`
+
+- 详情：
+
+  想要提升的 SFC 自定义块。
+
+  默认情况下，只会提升 `<script>` 和 `<style>` 标签。你可以设置该选项以便在 Markdown 中支持自定义块。
+
+  例如，如果你将该选项设置为 `['foo']` ，那么 Markdown 中的 `<foo>` 标签就会提升为 Vue SFC 的自定义块。需要提醒的是，为了处理自定义块，你还需要正确配置你的打包工具。
 
 ### markdown.importCode
 
@@ -529,6 +577,50 @@ module.exports = {
 
 - 参考：
   - [指南 > Markdown > 语法扩展 > 目录](../guide/markdown.md#目录)
+
+### markdown.toc.pattern
+
+- 类型： `RegExp`
+
+- 默认值： `/^\[\[toc\]\]$/i`
+
+- 详情：
+
+  识别 Markdown 中的目录语法的 Pattern 。
+
+### markdown.toc.slugify
+
+- 类型： `(str: string) => string`
+
+- 详情：
+
+  一个函数，根据原始的子标题来获取目录中的子标题 slug 。
+
+  它应该使用和 [markdown.anchor.slugify](#markdownanchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+
+#### markdown.toc.format
+
+- 类型： `((str: string) => string) | undefined`
+
+- 默认值： `undefined`
+
+- 详情：
+
+  一个函数，将原始的子标题格式化为目录中的标题。
+
+#### markdown.toc.level
+
+- 类型： `number[]`
+
+- 默认值： `[2, 3]`
+
+- 详情：
+
+  需要包含在目录中的子标题层级。
+
+  举例来说，如果你把该选项设为 `[2]` ，那么只会包含 `##` 子标题。
+
+  它应该是 [markdown.anchor.level](#markdownanchor) 选项的一个子集，以便确保目录中的链接是存在的。
 
 ## 开发配置项
 
