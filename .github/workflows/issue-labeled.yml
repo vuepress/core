@@ -1,0 +1,27 @@
+name: issue-labeled
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  issue-labeled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: close and lock invalid
+        if: github.event.label.name == 'invalid'
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actions: 'close-issue, lock-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+
+      - name: need reproduction
+        if: github.event.label.name == 'need reproduction'
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. Please provide a [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) using a GitHub repository or [codesandbox](https://codesandbox.io). Issues marked with `need reproduction` will be closed if they have no activity within 3 days.

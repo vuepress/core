@@ -1,0 +1,19 @@
+name: issue-close-stale
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  issue-close-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: close stale issues
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actions: 'close-issues'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels:
+            - 'need reproduction'
+            - 'stale'
+          inactive-day: 3
