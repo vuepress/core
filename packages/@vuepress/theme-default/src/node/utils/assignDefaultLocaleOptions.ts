@@ -36,7 +36,7 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   // a11y
   openInNewWindow: 'open in new window',
   toggleDarkMode: 'toggle dark mode',
-  toggleSidebar: 'Toggle Sidebar',
+  toggleSidebar: 'toggle sidebar',
 }
 
 const defaultLocaleData: DefaultThemeLocaleData = {

@@ -569,6 +569,18 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   This is mainly for a11y purpose.
 
+### toggleSidebar
+
+- Type: `string`
+
+- Default: `'toggle sidebar'`
+
+- Details:
+
+  Title text for sidebar toggle button.
+
+  This is mainly for a11y purpose.
+
 ## Plugins Config
 
 ### themePlugins

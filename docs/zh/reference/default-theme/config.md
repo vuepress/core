@@ -569,6 +569,18 @@ module.exports = {
 
   它主要是为了站点的可访问性 (a11y) 。
 
+### toggleSidebar
+
+- 类型： `string`
+
+- 默认值： `'toggle sidebar'`
+
+- 详情：
+
+  切换侧边栏按钮的标题文字。
+
+  它主要是为了站点的可访问性 (a11y) 。
+
 ## 插件配置
 
 ### themePlugins
