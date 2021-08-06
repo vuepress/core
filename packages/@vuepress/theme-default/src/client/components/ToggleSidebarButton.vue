@@ -1,7 +1,7 @@
 <template>
   <div
     class="toggle-sidebar-button"
-    :title="themeLocale.toggleSidebar || 'Toggle Sidebar'"
+    :title="themeLocale.toggleSidebar"
     aria-expanded="false"
     role="button"
     tabindex="0"
