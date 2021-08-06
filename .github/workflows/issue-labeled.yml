@@ -5,20 +5,25 @@ on:
     types: [labeled]
 
 jobs:
-  issue-labeled:
+  issue-invalid:
+    name: close and lock invalid
+    if: github.event.label.name == 'invalid'
     runs-on: ubuntu-latest
     steps:
-      - name: close and lock invalid
-        if: github.event.label.name == 'invalid'
-        uses: actions-cool/issues-helper@v2.2.1
+      - uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'close-issue, lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. This issue is marked as `invalid` and closed. Please follow the issue template.
 
-      - name: need reproduction
-        if: github.event.label.name == 'need reproduction'
-        uses: actions-cool/issues-helper@v2.2.1
+  issue-need-reproduction:
+    name: need reproduction
+    if: github.event.label.name == 'need reproduction'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}

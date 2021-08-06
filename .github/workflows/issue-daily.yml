@@ -1,4 +1,4 @@
-name: issue-close-stale
+name: issue-daily
 
 on:
   schedule:
@@ -6,10 +6,10 @@ on:
 
 jobs:
   issue-close-stale:
+    name: close stale issues
     runs-on: ubuntu-latest
     steps:
-      - name: close stale issues
-        uses: actions-cool/issues-helper@v2.2.1
+      - uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
