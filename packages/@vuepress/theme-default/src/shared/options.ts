@@ -254,9 +254,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
   openInNewWindow?: string
 
   /**
-   * Toggle sidebar button a11y text
+   * A11y text for sidebar toggle button
    */
-  sidebarButtonText?: string
+  toggleSidebar?: string
 
   /**
    * A11y text for dark mode toggle button
