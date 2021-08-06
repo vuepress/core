@@ -1,4 +1,4 @@
-name: issue-labeled
+name: issue-commented
 
 on:
   issue_comment:
