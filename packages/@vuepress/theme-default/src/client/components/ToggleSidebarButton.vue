@@ -1,7 +1,7 @@
 <template>
   <div
     class="toggle-sidebar-button"
-    :title="title"
+    :title="themeLocale.toggleSidebar || 'Toggle Sidebar'"
     aria-expanded="false"
     role="button"
     tabindex="0"
@@ -15,24 +15,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { defineEmits } from 'vue'
 import { useThemeLocaleData } from '../composables'
 
-export default defineComponent({
-  name: 'ToggleSidebarButton',
+defineEmits(['toggle'])
 
-  emits: ['toggle'],
-
-  setup() {
-    const title = computed(() => {
-      const themeLocale = useThemeLocaleData()
-      return themeLocale.value.sidebarButtonText || 'Toggle Sidebar'
-    })
-
-    return {
-      title,
-    }
-  },
-})
+const themeLocale = useThemeLocaleData()
 </script>
