@@ -27,10 +27,10 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
+import type { ThemeObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import { ThemeObject } from '@vuepress/core'
 
-export default {
+const fooTheme = {
   // 你的主题
   name: 'vuepress-theme-foo',
   // 要继承的父主题
@@ -39,7 +39,9 @@ export default {
   layouts: {
     Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
   },
-} as ThemeObject
+}
+
+export default fooTheme
 ```
 
   </CodeGroupItem>
@@ -71,8 +73,8 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
+import type { ThemeObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import { ThemeObject } from '@vuepress/core'
 
 const localTheme: ThemeObject = {
   name: 'vuepress-theme-local',
