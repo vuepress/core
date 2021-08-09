@@ -34,6 +34,12 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 
 重命名为 `pagePatterns` 。
 
+#### plugins
+
+只允许 [Babel 式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#babel-式) 选项。
+
+v2 不再支持 [对象式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#对象式) 选项。
+
 #### markdown.lineNumbers
 
 移动至 [markdown.code.lineNumbers](../reference/config.md#markdown-code-linenumbers) 。

@@ -30,6 +30,12 @@ Removed.
 
 You can watch files manually in [onWatched](../reference/plugin-api.md#onwatched) hook.
 
+#### plugins
+
+Only [Babel Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#babel-style) config is allowed.
+
+[Object Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#object-style) config is **NOT** supported in v2.
+
 #### patterns
 
 Renamed to `pagePatterns`
