@@ -68,14 +68,14 @@
 
   // transition vars
   --t-options: 0.3s ease;
-  --t-all: all var(--t-options);
-  --t-opacity: opacity var(--t-options);
-  --t-color: color var(--t-options);
-  --t-border-color: border-color var(--t-options);
-  --t-background-color: background-color var(--t-options);
-  --t-color-all: var(--t-color), var(--t-border-color),
-    var(--t-background-color);
-  --t-transform: transform var(--t-options);
+  --t-p-all: all var(--t-options);
+  --t-p-opacity: opacity var(--t-options);
+  --t-p-transform: transform var(--t-options);
+  --t-p-color: color var(--t-options);
+  --t-p-border-color: border-color var(--t-options);
+  --t-p-background-color: background-color var(--t-options);
+  --t-color-all: var(--t-p-color), var(--t-p-border-color),
+    var(--t-p-background-color);
 }
 
 // plugin-back-to-top

@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: var(--c-bg);
-  transition: var(--t-background-color);
+  transition: var(--t-p-background-color);
 }
 
 html.dark {
@@ -48,7 +48,7 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: var(--t-background-color), var(--t-color);
+  transition: var(--t-p-background-color), var(--t-p-color);
 }
 
 blockquote {
@@ -94,7 +94,7 @@ h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--c-border);
-  transition: var(--t-border-color);
+  transition: var(--t-p-border-color);
 }
 
 h3 {
