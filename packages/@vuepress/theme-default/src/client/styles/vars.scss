@@ -67,17 +67,15 @@
   --homepage-width: 960px;
 
   // transition vars
-  --t-duration: 0.3s;
-  --t-timing-function: ease;
-  --t-all: all var(--t-duration) var(--t-timing-function);
-  --t-opacity: opacity var(--t-duration) var(--t-timing-function);
-  --t-color: color var(--t-duration) var(--t-timing-function);
-  --t-border-color: border-color var(--t-duration) var(--t-timing-function);
-  --t-background-color: background-color var(--t-duration)
-    var(--t-timing-function);
+  --t-options: 0.3s ease;
+  --t-all: all var(--t-options);
+  --t-opacity: opacity var(--t-options);
+  --t-color: color var(--t-options);
+  --t-border-color: border-color var(--t-options);
+  --t-background-color: background-color var(--t-options);
   --t-color-all: var(--t-color), var(--t-border-color),
     var(--t-background-color);
-  --t-transform: transform var(--t-duration) var(--t-timing-function);
+  --t-transform: transform var(--t-options);
 }
 
 // plugin-back-to-top
