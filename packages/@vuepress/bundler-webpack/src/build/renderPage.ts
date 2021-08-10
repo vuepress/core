@@ -67,6 +67,8 @@ export const renderPage = async ({
 
   // generate html string
   const html = ssrTemplate
+    // vuepress version
+    .replace('{{ version }}', app.version)
     // page lang
     .replace('{{ lang }}', ssrContext.lang)
     // page head

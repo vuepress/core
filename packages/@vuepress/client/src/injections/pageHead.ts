@@ -40,12 +40,6 @@ export const resolvePageHead = (
     ...siteLocale.head,
     ['title', {}, headTitle],
     ['meta', { name: 'description', content: description }],
-    ['meta', { charset: 'utf-8' }],
-    [
-      'meta',
-      { name: 'viewport', content: 'width=device-width,initial-scale=1' },
-    ],
-    ['meta', { name: 'generator', content: `VuePress ${__VERSION__}` }],
   ]
 
   return dedupeHead(head)
