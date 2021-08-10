@@ -1,9 +1,11 @@
+@import '_variables';
+
 html,
 body {
   padding: 0;
   margin: 0;
   background-color: var(--c-bg);
-  transition: var(--t-p-background-color);
+  transition: $TBackgroundColor;
 }
 
 html.dark {
@@ -48,7 +50,7 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: var(--t-p-background-color), var(--t-p-color);
+  transition: $TBackgroundColor, $TColor;
 }
 
 blockquote {
@@ -94,7 +96,7 @@ h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--c-border);
-  transition: var(--t-p-border-color);
+  transition: $TBorderColor;
 }
 
 h3 {

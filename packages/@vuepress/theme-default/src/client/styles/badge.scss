@@ -1,3 +1,5 @@
+@import '_variables';
+
 .badge {
   display: inline-block;
   font-size: 14px;
@@ -7,7 +9,7 @@
   padding: 0 6px;
   color: var(--c-bg);
   vertical-align: top;
-  transition: var(--t-p-color), var(--t-p-background-color);
+  transition: $TColor, $TBackgroundColor;
 
   &.tip {
     background-color: var(--c-badge-tip);

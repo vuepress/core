@@ -1,5 +1,7 @@
+@import '_variables';
+
 .custom-container {
-  transition: var(--t-color-all);
+  transition: $TAllColor;
 
   .custom-container-title {
     font-weight: 600;
