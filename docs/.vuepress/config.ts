@@ -131,6 +131,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         // a11y
         openInNewWindow: '在新窗口打开',
         toggleDarkMode: '切换夜间模式',
+        toggleSidebar: '切换侧边栏',
       },
     },
 
