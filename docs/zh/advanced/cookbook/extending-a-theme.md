@@ -30,7 +30,7 @@ module.exports = {
 import type { ThemeObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const fooTheme = {
+const fooTheme: ThemeObject = {
   // 你的主题
   name: 'vuepress-theme-foo',
   // 要继承的父主题

@@ -30,7 +30,7 @@ module.exports = {
 import type { ThemeObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const fooTheme = {
+const fooTheme: ThemeObject = {
   // your theme
   name: 'vuepress-theme-foo',
   // parent theme to extend
