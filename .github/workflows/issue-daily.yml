@@ -17,7 +17,7 @@ jobs:
           inactive-label: 'stale'
           exclude-labels: 'bug, documentation, enhancement, feature, help wanted'
           body: |
-            Hello @${{ github.event.issue.user.login }}. This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 3 days.
+            This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 3 days.
 
   issue-close-stale:
     name: close stale issues
