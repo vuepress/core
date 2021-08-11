@@ -1,4 +1,4 @@
-import { defineComponent, h, ref } from 'vue'
+import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
 import type { Component, VNode } from 'vue'
 
 export default defineComponent({
@@ -10,6 +10,14 @@ export default defineComponent({
 
     // refs of the tab buttons
     const tabRefs = ref<HTMLButtonElement[]>([])
+
+    if (__DEV__) {
+      // after removing a code-group-item, we need to clear the ref
+      // of the removed item to avoid issues caused by HMR
+      onBeforeUpdate(() => {
+        tabRefs.value = []
+      })
+    }
 
     // activate next tab
     const activateNext = (i = activeIndex.value): void => {
@@ -59,9 +67,6 @@ export default defineComponent({
           }
           return vnode as VNode & { props: Exclude<VNode['props'], null> }
         })
-
-      // clear tabRefs for HMR
-      tabRefs.value = []
 
       // do not render anything if there is no code-group-item
       if (items.length === 0) {
