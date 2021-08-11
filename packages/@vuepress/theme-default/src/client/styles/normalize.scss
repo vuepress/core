@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: var(--c-bg);
-  transition: $TBackgroundColor;
+  transition: background-color var(--t-color-options);
 }
 
 html.dark {
@@ -50,7 +50,8 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: $TBackgroundColor, $TColor;
+  transition: background-color var(--t-color-options),
+    color var(--t-color-options);
 }
 
 blockquote {
@@ -96,7 +97,7 @@ h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--c-border);
-  transition: $TBorderColor;
+  transition: border-color var(--t-color-options);
 }
 
 h3 {

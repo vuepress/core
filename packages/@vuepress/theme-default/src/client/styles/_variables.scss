@@ -5,13 +5,6 @@ $MQNarrow: 959px !default;
 $MQMobile: 719px !default;
 $MQMobileNarrow: 419px !default;
 
-// transitions
-$TTransform: transform var(--t-transform-options);
-$TColor: color var(--t-color-options);
-$TBorderColor: border-color var(--t-color-options);
-$TBackgroundColor: background-color var(--t-color-options);
-$TAllColor: $TColor, $TBorderColor, $TBackgroundColor;
-
 // code languages
 $codeLang: 'c' 'cpp' 'cs' 'css' 'dart' 'docker' 'fs' 'go' 'html' 'java' 'js'
   'json' 'kt' 'less' 'makefile' 'md' 'php' 'py' 'rb' 'rs' 'sass' 'scss' 'sh'

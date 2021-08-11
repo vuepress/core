@@ -59,7 +59,7 @@
     min-height: 2rem;
     margin-top: 0;
     border-top: 1px solid var(--c-border);
-    transition: $TBorderColor;
+    transition: border-color var(--t-color-options);
     padding-top: 1rem;
     overflow: auto;
   }

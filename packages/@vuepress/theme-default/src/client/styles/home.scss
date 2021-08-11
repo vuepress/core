@@ -40,7 +40,7 @@
       border-width: 2px;
       border-style: solid;
       border-radius: 4px;
-      transition: $TBackgroundColor;
+      transition: background-color var(--t-color-options);
       box-sizing: border-box;
 
       &:not(:first-child) {
@@ -70,7 +70,7 @@
 
   .features {
     border-top: 1px solid var(--c-border);
-    transition: $TBorderColor;
+    transition: border-color var(--t-color-options);
     padding: 1.2rem 0;
     margin-top: 2.5rem;
     display: flex;
@@ -103,7 +103,7 @@
     border-top: 1px solid var(--c-border);
     text-align: center;
     color: var(--c-text-lighter);
-    transition: $TBorderColor;
+    transition: border-color var(--t-color-options);
   }
 }
 

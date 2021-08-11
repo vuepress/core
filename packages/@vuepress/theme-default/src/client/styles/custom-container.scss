@@ -1,7 +1,8 @@
 @import '_variables';
 
 .custom-container {
-  transition: $TAllColor;
+  transition: color var(--t-color-options), border-color var(--t-color-options),
+    background-color var(--t-color-options);
 
   .custom-container-title {
     font-weight: 600;
