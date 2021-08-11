@@ -14,8 +14,8 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePageFrontmatter } from '@vuepress/client'
 import { isPlainObject, isString } from '@vuepress/shared'
@@ -81,40 +81,25 @@ const resolveFromSidebarItems = (
   return null
 }
 
-export default defineComponent({
-  name: 'PageNav',
+const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+const sidebarItems = useSidebarItems()
+const route = useRoute()
 
-  components: {
-    NavLink,
-  },
+const prevNavLink = computed(() => {
+  const prevConfig = resolveFromFrontmatterConfig(frontmatter.value.prev)
+  if (prevConfig !== false) {
+    return prevConfig
+  }
 
-  setup() {
-    const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-    const sidebarItems = useSidebarItems()
-    const route = useRoute()
+  return resolveFromSidebarItems(sidebarItems.value, route.path, -1)
+})
 
-    const prevNavLink = computed(() => {
-      const prevConfig = resolveFromFrontmatterConfig(frontmatter.value.prev)
-      if (prevConfig !== false) {
-        return prevConfig
-      }
+const nextNavLink = computed(() => {
+  const nextConfig = resolveFromFrontmatterConfig(frontmatter.value.next)
+  if (nextConfig !== false) {
+    return nextConfig
+  }
 
-      return resolveFromSidebarItems(sidebarItems.value, route.path, -1)
-    })
-
-    const nextNavLink = computed(() => {
-      const nextConfig = resolveFromFrontmatterConfig(frontmatter.value.next)
-      if (nextConfig !== false) {
-        return nextConfig
-      }
-
-      return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
-    })
-
-    return {
-      prevNavLink,
-      nextNavLink,
-    }
-  },
+  return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
 })
 </script>

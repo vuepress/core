@@ -8,8 +8,8 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
@@ -144,28 +144,12 @@ const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
   return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
 }
 
-export default defineComponent({
-  name: 'NavbarLinks',
-
-  components: {
-    NavLink,
-    DropdownLink,
-  },
-
-  setup() {
-    const navbarConfig = useNavbarConfig()
-    const navbarSelectLanguage = useNavbarSelectLanguage()
-    const navbarRepo = useNavbarRepo()
-
-    const navbarLinks = computed(() => [
-      ...navbarConfig.value,
-      ...navbarSelectLanguage.value,
-      ...navbarRepo.value,
-    ])
-
-    return {
-      navbarLinks,
-    }
-  },
-})
+const navbarConfig = useNavbarConfig()
+const navbarSelectLanguage = useNavbarSelectLanguage()
+const navbarRepo = useNavbarRepo()
+const navbarLinks = computed(() => [
+  ...navbarConfig.value,
+  ...navbarSelectLanguage.value,
+  ...navbarRepo.value,
+])
 </script>

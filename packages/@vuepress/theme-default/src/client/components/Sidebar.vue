@@ -16,25 +16,10 @@
   </aside>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { useSidebarItems } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import { SidebarChild } from './SidebarChild'
 
-export default defineComponent({
-  name: 'Sidebar',
-
-  components: {
-    NavbarLinks,
-    SidebarChild,
-  },
-
-  setup() {
-    const sidebarItems = useSidebarItems()
-    return {
-      sidebarItems,
-    }
-  },
-})
+const sidebarItems = useSidebarItems()
 </script>
