@@ -49,14 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-  Transition,
-} from 'vue'
+import { computed, onMounted, onUnmounted, ref, Transition } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
