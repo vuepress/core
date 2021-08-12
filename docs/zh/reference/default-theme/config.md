@@ -125,13 +125,15 @@ module.exports = {
 
 ### logo
 
-- 类型： `string`
+- 类型： `null | string `
 
 - 详情：
 
   Logo 图片的 URL。
 
   Logo 图片将会显示在导航栏的左端。
+
+  设置为 `null` 可以禁用 Logo 。
 
 - 示例：
 
@@ -148,6 +150,22 @@ module.exports = {
 
 - 参考：
   - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
+
+### logoDark
+
+- 类型： `null | string`
+
+- 详情：
+
+  在夜间模式中使用的 Logo 图片的 URL。
+
+  如果你想在夜间模式中使用不同的 Logo 图片，就可以使用该配置项。
+
+  设置为 `null` 可以在夜间模式下禁用 Logo 。忽略该配置项将会在夜间模式中使用 [logo](#logo) 配置。
+
+- 参考：
+  - [默认主题 > 配置 > logo](./config.md#logo)
+  - [默认主题 > 配置 > darkMode](./config.md#darkmode)
 
 ### darkMode
 

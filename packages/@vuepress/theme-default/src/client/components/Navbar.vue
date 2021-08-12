@@ -36,9 +36,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
 import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
-import { useThemeLocaleData } from '../composables'
+import { computed, onMounted, ref } from 'vue'
+import { useDarkMode, useThemeLocaleData } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
@@ -48,13 +48,19 @@ defineEmits(['toggle-sidebar'])
 const routeLocale = useRouteLocale()
 const siteLocale = useSiteLocaleData()
 const themeLocale = useThemeLocaleData()
+const isDarkMode = useDarkMode()
 
 const navbar = ref<HTMLElement | null>(null)
 const siteBrand = ref<HTMLElement | null>(null)
 const siteBrandLink = computed(
   () => themeLocale.value.home || routeLocale.value
 )
-const siteBrandLogo = computed(() => themeLocale.value.logo)
+const siteBrandLogo = computed(() => {
+  if (isDarkMode.value && themeLocale.value.logoDark !== undefined) {
+    return themeLocale.value.logoDark
+  }
+  return themeLocale.value.logo
+})
 const siteBrandTitle = computed(() => siteLocale.value.title)
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {

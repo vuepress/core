@@ -125,13 +125,15 @@ module.exports = {
 
 ### logo
 
-- Type: `string`
+- Type: `null | string`
 
 - Details:
 
   Specify the url of logo image.
 
   The logo image will be displayed at the left end of the navbar.
+
+  Set to `null` to disable logo.
 
 - Example:
 
@@ -148,6 +150,22 @@ module.exports = {
 
 - Also see:
   - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
+
+### logoDark
+
+- Type: `null | string`
+
+- Details:
+
+  Specify the url of logo image to be used in dark mode.
+
+  You can make use of this option if you want to use different logo config in dark mode.
+
+  Set to `null` to disable logo in dark mode. Omit this option to use [logo](#logo) in dark mode.
+
+- Also see:
+  - [Default Theme > Config > logo](./config.md#logo)
+  - [Default Theme > Config > darkMode](./config.md#darkmode)
 
 ### darkMode
 
