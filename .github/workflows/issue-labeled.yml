@@ -6,13 +6,13 @@ on:
 
 jobs:
   issue-invalid:
-    name: close and lock invalid
+    name: close invalid issue
     if: github.event.label.name == 'invalid'
     runs-on: ubuntu-latest
     steps:
       - uses: actions-cool/issues-helper@v2.3.1
         with:
-          actions: 'close-issue, lock-issue'
+          actions: 'close-issue, create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: |
