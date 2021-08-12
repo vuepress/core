@@ -199,6 +199,10 @@ module.exports = {
 - 参考：
   - [指南 > 打包工具](../guide/bundler.md)
 
+::: tip
+在使用 [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) Package 时，默认的打包工具会被设置为 `'@vuepress/vite'` 。
+:::
+
 ### bundlerConfig
 
 - 类型： `BundlerConfig`

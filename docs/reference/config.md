@@ -200,6 +200,10 @@ module.exports = {
 - Also see:
   - [Guide > Bundler](../guide/bundler.md)
 
+::: tip
+When using [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package, the default bundler will be set to `'@vuepress/vite'`.
+:::
+
 ### bundlerConfig
 
 - Type: `BundlerConfig`
