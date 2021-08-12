@@ -33,6 +33,7 @@
     "slugify",
     "unmount",
     "vuepress",
+    "vueuse",
     "zoomable"
   ]
 }

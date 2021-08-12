@@ -42,6 +42,7 @@
     "@vuepress/plugin-theme-data": "2.0.0-beta.23",
     "@vuepress/shared": "2.0.0-beta.23",
     "@vuepress/utils": "2.0.0-beta.23",
+    "@vueuse/core": "^6.0.0-beta.3",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
     "vue": "^3.2.1",

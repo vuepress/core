@@ -2844,6 +2844,21 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.1.tgz#1f1fe26fe0334404cce10740b5ffb2654f1281aa"
   integrity sha512-INN92dVBNgd0TW9BqfQQKx/HWGCHhUUbAV5EZ5FgSCiEdwuZsJbGt1mdnaD9IxGhpiyOjP2ClxGG8SFp7ELcWg==
 
+"@vueuse/core@^6.0.0-beta.3":
+  version "6.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-6.0.0-beta.3.tgz#6d0c8bd7f41b91ef02d2b21d9370ce0b005a4452"
+  integrity sha512-SIf3xR85GuZ6a7/XNf+Qr1ejQisOIDusRXis7gWLKr6f5zoaV3BWE3gjgrFZo1m9hlPLZG5y39IKfN+lvFr4Ug==
+  dependencies:
+    "@vueuse/shared" "6.0.0-beta.3"
+    vue-demi "*"
+
+"@vueuse/shared@6.0.0-beta.3":
+  version "6.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-6.0.0-beta.3.tgz#2e52a1e573983d3b806054948b0eca01ced7c504"
+  integrity sha512-afl4y1UhtmXUUEMolMUeqS20UgzIJJRLCJNtGUU7rCRylxnWfpGKc9aVDPhc5cHM5Aa/eStKQeSwjsVL3HRgVQ==
+  dependencies:
+    vue-demi "*"
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
@@ -10611,6 +10626,11 @@ vscode-textmate@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.2.0.tgz#01f01760a391e8222fe4f33fbccbd1ad71aed74e"
   integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
+
+vue-demi@*:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.2.tgz#faa06da53887c493a695b997f4fcb4784a667990"
+  integrity sha512-J+X8Au6BhQdcej6LY4O986634hZLu55L0ewU2j8my7WIKlu8cK0dqmdUxqVHHMd/cMrKKZ9SywB/id6aLhwCtA==
 
 vue-eslint-parser@^7.6.0:
   version "7.6.0"

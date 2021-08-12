@@ -46,19 +46,12 @@
 </template>
 
 <script setup lang="ts">
-import {
-  useDarkMode,
-  useHtmlDarkClass,
-  usePrefersColorScheme,
-  useThemeLocaleData,
-} from '../composables'
+import { useDarkMode, useThemeLocaleData } from '../composables'
 
 const themeLocale = useThemeLocaleData()
-
 const isDarkMode = useDarkMode()
+
 const toggleDarkMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }
-useHtmlDarkClass(isDarkMode)
-usePrefersColorScheme(isDarkMode)
 </script>
