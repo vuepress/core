@@ -46,6 +46,10 @@
   --c-badge-warning: var(--c-warning);
   --c-badge-danger: var(--c-danger);
 
+  // transition vars
+  --t-color: 0.3s ease;
+  --t-transform: 0.3s ease;
+
   // code blocks vars
   --code-bg-color: #282c34;
   --code-hl-bg-color: rgba(0, 0, 0, 0.66);
@@ -65,10 +69,6 @@
   --sidebar-width-mobile: calc(var(--sidebar-width) * 0.82);
   --content-width: 740px;
   --homepage-width: 960px;
-
-  // transition vars
-  --t-color: 0.3s ease;
-  --t-transform: 0.3s ease;
 }
 
 // plugin-back-to-top
