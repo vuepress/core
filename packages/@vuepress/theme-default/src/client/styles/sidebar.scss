@@ -14,7 +14,7 @@
   .navbar-links {
     display: none;
     border-bottom: 1px solid var(--c-border);
-    transition: border-bottom-color ease 0.3s;
+    transition: border-color var(--t-color);
     padding: 0.5rem 0 0.75rem 0;
 
     a {

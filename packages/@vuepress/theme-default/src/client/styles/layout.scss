@@ -16,7 +16,7 @@
   box-sizing: border-box;
   border-bottom: 1px solid var(--c-border);
   background-color: var(--c-bg-navbar);
-  transition: background-color ease 0.3s, border-bottom-color ease 0.3s;
+  transition: background-color var(--t-color), border-color var(--t-color);
 }
 
 .sidebar {
@@ -34,8 +34,8 @@
   scrollbar-width: thin;
   scrollbar-color: var(--c-brand) var(--c-border);
   background-color: var(--c-bg-sidebar);
-  transition: transform ease 0.3s, background-color ease 0.3s,
-    border-right-color ease 0.3s;
+  transition: transform var(--t-transform), background-color var(--t-color),
+    border-color var(--t-color);
   &::-webkit-scrollbar {
     width: 7px;
   }
