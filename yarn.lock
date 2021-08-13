@@ -4157,16 +4157,16 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cpx2@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/cpx2/-/cpx2-3.0.1.tgz#297a9992bba59c63bf30177ef65b4a3f3c493fcf"
-  integrity sha512-mSdJqYwPYKTCxewSyPc8+427u3X95760qjMmrVae7HRCDmquGJoJMXCFwtamiSEpJB95w1p6puLieoJxX90K6g==
+cpx2@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cpx2/-/cpx2-3.0.0.tgz#d02d2526f0d6fd967405ab20b687668aca1f55ea"
+  integrity sha512-WVI69l0qqlDboGngiggQitRyto20og3YNNZp6ySva9dRMYpy9OQd5ep7mQvkvuBeUkIluOKR6jBOek7FRS7X0w==
   dependencies:
     co "^4.6.0"
     debounce "^1.2.0"
     debug "^4.1.1"
     duplexer "^0.1.1"
-    fs-extra "^10.0.0"
+    fs-extra "^9.0.1"
     glob "^7.1.4"
     glob2base "0.0.12"
     minimatch "^3.0.4"
