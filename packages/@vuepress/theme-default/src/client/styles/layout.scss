@@ -16,8 +16,7 @@
   box-sizing: border-box;
   border-bottom: 1px solid var(--c-border);
   background-color: var(--c-bg-navbar);
-  transition: background-color var(--t-color-options),
-    border-color var(--t-color-options);
+  transition: background-color var(--t-color), border-color var(--t-color);
 }
 
 .sidebar {
@@ -35,8 +34,8 @@
   scrollbar-width: thin;
   scrollbar-color: var(--c-brand) var(--c-border);
   background-color: var(--c-bg-sidebar);
-  transition: transform var(--t-transform-options),
-    background-color var(--t-color-options), border-color var(--t-color-options);
+  transition: transform var(--t-transform), background-color var(--t-color),
+    border-color var(--t-color);
   &::-webkit-scrollbar {
     width: 7px;
   }
