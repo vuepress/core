@@ -1,5 +1,5 @@
 import { createApp, createSSRApp, computed, h } from 'vue'
-import type { App, ComponentOptions } from 'vue'
+import type { App } from 'vue'
 import {
   createRouter,
   createWebHistory,
@@ -53,8 +53,8 @@ export type CreateVueAppFunction = () => Promise<{
 }>
 
 export const createVueApp: CreateVueAppFunction = async () => {
-  // options to create vue app
-  const appOptions: ComponentOptions = {
+  // create vue app
+  const app = appCreator({
     name: 'VuepressApp',
 
     setup() {
@@ -71,10 +71,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
         ...clientAppRootComponents.map((comp) => h(comp)),
       ]
     },
-  }
-
-  // create vue app
-  const app = appCreator(appOptions)
+  })
 
   // create vue-router
   const router = createRouter({
@@ -82,14 +79,8 @@ export const createVueApp: CreateVueAppFunction = async () => {
     history: historyCreator(removeEndingSlash(siteData.value.base)),
     routes: pagesRoutes,
     scrollBehavior: (to, from, savedPosition) => {
-      if (savedPosition) {
-        return savedPosition
-      }
-
-      if (to.hash) {
-        return { el: to.hash }
-      }
-
+      if (savedPosition) return savedPosition
+      if (to.hash) return { el: to.hash }
       return { top: 0 }
     },
   })
@@ -134,46 +125,14 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
   // provide global data & helpers
   Object.defineProperties(app.config.globalProperties, {
-    $routeLocale: {
-      get() {
-        return routeLocale.value
-      },
-    },
-    $site: {
-      get() {
-        return siteData.value
-      },
-    },
-    $siteLocale: {
-      get() {
-        return siteLocaleData.value
-      },
-    },
-    $page: {
-      get() {
-        return pageData.value
-      },
-    },
-    $frontmatter: {
-      get() {
-        return pageFrontmatter.value
-      },
-    },
-    $lang: {
-      get() {
-        return pageLang.value
-      },
-    },
-    $headTitle: {
-      get() {
-        return pageHeadTitle.value
-      },
-    },
-    $withBase: {
-      get() {
-        return withBase
-      },
-    },
+    $routeLocale: { get: () => routeLocale.value },
+    $site: { get: () => siteData.value },
+    $siteLocale: { get: () => siteLocaleData.value },
+    $page: { get: () => pageData.value },
+    $frontmatter: { get: () => pageFrontmatter.value },
+    $lang: { get: () => pageLang.value },
+    $headTitle: { get: () => pageHeadTitle.value },
+    $withBase: { get: () => withBase },
   })
 
   // register built-in components
