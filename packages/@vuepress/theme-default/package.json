@@ -45,7 +45,7 @@
     "@vueuse/core": "^6.0.0-beta.3",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
-    "vue": "^3.2.1",
+    "vue": "^3.2.2",
     "vue-router": "^4.0.10"
   },
   "publishConfig": {
