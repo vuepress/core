@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+
+### Bug Fixes
+
+* **plugin-pwa:** compat with workbox-build 6.2.2 (close [#361](https://github.com/vuepress/vuepress-next/issues/361)) ([f28e4cb](https://github.com/vuepress/vuepress-next/commit/f28e4cbc6a1b760440b4bdd1598eded5b47dfec5))
+
+
+
+
+
 # [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa

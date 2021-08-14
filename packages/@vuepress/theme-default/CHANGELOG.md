@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid recursive ref update in code-group ([ca8404a](https://github.com/vuepress/vuepress-next/commit/ca8404a12b8ab83ac9904431fac189f61f7e5100))
+
+
+### Features
+
+* **theme-default:** add `logoDark` locale option (close [#283](https://github.com/vuepress/vuepress-next/issues/283)) ([991c07a](https://github.com/vuepress/vuepress-next/commit/991c07a26d745b5c13ab320b04d8ee79ac5a6ebc))
+* **theme-default:** add css variables for transition ([#325](https://github.com/vuepress/vuepress-next/issues/325)) ([2b09004](https://github.com/vuepress/vuepress-next/commit/2b09004cfb65ca15e593c680d8e80f2a28ecd741))
+* **theme-default:** improve a11y and animation of sidebar button ([#365](https://github.com/vuepress/vuepress-next/issues/365)) ([c99861e](https://github.com/vuepress/vuepress-next/commit/c99861e4c65dfcce8b29c9ce7943944e3d6ca3c1))
+* **theme-default:** store dark mode state in local storage (close [#335](https://github.com/vuepress/vuepress-next/issues/335)) ([9582b3b](https://github.com/vuepress/vuepress-next/commit/9582b3b72c42b28f74484b55d88bc1fb2d8f56df))
+
+
+
+
+
 # [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
 
 
