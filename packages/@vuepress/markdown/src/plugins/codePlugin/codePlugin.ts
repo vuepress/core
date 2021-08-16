@@ -108,8 +108,15 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     // generate line numbers
     if (useLineNumbers) {
       // generate line numbers code
+      let lineBase = token.meta?.lineStart
+      if (lineBase === undefined) {
+        lineBase = 1
+      }
       const lineNumbersCode = lines
-        .map((_, index) => `<span class="line-number">${index + 1}</span><br>`)
+        .map(
+          (_, index) =>
+            `<span class="line-number">${index + lineBase}</span><br>`
+        )
         .join('')
 
       result = `${result}<div class="line-numbers">${lineNumbersCode}</div>`
