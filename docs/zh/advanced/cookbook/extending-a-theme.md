@@ -134,6 +134,36 @@ export default {
 - `page-top`
 - `page-bottom`
 
+最后，记得在 `.vuepress/config.js` 中使用你的本地主题：
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
+
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
+  theme: path.resolve(__dirname, './theme'),
+}
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="TS">
+
+```ts
+import { path } from '@vuepress/utils'
+import { defineUserConfig } from 'vuepress'
+import type { DefaultThemeOptions } from 'vuepress'
+
+export default defineUserConfig<DefaultThemeOptions>({
+  theme: path.resolve(__dirname, './theme'),
+})
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## 使你的主题可以被继承
 
 作为一个主题作者，为了允许用户在使用你的主题时进行更多的自定义，你可能希望你的主题可以被用户继承。

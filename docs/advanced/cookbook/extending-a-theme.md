@@ -51,7 +51,7 @@ In this case, your `vuepress-theme-foo` will inherit all configuration, plugins 
 
 ## Extend Default Theme
 
-First, create the theme directory and theme entry `.vuepress/theme/index.js`:
+First, create the theme directory and the theme entry `.vuepress/theme/index.js`:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
@@ -133,6 +133,36 @@ Here are all the slots that provided by the `Layout` of default theme:
 - `page`
 - `page-top`
 - `page-bottom`
+
+Finally, remember to use your local theme in `.vuepress/config.js`:
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
+
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
+  theme: path.resolve(__dirname, './theme'),
+}
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="TS">
+
+```ts
+import { path } from '@vuepress/utils'
+import { defineUserConfig } from 'vuepress'
+import type { DefaultThemeOptions } from 'vuepress'
+
+export default defineUserConfig<DefaultThemeOptions>({
+  theme: path.resolve(__dirname, './theme'),
+})
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Make Your Theme Extendable
 
