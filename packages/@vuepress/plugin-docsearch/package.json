@@ -33,13 +33,13 @@
     "@docsearch/css": "3.0.0-alpha.34",
     "@docsearch/js": "3.0.0-alpha.34",
     "@docsearch/react": "3.0.0-alpha.34",
-    "@types/react": "^17.0.17",
+    "@types/react": "^17.0.18",
     "@vuepress/client": "2.0.0-beta.24",
     "@vuepress/core": "2.0.0-beta.24",
     "@vuepress/shared": "2.0.0-beta.24",
     "@vuepress/utils": "2.0.0-beta.24",
     "preact": "^10.5.14",
-    "vue": "^3.2.2",
+    "vue": "^3.2.3",
     "vue-router": "^4.0.10"
   },
   "publishConfig": {
