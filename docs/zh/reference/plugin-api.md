@@ -148,7 +148,7 @@ module.exports = {
 
   页面配置项扩展。
 
-  该 Hook 接收一个函数，在参数中会收到页面的原始配置。返回的对象会被合并到页面配置项中，用以创建页面。
+  该 Hook 接收一个函数，在参数中会收到 `cretePage` 传入的原始选项。返回的对象会被合并到页面选项中，用以创建页面。
 
 - 示例：
 
@@ -168,6 +168,9 @@ module.exports = {
   },
 }
 ```
+
+- 参考：
+  - [Node API > Page > createPage](./node-api.md#createPage)
 
 ### extendsPageData
 
@@ -202,6 +205,10 @@ export default {
   },
 }
 ```
+
+- 参考：
+  - [客户端 API > usePageData](./client-api.md#usepagedata)
+  - [Node API > Page 属性 > data](./node-api.md#data)
 
 ## 客户端文件 Hooks
 

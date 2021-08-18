@@ -34,6 +34,10 @@
 
   返回当前页面数据的 Ref 对象。
 
+- 参考：
+  - [Node API > Page 属性 > data](./node-api.md#data)
+  - [插件 API > extendsPageData](./plugin-api.md#extendspagedata)
+
 ### usePageFrontmatter
 
 - 详情：

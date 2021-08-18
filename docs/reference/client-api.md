@@ -34,6 +34,10 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
   Returns the page data ref object of current page.
 
+- Also see:
+  - [Node API > Page Properties > data](./node-api.md#data)
+  - [Plugin API > extendsPageData](./plugin-api.md#extendspagedata)
+
 ### usePageFrontmatter
 
 - Details:

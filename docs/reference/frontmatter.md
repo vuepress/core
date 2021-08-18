@@ -15,6 +15,7 @@
 
 - Also see:
   - [Config > lang](./config.md#lang)
+  - [Node API > Page Properties > lang](./node-api.md#lang)
 
 ## title
 
@@ -25,6 +26,9 @@
   Title for the page.
 
   If you don't specify `title` in frontmatter, content of the first level-one header (i.e. `# title`) will be used as the title.
+
+- Also see:
+  - [Node API > Page Properties > title](./node-api.md#title)
 
 ## description
 
@@ -81,7 +85,10 @@ head:
 
   Created date for the page.
 
-  You should specify the date in the form of `yyyy-MM-dd`, or follow the [YAML Timestamp Type](https://yaml.org/type/timestamp.html). 
+  You should specify the date in the form of `yyyy-MM-dd`, or follow the [YAML Timestamp Type](https://yaml.org/type/timestamp.html).
+
+- Also see:
+  - [Node API > Page Properties > date](./node-api.md#date)
 
 ## permalink
 
@@ -96,6 +103,7 @@ head:
 - Also see:
   - [Frontmatter > permalinkPattern](#permalinkpattern)
   - [Guide > Page > Routing](../guide/page.md#routing)
+  - [Node API > Page Properties > permalink](./node-api.md#permalink)
 
 ## permalinkPattern
 
@@ -156,6 +164,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 - Also see:
   - [Frontmatter > date](#date)
   - [Frontmatter > permalink](#permalink)
+  - [Node API > Page Properties > permalink](./node-api.md#permalink)
 
 ## layout
 

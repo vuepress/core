@@ -419,6 +419,9 @@ You should not configure it unless you understand what it is for.
 
   Set to `false` to disable this plugin.
 
+- Also see:
+  - [Node API > Page Properties > headers](./node-api.md#headers)
+
 #### markdown.extractHeaders.level
 
 - Type: `number[]`
@@ -483,6 +486,7 @@ You should not configure it unless you understand what it is for.
 
 - Also see:
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Page Properties > hoistedTags](./node-api.md#hoistedtags)
 
 ### markdown.hoistTags.customBlocks
 

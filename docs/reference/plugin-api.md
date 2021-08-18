@@ -147,7 +147,7 @@ module.exports = {
 
   Page options extension.
 
-  This hook accepts a function that will receive the raw options of the page. The returned object will be merged into page options, which will be used to create the page.
+  This hook accepts a function that will receive the raw options of `createPage`. The returned object will be merged into page options, which will be used to create the page.
 
 - Example:
 
@@ -167,6 +167,9 @@ module.exports = {
   },
 }
 ```
+
+- Also see:
+  - [Node API > Page > createPage](./node-api.md#createpage)
 
 ### extendsPageData
 
@@ -201,6 +204,10 @@ export default {
   },
 }
 ```
+
+- Also see:
+  - [Client API > usePageData](./client-api.md#usepagedata)
+  - [Node API > Page Properties > data](./node-api.md#data)
 
 ## Client Files Hooks
 

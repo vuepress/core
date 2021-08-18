@@ -418,6 +418,9 @@ module.exports = {
 
   设置为 `false` 可以禁用该插件。
 
+- 参考：
+  - [Node API > Page 属性 > headers](./node-api.md#headers)
+
 #### markdown.extractHeaders.level
 
 - 类型： `number[]`
@@ -482,6 +485,7 @@ module.exports = {
 
 - 参考：
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Page 属性 > hoistedTags](./node-api.md#hoistedtags)
 
 ### markdown.hoistTags.customBlocks
 
