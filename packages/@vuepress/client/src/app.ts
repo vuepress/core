@@ -104,7 +104,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
   )
   const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
   const pageHeadTitle = computed(() =>
-    resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+    resolvePageHeadTitle.value(pageData.value, siteLocaleData.value)
   )
   const pageHead = computed(() =>
     resolvePageHead(
