@@ -30,7 +30,7 @@ import {
   resolveRouteLocale,
   siteLocaleDataSymbol,
   resolveSiteLocaleData,
-  useUpdateHead,
+  setupUpdateHead,
 } from './injections'
 import { ClientOnly, Content, OutboundLink } from './components'
 import { withBase } from './utils'
@@ -59,7 +59,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
     setup() {
       // auto update head
-      useUpdateHead()
+      setupUpdateHead()
 
       // invoke all clientAppSetups
       for (const clientAppSetup of clientAppSetups) {
