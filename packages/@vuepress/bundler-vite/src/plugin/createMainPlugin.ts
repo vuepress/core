@@ -95,6 +95,7 @@ import '@vuepress/client/lib/app.js'
       build: {
         ssr: isServer,
         outDir: isServer ? app.dir.dest('.server') : app.dir.dest(),
+        emptyOutDir: false,
         cssCodeSplit: false,
         rollupOptions: {
           input: app.dir.client('lib/app.js'),
