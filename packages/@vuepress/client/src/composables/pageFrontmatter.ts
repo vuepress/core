@@ -1,16 +1,26 @@
+import type { PageData, PageFrontmatter } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { PageData, PageFrontmatter } from '@vuepress/shared'
 
 export type { PageFrontmatter }
+
+/**
+ * Ref wrapper of `PageFrontmatter`
+ */
 export type PageFrontmatterRef<
   T extends Record<any, any> = Record<string, unknown>
 > = ComputedRef<PageFrontmatter<T>>
 
+/**
+ * Injection key for page frontmatter
+ */
 export const pageFrontmatterSymbol: InjectionKey<PageFrontmatterRef> = Symbol(
   __VUEPRESS_DEV__ ? 'pageFrontmatter' : ''
 )
 
+/**
+ * Returns the ref of the frontmatter of current page
+ */
 export const usePageFrontmatter = <
   T extends Record<any, any> = Record<string, unknown>
 >(): PageFrontmatterRef<T> => {
@@ -21,5 +31,8 @@ export const usePageFrontmatter = <
   return pageFrontmatter as PageFrontmatterRef<T>
 }
 
+/**
+ * Resolve page frontmatter from page data
+ */
 export const resolvePageFrontmatter = (pageData: PageData): PageFrontmatter =>
   pageData.frontmatter

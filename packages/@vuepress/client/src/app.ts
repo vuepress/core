@@ -1,4 +1,10 @@
-import { createApp, createSSRApp, computed, h } from 'vue'
+import { removeEndingSlash } from '@vuepress/shared'
+import { clientAppEnhances } from '@internal/clientAppEnhances'
+import { clientAppRootComponents } from '@internal/clientAppRootComponents'
+import { clientAppSetups } from '@internal/clientAppSetups'
+import { pagesComponents } from '@internal/pagesComponents'
+import { pagesRoutes } from '@internal/pagesRoutes'
+import { createApp, createSSRApp, h } from 'vue'
 import type { App } from 'vue'
 import {
   createRouter,
@@ -8,32 +14,14 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import type { Router } from 'vue-router'
-import { removeEndingSlash } from '@vuepress/shared'
-import { clientAppEnhances } from '@internal/clientAppEnhances'
-import { clientAppRootComponents } from '@internal/clientAppRootComponents'
-import { clientAppSetups } from '@internal/clientAppSetups'
-import { pagesComponents } from '@internal/pagesComponents'
-import { pagesRoutes } from '@internal/pagesRoutes'
+import { provideGlobalComputed } from './provideGlobalComputed'
 import {
   siteData,
   pageData,
   resolvePageData,
-  pageFrontmatterSymbol,
-  resolvePageFrontmatter,
-  pageHeadSymbol,
-  resolvePageHead,
-  pageHeadTitleSymbol,
-  resolvePageHeadTitle,
-  pageLangSymbol,
-  resolvePageLang,
-  routeLocaleSymbol,
-  resolveRouteLocale,
-  siteLocaleDataSymbol,
-  resolveSiteLocaleData,
   setupUpdateHead,
-} from './injections'
+} from './composables'
 import { ClientOnly, Content, OutboundLink } from './components'
-import { withBase } from './utils'
 
 /**
  * - use `createApp` in dev mode
@@ -95,45 +83,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
     }
   })
 
-  // create global computed
-  const routeLocale = computed(() =>
-    resolveRouteLocale(siteData.value.locales, router.currentRoute.value.path)
-  )
-  const siteLocaleData = computed(() =>
-    resolveSiteLocaleData(siteData.value, routeLocale.value)
-  )
-  const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
-  const pageHeadTitle = computed(() =>
-    resolvePageHeadTitle(pageData.value, siteLocaleData.value)
-  )
-  const pageHead = computed(() =>
-    resolvePageHead(
-      pageHeadTitle.value,
-      pageFrontmatter.value,
-      siteLocaleData.value
-    )
-  )
-  const pageLang = computed(() => resolvePageLang(pageData.value))
-
-  // provide global computed
-  app.provide(routeLocaleSymbol, routeLocale)
-  app.provide(siteLocaleDataSymbol, siteLocaleData)
-  app.provide(pageFrontmatterSymbol, pageFrontmatter)
-  app.provide(pageHeadTitleSymbol, pageHeadTitle)
-  app.provide(pageHeadSymbol, pageHead)
-  app.provide(pageLangSymbol, pageLang)
-
-  // provide global data & helpers
-  Object.defineProperties(app.config.globalProperties, {
-    $routeLocale: { get: () => routeLocale.value },
-    $site: { get: () => siteData.value },
-    $siteLocale: { get: () => siteLocaleData.value },
-    $page: { get: () => pageData.value },
-    $frontmatter: { get: () => pageFrontmatter.value },
-    $lang: { get: () => pageLang.value },
-    $headTitle: { get: () => pageHeadTitle.value },
-    $withBase: { get: () => withBase },
-  })
+  provideGlobalComputed(app, router)
 
   // register built-in components
   /* eslint-disable vue/match-component-file-name */

@@ -6,14 +6,20 @@ import { useRoute } from 'vue-router'
 import { usePageHead } from './pageHead'
 import { usePageLang } from './pageLang'
 
+/**
+ * A util function to force update `<head>` of current page
+ */
 export type UpdateHead = () => void
 
+/**
+ * Injection key for `updateHead` util
+ */
 export const updateHeadSymbol: InjectionKey<UpdateHead> = Symbol(
   __VUEPRESS_DEV__ ? 'updateHead' : ''
 )
 
 /**
- * Inject updateHead util
+ * Returns the `updateHead` util
  */
 export const useUpdateHead = (): UpdateHead => {
   const updateHead = inject(updateHeadSymbol)

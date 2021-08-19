@@ -1,7 +1,7 @@
-import { computed, defineComponent, h, resolveComponent } from 'vue'
 import { isString } from '@vuepress/shared'
 import { layoutComponents } from '@internal/layoutComponents'
-import { usePageData } from '../injections'
+import { computed, defineComponent, h, resolveComponent } from 'vue'
+import { usePageData } from '../composables'
 
 /**
  * Global Layout

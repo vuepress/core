@@ -1,7 +1,7 @@
+import { pagesComponents } from '@internal/pagesComponents'
 import { h } from 'vue'
 import type { FunctionalComponent } from 'vue'
-import { pagesComponents } from '@internal/pagesComponents'
-import { usePageData } from '../injections'
+import { usePageData } from '../composables'
 
 /**
  * Markdown rendered content
