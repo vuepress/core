@@ -1,6 +1,6 @@
-import type { ZoomOptions } from 'medium-zoom'
 import type { Plugin } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import type { ZoomOptions } from 'medium-zoom'
 
 export interface MediumZoomPluginOptions {
   selector: string

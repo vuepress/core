@@ -1,5 +1,5 @@
-import type { UserConfig } from 'vite'
 import type { App } from '@vuepress/core'
+import type { UserConfig } from 'vite'
 
 export const resolveDefine = async ({
   app,

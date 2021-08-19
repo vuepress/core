@@ -1,6 +1,6 @@
-import * as chokidar from 'chokidar'
 import type { Plugin } from '@vuepress/core'
 import { hash, path } from '@vuepress/utils'
+import * as chokidar from 'chokidar'
 import { prepareClientAppEnhanceFile } from './prepareClientAppEnhanceFile'
 
 export interface RegisterComponentsPluginOptions {

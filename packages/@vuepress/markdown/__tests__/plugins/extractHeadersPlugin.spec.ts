@@ -1,6 +1,6 @@
-import * as MarkdownIt from 'markdown-it'
 import { anchorPlugin, extractHeadersPlugin, slugify } from '@vuepress/markdown'
 import type { MarkdownEnv, MarkdownHeader } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 const fixtures = {
   simpleTree: `\

@@ -1,7 +1,7 @@
-import * as chokidar from 'chokidar'
 import type { Page, Plugin } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
+import * as chokidar from 'chokidar'
 import { prepareSearchIndex } from './prepareSearchIndex'
 
 export interface SearchPluginOptions {

@@ -1,5 +1,5 @@
-import type { SiteData } from '@vuepress/shared'
 import { siteData as siteDataRaw } from '@internal/siteData'
+import type { SiteData } from '@vuepress/shared'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 

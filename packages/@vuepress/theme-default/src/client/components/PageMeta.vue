@@ -27,13 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
 import {
   usePageData,
   usePageFrontmatter,
   useSiteLocaleData,
 } from '@vuepress/client'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import type {
   DefaultThemePageData,
   DefaultThemeNormalPageFrontmatter,

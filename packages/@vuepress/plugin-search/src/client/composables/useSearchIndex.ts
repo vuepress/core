@@ -1,6 +1,6 @@
+import { searchIndex as searchIndexRaw } from '@internal/searchIndex'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
-import { searchIndex as searchIndexRaw } from '@internal/searchIndex'
 import type { SearchIndex } from '../../shared'
 
 export type SearchIndexRef = Ref<SearchIndex>

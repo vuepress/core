@@ -1,6 +1,6 @@
+import { defineClientAppEnhance } from '@vuepress/client'
 import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
-import { defineClientAppEnhance } from '@vuepress/client'
 import { mediumZoomSymbol } from './composables'
 
 import './styles/vars.css'

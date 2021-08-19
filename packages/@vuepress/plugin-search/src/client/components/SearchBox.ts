@@ -1,8 +1,8 @@
+import { useRouteLocale } from '@vuepress/client'
+import type { LocaleConfig } from '@vuepress/shared'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRouter } from 'vue-router'
-import { useRouteLocale } from '@vuepress/client'
-import type { LocaleConfig } from '@vuepress/shared'
 import {
   useHotKeys,
   useSearchIndex,

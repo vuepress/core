@@ -1,5 +1,5 @@
-import { mergeConfig, InlineConfig } from 'vite'
 import type { App } from '@vuepress/core'
+import { mergeConfig, InlineConfig } from 'vite'
 import { createPlugin } from '../plugin'
 import type { ViteBundlerOptions } from '../types'
 

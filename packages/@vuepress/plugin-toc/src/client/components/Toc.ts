@@ -1,9 +1,9 @@
+import { usePageData } from '@vuepress/client'
+import type { PageHeader } from '@vuepress/client'
 import { computed, defineComponent, h, toRefs } from 'vue'
 import type { PropType, VNode } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import { usePageData } from '@vuepress/client'
-import type { PageHeader } from '@vuepress/client'
 import type { TocPropsOptions } from '../../shared'
 
 export type TocPropsHeaders = PageHeader[]

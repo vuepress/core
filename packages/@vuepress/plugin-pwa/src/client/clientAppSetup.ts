@@ -1,6 +1,6 @@
+import { defineClientAppSetup, withBase } from '@vuepress/client'
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
-import { defineClientAppSetup, withBase } from '@vuepress/client'
 import { pwaEventSymbol } from './composables'
 import type { PwaEvent } from './composables'
 

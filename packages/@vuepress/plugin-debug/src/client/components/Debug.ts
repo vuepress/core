@@ -1,6 +1,6 @@
+import { usePageData, useSiteData, useSiteLocaleData } from '@vuepress/client'
 import { h, defineComponent, ref, toDisplayString, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
-import { usePageData, useSiteData, useSiteLocaleData } from '@vuepress/client'
 import './Debug.css'
 
 export const Debug = defineComponent({

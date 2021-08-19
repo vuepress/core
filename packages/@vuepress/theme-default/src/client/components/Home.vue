@@ -42,13 +42,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import {
   usePageFrontmatter,
   useSiteLocaleData,
   withBase,
 } from '@vuepress/client'
 import { isArray } from '@vuepress/shared'
+import { computed } from 'vue'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
 import NavLink from './NavLink.vue'
 

@@ -1,7 +1,7 @@
-import type { FSWatcher } from 'chokidar'
 import { createDevApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { debug, fs, logger } from '@vuepress/utils'
+import type { FSWatcher } from 'chokidar'
 import {
   resolveUserConfigConventionalPath,
   resolveUserConfigPath,

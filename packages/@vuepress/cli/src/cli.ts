@@ -1,6 +1,6 @@
-import { cac } from 'cac'
 import type { AppConfig } from '@vuepress/core'
 import { chalk } from '@vuepress/utils'
+import { cac } from 'cac'
 import { createBuild, createDev, info } from './commands'
 import { allowTs } from './utils'
 

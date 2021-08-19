@@ -1,6 +1,6 @@
-import * as MarkdownIt from 'markdown-it'
 import { emojiPlugin, extractTitlePlugin } from '@vuepress/markdown'
 import type { MarkdownEnv } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 describe('@vuepress/markdown > plugins > extractTitlePlugin', () => {
   const md = MarkdownIt().use(emojiPlugin).use(extractTitlePlugin)

@@ -1,10 +1,10 @@
 import { sep } from 'path'
-import type { WebpackOptionsNormalized } from 'webpack'
 import { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import type { WebpackOptionsNormalized } from 'webpack'
 import type { WebpackBundlerOptions } from '../types'
-import { resolvePort } from './resolvePort'
 import type { WebpackDevServer } from '../types.webpack-dev-server'
+import { resolvePort } from './resolvePort'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware'
 
 export const createDevServerConfig = async (

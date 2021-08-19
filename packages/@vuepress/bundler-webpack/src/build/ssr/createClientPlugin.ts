@@ -1,5 +1,5 @@
-import type { WebpackPluginInstance } from 'webpack'
 import { fs } from '@vuepress/utils'
+import type { WebpackPluginInstance } from 'webpack'
 import type { StatsToJsonOutput, FnModules } from '../../types.webpack'
 import { isCSS, isJS } from './utils'
 

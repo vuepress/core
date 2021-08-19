@@ -1,6 +1,6 @@
 import type { App } from '@vuepress/core'
-import type { SearchPluginOptions } from './searchPlugin'
 import type { SearchIndex } from '../shared'
+import type { SearchPluginOptions } from './searchPlugin'
 
 const HMR_CODE = `
 if (import.meta.webpackHot) {

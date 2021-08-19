@@ -49,13 +49,13 @@
 </template>
 
 <script setup lang="ts">
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, onUnmounted, ref, Transition } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
 import Home from '../components/Home.vue'
-import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
+import Page from '../components/Page.vue'
 import Sidebar from '../components/Sidebar.vue'
 import {
   useScrollPromise,

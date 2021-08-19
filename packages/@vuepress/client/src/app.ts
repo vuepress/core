@@ -1,9 +1,9 @@
-import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppRootComponents } from '@internal/clientAppRootComponents'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { pagesComponents } from '@internal/pagesComponents'
 import { pagesRoutes } from '@internal/pagesRoutes'
+import { removeEndingSlash } from '@vuepress/shared'
 import { createApp, createSSRApp, h } from 'vue'
 import type { App } from 'vue'
 import {
@@ -14,14 +14,14 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import type { Router } from 'vue-router'
-import { provideGlobalComputed } from './provideGlobalComputed'
+import { ClientOnly, Content, OutboundLink } from './components'
 import {
   siteData,
   pageData,
   resolvePageData,
   setupUpdateHead,
 } from './composables'
-import { ClientOnly, Content, OutboundLink } from './components'
+import { provideGlobalComputed } from './provideGlobalComputed'
 
 /**
  * - use `createApp` in dev mode

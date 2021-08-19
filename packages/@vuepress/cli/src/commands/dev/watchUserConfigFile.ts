@@ -1,6 +1,6 @@
+import { chalk, logger } from '@vuepress/utils'
 import * as chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
-import { chalk, logger } from '@vuepress/utils'
 
 export const watchUserConfigFile = ({
   userConfigPath,

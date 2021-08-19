@@ -1,7 +1,7 @@
-import { h } from 'vue'
 import { defineClientAppEnhance } from '@vuepress/client'
-import { Docsearch } from './components/Docsearch'
+import { h } from 'vue'
 import type { DocsearchOptions } from '../shared'
+import { Docsearch } from './components/Docsearch'
 
 declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
 

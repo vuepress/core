@@ -1,5 +1,5 @@
-import type { LocaleData } from '@vuepress/shared'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { LocaleData } from '@vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav'
 
 export interface DefaultThemePluginsOptions {

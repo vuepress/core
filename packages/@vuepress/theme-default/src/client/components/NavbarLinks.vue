@@ -9,11 +9,11 @@
 </template>
 
 <script setup lang="ts">
+import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
-import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
-import { isLinkHttp, isString } from '@vuepress/shared'
 import type { NavbarItem, NavbarGroup, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'

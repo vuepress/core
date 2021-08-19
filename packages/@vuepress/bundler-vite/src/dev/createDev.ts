@@ -1,5 +1,5 @@
-import { createServer, mergeConfig } from 'vite'
 import type { App, Bundler } from '@vuepress/core'
+import { createServer, mergeConfig } from 'vite'
 import { createPlugin } from '../plugin'
 import type { ViteBundlerOptions } from '../types'
 

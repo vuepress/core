@@ -1,5 +1,5 @@
-import { h } from 'vue'
 import { defineClientAppEnhance } from '@vuepress/client'
+import { h } from 'vue'
 import { SearchBox } from './components/SearchBox'
 import type { SearchBoxLocales } from './components/SearchBox'
 

@@ -1,5 +1,5 @@
-import type { AliasOptions } from 'vite'
 import type { App } from '@vuepress/core'
+import type { AliasOptions } from 'vite'
 
 export const resolveAlias = async ({
   app,

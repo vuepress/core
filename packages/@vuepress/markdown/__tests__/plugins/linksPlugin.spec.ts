@@ -1,6 +1,6 @@
-import * as MarkdownIt from 'markdown-it'
 import { linksPlugin } from '@vuepress/markdown'
 import type { MarkdownEnv } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 describe('@vuepress/markdown > plugins > linksPlugin', () => {
   describe('external links', () => {

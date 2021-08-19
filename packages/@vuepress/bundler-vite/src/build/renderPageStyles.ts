@@ -1,5 +1,5 @@
-import type { OutputAsset } from 'rollup'
 import type { App } from '@vuepress/core'
+import type { OutputAsset } from 'rollup'
 
 /**
  * Render styles of current page

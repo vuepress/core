@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import { usePageFrontmatter } from '@vuepress/client'
 import { isPlainObject, isString } from '@vuepress/shared'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink as NavLinkType,

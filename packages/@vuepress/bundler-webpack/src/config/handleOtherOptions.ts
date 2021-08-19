@@ -1,6 +1,6 @@
+import type { App } from '@vuepress/core'
 import type { Configuration } from 'webpack'
 import type * as Config from 'webpack-chain'
-import type { App } from '@vuepress/core'
 
 /**
  * Set webpack other options

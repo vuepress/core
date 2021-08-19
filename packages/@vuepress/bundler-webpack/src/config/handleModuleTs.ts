@@ -1,5 +1,5 @@
-import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
+import type * as Config from 'webpack-chain'
 import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions'
 
 /**

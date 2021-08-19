@@ -1,5 +1,5 @@
-import * as MarkdownIt from 'markdown-it'
 import { anchorPlugin, tocPlugin, slugify } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 const fixtures = {
   simpleTree: `\

@@ -1,5 +1,5 @@
-const { resolve } = require('path')
 const { readdirSync } = require('fs')
+const { resolve } = require('path')
 const { compilerOptions } = require('./tsconfig.base.json')
 
 const packagesDir = 'packages/@vuepress'

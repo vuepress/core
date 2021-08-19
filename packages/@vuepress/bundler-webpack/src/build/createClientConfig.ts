@@ -1,6 +1,6 @@
-import * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
+import * as Config from 'webpack-chain'
 import { createClientBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 import { createClientPlugin } from './ssr'

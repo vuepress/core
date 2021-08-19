@@ -1,6 +1,6 @@
+import type { RouteLocale } from '@vuepress/client'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { RouteLocale } from '@vuepress/client'
 import type { ThemeData } from '../../shared'
 
 export type ThemeLocaleDataRef<T extends ThemeData = ThemeData> = ComputedRef<T>

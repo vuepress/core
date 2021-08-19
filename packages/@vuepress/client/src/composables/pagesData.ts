@@ -1,5 +1,5 @@
-import type { PageData } from '@vuepress/shared'
 import { pagesData as pagesDataRaw } from '@internal/pagesData'
+import type { PageData } from '@vuepress/shared'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 
