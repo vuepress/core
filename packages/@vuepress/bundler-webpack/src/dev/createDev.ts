@@ -6,15 +6,13 @@ import type { WebpackBundlerOptions } from '../types'
 import { resolveWebpackConfig } from '../utils'
 import { createDevConfig } from './createDevConfig'
 import { createDevServerConfig } from './createDevServerConfig'
-import { resolvePort } from './resolvePort'
 
+/**
+ * Create the dev method of webpack bundler
+ */
 export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   app: App
 ) => {
-  // resolve host and port
-  const host = app.options.host
-  const port = await resolvePort(app.options.port)
-
   // create webpack config
   const config = await createDevConfig(app, options)
   const webpackConfig = resolveWebpackConfig({
@@ -28,60 +26,58 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   const compiler = webpack(webpackConfig)
 
   // create webpack-dev-server
-  const serverConfig = createDevServerConfig(app, options)
-  const server = new WebpackDevServer(compiler, serverConfig)
+  const serverConfig = await createDevServerConfig(app, options)
+  const server = new WebpackDevServer(serverConfig, compiler)
 
-  // create spinner
-  const spinner = ora()
-  let hasStarted = false
-  let hasFinished = false
+  const [, close] = await Promise.all([
+    // wait for webpack-dev-server to start
+    server.start(),
 
-  // start spinner before the first compilation
-  compiler.hooks.beforeCompile.tap('vuepress-dev', () => {
-    if (hasStarted) return
-    hasStarted = true
+    // wait for webpack compilation to complete
+    new Promise<() => Promise<void>>((resolve, reject) => {
+      // create spinner
+      const spinner = ora()
+      let hasStarted = false
+      let hasFinished = false
 
-    spinner.start('Compiling with webpack...')
-  })
+      // start spinner before the first compilation
+      compiler.hooks.beforeCompile.tap('vuepress-dev', () => {
+        if (hasStarted) return
+        hasStarted = true
 
-  // stop spinner and reject error if the first compilation is failed
-  compiler.hooks.failed.tap('vuepress-dev', () => {
-    if (hasFinished) return
-    hasFinished = true
+        spinner.start('Compiling with webpack...')
+      })
 
-    spinner.fail('Compilation failed')
-  })
+      // stop spinner, show compilation time and print url after first compilation
+      compiler.hooks.done.tap('vuepress-dev', ({ endTime, startTime }) => {
+        if (hasFinished) return
+        hasFinished = true
 
-  // stop spinner, show compilation time and print url after first compilation
-  compiler.hooks.done.tap('vuepress-dev', ({ endTime, startTime }) => {
-    if (hasFinished) return
-    hasFinished = true
+        spinner.succeed(`Compilation finished in ${endTime! - startTime!}ms`)
 
-    spinner.succeed(`Compilation finished in ${endTime! - startTime!}ms`)
+        // replace `0.0.0.0` with `localhost` as `0.0.0.0` is not available on windows
+        const url = `http://${
+          serverConfig.host === '0.0.0.0' ? 'localhost' : serverConfig.host
+        }:${serverConfig.port}${app.options.base}`
+        logger.success(
+          `VuePress webpack dev server is listening at ${chalk.cyan(url)}`
+        )
 
-    // replace `0.0.0.0` with `localhost` as `0.0.0.0` is not available on windows
-    const url = `http://${host === '0.0.0.0' ? 'localhost' : host}:${port}${
-      app.options.base
-    }`
-    logger.success(
-      `VuePress webpack dev server is listening at ${chalk.cyan(url)}`
-    )
-  })
+        // resolve the close function
+        resolve((): Promise<void> => server.stop())
+      })
 
-  // start dev-server and return the close function
-  return new Promise((resolve, reject) => {
-    server.listen(port, host, (err) => {
-      if (err) {
-        logger.error(`VuePress dev server failed to start`)
-        return reject(err)
-      }
+      // stop spinner and reject error if the first compilation is failed
+      compiler.hooks.failed.tap('vuepress-dev', (err) => {
+        if (hasFinished) return
+        hasFinished = true
 
-      // promisify the close function
-      const close = (): Promise<void> =>
-        new Promise((resolve) => server.close(resolve))
+        spinner.fail('Compilation failed')
+        reject(err)
+      })
+    }),
+  ])
 
-      // resolve the close function
-      resolve(close)
-    })
-  })
+  // return the close function
+  return close
 }
