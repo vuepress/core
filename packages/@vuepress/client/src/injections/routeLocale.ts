@@ -7,7 +7,7 @@ export type RouteLocale = string
 export type RouteLocaleRef = ComputedRef<RouteLocale>
 
 export const routeLocaleSymbol: InjectionKey<RouteLocaleRef> = Symbol(
-  __DEV__ ? 'routeLocale' : ''
+  __VUEPRESS_DEV__ ? 'routeLocale' : ''
 )
 
 export const useRouteLocale = (): RouteLocaleRef => {

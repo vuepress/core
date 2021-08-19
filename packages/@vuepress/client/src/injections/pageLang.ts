@@ -6,7 +6,7 @@ export type PageLang = string
 export type PageLangRef = ComputedRef<PageLang>
 
 export const pageLangSymbol: InjectionKey<PageLangRef> = Symbol(
-  __DEV__ ? 'pageLang' : ''
+  __VUEPRESS_DEV__ ? 'pageLang' : ''
 )
 
 export const usePageLang = (): PageLangRef => {

@@ -7,7 +7,7 @@ export type SiteLocaleData = SiteData
 export type SiteLocaleDataRef = ComputedRef<SiteLocaleData>
 
 export const siteLocaleDataSymbol: InjectionKey<SiteLocaleDataRef> = Symbol(
-  __DEV__ ? 'siteLocaleData' : ''
+  __VUEPRESS_DEV__ ? 'siteLocaleData' : ''
 )
 
 export const useSiteLocaleData = (): SiteLocaleDataRef => {

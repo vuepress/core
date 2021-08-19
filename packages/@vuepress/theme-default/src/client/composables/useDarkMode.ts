@@ -6,7 +6,7 @@ import { useThemeLocaleData } from '.'
 export type DarkModeRef = WritableComputedRef<boolean>
 
 export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
-  __DEV__ ? 'darkMode' : ''
+  __VUEPRESS_DEV__ ? 'darkMode' : ''
 )
 
 /**

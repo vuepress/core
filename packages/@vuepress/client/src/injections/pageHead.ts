@@ -10,7 +10,7 @@ export type PageHead = HeadConfig[]
 export type PageHeadRef = ComputedRef<PageHead>
 
 export const pageHeadSymbol: InjectionKey<PageHeadRef> = Symbol(
-  __DEV__ ? 'pageHead' : ''
+  __VUEPRESS_DEV__ ? 'pageHead' : ''
 )
 
 export const usePageHead = (): PageHeadRef => {

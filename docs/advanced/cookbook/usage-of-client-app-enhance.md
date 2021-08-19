@@ -49,13 +49,13 @@ VuePress will generate a SSR application to pre-render pages during build. Gener
 
 We already provides a [ClientOnly](../../reference/components.md#clientonly) component to wrap non-SSR-friendly content.
 
-In client app enhance files, you can make use of the [`__SSR__`](../../reference/client-api.md#ssr) flag for that purpose.
+In client app enhance files, you can make use of the [`__VUEPRESS_SSR__`](../../reference/client-api.md#ssr) flag for that purpose.
 
 ```ts
 import { defineClientAppEnhance } from '@vuepress/client'
 
 export default defineClientAppEnhance(async ({ app, router, siteData }) => {
-  if (!__SSR__) {
+  if (!__VUEPRESS_SSR__) {
     const nonSsrFriendlyModule = await import('non-ssr-friendly-module')
     // ...
   }

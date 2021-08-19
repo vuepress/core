@@ -9,7 +9,7 @@ import { usePageLang } from './pageLang'
 export type UpdateHead = () => void
 
 export const updateHeadSymbol: InjectionKey<UpdateHead> = Symbol(
-  __DEV__ ? 'updateHead' : ''
+  __VUEPRESS_DEV__ ? 'updateHead' : ''
 )
 
 /**
@@ -32,7 +32,7 @@ export const setupUpdateHead = (): void => {
   const lang = usePageLang()
 
   // ssr-only, extract page meta info to ssrContext
-  if (__SSR__) {
+  if (__VUEPRESS_SSR__) {
     const ssrContext: VuepressSSRContext | undefined = useSSRContext()
     if (ssrContext) {
       ssrContext.head = head.value

@@ -12,7 +12,7 @@ const delay = __AHL_DELAY__
 const offset = __AHL_OFFSET__
 
 export default defineClientAppSetup(() => {
-  if (__SSR__) return
+  if (__VUEPRESS_SSR__) return
 
   useActiveHeaderLinks({
     headerLinkSelector,

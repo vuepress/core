@@ -8,7 +8,7 @@ export type PageFrontmatterRef<
 > = ComputedRef<PageFrontmatter<T>>
 
 export const pageFrontmatterSymbol: InjectionKey<PageFrontmatterRef> = Symbol(
-  __DEV__ ? 'pageFrontmatter' : ''
+  __VUEPRESS_DEV__ ? 'pageFrontmatter' : ''
 )
 
 export const usePageFrontmatter = <

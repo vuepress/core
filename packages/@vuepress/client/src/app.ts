@@ -39,13 +39,13 @@ import { withBase } from './utils'
  * - use `createApp` in dev mode
  * - use `createSSRApp` in build mode
  */
-const appCreator = __DEV__ ? createApp : createSSRApp
+const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
  * - use `createMemoryHistory` in build mode server bundle
  */
-const historyCreator = __SSR__ ? createMemoryHistory : createWebHistory
+const historyCreator = __VUEPRESS_SSR__ ? createMemoryHistory : createWebHistory
 
 export type CreateVueAppFunction = () => Promise<{
   app: App
@@ -161,7 +161,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
 }
 
 // mount app in client bundle
-if (!__SSR__) {
+if (!__VUEPRESS_SSR__) {
   createVueApp().then(({ app, router }) => {
     router.isReady().then(() => {
       app.mount('#app')
