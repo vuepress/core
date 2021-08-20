@@ -7,7 +7,7 @@ export const getContributors = async (
 ): Promise<GitContributor[]> => {
   const { stdout } = await execa(
     'git',
-    ['--no-pager', 'shortlog', '-nes', '--', filePath],
+    ['--no-pager', 'shortlog', '-nes', 'HEAD', '--', filePath],
     {
       cwd,
       stdin: 'inherit',
