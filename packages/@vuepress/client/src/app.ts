@@ -14,7 +14,6 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import type { Router } from 'vue-router'
-import { ClientOnly, Content, OutboundLink } from './components'
 import {
   siteData,
   pageData,
@@ -22,6 +21,7 @@ import {
   setupUpdateHead,
 } from './composables'
 import { provideGlobalComputed } from './provideGlobalComputed'
+import { registerGlobalComponents } from './registerGlobalComponents'
 
 /**
  * - use `createApp` in dev mode
@@ -83,14 +83,9 @@ export const createVueApp: CreateVueAppFunction = async () => {
     }
   })
 
+  // global computed and global components
   provideGlobalComputed(app, router)
-
-  // register built-in components
-  /* eslint-disable vue/match-component-file-name */
-  app.component('ClientOnly', ClientOnly)
-  app.component('Content', Content)
-  app.component('OutboundLink', OutboundLink)
-  /* eslint-enable vue/match-component-file-name */
+  registerGlobalComponents(app)
 
   // invoke all clientAppEnhances
   for (const clientAppEnhance of clientAppEnhances) {
