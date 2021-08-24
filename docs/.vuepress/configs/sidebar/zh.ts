@@ -86,14 +86,24 @@ export const zh: SidebarConfig = {
           children: [
             '/zh/reference/plugin/back-to-top.md',
             '/zh/reference/plugin/container.md',
-            '/zh/reference/plugin/docsearch.md',
             '/zh/reference/plugin/google-analytics.md',
             '/zh/reference/plugin/medium-zoom.md',
             '/zh/reference/plugin/nprogress.md',
+            '/zh/reference/plugin/register-components.md',
+          ],
+        },
+        {
+          text: '内容搜索',
+          children: [
+            '/zh/reference/plugin/docsearch.md',
+            '/zh/reference/plugin/search.md',
+          ],
+        },
+        {
+          text: 'PWA',
+          children: [
             '/zh/reference/plugin/pwa.md',
             '/zh/reference/plugin/pwa-popup.md',
-            '/zh/reference/plugin/register-components.md',
-            '/zh/reference/plugin/search.md',
           ],
         },
         {
