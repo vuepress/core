@@ -28,7 +28,7 @@ const { path } = require('@vuepress/utils')
 module.exports = {
   plugins: [
     [
-      '@vuepress/register-components',
+      '@vuepress/plugin-register-components',
       {
         components: {
           FooBar: path.resolve(__dirname, './components/FooBar.vue'),
@@ -57,7 +57,7 @@ module.exports = {
 module.exports = {
   plugins: [
     [
-      '@vuepress/register-components',
+      '@vuepress/plugin-register-components',
       {
         componentsDir: path.resolve(__dirname, './components'),
       },
