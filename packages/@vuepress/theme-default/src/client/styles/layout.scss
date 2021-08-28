@@ -2,7 +2,7 @@
 @import '_wrapper';
 
 .page {
-  padding-top: var(--navbar-height);
+  padding-top: var(--header-height);
   padding-left: var(--sidebar-width);
 }
 
@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--navbar-height);
+  height: var(--header-height);
   box-sizing: border-box;
   border-bottom: 1px solid var(--c-border);
   background-color: var(--c-bg-navbar);
@@ -25,7 +25,7 @@
   position: fixed;
   z-index: 10;
   margin: 0;
-  top: var(--navbar-height);
+  top: var(--header-height);
   left: 0;
   bottom: 0;
   box-sizing: border-box;
@@ -125,8 +125,8 @@ h4,
 h5,
 h6 {
   .theme-default-content:not(.custom) > & {
-    margin-top: calc(0.5rem - var(--navbar-height));
-    padding-top: calc(1rem + var(--navbar-height));
+    margin-top: calc(0.5rem - var(--header-height));
+    padding-top: calc(1rem + var(--header-height));
     margin-bottom: 0;
 
     &:first-child {
@@ -180,7 +180,7 @@ h6 {
 @media (max-width: $MQMobile) {
   .sidebar {
     top: 0;
-    padding-top: var(--navbar-height);
+    padding-top: var(--header-height);
     transform: translateX(-100%);
   }
 
