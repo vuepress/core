@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+
+### Bug Fixes
+
+* **theme-default:** improve the style for non-square logo ([#386](https://github.com/vuepress/vuepress-next/issues/386)) ([ff7c57f](https://github.com/vuepress/vuepress-next/commit/ff7c57f9b99736d67c01d232b6208fdc2f0d0321))
+
+
+### Code Refactoring
+
+* add prefix to client constants (close [#392](https://github.com/vuepress/vuepress-next/issues/392)) ([c6447c4](https://github.com/vuepress/vuepress-next/commit/c6447c4ba1a98cb5c5ea6991c1fcdd573668c9c1))
+
+
+### BREAKING CHANGES
+
+* client constants should add `VUEPRESS` prefix now
+
+
+
+
+
 # [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
 
 
