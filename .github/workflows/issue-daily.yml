@@ -9,7 +9,7 @@ jobs:
     name: label stale issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v2.3.1
+      - uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -23,9 +23,20 @@ jobs:
     name: close stale issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v2.3.1
+      - uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'need reproduction, stale'
+          labels: 'stale'
+          inactive-day: 3
+
+  issue-close-need-reproduction:
+    name: close need-reproduction issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2.4.0
+        with:
+          actions: 'close-issues'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: 'need reproduction'
           inactive-day: 3
