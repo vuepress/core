@@ -11,7 +11,7 @@ import { createAppSiteData } from './createAppSiteData'
 import { createAppVersion } from './createAppVersion'
 import { createAppWriteTemp } from './createAppWriteTemp'
 import { resolvePluginsFromConfig } from './resolvePluginsFromConfig'
-import { resolveThemeApi } from './resolveThemeApi'
+import { resolveThemeInfo } from './resolveThemeInfo'
 
 /**
  * Create vuepress app
@@ -40,10 +40,10 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
     prepare: () => appPrepare(app),
   } as App
 
-  // resolve theme plugins and layouts
-  const themeApi = resolveThemeApi(app, options.theme)
-  themeApi.plugins.forEach((plugin) => app.use(plugin))
-  app.layouts = themeApi.layouts
+  // resolve theme info and use theme plugins
+  const themeInfo = resolveThemeInfo(app, options.theme)
+  themeInfo.plugins.forEach((plugin) => app.use(plugin))
+  app.layouts = themeInfo.layouts
 
   // resolve plugins
   const plugins = resolvePluginsFromConfig(app, options.plugins)
