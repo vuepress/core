@@ -8,6 +8,12 @@
 
 当新的 Service Worker 就绪时，会在页面右下角出现一个弹窗，询问用户是否需要激活处于 Waiting 状态的 Service Worker 。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-pwa-popup@next
+```
+
 ## 配置项
 
 ### locales

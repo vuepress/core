@@ -6,6 +6,12 @@
 
 该插件会通过引入 [gtag.js](https://developers.google.com/analytics/devguides/collection/gtagjs) 来启用 [Google Analytics 4](https://support.google.com/analytics/answer/10089681) 。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-google-analytics@next
+```
+
 ## 上报事件
 
 Google Analytics 会 [自动收集部分事件](https://support.google.com/analytics/answer/9234069) ，比如 `page_view`, `first_visit` 等。

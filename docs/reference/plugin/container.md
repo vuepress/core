@@ -8,6 +8,12 @@ This plugin simplifies the use of [markdown-it-container](https://github.com/mar
 
 The [Custom Containers](../default-theme/markdown.md#custom-containers) of default theme is powered by this plugin.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-container@next
+```
+
 ## Container Syntax
 
 ```md

@@ -6,6 +6,12 @@
 
 该插件已经集成到默认主题中。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-back-to-top@next
+```
+
 ## 样式
 
 你可以通过 CSS 变量来自定义 _返回顶部_ 按钮的样式：

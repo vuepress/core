@@ -4,6 +4,12 @@
 
 This plugin will provide a table-of-contents (TOC) component.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-toc@next
+```
+
 ## Differences with Markdown TOC Syntax
 
 Similar to the [Table of Contents Markdown Syntax](../../guide/markdown.md#table-of-contents), the TOC component that provided by this plugin could be used in your markdown content directly:

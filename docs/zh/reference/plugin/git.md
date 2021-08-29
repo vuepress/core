@@ -8,6 +8,12 @@
 
 该插件主要用于开发主题，大部分情况下你不需要直接使用它。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-git@next
+```
+
 ## Git 仓库
 
 该插件要求你的项目在 [Git 仓库](https://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository) 下，这样它才能从提交历史记录中收集信息。

@@ -6,6 +6,12 @@
 
 该插件使用 [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) 来生成 Service Worker 文件，并通过 [register-service-worker](https://github.com/yyx990803/register-service-worker) 来注册 Service Worker 。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-pwa@next
+```
+
 ## Web App Manifests
 
 为了使你的网站符合 PWA 的要求，你需要创建一个 [Web app manifests](https://developer.mozilla.org/zh-CN/docs/Web/Manifest) 文件，并且为你的 PWA 设置图标、颜色等信息。

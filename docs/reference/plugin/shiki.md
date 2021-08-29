@@ -10,6 +10,12 @@ This plugin will enable syntax highlighting for markdown code fence with [Shiki]
 You could consider disabling this plugin in `dev` mode to get better development experience.
 :::
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-shiki@next
+```
+
 ## Options
 
 ### theme

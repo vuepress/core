@@ -6,6 +6,12 @@ Integrate [Google Analytics](https://analytics.google.com/) into VuePress.
 
 This plugin will import [gtag.js](https://developers.google.com/analytics/devguides/collection/gtagjs) for [Google Analytics 4](https://support.google.com/analytics/answer/10089681).
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-google-analytics@next
+```
+
 ## Reporting Events
 
 Google Analytics will [automatically collect some events](https://support.google.com/analytics/answer/9234069), such as `page_view`, `first_visit`, etc.

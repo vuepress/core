@@ -6,6 +6,12 @@
 
 该插件已经集成到默认主题中。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-medium-zoom@next
+```
+
 ## 配置项
 
 ### selector

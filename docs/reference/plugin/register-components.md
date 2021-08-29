@@ -4,6 +4,12 @@
 
 Register Vue components from component files or directory automatically.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-register-components@next
+```
+
 ## Options
 
 ### components

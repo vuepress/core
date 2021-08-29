@@ -8,6 +8,12 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 
 For theme authors, this plugin will help you to provide styles customization for users.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-palette@next
+```
+
 ## Palette and Style
 
 This plugin will provide a `@vuepress/plugin-palette/palette` (palette file) and a `@vuepress/plugin-palette/style` (style file) to be imported in your theme styles.
