@@ -155,8 +155,8 @@ Set permalink pattern for pages in `_posts` directory:
 
 ```js
 module.exports = {
-  extendsPageOptions: ({ filePath }) => {
-    if (filePath?.startsWith('_posts/')) {
+  extendsPageOptions: ({ filePath }, app) => {
+    if (filePath?.startsWith(app.dir.source('_posts/'))) {
       return {
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug.html',
