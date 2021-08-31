@@ -18,7 +18,7 @@ export const resolvePagePath = ({
 
   if (!pagePath) {
     throw logger.createError(
-      `page path is empty, page options: ${JSON.stringify(options)}`
+      `page path is empty, page options: ${JSON.stringify(options, null, 2)}`
     )
   }
 

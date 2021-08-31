@@ -1,4 +1,4 @@
-import { path } from '@vuepress/utils'
+import { logger, path } from '@vuepress/utils'
 import type { App, PageOptions } from '../types'
 
 /**
@@ -6,7 +6,7 @@ import type { App, PageOptions } from '../types'
  */
 export const resolvePageFilePath = ({
   app,
-  options: { filePath },
+  options,
 }: {
   app: App
   options: PageOptions
@@ -15,15 +15,21 @@ export const resolvePageFilePath = ({
   filePathRelative: string | null
 } => {
   // empty file path
-  if (!filePath) {
+  if (!options.filePath) {
     return {
       filePath: null,
       filePathRelative: null,
     }
   }
 
+  if (!path.isAbsolute(options.filePath)) {
+    throw logger.createError(
+      `filePath is not absolute file path: ${options.filePath}}`
+    )
+  }
+
   return {
-    filePath,
-    filePathRelative: path.relative(app.dir.source(), filePath),
+    filePath: options.filePath,
+    filePathRelative: path.relative(app.dir.source(), options.filePath),
   }
 }
