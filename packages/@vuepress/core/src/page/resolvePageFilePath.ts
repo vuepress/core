@@ -22,17 +22,8 @@ export const resolvePageFilePath = ({
     }
   }
 
-  // absolute file path
-  if (path.isAbsolute(filePath)) {
-    return {
-      filePath,
-      filePathRelative: path.relative(app.dir.source(), filePath),
-    }
-  }
-
-  // relative file path
   return {
-    filePath: app.dir.source(filePath),
-    filePathRelative: filePath,
+    filePath,
+    filePathRelative: path.relative(app.dir.source(), filePath),
   }
 }

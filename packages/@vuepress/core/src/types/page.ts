@@ -135,8 +135,29 @@ export interface Page<T extends PageData = PageData> extends PageData {
  * Options to create vuepress page
  */
 export interface PageOptions {
-  path?: string
-  filePath?: string
-  frontmatter?: PageFrontmatter
+  /**
+   * If `filePath` is not set, this option will be used as the raw
+   * markdown content of the page.
+   *
+   * If `filePath` is set, this option will be ignored, while the
+   * content of the file will be used.
+   */
   content?: string
+
+  /**
+   * Absolute file path of the markdown source file.
+   */
+  filePath?: string
+
+  /**
+   * Default frontmatter of the page, which could be overridden by
+   * the frontmatter of the markdown content.
+   */
+  frontmatter?: PageFrontmatter
+
+  /**
+   * If this option is set, it will be used as the final route path
+   * of the page, ignoring the relative path and permalink.
+   */
+  path?: string
 }

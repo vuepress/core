@@ -10,14 +10,15 @@ const log = debug('vuepress:core/app')
 export const createAppPages = async (app: App): Promise<Page[]> => {
   log('createAppPages start')
 
-  // resolve page file paths according to the page patterns
-  const pagePaths = await globby(app.options.pagePatterns, {
+  // resolve page absolute file paths according to the page patterns
+  const pageFilePaths = await globby(app.options.pagePatterns, {
+    absolute: true,
     cwd: app.dir.source(),
   })
 
   // create pages from files
   const pages = await Promise.all(
-    pagePaths.map((filePath) => createPage(app, { filePath }))
+    pageFilePaths.map((filePath) => createPage(app, { filePath }))
   )
 
   // if there is no 404 page, add one
