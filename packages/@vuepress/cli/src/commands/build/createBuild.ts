@@ -8,14 +8,9 @@ import {
   transformUserConfigToPlugin,
 } from '../../config'
 import { resolveBuildAppConfig } from './resolveBuildAppConfig'
-import type { BuildCommandOptions } from './types'
+import type { BuildCommand } from './types'
 
 const log = debug('vuepress:cli/build')
-
-export type BuildCommand = (
-  sourceDir?: string,
-  commandOptions?: BuildCommandOptions
-) => Promise<void>
 
 export const createBuild = (
   defaultAppConfig: Partial<AppConfig>

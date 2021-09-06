@@ -9,16 +9,11 @@ import {
 } from '../../config'
 import { resolveDevAppConfig } from './resolveDevAppConfig'
 import { resolveDevUserConfig } from './resolveDevUserConfig'
-import type { DevCommandOptions } from './types'
+import type { DevCommand } from './types'
 import { watchPageFiles } from './watchPageFiles'
 import { watchUserConfigFile } from './watchUserConfigFile'
 
 const log = debug('vuepress:cli/dev')
-
-export type DevCommand = (
-  sourceDir?: string,
-  commandOptions?: DevCommandOptions
-) => Promise<void>
 
 export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
   const dev: DevCommand = async (
