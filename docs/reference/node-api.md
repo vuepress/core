@@ -2,7 +2,11 @@
 
 <NpmBadge package="@vuepress/core" />
 
-Node API is provided by [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) package. It is a dependency of the [vuepress](https://www.npmjs.com/package/vuepress) package, and you can also install it separately.
+Node API is provided by [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) package. It is a dependency of the [vuepress](https://www.npmjs.com/package/vuepress) package, and you can also install it separately:
+
+```bash
+npm i -D @vuepress/core@next
+```
 
 ## App
 
