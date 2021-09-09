@@ -126,8 +126,10 @@ export default {
 
 下面列出了默认主题的 `Layout` 所提供的所有插槽：
 
+- `navbar`
 - `navbar-before`
 - `navbar-after`
+- `sidebar`
 - `sidebar-top`
 - `sidebar-bottom`
 - `page`

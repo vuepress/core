@@ -5,25 +5,29 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
-      <template #before>
-        <slot name="navbar-before" />
-      </template>
-      <template #after>
-        <slot name="navbar-after" />
-      </template>
-    </Navbar>
+    <slot name="navbar">
+      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+        <template #before>
+          <slot name="navbar-before" />
+        </template>
+        <template #after>
+          <slot name="navbar-after" />
+        </template>
+      </Navbar>
+    </slot>
 
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
-    <Sidebar>
-      <template #top>
-        <slot name="sidebar-top" />
-      </template>
-      <template #bottom>
-        <slot name="sidebar-bottom" />
-      </template>
-    </Sidebar>
+    <slot name="sidebar">
+      <Sidebar>
+        <template #top>
+          <slot name="sidebar-top" />
+        </template>
+        <template #bottom>
+          <slot name="sidebar-bottom" />
+        </template>
+      </Sidebar>
+    </slot>
 
     <slot name="page">
       <Home v-if="frontmatter.home" />

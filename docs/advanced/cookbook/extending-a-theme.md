@@ -126,8 +126,10 @@ You will add a custom footer to every normal pages in default theme (excluding h
 
 Here are all the slots that provided by the `Layout` of default theme:
 
+- `navbar`
 - `navbar-before`
 - `navbar-after`
+- `sidebar`
 - `sidebar-top`
 - `sidebar-bottom`
 - `page`
