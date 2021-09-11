@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+
+### Features
+
+* **theme-default:** support navbar and sidebar slot for Layout.vue ([a42e431](https://github.com/vuepress/vuepress-next/commit/a42e431a898240c67471a198fbde33c8805c2850))
+
+
+
+
+
 # [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
 
 

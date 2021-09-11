@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+
+### Bug Fixes
+
+* **client:** fix aria-hidden attribute of OutboundLink (close [#427](https://github.com/vuepress/vuepress-next/issues/427)) ([#432](https://github.com/vuepress/vuepress-next/issues/432)) ([0575ba9](https://github.com/vuepress/vuepress-next/commit/0575ba9326cbb41a97fa3956e0e28d60af7c9c13))
+* **client:** fix wrong attrs selector when loading head tags (close [#426](https://github.com/vuepress/vuepress-next/issues/426)) ([5654685](https://github.com/vuepress/vuepress-next/commit/5654685c9674e705b099bc5e1b75ba491205ef83))
+* **core:** use absolute path when creating pages (close [#421](https://github.com/vuepress/vuepress-next/issues/421)) ([0a2f7dc](https://github.com/vuepress/vuepress-next/commit/0a2f7dc0b17903723e1358cf4d66b20b709241db))
+
+
+### Features
+
+* **theme-default:** support navbar and sidebar slot for Layout.vue ([a42e431](https://github.com/vuepress/vuepress-next/commit/a42e431a898240c67471a198fbde33c8805c2850))
+
+
+### BREAKING CHANGES
+
+* **core:** now `PageOptions` does not accept relative file path
+
+
+
+
+
 # [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
 
 
