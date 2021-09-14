@@ -41,6 +41,7 @@ export const PwaPopup = defineComponent({
       show.value = false
       if (registration.value) {
         useSkipWaiting(registration.value)
+        // @ts-expect-error: Firefox supports a non-standard forceGet boolean parameter for location.reload()
         location.reload(true)
       }
     }

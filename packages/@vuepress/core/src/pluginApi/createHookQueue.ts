@@ -36,13 +36,13 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
           if (result !== undefined) {
             results.push(result)
           }
-        } catch (error) {
+        } catch (e) {
           logger.error(
             `error in hook ${chalk.magenta(name)} from ${chalk.magenta(
               item.pluginName
             )}`
           )
-          throw error
+          throw e
         }
       }
 
