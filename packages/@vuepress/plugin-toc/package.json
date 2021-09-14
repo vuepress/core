@@ -31,8 +31,8 @@
     "@vuepress/client": "2.0.0-beta.26",
     "@vuepress/core": "2.0.0-beta.26",
     "@vuepress/utils": "2.0.0-beta.25",
-    "vue": "^3.2.3",
-    "vue-router": "^4.0.10"
+    "vue": "^3.2.11",
+    "vue-router": "^4.0.11"
   },
   "publishConfig": {
     "access": "public"
