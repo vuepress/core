@@ -26,6 +26,13 @@
       margin: 1.8rem auto;
     }
 
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
     .description {
       max-width: 35rem;
       font-size: 1.6rem;
@@ -42,10 +49,6 @@
       border-radius: 4px;
       transition: background-color var(--t-color);
       box-sizing: border-box;
-
-      &:not(:first-child) {
-        margin-left: 1.5rem;
-      }
 
       &.primary {
         color: var(--c-bg);
