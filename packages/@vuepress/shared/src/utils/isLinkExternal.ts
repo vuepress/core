@@ -1,11 +1,12 @@
+import { isLinkFtp } from './isLinkFtp'
 import { isLinkHttp } from './isLinkHttp'
 
 /**
  * Determine a link is external or not
  */
 export const isLinkExternal = (link: string, base = '/'): boolean => {
-  // http link
-  if (isLinkHttp(link)) {
+  // http link or ftp link
+  if (isLinkHttp(link) || isLinkFtp(link)) {
     return true
   }
 
