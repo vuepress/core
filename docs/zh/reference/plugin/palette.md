@@ -8,6 +8,12 @@
 
 对于主题作者，该插件可以帮助你提供用户自定义样式的能力。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-palette@next
+```
+
 ## 调色板和样式
 
 该插件会提供一个 `@vuepress/plugin-palette/palette` （调色板文件）和一个 `@vuepress/plugin-palette/style` （样式文件），用于在你的主题样式中引入。

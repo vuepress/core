@@ -8,6 +8,12 @@
 
 默认主题的 [自定义容器](../default-theme/markdown.md#自定义容器) 就是由该插件支持的。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-container@next
+```
+
 ## 容器语法
 
 ```md

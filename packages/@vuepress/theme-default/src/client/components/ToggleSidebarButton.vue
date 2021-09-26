@@ -1,26 +1,24 @@
 <template>
-  <div class="toggle-sidebar-button" @click="$emit('toggle')">
-    <svg
-      class="icon"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      viewBox="0 0 448 512"
-    >
-      <path
-        fill="currentColor"
-        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-      />
-    </svg>
+  <div
+    class="toggle-sidebar-button"
+    :title="themeLocale.toggleSidebar"
+    aria-expanded="false"
+    role="button"
+    tabindex="0"
+    @click="$emit('toggle')"
+  >
+    <div class="icon" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { useThemeLocaleData } from '../composables'
 
-export default defineComponent({
-  name: 'ToggleSidebarButton',
+defineEmits(['toggle'])
 
-  emits: ['toggle'],
-})
+const themeLocale = useThemeLocaleData()
 </script>

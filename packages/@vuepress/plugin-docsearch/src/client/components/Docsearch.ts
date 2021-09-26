@@ -1,8 +1,8 @@
-import { computed, defineComponent, h, onMounted, watch } from 'vue'
-import type { PropType } from 'vue'
 // @ts-ignore: docsearch type issue
 import docsearch from '@docsearch/js'
 import { usePageLang, useRouteLocale } from '@vuepress/client'
+import { computed, defineComponent, h, onMounted, watch } from 'vue'
+import type { PropType } from 'vue'
 import type { DocsearchOptions } from '../../shared'
 import { useDocsearchShim } from '../composables'
 

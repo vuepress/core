@@ -6,6 +6,12 @@
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-active-header-links@next
+```
+
 ## 配置项
 
 ### headerLinkSelector

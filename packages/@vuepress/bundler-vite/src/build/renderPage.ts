@@ -1,10 +1,10 @@
-import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
-import type { App as VueApp } from 'vue'
-import type { Router as VueRouter } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
+import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
+import type { App as VueApp } from 'vue'
+import type { Router as VueRouter } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
 import { renderPageScripts } from './renderPageScripts'
@@ -48,6 +48,8 @@ export const renderPage = async ({
 
   // generate html string
   const html = ssrTemplate
+    // vuepress version
+    .replace('{{ version }}', app.version)
     // page lang
     .replace('{{ lang }}', ssrContext.lang)
     // page head

@@ -1,4 +1,12 @@
 /**
+ * Type of `dev` command function
+ */
+export type DevCommand = (
+  sourceDir?: string,
+  commandOptions?: DevCommandOptions
+) => Promise<void>
+
+/**
  * CLI options of `dev` command
  */
 export interface DevCommandOptions {

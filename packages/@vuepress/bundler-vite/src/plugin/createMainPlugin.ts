@@ -1,7 +1,7 @@
-import * as history from 'connect-history-api-fallback'
-import type { Plugin } from 'vite'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
+import * as history from 'connect-history-api-fallback'
+import type { Plugin } from 'vite'
 import type { ViteBundlerOptions } from '../types'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
@@ -95,6 +95,7 @@ import '@vuepress/client/lib/app.js'
       build: {
         ssr: isServer,
         outDir: isServer ? app.dir.dest('.server') : app.dir.dest(),
+        emptyOutDir: false,
         cssCodeSplit: false,
         rollupOptions: {
           input: app.dir.client('lib/app.js'),

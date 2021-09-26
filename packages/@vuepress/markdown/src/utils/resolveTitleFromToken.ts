@@ -1,5 +1,5 @@
-import * as Token from 'markdown-it/lib/token'
 import { htmlEscape } from '@vuepress/shared'
+import * as Token from 'markdown-it/lib/token'
 
 /**
  * Resolve header title from markdown-it token

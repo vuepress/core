@@ -1,8 +1,8 @@
-import { computed, defineComponent, h, ref, Transition } from 'vue'
-import type { PropType } from 'vue'
 import { useRouteLocale } from '@vuepress/client'
 import { usePwaEvent, useSkipWaiting } from '@vuepress/plugin-pwa/lib/client'
 import type { LocaleConfig } from '@vuepress/shared'
+import type { PropType } from 'vue'
+import { computed, defineComponent, h, ref, Transition } from 'vue'
 
 import '../styles/vars.css'
 import '../styles/pwa-popup.css'
@@ -41,6 +41,7 @@ export const PwaPopup = defineComponent({
       show.value = false
       if (registration.value) {
         useSkipWaiting(registration.value)
+        // @ts-expect-error: Firefox supports a non-standard forceGet boolean parameter for location.reload()
         location.reload(true)
       }
     }

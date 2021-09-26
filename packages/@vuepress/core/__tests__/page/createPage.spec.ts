@@ -23,6 +23,15 @@ describe('core > page > createPage', () => {
     })
 
     // page data
+    expect(page.data.key).toBeTruthy()
+    expect(page.data.path).toBe('/')
+    expect(page.data.lang).toBe('en-US')
+    expect(page.data.title).toBe('')
+    expect(page.data.frontmatter).toEqual({})
+    expect(page.data.excerpt).toBe('')
+    expect(page.data.headers).toEqual([])
+
+    // base fields
     expect(page.key).toBeTruthy()
     expect(page.path).toBe('/')
     expect(page.lang).toBe('en-US')
@@ -31,7 +40,7 @@ describe('core > page > createPage', () => {
     expect(page.excerpt).toBe('')
     expect(page.headers).toEqual([])
 
-    // extra data
+    // extra fields
     expect(page.content).toBe('')
     expect(page.contentRendered).toBe('')
     expect(page.date).toBe('0000-00-00')

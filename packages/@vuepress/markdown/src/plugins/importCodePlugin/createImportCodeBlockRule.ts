@@ -1,5 +1,5 @@
-import type { RuleBlock } from 'markdown-it/lib/parser_block'
 import { path } from '@vuepress/utils'
+import type { RuleBlock } from 'markdown-it/lib/parser_block'
 import type { ImportCodePluginOptions } from './importCodePlugin'
 import type { ImportCodeTokenMeta } from './types'
 

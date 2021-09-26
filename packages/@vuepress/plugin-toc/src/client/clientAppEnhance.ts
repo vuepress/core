@@ -1,5 +1,5 @@
-import { h } from 'vue'
 import { defineClientAppEnhance } from '@vuepress/client'
+import { h } from 'vue'
 import type { TocPropsOptions } from '../shared'
 import { Toc } from './components/Toc'
 

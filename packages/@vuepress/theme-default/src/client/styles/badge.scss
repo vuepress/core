@@ -7,9 +7,7 @@
   padding: 0 6px;
   color: var(--c-bg);
   vertical-align: top;
-  transition:
-    background-color ease 0.3s,
-    color ease 0.3s;
+  transition: color var(--t-color), background-color var(--t-color);
 
   &.tip {
     background-color: var(--c-badge-tip);

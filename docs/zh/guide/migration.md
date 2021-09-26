@@ -1,5 +1,9 @@
 # 从 v1 迁移
 
+::: warning
+VuePress v1 的插件和主题与 VuePress v2 不兼容。你需要将它们升级到与 v2 对应的版本。
+:::
+
 VuePress v2 的一些主要改动和优化：
 
 - VuePress v2 现在使用 Vue 3 ，因此你要保证你的组件和其他客户端文件是适用于 Vue 3 的。
@@ -29,6 +33,12 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 #### patterns
 
 重命名为 `pagePatterns` 。
+
+#### plugins
+
+只允许 [Babel 式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#babel-式) 选项。
+
+v2 不再支持 [对象式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#对象式) 选项。
 
 #### markdown.lineNumbers
 

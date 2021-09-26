@@ -1,6 +1,6 @@
+import { defineClientAppEnhance } from '@vuepress/client'
 import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
-import { defineClientAppEnhance } from '@vuepress/client'
 import { mediumZoomSymbol } from './composables'
 
 import './styles/vars.css'
@@ -15,7 +15,7 @@ const zoomOptions = __MZ_ZOOM_OPTIONS__
 const delay = __MZ_DELAY__
 
 export default defineClientAppEnhance(({ app, router }) => {
-  if (__SSR__ || !selector) return
+  if (__VUEPRESS_SSR__ || !selector) return
 
   // create zoom instance and provide it
   const zoom = mediumZoom(zoomOptions)

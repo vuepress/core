@@ -1,10 +1,10 @@
-import type { App as VueApp } from 'vue'
-import type { Router as VueRouter } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
 import type { Page, App } from '@vuepress/core'
 import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
+import type { App as VueApp } from 'vue'
+import type { Router as VueRouter } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
 import { renderPageScripts } from './renderPageScripts'
@@ -67,6 +67,8 @@ export const renderPage = async ({
 
   // generate html string
   const html = ssrTemplate
+    // vuepress version
+    .replace('{{ version }}', app.version)
     // page lang
     .replace('{{ lang }}', ssrContext.lang)
     // page head

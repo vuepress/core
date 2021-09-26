@@ -4,6 +4,9 @@ Sometimes you might want make some minor changes to a theme, but you may not wan
 
 With the help of [Theme API](../../reference/theme-api.md), you can extend a theme and make your own modifications:
 
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
+
 ```js
 const { path } = require('@vuepress/utils')
 
@@ -19,11 +22,39 @@ module.exports = {
 }
 ```
 
+  </CodeGroupItem>
+
+  <CodeGroupItem title="TS">
+
+```ts
+import type { ThemeObject } from '@vuepress/core'
+import { path } from '@vuepress/utils'
+
+const fooTheme: ThemeObject = {
+  // your theme
+  name: 'vuepress-theme-foo',
+  // parent theme to extend
+  extends: 'vuepress-theme-bar',
+  // override layouts of parent theme
+  layouts: {
+    Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
+  },
+}
+
+export default fooTheme
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 In this case, your `vuepress-theme-foo` will inherit all configuration, plugins and layouts from `vuepress-theme-bar`, and you can override corresponding layouts as needed.
 
 ## Extend Default Theme
 
-First, create the theme directory and theme entry `.vuepress/theme/index.js`:
+First, create the theme directory and the theme entry `.vuepress/theme/index.js`:
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
 
 ```js
 const { path } = require('@vuepress/utils')
@@ -36,6 +67,28 @@ module.exports = {
   },
 }
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="TS">
+
+```ts
+import type { ThemeObject } from '@vuepress/core'
+import { path } from '@vuepress/utils'
+
+const localTheme: ThemeObject = {
+  name: 'vuepress-theme-local',
+  extends: '@vuepress/theme-default',
+  layouts: {
+    Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
+  },
+}
+
+export default localTheme
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 You local theme will extends default theme, and override the `Layout` layout.
 
@@ -73,12 +126,45 @@ You will add a custom footer to every normal pages in default theme (excluding h
 
 Here are all the slots that provided by the `Layout` of default theme:
 
+- `navbar`
 - `navbar-before`
 - `navbar-after`
+- `sidebar`
 - `sidebar-top`
 - `sidebar-bottom`
+- `page`
 - `page-top`
 - `page-bottom`
+
+Finally, remember to use your local theme in `.vuepress/config.js`:
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
+
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
+  theme: path.resolve(__dirname, './theme'),
+}
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="TS">
+
+```ts
+import { path } from '@vuepress/utils'
+import { defineUserConfig } from 'vuepress'
+import type { DefaultThemeOptions } from 'vuepress'
+
+export default defineUserConfig<DefaultThemeOptions>({
+  theme: path.resolve(__dirname, './theme'),
+})
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Make Your Theme Extendable
 

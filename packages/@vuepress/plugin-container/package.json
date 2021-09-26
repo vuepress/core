@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "2.0.0-beta.22",
+  "version": "2.0.0-beta.26",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress-plugin",
@@ -29,12 +29,12 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@types/markdown-it": "^12.0.2",
-    "@vuepress/core": "2.0.0-beta.22",
-    "@vuepress/markdown": "2.0.0-beta.22",
-    "@vuepress/shared": "2.0.0-beta.21",
-    "@vuepress/utils": "2.0.0-beta.21",
-    "markdown-it": "^12.1.0",
+    "@types/markdown-it": "^12.2.1",
+    "@vuepress/core": "2.0.0-beta.26",
+    "@vuepress/markdown": "2.0.0-beta.25",
+    "@vuepress/shared": "2.0.0-beta.25",
+    "@vuepress/utils": "2.0.0-beta.25",
+    "markdown-it": "^12.2.0",
     "markdown-it-container": "^3.0.0"
   },
   "publishConfig": {

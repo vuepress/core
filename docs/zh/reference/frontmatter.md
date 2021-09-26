@@ -15,6 +15,7 @@
 
 - 参考：
   - [配置 > lang](./config.md#lang)
+  - [Node API > Page 属性 > lang](./node-api.md#lang)
 
 ## title
 
@@ -25,6 +26,9 @@
   页面的标题。
 
   如果你不在 Frontmatter 中设置 `title` ，那么页面中第一个一级标题（即 `# title`）的内容会被当作标题使用。
+
+- 参考：
+  - [Node API > Page 属性 > title](./node-api.md#title)
 
 ## description
 
@@ -83,6 +87,9 @@ head:
 
   应按照 `yyyy-MM-dd` 的格式来指定日期，或者遵循 [YAML Timestamp Type](https://yaml.org/type/timestamp.html) 。
 
+- 参考：
+  - [Node API > Page 属性 > date](./node-api.md#date)
+
 ## permalink
 
 - 类型： `string`
@@ -96,6 +103,7 @@ head:
 - 参考：
   - [Frontmatter > permalinkPattern](#permalinkpattern)
   - [指南 > 页面 > 路由](../guide/page.md#路由)
+  - [Node API > Page 属性 > permalink](./node-api.md#permalink)
 
 ## permalinkPattern
 
@@ -156,6 +164,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 - 参考：
   - [Frontmatter > date](#date)
   - [Frontmatter > permalink](#permalink)
+  - [Node API > Page 属性 > permalink](./node-api.md#permalink)
 
 ## layout
 

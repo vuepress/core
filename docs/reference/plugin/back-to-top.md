@@ -6,6 +6,12 @@ This plugin will add a _back to top_ button to your site. The button will be dis
 
 This plugin has been integrated into the default theme.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-back-to-top@next
+```
+
 ## Styles
 
 You can customize the style of the _back to top_ button via CSS variables:

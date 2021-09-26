@@ -2,10 +2,10 @@ module.exports = {
   root: true,
   extends: 'vuepress',
   globals: {
-    __VERSION__: 'readonly',
-    __DEV__: 'readonly',
-    __SSR__: 'readonly',
-    __VUE_HMR_RUNTIME__: 'writable',
+    __VUEPRESS_VERSION__: 'readonly',
+    __VUEPRESS_DEV__: 'readonly',
+    __VUEPRESS_SSR__: 'readonly',
+    __VUE_HMR_RUNTIME__: 'readonly',
   },
   overrides: [
     {
@@ -19,13 +19,6 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-var-requires': 'off',
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: false,
-            optionalDependencies: false,
-          },
-        ],
       },
     },
     {

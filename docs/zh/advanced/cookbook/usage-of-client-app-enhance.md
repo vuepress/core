@@ -49,13 +49,13 @@ VuePress 会在构建过程中生成一个 SSR 应用，用以对页面进行预
 
 我们已经提供了一个 [ClientOnly](../../reference/components.md#clientonly) 组件来包裹不支持 SSR 的内容。
 
-在 Client App Enhance 文件中，你可以使用 [`__SSR__`](../../reference/client-api.md#ssr) 标记来处理这种情况。
+在 Client App Enhance 文件中，你可以使用 [`__VUEPRESS_SSR__`](../../reference/client-api.md#ssr) 标记来处理这种情况。
 
 ```ts
 import { defineClientAppEnhance } from '@vuepress/client'
 
 export default defineClientAppEnhance(async ({ app, router, siteData }) => {
-  if (!__SSR__) {
+  if (!__VUEPRESS_SSR__) {
     const nonSsrFriendlyModule = await import('non-ssr-friendly-module')
     // ...
   }

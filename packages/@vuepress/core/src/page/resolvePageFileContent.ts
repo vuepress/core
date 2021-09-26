@@ -19,7 +19,7 @@ export const resolvePageFileContent = async ({
       const content = await fs.readFile(filePath, 'utf-8')
       return content
     } catch (e) {
-      log(e.message)
+      log(e instanceof Error ? e.message : e)
     }
   }
 

@@ -1,6 +1,6 @@
 import type { PluginWithOptions } from 'markdown-it'
-import { resolveHeadersFromTokens, slugify as slugifyDefault } from '../utils'
 import type { MarkdownEnv, MarkdownHeader } from '../types'
+import { resolveHeadersFromTokens, slugify as slugifyDefault } from '../utils'
 
 export interface ExtractHeadersPluginOptions {
   /**

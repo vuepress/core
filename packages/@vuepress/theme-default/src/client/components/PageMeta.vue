@@ -26,14 +26,14 @@
   </footer>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { ComputedRef } from 'vue'
+<script setup lang="ts">
 import {
   usePageData,
   usePageFrontmatter,
   useSiteLocaleData,
 } from '@vuepress/client'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import type {
   DefaultThemePageData,
   DefaultThemeNormalPageFrontmatter,
@@ -119,25 +119,8 @@ const useContributors = (): ComputedRef<
   })
 }
 
-export default defineComponent({
-  name: 'PageMeta',
-
-  components: {
-    NavLink,
-  },
-
-  setup() {
-    const themeLocale = useThemeLocaleData()
-    const editNavLink = useEditNavLink()
-    const lastUpdated = useLastUpdated()
-    const contributors = useContributors()
-
-    return {
-      themeLocale,
-      editNavLink,
-      lastUpdated,
-      contributors,
-    }
-  },
-})
+const themeLocale = useThemeLocaleData()
+const editNavLink = useEditNavLink()
+const lastUpdated = useLastUpdated()
+const contributors = useContributors()
 </script>

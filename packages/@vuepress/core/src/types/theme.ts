@@ -51,3 +51,18 @@ export interface ThemeObject extends PluginObject {
  * @remark suffix `Config` means this is for user config
  */
 export type ThemeConfig = Record<string, any>
+
+/**
+ * Resolved theme info
+ */
+export interface ThemeInfo {
+  /**
+   * Layout components
+   */
+  layouts: Record<string, string>
+
+  /**
+   * Plugins, including theme itself and plugins used by theme
+   */
+  plugins: PluginObject[]
+}

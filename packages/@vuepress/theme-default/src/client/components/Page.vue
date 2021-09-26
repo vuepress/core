@@ -14,17 +14,7 @@
   </main>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import PageMeta from './PageMeta.vue'
 import PageNav from './PageNav.vue'
-
-export default defineComponent({
-  name: 'Page',
-
-  components: {
-    PageMeta,
-    PageNav,
-  },
-})
 </script>

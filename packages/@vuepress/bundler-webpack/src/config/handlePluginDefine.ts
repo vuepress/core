@@ -1,6 +1,6 @@
+import type { App } from '@vuepress/core'
 import { DefinePlugin } from 'webpack'
 import type * as Config from 'webpack-chain'
-import type { App } from '@vuepress/core'
 
 /**
  * Set webpack DefinePlugin
@@ -17,9 +17,9 @@ export const handlePluginDefine = async ({
   // define plugin
   config.plugin('define').use(DefinePlugin, [
     {
-      __VERSION__: JSON.stringify(app.version),
-      __DEV__: JSON.stringify(app.env.isDev),
-      __SSR__: JSON.stringify(isServer),
+      __VUEPRESS_VERSION__: JSON.stringify(app.version),
+      __VUEPRESS_DEV__: JSON.stringify(app.env.isDev),
+      __VUEPRESS_SSR__: JSON.stringify(isServer),
       // @see http://link.vuejs.org/feature-flags
       // enable options API by default
       __VUE_OPTIONS_API__: JSON.stringify(true),

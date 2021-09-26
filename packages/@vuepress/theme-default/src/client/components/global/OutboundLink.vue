@@ -4,27 +4,12 @@
   </RawOutboundLink>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-import { OutboundLink } from '@vuepress/client'
-import { useThemeLocaleData } from '../../composables'
-
+<script setup lang="ts">
 /**
  * Override the built-in `<OutboundLink>` for a11y
  */
-export default defineComponent({
-  name: 'OutboundLink',
+import { OutboundLink as RawOutboundLink } from '@vuepress/client'
+import { useThemeLocaleData } from '../../composables'
 
-  components: {
-    RawOutboundLink: OutboundLink,
-  },
-
-  setup() {
-    const themeLocale = useThemeLocaleData()
-
-    return {
-      themeLocale,
-    }
-  },
-})
+const themeLocale = useThemeLocaleData()
 </script>

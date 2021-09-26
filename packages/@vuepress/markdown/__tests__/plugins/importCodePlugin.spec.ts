@@ -1,7 +1,7 @@
-import * as MarkdownIt from 'markdown-it'
 import { codePlugin, importCodePlugin } from '@vuepress/markdown'
 import type { MarkdownEnv } from '@vuepress/markdown'
 import { fs, path } from '@vuepress/utils'
+import * as MarkdownIt from 'markdown-it'
 
 const jsFixturePathRelative = '../__fixtures__/importCode.js'
 const mdFixturePathRelative = '../__fixtures__/importCode.md'

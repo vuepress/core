@@ -1,5 +1,5 @@
-import type { OutputChunk } from 'rollup'
 import type { App } from '@vuepress/core'
+import type { OutputChunk } from 'rollup'
 
 /**
  * Render prefetch links of current page

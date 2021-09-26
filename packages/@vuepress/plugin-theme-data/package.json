@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-theme-data",
-  "version": "2.0.0-beta.22",
+  "version": "2.0.0-beta.26",
   "description": "VuePress plugin - theme data",
   "keywords": [
     "vuepress-plugin",
@@ -29,15 +29,15 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.21",
-    "@vuepress/core": "2.0.0-beta.22",
-    "@vuepress/shared": "2.0.0-beta.21",
-    "@vuepress/utils": "2.0.0-beta.21",
-    "vue": "^3.1.4"
+    "@vuepress/client": "2.0.0-beta.26",
+    "@vuepress/core": "2.0.0-beta.26",
+    "@vuepress/shared": "2.0.0-beta.25",
+    "@vuepress/utils": "2.0.0-beta.25",
+    "vue": "^3.2.11"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.16.2",
-    "vite": "^2.3.8"
+    "vite": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"

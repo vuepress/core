@@ -10,6 +10,12 @@ Default theme will add search box to the navbar once you configure this plugin c
 This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
 :::
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-search@next
+```
+
 ## Local Search Index
 
 This plugin will generate search index from your pages locally, and load the search index file when users enter your site. In other words, this is a lightweight built-in search which does not require any external requests.

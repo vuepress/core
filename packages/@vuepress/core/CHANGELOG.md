@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+
+### Bug Fixes
+
+* **core:** use absolute path when creating pages (close [#421](https://github.com/vuepress/vuepress-next/issues/421)) ([0a2f7dc](https://github.com/vuepress/vuepress-next/commit/0a2f7dc0b17903723e1358cf4d66b20b709241db))
+
+
+### BREAKING CHANGES
+
+* **core:** now `PageOptions` does not accept relative file path
+
+
+
+
+
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+**Note:** Version bump only for package @vuepress/core
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+**Note:** Version bump only for package @vuepress/core
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Features
+
+* **core:** store page data in page object (close [#319](https://github.com/vuepress/vuepress-next/issues/319)) ([c7d3710](https://github.com/vuepress/vuepress-next/commit/c7d3710f451e2d40ed09a1b2ae516adca0a7ab99))
+* **core:** support paths without html extension (close [#292](https://github.com/vuepress/vuepress-next/issues/292)) ([#324](https://github.com/vuepress/vuepress-next/issues/324)) ([1d41365](https://github.com/vuepress/vuepress-next/commit/1d41365f56425384c0c8b919008c344b03ab9431))
+
+
+### BREAKING CHANGES
+
+* **core:** now `extendsPageData` hook is processed before `onInitialized` hook
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 **Note:** Version bump only for package @vuepress/core

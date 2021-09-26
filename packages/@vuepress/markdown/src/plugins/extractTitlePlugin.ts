@@ -1,6 +1,6 @@
 import type { PluginSimple } from 'markdown-it'
-import { resolveTitleFromToken } from '../utils'
 import type { MarkdownEnv } from '../types'
+import { resolveTitleFromToken } from '../utils'
 
 /**
  * Extracting markdown title to env

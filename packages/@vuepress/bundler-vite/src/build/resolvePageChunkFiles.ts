@@ -1,5 +1,5 @@
-import type { OutputChunk, RollupOutput } from 'rollup'
 import type { Page } from '@vuepress/core'
+import type { OutputChunk, RollupOutput } from 'rollup'
 
 export const resolvePageChunkFiles = ({
   page,

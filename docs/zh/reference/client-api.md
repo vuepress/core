@@ -34,6 +34,10 @@
 
   返回当前页面数据的 Ref 对象。
 
+- 参考：
+  - [Node API > Page 属性 > data](./node-api.md#data)
+  - [插件 API > extendsPageData](./plugin-api.md#extendspagedata)
+
 ### usePageFrontmatter
 
 - 详情：
@@ -130,7 +134,7 @@ export default defineClientAppSetup(() => {
 }
 ```
 
-### `__VERSION__`
+### `__VUEPRESS_VERSION__`
 
 - 类型： `string`
 
@@ -138,7 +142,7 @@ export default defineClientAppSetup(() => {
 
   VuePress Core 的版本号。
 
-### `__DEV__`
+### `__VUEPRESS_DEV__`
 
 - 类型： `boolean`
 
@@ -146,7 +150,7 @@ export default defineClientAppSetup(() => {
 
   一个环境标记，用于标识当前是否运行在 `dev` 模式下。
 
-### `__SSR__`
+### `__VUEPRESS_SSR__`
 
 - 类型： `boolean`
 

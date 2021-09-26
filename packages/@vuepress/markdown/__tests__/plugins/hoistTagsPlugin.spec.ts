@@ -1,6 +1,6 @@
-import * as MarkdownIt from 'markdown-it'
 import { hoistTagsPlugin } from '@vuepress/markdown'
 import type { MarkdownEnv } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 const source = `\
 # hello vuepress

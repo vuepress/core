@@ -15,11 +15,10 @@ The following hooks will be processed when initializing app:
 
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
+- [extendsPageData](#extendspagedata)
 - [onInitialized](#oninitialized)
 
 The following hooks will be processed when preparing files:
-
-- [extendsPageData](#extendspagedata)
 - [clientAppEnhanceFiles](#clientappenhancefiles)
 - [clientAppRootComponentFiles](#clientapprootcomponentfiles)
 - [clientAppSetupFiles](#clientappsetupfiles)
@@ -148,7 +147,7 @@ module.exports = {
 
   Page options extension.
 
-  This hook accepts a function that will receive the raw options of the page. The returned object will be merged into page options, which will be used to create the page.
+  This hook accepts a function that will receive the raw options of `createPage`. The returned object will be merged into page options, which will be used to create the page.
 
 - Example:
 
@@ -156,8 +155,8 @@ Set permalink pattern for pages in `_posts` directory:
 
 ```js
 module.exports = {
-  extendsPageOptions: ({ filePath }) => {
-    if (filePath?.startsWith('_posts/')) {
+  extendsPageOptions: ({ filePath }, app) => {
+    if (filePath?.startsWith(app.dir.source('_posts/'))) {
       return {
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug.html',
@@ -169,15 +168,18 @@ module.exports = {
 }
 ```
 
+- Also see:
+  - [Node API > Page > createPage](./node-api.md#createpage)
+
 ### extendsPageData
 
-- Type: `(page: Page, app: App) => Record<string, any> | Promise<Record<string, any>>`
+- Type: `(page: Omit<Page, 'data'>, app: App) => Record<string, any> | Promise<Record<string, any>>`
 
 - Details:
 
   Page data extension.
 
-  This hook accepts a function that will receive an instance of `Page`. The returned object will be merged into page data, which can be used in client side code.
+  This hook accepts a function that will receive an instance of `Page` (excluding the `data` property). The returned object will be merged into page data, which can be used in client side code.
 
 - Example:
 
@@ -202,6 +204,10 @@ export default {
   },
 }
 ```
+
+- Also see:
+  - [Client API > usePageData](./client-api.md#usepagedata)
+  - [Node API > Page Properties > data](./node-api.md#data)
 
 ## Client Files Hooks
 

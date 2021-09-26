@@ -1,5 +1,5 @@
-import { renderHead } from '@vuepress/utils'
 import type { HeadConfig } from '@vuepress/shared'
+import { renderHead } from '@vuepress/utils'
 
 const testCases: [HeadConfig, string][] = [
   [['title', {}, 'vuepress site title'], `<title>vuepress site title</title>`],

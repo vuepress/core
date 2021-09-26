@@ -5,6 +5,10 @@
 - `<script>` 和 `<style>` 标签会直接被当作 Vue SFC 中的标签。换句话说，它们是从 `<template>` 标签中提升到了 SFC 的顶层。
 - 所有 `<script>` 和 `<style>` 标签的以外的内容，会先被编译为 HTML ，然后被当作 Vue SFC 的 `<template>` 标签。
 
+::: warning
+由于 Vue 单文件组件只能包含一个 `<script>` 标签，你应该避免在 VuePress Markdown 中使用多于一个 `<script>` 标签。
+:::
+
 我们来看一个例子：
 
 **输入**

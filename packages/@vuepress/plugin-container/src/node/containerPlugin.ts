@@ -1,11 +1,11 @@
+import type { Plugin, PluginObject } from '@vuepress/core'
+import type { MarkdownEnv } from '@vuepress/markdown'
+import type { LocaleConfig } from '@vuepress/shared'
+import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
+import { chalk, logger } from '@vuepress/utils'
+import * as container from 'markdown-it-container'
 import type * as Renderer from 'markdown-it/lib/renderer'
 import type * as Token from 'markdown-it/lib/token'
-import * as container from 'markdown-it-container'
-import type { LocaleConfig } from '@vuepress/shared'
-import type { MarkdownEnv } from '@vuepress/markdown'
-import type { Plugin, PluginObject } from '@vuepress/core'
-import { chalk, logger } from '@vuepress/utils'
-import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
 
 /**
  * Options for markdown-it-container

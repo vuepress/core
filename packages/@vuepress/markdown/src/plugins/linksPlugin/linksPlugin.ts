@@ -1,6 +1,6 @@
+import { isLinkExternal } from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type * as Token from 'markdown-it/lib/token'
-import { isLinkExternal } from '@vuepress/shared'
 import type { MarkdownEnv } from '../../types'
 import { resolvePaths } from './resolvePaths'
 

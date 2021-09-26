@@ -1,5 +1,5 @@
-import type { InlineConfig } from 'vite'
 import { Options as VuePluginOptions } from '@vitejs/plugin-vue'
+import type { InlineConfig } from 'vite'
 
 /**
  * Options for bundler-vite

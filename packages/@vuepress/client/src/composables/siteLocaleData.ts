@@ -1,16 +1,28 @@
+import type { SiteData } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { SiteData } from '@vuepress/shared'
 import type { RouteLocale } from './routeLocale'
 
+/**
+ * Site data of current locale
+ */
 export type SiteLocaleData = SiteData
 
+/**
+ * Ref wrapper of `SiteLocaleData`
+ */
 export type SiteLocaleDataRef = ComputedRef<SiteLocaleData>
 
+/**
+ * Injection key for site locale data
+ */
 export const siteLocaleDataSymbol: InjectionKey<SiteLocaleDataRef> = Symbol(
-  __DEV__ ? 'siteLocaleData' : ''
+  __VUEPRESS_DEV__ ? 'siteLocaleData' : ''
 )
 
+/**
+ * Returns the ref of the site data of current locale
+ */
 export const useSiteLocaleData = (): SiteLocaleDataRef => {
   const siteLocaleData = inject(siteLocaleDataSymbol)
   if (!siteLocaleData) {
@@ -20,8 +32,9 @@ export const useSiteLocaleData = (): SiteLocaleDataRef => {
 }
 
 /**
- * Merge the locales fields to the root fields
- * according to the route path
+ * Resolve site data for specific locale
+ *
+ * It would merge the locales fields to the root fields
  */
 export const resolveSiteLocaleData = (
   site: SiteData,

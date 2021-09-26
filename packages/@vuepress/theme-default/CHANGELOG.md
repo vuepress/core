@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+
+### Features
+
+* **theme-default:** support navbar and sidebar slot for Layout.vue ([a42e431](https://github.com/vuepress/vuepress-next/commit/a42e431a898240c67471a198fbde33c8805c2850))
+
+
+
+
+
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+
+### Bug Fixes
+
+* **theme-default:** improve the style for non-square logo ([#386](https://github.com/vuepress/vuepress-next/issues/386)) ([ff7c57f](https://github.com/vuepress/vuepress-next/commit/ff7c57f9b99736d67c01d232b6208fdc2f0d0321))
+
+
+### Code Refactoring
+
+* add prefix to client constants (close [#392](https://github.com/vuepress/vuepress-next/issues/392)) ([c6447c4](https://github.com/vuepress/vuepress-next/commit/c6447c4ba1a98cb5c5ea6991c1fcdd573668c9c1))
+
+
+### BREAKING CHANGES
+
+* client constants should add `VUEPRESS` prefix now
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid recursive ref update in code-group ([ca8404a](https://github.com/vuepress/vuepress-next/commit/ca8404a12b8ab83ac9904431fac189f61f7e5100))
+
+
+### Features
+
+* **theme-default:** add `logoDark` locale option (close [#283](https://github.com/vuepress/vuepress-next/issues/283)) ([991c07a](https://github.com/vuepress/vuepress-next/commit/991c07a26d745b5c13ab320b04d8ee79ac5a6ebc))
+* **theme-default:** add css variables for transition ([#325](https://github.com/vuepress/vuepress-next/issues/325)) ([2b09004](https://github.com/vuepress/vuepress-next/commit/2b09004cfb65ca15e593c680d8e80f2a28ecd741))
+* **theme-default:** improve a11y and animation of sidebar button ([#365](https://github.com/vuepress/vuepress-next/issues/365)) ([c99861e](https://github.com/vuepress/vuepress-next/commit/c99861e4c65dfcce8b29c9ce7943944e3d6ca3c1))
+* **theme-default:** store dark mode state in local storage (close [#335](https://github.com/vuepress/vuepress-next/issues/335)) ([9582b3b](https://github.com/vuepress/vuepress-next/commit/9582b3b72c42b28f74484b55d88bc1fb2d8f56df))
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Bug Fixes
+
+* **theme-default:** use constant color for inserted token (close [#296](https://github.com/vuepress/vuepress-next/issues/296)) ([4596028](https://github.com/vuepress/vuepress-next/commit/459602898cee7c3ecd5d3c05c83a7db97729a14f))
+
+
+### Features
+
+* **theme-default:** add `toggleDarkMode` locale option ([#275](https://github.com/vuepress/vuepress-next/issues/275)) ([a685a1b](https://github.com/vuepress/vuepress-next/commit/a685a1b9e47ef91da40c27194e927daa63343520))
+* **theme-default:** add missing transitions ([066c6e4](https://github.com/vuepress/vuepress-next/commit/066c6e413986f4246b1812ae88c828254404e5c5))
+* **theme-default:** enhance color transitions ([#287](https://github.com/vuepress/vuepress-next/issues/287)) ([9b96871](https://github.com/vuepress/vuepress-next/commit/9b968719bee5742cb6e3feb8d7dfbd00d13d0785))
+* **theme-default:** enhance color transitions ([#321](https://github.com/vuepress/vuepress-next/issues/321)) ([aeaa3ba](https://github.com/vuepress/vuepress-next/commit/aeaa3ba8362af7e4013d419af1db246c657646ff))
+* **theme-default:** set dark mode color-scheme ([#289](https://github.com/vuepress/vuepress-next/issues/289)) ([0b3abd3](https://github.com/vuepress/vuepress-next/commit/0b3abd37f1201176d057d8bdd870dcbc1ea25079))
+* **theme-default:** support page slot for Layout.vue ([a8de0a9](https://github.com/vuepress/vuepress-next/commit/a8de0a990711a2732f2f85b086e733fbd8a74110))
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 

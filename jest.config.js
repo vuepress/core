@@ -1,5 +1,5 @@
-const { resolve } = require('path')
 const { readdirSync } = require('fs')
+const { resolve } = require('path')
 const { compilerOptions } = require('./tsconfig.base.json')
 
 const packagesDir = 'packages/@vuepress'
@@ -27,9 +27,9 @@ module.exports = {
         sourceMap: true,
       },
     },
-    '__VERSION__': '',
-    '__DEV__': false,
-    '__SSR__': false,
+    '__VUEPRESS_VERSION__': '',
+    '__VUEPRESS_DEV__': false,
+    '__VUEPRESS_SSR__': false,
   },
   moduleNameMapper: {
     [`^@vuepress/(${commonPackages.join(

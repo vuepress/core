@@ -1,5 +1,5 @@
-import type { LocaleData } from '@vuepress/shared'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { LocaleData } from '@vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav'
 
 export interface DefaultThemePluginsOptions {
@@ -71,6 +71,13 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Logo to display in navbar
    */
   logo?: null | string
+
+  /**
+   * Navbar logo config for dark mode
+   *
+   * Logo to display in navbar in dark mode
+   */
+  logoDark?: null | string
 
   /**
    * Navbar dark mode button config
@@ -278,4 +285,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * A11y text for dark mode toggle button
    */
   toggleDarkMode?: string
+
+  /**
+   * A11y text for sidebar toggle button
+   */
+  toggleSidebar?: string
 }

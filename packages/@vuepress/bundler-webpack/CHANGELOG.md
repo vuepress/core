@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+**Note:** Version bump only for package @vuepress/bundler-webpack
+
+
+
+
+
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+
+### Code Refactoring
+
+* add prefix to client constants (close [#392](https://github.com/vuepress/vuepress-next/issues/392)) ([c6447c4](https://github.com/vuepress/vuepress-next/commit/c6447c4ba1a98cb5c5ea6991c1fcdd573668c9c1))
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0 ([6e3fc32](https://github.com/vuepress/vuepress-next/commit/6e3fc324b1bc79c6a743ebe68046dcb10255bc21))
+
+
+### BREAKING CHANGES
+
+* client constants should add `VUEPRESS` prefix now
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+
+### Code Refactoring
+
+* **client:** move built-in meta tags to default html template (close [#358](https://github.com/vuepress/vuepress-next/issues/358)) ([e5c0fec](https://github.com/vuepress/vuepress-next/commit/e5c0feccb92b6aea4351110c20656dd66a6e0847))
+
+
+### BREAKING CHANGES
+
+* **client:** the previous built-in meta tags should be manually added to custom html template
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0-rc.0 ([816da00](https://github.com/vuepress/vuepress-next/commit/816da009ea1597e170b754c54253c0797208db1b))
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 **Note:** Version bump only for package @vuepress/bundler-webpack

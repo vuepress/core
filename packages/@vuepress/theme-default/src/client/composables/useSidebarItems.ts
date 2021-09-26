@@ -1,7 +1,4 @@
-import { inject } from 'vue'
-import type { ComputedRef, InjectionKey } from 'vue'
-import { useRoute } from 'vue-router'
-import { usePageData } from '@vuepress/client'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import {
   isArray,
@@ -9,6 +6,9 @@ import {
   isString,
   resolveLocalePath,
 } from '@vuepress/shared'
+import { computed, inject, provide } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
+import { useRoute } from 'vue-router'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,
@@ -17,7 +17,7 @@ import type {
   SidebarItem,
   ResolvedSidebarItem,
 } from '../../shared'
-import { useNavLink } from './useNavLink'
+import { useNavLink, useThemeLocaleData } from '.'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
 
@@ -34,6 +34,18 @@ export const useSidebarItems = (): SidebarItemsRef => {
     throw new Error('useSidebarItems() is called without provider.')
   }
   return sidebarItems
+}
+
+/**
+ * Create sidebar items ref and provide as global computed in setup
+ */
+export const setupSidebarItems = (): void => {
+  const themeLocale = useThemeLocaleData()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const sidebarItems = computed(() =>
+    resolveSidebarItems(frontmatter.value, themeLocale.value)
+  )
+  provide(sidebarItemsSymbol, sidebarItems)
 }
 
 /**

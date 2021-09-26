@@ -4,6 +4,12 @@
 
 根据组件文件或目录自动注册 Vue 组件。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-register-components@next
+```
+
 ## 配置项
 
 ### components

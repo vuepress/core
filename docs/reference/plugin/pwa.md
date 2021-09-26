@@ -6,6 +6,12 @@ Make your VuePress site a [Progressive Web Application (PWA)](https://developer.
 
 This plugin uses [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) to generate service worker file, and uses [register-service-worker](https://github.com/yyx990803/register-service-worker) to register service worker.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-pwa@next
+```
+
 ## Web App Manifests
 
 To make your website fully compliant with PWA, you need to create a [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest) file and set the icons, colors, etc. for your PWA.

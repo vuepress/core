@@ -10,6 +10,12 @@
 该插件不一定能在其他主题中直接使用，因此你应参考主题本身的文档来获取更多信息。
 :::
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-docsearch@next
+```
+
 ## 获取搜索索引
 
 你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indexName](#indexname) 发送到你的邮箱。接下来，你就可以配置该插件，在 VuePress 中启用 DocSearch 了。

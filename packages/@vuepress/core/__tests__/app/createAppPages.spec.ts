@@ -1,5 +1,5 @@
-import { path } from '@vuepress/utils'
 import { createBaseApp, createAppPages } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 describe('core > app > createAppPages', () => {
   it('should create two pages with default 404 page', async () => {

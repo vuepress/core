@@ -1,0 +1,17 @@
+name: issue-commented
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  issue-commented:
+    name: remove stale on commented
+    if: contains(github.event.issue.labels.*.name, 'stale')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'remove-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: 'stale'

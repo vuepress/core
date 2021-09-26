@@ -41,93 +41,70 @@
   </main>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
 import {
   usePageFrontmatter,
   useSiteLocaleData,
   withBase,
 } from '@vuepress/client'
 import { isArray } from '@vuepress/shared'
+import { computed } from 'vue'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
 import NavLink from './NavLink.vue'
 
-export default defineComponent({
-  name: 'Home',
+const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+const siteLocale = useSiteLocaleData()
 
-  components: {
-    NavLink,
-  },
+// hero image and title
+const heroImage = computed(() => {
+  if (!frontmatter.value.heroImage) {
+    return null
+  }
 
-  setup() {
-    const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-    const siteLocale = useSiteLocaleData()
-
-    const heroImage = computed(() => {
-      if (!frontmatter.value.heroImage) {
-        return null
-      }
-
-      return withBase(frontmatter.value.heroImage)
-    })
-
-    const heroText = computed(() => {
-      if (frontmatter.value.heroText === null) {
-        return null
-      }
-      return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
-    })
-
-    const heroAlt = computed(
-      () => frontmatter.value.heroAlt || heroText.value || 'hero'
-    )
-
-    const tagline = computed(() => {
-      if (frontmatter.value.tagline === null) {
-        return null
-      }
-      return (
-        frontmatter.value.tagline ||
-        siteLocale.value.description ||
-        'Welcome to your VuePress site'
-      )
-    })
-
-    const actions = computed(() => {
-      if (!isArray(frontmatter.value.actions)) {
-        return []
-      }
-
-      return frontmatter.value.actions.map(
-        ({ text, link, type = 'primary' }) => ({
-          text,
-          link,
-          type,
-        })
-      )
-    })
-
-    const features = computed(() => {
-      if (isArray(frontmatter.value.features)) {
-        return frontmatter.value.features
-      }
-      return []
-    })
-
-    const footer = computed(() => frontmatter.value.footer)
-
-    const footerHtml = computed(() => frontmatter.value.footerHtml)
-
-    return {
-      heroImage,
-      heroAlt,
-      heroText,
-      tagline,
-      actions,
-      features,
-      footer,
-      footerHtml,
-    }
-  },
+  return withBase(frontmatter.value.heroImage)
 })
+const heroText = computed(() => {
+  if (frontmatter.value.heroText === null) {
+    return null
+  }
+  return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
+})
+const heroAlt = computed(
+  () => frontmatter.value.heroAlt || heroText.value || 'hero'
+)
+const tagline = computed(() => {
+  if (frontmatter.value.tagline === null) {
+    return null
+  }
+  return (
+    frontmatter.value.tagline ||
+    siteLocale.value.description ||
+    'Welcome to your VuePress site'
+  )
+})
+
+// action buttons
+const actions = computed(() => {
+  if (!isArray(frontmatter.value.actions)) {
+    return []
+  }
+
+  return frontmatter.value.actions.map(({ text, link, type = 'primary' }) => ({
+    text,
+    link,
+    type,
+  }))
+})
+
+// feature list
+const features = computed(() => {
+  if (isArray(frontmatter.value.features)) {
+    return frontmatter.value.features
+  }
+  return []
+})
+
+// footer
+const footer = computed(() => frontmatter.value.footer)
+const footerHtml = computed(() => frontmatter.value.footerHtml)
 </script>

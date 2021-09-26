@@ -55,11 +55,12 @@ import {
 } from '../composables'
 
 const themeLocale = useThemeLocaleData()
-
 const isDarkMode = useDarkMode()
+
 const toggleDarkMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }
+
 usePrefersColorScheme(isDarkMode)
 useHtmlDarkClass(isDarkMode)
 useMetaThemeColor(isDarkMode)

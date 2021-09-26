@@ -14,6 +14,12 @@ title: nprogress
 
 该插件已经集成到默认主题中。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-nprogress@next
+```
+
 ## 样式
 
 你可以通过 CSS 变量来自定义进度条的样式：

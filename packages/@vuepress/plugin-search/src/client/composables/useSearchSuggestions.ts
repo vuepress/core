@@ -1,6 +1,6 @@
+import type { PageHeader } from '@vuepress/shared'
 import { computed } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
-import type { PageHeader } from '@vuepress/shared'
 import type { SearchIndex, SearchIndexItem } from '../../shared'
 import { isQueryMatched } from '../utils'
 

@@ -1,5 +1,9 @@
 # Migrating from v1
 
+::: warning
+Plugins and themes of VuePress v1 are not compatible with VuePress v2. You need to update them to corresponding v2 version.
+:::
+
 Some major changes and enhancements of VuePress v2:
 
 - VuePress v2 is now using Vue 3, so make sure your components and other client files are compatible with Vue 3.
@@ -25,6 +29,12 @@ Default value is changed from `() => true` to `false`.
 Removed.
 
 You can watch files manually in [onWatched](../reference/plugin-api.md#onwatched) hook.
+
+#### plugins
+
+Only [Babel Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#babel-style) config is allowed.
+
+[Object Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#object-style) config is **NOT** supported in v2.
 
 #### patterns
 

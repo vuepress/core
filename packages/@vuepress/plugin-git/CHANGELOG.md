@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+
+
+
+
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+
+### Bug Fixes
+
+* **plugin-git:** add HEAD into git shortlog arguments (close [#205](https://github.com/vuepress/vuepress-next/issues/205)) ([#398](https://github.com/vuepress/vuepress-next/issues/398)) ([9be4de1](https://github.com/vuepress/vuepress-next/commit/9be4de1c02fa0e2574fdac3872bf7afc3611e4ae))
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 **Note:** Version bump only for package @vuepress/plugin-git

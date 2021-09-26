@@ -125,13 +125,15 @@ module.exports = {
 
 ### logo
 
-- Type: `string`
+- Type: `null | string`
 
 - Details:
 
   Specify the url of logo image.
 
   The logo image will be displayed at the left end of the navbar.
+
+  Set to `null` to disable logo.
 
 - Example:
 
@@ -148,6 +150,22 @@ module.exports = {
 
 - Also see:
   - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
+
+### logoDark
+
+- Type: `null | string`
+
+- Details:
+
+  Specify the url of logo image to be used in dark mode.
+
+  You can make use of this option if you want to use different logo config in dark mode.
+
+  Set to `null` to disable logo in dark mode. Omit this option to use [logo](#logo) in dark mode.
+
+- Also see:
+  - [Default Theme > Config > logo](./config.md#logo)
+  - [Default Theme > Config > darkMode](./config.md#darkmode)
 
 ### darkMode
 
@@ -598,6 +616,18 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 - Details:
 
   Title text for dark mode toggle button.
+
+  This is mainly for a11y purpose.
+
+### toggleSidebar
+
+- Type: `string`
+
+- Default: `'toggle sidebar'`
+
+- Details:
+
+  Title text for sidebar toggle button.
 
   This is mainly for a11y purpose.
 

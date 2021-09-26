@@ -34,16 +34,21 @@ describe('core > page > resolvePageFilePath', () => {
     })
   })
 
-  it('should resolve path correctly if filePath is relative', () => {
-    const resolved = resolvePageFilePath({
-      app,
-      options: {
-        filePath: relativeFilePath,
-      },
-    })
-    expect(resolved).toEqual({
-      filePath: absoluteFilePath,
-      filePathRelative: relativeFilePath,
-    })
+  it('should throw if filePath is relative', () => {
+    const consoleError = console.error
+    console.error = jest.fn()
+
+    expect(() =>
+      resolvePageFilePath({
+        app,
+        options: {
+          filePath: relativeFilePath,
+        },
+      })
+    ).toThrow()
+
+    expect(console.error).toHaveBeenCalled()
+
+    console.error = consoleError
   })
 })

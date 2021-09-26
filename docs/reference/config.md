@@ -200,6 +200,10 @@ module.exports = {
 - Also see:
   - [Guide > Bundler](../guide/bundler.md)
 
+::: tip
+When using [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package, the default bundler will be set to `'@vuepress/vite'`.
+:::
+
 ### bundlerConfig
 
 - Type: `BundlerConfig`
@@ -415,6 +419,43 @@ You should not configure it unless you understand what it is for.
 
   Set to `false` to disable this plugin.
 
+- Also see:
+  - [Node API > Page Properties > headers](./node-api.md#headers)
+
+#### markdown.extractHeaders.level
+
+- Type: `number[]`
+
+- Default: `[2, 3]`
+
+- Details:
+
+  Header levels that going to be extracted.
+
+  For example, if you set this option to `[2]`, only `##` headers will be extracted.
+
+  Should be a subset of [markdown.anchor.level](#markdownanchor) option to ensure the extracted links are existed.
+
+#### markdown.extractHeaders.slugify
+
+- Type: `(str: string) => string`
+
+- Details:
+
+  A function to get the extracted slug of header from the raw header title.
+
+  Should use the same slugify function with [markdown.anchor.slugify](#markdownanchor) to ensure the links are matched.
+
+#### markdown.extractHeaders.format
+
+- Type: `((str: string) => string) | undefined`
+
+- Default: `undefined`
+
+- Details:
+
+  A function to format the extracted title of header from the raw header title.
+
 ### markdown.extractTitle
 
 - Type: `undefined | false`
@@ -439,12 +480,27 @@ You should not configure it unless you understand what it is for.
 
   Options for VuePress built-in markdown-it hoist-tags plugin.
 
-  It will hoist specific HTML tags in your Markdown to the top-level of SFC. By default, only `<script>` and `<style>` tags will be hoisted. You can set this option to support SFC custom blocks in Markdown.
+  It will hoist specific HTML tags in your markdown to the top-level of SFC.
 
   Set to `false` to disable this plugin.
 
 - Also see:
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Page Properties > hoistedTags](./node-api.md#hoistedtags)
+
+### markdown.hoistTags.customBlocks
+
+- Type: `string[]`
+
+- Default: `[]`
+
+- Details:
+
+  SFC custom blocks to be hoisted.
+
+  By default, only `<script>` and `<style>` tags will be hoisted. You can set this option to support SFC custom blocks in markdown.
+
+  For example, if you set this option to `['foo']`, the `<foo>` tag in your markdown content will be hoisted as Vue SFC custom block. Remember that you need to configure the bundler correctly to handle custom blocks.
 
 ### markdown.importCode
 
@@ -530,6 +586,50 @@ You should not configure it unless you understand what it is for.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
+
+### markdown.toc.pattern
+
+- Type: `RegExp`
+
+- Default: `/^\[\[toc\]\]$/i`
+
+- Details:
+
+  The pattern serving as the TOC placeholder in your markdown.
+
+### markdown.toc.slugify
+
+- Type: `(str: string) => string`
+
+- Details:
+
+  A function to get the TOC slug of header from the raw header title.
+
+  Should use the same slugify function with [markdown.anchor.slugify](#markdownanchor) to ensure the links are matched.
+
+#### markdown.toc.format
+
+- Type: `((str: string) => string) | undefined`
+
+- Default: `undefined`
+
+- Details:
+
+  A function to format the TOC title of header from the raw header title.
+
+#### markdown.toc.level
+
+- Type: `number[]`
+
+- Default: `[2, 3]`
+
+- Details:
+
+  Header levels that going to be included in TOC.
+
+  For example, if you set this option to `[2]`, only `##` headers will be included.
+
+  Should be a subset of [markdown.anchor.level](#markdownanchor) option to ensure the links in the TOC are existed.
 
 ## Development Config
 

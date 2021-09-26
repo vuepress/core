@@ -1,0 +1,42 @@
+name: issue-daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  issue-label-stale:
+    name: label stale issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'check-inactive'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          inactive-day: 7
+          inactive-label: 'stale'
+          exclude-labels: 'bug, documentation, enhancement, feature, help wanted, need reproduction, stale'
+          body: |
+            This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 3 days.
+
+  issue-close-stale:
+    name: close stale issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issues'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: 'stale'
+          inactive-day: 3
+
+  issue-close-need-reproduction:
+    name: close need-reproduction issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issues'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: 'need reproduction'
+          inactive-day: 3

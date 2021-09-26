@@ -5,15 +5,15 @@ import './OutboundLink.css'
 const svg = h(
   'svg',
   {
-    class: 'icon outbound',
-    xmlns: 'http://www.w3.org/2000/svg',
-    ariaHidden: 'true',
-    focusable: 'false',
-    x: '0px',
-    y: '0px',
-    viewBox: '0 0 100 100',
-    width: '15',
-    height: '15',
+    'class': 'icon outbound',
+    'xmlns': 'http://www.w3.org/2000/svg',
+    'aria-hidden': 'true',
+    'focusable': 'false',
+    'x': '0px',
+    'y': '0px',
+    'viewBox': '0 0 100 100',
+    'width': '15',
+    'height': '15',
   },
   [
     h('path', {

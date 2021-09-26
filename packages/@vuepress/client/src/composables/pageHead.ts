@@ -1,18 +1,31 @@
-import { inject } from 'vue'
-import type { ComputedRef, InjectionKey } from 'vue'
 import { dedupeHead, isArray, isString } from '@vuepress/shared'
 import type { HeadConfig } from '@vuepress/shared'
+import { inject } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
 import type { PageFrontmatter } from './pageFrontmatter'
 import type { PageHeadTitle } from './pageHeadTitle'
 import type { SiteLocaleData } from './siteLocaleData'
 
+/**
+ * Page head config, which would be used for generate html tags in `<head>`
+ */
 export type PageHead = HeadConfig[]
+
+/**
+ * Ref wrapper of `PageHead`
+ */
 export type PageHeadRef = ComputedRef<PageHead>
 
+/**
+ * Injection key for page head
+ */
 export const pageHeadSymbol: InjectionKey<PageHeadRef> = Symbol(
-  __DEV__ ? 'pageHead' : ''
+  __VUEPRESS_DEV__ ? 'pageHead' : ''
 )
 
+/**
+ * Returns the ref of the head config of current page
+ */
 export const usePageHead = (): PageHeadRef => {
   const pageHead = inject(pageHeadSymbol)
   if (!pageHead) {
@@ -34,19 +47,11 @@ export const resolvePageHead = (
   const description = isString(frontmatter.description)
     ? frontmatter.description
     : siteLocale.description
-
   const head: HeadConfig[] = [
     ...(isArray(frontmatter.head) ? frontmatter.head : []),
     ...siteLocale.head,
     ['title', {}, headTitle],
     ['meta', { name: 'description', content: description }],
-    ['meta', { charset: 'utf-8' }],
-    [
-      'meta',
-      { name: 'viewport', content: 'width=device-width,initial-scale=1' },
-    ],
-    ['meta', { name: 'generator', content: `VuePress ${__VERSION__}` }],
   ]
-
   return dedupeHead(head)
 }

@@ -1,5 +1,5 @@
-import { transformSync } from 'esbuild'
 import { fs } from '@vuepress/utils'
+import { transformSync } from 'esbuild'
 
 /**
  * Transform a ts file to cjs code

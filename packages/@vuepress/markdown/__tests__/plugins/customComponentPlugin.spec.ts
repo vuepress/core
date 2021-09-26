@@ -1,9 +1,9 @@
-import * as MarkdownIt from 'markdown-it'
 import {
   customComponentPlugin,
   inlineTags,
   vueReservedTags,
 } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 const md = MarkdownIt({ html: true }).use(customComponentPlugin)
 

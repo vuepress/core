@@ -1,6 +1,6 @@
 import type { PluginApi } from '../types'
-import { normalizeReturnObjectHook } from './normalizeReturnObjectHook'
 import { normalizeClientFilesHook } from './normalizeClientFilesHook'
+import { normalizeReturnObjectHook } from './normalizeReturnObjectHook'
 
 export const createPluginApiRegisterHooks = (
   plugins: PluginApi['plugins'],

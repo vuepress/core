@@ -1,6 +1,6 @@
+import { defineClientAppSetup, withBase } from '@vuepress/client'
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
-import { defineClientAppSetup, withBase } from '@vuepress/client'
 import { pwaEventSymbol } from './composables'
 import type { PwaEvent } from './composables'
 
@@ -9,7 +9,7 @@ declare const __PWA_SW_FILENAME__: string
 const swFilename = __PWA_SW_FILENAME__
 
 export default defineClientAppSetup(() => {
-  if (__SSR__ || !swFilename) return
+  if (__VUEPRESS_SSR__ || !swFilename) return
 
   const log = (...args: any[]): void =>
     console.log('[@vuepress/plugin-pwa]', ...args)

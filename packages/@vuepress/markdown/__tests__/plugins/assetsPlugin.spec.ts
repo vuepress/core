@@ -1,6 +1,6 @@
-import * as MarkdownIt from 'markdown-it'
 import { assetsPlugin } from '@vuepress/markdown'
 import type { MarkdownEnv } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 describe('@vuepress/markdown > plugins > assetsPlugin', () => {
   describe('markdown image syntax', () => {

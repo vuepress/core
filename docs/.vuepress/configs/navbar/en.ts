@@ -52,14 +52,24 @@ export const en: NavbarConfig = [
         children: [
           '/reference/plugin/back-to-top.md',
           '/reference/plugin/container.md',
-          '/reference/plugin/docsearch.md',
           '/reference/plugin/google-analytics.md',
           '/reference/plugin/medium-zoom.md',
           '/reference/plugin/nprogress.md',
+          '/reference/plugin/register-components.md',
+        ],
+      },
+      {
+        text: 'Content Search',
+        children: [
+          '/reference/plugin/docsearch.md',
+          '/reference/plugin/search.md',
+        ],
+      },
+      {
+        text: 'PWA',
+        children: [
           '/reference/plugin/pwa.md',
           '/reference/plugin/pwa-popup.md',
-          '/reference/plugin/register-components.md',
-          '/reference/plugin/search.md',
         ],
       },
       {

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+**Note:** Version bump only for package @vuepress/markdown
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+**Note:** Version bump only for package @vuepress/markdown
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Bug Fixes
+
+* **markdown:** encode file path when coverting links (close [#306](https://github.com/vuepress/vuepress-next/issues/306)) ([920c9ac](https://github.com/vuepress/vuepress-next/commit/920c9ac9864ad6877606e0839ae0f35695fe5e0c))
+
+
+### Features
+
+* **markdown:** support `code.lineNumbers` to be set to number (close [#231](https://github.com/vuepress/vuepress-next/issues/231)) ([#276](https://github.com/vuepress/vuepress-next/issues/276)) ([a7fbdec](https://github.com/vuepress/vuepress-next/commit/a7fbdec893e01937b392ba40ed9dc8888415f9ed))
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 

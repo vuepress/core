@@ -1,7 +1,7 @@
+import { pagesComponents } from '@internal/pagesComponents'
 import { h } from 'vue'
 import type { FunctionalComponent } from 'vue'
-import { pagesComponents } from '@internal/pagesComponents'
-import { usePageData } from '../injections'
+import { usePageData } from '../composables'
 
 /**
  * Markdown rendered content
@@ -30,7 +30,7 @@ export const Content: FunctionalComponent<{
   // fallback
   return h(
     'div',
-    __DEV__
+    __VUEPRESS_DEV__
       ? 'Page does not exist. This is a fallback content.'
       : '404 Not Found'
   )

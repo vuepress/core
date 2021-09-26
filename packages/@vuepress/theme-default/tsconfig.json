@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": true
+    "types": ["@vuepress/client/types"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.vue", "./__tests__"]
 }

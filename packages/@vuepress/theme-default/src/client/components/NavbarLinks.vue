@@ -8,12 +8,12 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { ComputedRef } from 'vue'
-import { useRouter } from 'vue-router'
+<script setup lang="ts">
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
+import { useRouter } from 'vue-router'
 import type { NavbarItem, NavbarGroup, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
@@ -144,28 +144,12 @@ const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
   return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
 }
 
-export default defineComponent({
-  name: 'NavbarLinks',
-
-  components: {
-    NavLink,
-    DropdownLink,
-  },
-
-  setup() {
-    const navbarConfig = useNavbarConfig()
-    const navbarSelectLanguage = useNavbarSelectLanguage()
-    const navbarRepo = useNavbarRepo()
-
-    const navbarLinks = computed(() => [
-      ...navbarConfig.value,
-      ...navbarSelectLanguage.value,
-      ...navbarRepo.value,
-    ])
-
-    return {
-      navbarLinks,
-    }
-  },
-})
+const navbarConfig = useNavbarConfig()
+const navbarSelectLanguage = useNavbarSelectLanguage()
+const navbarRepo = useNavbarRepo()
+const navbarLinks = computed(() => [
+  ...navbarConfig.value,
+  ...navbarSelectLanguage.value,
+  ...navbarRepo.value,
+])
 </script>

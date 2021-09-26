@@ -1,5 +1,5 @@
-import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
+import type * as Config from 'webpack-chain'
 import type { WebpackBundlerOptions } from '../types'
 import { handleModuleAssets } from './handleModuleAssets'
 import { handleModuleJs } from './handleModuleJs'

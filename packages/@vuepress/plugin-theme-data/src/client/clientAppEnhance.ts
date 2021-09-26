@@ -1,5 +1,5 @@
-import { computed } from 'vue'
 import { defineClientAppEnhance, routeLocaleSymbol } from '@vuepress/client'
+import { computed } from 'vue'
 import {
   useThemeData,
   resolveThemeLocaleData,

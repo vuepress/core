@@ -14,6 +14,12 @@ Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, whic
 
 This plugin has been integrated into the default theme.
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-nprogress@next
+```
+
 ## Styles
 
 You can customize the style of the progress bar via CSS variables:

@@ -10,6 +10,12 @@ Default theme will add DocSearch to the navbar once you configure this plugin co
 This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
 :::
 
+## Install
+
+```bash
+npm i -D @vuepress/plugin-docsearch@next
+```
+
 ## Get Search Index
 
 You need to [submit the URL of your site](https://docsearch.algolia.com/apply/) to join the DocSearch program. The DocSearch team will send [apiKey](#apikey) and [indexName](#indexname) to your email once the index is generated. Then you can configure this plugin to enable DocSearch in VuePress.

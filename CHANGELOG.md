@@ -3,6 +3,117 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
+
+
+### Bug Fixes
+
+* **client:** fix aria-hidden attribute of OutboundLink (close [#427](https://github.com/vuepress/vuepress-next/issues/427)) ([#432](https://github.com/vuepress/vuepress-next/issues/432)) ([0575ba9](https://github.com/vuepress/vuepress-next/commit/0575ba9326cbb41a97fa3956e0e28d60af7c9c13))
+* **client:** fix wrong attrs selector when loading head tags (close [#426](https://github.com/vuepress/vuepress-next/issues/426)) ([5654685](https://github.com/vuepress/vuepress-next/commit/5654685c9674e705b099bc5e1b75ba491205ef83))
+* **core:** use absolute path when creating pages (close [#421](https://github.com/vuepress/vuepress-next/issues/421)) ([0a2f7dc](https://github.com/vuepress/vuepress-next/commit/0a2f7dc0b17903723e1358cf4d66b20b709241db))
+
+
+### Features
+
+* **theme-default:** support navbar and sidebar slot for Layout.vue ([a42e431](https://github.com/vuepress/vuepress-next/commit/a42e431a898240c67471a198fbde33c8805c2850))
+
+
+### BREAKING CHANGES
+
+* **core:** now `PageOptions` does not accept relative file path
+
+
+
+
+
+# [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
+
+
+### Bug Fixes
+
+* **plugin-git:** add HEAD into git shortlog arguments (close [#205](https://github.com/vuepress/vuepress-next/issues/205)) ([#398](https://github.com/vuepress/vuepress-next/issues/398)) ([9be4de1](https://github.com/vuepress/vuepress-next/commit/9be4de1c02fa0e2574fdac3872bf7afc3611e4ae))
+* **theme-default:** improve the style for non-square logo ([#386](https://github.com/vuepress/vuepress-next/issues/386)) ([ff7c57f](https://github.com/vuepress/vuepress-next/commit/ff7c57f9b99736d67c01d232b6208fdc2f0d0321))
+
+
+### Code Refactoring
+
+* add prefix to client constants (close [#392](https://github.com/vuepress/vuepress-next/issues/392)) ([c6447c4](https://github.com/vuepress/vuepress-next/commit/c6447c4ba1a98cb5c5ea6991c1fcdd573668c9c1))
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0 ([6e3fc32](https://github.com/vuepress/vuepress-next/commit/6e3fc324b1bc79c6a743ebe68046dcb10255bc21))
+
+
+### BREAKING CHANGES
+
+* client constants should add `VUEPRESS` prefix now
+
+
+
+
+
+# [2.0.0-beta.24](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.23...v2.0.0-beta.24) (2021-08-14)
+
+
+### Bug Fixes
+
+* **plugin-pwa:** compat with workbox-build 6.2.2 (close [#361](https://github.com/vuepress/vuepress-next/issues/361)) ([f28e4cb](https://github.com/vuepress/vuepress-next/commit/f28e4cbc6a1b760440b4bdd1598eded5b47dfec5))
+* **theme-default:** avoid recursive ref update in code-group ([ca8404a](https://github.com/vuepress/vuepress-next/commit/ca8404a12b8ab83ac9904431fac189f61f7e5100))
+
+
+### Code Refactoring
+
+* **client:** move built-in meta tags to default html template (close [#358](https://github.com/vuepress/vuepress-next/issues/358)) ([e5c0fec](https://github.com/vuepress/vuepress-next/commit/e5c0feccb92b6aea4351110c20656dd66a6e0847))
+
+
+### Features
+
+* **theme-default:** add `logoDark` locale option (close [#283](https://github.com/vuepress/vuepress-next/issues/283)) ([991c07a](https://github.com/vuepress/vuepress-next/commit/991c07a26d745b5c13ab320b04d8ee79ac5a6ebc))
+* **theme-default:** add css variables for transition ([#325](https://github.com/vuepress/vuepress-next/issues/325)) ([2b09004](https://github.com/vuepress/vuepress-next/commit/2b09004cfb65ca15e593c680d8e80f2a28ecd741))
+* **theme-default:** improve a11y and animation of sidebar button ([#365](https://github.com/vuepress/vuepress-next/issues/365)) ([c99861e](https://github.com/vuepress/vuepress-next/commit/c99861e4c65dfcce8b29c9ce7943944e3d6ca3c1))
+* **theme-default:** store dark mode state in local storage (close [#335](https://github.com/vuepress/vuepress-next/issues/335)) ([9582b3b](https://github.com/vuepress/vuepress-next/commit/9582b3b72c42b28f74484b55d88bc1fb2d8f56df))
+
+
+### BREAKING CHANGES
+
+* **client:** the previous built-in meta tags should be manually added to custom html template
+
+
+
+
+
+# [2.0.0-beta.23](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2021-08-01)
+
+
+### Bug Fixes
+
+* **markdown:** encode file path when coverting links (close [#306](https://github.com/vuepress/vuepress-next/issues/306)) ([920c9ac](https://github.com/vuepress/vuepress-next/commit/920c9ac9864ad6877606e0839ae0f35695fe5e0c))
+* **theme-default:** use constant color for inserted token (close [#296](https://github.com/vuepress/vuepress-next/issues/296)) ([4596028](https://github.com/vuepress/vuepress-next/commit/459602898cee7c3ecd5d3c05c83a7db97729a14f))
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0-rc.0 ([816da00](https://github.com/vuepress/vuepress-next/commit/816da009ea1597e170b754c54253c0797208db1b))
+* **core:** store page data in page object (close [#319](https://github.com/vuepress/vuepress-next/issues/319)) ([c7d3710](https://github.com/vuepress/vuepress-next/commit/c7d3710f451e2d40ed09a1b2ae516adca0a7ab99))
+* **core:** support paths without html extension (close [#292](https://github.com/vuepress/vuepress-next/issues/292)) ([#324](https://github.com/vuepress/vuepress-next/issues/324)) ([1d41365](https://github.com/vuepress/vuepress-next/commit/1d41365f56425384c0c8b919008c344b03ab9431))
+* **markdown:** support `code.lineNumbers` to be set to number (close [#231](https://github.com/vuepress/vuepress-next/issues/231)) ([#276](https://github.com/vuepress/vuepress-next/issues/276)) ([a7fbdec](https://github.com/vuepress/vuepress-next/commit/a7fbdec893e01937b392ba40ed9dc8888415f9ed))
+* **theme-default:** add `toggleDarkMode` locale option ([#275](https://github.com/vuepress/vuepress-next/issues/275)) ([a685a1b](https://github.com/vuepress/vuepress-next/commit/a685a1b9e47ef91da40c27194e927daa63343520))
+* **theme-default:** add missing transitions ([066c6e4](https://github.com/vuepress/vuepress-next/commit/066c6e413986f4246b1812ae88c828254404e5c5))
+* **theme-default:** enhance color transitions ([#287](https://github.com/vuepress/vuepress-next/issues/287)) ([9b96871](https://github.com/vuepress/vuepress-next/commit/9b968719bee5742cb6e3feb8d7dfbd00d13d0785))
+* **theme-default:** enhance color transitions ([#321](https://github.com/vuepress/vuepress-next/issues/321)) ([aeaa3ba](https://github.com/vuepress/vuepress-next/commit/aeaa3ba8362af7e4013d419af1db246c657646ff))
+* **theme-default:** set dark mode color-scheme ([#289](https://github.com/vuepress/vuepress-next/issues/289)) ([0b3abd3](https://github.com/vuepress/vuepress-next/commit/0b3abd37f1201176d057d8bdd870dcbc1ea25079))
+* **theme-default:** support page slot for Layout.vue ([a8de0a9](https://github.com/vuepress/vuepress-next/commit/a8de0a990711a2732f2f85b086e733fbd8a74110))
+
+
+### BREAKING CHANGES
+
+* **core:** now `extendsPageData` hook is processed before `onInitialized` hook
+
+
+
+
+
 # [2.0.0-beta.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2021-07-11)
 
 

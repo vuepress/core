@@ -4,6 +4,12 @@
 
 该插件会提供一个目录 (table-of-contents, TOC) 组件。
 
+## 安装
+
+```bash
+npm i -D @vuepress/plugin-toc@next
+```
+
 ## 与 Markdown 目录语法的区别
 
 与 [Markdown 目录语法](../../guide/markdown.md#目录) 类似，该插件提供的目录组件可以直接在你的 Markdown 内容中使用：

@@ -1,5 +1,5 @@
-import * as MarkdownIt from 'markdown-it'
 import { codePlugin } from '@vuepress/markdown'
+import * as MarkdownIt from 'markdown-it'
 
 const codeFence = '```'
 
