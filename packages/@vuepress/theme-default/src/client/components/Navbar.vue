@@ -4,12 +4,15 @@
 
     <span ref="siteBrand">
       <RouterLink :to="siteBrandLink">
-        <img
-          v-if="siteBrandLogo"
-          class="logo"
-          :src="withBase(siteBrandLogo)"
-          :alt="siteBrandTitle"
-        />
+        <!-- logo could be different in dark mode, so we make it client-only to avoid ssr-mismatch -->
+        <ClientOnly>
+          <img
+            v-if="siteBrandLogo"
+            class="logo"
+            :src="withBase(siteBrandLogo)"
+            :alt="siteBrandTitle"
+          />
+        </ClientOnly>
 
         <span
           v-if="siteBrandTitle"
