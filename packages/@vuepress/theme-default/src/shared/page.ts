@@ -35,6 +35,7 @@ export interface DefaultThemeNormalPageFrontmatter
   extends DefaultThemePageFrontmatter {
   home?: false
   editLink?: boolean
+  editLinkPattern?: string
   lastUpdated?: boolean
   contributors?: boolean
   sidebar?: 'auto' | false | SidebarConfig

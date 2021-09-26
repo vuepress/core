@@ -70,7 +70,8 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
       docsBranch,
       docsDir,
       filePathRelative: page.value.filePathRelative,
-      editLinkPattern: themeLocale.value.editLinkPattern,
+      editLinkPattern:
+        frontmatter.value.editLinkPattern ?? themeLocale.value.editLinkPattern,
     })
 
     if (!editLink) return null

@@ -216,6 +216,17 @@ Frontmatter in this section will only take effect in normal pages.
 - Also see:
   - [Default Theme > Config > editLink](./config.md#editlink)
 
+### editLinkPattern
+
+- Type: `string`
+
+- Details:
+
+  Specify the pattern of the _edit this page_ link of this page.
+
+- Also see:
+  - [Default Theme > Config > editLinkPattern](./config.md#editlinkpattern)
+
 ### lastUpdated
 
 - Type: `boolean`

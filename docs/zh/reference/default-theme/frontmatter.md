@@ -216,6 +216,17 @@ features:
 - 参考：
   - [默认主题 > 配置 > editLink](./config.md#editlink)
 
+### editLinkPattern
+
+- 类型： `string`
+
+- 详情：
+
+  本页面中 _编辑此页_ 链接的 Pattern 。
+
+- 参考：
+  - [默认主题 > 配置 > editLinkPattern](./config.md#editlinkpattern)
+
 ### lastUpdated
 
 - 类型： `boolean`
