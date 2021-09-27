@@ -68,6 +68,22 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Whether to collect page contributors or not.
 
+## Frontmatter Options
+
+This plugin accepts the `gitInclude` field of type `string[]` from Frontmatter.
+
+The `gitInclude` field should be an array of relative paths to be included in calculating `git.createdTime`, `git.updatedTime`, and `git.contributors`.
+
+Example:
+
+```md
+---
+gitInclude:
+  - relative/path/of/file1
+  - relative/path/of/file2
+---
+```
+
 ## Page Data
 
 This plugin will add a `git` field to page data.
@@ -94,6 +110,8 @@ export default {
 
   Unix timestamp in milliseconds of the first commit of the page.
 
+  If `gitInclude` is provided from Frontmatter, this attribute takes the minimum of the first commit timestamps of current page and the files listed in `gitInclude`.
+
 ### git.updatedTime
 
 - Type: `number`
@@ -101,6 +119,8 @@ export default {
 - Details:
 
   Unix timestamp in milliseconds of the last commit of the page.
+
+  If `gitInclude` is provided from Frontmatter, this attribute takes the maximum of the last commit timestamps of current page and the files listed in `gitInclude`.
 
 ### git.contributors
 
@@ -117,3 +137,5 @@ interface GitContributor {
 - Details:
 
   The contributors information of the page.
+
+  If `gitInclude` is provided from Frontmatter, this attribute counts the overall contributors of current page and the files listed in `gitInclude`.

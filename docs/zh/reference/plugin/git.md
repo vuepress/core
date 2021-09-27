@@ -68,6 +68,23 @@ module.exports = {
 
   是否收集页面的贡献者。
 
+
+## Frontmatter 配置项
+
+该插件可从 Frontmatter 接受类型为 `string[]` 的字段 `gitInclude`。
+
+`gitInclude` 字段应当为一个包含文件相对路径的列表，该列表中的文件会被用于计算 `git.createdTime`、`git.updatedTime`和`git.contributors`。
+
+示例：
+
+```md
+---
+gitInclude:
+  - relative/path/of/file1
+  - relative/path/of/file2
+---
+```
+
 ## 页面数据
 
 该插件会向页面数据中添加一个 `git` 字段。
@@ -94,6 +111,8 @@ export default {
 
   页面第一次提交的 Unix 毫秒时间戳。
 
+  如果 Frontmatter 提供了 `gitInclude` 字段，该值将取当前页面及 `gitInclude` 中所列文件的第一次提交的时间戳的最小值。
+
 ### git.updatedTime
 
 - 类型： `number`
@@ -101,6 +120,8 @@ export default {
 - 详情：
 
   页面最后一次提交的 Unix 毫秒时间戳。
+
+  如果 Frontmatter 提供了 `gitInclude` 字段，该值将取当前页面及 `gitInclude` 中所列文件的最后一次提交的时间戳的最大值。
 
 ### git.contributors
 
@@ -117,3 +138,5 @@ interface GitContributor {
 - 详情：
 
   页面的贡献者信息。
+
+  如果 Frontmatter 提供了 `gitInclude` 字段，该值将统计当前页面及 `gitInclude` 中所列文件的总体贡献者。
