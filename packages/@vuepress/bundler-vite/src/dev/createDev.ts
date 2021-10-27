@@ -38,17 +38,5 @@ export const createDev = (
 
   server.printUrls()
 
-  // @ts-ignore
-  if (global.__vite_start_time) {
-    server.config.logger.info(
-      chalk.cyan(
-        `\n  ready in ${Math.round(
-          // @ts-ignore
-          performance.now() - global.__vite_start_time
-        )}ms.\n`
-      )
-    )
-  }
-
   return server.close.bind(server)
 }
