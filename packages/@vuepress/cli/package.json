@@ -32,10 +32,10 @@
   "dependencies": {
     "@vuepress/core": "2.0.0-beta.26",
     "@vuepress/utils": "2.0.0-beta.25",
-    "cac": "^6.7.3",
+    "cac": "^6.7.11",
     "chokidar": "^3.5.2",
     "envinfo": "^7.8.1",
-    "esbuild": "^0.12.28"
+    "esbuild": "^0.13.9"
   },
   "publishConfig": {
     "access": "public"
