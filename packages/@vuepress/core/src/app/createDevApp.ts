@@ -1,4 +1,4 @@
-import type { DevApp, AppConfig } from '../types'
+import type { AppConfig, DevApp } from '../types'
 import { createBaseApp } from './createBaseApp'
 import { resolveBundler } from './resolveBundler'
 

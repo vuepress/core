@@ -1,5 +1,5 @@
 import { resolvePageFileContent } from '@vuepress/core'
-import { path, fs } from '@vuepress/utils'
+import { fs, path } from '@vuepress/utils'
 
 describe('core > page > resolvePageFileContent', () => {
   it('should resolve file content correctly from file path', async () => {

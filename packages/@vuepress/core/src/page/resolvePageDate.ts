@@ -1,6 +1,6 @@
 import { formatDateString, isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
-import { PageFrontmatter } from '../types'
+import type { PageFrontmatter } from '../types'
 
 const FILENAME_DATE_RE = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?-(.*)$/
 const DIRNAME_DATE_RE = /(\d{4})\/(\d{1,2})(?:\/(\d{1,2}))?(\/|$)/

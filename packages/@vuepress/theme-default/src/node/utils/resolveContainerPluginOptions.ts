@@ -1,5 +1,5 @@
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import type { DefaultThemePluginsOptions, DefaultThemeData } from '../../shared'
+import type { DefaultThemeData, DefaultThemePluginsOptions } from '../../shared'
 
 /**
  * Resolve options for @vuepress/plugin-container

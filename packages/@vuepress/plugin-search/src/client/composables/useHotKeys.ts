@@ -1,4 +1,4 @@
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 import type { Ref } from 'vue'
 
 export const useHotKeys = ({

@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import { VueLoaderPlugin } from 'vue-loader'
 import type { VueLoaderOptions } from 'vue-loader'
-import * as Config from 'webpack-chain'
+import type * as Config from 'webpack-chain'
 import type { WebpackBundlerOptions } from '../types'
 
 /**

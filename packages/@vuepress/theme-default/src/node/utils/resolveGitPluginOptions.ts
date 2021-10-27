@@ -1,7 +1,7 @@
 import type { GitPluginOptions } from '@vuepress/plugin-git'
 import type {
-  DefaultThemePluginsOptions,
   DefaultThemeLocaleOptions,
+  DefaultThemePluginsOptions,
 } from '../../shared'
 
 /**

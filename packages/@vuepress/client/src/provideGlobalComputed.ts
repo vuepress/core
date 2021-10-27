@@ -2,20 +2,20 @@ import { computed } from 'vue'
 import type { App } from 'vue'
 import type { Router } from 'vue-router'
 import {
-  siteData,
   pageData,
   pageFrontmatterSymbol,
-  resolvePageFrontmatter,
   pageHeadSymbol,
-  resolvePageHead,
   pageHeadTitleSymbol,
-  resolvePageHeadTitle,
   pageLangSymbol,
+  resolvePageFrontmatter,
+  resolvePageHead,
+  resolvePageHeadTitle,
   resolvePageLang,
-  routeLocaleSymbol,
   resolveRouteLocale,
-  siteLocaleDataSymbol,
   resolveSiteLocaleData,
+  routeLocaleSymbol,
+  siteData,
+  siteLocaleDataSymbol,
 } from './composables'
 import type {
   PageData,

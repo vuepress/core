@@ -7,18 +7,18 @@ import { removeEndingSlash } from '@vuepress/shared'
 import { createApp, createSSRApp, h } from 'vue'
 import type { App } from 'vue'
 import {
+  createMemoryHistory,
   createRouter,
   createWebHistory,
-  createMemoryHistory,
   RouterView,
   START_LOCATION,
 } from 'vue-router'
 import type { Router } from 'vue-router'
 import {
-  siteData,
   pageData,
   resolvePageData,
   setupUpdateHead,
+  siteData,
 } from './composables'
 import { provideGlobalComputed } from './provideGlobalComputed'
 import { registerGlobalComponents } from './registerGlobalComponents'

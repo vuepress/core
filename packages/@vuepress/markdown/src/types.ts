@@ -1,5 +1,5 @@
 import type { PageFrontmatter, PageHeader } from '@vuepress/shared'
-import * as MarkdownIt from 'markdown-it'
+import type * as MarkdownIt from 'markdown-it'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,

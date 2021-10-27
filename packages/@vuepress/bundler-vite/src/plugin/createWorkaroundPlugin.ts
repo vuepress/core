@@ -1,4 +1,4 @@
-import type { Plugin, ViteDevServer, DepOptimizationMetadata } from 'vite'
+import type { DepOptimizationMetadata, Plugin, ViteDevServer } from 'vite'
 
 /**
  * Vite will inject version hash into file queries, which does not work

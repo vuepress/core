@@ -1,5 +1,5 @@
 import { isFunction } from '@vuepress/shared'
-import * as Token from 'markdown-it/lib/token'
+import type * as Token from 'markdown-it/lib/token'
 import type { MarkdownHeader } from '../types'
 import { resolveTitleFromToken } from './resolveTitleFromToken'
 

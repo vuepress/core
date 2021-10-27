@@ -1,5 +1,5 @@
 import { isPlainObject } from '@vuepress/shared'
-import { chalk, fs, path, logger } from '@vuepress/utils'
+import { chalk, fs, logger, path } from '@vuepress/utils'
 import type { ThemeObject } from '../types'
 
 /**

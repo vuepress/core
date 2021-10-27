@@ -1,4 +1,4 @@
-import type { BuildApp, AppConfig } from '../types'
+import type { AppConfig, BuildApp } from '../types'
 import { createBaseApp } from './createBaseApp'
 import { resolveBundler } from './resolveBundler'
 

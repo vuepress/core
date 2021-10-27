@@ -1,9 +1,9 @@
 import type {
+  HeadAttrsConfig,
   HeadConfig,
   HeadTag,
   HeadTagEmpty,
   HeadTagNonEmpty,
-  HeadAttrsConfig,
   LocaleConfig,
   LocaleData,
   PageData,

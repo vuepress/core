@@ -8,9 +8,9 @@ import {
   assignDefaultLocaleOptions,
   resolveActiveHeaderLinksPluginOptions,
   resolveContainerPluginOptions,
-  resolveContainerPluginOptionsForDetails,
   resolveContainerPluginOptionsForCodeGroup,
   resolveContainerPluginOptionsForCodeGroupItem,
+  resolveContainerPluginOptionsForDetails,
   resolveGitPluginOptions,
   resolveMediumZoomPluginOptions,
 } from './utils'

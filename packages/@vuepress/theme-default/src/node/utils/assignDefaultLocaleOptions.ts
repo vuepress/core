@@ -1,6 +1,6 @@
 import type {
-  DefaultThemeLocaleOptions,
   DefaultThemeLocaleData,
+  DefaultThemeLocaleOptions,
 } from '../../shared'
 
 const defaultLocaleOptions: DefaultThemeLocaleOptions = {

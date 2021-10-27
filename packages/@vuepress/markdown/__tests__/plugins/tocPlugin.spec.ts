@@ -1,4 +1,4 @@
-import { anchorPlugin, tocPlugin, slugify } from '@vuepress/markdown'
+import { anchorPlugin, slugify, tocPlugin } from '@vuepress/markdown'
 import * as MarkdownIt from 'markdown-it'
 
 const fixtures = {

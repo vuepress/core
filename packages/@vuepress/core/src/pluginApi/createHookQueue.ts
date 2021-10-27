@@ -1,5 +1,5 @@
 import { chalk, debug, logger } from '@vuepress/utils'
-import type { HookQueue, HookItem, HooksName, HooksResult } from '../types'
+import type { HookItem, HookQueue, HooksName, HooksResult } from '../types'
 
 const log = debug('vuepress:core/plugin-api')
 

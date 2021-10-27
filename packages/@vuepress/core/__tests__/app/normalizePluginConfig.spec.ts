@@ -2,8 +2,8 @@ import { normalizePluginConfig } from '@vuepress/core'
 import type {
   PluginConfig,
   PluginConfigNormalized,
-  PluginObject,
   PluginFunction,
+  PluginObject,
 } from '@vuepress/core'
 
 const pluginObject: PluginObject = {

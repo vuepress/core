@@ -1,6 +1,6 @@
 import { normalizePackageName } from '@vuepress/shared'
 import { chalk, logger, path, requireResolve } from '@vuepress/utils'
-import type { App, ThemeObject, ThemeConfig } from '../types'
+import type { App, ThemeConfig, ThemeObject } from '../types'
 import { resolvePlugin } from './resolvePlugin'
 
 /**

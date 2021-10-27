@@ -1,8 +1,8 @@
 import { isArray } from '@vuepress/shared'
 import type {
-  PluginOptions,
   PluginConfig,
   PluginConfigNormalized,
+  PluginOptions,
 } from '../types'
 
 export const normalizePluginConfig = <T extends PluginOptions>(

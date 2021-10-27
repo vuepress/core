@@ -1,11 +1,11 @@
 import type { App } from '@vuepress/core'
 import type * as Config from 'webpack-chain'
 import type {
-  WebpackBundlerOptions,
+  LessLoaderOptions,
   LoaderOptions,
   SassLoaderOptions,
-  LessLoaderOptions,
   StylusLoaderOptions,
+  WebpackBundlerOptions,
 } from '../types'
 
 type StyleRule = Config.Rule<Config.Rule<Config.Module>>

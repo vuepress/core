@@ -1,6 +1,6 @@
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
-import type { Page, App } from '@vuepress/core'
+import type { App, Page } from '@vuepress/core'
 import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import type { App as VueApp } from 'vue'

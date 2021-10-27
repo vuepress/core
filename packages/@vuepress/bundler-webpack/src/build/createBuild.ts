@@ -5,8 +5,8 @@ import * as webpack from 'webpack'
 import type { WebpackBundlerOptions } from '../types'
 import { resolveWebpackConfig } from '../utils'
 import {
-  createClientConfig,
   clientManifestFilename,
+  createClientConfig,
 } from './createClientConfig'
 import { createServerConfig } from './createServerConfig'
 import { renderPage } from './renderPage'

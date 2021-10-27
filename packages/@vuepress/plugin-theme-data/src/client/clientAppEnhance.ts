@@ -1,9 +1,9 @@
 import { defineClientAppEnhance, routeLocaleSymbol } from '@vuepress/client'
 import { computed } from 'vue'
 import {
-  useThemeData,
   resolveThemeLocaleData,
   themeLocaleDataSymbol,
+  useThemeData,
 } from './composables'
 
 export default defineClientAppEnhance(({ app }) => {

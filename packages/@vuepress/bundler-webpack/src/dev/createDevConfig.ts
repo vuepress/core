@@ -1,6 +1,6 @@
-import { App } from '@vuepress/core'
+import type { App } from '@vuepress/core'
 import { HotModuleReplacementPlugin } from 'webpack'
-import * as Config from 'webpack-chain'
+import type * as Config from 'webpack-chain'
 import { createClientBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 

@@ -35,8 +35,8 @@ import {
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import type {
-  DefaultThemePageData,
   DefaultThemeNormalPageFrontmatter,
+  DefaultThemePageData,
   NavLink as NavLinkType,
 } from '../../shared'
 import { useThemeLocaleData } from '../composables'

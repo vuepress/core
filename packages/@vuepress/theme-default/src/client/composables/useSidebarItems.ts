@@ -12,10 +12,10 @@ import { useRoute } from 'vue-router'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,
+  ResolvedSidebarItem,
   SidebarConfigArray,
   SidebarConfigObject,
   SidebarItem,
-  ResolvedSidebarItem,
 } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '.'
 

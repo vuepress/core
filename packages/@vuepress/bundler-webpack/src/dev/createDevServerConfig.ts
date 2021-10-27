@@ -1,5 +1,5 @@
 import { sep } from 'path'
-import { App } from '@vuepress/core'
+import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import type { WebpackOptionsNormalized } from 'webpack'
 import type { WebpackBundlerOptions } from '../types'

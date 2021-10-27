@@ -1,6 +1,6 @@
 import { usePageData } from '@vuepress/client'
 import { debounce } from 'ts-debounce'
-import { onMounted, onBeforeUnmount, watch } from 'vue'
+import { onBeforeUnmount, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Router } from 'vue-router'
 
