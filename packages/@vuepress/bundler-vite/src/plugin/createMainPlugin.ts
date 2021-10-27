@@ -87,10 +87,6 @@ import '@vuepress/client/lib/app.js'
         host: app.options.host,
         port: app.options.port,
         open: app.options.open,
-        // TODO: remove after https://github.com/vitejs/vite/issues/3373 is solved
-        fsServe: {
-          root: process.cwd(),
-        },
       },
       build: {
         ssr: isServer,
