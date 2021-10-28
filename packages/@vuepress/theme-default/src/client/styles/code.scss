@@ -135,6 +135,7 @@ pre[class*='language-'] {
       padding: 0;
       background-color: transparent;
       border-radius: 0;
+      overflow-wrap: unset;
       -webkit-font-smoothing: auto;
       -moz-osx-font-smoothing: auto;
     }
