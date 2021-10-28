@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.27](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.26...v2.0.0-beta.27) (2021-10-28)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid ssr-mismatch of dark mode logo (close [#453](https://github.com/vuepress/vuepress-next/issues/453)) ([aaf1152](https://github.com/vuepress/vuepress-next/commit/aaf1152495f6f28285f94f9a48c35b1002f522e9))
+* **theme-default:** fix code overflow-wrap in Safari (close [#435](https://github.com/vuepress/vuepress-next/issues/435)) ([6e6fe4f](https://github.com/vuepress/vuepress-next/commit/6e6fe4fed7cc50f33db0ecd345dc21861f57dc60))
+* **theme-default:** hero actions spacing on small devices (close [#381](https://github.com/vuepress/vuepress-next/issues/381)) ([#442](https://github.com/vuepress/vuepress-next/issues/442)) ([288927a](https://github.com/vuepress/vuepress-next/commit/288927a9186cd2d50b0523c8970271d259279d04))
+
+
+### Features
+
+* **theme-default:** support editLinkPattern frontmatter (close [#450](https://github.com/vuepress/vuepress-next/issues/450)) ([edecf2d](https://github.com/vuepress/vuepress-next/commit/edecf2d2b0735200b2b354afabc851ebf43e3225))
+
+
+
+
+
 # [2.0.0-beta.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.25...v2.0.0-beta.26) (2021-09-11)
 
 

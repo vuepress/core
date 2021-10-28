@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-google-analytics",
-  "version": "2.0.0-beta.26",
+  "version": "2.0.0-beta.27",
   "description": "VuePress plugin - google-analytics",
   "keywords": [
     "vuepress-plugin",
@@ -29,9 +29,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.26",
-    "@vuepress/core": "2.0.0-beta.26",
-    "@vuepress/utils": "2.0.0-beta.25"
+    "@vuepress/client": "2.0.0-beta.27",
+    "@vuepress/core": "2.0.0-beta.27",
+    "@vuepress/utils": "2.0.0-beta.27"
   },
   "publishConfig": {
     "access": "public"

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.27](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.26...v2.0.0-beta.27) (2021-10-28)
+
+
+### Bug Fixes
+
+* **shared:** treat ftp links as external (close [#456](https://github.com/vuepress/vuepress-next/issues/456)) ([9894b56](https://github.com/vuepress/vuepress-next/commit/9894b5691950545fc90976e7fcc9aee9190ca7f8))
+
+
+### Features
+
+* **shared:** add isLinkFtp util ([b8f35c9](https://github.com/vuepress/vuepress-next/commit/b8f35c970f32f723179d229a7e297d5cd6fb2efb))
+
+
+
+
+
 # [2.0.0-beta.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.24...v2.0.0-beta.25) (2021-08-29)
 
 **Note:** Version bump only for package @vuepress/shared
