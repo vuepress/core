@@ -4,12 +4,14 @@
       <NavLink class="meta-item-label" :item="editNavLink" />
     </div>
 
-    <ClientOnly>
-      <div v-if="lastUpdated" class="meta-item last-updated">
-        <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
+    
+    <div v-if="lastUpdated" class="meta-item last-updated">
+      <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
+      <ClientOnly>
         <span class="meta-item-info">{{ lastUpdated }}</span>
-      </div>
-    </ClientOnly>
+      </ClientOnly>
+    </div>
+    
 
     <div
       v-if="contributors && contributors.length"
