@@ -1,6 +1,6 @@
 # Markdown
 
-Make sure you know Markdown well before reading this section. If not, please learn some [Markdown tutorials](https://commonmark.org/help/) first.
+Make sure you already know Markdown well before reading this section. If not, please learn some [Markdown tutorials](https://commonmark.org/help/) first.
 
 ## Syntax Extensions
 
