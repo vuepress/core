@@ -6,7 +6,9 @@
 
     <div v-if="lastUpdated" class="meta-item last-updated">
       <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
-      <span class="meta-item-info">{{ lastUpdated }}</span>
+      <ClientOnly>
+        <span class="meta-item-info">{{ lastUpdated }}</span>
+      </ClientOnly>
     </div>
 
     <div
@@ -99,7 +101,7 @@ const useLastUpdated = (): ComputedRef<null | string> => {
 
     const updatedDate = new Date(page.value.git?.updatedTime)
 
-    return updatedDate.toLocaleString(siteLocale.value.lang)
+    return updatedDate.toLocaleString()
   })
 }
 
