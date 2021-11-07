@@ -493,6 +493,7 @@ interface PageData {
   frontmatter: PageFrontmatter
   excerpt: string
   headers: PageHeader[]
+  meta: Record<string, unknown>
 }
 ```
 

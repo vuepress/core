@@ -186,7 +186,7 @@ module.exports = {
 ```js
 module.exports = {
   extendsPageData: (page) => {
-    const meta = 'foobar'
+    const meta = { foo: 'bar', path: page.pathInferred }
     return { meta }
   },
 }
@@ -196,11 +196,15 @@ In client component:
 
 ```js
 import { usePageData } from '@vuepress/client'
+import { useResolveRouteWithRedirect } from '@vuepress/theme-default'
 
 export default {
   setup() {
     const page = usePageData()
-    console.log(page.value.meta) // foobar
+    const route = useResolveRouteWithRedirect('/')
+
+    console.log(page.value.meta.foo) // 'bar'
+    console.log(route.meta.path) // '/'
   },
 }
 ```

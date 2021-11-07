@@ -44,7 +44,11 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
 
     // use the relative file path to generate edit link
-    extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
+    // store title to display navbar and sidebar
+    extendsPageData: ({ filePathRelative, title }) => ({
+      filePathRelative,
+      meta: { title },
+    }),
 
     plugins: [
       [

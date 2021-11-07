@@ -51,6 +51,11 @@ export type PageData<
    * Headers of the page
    */
   headers: PageHeader[]
+
+  /**
+   * Route meta data of the page
+   */
+  meta?: Record<string, unknown>
 }
 
 /**

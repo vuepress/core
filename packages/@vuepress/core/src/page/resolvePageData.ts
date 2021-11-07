@@ -19,6 +19,7 @@ export const resolvePageData = async ({
     frontmatter,
     excerpt,
     headers,
+    meta: {},
   }
 
   // plugin hook: extendsPageData
@@ -26,7 +27,9 @@ export const resolvePageData = async ({
     page,
     app
   )
-  extendsPageData.forEach((item) => Object.assign(data, item))
+  extendsPageData.forEach((item) =>
+    Object.assign(data, { item, meta: { ...data.meta, ...item.meta } })
+  )
 
   return data
 }
