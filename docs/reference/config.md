@@ -168,6 +168,7 @@ module.exports = {
 ```
 
 - Also see:
+  - [themeConfig](#themeconfig)
   - [Guide > Theme](../guide/theme.md)
 
 ### themeConfig
@@ -178,9 +179,23 @@ module.exports = {
 
 - Details:
 
-  Provide config options to the used theme. The options will vary depending on the theme you are using.
+  Provide config to the used theme. The options will vary depending on the theme you are using.
+
+- Example:
+
+```js
+module.exports = {
+  // use default theme
+  theme: '@vuepress/theme-default',
+  // configure default theme
+  themeConfig: {
+    logo: '/logo.png',
+  },
+}
+```
 
 - Also see:
+  - [theme](#theme)
   - [Default Theme > Config](./default-theme/config.md)
 
 ## Bundler Config

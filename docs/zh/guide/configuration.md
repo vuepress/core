@@ -20,10 +20,13 @@ VuePress 站点必要的配置文件是 `.vuepress/config.js`，它应该导出�
 
 ```js
 module.exports = {
+  // 站点配置
   lang: 'zh-CN',
   title: '你好， VuePress ！',
   description: '这是我的第一个 VuePress 站点',
 
+  // 主题和它的配置
+  theme: '@vuepress/theme-default',
   themeConfig: {
     logo: 'https://vuejs.org/images/logo.png',
   },
@@ -39,10 +42,13 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
+  // 站点配置
   lang: 'en-US',
   title: 'Hello VuePress',
   description: 'Just playing around',
 
+  // 主题和它的配置
+  theme: '@vuepress/theme-default',
   themeConfig: {
     logo: 'https://vuejs.org/images/logo.png',
   },
@@ -53,7 +59,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 </CodeGroup>
 
 ::: tip
-我们接下来会把这个配置对象称为 **VuePress 配置**.
+前往 [配置参考](../reference/config.md) 查看所有 VuePress 配置。
 :::
 
 ## 配置作用域
@@ -67,10 +73,6 @@ export default defineUserConfig<DefaultThemeOptions>({
 站点配置的意思是，无论你使用什么主题，这些配置项都可以生效。
 
 我们知道，每一个站点都应该有它的 `lang`, `title` 和 `description` 等属性，因此 VuePress 内置支持了这些属性的配置。
-
-::: tip
-前往 [配置参考](../reference/config.md) 查看所有站点配置。
-:::
 
 ### 主题配置
 

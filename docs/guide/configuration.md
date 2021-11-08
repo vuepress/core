@@ -20,10 +20,13 @@ The essential file for configuring a VuePress site is `.vuepress/config.js`, whi
 
 ```js
 module.exports = {
+  // site config
   lang: 'en-US',
   title: 'Hello, VuePress!',
   description: 'This is my first VuePress site',
 
+  // theme and its config
+  theme: '@vuepress/theme-default',
   themeConfig: {
     logo: 'https://vuejs.org/images/logo.png',
   },
@@ -39,10 +42,13 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
+  // site config
   lang: 'en-US',
   title: 'Hello VuePress',
   description: 'Just playing around',
 
+  // theme and its config
+  theme: '@vuepress/theme-default',
   themeConfig: {
     logo: 'https://vuejs.org/images/logo.png',
   },
@@ -53,12 +59,12 @@ export default defineUserConfig<DefaultThemeOptions>({
 </CodeGroup>
 
 ::: tip
-We will refer the config object as **VuePress Config**.
+Check out the [Config Reference](../reference/config.md) for a full list of VuePress config.
 :::
 
 ## Config Scopes
 
-You may have noticed that there is a `themeConfig` option in VuePress Config.
+You may have noticed that there is a `themeConfig` option in VuePress config.
 
 Options outside `themeConfig` are **Site Config**, while options inside `themeConfig` are **Theme Config**.
 
@@ -68,15 +74,11 @@ Site config means that, no matter what theme you are using, these configurations
 
 As we know, every site should have its own `lang`, `title`, `description`, etc. Thus, VuePress has built-in support for those options.
 
-::: tip
-Check out the [Config Reference](../reference/config.md) for a full list of site config.
-:::
-
 ### Theme Config
 
 Theme config will be processed by VuePress theme, so it depends on the theme you are using.
 
-If you don't specify the `theme` option of VuePress Config, the default theme will be used.
+If you don't specify the `theme` option of VuePress config, the default theme will be used.
 
 ::: tip
 Check out the [Default Theme > Config Reference](../reference/default-theme/config.md) for theme config of default theme.

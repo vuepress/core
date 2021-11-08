@@ -167,6 +167,7 @@ module.exports = {
 ```
 
 - 参考：
+  - [themeConfig](#themeconfig)
   - [指南 > 主题](../guide/theme.md)
 
 ### themeConfig
@@ -179,7 +180,21 @@ module.exports = {
 
   为当前使用的主题提供的配置项。具体的配置项取决于你使用的主题。
 
+- 示例：
+
+```js
+module.exports = {
+  // 使用默认主题
+  theme: '@vuepress/theme-default',
+  // 配置默认主题
+  themeConfig: {
+    logo: '/logo.png',
+  },
+}
+```
+
 - 参考：
+  - [theme](#theme)
   - [默认主题 > 配置](./default-theme/config.md)
 
 ## 打包工具配置

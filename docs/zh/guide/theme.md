@@ -41,11 +41,11 @@ module.exports = {
    └─ README.md
 ```
 
-然后，设置主题目录的绝对路径来使用它：
+然后，将 [theme](../reference/config.md#theme) 配置项设置为 [主题入口](../advanced/theme.md#主题入口) 的绝对路径来使用它：
 
 ```js
 module.exports = {
-  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme'),
+  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme/index.js'),
 }
 ```
 

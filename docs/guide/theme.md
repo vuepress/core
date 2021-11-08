@@ -41,11 +41,11 @@ First, create the local theme directory, typically `.vuepress/theme` :
    └─ README.md
 ```
 
-Then, set the absolute path of the theme directory to use it:
+Then, set the [theme](../reference/config.md#theme) option to the absolute path of the [theme entry](../advanced/theme.md#theme-entry) to use it:
 
 ```js
 module.exports = {
-  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme'),
+  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme/index.js'),
 }
 ```
 
