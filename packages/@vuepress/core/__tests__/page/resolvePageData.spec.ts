@@ -17,6 +17,7 @@ describe('core > page > resolvePageData', () => {
       frontmatter: {},
       excerpt: '',
       headers: [],
+      meta: {},
     } as unknown) as Page
 
     expect(
