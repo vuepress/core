@@ -64,7 +64,15 @@
     overflow: auto;
   }
 
+  .prev {
+    &:before {
+      content: '←';
+    }
+  }
   .next {
     float: right;
+    &:after {
+      content: '→'
+    }
   }
 }
