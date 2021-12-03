@@ -76,7 +76,7 @@ npm i -D @vuepress/plugin-docsearch@next
   从 DocSearch 团队收到的 `apiKey` ，或者由你自己生成。
 
 - 参考：
-  - [DocSearch > Options > apiKey](https://autocomplete-experimental.netlify.app/docs/docsearch-js#apikey)
+  - [DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey)
 
 ### indexName
 
@@ -89,7 +89,7 @@ npm i -D @vuepress/plugin-docsearch@next
   从 DocSearch 团队收到的 `indexName` ，或者由你自己生成。
 
 - 参考：
-  - [DocSearch > Options > indexName](https://autocomplete-experimental.netlify.app/docs/docsearch-js#indexname)
+  - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)
 
 ### appId
 
@@ -97,10 +97,11 @@ npm i -D @vuepress/plugin-docsearch@next
 
 - 详情：
 
-  只有在你 [运行你自己的 DocSearch 爬虫](https://docsearch.algolia.com/docs/run-your-own/) 时，才需要配置该选项。用于设置你的 Application ID 。
+  在你 [运行你自己的 DocSearch 爬虫](https://docsearch.algolia.com/docs/legacy/run-your-own/) 或已经 [迁移到新的 DocSearch 结构](https://docsearch.algolia.com/docs/migrating-from-legacy) 时需要配置此选项。用于设置你的 Application ID。
+  
 
 - 参考：
-  - [DocSearch > Options > appId](https://autocomplete-experimental.netlify.app/docs/docsearch-js#appid)
+  - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
 
 ### searchParameters
 
@@ -111,8 +112,8 @@ npm i -D @vuepress/plugin-docsearch@next
   Algolia API 的 API 参数。
 
 - 参考：
-  - [DocSearch > Options > searchParameters](https://autocomplete-experimental.netlify.app/docs/docsearch-js#searchparameters)
-  - [Algolia > API Parameters](https://www.algolia.com/doc/api-reference/api-parameters/)
+  - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
+  - [Algolia > Search API Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/)
 
 ### placeholder
 
@@ -125,7 +126,7 @@ npm i -D @vuepress/plugin-docsearch@next
   搜索输入框的 placeholder 属性。
 
 - 参考：
-  - [DocSearch > Options > placeholder](https://autocomplete-experimental.netlify.app/docs/docsearch-js#placeholder)
+  - [DocSearch > Options > placeholder](https://docsearch.algolia.com/docs/api#placeholder)
 
 ### disableUserPersonalization
 
@@ -138,7 +139,7 @@ npm i -D @vuepress/plugin-docsearch@next
   是否禁用所有的个性化功能：最近的搜索、收藏的搜索结果等。
 
 - 参考：
-  - [DocSearch > Options > disableUserPersonalization](https://autocomplete-experimental.netlify.app/docs/docsearch-js#disableuserpersonalization)
+  - [DocSearch > Options > disableUserPersonalization](https://docsearch.algolia.com/docs/api#disableuserpersonalization)
 
 ### initialQuery
 
@@ -149,7 +150,7 @@ npm i -D @vuepress/plugin-docsearch@next
   打开弹窗时的初始请求。
 
 - 参考：
-  - [DocSearch > Options > initialQuery](https://autocomplete-experimental.netlify.app/docs/docsearch-js#initialquery)
+  - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api#initialquery)
 
 ### locales
 
