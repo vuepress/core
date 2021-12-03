@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import { mergeConfig } from 'vite'
 import type { InlineConfig } from 'vite'
-import { createPlugin } from '../plugin'
+import { createPlugins } from '../plugins'
 import type { ViteBundlerOptions } from '../types'
 
 export const resolveViteConfig = ({
@@ -16,7 +16,7 @@ export const resolveViteConfig = ({
   mergeConfig(
     {
       configFile: false,
-      plugins: [createPlugin({ app, options, isServer, isBuild: true })],
+      plugins: createPlugins({ app, options, isServer, isBuild: true }),
       // `logLevel` won't take effect in `config` hook of plugin API
       logLevel: app.env.isDebug ? 'info' : 'warn',
     },

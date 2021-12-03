@@ -1,3 +1,3 @@
-export * from './createPlugin'
+export * from './createPlugins'
 export * from './resolveAlias'
 export * from './resolveDefine'

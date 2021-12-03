@@ -6,7 +6,7 @@ import { createConstantsReplacementPlugin } from './createConstantsReplacementPl
 import { createMainPlugin } from './createMainPlugin'
 import { createWorkaroundPlugin } from './createWorkaroundPlugin'
 
-export const createPlugin = ({
+export const createPlugins = ({
   app,
   options,
   isServer,

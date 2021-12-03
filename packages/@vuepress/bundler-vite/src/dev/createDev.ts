@@ -1,7 +1,7 @@
 import type { App, Bundler } from '@vuepress/core'
 import { chalk } from '@vuepress/utils'
 import { createServer, mergeConfig } from 'vite'
-import { createPlugin } from '../plugin'
+import { createPlugins } from '../plugins'
 import type { ViteBundlerOptions } from '../types'
 
 export const createDev = (
@@ -10,14 +10,12 @@ export const createDev = (
   const viteConfig = mergeConfig(
     {
       configFile: false,
-      plugins: [
-        createPlugin({
-          app,
-          options,
-          isServer: false,
-          isBuild: false,
-        }),
-      ],
+      plugins: createPlugins({
+        app,
+        options,
+        isServer: false,
+        isBuild: false,
+      }),
       // `clearScreen` won't take effect in `config` hook of plugin API
       clearScreen: false,
     },
