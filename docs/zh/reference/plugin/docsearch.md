@@ -97,7 +97,8 @@ npm i -D @vuepress/plugin-docsearch@next
 
 - 详情：
 
-  只有在你 [运行你自己的 DocSearch 爬虫](https://docsearch.algolia.com/docs/legacy/run-your-own/) 时，才需要配置该选项。用于设置你的 Application ID 。
+  在你 [运行你自己的 DocSearch 爬虫](https://docsearch.algolia.com/docs/legacy/run-your-own/) 或已经 [迁移到新的 DocSearch 结构](https://docsearch.algolia.com/docs/migrating-from-legacy) 时需要配置此选项。用于设置你的 Application ID。
+  
 
 - 参考：
   - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
