@@ -124,16 +124,23 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
   })
 }
 
+const normalizePath = (path) => decodeURI(path)
+    .replace(/#.*$/, '')
+    .replace(/(index)?\.(md|html)$/, '');
+const addActiveMathForNavbarItem = (item: ResolvedNavbarItem): ResolvedNavbarItem => {
+  item.activeMatch = normalizePath(item.link) + "[^/]*$"
+  return item
+}
 const resolveNavbarItem = (
   item: NavbarItem | NavbarGroup | string
 ): ResolvedNavbarItem => {
   if (isString(item)) {
-    return useNavLink(item)
+    return addActiveMathForNavbarItem(useNavLink(item))
   }
   if ((item as NavbarGroup).children) {
     return {
       ...item,
-      children: (item as NavbarGroup).children.map(resolveNavbarItem),
+      children: (item as NavbarGroup).children.map(resolveNavbarItem).map(addActiveMathForNavbarItem),
     }
   }
   return item as ResolvedNavbarItem
