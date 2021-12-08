@@ -15,8 +15,7 @@ export const BackToTop = defineComponent({
     onMounted(() => {
       scrollTop.value = getScrollTop()
 
-      window.addEventListener(
-        'scroll',
+      window.addEventListener('scroll', () =>
         debounce(() => {
           scrollTop.value = getScrollTop()
         }, 100)

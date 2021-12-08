@@ -110,12 +110,15 @@ export const useActiveHeaderLinks = ({
 
   onMounted(() => {
     onScroll()
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', () => onScroll())
   })
   onBeforeUnmount(() => {
-    window.removeEventListener('scroll', onScroll)
+    window.removeEventListener('scroll', () => onScroll())
   })
-  watch(() => page.value.path, onScroll)
+  watch(
+    () => page.value.path,
+    () => onScroll()
+  )
 }
 
 /**
