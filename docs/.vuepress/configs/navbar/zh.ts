@@ -121,8 +121,7 @@ export const zh: NavbarConfig = [
     children: [
       {
         text: '更新日志',
-        link:
-          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+        link: 'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
       },
       {
         text: 'v1.x',

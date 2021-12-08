@@ -55,9 +55,8 @@ export const SearchBox = defineComponent({
       query,
       maxSuggestions,
     })
-    const { focusIndex, focusNext, focusPrev } = useSuggestionsFocus(
-      suggestions
-    )
+    const { focusIndex, focusNext, focusPrev } =
+      useSuggestionsFocus(suggestions)
     useHotKeys({ input, hotKeys })
 
     const showSuggestions = computed(

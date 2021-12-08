@@ -52,20 +52,14 @@ export const createPage = async (
   })
 
   // render page content and extract information
-  const {
-    contentRendered,
-    deps,
-    headers,
-    hoistedTags,
-    links,
-    title,
-  } = await renderPageContent({
-    app,
-    content,
-    filePath,
-    filePathRelative,
-    frontmatter,
-  })
+  const { contentRendered, deps, headers, hoistedTags, links, title } =
+    await renderPageContent({
+      app,
+      content,
+      filePath,
+      filePathRelative,
+      frontmatter,
+    })
 
   // resolve slug from file path
   const slug = resolvePageSlug({ filePathRelative })
@@ -112,11 +106,8 @@ export const createPage = async (
     key,
   })
 
-  const {
-    dataFilePath,
-    dataFilePathRelative,
-    dataFileChunkName,
-  } = resolvePageDataInfo({ app, htmlFilePathRelative, key })
+  const { dataFilePath, dataFilePathRelative, dataFileChunkName } =
+    resolvePageDataInfo({ app, htmlFilePathRelative, key })
 
   const page = {
     // base fields

@@ -124,8 +124,7 @@ export const en: NavbarConfig = [
     children: [
       {
         text: 'Changelog',
-        link:
-          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+        link: 'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
       },
       {
         text: 'v1.x',

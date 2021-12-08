@@ -7,9 +7,8 @@ export const prepareClientAppRootComponents = async (
   app: App
 ): Promise<void> => {
   // plugin hook: clientAppRootComponentFiles
-  const clientAppRootComponentFiles = await app.pluginApi.hooks.clientAppRootComponentFiles.process(
-    app
-  )
+  const clientAppRootComponentFiles =
+    await app.pluginApi.hooks.clientAppRootComponentFiles.process(app)
 
   // flat the hook result to get the file paths array
   const filePaths = clientAppRootComponentFiles.flat()

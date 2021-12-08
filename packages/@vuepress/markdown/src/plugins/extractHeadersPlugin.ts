@@ -30,7 +30,9 @@ export interface ExtractHeadersPluginOptions {
  *
  * Would be used for generating sidebar nav and toc
  */
-export const extractHeadersPlugin: PluginWithOptions<ExtractHeadersPluginOptions> = (
+export const extractHeadersPlugin: PluginWithOptions<
+  ExtractHeadersPluginOptions
+> = (
   md,
   {
     level = [2, 3],

@@ -23,7 +23,11 @@ export const resolvePageContent = ({
   }
 
   /* istanbul ignore next */
-  const { data, content, excerpt = '' } = matter(contentRaw, {
+  const {
+    data,
+    content,
+    excerpt = '',
+  } = matter(contentRaw, {
     excerpt_separator: '<!-- more -->',
     engines: {
       toml: toml.parse.bind(toml),

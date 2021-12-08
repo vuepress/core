@@ -8,9 +8,8 @@ export type { PageData }
 /**
  * Ref wrapper of `PageData`
  */
-export type PageDataRef<
-  T extends Record<any, any> = Record<never, never>
-> = Ref<PageData<T>>
+export type PageDataRef<T extends Record<any, any> = Record<never, never>> =
+  Ref<PageData<T>>
 
 /**
  * Empty page data to be used as the fallback value

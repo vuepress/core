@@ -21,9 +21,8 @@ import { useNavLink, useThemeLocaleData } from '.'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
 
-export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> = Symbol(
-  'sidebarItems'
-)
+export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
+  Symbol('sidebarItems')
 
 /**
  * Inject sidebar items global computed

@@ -5,9 +5,8 @@ import type { App } from '../../types'
  */
 export const prepareClientAppSetups = async (app: App): Promise<void> => {
   // plugin hook: clientAppSetupFiles
-  const clientAppSetupFiles = await app.pluginApi.hooks.clientAppSetupFiles.process(
-    app
-  )
+  const clientAppSetupFiles =
+    await app.pluginApi.hooks.clientAppSetupFiles.process(app)
 
   // flat the hook result to get the file paths array
   const filePaths = clientAppSetupFiles.flat()

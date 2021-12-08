@@ -9,7 +9,7 @@ const app = createBaseApp({
 
 describe('core > page > resolvePageData', () => {
   it('should resolve page data correctly', async () => {
-    const mockPage = ({
+    const mockPage = {
       key: 'foo',
       path: '/bar.html',
       title: 'mock',
@@ -17,7 +17,7 @@ describe('core > page > resolvePageData', () => {
       frontmatter: {},
       excerpt: '',
       headers: [],
-    } as unknown) as Page
+    } as unknown as Page
 
     expect(
       await resolvePageData({

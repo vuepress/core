@@ -34,22 +34,18 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   }
 
   // wrap raw html renderer rule
-  const createHtmlRule = (rawHtmlRule: RenderRule): RenderRule => (
-    tokens,
-    idx,
-    options,
-    env: MarkdownEnv,
-    self
-  ) => {
-    // replace the original link with resolved link
-    tokens[idx].content = tokens[idx].content.replace(
-      /^( *<img\b.*src=")([^"]*)(")/s,
-      (_, prefix, link, suffix) =>
-        `${prefix}${resolveLink(link, relativePathPrefix, env)}${suffix}`
-    )
+  const createHtmlRule =
+    (rawHtmlRule: RenderRule): RenderRule =>
+    (tokens, idx, options, env: MarkdownEnv, self) => {
+      // replace the original link with resolved link
+      tokens[idx].content = tokens[idx].content.replace(
+        /^( *<img\b.*src=")([^"]*)(")/s,
+        (_, prefix, link, suffix) =>
+          `${prefix}${resolveLink(link, relativePathPrefix, env)}${suffix}`
+      )
 
-    return rawHtmlRule(tokens, idx, options, env, self)
-  }
+      return rawHtmlRule(tokens, idx, options, env, self)
+    }
   const rawHtmlBlockRule = md.renderer.rules.html_block!
   const rawHtmlInlineRule = md.renderer.rules.html_inline!
   md.renderer.rules.html_block = createHtmlRule(rawHtmlBlockRule)

@@ -14,10 +14,8 @@ export const resolvePageOptions = async ({
   const options = { ...optionsRaw }
 
   // plugin hook: extendsPageOptions
-  const extendsPageOptions = await app.pluginApi.hooks.extendsPageOptions.process(
-    options,
-    app
-  )
+  const extendsPageOptions =
+    await app.pluginApi.hooks.extendsPageOptions.process(options, app)
   extendsPageOptions.forEach((item) => Object.assign(options, item))
 
   return options

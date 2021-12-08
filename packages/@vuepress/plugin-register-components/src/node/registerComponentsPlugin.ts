@@ -10,7 +10,9 @@ export interface RegisterComponentsPluginOptions {
   getComponentName: (filename: string) => string
 }
 
-export const registerComponentsPlugin: Plugin<RegisterComponentsPluginOptions> = (
+export const registerComponentsPlugin: Plugin<
+  RegisterComponentsPluginOptions
+> = (
   {
     components = {},
     componentsDir = null,

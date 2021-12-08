@@ -10,7 +10,7 @@ export default defineClientAppEnhance(({ app }) => {
   // provide theme data & theme locale data
   const themeData = useThemeData()
   const routeLocale =
-    app._context.provides[(routeLocaleSymbol as unknown) as string]
+    app._context.provides[routeLocaleSymbol as unknown as string]
   const themeLocaleData = computed(() =>
     resolveThemeLocaleData(themeData.value, routeLocale.value)
   )
