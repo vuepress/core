@@ -28,20 +28,20 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^1.9.3",
-    "@vue/compiler-sfc": "^3.2.20",
-    "@vue/server-renderer": "^3.2.20",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/compiler-sfc": "^3.2.24",
+    "@vue/server-renderer": "^3.2.24",
     "@vuepress/client": "2.0.0-beta.27",
     "@vuepress/core": "2.0.0-beta.27",
     "@vuepress/shared": "2.0.0-beta.27",
     "@vuepress/utils": "2.0.0-beta.27",
-    "autoprefixer": "^10.3.7",
+    "autoprefixer": "^10.4.0",
     "connect-history-api-fallback": "^1.6.0",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.4",
     "postcss-csso": "^5.0.1",
-    "rollup": "^2.58.3",
-    "vite": "^2.6.12",
-    "vue": "^3.2.20",
+    "rollup": "^2.60.2",
+    "vite": "^2.7.1",
+    "vue": "^3.2.24",
     "vue-router": "^4.0.12"
   },
   "publishConfig": {

@@ -42,10 +42,10 @@
     "@vuepress/plugin-theme-data": "2.0.0-beta.27",
     "@vuepress/shared": "2.0.0-beta.27",
     "@vuepress/utils": "2.0.0-beta.27",
-    "@vueuse/core": "^6.7.3",
-    "sass": "^1.43.4",
-    "sass-loader": "^12.2.0",
-    "vue": "^3.2.20",
+    "@vueuse/core": "^7.1.2",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.4.0",
+    "vue": "^3.2.24",
     "vue-router": "^4.0.12"
   },
   "publishConfig": {

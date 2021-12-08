@@ -34,7 +34,7 @@ This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) set
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) **version 12+**
+- [Node.js](http://nodejs.org) **version 14+**
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/docs/install)
 
 Clone the repo, and install dependencies:

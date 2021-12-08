@@ -32,8 +32,8 @@
     "@vuepress/client": "2.0.0-beta.27",
     "@vuepress/core": "2.0.0-beta.27",
     "@vuepress/utils": "2.0.0-beta.27",
-    "ts-debounce": "^3.0.0",
-    "vue": "^3.2.20",
+    "ts-debounce": "^4.0.0",
+    "vue": "^3.2.24",
     "vue-router": "^4.0.12"
   },
   "publishConfig": {

@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-beta.27",
-    "shiki": "^0.9.12"
+    "shiki": "^0.9.14"
   },
   "publishConfig": {
     "access": "public"

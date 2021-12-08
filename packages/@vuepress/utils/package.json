@@ -31,7 +31,7 @@
     "@types/hash-sum": "^1.0.0",
     "@vuepress/shared": "2.0.0-beta.27",
     "chalk": "^4.1.2",
-    "debug": "^4.3.2",
+    "debug": "^4.3.3",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.4",
     "hash-sum": "^2.0.0",
