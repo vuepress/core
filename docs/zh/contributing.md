@@ -34,7 +34,7 @@ sidebar: auto
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 12+**
+- [Node.js](http://nodejs.org) **version 14+**
 - [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/docs/install)
 
 克隆代码仓库，并安装依赖：
