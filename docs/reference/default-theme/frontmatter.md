@@ -90,6 +90,20 @@ heroImage: https://vuejs.org/images/logo.png
 - Also see:
   - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
 
+### heroImageDark
+
+- Type: `string`
+
+- Details:
+
+  Specify the url of hero image to be used in dark mode.
+
+  You can make use of this option if you want to use different heroImage config in dark mode.
+
+- Also see:
+  - [Default Theme > Frontmatter > heroImage](#heroimage)
+  - [Default Theme > Config > darkMode](./config.md#darkmode)
+
 ### heroAlt
 
 - Type: `string`
