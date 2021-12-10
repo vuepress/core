@@ -50,18 +50,22 @@ import {
 import { isArray } from '@vuepress/shared'
 import { computed } from 'vue'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
+import { useDarkMode } from '../composables'
 import NavLink from './NavLink.vue'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
+const isDarkMode = useDarkMode()
 
 // hero image and title
 const heroImage = computed(() => {
-  if (!frontmatter.value.heroImage) {
-    return null
+  if (frontmatter.value.heroImageDark && isDarkMode.value) {
+    return withBase(frontmatter.value.heroImageDark)
   }
-
-  return withBase(frontmatter.value.heroImage)
+  if (frontmatter.value.heroImage) {
+    return withBase(frontmatter.value.heroImage)
+  }
+  return null
 })
 const heroText = computed(() => {
   if (frontmatter.value.heroText === null) {
