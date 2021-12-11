@@ -13,7 +13,7 @@
 ## 安装
 
 ```bash
-npm i -D @vuepress/plugin-search@next
+yarn add @vuepress/plugin-search@next
 ```
 
 ## 本地搜索索引
