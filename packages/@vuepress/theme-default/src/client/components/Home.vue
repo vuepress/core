@@ -1,7 +1,9 @@
 <template>
   <main class="home" :aria-labelledby="heroText ? 'main-title' : undefined">
     <header class="hero">
-      <img v-if="heroImage" :src="withBase(heroImage)" :alt="heroAlt" />
+      <ClientOnly>
+        <img v-if="heroImage" :src="withBase(heroImage)" :alt="heroAlt" />
+      </ClientOnly>
 
       <h1 v-if="heroText" id="main-title">
         {{ heroText }}
