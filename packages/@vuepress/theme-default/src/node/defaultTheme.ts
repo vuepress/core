@@ -1,7 +1,8 @@
-import type { Theme, ThemeConfig } from '@vuepress/core'
+import type { Page, Theme, ThemeConfig } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
+  DefaultThemePageData,
   DefaultThemePluginsOptions,
 } from '../shared'
 import {
@@ -44,7 +45,9 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
 
     // use the relative file path to generate edit link
-    extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
+    extendsPage: (page: Page<DefaultThemePageData>) => {
+      page.data.filePathRelative = page.filePathRelative
+    },
 
     plugins: [
       [

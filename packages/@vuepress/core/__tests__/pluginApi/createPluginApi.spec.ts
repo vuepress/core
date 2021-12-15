@@ -16,7 +16,7 @@ describe('core > pluginApi > createPluginApi', () => {
       'onGenerated',
       'extendsMarkdown',
       'extendsPageOptions',
-      'extendsPageData',
+      'extendsPage',
       'clientAppEnhanceFiles',
       'clientAppRootComponentFiles',
       'clientAppSetupFiles',

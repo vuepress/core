@@ -25,7 +25,7 @@
   - 由于我们要使用 markdown-it 来解析 Markdown 文件，因此 [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) 会在加载页面文件之前调用。
   - 页面文件会被加载：
     - [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) Hook 会被调用，用以创建页面。
-    - [extendsPageData](../reference/plugin-api.md#extendspagedata) Hook 会被调用，用以生成页面数据。
+    - [extendsPage](../reference/plugin-api.md#extendspage) Hook 会被调用，用以扩展页面对象。
 - 在 **prepare** 阶段：
   - 临时文件会被生成，因此所有和客户端文件相关的 Hooks 会在此处调用。
 - 在 **dev / build** 阶段：

@@ -72,4 +72,19 @@ describe('core > page > createPage', () => {
     )
     expect(page.dataFileChunkName).toBe(page.key)
   })
+
+  it('should process extendsPage hook correctly', async () => {
+    const extendsPageProcess = app.pluginApi.hooks.extendsPage.process
+    const mockExtendsPageProcess = jest.fn()
+    app.pluginApi.hooks.extendsPage.process = mockExtendsPageProcess
+
+    const page = await createPage(app, {
+      path: '/',
+    })
+
+    expect(mockExtendsPageProcess).toHaveBeenCalledTimes(1)
+    expect(mockExtendsPageProcess).toHaveBeenCalledWith(page, app)
+
+    app.pluginApi.hooks.extendsPage.process = extendsPageProcess
+  })
 })

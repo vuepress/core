@@ -506,7 +506,7 @@ interface PageData {
 
 - Also see:
   - [Client API > usePageData](./client-api.md#usepagedata)
-  - [Plugin API > extendsPageData](./plugin-api.md#extendspagedata)
+  - [Plugin API > extendsPage](./plugin-api.md#extendspage)
 
 ### content
 

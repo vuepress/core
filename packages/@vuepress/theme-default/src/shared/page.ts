@@ -2,7 +2,7 @@ import type { GitPluginPageData } from '@vuepress/plugin-git'
 import type { NavLink, SidebarConfig } from './nav'
 
 export interface DefaultThemePageData extends GitPluginPageData {
-  filePathRelative: string
+  filePathRelative: string | null
 }
 
 export interface DefaultThemePageFrontmatter {

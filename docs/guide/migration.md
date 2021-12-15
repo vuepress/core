@@ -198,7 +198,7 @@ Markdown slot is no longer supported.
 - `clientRootMixin`: renamed to`clientAppSetupFiles`
 - `extendMarkdown`: renamed to `extendsMarkdown`
 - `chainMarkdown`: removed
-- `extendPageData`: renamed to `extendsPageData`
+- `extendPageData`: renamed to `extendsPage`
 - `extendsCli`: removed
 - `configureWebpack`: removed
 - `chainWebpack`: removed

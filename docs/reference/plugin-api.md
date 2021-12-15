@@ -15,7 +15,7 @@ The following hooks will be processed when initializing app:
 
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
-- [extendsPageData](#extendspagedata)
+- [extendsPage](#extendspage)
 - [onInitialized](#oninitialized)
 
 The following hooks will be processed when preparing files:
@@ -171,23 +171,27 @@ module.exports = {
 - Also see:
   - [Node API > Page > createPage](./node-api.md#createpage)
 
-### extendsPageData
+### extendsPage
 
-- Type: `(page: Omit<Page, 'data'>, app: App) => Record<string, any> | Promise<Record<string, any>>`
+- Type: `(page: Page, app: App) => void | Promise<void>`
 
 - Details:
 
-  Page data extension.
+  Page extension.
 
-  This hook accepts a function that will receive an instance of `Page` (excluding the `data` property). The returned object will be merged into page data, which can be used in client side code.
+  This hook accepts a function that will receive a `Page` instance.
+
+  This can be used for adding extra properties or modifying current properties on `Page` object.
+
+  Notice that changes to `page.data` can be used in client side code.
 
 - Example:
 
 ```js
 module.exports = {
-  extendsPageData: (page) => {
-    const meta = 'foobar'
-    return { meta }
+  extendsPage: (page) => {
+    page.foo = 'foo'
+    page.data.bar = 'bar'
   },
 }
 ```
@@ -200,7 +204,7 @@ import { usePageData } from '@vuepress/client'
 export default {
   setup() {
     const page = usePageData()
-    console.log(page.value.meta) // foobar
+    console.log(page.value.bar) // bar
   },
 }
 ```

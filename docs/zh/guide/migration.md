@@ -198,7 +198,7 @@ Markdown 插槽不再被支持。
 - `clientRootMixin`：重命名为`clientAppSetupFiles`
 - `extendMarkdown`：重命名为 `extendsMarkdown`
 - `chainMarkdown`：移除
-- `extendPageData`：重命名为 `extendsPageData`
+- `extendPageData`：重命名为 `extendsPage`
 - `extendsCli`：移除
 - `configureWebpack`：移除
 - `chainWebpack`：移除

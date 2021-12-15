@@ -36,7 +36,7 @@
 
 - 参考：
   - [Node API > Page 属性 > data](./node-api.md#data)
-  - [插件 API > extendsPageData](./plugin-api.md#extendspagedata)
+  - [插件 API > extendsPage](./plugin-api.md#extendspage)
 
 ### usePageFrontmatter
 

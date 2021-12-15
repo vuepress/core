@@ -15,7 +15,7 @@
 
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
-- [extendsPageData](#extendspagedata)
+- [extendsPage](#extendspage)
 - [onInitialized](#oninitialized)
 
 下列 Hooks 会在准备文件时处理：
@@ -172,23 +172,27 @@ module.exports = {
 - 参考：
   - [Node API > Page > createPage](./node-api.md#createPage)
 
-### extendsPageData
+### extendsPage
 
-- 类型： `(page: Omit<Page, 'data'>, app: App) => Record<string, any> | Promise<Record<string, any>>`
+- 类型： `(page: Page, app: App) => void | Promise<void>`
 
 - 详情：
 
-  页面数据扩展。
+  页面扩展。
 
-  该 Hook 接收一个函数，在参数中会收到一个 `Page` 实例 （不包含 `data` 属性）。返回的对象会被合并到页面数据中，可以在客户端代码中使用。
+  该 Hook 接收一个函数，在参数中会收到一个 `Page` 实例。
+
+  它可以用来在 Page 对象上添加额外的属性，或修改现有的属性等。
+  
+  值得一提的是，针对 `page.data` 的改动可以在客户端代码中使用。
 
 - 示例：
 
 ```js
 module.exports = {
-  extendsPageData: (page) => {
-    const meta = 'foobar'
-    return { meta }
+  extendsPage: (page) => {
+    page.foo = 'foo'
+    page.data.bar = 'bar'
   },
 }
 ```
@@ -201,7 +205,7 @@ import { usePageData } from '@vuepress/client'
 export default {
   setup() {
     const page = usePageData()
-    console.log(page.value.meta) // foobar
+    console.log(page.value.bar) // bar
   },
 }
 ```

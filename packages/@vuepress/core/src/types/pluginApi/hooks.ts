@@ -47,9 +47,7 @@ export type ExtendsMarkdownHook = Hook<
 export type ExtendsPageOptionsHook = Hook<
   (options: PageOptions, app: App) => PromiseOrNot<PageOptions>
 >
-export type ExtendsPageDataHook = Hook<
-  (page: Omit<Page, 'data'>, app: App) => PromiseOrNot<Record<string, any>>
->
+export type ExtendsPageHook = Hook<(page: Page, app: App) => PromiseOrNot<void>>
 
 /**
  * List of hooks
@@ -61,7 +59,7 @@ export interface Hooks {
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
   extendsPageOptions: ExtendsPageOptionsHook
-  extendsPageData: ExtendsPageDataHook
+  extendsPage: ExtendsPageHook
   clientAppEnhanceFiles: ClientFilesHook
   clientAppRootComponentFiles: ClientFilesHook
   clientAppSetupFiles: ClientFilesHook

@@ -504,7 +504,7 @@ interface PageData {
 
 - 参考：
   - [客户端 API > usePageData](./client-api.md#usepagedata)
-  - [插件 API > extendsPageData](./plugin-api.md#extendspagedata)
+  - [插件 API > extendsPage](./plugin-api.md#extendspage)
 
 ### content
 

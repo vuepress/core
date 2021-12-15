@@ -36,7 +36,7 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 - Also see:
   - [Node API > Page Properties > data](./node-api.md#data)
-  - [Plugin API > extendsPageData](./plugin-api.md#extendspagedata)
+  - [Plugin API > extendsPage](./plugin-api.md#extendspage)
 
 ### usePageFrontmatter
 

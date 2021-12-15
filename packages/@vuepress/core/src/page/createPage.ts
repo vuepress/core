@@ -4,7 +4,6 @@ import { renderPageContent } from './renderPageContent'
 import { renderPageExcerpt } from './renderPageExcerpt'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo'
 import { resolvePageContent } from './resolvePageContent'
-import { resolvePageData } from './resolvePageData'
 import { resolvePageDataInfo } from './resolvePageDataInfo'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageFileContent } from './resolvePageFileContent'
@@ -85,7 +84,7 @@ export const createPage = async (
   // resolve page path
   const path = resolvePagePath({ permalink, pathInferred, options })
 
-  // resolve path key
+  // resolve page key
   const key = resolvePageKey({ path })
 
   // resolve page rendered html file path
@@ -109,7 +108,18 @@ export const createPage = async (
   const { dataFilePath, dataFilePathRelative, dataFileChunkName } =
     resolvePageDataInfo({ app, htmlFilePathRelative, key })
 
-  const page = {
+  const page: Page = {
+    // page data
+    data: {
+      key,
+      path,
+      title,
+      lang,
+      frontmatter,
+      excerpt,
+      headers,
+    },
+
     // base fields
     key,
     path,
@@ -142,10 +152,10 @@ export const createPage = async (
     dataFileChunkName,
     htmlFilePath,
     htmlFilePathRelative,
-  } as Page
+  }
 
-  // resolve page data
-  page.data = await resolvePageData({ app, page })
+  // plugin hook: extendsPage
+  await app.pluginApi.hooks.extendsPage.process(page, app)
 
   return page
 }
