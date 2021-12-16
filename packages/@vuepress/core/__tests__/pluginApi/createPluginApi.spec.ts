@@ -14,6 +14,7 @@ describe('core > pluginApi > createPluginApi', () => {
       'onPrepared',
       'onWatched',
       'onGenerated',
+      'extendsMarkdownOptions',
       'extendsMarkdown',
       'extendsPageOptions',
       'extendsPage',

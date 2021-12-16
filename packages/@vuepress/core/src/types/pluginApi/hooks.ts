@@ -1,4 +1,4 @@
-import type { Markdown } from '@vuepress/markdown'
+import type { Markdown, MarkdownOptions } from '@vuepress/markdown'
 import type { App } from '../app'
 import type { Page, PageOptions } from '../page'
 
@@ -26,6 +26,11 @@ export type LifeCycleHook<T extends unknown[] = []> = Hook<
   (app: App, ...args: T) => PromiseOrNot<void>
 >
 
+// extends hook
+export type ExtendsHook<T> = Hook<
+  (extendable: T, app: App) => PromiseOrNot<void>
+>
+
 // hook that generates client files
 export type ClientFilesHook = Hook<
   string | string[] | ((app: App) => PromiseOrNot<string | string[]>),
@@ -38,17 +43,6 @@ export type ReturnObjectHook = Hook<
   (app: App) => Promise<Record<string, any>>
 >
 
-// markdown hook
-export type ExtendsMarkdownHook = Hook<
-  (md: Markdown, app: App) => PromiseOrNot<void>
->
-
-// page hook
-export type ExtendsPageOptionsHook = Hook<
-  (options: PageOptions, app: App) => PromiseOrNot<PageOptions>
->
-export type ExtendsPageHook = Hook<(page: Page, app: App) => PromiseOrNot<void>>
-
 /**
  * List of hooks
  */
@@ -57,9 +51,10 @@ export interface Hooks {
   onPrepared: LifeCycleHook
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onGenerated: LifeCycleHook
-  extendsMarkdown: ExtendsMarkdownHook
-  extendsPageOptions: ExtendsPageOptionsHook
-  extendsPage: ExtendsPageHook
+  extendsMarkdownOptions: ExtendsHook<MarkdownOptions>
+  extendsMarkdown: ExtendsHook<Markdown>
+  extendsPageOptions: ExtendsHook<PageOptions>
+  extendsPage: ExtendsHook<Page>
   clientAppEnhanceFiles: ClientFilesHook
   clientAppRootComponentFiles: ClientFilesHook
   clientAppSetupFiles: ClientFilesHook

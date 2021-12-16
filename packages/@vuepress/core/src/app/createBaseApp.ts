@@ -1,4 +1,3 @@
-import { createMarkdown } from '@vuepress/markdown'
 import { createPluginApi } from '../pluginApi'
 import type { App, AppConfig } from '../types'
 import { appInit } from './appInit'
@@ -22,7 +21,6 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
   const dir = createAppDir(options)
   const env = createAppEnv(options, isBuild)
   const siteData = createAppSiteData(options)
-  const markdown = createMarkdown(options.markdown)
   const pluginApi = createPluginApi()
   const writeTemp = createAppWriteTemp(dir)
 
@@ -32,7 +30,6 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
     dir,
     env,
     siteData,
-    markdown,
     pluginApi,
     writeTemp,
     use: (...args) => appUse(app, ...args),

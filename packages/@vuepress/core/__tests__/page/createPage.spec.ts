@@ -1,10 +1,12 @@
 import { createBaseApp, createPage } from '@vuepress/core'
+import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
+app.markdown = createMarkdown()
 
 describe('core > page > createPage', () => {
   it('should throw an error', async () => {
@@ -71,20 +73,5 @@ describe('core > page > createPage', () => {
       `pages/${page.htmlFilePathRelative}.js`
     )
     expect(page.dataFileChunkName).toBe(page.key)
-  })
-
-  it('should process extendsPage hook correctly', async () => {
-    const extendsPageProcess = app.pluginApi.hooks.extendsPage.process
-    const mockExtendsPageProcess = jest.fn()
-    app.pluginApi.hooks.extendsPage.process = mockExtendsPageProcess
-
-    const page = await createPage(app, {
-      path: '/',
-    })
-
-    expect(mockExtendsPageProcess).toHaveBeenCalledTimes(1)
-    expect(mockExtendsPageProcess).toHaveBeenCalledWith(page, app)
-
-    app.pluginApi.hooks.extendsPage.process = extendsPageProcess
   })
 })

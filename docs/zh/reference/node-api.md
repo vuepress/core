@@ -170,6 +170,8 @@ const dev = async () => {
 
   用于解析 Markdown 内容的 [markdown-it](https://github.com/markdown-it/markdown-it) 实例。
 
+  它仅在 [onInitialized](./plugin-api.md#oninitialized) 以及之后的 Hooks 中才可用。
+
 ### layouts
 
 - 类型： `Record<string, string>`

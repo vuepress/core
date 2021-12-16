@@ -170,6 +170,8 @@ const dev = async () => {
 
   The [markdown-it](https://github.com/markdown-it/markdown-it) instance used for parsing markdown content.
 
+  It is only available in and after [onInitialized](./plugin-api.md#oninitialized) hook.
+
 ### layouts
 
 - Type: `Record<string, string>`

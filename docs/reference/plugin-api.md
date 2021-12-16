@@ -13,12 +13,14 @@ Plugins should be used before initialization. The basic options will be handled 
 
 The following hooks will be processed when initializing app:
 
+- [extendsMarkdownOptions](#extendsmarkdownoptions)
 - [extendsMarkdown](#extendsmarkdown)
 - [extendsPageOptions](#extendspageoptions)
 - [extendsPage](#extendspage)
 - [onInitialized](#oninitialized)
 
 The following hooks will be processed when preparing files:
+
 - [clientAppEnhanceFiles](#clientappenhancefiles)
 - [clientAppRootComponentFiles](#clientapprootcomponentfiles)
 - [clientAppSetupFiles](#clientappsetupfiles)
@@ -116,6 +118,36 @@ module.exports = {
 }
 ```
 
+### extendsMarkdownOptions
+
+- Type: `(options: MarkdownOptions, app: App) => void | Promise<void>`
+
+- Details:
+
+  Markdown options extension.
+
+  This hook accepts a function that will receive the markdown options.
+
+  This hook can be used for modifying markdown options.
+
+- Example:
+
+Modifying the default header levels that going to be extracted:
+
+```js
+module.exports = {
+  extendsMarkdownOptions: (markdownOptions, app) => {
+    if (markdownOptions.extractHeaders === false) return
+    markdownOptions.extractHeaders = markdownOptions.extractHeaders ?? {}
+    if (markdownOptions.extractHeaders.level) return
+    markdownOptions.extractHeaders.level = [2, 3, 4, 5, 6]
+  },
+}
+```
+
+- Also see:
+  - [Config > markdown](./config.md#markdown)
+
 ### extendsMarkdown
 
 - Type: `(md: Markdown, app: App) => void | Promise<void>`
@@ -126,7 +158,7 @@ module.exports = {
 
   This hook accepts a function that will receive an instance of `Markdown` powered by [markdown-it](https://github.com/markdown-it/markdown-it) in its arguments.
 
-  This can be used for using extra markdown-it plugins and implementing customizations.
+  This hook can be used for using extra markdown-it plugins and implementing customizations.
 
 - Example:
 
@@ -141,13 +173,15 @@ module.exports = {
 
 ### extendsPageOptions
 
-- Type: `(options: PageOptions, app: App) => PageOptions | Promise<PageOptions>`
+- Type: `(options: PageOptions, app: App) => void | Promise<void>`
 
 - Details:
 
   Page options extension.
 
-  This hook accepts a function that will receive the raw options of `createPage`. The returned object will be merged into page options, which will be used to create the page.
+  This hook accepts a function that will receive the options of `createPage`.
+  
+  This hook can be used for modifying page options
 
 - Example:
 
@@ -155,15 +189,11 @@ Set permalink pattern for pages in `_posts` directory:
 
 ```js
 module.exports = {
-  extendsPageOptions: ({ filePath }, app) => {
-    if (filePath?.startsWith(app.dir.source('_posts/'))) {
-      return {
-        frontmatter: {
-          permalinkPattern: '/:year/:month/:day/:slug.html',
-        },
-      }
+  extendsPageOptions: (pageOptions, app) => {
+    if (pageOptions.filePath?.startsWith(app.dir.source('_posts/'))) {
+      pageOptions.frontmatter = pageOptions.frontmatter ?? {}
+      pageOptions.frontmatter.permalinkPattern = '/:year/:month/:day/:slug.html'
     }
-    return {}
   },
 }
 ```
@@ -181,9 +211,9 @@ module.exports = {
 
   This hook accepts a function that will receive a `Page` instance.
 
-  This can be used for adding extra properties or modifying current properties on `Page` object.
+  This hook can be used for adding extra properties or modifying current properties on `Page` object.
 
-  Notice that changes to `page.data` can be used in client side code.
+  Notice that changes to `page.data` and `page.routeMeta` can be used in client side code.
 
 - Example:
 
@@ -212,6 +242,7 @@ export default {
 - Also see:
   - [Client API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page Properties > data](./node-api.md#data)
+  - [Node API > Page Properties > routeMeta](./node-api.md#routemeta)
 
 ## Client Files Hooks
 
@@ -233,7 +264,10 @@ export default {
 const { path } = require('@vuepress/utils')
 
 module.exports = {
-  clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.js'),
+  clientAppEnhanceFiles: path.resolve(
+    __dirname,
+    './path/to/clientAppEnhance.js'
+  ),
 }
 ```
 
@@ -259,7 +293,10 @@ module.exports = {
 const { path } = require('@vuepress/utils')
 
 module.exports = {
-  clientAppRootComponentFiles: path.resolve(__dirname, './path/to/RootComponent.vue'),
+  clientAppRootComponentFiles: path.resolve(
+    __dirname,
+    './path/to/RootComponent.vue'
+  ),
 }
 ```
 

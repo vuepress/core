@@ -37,11 +37,6 @@ export interface App {
   siteData: SiteData
 
   /**
-   * Markdown-it instance
-   */
-  markdown: Markdown
-
-  /**
    * Plugin system
    */
   pluginApi: PluginApi
@@ -80,6 +75,13 @@ export interface App {
    * Only available after initialization
    */
   layouts: Record<string, string>
+
+  /**
+   * Markdown-it instance.
+   *
+   * Only available after initialization
+   */
+  markdown: Markdown
 
   /**
    * Page objects.

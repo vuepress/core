@@ -22,7 +22,9 @@
 
 - 在 **init** 阶段：
   - 主题和插件会被加载。这意味着插件需要在初始化之前使用。
-  - 由于我们要使用 markdown-it 来解析 Markdown 文件，因此 [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) 会在加载页面文件之前调用。
+  - 由于我们要使用 markdown-it 来解析 Markdown 文件，因此需要在加载页面文件之前创建 markdown-it 实例：
+    - [extendsMarkdownOptions](../reference/plugin-api.md#extendsmarkdownoptions) Hook 会被调用，用以创建 markdown-it 实例。
+    - [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) Hook 会被调用，用以扩展 markdown-it 实例。
   - 页面文件会被加载：
     - [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) Hook 会被调用，用以创建页面。
     - [extendsPage](../reference/plugin-api.md#extendspage) Hook 会被调用，用以扩展页面对象。

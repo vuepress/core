@@ -1,4 +1,5 @@
 import { createAppPages, createBaseApp } from '@vuepress/core'
+import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
 describe('core > app > createAppPages', () => {
@@ -7,6 +8,7 @@ describe('core > app > createAppPages', () => {
       source: path.resolve(__dirname, '../__fixtures__/pages'),
       theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
     })
+    app.markdown = createMarkdown()
 
     const pages = await createAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
@@ -25,6 +27,7 @@ describe('core > app > createAppPages', () => {
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
       theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
     })
+    app.markdown = createMarkdown()
 
     const pages = await createAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
@@ -45,14 +48,40 @@ describe('core > app > createAppPages', () => {
 
     app.use({
       name: 'foo',
-      extendsPageOptions: () => ({ frontmatter: { foo: 'bar' } }),
+      extendsPageOptions: (pageOptions) => {
+        if (!pageOptions.frontmatter) pageOptions.frontmatter = {}
+        pageOptions.frontmatter.foo = 'bar'
+      },
     })
     app.pluginApi.registerHooks()
+    app.markdown = createMarkdown()
 
     const pages = await createAppPages(app)
 
     pages.forEach((page) => {
       expect(page.frontmatter.foo).toBe('bar')
+    })
+  })
+
+  it('should process extendsPage hook correctly', async () => {
+    const app = createBaseApp({
+      source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
+      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+    })
+
+    app.use({
+      name: 'foo',
+      extendsPage: (page) => {
+        page.frontmatter.foo = 'baz'
+      },
+    })
+    app.pluginApi.registerHooks()
+    app.markdown = createMarkdown()
+
+    const pages = await createAppPages(app)
+
+    pages.forEach((page) => {
+      expect(page.frontmatter.foo).toBe('baz')
     })
   })
 })

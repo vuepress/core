@@ -1,11 +1,15 @@
 import { createBaseApp, createHookQueue, createPage } from '@vuepress/core'
 import type { Page } from '@vuepress/core'
+import { createMarkdown } from '@vuepress/markdown'
+import type { MarkdownOptions } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
+import type { PageOptions } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
+app.markdown = createMarkdown()
 
 describe('core > pluginApi > createHookQueue', () => {
   describe('common', () => {
@@ -14,6 +18,7 @@ describe('core > pluginApi > createHookQueue', () => {
       'onPrepared',
       'onWatched',
       'onGenerated',
+      'extendsMarkdownOptions',
       'extendsMarkdown',
       'extendsPageOptions',
       'extendsPage',
@@ -94,13 +99,17 @@ describe('core > pluginApi > createHookQueue', () => {
     )
   })
 
-  describe('page hooks', () => {
-    it(`extendsPageOptions`, async () => {
-      const hookName = 'extendsPageOptions'
+  describe('extends hooks', () => {
+    it(`extendsMarkdownOptions`, async () => {
+      const hookName = 'extendsMarkdownOptions'
 
       const hook = createHookQueue(hookName)
-      const func1 = jest.fn(() => ({ content: 'foo' }))
-      const func2 = jest.fn(() => ({ content: 'bar' }))
+      const func1 = jest.fn((markdownOptions) => {
+        markdownOptions.emoji = false
+      })
+      const func2 = jest.fn((markdownOptions) => {
+        markdownOptions.extractHeaders = false
+      })
       hook.add({
         pluginName: 'test1',
         hook: func1,
@@ -109,13 +118,64 @@ describe('core > pluginApi > createHookQueue', () => {
         pluginName: 'test2',
         hook: func2,
       })
-      const result = await hook.process({ filePath: 'foo.md' }, app)
+      const markdownOptions: MarkdownOptions = {}
+      await hook.process(markdownOptions, app)
 
       expect(func1).toHaveBeenCalledTimes(1)
-      expect(func1).toHaveBeenCalledWith({ filePath: 'foo.md' }, app)
+      expect(func1).toHaveBeenCalledWith(markdownOptions, app)
       expect(func2).toHaveBeenCalledTimes(1)
-      expect(func2).toHaveBeenCalledWith({ filePath: 'foo.md' }, app)
-      expect(result).toEqual([{ content: 'foo' }, { content: 'bar' }])
+      expect(func2).toHaveBeenCalledWith(markdownOptions, app)
+      expect(markdownOptions).toEqual({ emoji: false, extractHeaders: false })
+    })
+
+    it(`extendsMarkdown`, async () => {
+      const hookName = 'extendsMarkdown'
+
+      const hook = createHookQueue(hookName)
+      const func1 = jest.fn()
+      const func2 = jest.fn()
+      hook.add({
+        pluginName: 'test1',
+        hook: func1,
+      })
+      hook.add({
+        pluginName: 'test2',
+        hook: func2,
+      })
+      await hook.process(app.markdown, app)
+
+      expect(func1).toHaveBeenCalledTimes(1)
+      expect(func1).toHaveBeenCalledWith(app.markdown, app)
+      expect(func2).toHaveBeenCalledTimes(1)
+      expect(func2).toHaveBeenCalledWith(app.markdown, app)
+    })
+
+    it(`extendsPageOptions`, async () => {
+      const hookName = 'extendsPageOptions'
+
+      const hook = createHookQueue(hookName)
+      const func1 = jest.fn((pageOptions) => {
+        pageOptions.content = pageOptions.content ?? 'foo'
+      })
+      const func2 = jest.fn((pageOptions) => {
+        pageOptions.content = pageOptions.content ?? 'nar'
+      })
+      hook.add({
+        pluginName: 'test1',
+        hook: func1,
+      })
+      hook.add({
+        pluginName: 'test2',
+        hook: func2,
+      })
+      const pageOptions: PageOptions = { filePath: 'foo.md' }
+      await hook.process(pageOptions, app)
+
+      expect(func1).toHaveBeenCalledTimes(1)
+      expect(func1).toHaveBeenCalledWith(pageOptions, app)
+      expect(func2).toHaveBeenCalledTimes(1)
+      expect(func2).toHaveBeenCalledWith(pageOptions, app)
+      expect(pageOptions).toEqual({ filePath: 'foo.md', content: 'foo' })
     })
 
     it(`extendsPage`, async () => {
@@ -148,30 +208,6 @@ describe('core > pluginApi > createHookQueue', () => {
       expect(func2).toHaveBeenCalledWith(page, app)
       expect(page.foo).toEqual('foo')
       expect(page.data.bar).toEqual('bar')
-    })
-  })
-
-  describe('markdown hooks', () => {
-    it(`extendsMarkdown`, async () => {
-      const hookName = 'extendsMarkdown'
-
-      const hook = createHookQueue(hookName)
-      const func1 = jest.fn()
-      const func2 = jest.fn()
-      hook.add({
-        pluginName: 'test1',
-        hook: func1,
-      })
-      hook.add({
-        pluginName: 'test2',
-        hook: func2,
-      })
-      await hook.process(app.markdown, app)
-
-      expect(func1).toHaveBeenCalledTimes(1)
-      expect(func1).toHaveBeenCalledWith(app.markdown, app)
-      expect(func2).toHaveBeenCalledTimes(1)
-      expect(func2).toHaveBeenCalledWith(app.markdown, app)
     })
   })
 
