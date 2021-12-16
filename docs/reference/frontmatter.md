@@ -3,32 +3,29 @@
 <NpmBadge package="@vuepress/client" />
 <NpmBadge package="@vuepress/markdown" />
 
-## lang
+## externalIcon
+
+- Type: `boolean`
+
+- Details:
+
+  Whether to append an <OutboundLink /> icon to external links in current page.
+
+- Also see:
+  - [Config > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
+
+## date
 
 - Type: `string`
 
 - Details:
 
-  Language for the page.
+  Created date for the page.
 
-  This will override the `lang` option in your site config.
-
-- Also see:
-  - [Config > lang](./config.md#lang)
-  - [Node API > Page Properties > lang](./node-api.md#lang)
-
-## title
-
-- Type: `string`
-
-- Details:
-
-  Title for the page.
-
-  If you don't specify `title` in frontmatter, content of the first level-one header (i.e. `# title`) will be used as the title.
+  You should specify the date in the form of `yyyy-MM-dd`, or follow the [YAML Timestamp Type](https://yaml.org/type/timestamp.html).
 
 - Also see:
-  - [Node API > Page Properties > title](./node-api.md#title)
+  - [Node API > Page Properties > date](./node-api.md#date)
 
 ## description
 
@@ -77,18 +74,52 @@ head:
 - Also see:
   - [Config > head](./config.md#head)
 
-## date
+## lang
 
 - Type: `string`
 
 - Details:
 
-  Created date for the page.
+  Language for the page.
 
-  You should specify the date in the form of `yyyy-MM-dd`, or follow the [YAML Timestamp Type](https://yaml.org/type/timestamp.html).
+  This will override the `lang` option in your site config.
 
 - Also see:
-  - [Node API > Page Properties > date](./node-api.md#date)
+  - [Config > lang](./config.md#lang)
+  - [Node API > Page Properties > lang](./node-api.md#lang)
+
+## layout
+
+- Type: `string`
+
+- Details:
+
+  Layout for the page.
+
+  Layouts are provided by theme. If you don't specify this frontmatter, the default layout will be used. You should refer to the theme's own documentation to find what layouts it provides.
+
+  If the theme layouts cannot meet your needs, you can use a custom layout component.
+
+- Example:
+
+Register a layout component in `.vuepress/clientAppEnhance.ts` file:
+
+```ts
+import { defineClientAppEnhance } from '@vuepress/client'
+import CustomLayout from './CustomLayout.vue'
+
+export default defineClientAppEnhance(({ app }) => {
+  app.component('CustomLayout', CustomLayout)
+})
+```
+
+Set custom layout in frontmatter:
+
+```md
+---
+layout: CustomLayout
+---
+```
 
 ## permalink
 
@@ -166,46 +197,26 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page Properties > permalink](./node-api.md#permalink)
 
-## layout
+## routeMeta
+
+- Type: `Record<string, unknown>`
+
+- Details:
+
+  Custom data to be attached to the page route.
+
+- Also see:
+  - [Node API > Page Properties > routeMeta](./node-api.md#routeMeta)
+
+## title
 
 - Type: `string`
 
 - Details:
 
-  Layout for the page.
+  Title for the page.
 
-  Layouts are provided by theme. If you don't specify this frontmatter, the default layout will be used. You should refer to the theme's own documentation to find what layouts it provides.
-
-  If the theme layouts cannot meet your needs, you can use a custom layout component.
-
-- Example:
-
-Register a layout component in `.vuepress/clientAppEnhance.ts` file:
-
-```ts
-import { defineClientAppEnhance } from '@vuepress/client'
-import CustomLayout from './CustomLayout.vue'
-
-export default defineClientAppEnhance(({ app }) => {
-  app.component('CustomLayout', CustomLayout)
-})
-```
-
-Set custom layout in frontmatter:
-
-```md
----
-layout: CustomLayout
----
-```
-
-## externalIcon
-
-- Type: `boolean`
-
-- Details:
-
-  Whether to append an <OutboundLink /> icon to external links in current page.
+  If you don't specify `title` in frontmatter, content of the first level-one header (i.e. `# title`) will be used as the title.
 
 - Also see:
-  - [Config > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
+  - [Node API > Page Properties > title](./node-api.md#title)

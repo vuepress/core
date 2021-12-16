@@ -15,6 +15,7 @@ import { resolvePageLang } from './resolvePageLang'
 import { resolvePageOptions } from './resolvePageOptions'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
+import { resolvePageRouteMeta } from './resolvePageRouteMeta'
 import { resolvePageSlug } from './resolvePageSlug'
 
 export const createPage = async (
@@ -59,6 +60,9 @@ export const createPage = async (
       filePathRelative,
       frontmatter,
     })
+
+  // resolve route meta from frontmatter
+  const routeMeta = resolvePageRouteMeta({ frontmatter })
 
   // resolve slug from file path
   const slug = resolvePageSlug({ filePathRelative })
@@ -139,6 +143,7 @@ export const createPage = async (
     pathInferred,
     pathLocale,
     permalink,
+    routeMeta,
     slug,
 
     // file info

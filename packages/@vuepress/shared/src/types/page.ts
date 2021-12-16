@@ -62,15 +62,15 @@ export type PageData<
 export type PageFrontmatter<
   T extends Record<any, any> = Record<string, unknown>
 > = Partial<T> & {
+  date?: string | Date
+  description?: string
+  head?: HeadConfig[]
+  lang?: string
   layout?: string
   permalink?: string
   permalinkPattern?: string
-  date?: string | Date
-
-  lang?: string
+  routeMeta?: Record<string, unknown>
   title?: string
-  description?: string
-  head?: HeadConfig[]
 }
 
 /**

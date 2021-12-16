@@ -3,32 +3,29 @@
 <NpmBadge package="@vuepress/client" />
 <NpmBadge package="@vuepress/markdown" />
 
-## lang
+## date
 
 - 类型： `string`
 
 - 详情：
 
-  页面的语言。
+  页面的创建日期。
 
-  它将会覆盖站点配置中的 `lang` 配置项
+  应按照 `yyyy-MM-dd` 的格式来指定日期，或者遵循 [YAML Timestamp Type](https://yaml.org/type/timestamp.html) 。
 
 - 参考：
-  - [配置 > lang](./config.md#lang)
-  - [Node API > Page 属性 > lang](./node-api.md#lang)
+  - [Node API > Page 属性 > date](./node-api.md#date)
 
-## title
+## externalIcon
 
-- 类型： `string`
+- 类型： `boolean`
 
 - 详情：
 
-  页面的标题。
-
-  如果你不在 Frontmatter 中设置 `title` ，那么页面中第一个一级标题（即 `# title`）的内容会被当作标题使用。
+  是否在当前页面的外部链接的后面添加 <OutboundLink /> 图标。
 
 - 参考：
-  - [Node API > Page 属性 > title](./node-api.md#title)
+  - [配置 > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
 
 ## description
 
@@ -77,18 +74,52 @@ head:
 - 参考：
   - [配置 > head](./config.md#head)
 
-## date
+## lang
 
 - 类型： `string`
 
 - 详情：
 
-  页面的创建日期。
+  页面的语言。
 
-  应按照 `yyyy-MM-dd` 的格式来指定日期，或者遵循 [YAML Timestamp Type](https://yaml.org/type/timestamp.html) 。
+  它将会覆盖站点配置中的 `lang` 配置项
 
 - 参考：
-  - [Node API > Page 属性 > date](./node-api.md#date)
+  - [配置 > lang](./config.md#lang)
+  - [Node API > Page 属性 > lang](./node-api.md#lang)
+
+## layout
+
+- 类型： `string`
+
+- 详情：
+
+  页面的布局。
+
+  布局是由主题提供的。如果你不指定该 Frontmatter ，则会使用默认布局。你应该参考主题自身的文档来了解其提供了哪些布局。
+
+  如果主题布局无法满足你的需求，你可以使用自定义布局组件。
+
+- 示例：
+
+在 `.vuepress/clientAppEnhance.ts` 文件中注册一个布局组件：
+
+```ts
+import { defineClientAppEnhance } from '@vuepress/client'
+import CustomLayout from './CustomLayout.vue'
+
+export default defineClientAppEnhance(({ app }) => {
+  app.component('CustomLayout', CustomLayout)
+})
+```
+
+在 Frontmatter 中设置自定义布局：
+
+```md
+---
+layout: CustomLayout
+---
+```
 
 ## permalink
 
@@ -166,46 +197,26 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page 属性 > permalink](./node-api.md#permalink)
 
-## layout
+## routeMeta
+
+- 类型： `Record<string, unknown>`
+
+- 详情：
+
+  附加到页面路由的自定义数据。
+
+- 参考：
+  - [Node API > Page 属性 > routeMeta](./node-api.md#routeMeta)
+
+## title
 
 - 类型： `string`
 
 - 详情：
 
-  页面的布局。
+  页面的标题。
 
-  布局是由主题提供的。如果你不指定该 Frontmatter ，则会使用默认布局。你应该参考主题自身的文档来了解其提供了哪些布局。
-
-  如果主题布局无法满足你的需求，你可以使用自定义布局组件。
-
-- 示例：
-
-在 `.vuepress/clientAppEnhance.ts` 文件中注册一个布局组件：
-
-```ts
-import { defineClientAppEnhance } from '@vuepress/client'
-import CustomLayout from './CustomLayout.vue'
-
-export default defineClientAppEnhance(({ app }) => {
-  app.component('CustomLayout', CustomLayout)
-})
-```
-
-在 Frontmatter 中设置自定义布局：
-
-```md
----
-layout: CustomLayout
----
-```
-
-## externalIcon
-
-- 类型： `boolean`
-
-- 详情：
-
-  是否在当前页面的外部链接的后面添加 <OutboundLink /> 图标。
+  如果你不在 Frontmatter 中设置 `title` ，那么页面中第一个一级标题（即 `# title`）的内容会被当作标题使用。
 
 - 参考：
-  - [配置 > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
+  - [Node API > Page 属性 > title](./node-api.md#title)

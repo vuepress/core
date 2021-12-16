@@ -4,7 +4,7 @@ import type { App } from '../../types'
 type RouteItem = [
   name: string,
   path: string,
-  title: string,
+  meta: Record<string, unknown>,
   redirects: string[]
 ]
 
@@ -17,9 +17,9 @@ import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
 
 const routeItems = [\
 ${app.pages
-  .map(({ key, path, pathInferred, filePathRelative, title }) => {
+  .map(({ key, path, pathInferred, filePathRelative, routeMeta }) => {
     const redirects: string[] = []
-    const routeItem: RouteItem = [key, path, title, redirects]
+    const routeItem: RouteItem = [key, path, routeMeta, redirects]
 
     // paths that should redirect to this page
     const redirectsSet = new Set<string>()
@@ -60,13 +60,13 @@ ${app.pages
 ]
 
 export const pagesRoutes = routeItems.reduce(
-  (result, [name, path, title, redirects]) => {
+  (result, [name, path, meta, redirects]) => {
     result.push(
       {
         name,
         path,
         component: Vuepress,
-        meta: { title },
+        meta,
       },
       ...redirects.map((item) => ({
         path: item,
