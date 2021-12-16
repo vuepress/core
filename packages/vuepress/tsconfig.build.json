@@ -6,10 +6,5 @@
     "outDir": "./lib"
   },
   "include": ["./src"],
-  "references": [
-    { "path": "../@vuepress/bundler-webpack/tsconfig.build.json" },
-    { "path": "../@vuepress/cli/tsconfig.build.json" },
-    { "path": "../@vuepress/core/tsconfig.build.json" },
-    { "path": "../@vuepress/theme-default/tsconfig.build.json" }
-  ]
+  "references": [{ "path": "../vuepress-webpack/tsconfig.build.json" }]
 }

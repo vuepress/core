@@ -3,6 +3,7 @@
   "workspaces": [
     "packages/vuepress",
     "packages/vuepress-vite",
+    "packages/vuepress-webpack",
     "packages/@vuepress/*"
   ],
   "scripts": {
