@@ -1,1 +1,1 @@
-export * from 'vuepress-webpack'
+export * from 'vuepress-vite'

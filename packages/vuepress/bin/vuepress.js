@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('vuepress-webpack/bin/vuepress')
+require('vuepress-vite/bin/vuepress')

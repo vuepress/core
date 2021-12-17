@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/bundler-webpack" />
 
-Webpack bundler is provided by [@vuepress/bundler-webpack](https://www.npmjs.com/package/@vuepress/bundler-webpack) package. It is a dependency of the [vuepress](https://www.npmjs.com/package/vuepress) package, and you can also install it separately.
+Webpack bundler is provided by [@vuepress/bundler-webpack](https://www.npmjs.com/package/@vuepress/bundler-webpack) package. It is a dependency of the [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package, and you can also install it separately.
 
 ```bash
 npm i -D @vuepress/bundler-webpack@next
@@ -17,7 +17,7 @@ Reference of webpack bundler config, which can be set via [bundlerConfig](../con
 
 ```js
 module.exports = {
-  // when using vuepress package, you can omit this field
+  // when using vuepress-webpack package, you can omit this field
   // because webpack is the default bundler
   bundler: '@vuepress/bundler-webpack',
   // options for webpack bundler

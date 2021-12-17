@@ -1,21 +1,19 @@
 # Bundler
 
-VuePress has been using [webpack](https://webpack.js.org/) as the bundler to dev and build sites. Since VuePress v2, other tools like [Vite](https://vitejs.dev/) are also supported.
-
-Although it is possible to create other bundler packages by community users, currently we only suggest to use the bundlers provided by VuePress team.
+VuePress has been using [Webpack](https://webpack.js.org/) as the bundler to dev and build sites. Since VuePress v2, other bundlers are also supported, and now we are using [Vite](https://vitejs.dev/) as the default bundler. Of course, you can still choose to use Webpack.
 
 ## Choose a Bundler
 
-When using the [vuepress](https://www.npmjs.com/package/vuepress) package, webpack bundler is installed and used automatically.
+When using the [vuepress](https://www.npmjs.com/package/vuepress) package, Vite bundler is installed and used automatically.
 
-If you want to use vite bundler instead, you can switch to [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package:
+If you want to use Webpack bundler instead, you can switch to [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
 
 ```bash
 yarn remove vuepress
-yarn add -D vuepress-vite@next
+yarn add -D vuepress-webpack@next
 ```
 
   </CodeGroupItem>
@@ -24,7 +22,7 @@ yarn add -D vuepress-vite@next
 
 ```bash
 npm uninstall vuepress
-npm install -D vuepress-vite@next
+npm install -D vuepress-webpack@next
 ```
 
   </CodeGroupItem>
@@ -36,4 +34,4 @@ Generally, you could use a bundler without extra configuration, because we have 
 
 Similar to [themeConfig](../reference/config.md#themeconfig), VuePress also allows users to set bundler config via [bundlerConfig](../reference/config.md#bundlerconfig).
 
-You can refer to [Bundlers > Webpack](../reference/bundler/webpack.md) and [Bundlers > Vite](../reference/bundler/vite.md) to check out all options of the corresponding bundler.
+You can refer to [Bundlers > Vite](../reference/bundler/vite.md) and [Bundlers > Webpack](../reference/bundler/webpack.md) to check out all options of the corresponding bundler.

@@ -26,10 +26,24 @@ export interface DefaultThemeOptions
   themePlugins?: DefaultThemePluginsOptions
 }
 
-export const defaultTheme: Theme<DefaultThemeOptions> = ({
-  themePlugins = {},
-  ...localeOptions
-}) => {
+export const defaultTheme: Theme<DefaultThemeOptions> = (
+  { themePlugins = {}, ...localeOptions },
+  app
+) => {
+  if (app.options.bundler.endsWith('vite')) {
+    // eslint-disable-next-line import/no-extraneous-dependencies
+    app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
+      app.options.bundlerConfig.viteOptions,
+      {
+        css: {
+          preprocessorOptions: {
+            scss: { charset: false },
+          },
+        },
+      }
+    )
+  }
+
   assignDefaultLocaleOptions(localeOptions)
 
   return {

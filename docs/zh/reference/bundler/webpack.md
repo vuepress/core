@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/bundler-webpack" />
 
-Webpack 打包工具是由 [@vuepress/bundler-webpack](https://www.npmjs.com/package/@vuepress/bundler-webpack) 包提供的。它是 [vuepress](https://www.npmjs.com/package/vuepress) 包的依赖之一，当然你也可以单独安装它：
+Webpack 打包工具是由 [@vuepress/bundler-webpack](https://www.npmjs.com/package/@vuepress/bundler-webpack) 包提供的。它是 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) 包的依赖之一，当然你也可以单独安装它：
 
 ```bash
 npm i -D @vuepress/bundler-webpack@next
@@ -17,7 +17,7 @@ Webpack 打包工具配置的参考文档，可以通过 [bundlerConfig](../conf
 
 ```js
 module.exports = {
-  // 在使用 vuepress 包的时候，你可以忽略这个字段，因为 Webpack 是默认打包工具
+  // 在使用 vuepress-webpack 包的时候，你可以忽略这个字段，因为 Webpack 是默认打包工具
   bundler: '@vuepress/bundler-webpack',
   // Webpack 打包工具的配置项
   bundlerConfig: {
