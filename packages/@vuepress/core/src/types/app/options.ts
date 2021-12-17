@@ -1,5 +1,5 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
-import type { SiteLocaleConfig, SiteLocaleData } from '@vuepress/shared'
+import type { SiteData } from '@vuepress/shared'
 import type { BundlerConfig } from '../bundler'
 import type { PluginConfig } from '../plugin'
 import type { ThemeConfig } from '../theme'
@@ -10,11 +10,7 @@ import type { ThemeConfig } from '../theme'
 export interface AppOptions<
   T extends ThemeConfig = ThemeConfig,
   U extends BundlerConfig = BundlerConfig
-> extends SiteLocaleData {
-  // site options
-  base: string
-  locales: SiteLocaleConfig
-
+> extends SiteData {
   // theme options
   theme: string
   themeConfig: Partial<T>
@@ -30,22 +26,25 @@ export interface AppOptions<
   cache: string
   public: string
 
-  // markdown options
-  markdown: MarkdownOptions
-
-  // development options
+  // shared options
   debug: boolean
+  markdown: MarkdownOptions
+  pagePatterns: string[]
+  plugins: PluginConfig[]
+
+  // dev options
   host: string
   port: number
   open: boolean
-  pagePatterns: string[]
   templateDev: string
-  templateSSR: string
+
+  // build options
   shouldPreload: ((file: string, type: string) => boolean) | boolean
   shouldPrefetch: ((file: string, type: string) => boolean) | boolean
-
-  // plugin options
-  plugins: PluginConfig[]
+  templateSSR: string
 }
 
-export type AppConfig = Partial<AppOptions> & Pick<AppOptions, 'source'>
+export type AppConfig<
+  T extends ThemeConfig = ThemeConfig,
+  U extends BundlerConfig = BundlerConfig
+> = Partial<AppOptions<T, U>> & Pick<AppOptions<T, U>, 'source'>

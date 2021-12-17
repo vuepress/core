@@ -1,5 +1,5 @@
 import type {
-  AppOptions,
+  AppConfig,
   BundlerConfig,
   PluginObject,
   ThemeConfig,
@@ -8,12 +8,12 @@ import type {
 /**
  * User config type of vuepress
  *
- * It will be transformed to `AppOptions` by cli
+ * It will be transformed to `AppConfig` by cli
  */
 export type UserConfig<
   T extends ThemeConfig = ThemeConfig,
   U extends BundlerConfig = BundlerConfig
-> = Partial<AppOptions<T, U>> &
+> = Partial<AppConfig<T, U>> &
   // user config can be used as a plugin
   Omit<PluginObject, 'name' | 'multiple'>
 
