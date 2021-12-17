@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
+
+
+### Bug Fixes
+
+* **bundler-vite:** flatten the plugins structure to avoid ordering issue (close [#535](https://github.com/vuepress/vuepress-next/issues/535)) ([b4011ac](https://github.com/vuepress/vuepress-next/commit/b4011ac9c4f02a0ff06636f6cbb6f68f63d26109))
+
+
+
+
+
 # [2.0.0-beta.27](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.26...v2.0.0-beta.27) (2021-10-28)
 
 

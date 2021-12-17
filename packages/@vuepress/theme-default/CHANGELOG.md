@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
+
+
+### Bug Fixes
+
+* **theme-default:** fix kbd color in dark mode ([#503](https://github.com/vuepress/vuepress-next/issues/503)) ([31bea57](https://github.com/vuepress/vuepress-next/commit/31bea57f855f322c1119d86bd256a5c98a983c41))
+* **theme-default:** use browser default locale in last updated date ([#462](https://github.com/vuepress/vuepress-next/issues/462)) ([3746e66](https://github.com/vuepress/vuepress-next/commit/3746e664d79dc1088e94bbb6f2eda2cf6df7cc1c))
+
+
+### Features
+
+* **core:** replace extendsPageData with extendsPage hook ([827a873](https://github.com/vuepress/vuepress-next/commit/827a873ca8f7230aeecac208f55934f824774760))
+* **core:** support routeMeta in frontmatter ([93cdb53](https://github.com/vuepress/vuepress-next/commit/93cdb53a6134e43968b56a84f2e8bf012222436a))
+* **theme-default:** make the arrows in page nav clickable ([#540](https://github.com/vuepress/vuepress-next/issues/540)) ([e7b31fd](https://github.com/vuepress/vuepress-next/commit/e7b31fdad9d6cc410b332458800aa1e00d538643))
+* **theme-default:** support heroImageDark frontmatter (close [#526](https://github.com/vuepress/vuepress-next/issues/526)) ([#559](https://github.com/vuepress/vuepress-next/issues/559)) ([779ddaa](https://github.com/vuepress/vuepress-next/commit/779ddaa8cb46d293d3048d5ac2a425ead1322763))
+* **vuepress:** switch default bundler to vite ([e1004df](https://github.com/vuepress/vuepress-next/commit/e1004df6e892f68d31e15f252010d189a3762b52))
+
+
+### BREAKING CHANGES
+
+* **vuepress:** switch default bundler from webpack to vite
+* **core:** `extendsPageData` hook should be migrated to `extendsPage` hook
+
+
+
+
+
 # [2.0.0-beta.27](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.26...v2.0.0-beta.27) (2021-10-28)
 
 

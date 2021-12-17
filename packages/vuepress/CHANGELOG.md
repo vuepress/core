@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
+
+
+### Features
+
+* **vuepress-webpack:** add vuepress-webpack package ([a2d9c9a](https://github.com/vuepress/vuepress-next/commit/a2d9c9ae95a9e89795bf81cd767a52770ccfa523))
+* **vuepress:** switch default bundler to vite ([e1004df](https://github.com/vuepress/vuepress-next/commit/e1004df6e892f68d31e15f252010d189a3762b52))
+
+
+### BREAKING CHANGES
+
+* **vuepress:** switch default bundler from webpack to vite
+
+
+
+
+
 # [2.0.0-beta.27](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.26...v2.0.0-beta.27) (2021-10-28)
 
 **Note:** Version bump only for package vuepress

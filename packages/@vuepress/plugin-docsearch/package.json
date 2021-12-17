@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-beta.27",
+  "version": "2.0.0-beta.28",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -34,10 +34,10 @@
     "@docsearch/js": "3.0.0-alpha.34",
     "@docsearch/react": "3.0.0-alpha.34",
     "@types/react": "^17.0.37",
-    "@vuepress/client": "2.0.0-beta.27",
-    "@vuepress/core": "2.0.0-beta.27",
-    "@vuepress/shared": "2.0.0-beta.27",
-    "@vuepress/utils": "2.0.0-beta.27",
+    "@vuepress/client": "2.0.0-beta.28",
+    "@vuepress/core": "2.0.0-beta.28",
+    "@vuepress/shared": "2.0.0-beta.28",
+    "@vuepress/utils": "2.0.0-beta.28",
     "preact": "^10.6.2",
     "vue": "^3.2.24",
     "vue-router": "^4.0.12"
