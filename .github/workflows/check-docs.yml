@@ -50,7 +50,7 @@ jobs:
       - name: Copy and build
         run: yarn copy && yarn build
 
-      - name: Build docs with webpack
+      - name: Build docs with ${{ matrix.bundler }}
         run: yarn docs:build
         env:
           DOCS_BUNDLER: ${{ matrix.bundler }}
