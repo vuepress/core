@@ -15,6 +15,7 @@ export interface DefaultThemeHomePageFrontmatter
   extends DefaultThemePageFrontmatter {
   home: true
   heroImage?: string
+  heroImageDark?: string
   heroAlt?: string
   heroText?: string | null
   tagline?: string | null
