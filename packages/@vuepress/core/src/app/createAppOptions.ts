@@ -18,7 +18,7 @@ export const createAppOptions = ({
   themeConfig = {},
 
   // bundler config
-  bundler = '@vuepress/webpack',
+  bundler = '@vuepress/vite',
   bundlerConfig = {},
 
   // directory config

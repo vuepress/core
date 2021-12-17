@@ -14,7 +14,7 @@ describe('core > app > createAppOptions', () => {
       locales: {},
       theme: '@vuepress/default',
       themeConfig: {},
-      bundler: '@vuepress/webpack',
+      bundler: '@vuepress/vite',
       bundlerConfig: {},
       source,
       dest: path.resolve(source, '.vuepress/dist'),
