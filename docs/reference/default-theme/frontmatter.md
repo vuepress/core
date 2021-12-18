@@ -6,6 +6,17 @@
 
 Frontmatter in this section will take effect in all types of pages.
 
+### externalLinkIcon
+
+- Type: `boolean`
+
+- Details:
+
+  Provided by [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon).
+
+- Also see:
+  - [Default Theme > Config Reference > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
+
 ### navbar
 
 - Type: `boolean`

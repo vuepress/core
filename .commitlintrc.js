@@ -11,5 +11,6 @@ module.exports = {
       'always',
       ['vuepress', 'vuepress-vite', 'vuepress-webpack', ...packages],
     ],
+    'footer-max-line-length': [0],
   },
 }

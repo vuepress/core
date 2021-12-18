@@ -49,6 +49,7 @@ export const zh: NavbarConfig = [
         children: [
           '/zh/reference/plugin/back-to-top.md',
           '/zh/reference/plugin/container.md',
+          '/zh/reference/plugin/external-link-icon.md',
           '/zh/reference/plugin/google-analytics.md',
           '/zh/reference/plugin/medium-zoom.md',
           '/zh/reference/plugin/nprogress.md',

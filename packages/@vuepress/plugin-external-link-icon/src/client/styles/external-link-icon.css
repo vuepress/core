@@ -1,7 +1,7 @@
-.icon.outbound {
+.external-link-icon {
   position: relative;
   display: inline-block;
-  color: #aaa;
+  color: var(--external-link-icon-color);
   vertical-align: middle;
   top: -1px;
 }

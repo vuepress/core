@@ -95,6 +95,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (
         '@vuepress/container',
         resolveContainerPluginOptionsForCodeGroupItem(themePlugins),
       ],
+      ['@vuepress/external-link-icon', themePlugins.externalLinkIcon !== false],
       ['@vuepress/git', resolveGitPluginOptions(themePlugins, localeOptions)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
       ['@vuepress/nprogress', themePlugins.nprogress !== false],

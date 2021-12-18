@@ -95,6 +95,11 @@
   --docsearch-footer-background: var(--c-bg);
 }
 
+// plugin-external-link-icon
+.external-link-icon {
+  --external-link-icon-color: var(--c-text-quote);
+}
+
 // plugin-medium-zoom
 .medium-zoom-overlay {
   --medium-zoom-bg-color: var(--c-bg);

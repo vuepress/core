@@ -44,17 +44,3 @@
 
 - Also see:
   - [Node API > Page Properties > key](./node-api.md#key)
-
-## OutboundLink
-
-- Usage:
-
-```md
-<OutboundLink />
-```
-
-- Details:
-
-  This component will render an indicator for links to external URLs.
-
-  This component is mainly for developing themes. You won't need it in most cases.

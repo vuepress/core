@@ -571,9 +571,12 @@ module.exports = {
 
 - 详情：
 
-  [OutboundLink](../components.md#outboundlink) 链接内的 `sr-only` 文字。
+  [ExternalLinkIcon](../plugin/external-link-icon.md#externallinkicon). 链接内的 `sr-only` 文字。
 
   它主要是为了站点的可访问性 (a11y) 。
+
+- 参考：
+  - [默认主题 > 配置 > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
 
 ### toggleDarkMode
 
@@ -648,6 +651,16 @@ module.exports = {
 
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
+
+### themePlugins.externalLinkIcon
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md) 。
 
 ### themePlugins.git
 

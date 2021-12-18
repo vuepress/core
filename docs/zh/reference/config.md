@@ -576,18 +576,6 @@ module.exports = {
 
   为外部链接添加额外的属性。
 
-#### markdown.links.externalIcon
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否在外部链接的后面添加 <OutboundLink /> 图标。
-
-  你可以通过页面的 [externalIcon](./frontmatter.md#externalicon) frontmatter 来覆盖这个全局配置。
-
 ### markdown.toc
 
 - 类型： `TocPluginOptions | false`

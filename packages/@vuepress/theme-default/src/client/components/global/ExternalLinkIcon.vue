@@ -1,14 +1,11 @@
 <template>
-  <RawOutboundLink>
+  <RawExternalLinkIcon>
     <span class="sr-only">{{ themeLocale.openInNewWindow }}</span>
-  </RawOutboundLink>
+  </RawExternalLinkIcon>
 </template>
 
 <script setup lang="ts">
-/**
- * Override the built-in `<OutboundLink>` for a11y
- */
-import { OutboundLink as RawOutboundLink } from '@vuepress/client'
+import { ExternalLinkIcon as RawExternalLinkIcon } from '@vuepress/plugin-external-link-icon/lib/client'
 import { useThemeLocaleData } from '../../composables'
 
 const themeLocale = useThemeLocaleData()

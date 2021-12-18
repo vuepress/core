@@ -26,6 +26,11 @@ export interface DefaultThemePluginsOptions {
   }
 
   /**
+   * Enable @vuepress/plugin-external-link-icon or not
+   */
+  externalLinkIcon?: boolean
+
+  /**
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean
@@ -256,7 +261,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
   backToHome?: string
 
   /**
-   * A11y text for `<OutboundLink>`
+   * A11y text for external link icon
    */
   openInNewWindow?: string
 

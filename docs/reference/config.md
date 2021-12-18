@@ -577,18 +577,6 @@ You should not configure it unless you understand what it is for.
 
   Additional attributes for external links.
 
-#### markdown.links.externalIcon
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Whether to append an <OutboundLink /> icon to external links.
-
-  You can override this global option via [externalIcon](./frontmatter.md#externalicon) frontmatter in your pages.
-
 ### markdown.toc
 
 - Type: `TocPluginOptions | false`

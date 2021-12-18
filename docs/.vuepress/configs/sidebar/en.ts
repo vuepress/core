@@ -83,6 +83,7 @@ export const en: SidebarConfig = {
           children: [
             '/reference/plugin/back-to-top.md',
             '/reference/plugin/container.md',
+            '/reference/plugin/external-link-icon.md',
             '/reference/plugin/google-analytics.md',
             '/reference/plugin/medium-zoom.md',
             '/reference/plugin/nprogress.md',

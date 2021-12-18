@@ -6,6 +6,17 @@
 
 本章节中的 Frontmatter 会在所有类型的页面中生效。
 
+### externalLinkIcon
+
+- 类型： `boolean`
+
+- 详情：
+
+  由[@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon) 提供。
+
+- 参考：
+  - [默认主题 > 配置 > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
+
 ### navbar
 
 - 类型： `boolean`

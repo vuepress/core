@@ -3,17 +3,6 @@
 <NpmBadge package="@vuepress/client" />
 <NpmBadge package="@vuepress/markdown" />
 
-## externalIcon
-
-- Type: `boolean`
-
-- Details:
-
-  Whether to append an <OutboundLink /> icon to external links in current page.
-
-- Also see:
-  - [Config > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
-
 ## date
 
 - Type: `string`

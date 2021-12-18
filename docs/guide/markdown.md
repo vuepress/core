@@ -67,7 +67,7 @@ Take our documentation source files as an example:
   <RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
   <RouterLink to="/guide/">Guide</RouterLink>
   <RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
-  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
 </template>
 ```
 
@@ -84,7 +84,7 @@ Take our documentation source files as an example:
 
 - Internal links will be converted to `<RouterLink>` for SPA navigation.
 - Internal links to `.md` files will be converted to the [page route path](./page.md#routing), and both absolute path and relative path are supported.
-- External links will get `target="_blank" rel="noopener noreferrer"` attrs and a <OutboundLink /> indicator.
+- External links will get `target="_blank" rel="noopener noreferrer"` attrs.
 
 **Suggestion**
 
@@ -98,8 +98,6 @@ Try to use relative paths instead of absolute paths for internal links.
 This links extension is supported by our built-in plugin.
 
 Config reference: [markdown.links](../reference/config.md#markdown-links)
-
-Also see: [Built-in Components > OutboundLink](../reference/components.md#outboundlink)
 :::
 
 ### Emoji :tada:

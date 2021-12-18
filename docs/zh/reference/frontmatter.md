@@ -16,17 +16,6 @@
 - 参考：
   - [Node API > Page 属性 > date](./node-api.md#date)
 
-## externalIcon
-
-- 类型： `boolean`
-
-- 详情：
-
-  是否在当前页面的外部链接的后面添加 <OutboundLink /> 图标。
-
-- 参考：
-  - [配置 > markdown.links.externalIcon](./config.md#markdown-links-externalicon)
-
 ## description
 
 - 类型： `string`

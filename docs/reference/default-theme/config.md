@@ -571,9 +571,12 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Specify the `sr-only` text of the [OutboundLink](../components.md#outboundlink).
+  Specify the `sr-only` text of the [ExternalLinkIcon](../plugin/external-link-icon.md#externallinkicon).
 
   This is mainly for a11y purpose.
+
+- Also see:
+  - [Default Theme > Config Reference > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
 
 ### toggleDarkMode
 
@@ -648,6 +651,16 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Also see:
   - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
+
+### themePlugins.externalLinkIcon
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md) or not.
 
 ### themePlugins.git
 

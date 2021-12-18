@@ -24,13 +24,6 @@ export interface LinksPluginOptions {
    * ```
    */
   externalAttrs?: Record<string, string>
-
-  /**
-   * Whether to render an outbound icon to external links
-   *
-   * @default true
-   */
-  externalIcon?: boolean
 }
 
 /**
@@ -53,11 +46,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     ...options.externalAttrs,
   }
 
-  // external icon
-  const externalIcon = options.externalIcon ?? true
-
   let hasOpenInternalLink = false
-  let hasOpenExternalLink = false
 
   const handleLinkOpen = (
     tokens: Token[],
@@ -81,7 +70,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const hrefLink = hrefAttr[1]
 
     // get `base` and `filePathRelative` from `env`
-    const { base = '/', filePathRelative = null, frontmatter = {} } = env
+    const { base = '/', filePathRelative = null } = env
 
     // check if a link is an external link
     if (isLinkExternal(hrefLink, base)) {
@@ -89,18 +78,6 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       Object.entries(externalAttrs).forEach(([key, val]) =>
         token.attrSet(key, val)
       )
-
-      // check if we should render external icon
-      if (
-        // frontmatter should override plugin option
-        (frontmatter.externalIcon ?? externalIcon) &&
-        // only when an external link has `target="_blank"`
-        // should we render external icon
-        externalAttrs.target === '_blank'
-      ) {
-        hasOpenExternalLink = true
-      }
-
       return
     }
 
@@ -108,54 +85,57 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const internalLinkMatch = hrefLink.match(
       /^((?:.*)(?:\/|\.md|\.html))(#.*)?$/
     )
-    if (internalLinkMatch) {
-      // convert
-      // <a href="hrefLink">
-      // to
-      // <RouterLink to="toProp">
 
-      // notice that the path and hash are encoded by markdown-it
-      const rawPath = internalLinkMatch[1]
-      const rawHash = internalLinkMatch[2] || ''
-
-      // resolve relative and absolute path
-      const { relativePath, absolutePath } = resolvePaths(
-        rawPath,
-        base,
-        filePathRelative
-      )
-
-      // normalize markdown file path to route path
-      //
-      // we are removing the `base` from absolute path because it should not be
-      // passed to `<RouterLink>`
-      //
-      // '/foo/index.md' => '/foo/'
-      // '/foo/bar.md' => '/foo/bar.html'
-      const normalizedPath = absolutePath
-        .replace(new RegExp(`^${base}`), '/')
-        .replace(/(^|\/)(README|index).md$/i, '$1')
-        .replace(/\.md$/, '.html')
-
-      if (internalTag === 'RouterLink') {
-        // convert starting tag of internal link to `<RouterLink>`
-        token.tag = internalTag
-        // replace the original `href` attr with `to` attr
-        hrefAttr[0] = 'to'
-        // set `hasOpenInternalLink` to modify the ending tag
-        hasOpenInternalLink = true
-      }
-
-      hrefAttr[1] = `${normalizedPath}${rawHash}`
-
-      // extract internal links for file / page existence check
-      const links = env.links || (env.links = [])
-      links.push({
-        raw: hrefLink,
-        relative: relativePath,
-        absolute: absolutePath,
-      })
+    if (!internalLinkMatch) {
+      return
     }
+
+    // convert
+    // <a href="hrefLink">
+    // to
+    // <RouterLink to="toProp">
+
+    // notice that the path and hash are encoded by markdown-it
+    const rawPath = internalLinkMatch[1]
+    const rawHash = internalLinkMatch[2] || ''
+
+    // resolve relative and absolute path
+    const { relativePath, absolutePath } = resolvePaths(
+      rawPath,
+      base,
+      filePathRelative
+    )
+
+    // normalize markdown file path to route path
+    //
+    // we are removing the `base` from absolute path because it should not be
+    // passed to `<RouterLink>`
+    //
+    // '/foo/index.md' => '/foo/'
+    // '/foo/bar.md' => '/foo/bar.html'
+    const normalizedPath = absolutePath
+      .replace(new RegExp(`^${base}`), '/')
+      .replace(/(^|\/)(README|index).md$/i, '$1')
+      .replace(/\.md$/, '.html')
+
+    if (internalTag === 'RouterLink') {
+      // convert starting tag of internal link to `<RouterLink>`
+      token.tag = internalTag
+      // replace the original `href` attr with `to` attr
+      hrefAttr[0] = 'to'
+      // set `hasOpenInternalLink` to modify the ending tag
+      hasOpenInternalLink = true
+    }
+
+    hrefAttr[1] = `${normalizedPath}${rawHash}`
+
+    // extract internal links for file / page existence check
+    const links = env.links || (env.links = [])
+    links.push({
+      raw: hrefLink,
+      relative: relativePath,
+      absolute: absolutePath,
+    })
   }
 
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
@@ -164,20 +144,11 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   }
 
   md.renderer.rules.link_close = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
-
-    // add external icon before ending tag of external link
-    if (hasOpenExternalLink) {
-      hasOpenExternalLink = false
-      return '<OutboundLink/>' + self.renderToken(tokens, idx, options)
-    }
-
     // convert ending tag of internal link
     if (hasOpenInternalLink) {
       hasOpenInternalLink = false
-      token.tag = internalTag
+      tokens[idx].tag = internalTag
     }
-
     return self.renderToken(tokens, idx, options)
   }
 }

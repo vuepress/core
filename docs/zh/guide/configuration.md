@@ -81,5 +81,5 @@ export default defineUserConfig<DefaultThemeOptions>({
 如果你没有设置 VuePress 配置的 `theme` 配置项，则代表使用的是默认主题。
 
 ::: tip
-前往 [默认主题 > 配置参考](../reference/default-theme/config.md) 查看默认主题的配置。
+前往 [默认主题 > 配置](../reference/default-theme/config.md) 查看默认主题的配置。
 :::
