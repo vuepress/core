@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.29](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.28...v2.0.0-beta.29) (2021-12-18)
+
+
+### Bug Fixes
+
+* **core:** set default bundler option to vite ([3fd11f5](https://github.com/vuepress/vuepress-next/commit/3fd11f5321e5efbc2a6fdbf28a3b01834e9153b0))
+* **core:** use theme after its plugins ([fc5bd91](https://github.com/vuepress/vuepress-next/commit/fc5bd91bb7dfb9f20bd9e916886a00518ae1989f))
+
+
+### Features
+
+* extract external link icon to plugin ([437b750](https://github.com/vuepress/vuepress-next/commit/437b75076667e653d3600c96f9f4a7c3c3e47e57))
+* **theme-default:** export default locale options ([e3ac623](https://github.com/vuepress/vuepress-next/commit/e3ac6230faa75f1557d07753f04670ef29767442))
+
+
+### BREAKING CHANGES
+
+* config `markdown.links.externalIcon` is removed, use plugin-external-link-icon instead
+* frontmatter `externalIcon` is removed, use `externalLinkIcon` from plugin-external-link-icon
+* component `OutboundLink` is removed, use `ExternalLinkIcon` from plugin-external-link-icon
+
+
+
+
+
 # [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
 
 

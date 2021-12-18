@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.29](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.28...v2.0.0-beta.29) (2021-12-18)
+
+
+### Bug Fixes
+
+* **core:** set default bundler option to vite ([3fd11f5](https://github.com/vuepress/vuepress-next/commit/3fd11f5321e5efbc2a6fdbf28a3b01834e9153b0))
+* **core:** use theme after its plugins ([fc5bd91](https://github.com/vuepress/vuepress-next/commit/fc5bd91bb7dfb9f20bd9e916886a00518ae1989f))
+
+
+
+
+
 # [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
 
 
