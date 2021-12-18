@@ -59,7 +59,7 @@ export const en: SidebarConfig = {
   '/reference/bundler/': [
     {
       text: 'Bundlers Reference',
-      children: ['/reference/bundler/webpack.md', '/reference/bundler/vite.md'],
+      children: ['/reference/bundler/vite.md', '/reference/bundler/webpack.md'],
     },
   ],
   '/reference/default-theme/': [

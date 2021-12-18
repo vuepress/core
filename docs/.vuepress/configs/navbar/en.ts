@@ -28,8 +28,8 @@ export const en: NavbarConfig = [
       {
         text: 'Bundlers',
         children: [
-          '/reference/bundler/webpack.md',
           '/reference/bundler/vite.md',
+          '/reference/bundler/webpack.md',
         ],
       },
       {

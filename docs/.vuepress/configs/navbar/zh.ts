@@ -25,8 +25,8 @@ export const zh: NavbarConfig = [
       {
         text: '打包工具',
         children: [
-          '/zh/reference/bundler/webpack.md',
           '/zh/reference/bundler/vite.md',
+          '/zh/reference/bundler/webpack.md',
         ],
       },
       {

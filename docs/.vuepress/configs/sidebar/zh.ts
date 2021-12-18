@@ -60,8 +60,8 @@ export const zh: SidebarConfig = {
     {
       text: '打包工具参考',
       children: [
-        '/zh/reference/bundler/webpack.md',
         '/zh/reference/bundler/vite.md',
+        '/zh/reference/bundler/webpack.md',
       ],
     },
   ],
