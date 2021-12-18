@@ -65,13 +65,13 @@
   }
 
   .prev {
-    & a:before {
+    a:before {
       content: '←';
     }
   }
   .next {
     float: right;
-    & a:after {
+    a:after {
       content: '→';
     }
   }
