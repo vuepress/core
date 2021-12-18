@@ -11,7 +11,7 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
   const theme = resolveTheme(app, themeName)
   const themeInfo = {
     layouts: resolveThemeLayouts(theme.layouts),
-    plugins: [theme, ...resolvePluginsFromConfig(app, theme.plugins)],
+    plugins: [...resolvePluginsFromConfig(app, theme.plugins), theme],
   }
 
   // return if current theme does not have a parent theme
