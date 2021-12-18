@@ -47,8 +47,8 @@ describe('core > app > resolveThemeInfo', () => {
       })
 
       expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
-        require(fixtures('themes/has-plugins.js')),
         require(fixtures('plugins/obj.js')),
+        require(fixtures('themes/has-plugins.js')),
       ])
     })
   })
@@ -62,10 +62,10 @@ describe('core > app > resolveThemeInfo', () => {
 
       expect(resolveThemeInfo(app, app.options.theme)).toEqual({
         plugins: [
-          require(fixtures('themes/has-layouts-and-plugins.js')),
           require(fixtures('plugins/obj.js')),
-          require(fixtures('themes/extends-parent.js')),
+          require(fixtures('themes/has-layouts-and-plugins.js')),
           require(fixtures('plugins/obj-foo.js')),
+          require(fixtures('themes/extends-parent.js')),
         ],
         layouts: {
           Layout: fixtures('layouts/Layout.vue'),
@@ -83,12 +83,12 @@ describe('core > app > resolveThemeInfo', () => {
 
       expect(resolveThemeInfo(app, app.options.theme)).toEqual({
         plugins: [
-          require(fixtures('themes/has-layouts-and-plugins.js')),
           require(fixtures('plugins/obj.js')),
-          require(fixtures('themes/extends-parent.js')),
+          require(fixtures('themes/has-layouts-and-plugins.js')),
           require(fixtures('plugins/obj-foo.js')),
-          require(fixtures('themes/extends-grandparent.js')),
+          require(fixtures('themes/extends-parent.js')),
           require(fixtures('plugins/obj-bar.js')),
+          require(fixtures('themes/extends-grandparent.js')),
         ],
         layouts: {
           Layout: fixtures('layouts/Layout.vue'),
