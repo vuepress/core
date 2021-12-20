@@ -11,15 +11,14 @@ export const BackToTop = defineComponent({
   setup() {
     const scrollTop = ref(0)
     const show = computed(() => scrollTop.value > 300)
+    const onScroll = debounce(() => {
+      scrollTop.value = getScrollTop()
+    }, 100)
 
     onMounted(() => {
       scrollTop.value = getScrollTop()
 
-      window.addEventListener('scroll', () =>
-        debounce(() => {
-          scrollTop.value = getScrollTop()
-        }, 100)
-      )
+      window.addEventListener('scroll', () => onScroll())
     })
 
     const backToTopEl = h('div', { class: 'back-to-top', onClick: scrollToTop })
