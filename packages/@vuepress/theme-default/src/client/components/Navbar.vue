@@ -1,70 +1,18 @@
-<template>
-  <header ref="navbar" class="navbar">
-    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
-
-    <span ref="siteBrand">
-      <RouterLink :to="siteBrandLink">
-        <!-- logo could be different in dark mode, so we make it client-only to avoid ssr-mismatch -->
-        <ClientOnly>
-          <img
-            v-if="siteBrandLogo"
-            class="logo"
-            :src="withBase(siteBrandLogo)"
-            :alt="siteBrandTitle"
-          />
-        </ClientOnly>
-
-        <span
-          v-if="siteBrandTitle"
-          class="site-name"
-          :class="{ 'can-hide': siteBrandLogo }"
-        >
-          {{ siteBrandTitle }}
-        </span>
-      </RouterLink>
-    </span>
-
-    <div class="navbar-links-wrapper" :style="linksWrapperStyle">
-      <slot name="before" />
-
-      <NavbarLinks class="can-hide" />
-
-      <slot name="after" />
-
-      <ToggleDarkModeButton v-if="enableDarkMode" />
-
-      <NavbarSearch />
-    </div>
-  </header>
-</template>
-
 <script setup lang="ts">
-import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
 import { computed, onMounted, ref } from 'vue'
-import { useDarkMode, useThemeLocaleData } from '../composables'
+import { useThemeLocaleData } from '../composables'
+import NavbarBrand from './NavbarBrand.vue'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
 defineEmits(['toggle-sidebar'])
 
-const routeLocale = useRouteLocale()
-const siteLocale = useSiteLocaleData()
 const themeLocale = useThemeLocaleData()
-const isDarkMode = useDarkMode()
 
 const navbar = ref<HTMLElement | null>(null)
-const siteBrand = ref<HTMLElement | null>(null)
-const siteBrandLink = computed(
-  () => themeLocale.value.home || routeLocale.value
-)
-const siteBrandLogo = computed(() => {
-  if (isDarkMode.value && themeLocale.value.logoDark !== undefined) {
-    return themeLocale.value.logoDark
-  }
-  return themeLocale.value.logo
-})
-const siteBrandTitle = computed(() => siteLocale.value.title)
+const navbarBrand = ref<HTMLElement | null>(null)
+
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
   if (!linksWrapperMaxWidth.value) {
@@ -91,7 +39,7 @@ onMounted(() => {
       linksWrapperMaxWidth.value =
         navbar.value!.offsetWidth -
         navbarHorizontalPadding -
-        (siteBrand.value?.offsetWidth || 0)
+        (navbarBrand.value?.offsetWidth || 0)
     }
   }
   handleLinksWrapWidth()
@@ -108,3 +56,21 @@ function getCssValue(el: HTMLElement | null, property: string): number {
   return Number.isNaN(num) ? 0 : num
 }
 </script>
+
+<template>
+  <header ref="navbar" class="navbar">
+    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+
+    <span ref="navbarBrand">
+      <NavbarBrand />
+    </span>
+
+    <div class="navbar-links-wrapper" :style="linksWrapperStyle">
+      <slot name="before" />
+      <NavbarLinks class="can-hide" />
+      <slot name="after" />
+      <ToggleDarkModeButton v-if="enableDarkMode" />
+      <NavbarSearch />
+    </div>
+  </header>
+</template>

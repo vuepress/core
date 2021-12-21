@@ -1,20 +1,16 @@
-<template>
-  <nav v-if="navbarLinks.length" class="navbar-links">
-    <div v-for="item in navbarLinks" :key="item.text" class="navbar-links-item">
-      <DropdownLink v-if="item.children" :item="item" />
-
-      <NavLink v-else :item="item" />
-    </div>
-  </nav>
-</template>
-
 <script setup lang="ts">
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
-import type { NavbarGroup, NavbarItem, ResolvedNavbarItem } from '../../shared'
+import type {
+  NavbarGroup,
+  NavbarItem,
+  NavGroup,
+  NavLink as NavLinkType,
+  ResolvedNavbarItem,
+} from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
 import DropdownLink from './DropdownLink.vue'
@@ -153,3 +149,12 @@ const navbarLinks = computed(() => [
   ...navbarRepo.value,
 ])
 </script>
+
+<template>
+  <nav v-if="navbarLinks.length" class="navbar-links">
+    <div v-for="item in navbarLinks" :key="item.text" class="navbar-links-item">
+      <DropdownLink v-if="item.children" :item="item" />
+      <NavLink v-else :item="item" />
+    </div>
+  </nav>
+</template>

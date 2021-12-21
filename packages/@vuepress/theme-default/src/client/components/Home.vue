@@ -1,113 +1,15 @@
 <template>
-  <main class="home" :aria-labelledby="heroText ? 'main-title' : undefined">
-    <header class="hero">
-      <ClientOnly>
-        <img v-if="heroImage" :src="withBase(heroImage)" :alt="heroAlt" />
-      </ClientOnly>
-
-      <h1 v-if="heroText" id="main-title">
-        {{ heroText }}
-      </h1>
-
-      <p v-if="tagline" class="description">
-        {{ tagline }}
-      </p>
-
-      <p v-if="actions.length" class="actions">
-        <NavLink
-          v-for="action in actions"
-          :key="action.text"
-          class="action-button"
-          :class="[action.type]"
-          :item="action"
-        />
-      </p>
-    </header>
-
-    <div v-if="features.length" class="features">
-      <div v-for="feature in features" :key="feature.title" class="feature">
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
-      </div>
-    </div>
-
-    <div class="theme-default-content custom">
-      <Content />
-    </div>
-
-    <template v-if="footer">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-if="footerHtml" class="footer" v-html="footer" />
-      <div v-else class="footer" v-text="footer" />
-    </template>
+  <main class="home">
+    <HomeHero />
+    <HomeFeatures />
+    <HomeContent />
+    <HomeFooter />
   </main>
 </template>
 
 <script setup lang="ts">
-import {
-  usePageFrontmatter,
-  useSiteLocaleData,
-  withBase,
-} from '@vuepress/client'
-import { isArray } from '@vuepress/shared'
-import { computed } from 'vue'
-import type { DefaultThemeHomePageFrontmatter } from '../../shared'
-import { useDarkMode } from '../composables'
-import NavLink from './NavLink.vue'
-
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const siteLocale = useSiteLocaleData()
-const isDarkMode = useDarkMode()
-
-// hero image and title
-const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
-    return frontmatter.value.heroImageDark
-  }
-  return frontmatter.value.heroImage
-})
-const heroText = computed(() => {
-  if (frontmatter.value.heroText === null) {
-    return null
-  }
-  return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
-})
-const heroAlt = computed(
-  () => frontmatter.value.heroAlt || heroText.value || 'hero'
-)
-const tagline = computed(() => {
-  if (frontmatter.value.tagline === null) {
-    return null
-  }
-  return (
-    frontmatter.value.tagline ||
-    siteLocale.value.description ||
-    'Welcome to your VuePress site'
-  )
-})
-
-// action buttons
-const actions = computed(() => {
-  if (!isArray(frontmatter.value.actions)) {
-    return []
-  }
-
-  return frontmatter.value.actions.map(({ text, link, type = 'primary' }) => ({
-    text,
-    link,
-    type,
-  }))
-})
-
-// feature list
-const features = computed(() => {
-  if (isArray(frontmatter.value.features)) {
-    return frontmatter.value.features
-  }
-  return []
-})
-
-// footer
-const footer = computed(() => frontmatter.value.footer)
-const footerHtml = computed(() => frontmatter.value.footerHtml)
+import HomeContent from './HomeContent.vue'
+import HomeFeatures from './HomeFeatures.vue'
+import HomeFooter from './HomeFooter.vue'
+import HomeHero from './HomeHero.vue'
 </script>
