@@ -1,17 +1,3 @@
-<template>
-  <nav v-if="prevNavLink || nextNavLink" class="page-nav">
-    <p class="inner">
-      <span v-if="prevNavLink" class="prev">
-        <NavLink :item="prevNavLink" />
-      </span>
-
-      <span v-if="nextNavLink" class="next">
-        <NavLink :item="nextNavLink" />
-      </span>
-    </p>
-  </nav>
-</template>
-
 <script setup lang="ts">
 import { usePageFrontmatter } from '@vuepress/client'
 import { isPlainObject, isString } from '@vuepress/shared'
@@ -101,3 +87,17 @@ const nextNavLink = computed(() => {
   return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
 })
 </script>
+
+<template>
+  <nav v-if="prevNavLink || nextNavLink" class="page-nav">
+    <p class="inner">
+      <span v-if="prevNavLink" class="prev">
+        <NavLink :item="prevNavLink" />
+      </span>
+
+      <span v-if="nextNavLink" class="next">
+        <NavLink :item="nextNavLink" />
+      </span>
+    </p>
+  </nav>
+</template>

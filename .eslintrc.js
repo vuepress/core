@@ -19,6 +19,12 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        'vue/component-tags-order': [
+          'error',
+          {
+            order: ['script', 'template', 'style'],
+          },
+        ],
         'vue/multi-word-component-names': 'off',
       },
     },

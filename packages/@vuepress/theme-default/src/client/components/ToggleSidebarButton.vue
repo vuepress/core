@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { useThemeLocaleData } from '../composables'
+
+defineEmits(['toggle'])
+
+const themeLocale = useThemeLocaleData()
+</script>
+
 <template>
   <div
     class="toggle-sidebar-button"
@@ -14,11 +22,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useThemeLocaleData } from '../composables'
-
-defineEmits(['toggle'])
-
-const themeLocale = useThemeLocaleData()
-</script>

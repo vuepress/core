@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import { useDarkMode, useThemeLocaleData } from '../composables'
+
+const themeLocale = useThemeLocaleData()
+const isDarkMode = useDarkMode()
+
+const toggleDarkMode = (): void => {
+  isDarkMode.value = !isDarkMode.value
+}
+</script>
+
 <template>
   <button
     class="toggle-dark-button"
@@ -44,14 +55,3 @@
     </svg>
   </button>
 </template>
-
-<script setup lang="ts">
-import { useDarkMode, useThemeLocaleData } from '../composables'
-
-const themeLocale = useThemeLocaleData()
-const isDarkMode = useDarkMode()
-
-const toggleDarkMode = (): void => {
-  isDarkMode.value = !isDarkMode.value
-}
-</script>

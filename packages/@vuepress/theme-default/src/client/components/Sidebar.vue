@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { useSidebarItems } from '../composables'
+import NavbarLinks from './NavbarLinks.vue'
+import { SidebarChild } from './SidebarChild'
+
+const sidebarItems = useSidebarItems()
+</script>
+
 <template>
   <aside class="sidebar">
     <NavbarLinks />
@@ -15,11 +23,3 @@
     <slot name="bottom" />
   </aside>
 </template>
-
-<script setup lang="ts">
-import { useSidebarItems } from '../composables'
-import NavbarLinks from './NavbarLinks.vue'
-import { SidebarChild } from './SidebarChild'
-
-const sidebarItems = useSidebarItems()
-</script>

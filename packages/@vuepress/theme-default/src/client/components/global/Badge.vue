@@ -1,15 +1,3 @@
-<template>
-  <span
-    class="badge"
-    :class="type"
-    :style="{
-      verticalAlign: vertical,
-    }"
-  >
-    <slot>{{ text }}</slot>
-  </span>
-</template>
-
 <script setup lang="ts">
 defineProps({
   type: {
@@ -29,3 +17,15 @@ defineProps({
   },
 })
 </script>
+
+<template>
+  <span
+    class="badge"
+    :class="type"
+    :style="{
+      verticalAlign: vertical,
+    }"
+  >
+    <slot>{{ text }}</slot>
+  </span>
+</template>

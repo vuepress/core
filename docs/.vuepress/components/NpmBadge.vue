@@ -1,15 +1,3 @@
-<template>
-  <a
-    class="npm-badge"
-    :href="badgeLink"
-    :title="package"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img :src="badgeImg" :alt="package" />
-  </a>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -42,6 +30,18 @@ const badgeImg = computed(
     }?label=${encodeURIComponent(badgeLabel.value)}`
 )
 </script>
+
+<template>
+  <a
+    class="npm-badge"
+    :href="badgeLink"
+    :title="package"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img :src="badgeImg" :alt="package" />
+  </a>
+</template>
 
 <style scoped>
 .npm-badge {

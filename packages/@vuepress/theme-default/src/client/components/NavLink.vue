@@ -1,32 +1,3 @@
-<template>
-  <RouterLink
-    v-if="isRouterLink"
-    class="nav-link"
-    :class="{ 'router-link-active': isActive }"
-    :to="item.link"
-    :aria-label="linkAriaLabel"
-    v-bind="$attrs"
-  >
-    <slot name="before" />
-    {{ item.text }}
-    <slot name="after" />
-  </RouterLink>
-  <a
-    v-else
-    class="nav-link external"
-    :href="item.link"
-    :rel="linkRel"
-    :target="linkTarget"
-    :aria-label="linkAriaLabel"
-    v-bind="$attrs"
-  >
-    <slot name="before" />
-    {{ item.text }}
-    <ExternalLinkIcon v-if="isBlankTarget" />
-    <slot name="after" />
-  </a>
-</template>
-
 <script lang="ts">
 /* eslint-disable import/first, import/no-duplicates, import/order */
 import { defineComponent } from 'vue'
@@ -112,3 +83,32 @@ const isActive = computed(() => {
   return isActiveInSubpath.value
 })
 </script>
+
+<template>
+  <RouterLink
+    v-if="isRouterLink"
+    class="nav-link"
+    :class="{ 'router-link-active': isActive }"
+    :to="item.link"
+    :aria-label="linkAriaLabel"
+    v-bind="$attrs"
+  >
+    <slot name="before" />
+    {{ item.text }}
+    <slot name="after" />
+  </RouterLink>
+  <a
+    v-else
+    class="nav-link external"
+    :href="item.link"
+    :rel="linkRel"
+    :target="linkTarget"
+    :aria-label="linkAriaLabel"
+    v-bind="$attrs"
+  >
+    <slot name="before" />
+    {{ item.text }}
+    <ExternalLinkIcon v-if="isBlankTarget" />
+    <slot name="after" />
+  </a>
+</template>

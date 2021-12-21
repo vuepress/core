@@ -1,17 +1,3 @@
-<template>
-  <RouterLink :to="navbarBrandLink">
-    <NavbarBrandLogo />
-
-    <span
-      v-if="navbarBrandTitle"
-      class="site-name"
-      :class="{ 'can-hide': navbarBrandLogo }"
-    >
-      {{ navbarBrandTitle }}
-    </span>
-  </RouterLink>
-</template>
-
 <script setup lang="ts">
 import {
   ClientOnly,
@@ -53,3 +39,17 @@ const NavbarBrandLogo: FunctionalComponent = () => {
   return h(ClientOnly, img)
 }
 </script>
+
+<template>
+  <RouterLink :to="navbarBrandLink">
+    <NavbarBrandLogo />
+
+    <span
+      v-if="navbarBrandTitle"
+      class="site-name"
+      :class="{ 'can-hide': navbarBrandLogo }"
+    >
+      {{ navbarBrandTitle }}
+    </span>
+  </RouterLink>
+</template>

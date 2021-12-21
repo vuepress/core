@@ -1,3 +1,54 @@
+<script setup lang="ts">
+import { computed, ref, toRefs, watch } from 'vue'
+import type { PropType } from 'vue'
+import { useRoute } from 'vue-router'
+import type { NavGroup, NavItem } from '../../shared'
+import DropdownTransition from './DropdownTransition.vue'
+import NavLink from './NavLink.vue'
+
+const props = defineProps({
+  item: {
+    type: Object as PropType<NavGroup<NavItem>>,
+    required: true,
+  },
+})
+
+const { item } = toRefs(props)
+
+const dropdownAriaLabel = computed(
+  () => item.value.ariaLabel || item.value.text
+)
+
+const open = ref(false)
+const route = useRoute()
+watch(
+  () => route.path,
+  () => {
+    open.value = false
+  }
+)
+
+/**
+ * Open the dropdown when user tab and click from keyboard.
+ *
+ * Use event.detail to detect tab and click from keyboard.
+ * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
+ */
+const handleDropdown = (e): void => {
+  const isTriggerByTab = e.detail === 0
+  if (isTriggerByTab) {
+    open.value = !open.value
+  } else {
+    open.value = false
+  }
+}
+
+const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
+  arr[arr.length - 1] === item
+</script>
+
 <template>
   <div class="dropdown-wrapper" :class="{ open }">
     <button
@@ -73,54 +124,3 @@
     </DropdownTransition>
   </div>
 </template>
-
-<script setup lang="ts">
-import { computed, ref, toRefs, watch } from 'vue'
-import type { PropType } from 'vue'
-import { useRoute } from 'vue-router'
-import type { NavGroup, NavItem } from '../../shared'
-import DropdownTransition from './DropdownTransition.vue'
-import NavLink from './NavLink.vue'
-
-const props = defineProps({
-  item: {
-    type: Object as PropType<NavGroup<NavItem>>,
-    required: true,
-  },
-})
-
-const { item } = toRefs(props)
-
-const dropdownAriaLabel = computed(
-  () => item.value.ariaLabel || item.value.text
-)
-
-const open = ref(false)
-const route = useRoute()
-watch(
-  () => route.path,
-  () => {
-    open.value = false
-  }
-)
-
-/**
- * Open the dropdown when user tab and click from keyboard.
- *
- * Use event.detail to detect tab and click from keyboard.
- * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
- */
-const handleDropdown = (e): void => {
-  const isTriggerByTab = e.detail === 0
-  if (isTriggerByTab) {
-    open.value = !open.value
-  } else {
-    open.value = false
-  }
-}
-
-const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
-  arr[arr.length - 1] === item
-</script>
