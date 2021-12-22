@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import * as history from 'connect-history-api-fallback'
-import type { Plugin } from 'vite'
+import type { Connect, Plugin } from 'vite'
 import type { ViteBundlerOptions } from '../types'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
@@ -131,7 +131,7 @@ import '@vuepress/client/lib/app.js'
               to: '/index.html',
             },
           ],
-        })
+        }) as Connect.NextHandleFunction
       )
     }
   },
