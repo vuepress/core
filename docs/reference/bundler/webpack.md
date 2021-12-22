@@ -70,31 +70,18 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
   This option accepts a function that will receive a `Config` instance that provided by `webpack-chain` as the 1st argument an `isServer` flag as the 2nd argument and an `isBuild` flag as the 3rd argument.
 
-### beforeDevServer
+### devServerSetupMiddlewares
 
-- Type: `(server: WebpackDevServer) => void`
-
-- Details:
-
-  A hook to be called in `devServer.before` of webpack.
-
-  The arguments of the function are the first two arguments of `devServer.before`.
-
-- Also see:
-  - [Webpack > Configuration > DevServer > devServer.before](https://webpack.js.org/configuration/dev-server/#devserverbefore)
-
-### afterDevServer
-
-- Type: `(server: WebpackDevServer) => void`
+- Type: `(middlewares: Middleware[], devServer: Server) => Middleware[]`
 
 - Details:
 
-  A hook to be called in `devServer.after` of webpack.
+  A hook to be called in `devServer.setupMiddlewares` of webpack.
 
-  The arguments of the function are the first two arguments of `devServer.after`.
+  The arguments of the function are those of `devServer.setupMiddlewares`.
 
 - Also see:
-  - [Webpack > Configuration > DevServer > devServer.after](https://webpack.js.org/configuration/dev-server/#devserverafter)
+  - [Webpack > Configuration > DevServer > devServer.setupMiddlewares](https://webpack.js.org/configuration/dev-server/#devserversetupmiddlewares)
 
 ### vue
 

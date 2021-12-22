@@ -1,8 +1,8 @@
 import type { VueLoaderOptions } from 'vue-loader'
 import type { Configuration as WebpackConfiguration } from 'webpack'
 import type * as WebpackChainConfig from 'webpack-chain'
+import type * as WebpackDevServer from 'webpack-dev-server'
 import type { LoaderContext } from './types.webpack'
-import type { WebpackDevServer } from './types.webpack-dev-server'
 
 export type {
   VueLoaderOptions,
@@ -34,14 +34,9 @@ export interface WebpackBundlerOptions {
   ) => void
 
   /**
-   * hook that to be called in `devServer.before`
+   * `setupMiddlewares` config of webpack-dev-server
    */
-  beforeDevServer?: (server: WebpackDevServer) => void
-
-  /**
-   * hook that to be called in `devServer.after`
-   */
-  afterDevServer?: (server: WebpackDevServer) => void
+  devServerSetupMiddlewares?: WebpackDevServer.Configuration['setupMiddlewares']
 
   /**
    * vue-loader options

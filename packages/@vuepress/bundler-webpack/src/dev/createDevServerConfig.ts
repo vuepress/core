@@ -1,16 +1,15 @@
 import { sep } from 'path'
 import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import type { WebpackOptionsNormalized } from 'webpack'
+import type * as WebpackDevServer from 'webpack-dev-server'
 import type { WebpackBundlerOptions } from '../types'
-import type { WebpackDevServer } from '../types.webpack-dev-server'
 import { resolvePort } from './resolvePort'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware'
 
 export const createDevServerConfig = async (
   app: App,
   options: WebpackBundlerOptions
-): Promise<Required<WebpackOptionsNormalized>['devServer']> => ({
+): Promise<WebpackDevServer.Configuration> => ({
   allowedHosts: 'all',
   compress: true,
   devMiddleware: {
@@ -27,15 +26,11 @@ export const createDevServerConfig = async (
   },
   host: app.options.host,
   hot: true,
-  onAfterSetupMiddleware: (server: WebpackDevServer) => {
-    options.afterDevServer?.(server)
-  },
-  onBeforeSetupMiddleware: (server: WebpackDevServer) => {
-    // use trailing slash middleware to support vuepress routing in dev-server
-    // it will be handled by most of the deployment platforms
-    server.app.use(trailingSlashMiddleware)
-
-    options.beforeDevServer?.(server)
+  setupMiddlewares: (middlewares, devServer) => {
+    devServer.app?.use(trailingSlashMiddleware)
+    return (
+      options.devServerSetupMiddlewares?.(middlewares, devServer) ?? middlewares
+    )
   },
   open: app.options.open,
   port: await resolvePort(app.options.port),

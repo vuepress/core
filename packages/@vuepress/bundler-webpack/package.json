@@ -54,7 +54,7 @@
     "vue-router": "^4.0.12",
     "webpack": "^5.65.0",
     "webpack-chain": "^6.5.1",
-    "webpack-dev-server": "4.6.0",
+    "webpack-dev-server": "4.7.0",
     "webpack-merge": "^5.8.0"
   },
   "publishConfig": {
