@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.30](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.29...v2.0.0-beta.30) (2021-12-23)
+
+
+### Bug Fixes
+
+* **plugin-back-to-top:** fix regression when upgrading ts-debounce (close [#579](https://github.com/vuepress/vuepress-next/issues/579)) ([7a6a45b](https://github.com/vuepress/vuepress-next/commit/7a6a45be5aec933c0bfd983a1e9d35ee1231761d))
+
+
+
+
+
 # [2.0.0-beta.29](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.28...v2.0.0-beta.29) (2021-12-18)
 
 **Note:** Version bump only for package @vuepress/plugin-back-to-top

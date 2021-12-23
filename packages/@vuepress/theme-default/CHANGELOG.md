@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.30](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.29...v2.0.0-beta.30) (2021-12-23)
+
+
+### Bug Fixes
+
+* **theme-default:** arrows not displaying in page nav ([#573](https://github.com/vuepress/vuepress-next/issues/573)) ([2d5b084](https://github.com/vuepress/vuepress-next/commit/2d5b08400316a1734ddc6451f390ebcd9db3faa3))
+* **theme-default:** do not always wrap logo and hero image with client-only ([6b4ee45](https://github.com/vuepress/vuepress-next/commit/6b4ee45fdba81705af02ed6a55d9c1314ddf360a))
+
+
+
+
+
 # [2.0.0-beta.29](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.28...v2.0.0-beta.29) (2021-12-18)
 
 

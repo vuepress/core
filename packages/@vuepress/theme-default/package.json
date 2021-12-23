@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "2.0.0-beta.29",
+  "version": "2.0.0-beta.30",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -32,7 +32,7 @@
     "@vuepress/client": "2.0.0-beta.29",
     "@vuepress/core": "2.0.0-beta.29",
     "@vuepress/plugin-active-header-links": "2.0.0-beta.29",
-    "@vuepress/plugin-back-to-top": "2.0.0-beta.29",
+    "@vuepress/plugin-back-to-top": "2.0.0-beta.30",
     "@vuepress/plugin-container": "2.0.0-beta.29",
     "@vuepress/plugin-external-link-icon": "2.0.0-beta.29",
     "@vuepress/plugin-git": "2.0.0-beta.29",
