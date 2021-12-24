@@ -82,6 +82,10 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &:hover .header-anchor {
     opacity: 1;
   }
