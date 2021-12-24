@@ -190,6 +190,10 @@ heroku login
 
 This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
+## Layer0
+
+See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress).
+
 ## Netlify
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
@@ -206,7 +210,3 @@ This is the configuration of your site; read more at [heroku-buildpack-static](h
 ## Vercel
 
 See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
-
-## Layer0
-
-See [Creating and Deploying a VuePress App with Layer0](https://docs.layer0.co/guides/vuepress).
