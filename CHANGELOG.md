@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.31](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.30...v2.0.0-beta.31) (2021-12-24)
+
+
+### Bug Fixes
+
+* **theme-default:** code line numbers unaligned in different display scale (close [#499](https://github.com/vuepress/vuepress-next/issues/499)) ([21accb5](https://github.com/vuepress/vuepress-next/commit/21accb5773224363a548915a6f3a7a23a5bcfa0d))
+* **theme-default:** remove focus-visible outline (close [#359](https://github.com/vuepress/vuepress-next/issues/359)) ([cfbaa14](https://github.com/vuepress/vuepress-next/commit/cfbaa14270df0584594f56abc5a9ac0c8a6b945a))
+
+
+### Features
+
+* **theme-default:** support collapsible sidebar (close [#397](https://github.com/vuepress/vuepress-next/issues/397)) ([c7fd815](https://github.com/vuepress/vuepress-next/commit/c7fd81580a9061b22f1a60a735fdc9a527ef1bfd))
+
+
+
+
+
 # [2.0.0-beta.30](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.29...v2.0.0-beta.30) (2021-12-23)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "vuepress-webpack",
-  "version": "2.0.0-beta.30",
+  "version": "2.0.0-beta.31",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@vuepress/bundler-webpack": "2.0.0-beta.30",
-    "@vuepress/cli": "2.0.0-beta.29",
+    "@vuepress/cli": "2.0.0-beta.31",
     "@vuepress/core": "2.0.0-beta.29",
-    "@vuepress/theme-default": "2.0.0-beta.30"
+    "@vuepress/theme-default": "2.0.0-beta.31"
   }
 }
