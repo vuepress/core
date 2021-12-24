@@ -206,3 +206,7 @@ This is the configuration of your site; read more at [heroku-buildpack-static](h
 ## Vercel
 
 See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+
+## Layer0
+
+See [Creating and Deploying a VuePress App with Layer0](https://docs.layer0.co/guides/vuepress).
