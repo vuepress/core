@@ -44,6 +44,7 @@ export const en: SidebarConfig = {
   '/reference/': [
     {
       text: 'VuePress Reference',
+      collapsible: true,
       children: [
         '/reference/cli.md',
         '/reference/config.md',
@@ -55,16 +56,14 @@ export const en: SidebarConfig = {
         '/reference/node-api.md',
       ],
     },
-  ],
-  '/reference/bundler/': [
     {
       text: 'Bundlers Reference',
+      collapsible: true,
       children: ['/reference/bundler/vite.md', '/reference/bundler/webpack.md'],
     },
-  ],
-  '/reference/default-theme/': [
     {
       text: 'Default Theme Reference',
+      collapsible: true,
       children: [
         '/reference/default-theme/config.md',
         '/reference/default-theme/frontmatter.md',
@@ -73,10 +72,9 @@ export const en: SidebarConfig = {
         '/reference/default-theme/styles.md',
       ],
     },
-  ],
-  '/reference/plugin/': [
     {
       text: 'Official Plugins Reference',
+      collapsible: true,
       children: [
         {
           text: 'Common Features',

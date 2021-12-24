@@ -286,7 +286,7 @@ module.exports = {
 
   To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
 
-  - A `SidebarItem` object should have a `text` field, could have an optional `link` field and an optional `children` field. The `children` field should be a _sidebar array_.
+  - A `SidebarItem` object should have a `text` field, could have an optional `link` field and an optional `children` field. The `children` field should be a _sidebar array_. When a `SidebarItem` object is placed at the root-level, it could have an extra optional `collapsible` field to control whether it is collapsible.
   - A string should be the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, and `children` is automatically generated from the page headers.
 
   If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
@@ -342,6 +342,30 @@ module.exports = {
         {
           text: 'Reference',
           children: ['/reference/cli.md', '/reference/config.md'],
+        },
+      ],
+    },
+  },
+}
+```
+
+- Example 3:
+
+```js
+module.exports = {
+  themeConfig: {
+    // collapsible sidebar
+    sidebar: {
+      '/reference/': [
+        {
+          text: 'VuePress Reference',
+          collapsible: true,
+          children: ['/reference/cli.md', '/reference/config.md'],
+        },
+        {
+          text: 'Bundlers Reference',
+          collapsible: true,
+          children: ['/reference/bundler/vite.md', '/reference/bundler/webpack.md'],
         },
       ],
     },

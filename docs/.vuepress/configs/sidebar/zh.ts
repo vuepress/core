@@ -44,6 +44,7 @@ export const zh: SidebarConfig = {
   '/zh/reference/': [
     {
       text: 'VuePress 参考',
+      collapsible: true,
       children: [
         '/zh/reference/cli.md',
         '/zh/reference/config.md',
@@ -55,19 +56,17 @@ export const zh: SidebarConfig = {
         '/zh/reference/node-api.md',
       ],
     },
-  ],
-  '/zh/reference/bundler/': [
     {
       text: '打包工具参考',
+      collapsible: true,
       children: [
         '/zh/reference/bundler/vite.md',
         '/zh/reference/bundler/webpack.md',
       ],
     },
-  ],
-  '/zh/reference/default-theme/': [
     {
       text: '默认主题参考',
+      collapsible: true,
       children: [
         '/zh/reference/default-theme/config.md',
         '/zh/reference/default-theme/frontmatter.md',
@@ -76,10 +75,9 @@ export const zh: SidebarConfig = {
         '/zh/reference/default-theme/styles.md',
       ],
     },
-  ],
-  '/zh/reference/plugin/': [
     {
       text: '官方插件参考',
+      collapsible: true,
       children: [
         {
           text: '常用功能',

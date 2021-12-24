@@ -1,3 +1,4 @@
+@import '_mixins';
 @import '_variables';
 
 .dropdown-wrapper {
@@ -124,8 +125,7 @@
     }
 
     .nav-dropdown {
-      transition: height 0.1s ease-out;
-      overflow: hidden;
+      @include dropdown_wrapper;
 
       .dropdown-item {
         .dropdown-subtitle {

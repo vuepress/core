@@ -1,5 +1,5 @@
+@import '_mixins';
 @import '_variables';
-@import '_wrapper';
 
 .page {
   padding-top: var(--navbar-height);
@@ -142,7 +142,7 @@ h6 {
 }
 
 .theme-default-content:not(.custom) {
-  @extend %wrapper;
+  @include content_wrapper;
 
   padding-top: 0;
 

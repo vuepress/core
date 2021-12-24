@@ -37,13 +37,21 @@ export type ResolvedNavbarItem = NavbarItem | NavGroup<ResolvedNavbarItem>
  * Sidebar types
  */
 // user config
-export type SidebarItem = NavItem &
-  Partial<NavLink> &
-  Partial<Pick<NavGroup<NavLink | SidebarItem | string>, 'children'>>
-export type SidebarConfigArray = (SidebarItem | string)[]
+export type SidebarItem = NavItem & Partial<NavLink>
+export type SidebarGroup = SidebarItem &
+  NavGroup<SidebarItem | SidebarGroup | string>
+export type SidebarGroupCollapsible = SidebarGroup & {
+  collapsible?: boolean
+}
+export type SidebarConfigArray = (
+  | SidebarItem
+  | SidebarGroupCollapsible
+  | string
+)[]
 export type SidebarConfigObject = Record<string, SidebarConfigArray>
 export type SidebarConfig = SidebarConfigArray | SidebarConfigObject
 // resolved
-export type ResolvedSidebarItem = NavItem &
-  Partial<NavLink> &
-  Partial<Pick<NavGroup<ResolvedSidebarItem>, 'children'>>
+export type ResolvedSidebarItem = SidebarItem &
+  Partial<NavGroup<ResolvedSidebarItem>> & {
+    collapsible?: boolean
+  }

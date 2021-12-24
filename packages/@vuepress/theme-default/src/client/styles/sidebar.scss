@@ -1,3 +1,4 @@
+@import '_mixins';
 @import '_variables';
 
 .sidebar {
@@ -29,17 +30,8 @@
     }
   }
 
-  .sidebar-links {
+  .sidebar-items {
     padding: 1.5rem 0;
-
-    > li:not(:first-child) {
-      margin-top: 0.75rem;
-    }
-
-    .sidebar-sub-items {
-      padding-left: 1rem;
-      font-size: 0.95em;
-    }
   }
 }
 
@@ -56,53 +48,74 @@
       }
     }
 
-    .sidebar-links {
+    .sidebar-items {
       padding: 1rem 0;
     }
   }
 }
 
-.sidebar-heading {
-  color: var(--c-text);
-  transition: color 0.15s ease;
-  font-size: 1.1em;
-  font-weight: bold;
-  padding: 0.35rem 1.5rem 0.35rem 1.25rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border-left: 0.25rem solid transparent;
-
-  .arrow {
-    position: relative;
-    top: -0.12em;
-    left: 0.5em;
-  }
-}
-
-.sidebar-item:not(.sidebar-heading) {
-  font-size: 1em;
-  font-weight: 400;
-  display: inline-block;
-  color: var(--c-text);
-  border-left: 0.25rem solid transparent;
-  margin: 0;
-  padding: 0.35rem 1rem 0.35rem 2rem;
-  line-height: 1.4;
-  width: 100%;
-  box-sizing: border-box;
-
-  .sidebar-links > &:not(:first-child) {
-    margin-top: 0.75rem;
-  }
-
-  .sidebar-sub-items & {
-    padding: 0.25rem 1rem 0.25rem 1.75rem;
-  }
-}
-
 .sidebar-item {
   cursor: default;
+
+  &.sidebar-heading {
+    color: var(--c-text);
+    transition: color 0.15s ease;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.35rem 1.5rem 0.35rem 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-left: 0.25rem solid transparent;
+
+    &.collapsible {
+      cursor: pointer;
+
+      & + .sidebar-item-children {
+        @include dropdown_wrapper;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .arrow {
+      position: relative;
+      top: -0.12em;
+      left: 0.5em;
+    }
+  }
+
+  &:not(.sidebar-heading) {
+    font-size: 1em;
+    font-weight: 400;
+    display: inline-block;
+    color: var(--c-text);
+    border-left: 0.25rem solid transparent;
+    margin: 0;
+    padding: 0.35rem 1rem 0.35rem 2rem;
+    line-height: 1.4;
+    width: 100%;
+    box-sizing: border-box;
+
+    &.active {
+      font-weight: 600;
+      color: var(--c-text-accent);
+      border-left-color: var(--c-text-accent);
+    }
+
+    & + .sidebar-item-children {
+      padding-left: 1rem;
+      font-size: 0.95em;
+    }
+
+    .sidebar-item-children .sidebar-item-children & {
+      padding: 0.25rem 1rem 0.25rem 1.75rem;
+
+      &.active {
+        font-weight: 500;
+        border-left-color: transparent;
+      }
+    }
+  }
 }
 
 a.sidebar-item {
@@ -110,21 +123,5 @@ a.sidebar-item {
 
   &:hover {
     color: var(--c-text-accent);
-  }
-
-  &.active {
-    font-weight: 600;
-    color: var(--c-text-accent);
-    border-left-color: var(--c-text-accent);
-  }
-
-  &.sidebar-heading.active {
-    font-weight: bold;
-    border-left-color: transparent;
-  }
-
-  .sidebar-sub-items &.active {
-    font-weight: 500;
-    border-left-color: transparent;
   }
 }
