@@ -15,6 +15,7 @@ const clientPackages = [
   '@vuepress/plugin-container',
   '@vuepress/plugin-debug',
   '@vuepress/plugin-docsearch',
+  '@vuepress/plugin-external-link-icon',
   '@vuepress/plugin-git',
   '@vuepress/plugin-google-analytics',
   '@vuepress/plugin-medium-zoom',
@@ -28,6 +29,7 @@ const clientPackages = [
   '@vuepress/plugin-shiki',
   '@vuepress/plugin-theme-data',
   '@vuepress/plugin-toc',
+  '@vuepress/shared',
   '@vuepress/theme-default',
 ]
 
