@@ -6,7 +6,7 @@ import type { LocaleConfig } from './locale'
  */
 export interface SiteData extends SiteLocaleData {
   // site base
-  base: string
+  base: '/' | `/${string}/`
 
   // locale config
   locales: SiteLocaleConfig
