@@ -12,7 +12,10 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/empty.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({})
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+          .layouts
+      ).toEqual({})
     })
 
     it('should resolve theme info with layouts correctly', () => {
@@ -21,7 +24,10 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/has-layouts.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+          .layouts
+      ).toEqual({
         Layout: fixtures('layouts/Layout.vue'),
         404: fixtures('layouts/404.vue'),
       })
@@ -35,9 +41,10 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/empty.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
-        require(fixtures('themes/empty.js')),
-      ])
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+          .plugins
+      ).toEqual([require(fixtures('themes/empty.js'))])
     })
 
     it('should resolve theme info with plugins correctly', () => {
@@ -46,7 +53,10 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/has-plugins.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+          .plugins
+      ).toEqual([
         require(fixtures('plugins/obj.js')),
         require(fixtures('themes/has-plugins.js')),
       ])
@@ -60,7 +70,9 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/extends-parent.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme)).toEqual({
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+      ).toEqual({
         plugins: [
           require(fixtures('plugins/obj.js')),
           require(fixtures('themes/has-layouts-and-plugins.js')),
@@ -81,7 +93,9 @@ describe('core > app > resolveThemeInfo', () => {
         theme: fixtures('themes/extends-grandparent.js'),
       })
 
-      expect(resolveThemeInfo(app, app.options.theme)).toEqual({
+      expect(
+        resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
+      ).toEqual({
         plugins: [
           require(fixtures('plugins/obj.js')),
           require(fixtures('themes/has-layouts-and-plugins.js')),
