@@ -15,7 +15,7 @@ Frontmatter in this section will take effect in all types of pages.
   Provided by [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon).
 
 - Also see:
-  - [Default Theme > Config Reference > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
+  - [Default Theme > Config Reference > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
 
 ### navbar
 

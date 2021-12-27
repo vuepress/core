@@ -15,7 +15,7 @@
   由[@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon) 提供。
 
 - 参考：
-  - [默认主题 > 配置 > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
+  - [默认主题 > 配置 > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
 
 ### navbar
 
