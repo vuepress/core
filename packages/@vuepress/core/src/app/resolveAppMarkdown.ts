@@ -3,9 +3,9 @@ import type { Markdown } from '@vuepress/markdown'
 import type { App } from '../types'
 
 /**
- * Create markdown-it instance for vuepress app
+ * Resolve markdown-it instance for vuepress app
  */
-export const createAppMarkdown = async (app: App): Promise<Markdown> => {
+export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
   // plugin hook: extendsMarkdownOptions
   await app.pluginApi.hooks.extendsMarkdownOptions.process(
     app.options.markdown,

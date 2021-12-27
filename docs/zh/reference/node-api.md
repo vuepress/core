@@ -112,14 +112,6 @@ const dev = async () => {
 
 ## App 属性
 
-### version
-
-- 类型： `string`
-
-- 详情：
-
-  VuePress App 的版本，即 `@vuepress/core` 包的版本。
-
 ### options
 
 - 类型： `AppOptions`
@@ -129,6 +121,22 @@ const dev = async () => {
   VuePress App 的配置项。
 
   这些配置项来自于 [createBuildApp](#createbuildapp) / [createDevApp](#createdevapp) 的 `config` 参数，但所有可选的字段都填充上了默认值。
+
+### siteData
+
+- 类型： `SiteData`
+
+- 详情：
+
+  由用户设置的站点数据，包含所有的 [站点配置](./config.md#站点配置) ，可以在客户端代码中使用。
+
+### version
+
+- 类型： `string`
+
+- 详情：
+
+  VuePress App 的版本，即 `@vuepress/core` 包的版本。
 
 ### env.isBuild
 
@@ -153,14 +161,6 @@ const dev = async () => {
 - 详情：
 
   用于判断 App 是否开启 Debug 模式的环境标记。
-
-### siteData
-
-- 类型： `SiteData`
-
-- 详情：
-
-  由用户设置的站点数据，包含所有的 [站点配置](./config.md#站点配置) ，可以在客户端代码中使用。
 
 ### markdown
 

@@ -1,11 +1,11 @@
 import type { AppOptions, SiteData } from '../types'
 
 /**
- * Create site data for vuepress app
+ * Resolve site data for vuepress app
  *
  * Site data will also be used in client
  */
-export const createAppSiteData = (options: AppOptions): SiteData => ({
+export const resolveAppSiteData = (options: AppOptions): SiteData => ({
   base: options.base,
   lang: options.lang,
   title: options.title,

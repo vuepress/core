@@ -1,13 +1,13 @@
-import { createAppEnv, createAppOptions } from '@vuepress/core'
+import { resolveAppEnv, resolveAppOptions } from '@vuepress/core'
 
 const source = '/foo'
 
 const testCases: [
-  Parameters<typeof createAppEnv>,
-  ReturnType<typeof createAppEnv>
+  Parameters<typeof resolveAppEnv>,
+  ReturnType<typeof resolveAppEnv>
 ][] = [
   [
-    [createAppOptions({ source }), false],
+    [resolveAppOptions({ source }), false],
     {
       isBuild: false,
       isDev: true,
@@ -15,7 +15,7 @@ const testCases: [
     },
   ],
   [
-    [createAppOptions({ source, debug: true }), false],
+    [resolveAppOptions({ source, debug: true }), false],
     {
       isBuild: false,
       isDev: true,
@@ -23,7 +23,7 @@ const testCases: [
     },
   ],
   [
-    [createAppOptions({ source }), true],
+    [resolveAppOptions({ source }), true],
     {
       isBuild: true,
       isDev: false,
@@ -32,11 +32,11 @@ const testCases: [
   ],
 ]
 
-describe('core > app > createAppEnv', () => {
+describe('core > app > resolveAppEnv', () => {
   describe('should create app env correctly', () => {
     testCases.forEach(([params, expected], i) => {
       it(`case ${i}`, () => {
-        expect(createAppEnv(...params)).toEqual(expected)
+        expect(resolveAppEnv(...params)).toEqual(expected)
       })
     })
   })

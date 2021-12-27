@@ -112,14 +112,6 @@ const dev = async () => {
 
 ## App Properties
 
-### version
-
-- Type: `string`
-
-- Details:
-
-  Version of VuePress app, i.e. version of `@vuepress/core` package.
-
 ### options
 
 - Type: `AppOptions`
@@ -129,6 +121,22 @@ const dev = async () => {
   Options of VuePress app.
 
   The options come from the `config` argument in [createBuildApp](#createbuildapp) / [createDevApp](#createdevapp), while all optional fields will be filled with a default value.
+
+### siteData
+
+- Type: `SiteData`
+
+- Details:
+
+  Site data that set by user, including all the [site config](./config.md#site-config), which will be used in client side.
+
+### version
+
+- Type: `string`
+
+- Details:
+
+  Version of VuePress app, i.e. version of `@vuepress/core` package.
 
 ### env.isBuild
 
@@ -153,14 +161,6 @@ const dev = async () => {
 - Details:
 
   Environment flag used to identify whether the debug mode is enabled.
-
-### siteData
-
-- Type: `SiteData`
-
-- Details:
-
-  Site data that set by user, including all the [site config](./config.md#site-config), which will be used in client side.
 
 ### markdown
 

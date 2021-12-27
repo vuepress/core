@@ -12,16 +12,6 @@ import type { AppDir, AppEnv, AppWriteTemp } from './utils'
  */
 export interface App {
   /**
-   * Version of vuepress core
-   */
-  version: string
-
-  /**
-   * Options that filled all optional fields with a default value
-   */
-  options: AppOptions
-
-  /**
    * Directory utils
    */
   dir: AppDir
@@ -32,14 +22,24 @@ export interface App {
   env: AppEnv
 
   /**
-   * Site data, which will be used in client side
+   * Options that filled all optional fields with a default value
    */
-  siteData: SiteData
+  options: AppOptions
 
   /**
    * Plugin system
    */
   pluginApi: PluginApi
+
+  /**
+   * Site data, which will be used in client side
+   */
+  siteData: SiteData
+
+  /**
+   * Version of vuepress core
+   */
+  version: string
 
   /**
    * Write temp file

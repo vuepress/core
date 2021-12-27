@@ -4,7 +4,7 @@ import type { AppConfig, AppOptions } from '../types'
 /**
  * Create app options with default values
  */
-export const createAppOptions = ({
+export const resolveAppOptions = ({
   // site config
   base = '/',
   lang = 'en-US',
@@ -14,11 +14,11 @@ export const createAppOptions = ({
   locales = {},
 
   // theme config
-  theme = '@vuepress/default',
+  theme = '@vuepress/theme-default',
   themeConfig = {},
 
   // bundler config
-  bundler = '@vuepress/vite',
+  bundler = '@vuepress/bundler-vite',
   bundlerConfig = {},
 
   // directory config
@@ -40,8 +40,8 @@ export const createAppOptions = ({
   templateDev = path.normalize(
     require.resolve('@vuepress/client/templates/index.dev.html')
   ),
-  templateSSR = path.normalize(
-    require.resolve('@vuepress/client/templates/index.ssr.html')
+  templateBuild = path.normalize(
+    require.resolve('@vuepress/client/templates/index.build.html')
   ),
   shouldPreload = true,
   shouldPrefetch = false,
@@ -71,7 +71,7 @@ export const createAppOptions = ({
   open,
   pagePatterns,
   templateDev,
-  templateSSR,
+  templateBuild,
   shouldPreload,
   shouldPrefetch,
   plugins,

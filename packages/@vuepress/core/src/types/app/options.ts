@@ -5,46 +5,55 @@ import type { PluginConfig } from '../plugin'
 import type { ThemeConfig } from '../theme'
 
 /**
- * Vuepress app options
+ * Config to create vuepress app
  */
-export interface AppOptions<
-  T extends ThemeConfig = ThemeConfig,
-  U extends BundlerConfig = BundlerConfig
-> extends SiteData {
-  // theme options
-  theme: string
-  themeConfig: Partial<T>
-
-  // bundler options
-  bundler: string
-  bundlerConfig: Partial<U>
-
-  // directory options
-  source: string
-  dest: string
-  temp: string
-  cache: string
-  public: string
-
-  // shared options
-  debug: boolean
-  markdown: MarkdownOptions
-  pagePatterns: string[]
-  plugins: PluginConfig[]
-
-  // dev options
-  host: string
-  port: number
-  open: boolean
-  templateDev: string
-
-  // build options
-  shouldPreload: ((file: string, type: string) => boolean) | boolean
-  shouldPrefetch: ((file: string, type: string) => boolean) | boolean
-  templateSSR: string
-}
-
 export type AppConfig<
   T extends ThemeConfig = ThemeConfig,
   U extends BundlerConfig = BundlerConfig
-> = Partial<AppOptions<T, U>> & Pick<AppOptions<T, U>, 'source'>
+> = Partial<SiteData> &
+  AppConfigDev &
+  AppConfigBuild & {
+    theme?: string
+    themeConfig?: Partial<T>
+    bundler?: string
+    bundlerConfig?: Partial<U>
+
+    source: string
+    dest?: string
+    temp?: string
+    cache?: string
+    public?: string
+
+    debug?: boolean
+    pagePatterns?: string[]
+
+    markdown?: MarkdownOptions
+    plugins?: PluginConfig[]
+  }
+
+/**
+ * Vuepress app config for dev
+ */
+export interface AppConfigDev {
+  host?: string
+  port?: number
+  open?: boolean
+  templateDev?: string
+}
+
+/**
+ * Vuepress app config for build
+ */
+export interface AppConfigBuild {
+  shouldPreload?: ((file: string, type: string) => boolean) | boolean
+  shouldPrefetch?: ((file: string, type: string) => boolean) | boolean
+  templateBuild?: string
+}
+
+/**
+ * Vuepress app options
+ */
+export type AppOptions<
+  T extends ThemeConfig = ThemeConfig,
+  U extends BundlerConfig = BundlerConfig
+> = Required<AppConfig<T, U>>

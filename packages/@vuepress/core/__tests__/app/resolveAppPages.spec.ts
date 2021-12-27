@@ -1,8 +1,8 @@
-import { createAppPages, createBaseApp } from '@vuepress/core'
+import { createBaseApp, resolveAppPages } from '@vuepress/core'
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
-describe('core > app > createAppPages', () => {
+describe('core > app > resolveAppPages', () => {
   it('should create two pages with default 404 page', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages'),
@@ -10,7 +10,7 @@ describe('core > app > createAppPages', () => {
     })
     app.markdown = createMarkdown()
 
-    const pages = await createAppPages(app)
+    const pages = await resolveAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
     const barPage = pages.find((page) => page.path === '/bar.html')
     const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -29,7 +29,7 @@ describe('core > app > createAppPages', () => {
     })
     app.markdown = createMarkdown()
 
-    const pages = await createAppPages(app)
+    const pages = await resolveAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
     const barPage = pages.find((page) => page.path === '/bar.html')
     const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -56,7 +56,7 @@ describe('core > app > createAppPages', () => {
     app.pluginApi.registerHooks()
     app.markdown = createMarkdown()
 
-    const pages = await createAppPages(app)
+    const pages = await resolveAppPages(app)
 
     pages.forEach((page) => {
       expect(page.frontmatter.foo).toBe('bar')
@@ -78,7 +78,7 @@ describe('core > app > createAppPages', () => {
     app.pluginApi.registerHooks()
     app.markdown = createMarkdown()
 
-    const pages = await createAppPages(app)
+    const pages = await resolveAppPages(app)
 
     pages.forEach((page) => {
       expect(page.frontmatter.foo).toBe('baz')

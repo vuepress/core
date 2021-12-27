@@ -1,9 +1,9 @@
 import type { App, PluginConfig, PluginObject } from '../types'
 import { normalizePluginConfig } from './normalizePluginConfig'
-import { resolvePlugin } from './resolvePlugin'
+import { resolvePluginObject } from './resolvePluginObject'
 
 /**
- * Resolve plugins from plugin config array
+ * Resolve plugin objects from plugin config array
  */
 export const resolvePluginsFromConfig = (
   app: App,
@@ -12,7 +12,7 @@ export const resolvePluginsFromConfig = (
   plugins.reduce((prev, item) => {
     const [plugin, config] = normalizePluginConfig(item)
     if (config !== false) {
-      prev.push(resolvePlugin(app, plugin, config === true ? {} : config))
+      prev.push(resolvePluginObject(app, plugin, config === true ? {} : config))
     }
     return prev
   }, [] as PluginObject[])

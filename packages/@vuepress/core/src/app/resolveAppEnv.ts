@@ -1,9 +1,9 @@
 import type { AppEnv, AppOptions } from '../types'
 
 /**
- * Create environment flags for vuepress app
+ * Resolve environment flags for vuepress app
  */
-export const createAppEnv = (
+export const resolveAppEnv = (
   options: AppOptions,
   isBuild: boolean
 ): AppEnv => ({

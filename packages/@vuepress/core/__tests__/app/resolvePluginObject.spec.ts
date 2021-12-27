@@ -1,4 +1,4 @@
-import { createBaseApp, resolvePlugin } from '@vuepress/core'
+import { createBaseApp, resolvePluginObject } from '@vuepress/core'
 import type { PluginFunction, PluginObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
@@ -7,14 +7,14 @@ const app = createBaseApp({
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
-describe('core > app > resolvePlugin', () => {
+describe('core > app > resolvePluginObject', () => {
   describe('plugin object', () => {
     it('should work without options', () => {
       const pluginObject: PluginObject = {
         name: 'plugin-object',
       }
 
-      const result = resolvePlugin(app, pluginObject)
+      const result = resolvePluginObject(app, pluginObject)
       expect(result.name).toEqual('plugin-object')
     })
 
@@ -23,7 +23,7 @@ describe('core > app > resolvePlugin', () => {
         name: 'plugin-object',
       }
 
-      const result = resolvePlugin(app, pluginObject, { foo: 'bar' })
+      const result = resolvePluginObject(app, pluginObject, { foo: 'bar' })
       expect(result.name).toEqual('plugin-object')
     })
   })
@@ -34,7 +34,7 @@ describe('core > app > resolvePlugin', () => {
         name: 'plugin-function',
       }))
 
-      const result = resolvePlugin(app, pluginFunction)
+      const result = resolvePluginObject(app, pluginFunction)
 
       expect(pluginFunction).toHaveBeenCalledTimes(1)
       expect(pluginFunction).toHaveBeenCalledWith({}, app)
@@ -46,7 +46,7 @@ describe('core > app > resolvePlugin', () => {
         name: options.pluginName,
       }))
 
-      const result = resolvePlugin(app, pluginFunction, {
+      const result = resolvePluginObject(app, pluginFunction, {
         pluginName: 'foobar',
       })
 
@@ -64,7 +64,7 @@ describe('core > app > resolvePlugin', () => {
       console.error = jest.fn()
 
       expect(() => {
-        resolvePlugin(app, '4-0-4')
+        resolvePluginObject(app, '4-0-4')
       }).toThrow()
       expect(console.error).toHaveBeenCalled()
 
@@ -74,7 +74,7 @@ describe('core > app > resolvePlugin', () => {
 
   describe('plugin path', () => {
     it('should work with plugin object', () => {
-      const result = resolvePlugin(
+      const result = resolvePluginObject(
         app,
         path.resolve(__dirname, '../__fixtures__/plugins/obj.js')
       )
@@ -82,7 +82,7 @@ describe('core > app > resolvePlugin', () => {
     })
 
     it('should work with plugin function', () => {
-      const result = resolvePlugin(
+      const result = resolvePluginObject(
         app,
         path.resolve(__dirname, '../__fixtures__/plugins/func.js'),
         { pluginName: 'foobar' }
@@ -95,7 +95,7 @@ describe('core > app > resolvePlugin', () => {
       console.error = jest.fn()
 
       expect(() => {
-        resolvePlugin(app, './4-0-4')
+        resolvePluginObject(app, './4-0-4')
       }).toThrow()
       expect(console.error).toHaveBeenCalled()
 

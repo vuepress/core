@@ -36,7 +36,7 @@ export const createBuild =
     await withSpinner('Rendering pages')(async () => {
       // load ssr template file
       const ssrTemplate = (
-        await fs.readFile(app.options.templateSSR)
+        await fs.readFile(app.options.templateBuild)
       ).toString()
 
       // get client bundle entry chunk and css asset

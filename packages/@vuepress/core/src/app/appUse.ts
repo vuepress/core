@@ -1,6 +1,6 @@
 import { chalk, debug, warn } from '@vuepress/utils'
 import type { App, Plugin, PluginOptions } from '../types'
-import { resolvePlugin } from './resolvePlugin'
+import { resolvePluginObject } from './resolvePluginObject'
 
 const log = debug('vuepress:core/app')
 
@@ -9,7 +9,7 @@ export const appUse = <T extends PluginOptions>(
   rawPlugin: Plugin<T> | string,
   config?: Partial<T>
 ): App => {
-  const plugin = resolvePlugin(app, rawPlugin, config)
+  const plugin = resolvePluginObject(app, rawPlugin, config)
 
   log(`use plugin ${chalk.magenta(plugin.name)}`)
 

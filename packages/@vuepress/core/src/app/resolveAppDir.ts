@@ -9,9 +9,9 @@ export const createAppDirFunction = (baseDir: string): AppDirFunction => {
 }
 
 /**
- * Create directory utils for vuepress app
+ * Resolve directory utils for vuepress app
  */
-export const createAppDir = (options: AppOptions): AppDir => {
+export const resolveAppDir = (options: AppOptions): AppDir => {
   const cache = createAppDirFunction(options.cache)
   const temp = createAppDirFunction(options.temp)
   const source = createAppDirFunction(options.source)

@@ -5,10 +5,10 @@ import type { App, Page } from '../types'
 const log = debug('vuepress:core/app')
 
 /**
- * Create pages for vuepress app
+ * Resolve pages for vuepress app
  */
-export const createAppPages = async (app: App): Promise<Page[]> => {
-  log('createAppPages start')
+export const resolveAppPages = async (app: App): Promise<Page[]> => {
+  log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
   const pageFilePaths = await globby(app.options.pagePatterns, {
@@ -43,7 +43,7 @@ export const createAppPages = async (app: App): Promise<Page[]> => {
     )
   }
 
-  log('createAppPages finish')
+  log('resolveAppPages finish')
 
   return pages
 }

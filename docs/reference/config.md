@@ -149,7 +149,7 @@ Rendered as：
 
 - Type: `string`
 
-- Default: `'@vuepress/default'`
+- Default: `'@vuepress/theme-default'`
 
 - Details:
 
@@ -204,7 +204,7 @@ module.exports = {
 
 - Type: `string`
 
-- Default: `'@vuepress/webpack'`
+- Default: `'@vuepress/bundler-vite'`
 
 - Details:
 
@@ -216,7 +216,7 @@ module.exports = {
   - [Guide > Bundler](../guide/bundler.md)
 
 ::: tip
-When using [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package, the default bundler will be set to `'@vuepress/vite'`.
+When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package, the default bundler will be set to `'@vuepress/bundler-webpack'`.
 :::
 
 ### bundlerConfig
@@ -234,7 +234,7 @@ When using [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package,
   - [Bundlers > Webpack](./bundler/webpack.md)
   - [Bundlers > Vite](./bundler/vite.md)
 
-## Directory Config
+## Common Config
 
 ### dest
 
@@ -278,6 +278,106 @@ When using [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package,
 
 - Also see:
   - [Guide > Assets > Public Files](../guide/assets.md#public-files)
+
+### debug
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Enable debug mode or not.
+
+  This would be helpful for developers. Also, we are using [debug](https://github.com/visionmedia/debug) package for debug logging, which can be enabled via `DEBUG=vuepress*` environment variable.
+
+### pagePatterns
+
+- Type: `string[]`
+
+- Default: `['**/*.md', '!.vuepress', '!node_modules']`
+
+- Details:
+
+  Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
+
+## Dev Config
+
+### host
+
+- Type: `string`
+
+- Default: `'0.0.0.0'`
+
+- Details:
+
+  Specify the host to use for the dev server.
+
+### port
+
+- Type: `number`
+
+- Default: `8080`
+
+- Details:
+
+  Specify the port to use for the dev server.
+
+### open
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Whether to open the browser after dev-server had been started.
+
+### templateDev
+
+- Type: `string`
+
+- Default: `'@vuepress/client/templates/index.dev.html'`
+
+- Details:
+
+  Specify the HTML template to be used for dev.
+
+## Build Config
+
+### shouldPreload
+
+- Type: `((file: string, type: string) => boolean)) | boolean`
+
+- Default: `true`
+
+- Details:
+
+  A function to control what files should have `<link rel="preload">` resource hints generated. Set to `true` or `false` to enable or disable totally.
+
+  By default, only those files that are required by current page will be preloaded. So you can keep it `true` in most cases.
+
+### shouldPrefetch
+
+- Type: `((file: string, type: string) => boolean)) | boolean`
+
+- Default: `false`
+
+- Details:
+
+  A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
+
+  If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
+
+### templateBuild
+
+- Type: `string`
+
+- Default: `'@vuepress/client/templates/index.build.html'`
+
+- Details:
+
+  Specify the HTML template to be used for build.
 
 ## Markdown Config
 
@@ -633,104 +733,6 @@ You should not configure it unless you understand what it is for.
   For example, if you set this option to `[2]`, only `##` headers will be included.
 
   Should be a subset of [markdown.anchor.level](#markdownanchor) option to ensure the links in the TOC are existed.
-
-## Development Config
-
-### debug
-
-- Type: `boolean`
-
-- Default: `false`
-
-- Details:
-
-  Enable debug mode or not.
-
-  This would be helpful for developers. Also, we are using [debug](https://github.com/visionmedia/debug) package for debug logging, which can be enabled via `DEBUG=vuepress*` environment variable.
-
-### host
-
-- Type: `string`
-
-- Default: `'0.0.0.0'`
-
-- Details:
-
-  Specify the host to use for the dev server.
-
-### port
-
-- Type: `number`
-
-- Default: `8080`
-
-- Details:
-
-  Specify the port to use for the dev server.
-
-### open
-
-- Type: `boolean`
-
-- Default: `false`
-
-- Details:
-
-  Whether to open the browser after dev-server had been started.
-
-### pagePatterns
-
-- Type: `string[]`
-
-- Default: `['**/*.md', '!.vuepress', '!node_modules']`
-
-- Details:
-
-  Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
-
-### templateDev
-
-- Type: `string`
-
-- Default: `'@vuepress/client/templates/index.dev.html'`
-
-- Details:
-
-  Specify the HTML template to be used for dev.
-
-### templateSSR
-
-- Type: `string`
-
-- Default: `'@vuepress/client/templates/index.ssr.html'`
-
-- Details:
-
-  Specify the HTML template to be used for build (SSR).
-
-### shouldPreload
-
-- Type: `((file: string, type: string) => boolean)) | boolean`
-
-- Default: `true`
-
-- Details:
-
-  A function to control what files should have `<link rel="preload">` resource hints generated. Set to `true` or `false` to enable or disable totally.
-
-  By default, only those files that are required by current page will be preloaded. So you can keep it `true` in most cases.
-
-### shouldPrefetch
-
-- Type: `((file: string, type: string) => boolean)) | boolean`
-
-- Default: `false`
-
-- Details:
-
-  A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
-
-  If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
 
 ## Plugin Config
 

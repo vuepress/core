@@ -4,15 +4,15 @@ import type { App, Plugin, PluginObject, PluginOptions } from '../types'
 import { resolvePluginModule } from './resolvePluginModule'
 
 /**
- * Resolve a plugin according to name / path / module and config
+ * Resolve a plugin object according to name / path / module and config
  */
-export const resolvePlugin = <
+export const resolvePluginObject = <
   T extends PluginOptions = PluginOptions,
   U extends PluginObject = PluginObject
 >(
   app: App,
   plugin: Plugin<T, U> | string,
-  config: Partial<T> = {}
+  pluginConfig: Partial<T> = {}
 ): U => {
   const pluginModule = isString(plugin)
     ? resolvePluginModule<T, U>(plugin)
@@ -23,7 +23,7 @@ export const resolvePlugin = <
   }
 
   const pluginObject = isFunction(pluginModule)
-    ? pluginModule(config, app)
+    ? pluginModule(pluginConfig, app)
     : pluginModule
 
   return pluginObject as U

@@ -1,4 +1,4 @@
-import { createBaseApp, resolveTheme } from '@vuepress/core'
+import { createBaseApp, resolveThemeObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const fixtures = (...args: string[]) =>
@@ -8,9 +8,9 @@ const app = createBaseApp({
   theme: fixtures('themes/empty.js'),
 })
 
-describe('core > app > resolveTheme', () => {
+describe('core > app > resolveThemeObject', () => {
   it('should resolve theme by absolute path correctly', () => {
-    expect(resolveTheme(app, fixtures('themes/empty.js'))).toEqual(
+    expect(resolveThemeObject(app, fixtures('themes/empty.js'), {})).toEqual(
       require(fixtures('themes/empty.js'))
     )
   })
@@ -20,7 +20,7 @@ describe('core > app > resolveTheme', () => {
     console.error = jest.fn()
 
     expect(() => {
-      resolveTheme(app, fixtures('themes/4-0-4.js'))
+      resolveThemeObject(app, fixtures('themes/4-0-4.js'), {})
     }).toThrow()
     expect(console.error).toHaveBeenCalled()
 
@@ -32,7 +32,7 @@ describe('core > app > resolveTheme', () => {
     console.error = jest.fn()
 
     expect(() => {
-      resolveTheme(app, '4-0-4')
+      resolveThemeObject(app, '4-0-4', {})
     }).toThrow()
     expect(console.error).toHaveBeenCalled()
 

@@ -1,20 +1,20 @@
-import { createAppOptions } from '@vuepress/core'
+import { resolveAppOptions } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-describe('core > app > createAppOptions', () => {
+describe('core > app > resolveAppOptions', () => {
   it('should create app options with default values', () => {
     const source = '/foo'
 
-    expect(createAppOptions({ source })).toEqual({
+    expect(resolveAppOptions({ source })).toEqual({
       base: '/',
       lang: 'en-US',
       title: '',
       description: '',
       head: [],
       locales: {},
-      theme: '@vuepress/default',
+      theme: '@vuepress/theme-default',
       themeConfig: {},
-      bundler: '@vuepress/vite',
+      bundler: '@vuepress/bundler-vite',
       bundlerConfig: {},
       source,
       dest: path.resolve(source, '.vuepress/dist'),
@@ -29,8 +29,8 @@ describe('core > app > createAppOptions', () => {
       templateDev: path.normalize(
         require.resolve('@vuepress/client/templates/index.dev.html')
       ),
-      templateSSR: path.normalize(
-        require.resolve('@vuepress/client/templates/index.ssr.html')
+      templateBuild: path.normalize(
+        require.resolve('@vuepress/client/templates/index.build.html')
       ),
       shouldPreload: true,
       shouldPrefetch: false,

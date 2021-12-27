@@ -2,9 +2,9 @@ import { fs } from '@vuepress/utils'
 import type { AppDir, AppWriteTemp } from '../types'
 
 /**
- * Create write temp file util for vuepress app
+ * Resolve write temp file util for vuepress app
  */
-export const createAppWriteTemp = (dir: AppDir): AppWriteTemp => {
+export const resolveAppWriteTemp = (dir: AppDir): AppWriteTemp => {
   const tempCache = new Map<string, string>()
 
   const writeTemp: AppWriteTemp = async (file: string, content: string) => {

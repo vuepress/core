@@ -148,7 +148,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/default'`
+- 默认值： `'@vuepress/theme-default'`
 
 - 详情：
 
@@ -203,7 +203,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/webpack'`
+- 默认值： `'@vuepress/bundler-vite'`
 
 - 详情：
 
@@ -215,7 +215,7 @@ module.exports = {
   - [指南 > 打包工具](../guide/bundler.md)
 
 ::: tip
-在使用 [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) Package 时，默认的打包工具会被设置为 `'@vuepress/vite'` 。
+在使用 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) Package 时，默认的打包工具会被设置为 `'@vuepress/bundler-webpack'` 。
 :::
 
 ### bundlerConfig
@@ -233,7 +233,7 @@ module.exports = {
   - [打包工具 > Webpack](./bundler/webpack.md)
   - [打包工具 > Vite](./bundler/vite.md)
 
-## 目录配置
+## 通用配置项
 
 ### dest
 
@@ -277,6 +277,106 @@ module.exports = {
 
 - 参考：
   - [指南 > 静态资源 > Public 文件](../guide/assets.md#public-文件)
+
+### debug
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 Debug 模式。
+
+  该配置项主要提供给开发者使用。同时，我们使用了 [debug](https://github.com/visionmedia/debug) 模块打印 Debug 日志，可以通过 `DEBUG=vuepress*` 环境变量来启用。
+
+### pagePatterns
+
+- 类型： `string[]`
+
+- 默认值： `['**/*.md', '!.vuepress', '!node_modules']`
+
+- 详情：
+
+  指定页面文件的 Patterns 。这些 Patterns 是相对于 Source 目录的。
+
+## Dev 配置项
+
+### host
+
+- 类型： `string`
+
+- 默认值： `'0.0.0.0'`
+
+- 详情：
+
+  指定开发服务器的主机名。
+
+### port
+
+- 类型： `number`
+
+- 默认值： `8080`
+
+- 详情：
+
+  指定开发服务器的端口号。
+
+### open
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否在开发服务器启动后打开浏览器。
+
+### templateDev
+
+- 类型： `string`
+
+- 默认值： `'@vuepress/client/templates/index.dev.html'`
+
+- 详情：
+
+  指定开发时使用的 HTML 模板。
+
+## Build 配置项
+
+### shouldPreload
+
+- 类型： `((file: string, type: string) => boolean)) | boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
+
+  默认情况下，只有当前页面所需的文件会被预加载。所以在绝大部分情况下，你只需要使用 `true` 就可以了。
+
+### shouldPrefetch
+
+- 类型： `((file: string, type: string) => boolean)) | boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
+
+  如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
+
+### templateBuild
+
+- 类型： `string`
+
+- 默认值： `'@vuepress/client/templates/index.build.html'`
+
+- 详情：
+
+  指定构建时使用的 HTML 模板。
 
 ## Markdown 配置
 
@@ -632,104 +732,6 @@ module.exports = {
   举例来说，如果你把该选项设为 `[2]` ，那么只会包含 `##` 子标题。
 
   它应该是 [markdown.anchor.level](#markdownanchor) 选项的一个子集，以便确保目录中的链接是存在的。
-
-## 开发配置项
-
-### debug
-
-- 类型： `boolean`
-
-- 默认值： `false`
-
-- 详情：
-
-  是否启用 Debug 模式。
-
-  该配置项主要提供给开发者使用。同时，我们使用了 [debug](https://github.com/visionmedia/debug) 模块打印 Debug 日志，可以通过 `DEBUG=vuepress*` 环境变量来启用。
-
-### host
-
-- 类型： `string`
-
-- 默认值： `'0.0.0.0'`
-
-- 详情：
-
-  指定开发服务器的主机名。
-
-### port
-
-- 类型： `number`
-
-- 默认值： `8080`
-
-- 详情：
-
-  指定开发服务器的端口号。
-
-### open
-
-- 类型： `boolean`
-
-- 默认值： `false`
-
-- 详情：
-
-  是否在开发服务器启动后打开浏览器。
-
-### pagePatterns
-
-- 类型： `string[]`
-
-- 默认值： `['**/*.md', '!.vuepress', '!node_modules']`
-
-- 详情：
-
-  指定页面文件的 Patterns 。这些 Patterns 是相对于 Source 目录的。
-
-### templateDev
-
-- 类型： `string`
-
-- 默认值： `'@vuepress/client/templates/index.dev.html'`
-
-- 详情：
-
-  指定开发时使用的 HTML 模板。
-
-### templateSSR
-
-- 类型： `string`
-
-- 默认值： `'@vuepress/client/templates/index.ssr.html'`
-
-- 详情：
-
-  指定构建时 (SSR) 使用的 HTML 模板。
-
-### shouldPreload
-
-- 类型： `((file: string, type: string) => boolean)) | boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
-
-  默认情况下，只有当前页面所需的文件会被预加载。所以在绝大部分情况下，你只需要使用 `true` 就可以了。
-
-### shouldPrefetch
-
-- 类型： `((file: string, type: string) => boolean)) | boolean`
-
-- 默认值： `false`
-
-- 详情：
-
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
-
-  如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
 
 ## 插件配置
 
