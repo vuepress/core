@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "2.0.0-beta.29",
+  "version": "2.0.0-beta.32",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress-plugin",
@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@types/markdown-it": "^12.2.3",
-    "@vuepress/core": "2.0.0-beta.29",
-    "@vuepress/markdown": "2.0.0-beta.29",
-    "@vuepress/shared": "2.0.0-beta.28",
-    "@vuepress/utils": "2.0.0-beta.28",
+    "@vuepress/core": "2.0.0-beta.32",
+    "@vuepress/markdown": "2.0.0-beta.32",
+    "@vuepress/shared": "2.0.0-beta.32",
+    "@vuepress/utils": "2.0.0-beta.32",
     "markdown-it": "^12.2.0",
     "markdown-it-container": "^3.0.0"
   },

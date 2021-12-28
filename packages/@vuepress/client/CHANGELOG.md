@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
+
+
+### Code Refactoring
+
+* **core:** normalize core app structure ([6952acf](https://github.com/vuepress/vuepress-next/commit/6952acfeee4575e53ce468c3d180dc9f623d6cd1))
+
+
+### BREAKING CHANGES
+
+* **core:** config `templateSSR` is renamed to `templateBuild`
+
+
+
+
+
 # [2.0.0-beta.29](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.28...v2.0.0-beta.29) (2021-12-18)
 
 

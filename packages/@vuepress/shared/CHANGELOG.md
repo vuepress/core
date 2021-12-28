@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
+
+
+### Features
+
+* **shared:** improve types of site base ([66943fb](https://github.com/vuepress/vuepress-next/commit/66943fb185acbc90efbc3c1509a02c9c22963393))
+
+
+
+
+
 # [2.0.0-beta.28](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.27...v2.0.0-beta.28) (2021-12-17)
 
 

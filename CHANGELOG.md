@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid transition on fragment child (close [#592](https://github.com/vuepress/vuepress-next/issues/592)) ([10e5cc0](https://github.com/vuepress/vuepress-next/commit/10e5cc06b96f9dc2fc8ba2c8bdc83f7177e213bc))
+
+
+### Code Refactoring
+
+* **core:** normalize core app structure ([6952acf](https://github.com/vuepress/vuepress-next/commit/6952acfeee4575e53ce468c3d180dc9f623d6cd1))
+
+
+### Features
+
+* **shared:** improve types of site base ([66943fb](https://github.com/vuepress/vuepress-next/commit/66943fb185acbc90efbc3c1509a02c9c22963393))
+
+
+### BREAKING CHANGES
+
+* **core:** config `templateSSR` is renamed to `templateBuild`
+
+
+
+
+
 # [2.0.0-beta.31](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.30...v2.0.0-beta.31) (2021-12-24)
 
 
