@@ -4,17 +4,11 @@ import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
-import type {
-  NavbarGroup,
-  NavbarItem,
-  NavGroup,
-  NavLink as NavLinkType,
-  ResolvedNavbarItem,
-} from '../../shared'
+import type { NavbarGroup, NavbarItem, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
-import DropdownLink from './DropdownLink.vue'
-import NavLink from './NavLink.vue'
+import AutoLink from './AutoLink.vue'
+import NavbarDropdown from './NavbarDropdown.vue'
 
 /**
  * Get navbar config of select language dropdown
@@ -35,7 +29,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     const currentFullPath = router.currentRoute.value.fullPath
 
     const languageDropdown: ResolvedNavbarItem = {
-      text: themeLocale.value.selectLanguageText ?? 'unkown language',
+      text: themeLocale.value.selectLanguageText ?? 'unknown language',
       ariaLabel: themeLocale.value.selectLanguageAriaLabel ?? 'unkown language',
       children: localePaths.map((targetLocalePath) => {
         // target locale config of this langauge link
@@ -151,10 +145,10 @@ const navbarLinks = computed(() => [
 </script>
 
 <template>
-  <nav v-if="navbarLinks.length" class="navbar-links">
-    <div v-for="item in navbarLinks" :key="item.text" class="navbar-links-item">
-      <DropdownLink v-if="item.children" :item="item" />
-      <NavLink v-else :item="item" />
+  <nav v-if="navbarLinks.length" class="navbar-items">
+    <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
+      <NavbarDropdown v-if="item.children" :item="item" />
+      <AutoLink v-else :item="item" />
     </div>
   </nav>
 </template>

@@ -87,7 +87,6 @@ const isActive = computed(() => {
 <template>
   <RouterLink
     v-if="isRouterLink"
-    class="nav-link"
     :class="{ 'router-link-active': isActive }"
     :to="item.link"
     :aria-label="linkAriaLabel"
@@ -99,7 +98,7 @@ const isActive = computed(() => {
   </RouterLink>
   <a
     v-else
-    class="nav-link external"
+    class="external-link"
     :href="item.link"
     :rel="linkRel"
     :target="linkTarget"

@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useThemeLocaleData } from '../composables'
 import NavbarBrand from './NavbarBrand.vue'
-import NavbarLinks from './NavbarLinks.vue'
+import NavbarItems from './NavbarItems.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
@@ -65,9 +65,9 @@ function getCssValue(el: HTMLElement | null, property: string): number {
       <NavbarBrand />
     </span>
 
-    <div class="navbar-links-wrapper" :style="linksWrapperStyle">
+    <div class="navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
-      <NavbarLinks class="can-hide" />
+      <NavbarItems class="can-hide" />
       <slot name="after" />
       <ToggleDarkModeButton v-if="enableDarkMode" />
       <NavbarSearch />

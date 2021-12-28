@@ -10,7 +10,7 @@ import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
 import { useDarkMode } from '../composables'
-import NavLink from './NavLink.vue'
+import AutoLink from './AutoLink.vue'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
@@ -85,7 +85,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     </p>
 
     <p v-if="actions.length" class="actions">
-      <NavLink
+      <AutoLink
         v-for="action in actions"
         :key="action.text"
         class="action-button"

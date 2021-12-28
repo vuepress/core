@@ -21,7 +21,7 @@
     position: relative;
   }
 
-  .navbar-links-wrapper {
+  .navbar-items-wrapper {
     display: flex;
     position: absolute;
     box-sizing: border-box;
@@ -57,9 +57,9 @@
 }
 
 /**
- * navbar-links
+ * navbar-items
  */
-.navbar-links {
+.navbar-items {
   display: inline-block;
 
   a {
@@ -73,7 +73,7 @@
     }
   }
 
-  .navbar-links-item {
+  .navbar-item {
     position: relative;
     display: inline-block;
     margin-left: 1.5rem;
@@ -86,22 +86,22 @@
 }
 
 @media (max-width: $MQMobile) {
-  .navbar-links {
-    .navbar-links-item {
+  .navbar-items {
+    .navbar-item {
       margin-left: 0;
     }
   }
 }
 
 @media (min-width: $MQMobile) {
-  .navbar-links a {
+  .navbar-items a {
     &:hover,
     &.router-link-active {
       color: var(--c-text);
     }
   }
 
-  .navbar-links-item > a:not(.external) {
+  .navbar-item > a {
     &:hover,
     &.router-link-active {
       margin-bottom: -2px;

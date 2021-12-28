@@ -9,13 +9,13 @@ import type { ComputedRef } from 'vue'
 import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
-  NavLink as NavLinkType,
+  NavLink,
 } from '../../shared'
 import { useThemeLocaleData } from '../composables'
 import { resolveEditLink } from '../utils'
-import NavLink from './NavLink.vue'
+import AutoLink from './AutoLink.vue'
 
-const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
+const useEditNavLink = (): ComputedRef<null | NavLink> => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
@@ -101,7 +101,7 @@ const contributors = useContributors()
 <template>
   <footer class="page-meta">
     <div v-if="editNavLink" class="meta-item edit-link">
-      <NavLink class="meta-item-label" :item="editNavLink" />
+      <AutoLink class="meta-item-label" :item="editNavLink" />
     </div>
 
     <div v-if="lastUpdated" class="meta-item last-updated">

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NavbarLinks from './NavbarLinks.vue'
+import NavbarItems from './NavbarItems.vue'
 import SidebarItems from './SidebarItems.vue'
 </script>
 
 <template>
   <aside class="sidebar">
-    <NavbarLinks />
+    <NavbarItems />
     <slot name="top" />
     <SidebarItems />
     <slot name="bottom" />

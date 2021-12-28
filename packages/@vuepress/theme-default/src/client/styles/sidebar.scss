@@ -12,7 +12,7 @@
     display: inline-block;
   }
 
-  .navbar-links {
+  .navbar-items {
     display: none;
     border-bottom: 1px solid var(--c-border);
     transition: border-color var(--t-color);
@@ -22,7 +22,7 @@
       font-weight: 600;
     }
 
-    .navbar-links-item {
+    .navbar-item {
       display: block;
       line-height: 1.25rem;
       font-size: 1.1em;
@@ -37,12 +37,12 @@
 
 @media (max-width: $MQMobile) {
   .sidebar {
-    .navbar-links {
+    .navbar-items {
       display: block;
 
-      .dropdown-wrapper
-        .nav-dropdown
-        .dropdown-item
+      .navbar-dropdown-wrapper
+        .navbar-dropdown
+        .navbar-dropdown-item
         a.router-link-active::after {
         top: calc(1rem - 2px);
       }

@@ -4,8 +4,8 @@ import type { PropType } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
 import { isActiveSidebarItem } from '../utils'
+import AutoLink from './AutoLink.vue'
 import DropdownTransition from './DropdownTransition.vue'
-import NavLink from './NavLink.vue'
 
 const props = defineProps({
   item: {
@@ -50,7 +50,7 @@ if (item.value.collapsible) {
 
 <template>
   <li>
-    <NavLink v-if="item.link" :class="itemClass" :item="item" />
+    <AutoLink v-if="item.link" :class="itemClass" :item="item" />
     <p v-else :class="itemClass" @click="onClick">
       {{ item.text }}
       <span

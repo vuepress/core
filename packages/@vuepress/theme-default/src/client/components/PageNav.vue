@@ -5,18 +5,18 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import type {
   DefaultThemeNormalPageFrontmatter,
-  NavLink as NavLinkType,
+  NavLink,
   ResolvedSidebarItem,
 } from '../../shared'
 import { useNavLink, useSidebarItems } from '../composables'
-import NavLink from './NavLink.vue'
+import AutoLink from './AutoLink.vue'
 
 /**
  * Resolve `prev` or `next` config from frontmatter
  */
 const resolveFromFrontmatterConfig = (
   conf: unknown
-): null | false | NavLinkType => {
+): null | false | NavLink => {
   if (conf === false) {
     return null
   }
@@ -25,7 +25,7 @@ const resolveFromFrontmatterConfig = (
     return useNavLink(conf)
   }
 
-  if (isPlainObject<NavLinkType>(conf)) {
+  if (isPlainObject<NavLink>(conf)) {
     return conf
   }
 
@@ -39,14 +39,14 @@ const resolveFromSidebarItems = (
   sidebarItems: ResolvedSidebarItem[],
   currentPath: string,
   offset: number
-): null | NavLinkType => {
+): null | NavLink => {
   const index = sidebarItems.findIndex((item) => item.link === currentPath)
   if (index !== -1) {
     const targetItem = sidebarItems[index + offset]
     if (!targetItem?.link) {
       return null
     }
-    return targetItem as NavLinkType
+    return targetItem as NavLink
   }
 
   for (const item of sidebarItems) {
@@ -92,11 +92,11 @@ const nextNavLink = computed(() => {
   <nav v-if="prevNavLink || nextNavLink" class="page-nav">
     <p class="inner">
       <span v-if="prevNavLink" class="prev">
-        <NavLink :item="prevNavLink" />
+        <AutoLink :item="prevNavLink" />
       </span>
 
       <span v-if="nextNavLink" class="next">
-        <NavLink :item="nextNavLink" />
+        <AutoLink :item="nextNavLink" />
       </span>
     </p>
   </nav>

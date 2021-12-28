@@ -14,7 +14,7 @@ export interface NavGroup<T> extends NavItem {
 }
 
 /**
- * Props for `<NavLink>`
+ * Props for `<AutoLink>`
  */
 export interface NavLink extends NavItem {
   link: string

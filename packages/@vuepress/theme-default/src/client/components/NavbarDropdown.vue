@@ -2,13 +2,13 @@
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
-import type { NavGroup, NavItem } from '../../shared'
+import type { NavbarItem, ResolvedNavbarItem } from '../../shared'
+import AutoLink from './AutoLink.vue'
 import DropdownTransition from './DropdownTransition.vue'
-import NavLink from './NavLink.vue'
 
 const props = defineProps({
   item: {
-    type: Object as PropType<NavGroup<NavItem>>,
+    type: Object as PropType<Exclude<ResolvedNavbarItem, NavbarItem>>,
     required: true,
   },
 })
@@ -50,9 +50,9 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
 </script>
 
 <template>
-  <div class="dropdown-wrapper" :class="{ open }">
+  <div class="navbar-dropdown-wrapper" :class="{ open }">
     <button
-      class="dropdown-title"
+      class="navbar-dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
@@ -62,7 +62,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     </button>
 
     <button
-      class="mobile-dropdown-title"
+      class="navbar-dropdown-title-mobile"
       type="button"
       :aria-label="dropdownAriaLabel"
       @click="open = !open"
@@ -72,15 +72,15 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     </button>
 
     <DropdownTransition>
-      <ul v-show="open" class="nav-dropdown">
+      <ul v-show="open" class="navbar-dropdown">
         <li
-          v-for="(child, index) in item.children"
-          :key="child.link || index"
-          class="dropdown-item"
+          v-for="child in item.children"
+          :key="child.text"
+          class="navbar-dropdown-item"
         >
           <template v-if="child.children">
-            <h4 class="dropdown-subtitle">
-              <NavLink
+            <h4 class="navbar-dropdown-subtitle">
+              <AutoLink
                 v-if="child.link"
                 :item="child"
                 @focusout="
@@ -93,13 +93,13 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
               <span v-else>{{ child.text }}</span>
             </h4>
 
-            <ul class="dropdown-subitem-wrapper">
+            <ul class="navbar-dropdown-subitem-wrapper">
               <li
                 v-for="grandchild in child.children"
                 :key="grandchild.link"
-                class="dropdown-subitem"
+                class="navbar-dropdown-subitem"
               >
-                <NavLink
+                <AutoLink
                   :item="grandchild"
                   @focusout="
                     isLastItemOfArray(grandchild, child.children) &&
@@ -112,7 +112,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
           </template>
 
           <template v-else>
-            <NavLink
+            <AutoLink
               :item="child"
               @focusout="
                 isLastItemOfArray(child, item.children) && (open = false)
