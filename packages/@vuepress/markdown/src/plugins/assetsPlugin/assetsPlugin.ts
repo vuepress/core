@@ -39,7 +39,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
     (tokens, idx, options, env: MarkdownEnv, self) => {
       // replace the original link with resolved link
       tokens[idx].content = tokens[idx].content.replace(
-        /^( *<img\b.*src=")([^"]*)(")/s,
+        /(<img\b.*?src=")([^"]*)(")/gs,
         (_, prefix, link, suffix) =>
           `${prefix}${resolveLink(link, relativePathPrefix, env)}${suffix}`
       )
