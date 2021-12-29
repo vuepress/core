@@ -1,9 +1,13 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ES2020",
     "rootDir": "./src",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "paths": {
+      "@internal/themeData": ["./src/client/themeData.d.ts"]
+    },
+    "types": ["@vuepress/client/types", "webpack-env", "vite/client"]
   },
   "include": ["./src/client", "./src/shared"]
 }

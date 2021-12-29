@@ -24,6 +24,7 @@ module.exports = {
     'ts-jest': {
       tsconfig: {
         ...compilerOptions,
+        module: 'CommonJS',
         sourceMap: true,
       },
     },

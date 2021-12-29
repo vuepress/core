@@ -12,7 +12,7 @@ module.exports = {
       files: ['*.ts', '*.vue'],
       extends: 'vuepress-typescript',
       parserOptions: {
-        project: ['tsconfig.eslint.json'],
+        project: ['tsconfig.json'],
       },
       rules: {
         '@typescript-eslint/ban-ts-comment': 'off',
