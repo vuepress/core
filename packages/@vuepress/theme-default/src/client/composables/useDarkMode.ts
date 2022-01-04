@@ -26,7 +26,7 @@ export const useDarkMode = (): DarkModeRef => {
 export const setupDarkMode = (): void => {
   const themeLocale = useThemeLocaleData()
   const isDarkPreferred = usePreferredDark()
-  const darkStorage = useStorage('vuepress-color-scheme', 'auto')
+  const darkStorage = useStorageSafe('vuepress-color-scheme', 'auto')
 
   const isDarkMode = computed<boolean>({
     get() {
@@ -52,6 +52,19 @@ export const setupDarkMode = (): void => {
   provide(darkModeSymbol, isDarkMode)
 
   updateHtmlDarkClass(isDarkMode)
+}
+
+function useStorageSafe(key: string, initialValue: string) {
+  try {
+    return useStorage(key, initialValue)
+  } catch (err) {
+    if (err instanceof DOMException) {
+      return {
+        value: initialValue
+      };
+    }
+    throw err;
+  }
 }
 
 export const updateHtmlDarkClass = (isDarkMode: DarkModeRef): void => {
