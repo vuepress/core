@@ -7,7 +7,7 @@ import {
   resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from '../../config'
-import { resolveBuildAppConfig } from './resolveBuildAppConfig'
+import { resolveAppConfigFromCommandOptions } from '../../utils'
 import type { BuildCommand } from './types'
 
 const log = debug('vuepress:cli/build')
@@ -22,7 +22,10 @@ export const createBuild =
     }
 
     // resolve base app config
-    const cliAppConfig = resolveBuildAppConfig(sourceDir, commandOptions)
+    const cliAppConfig = resolveAppConfigFromCommandOptions(
+      sourceDir,
+      commandOptions
+    )
 
     // resolve user config file
     const userConfigPath = commandOptions.config

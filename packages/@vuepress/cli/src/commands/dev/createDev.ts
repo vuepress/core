@@ -7,7 +7,7 @@ import {
   resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from '../../config'
-import { resolveDevAppConfig } from './resolveDevAppConfig'
+import { resolveAppConfigFromCommandOptions } from '../../utils'
 import { resolveDevUserConfig } from './resolveDevUserConfig'
 import type { DevCommand } from './types'
 import { watchPageFiles } from './watchPageFiles'
@@ -27,7 +27,10 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     }
 
     // resolve app config from cli options
-    const cliAppConfig = resolveDevAppConfig(sourceDir, commandOptions)
+    const cliAppConfig = resolveAppConfigFromCommandOptions(
+      sourceDir,
+      commandOptions
+    )
 
     // resolve user config file
     const userConfigPath = commandOptions.config
