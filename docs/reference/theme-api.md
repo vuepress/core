@@ -27,6 +27,38 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 
 ## Theme Specific Options
 
+### extends
+
+- Type: `string`
+
+- Details:
+
+  The name of the theme to inherit.
+
+  All of the Theme API of the parent theme will be inherited, but the child theme will not override the parent theme directly. Theme specific options will override according to following rules:
+
+  - [layouts](#layouts): When a layout with the same name is registered in both child and parent theme, the layout of the child theme will have a higher priority.
+  - [plugins](#plugins): When a same plugin is used in both child and parent theme, if the plugin does not support to be used multiple times, only the one used in the child theme will take effect.
+  - [templateBuild](#templatebuild) / [templateDev](#templatedev): Child theme templates will override parent theme templates.
+
+  Multi-level inheritance is supported, i.e. theme B could be extended from theme A, and then theme C could be extended from theme B. In other words, a theme could have a parent theme, a grandparent theme and so on.
+
+- Example:
+
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
+  // inherit the default theme
+  extends: '@vuepress/theme-default',
+
+  // override the `404` layout
+  layouts: {
+    404: path.resolve(__dirname, 'path/to/404.vue'),
+  },
+}
+```
+
 ### layouts
 
 - Type: `string | Record<string, string>`
@@ -87,34 +119,28 @@ module.exports = {
 - Also see:
   - [Config > plugins](./config.md#plugins)
 
-### extends
+### templateBuild
 
 - Type: `string`
 
 - Details:
 
-  The name of the theme to inherit.
+  Specify the HTML template for build.
 
-  All of the Theme API of the parent theme will be inherited, but the child theme will not override the parent theme.
+  It would override the default value of [templateBuild](./config.md#templatebuild), but could be overridden by user config.
 
-  When a layout with the same name is registered in both child and parent theme, the layout of the child theme will have a higher priority.
+- Also see:
+  - [Config > templateBuild](./config.md#templatebuild)
 
-  When a same plugin is used in both child and parent theme, if the plugin does not support to be used multiple times, only the one used in the child theme will take effect.
+### templateDev
 
-  Multi-level inheritance is supported.
+- Type: `string`
 
-- Example:
+- Details:
 
-```js
-const { path } = require('@vuepress/utils')
+  Specify the HTML template for dev.
 
-module.exports = {
-  // inherit the default theme
-  extends: '@vuepress/theme-default',
+  It would override the default value of [templateDev](./config.md#templatedev), but could be overridden by user config.
 
-  // override the `404` layout
-  layouts: {
-    404: path.resolve(__dirname, 'path/to/404.vue'),
-  },
-}
-```
+- Also see:
+  - [Config > templateDev](./config.md#templatedev)

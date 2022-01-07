@@ -9,8 +9,8 @@ import { resolveAppOptions } from './resolveAppOptions'
 import { resolveAppSiteData } from './resolveAppSiteData'
 import { resolveAppVersion } from './resolveAppVersion'
 import { resolveAppWriteTemp } from './resolveAppWriteTemp'
-import { resolvePluginsFromConfig } from './resolvePluginsFromConfig'
-import { resolveThemeInfo } from './resolveThemeInfo'
+import { setupAppPlugins } from './setupAppPlugins'
+import { setupAppTheme } from './setupAppTheme'
 
 /**
  * Create vuepress app
@@ -41,14 +41,11 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
     prepare: () => appPrepare(app),
   } as App
 
-  // resolve theme info and set app layouts
-  const themeInfo = resolveThemeInfo(app, options.theme, options.themeConfig)
-  app.layouts = themeInfo.layouts
-
-  // resolve plugins
-  const plugins = resolvePluginsFromConfig(app, options.plugins)
-  // use theme plugins before user plugins, so user plugins could override theme plugins
-  ;[...themeInfo.plugins, ...plugins].forEach((plugin) => app.use(plugin))
+  // setup theme and plugins
+  // notice that we setup theme before plugins,
+  // so user plugins could override theme plugins
+  setupAppTheme(app, config)
+  setupAppPlugins(app)
 
   return app
 }

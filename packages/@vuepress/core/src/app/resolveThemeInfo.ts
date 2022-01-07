@@ -13,12 +13,14 @@ export const resolveThemeInfo = (
 ): ThemeInfo => {
   // resolve current theme info
   const themeObject = resolveThemeObject(app, theme, themeConfig)
-  const themeInfo = {
+  const themeInfo: ThemeInfo = {
     layouts: resolveThemeLayouts(themeObject.layouts),
     plugins: [
       ...resolvePluginsFromConfig(app, themeObject.plugins),
       themeObject,
     ],
+    templateBuild: themeObject.templateBuild,
+    templateDev: themeObject.templateDev,
   }
 
   // return if current theme does not have a parent theme
@@ -33,6 +35,8 @@ export const resolveThemeInfo = (
     themeConfig
   )
   return {
+    ...parentThemeInfo,
+    ...themeInfo,
     layouts: { ...parentThemeInfo.layouts, ...themeInfo.layouts },
     plugins: [...parentThemeInfo.plugins, ...themeInfo.plugins],
   }

@@ -27,6 +27,38 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
 ## 主题特定配置项
 
+### extends
+
+- 类型： `string`
+
+- 详情：
+
+  要继承的主题名称。
+
+  父主题的所有主题 API 都会被继承，但是子主题不会直接覆盖父主题。主题特定的配置项会根据以下规则进行覆盖：
+
+  - [layouts](#layouts)： 当在子主题和父主题中注册了具有相同名称的布局时，则子主题的布局将具有更高的优先级。
+  - [plugins](#plugins)： 当同一个插件在子主题和父主题中都被使用时，如果该插件不支持被多次使用，那么只有在子主题中使用的插件会生效。
+  - [templateBuild](#templatebuild) / [templateDev](#templatedev)： 子主题的模板会覆盖父主题的模板。
+
+  支持多级继承，即主题 B 可以继承主题 A ，然后主题 C 可以继承主题 B 。换句话说，一个主题可以有一个父主题、一个祖父主题等等。
+
+- 示例：
+
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
+  // 继承默认主题
+  extends: '@vuepress/theme-default',
+
+  // 覆盖 `404` 布局
+  layouts: {
+    404: path.resolve(__dirname, 'path/to/404.vue'),
+  },
+}
+```
+
 ### layouts
 
 - 类型： `string | Record<string, string>`
@@ -87,34 +119,28 @@ module.exports = {
 - 参考：
   - [配置 > plugins](./config.md#plugins)
 
-### extends
+### templateBuild
 
 - 类型： `string`
 
 - 详情：
 
-  要继承的主题名称。
+  指定构建时使用的 HTML 模板。
 
-  父主题的所有主题 API 都会被继承，但是子主题不会覆盖父主题。
+  它会覆盖 [templateBuild](./config.md#templatebuild) 的默认值，但是也会被用户配置覆盖。
 
-  当在子主题和父主题中注册了具有相同名称的布局时，则子主题的布局将具有更高的优先级。
+- 参考：
+  - [配置 > templateBuild](./config.md#templatebuild)
 
-  当同一个插件在子主题和父主题中都被使用时，如果该插件不支持被多次使用，那么只有在子主题中使用的插件会生效。
+### templateDev
 
-  支持多级继承。
+- 类型： `string`
 
-- 示例：
+- 详情：
 
-```js
-const { path } = require('@vuepress/utils')
+  指定开发时使用的 HTML 模板。
 
-module.exports = {
-  // 继承默认主题
-  extends: '@vuepress/theme-default',
+  它会覆盖 [templateDev](./config.md#templatedev) 的默认值，但是也会被用户配置覆盖。
 
-  // 覆盖 `404` 布局
-  layouts: {
-    404: path.resolve(__dirname, 'path/to/404.vue'),
-  },
-}
-```
+- 参考：
+  - [配置 > templateDev](./config.md#templatedev)

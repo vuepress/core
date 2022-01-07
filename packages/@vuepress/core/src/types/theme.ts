@@ -28,17 +28,35 @@ export type ThemeFunction<T extends ThemeConfig = ThemeConfig> = PluginFunction<
  * Vuepress theme object
  */
 export interface ThemeObject extends PluginObject {
-  // theme plugin should never be multiple
+  /**
+   * Theme plugin should never be multiple
+   */
   multiple?: false
 
-  // extended parent theme
+  /**
+   * Extended parent theme
+   */
   extends?: string
 
-  // specify the layouts directory or components map
+  /**
+   * Specify the layouts directory or components map
+   */
   layouts?: string | Record<string, string>
 
-  // allow using plugins in theme
+  /**
+   * Allow using plugins in theme
+   */
   plugins?: PluginConfig[]
+
+  /**
+   * Allow overriding default templateBuild
+   */
+  templateBuild?: string
+
+  /**
+   * Allow overriding default templateDev
+   */
+  templateDev?: string
 }
 
 /**
@@ -65,4 +83,14 @@ export interface ThemeInfo {
    * Plugins, including theme itself and plugins used by theme
    */
   plugins: PluginObject[]
+
+  /**
+   * Default build template
+   */
+  templateBuild?: string
+
+  /**
+   * Default dev template
+   */
+  templateDev?: string
 }
