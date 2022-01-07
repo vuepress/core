@@ -1,3 +1,3 @@
-module.exports = (options, app) => ({
+module.exports = (options) => ({
   name: `${options.pluginName}-from-path`,
 })
