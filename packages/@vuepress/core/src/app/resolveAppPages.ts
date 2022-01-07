@@ -18,17 +18,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
 
   // create pages from files
   const pages = await Promise.all(
-    pageFilePaths.map(async (filePath) => {
-      const pageOptions = { filePath }
-      // plugin hook: extendsPageOptions
-      await app.pluginApi.hooks.extendsPageOptions.process(pageOptions, app)
-
-      const page = await createPage(app, pageOptions)
-      // plugin hook: extendsPage
-      await app.pluginApi.hooks.extendsPage.process(page, app)
-
-      return page
-    })
+    pageFilePaths.map((filePath) => createPage(app, { filePath }))
   )
 
   // if there is no 404 page, add one

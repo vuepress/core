@@ -1,12 +1,14 @@
 import { createBaseApp, createPage } from '@vuepress/core'
-import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
-app.markdown = createMarkdown()
+
+beforeAll(async () => {
+  await app.init()
+})
 
 describe('core > page > createPage', () => {
   it('should throw an error', async () => {
@@ -73,5 +75,28 @@ describe('core > page > createPage', () => {
       `pages/${page.htmlFilePathRelative}.js`
     )
     expect(page.dataFileChunkName).toBe(page.key)
+  })
+
+  it('should be extended by plugin correctly', async () => {
+    const app = createBaseApp({
+      source: path.resolve(__dirname, 'fake-source'),
+      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+    })
+    app.use({
+      name: 'test',
+      extendsPageOptions: (options) => {
+        options.path = '/foo/'
+      },
+      extendsPage: (page) => {
+        page.frontmatter.bar = 'bar'
+      },
+    })
+    await app.init()
+
+    const page = await createPage(app, {
+      path: '/',
+    })
+    expect(page.path).toBe('/foo/')
+    expect(page.frontmatter.bar).toBe('bar')
   })
 })

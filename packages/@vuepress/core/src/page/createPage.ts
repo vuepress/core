@@ -21,6 +21,9 @@ export const createPage = async (
   app: App,
   options: PageOptions
 ): Promise<Page> => {
+  // plugin hook: extendsPageOptions
+  await app.pluginApi.hooks.extendsPageOptions.process(options, app)
+
   // resolve page file absolute path and relative path
   const { filePath, filePathRelative } = resolvePageFilePath({
     app,
@@ -154,6 +157,9 @@ export const createPage = async (
     htmlFilePath,
     htmlFilePathRelative,
   }
+
+  // plugin hook: extendsPage
+  await app.pluginApi.hooks.extendsPage.process(page, app)
 
   return page
 }
