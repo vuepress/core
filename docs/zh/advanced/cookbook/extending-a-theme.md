@@ -92,26 +92,20 @@ export default localTheme
 
 你的本地主题将会继承默认主题，并且覆盖 `Layout` 布局。
 
-接下来，创建 `.vuepress/theme/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 提供的插槽：
+接下来，创建 `.vuepress/theme/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 组件提供的插槽：
 
 ```vue
+<script setup lang="ts">
+import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
+</script>
+
 <template>
-  <Layout>
+  <ParentLayout>
     <template #page-bottom>
       <div class="my-footer">This is my custom page footer</div>
     </template>
-  </Layout>
+  </ParentLayout>
 </template>
-
-<script>
-import Layout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
-
-export default {
-  components: {
-    Layout,
-  },
-}
-</script>
 
 <style lang="css">
 .my-footer {
@@ -200,6 +194,11 @@ module.exports = {
 然后，在你的主题中通过别名来使用这些组件：
 
 ```vue
+<script setup lang="ts">
+import Navbar from '@theme/Navbar.vue'
+import Sidebar from '@theme/Sidebar.vue'
+</script>
+
 <template>
   <div class="my-theme-layout">
     <Navbar />
@@ -207,18 +206,6 @@ module.exports = {
     <Content />
   </div>
 </template>
-
-<script>
-import Navbar from '@theme/Navbar.vue'
-import Sidebar from '@theme/Sidebar.vue'
-
-export default {
-  components: {
-    Navbar,
-    Sidebar,
-  },
-}
-</script>
 ```
 
 这样，用户在继承你的主题时，就可以通过覆盖 `alias` 来替换特定的组件了：

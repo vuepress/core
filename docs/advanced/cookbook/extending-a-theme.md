@@ -92,26 +92,20 @@ export default localTheme
 
 You local theme will extends default theme, and override the `Layout` layout.
 
-Next, create `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
+Next, create `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` component of default theme:
 
 ```vue
+<script setup lang="ts">
+import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
+</script>
+
 <template>
-  <Layout>
+  <ParentLayout>
     <template #page-bottom>
       <div class="my-footer">This is my custom page footer</div>
     </template>
-  </Layout>
+  </ParentLayout>
 </template>
-
-<script>
-import Layout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
-
-export default {
-  components: {
-    Layout,
-  },
-}
-</script>
 
 <style lang="css">
 .my-footer {
@@ -200,6 +194,11 @@ module.exports = {
 Next, use those components via aliases in your theme:
 
 ```vue
+<script setup lang="ts">
+import Navbar from '@theme/Navbar.vue'
+import Sidebar from '@theme/Sidebar.vue'
+</script>
+
 <template>
   <div class="my-theme-layout">
     <Navbar />
@@ -207,18 +206,6 @@ Next, use those components via aliases in your theme:
     <Content />
   </div>
 </template>
-
-<script>
-import Navbar from '@theme/Navbar.vue'
-import Sidebar from '@theme/Sidebar.vue'
-
-export default {
-  components: {
-    Navbar,
-    Sidebar,
-  },
-}
-</script>
 ```
 
 Then, users can replace specific components by overriding the `alias` when extending your theme:
