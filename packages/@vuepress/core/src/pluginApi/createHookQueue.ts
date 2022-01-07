@@ -29,7 +29,7 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
 
         try {
           // process and get the result of the the hook item
-          // @ts-ignore
+          // @ts-expect-error: the types could not be narrowed correctly
           const result = (await item.hook(...args)) as HooksResult[T]
 
           // push the result to results array

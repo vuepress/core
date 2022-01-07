@@ -2,7 +2,7 @@ import * as Prism from 'prismjs'
 import * as rawLoadLanguages from 'prismjs/components/index'
 
 // prevent warning messages
-// @ts-ignore ts wrongly report it as a read-only property
+// @ts-expect-error: ts will report it as a readonly property
 // eslint-disable-next-line no-import-assign
 rawLoadLanguages.silent = true
 
