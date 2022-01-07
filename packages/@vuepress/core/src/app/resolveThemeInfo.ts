@@ -35,9 +35,9 @@ export const resolveThemeInfo = (
     themeConfig
   )
   return {
-    ...parentThemeInfo,
-    ...themeInfo,
     layouts: { ...parentThemeInfo.layouts, ...themeInfo.layouts },
     plugins: [...parentThemeInfo.plugins, ...themeInfo.plugins],
+    templateBuild: themeObject.templateBuild ?? parentThemeInfo.templateBuild,
+    templateDev: themeObject.templateDev ?? parentThemeInfo.templateDev,
   }
 }
