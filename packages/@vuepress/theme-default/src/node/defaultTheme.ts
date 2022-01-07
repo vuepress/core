@@ -51,6 +51,8 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (
 
     layouts: path.resolve(__dirname, '../client/layouts'),
 
+    templateBuild: path.resolve(__dirname, '../../templates/index.build.html'),
+
     clientAppEnhanceFiles: path.resolve(
       __dirname,
       '../client/clientAppEnhance.js'
