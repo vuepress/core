@@ -107,13 +107,14 @@ export const useActiveHeaderLinks = ({
   }
 
   const onScroll = debounce(() => setActiveRouteHash(), delay)
+  const listener = (): Promise<void> => onScroll()
 
   onMounted(() => {
     onScroll()
-    window.addEventListener('scroll', () => onScroll())
+    window.addEventListener('scroll', listener)
   })
   onBeforeUnmount(() => {
-    window.removeEventListener('scroll', () => onScroll())
+    window.removeEventListener('scroll', listener)
   })
   watch(
     () => page.value.path,
