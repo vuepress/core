@@ -56,7 +56,6 @@ const useEditNavLink = (): ComputedRef<null | NavLink> => {
 }
 
 const useLastUpdated = (): ComputedRef<null | string> => {
-  const siteLocale = useSiteLocaleData()
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
