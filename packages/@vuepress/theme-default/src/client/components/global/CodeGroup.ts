@@ -41,14 +41,12 @@ export default defineComponent({
 
     // handle keyboard event
     const keyboardHandler = (event: KeyboardEvent, i: number): void => {
-      if (event.key === ' ' || event.key === 'Enter') {
         event.preventDefault()
+      if (event.key === ' ' || event.key === 'Enter') {
         activeIndex.value = i
       } else if (event.key === 'ArrowRight') {
-        event.preventDefault()
         activateNext(i)
       } else if (event.key === 'ArrowLeft') {
-        event.preventDefault()
         activatePrev(i)
       }
     }
