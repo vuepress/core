@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AutoLink from '@theme/AutoLink.vue'
 import {
   usePageData,
   usePageFrontmatter,
@@ -13,7 +14,6 @@ import type {
 } from '../../shared'
 import { useThemeLocaleData } from '../composables'
 import { resolveEditLink } from '../utils'
-import AutoLink from './AutoLink.vue'
 
 const useEditNavLink = (): ComputedRef<null | NavLink> => {
   const themeLocale = useThemeLocaleData()

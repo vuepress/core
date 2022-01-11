@@ -40,6 +40,7 @@ export const en: NavbarConfig = [
           '/reference/default-theme/components.md',
           '/reference/default-theme/markdown.md',
           '/reference/default-theme/styles.md',
+          '/reference/default-theme/extending.md',
         ],
       },
     ],

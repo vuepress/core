@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AutoLink from '@theme/AutoLink.vue'
 import {
   ClientOnly,
   usePageFrontmatter,
@@ -10,7 +11,6 @@ import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
 import { useDarkMode } from '../composables'
-import AutoLink from './AutoLink.vue'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()

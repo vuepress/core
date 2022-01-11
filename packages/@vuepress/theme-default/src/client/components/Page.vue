@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PageMeta from './PageMeta.vue'
-import PageNav from './PageNav.vue'
+import PageMeta from '@theme/PageMeta.vue'
+import PageNav from '@theme/PageNav.vue'
 </script>
 
 <template>

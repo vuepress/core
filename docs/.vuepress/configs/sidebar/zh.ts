@@ -35,7 +35,7 @@ export const zh: SidebarConfig = {
         '/zh/advanced/cookbook/README.md',
         '/zh/advanced/cookbook/usage-of-client-app-enhance.md',
         '/zh/advanced/cookbook/adding-extra-pages.md',
-        '/zh/advanced/cookbook/extending-a-theme.md',
+        '/zh/advanced/cookbook/making-a-theme-extendable.md',
         '/zh/advanced/cookbook/passing-data-to-client-code.md',
         '/zh/advanced/cookbook/markdown-and-vue-sfc.md',
       ],
@@ -73,6 +73,7 @@ export const zh: SidebarConfig = {
         '/zh/reference/default-theme/components.md',
         '/zh/reference/default-theme/markdown.md',
         '/zh/reference/default-theme/styles.md',
+        '/zh/reference/default-theme/extending.md',
       ],
     },
     {

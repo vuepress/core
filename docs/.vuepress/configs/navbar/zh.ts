@@ -37,6 +37,7 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/components.md',
           '/zh/reference/default-theme/markdown.md',
           '/zh/reference/default-theme/styles.md',
+          '/zh/reference/default-theme/extending.md',
         ],
       },
     ],

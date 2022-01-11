@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AutoLink from '@theme/AutoLink.vue'
 import { usePageFrontmatter } from '@vuepress/client'
 import { isPlainObject, isString } from '@vuepress/shared'
 import { computed } from 'vue'
@@ -9,7 +10,6 @@ import type {
   ResolvedSidebarItem,
 } from '../../shared'
 import { useNavLink, useSidebarItems } from '../composables'
-import AutoLink from './AutoLink.vue'
 
 /**
  * Resolve `prev` or `next` config from frontmatter

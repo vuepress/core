@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import NavbarBrand from '@theme/NavbarBrand.vue'
+import NavbarItems from '@theme/NavbarItems.vue'
+import ToggleDarkModeButton from '@theme/ToggleDarkModeButton.vue'
+import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
 import { computed, onMounted, ref } from 'vue'
 import { useThemeLocaleData } from '../composables'
-import NavbarBrand from './NavbarBrand.vue'
-import NavbarItems from './NavbarItems.vue'
-import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
-import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
 defineEmits(['toggle-sidebar'])
 

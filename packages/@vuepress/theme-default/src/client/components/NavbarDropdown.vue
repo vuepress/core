@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import AutoLink from '@theme/AutoLink.vue'
+import DropdownTransition from '@theme/DropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import type { NavbarItem, ResolvedNavbarItem } from '../../shared'
-import AutoLink from './AutoLink.vue'
-import DropdownTransition from './DropdownTransition.vue'
 
 const props = defineProps({
   item: {

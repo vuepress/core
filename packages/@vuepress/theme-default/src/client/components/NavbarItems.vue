@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AutoLink from '@theme/AutoLink.vue'
+import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed } from 'vue'
@@ -7,8 +9,6 @@ import { useRouter } from 'vue-router'
 import type { NavbarGroup, NavbarItem, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
-import AutoLink from './AutoLink.vue'
-import NavbarDropdown from './NavbarDropdown.vue'
 
 /**
  * Get navbar config of select language dropdown

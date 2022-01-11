@@ -221,9 +221,9 @@ Renamed to `extends`.
 
 You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
 
-The `@theme` and `@parent-theme` aliases are not available now.
+The `@theme` and `@parent-theme` aliases are removed by default, but you can still replace components in default theme with similar approach.
 
-Now multi-level theme inheritance is supported.
+You can refer to [Default Theme > Extending](../reference/default-theme/extending.md) for how to extend default theme.
 
 ### CLI Change
 

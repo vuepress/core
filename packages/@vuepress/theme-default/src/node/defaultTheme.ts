@@ -1,5 +1,5 @@
 import type { Page, Theme, ThemeConfig } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import { fs, path } from '@vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,
@@ -52,6 +52,17 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (
     layouts: path.resolve(__dirname, '../client/layouts'),
 
     templateBuild: path.resolve(__dirname, '../../templates/index.build.html'),
+
+    // use alias to make all components replaceable
+    alias: Object.fromEntries(
+      fs
+        .readdirSync(path.resolve(__dirname, '../client/components'))
+        .filter((file) => file.endsWith('.vue'))
+        .map((file) => [
+          `@theme/${file}`,
+          path.resolve(__dirname, '../client/components', file),
+        ])
+    ),
 
     clientAppEnhanceFiles: path.resolve(
       __dirname,

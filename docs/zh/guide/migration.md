@@ -221,9 +221,9 @@ Markdown 插槽不再被支持。
 
 你仍然可以通过 `extends: 'parent-theme'` 来继承一个父主题，这将会继承其插件和布局等。
 
-`@theme` 和 `@parent-theme` 别名不再生效。
+`@theme` 和 `@parent-theme` 别名默认被移除了，但在默认主题中你仍可以通过类似的方式来替换组件。
 
-现在支持主题的多级继承。
+你可以参考 [默认主题 > 继承](../reference/default-theme/extending.md) 来了解如何继承默认主题。
 
 ### CLI 变更
 
