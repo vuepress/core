@@ -41,7 +41,7 @@ export default defineComponent({
 
     // handle keyboard event
     const keyboardHandler = (event: KeyboardEvent, i: number): void => {
-        event.preventDefault()
+      event.preventDefault()
       if (event.key === ' ' || event.key === 'Enter') {
         activeIndex.value = i
       } else if (event.key === 'ArrowRight') {
