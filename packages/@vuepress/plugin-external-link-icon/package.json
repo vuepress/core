@@ -33,7 +33,7 @@
     "@vuepress/core": "2.0.0-beta.32",
     "@vuepress/markdown": "2.0.0-beta.32",
     "@vuepress/utils": "2.0.0-beta.32",
-    "vue": "^3.2.24"
+    "vue": "^3.2.26"
   },
   "publishConfig": {
     "access": "public"
