@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
+
+
+### Bug Fixes
+
+* **theme-default:** bump vueuse to avoid localstorage error (close [#589](https://github.com/vuepress/vuepress-next/issues/589)) ([#612](https://github.com/vuepress/vuepress-next/issues/612)) ([7558681](https://github.com/vuepress/vuepress-next/commit/755868194a05ae8d1d70fbd14c0230e8080f7db1))
+
+
+### Features
+
+* **theme-default:** imporve dark mode experience (close [#387](https://github.com/vuepress/vuepress-next/issues/387)) ([c20a1ba](https://github.com/vuepress/vuepress-next/commit/c20a1baa97f4fbbc6a907fb8ca0f76a3cc0310c1))
+* **theme-default:** make all non-global components replaceable ([f480bb2](https://github.com/vuepress/vuepress-next/commit/f480bb25943fe1a81e2ceda8f1b53afbb11b254c))
+
+
+
+
+
 # [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
 
 

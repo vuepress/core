@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
+
+
+### Bug Fixes
+
+* **core:** should process page hooks inside createPage ([e1cbab5](https://github.com/vuepress/vuepress-next/commit/e1cbab50bf79f8278fdc4d9a63c21762443a3183))
+* **markdown:** replace img src correctly when wrapped with other html tags (close [#597](https://github.com/vuepress/vuepress-next/issues/597)) ([f2f53ef](https://github.com/vuepress/vuepress-next/commit/f2f53efc21a1c16c342f32d15562b7153e48ce70))
+* **theme-default:** bump vueuse to avoid localstorage error (close [#589](https://github.com/vuepress/vuepress-next/issues/589)) ([#612](https://github.com/vuepress/vuepress-next/issues/612)) ([7558681](https://github.com/vuepress/vuepress-next/commit/755868194a05ae8d1d70fbd14c0230e8080f7db1))
+
+
+### Features
+
+* **core:** allow theme to set default HTML templates ([4fb7b55](https://github.com/vuepress/vuepress-next/commit/4fb7b55741bd9a89769c758e71bc341d44d84d3e))
+* **plugin-shiki:** bump shiki to 0.10.0 ([9d42e56](https://github.com/vuepress/vuepress-next/commit/9d42e56c7ea4b74046ef1b41a39fc4862c39e6f3))
+* **theme-default:** imporve dark mode experience (close [#387](https://github.com/vuepress/vuepress-next/issues/387)) ([c20a1ba](https://github.com/vuepress/vuepress-next/commit/c20a1baa97f4fbbc6a907fb8ca0f76a3cc0310c1))
+* **theme-default:** make all non-global components replaceable ([f480bb2](https://github.com/vuepress/vuepress-next/commit/f480bb25943fe1a81e2ceda8f1b53afbb11b254c))
+
+
+
+
+
 # [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
 
 

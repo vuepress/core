@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
+
+
+### Features
+
+* **plugin-shiki:** bump shiki to 0.10.0 ([9d42e56](https://github.com/vuepress/vuepress-next/commit/9d42e56c7ea4b74046ef1b41a39fc4862c39e6f3))
+
+
+
+
+
 # [2.0.0-beta.32](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.31...v2.0.0-beta.32) (2021-12-28)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki
