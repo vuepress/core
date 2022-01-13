@@ -105,7 +105,7 @@ npm i -D @vuepress/plugin-docsearch@next
 
 ### searchParameters
 
-- 类型： `Record<string, any>`
+- 类型： `SearchParameters`
 
 - 详情：
 
@@ -152,6 +152,17 @@ npm i -D @vuepress/plugin-docsearch@next
 - 参考：
   - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api#initialquery)
 
+### translations
+
+- 类型： `Partial<DocSearchTranslations>`
+
+- 详情：
+
+  允许替换 DocSearch 按钮和弹窗内的默认文字。
+
+- 参考：
+  - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
+
 ### locales
 
 - 类型： `Record<string, DocsearchPluginOptions>`
@@ -175,9 +186,19 @@ module.exports = {
         locales: {
           '/': {
             placeholder: 'Search Documentation',
+            translations: {
+              button: {
+                buttonText: 'Search Documentation',
+              },
+            },
           },
           '/zh/': {
             placeholder: '搜索文档',
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+              },
+            },
           },
         },
       },

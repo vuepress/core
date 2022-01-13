@@ -104,7 +104,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 ### searchParameters
 
-- Type: `Record<string, any>`
+- Type: `SearchParameters`
 
 - Details:
 
@@ -151,6 +151,17 @@ If you are not using default theme, or you meet any problems when using docsearc
 - Also see:
   - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api/#initialquery)
 
+### translations
+
+- Type: `Partial<DocSearchTranslations>`
+
+- Details:
+
+  Allow replacing the default text in the DocSearch button or modal.
+
+- Also see:
+  - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
+
 ### locales
 
 - Type: `Record<string, DocsearchPluginOptions>`
@@ -174,9 +185,19 @@ module.exports = {
         locales: {
           '/': {
             placeholder: 'Search Documentation',
+            translations: {
+              button: {
+                buttonText: 'Search Documentation',
+              },
+            },
           },
           '/zh/': {
             placeholder: '搜索文档',
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+              },
+            },
           },
         },
       },

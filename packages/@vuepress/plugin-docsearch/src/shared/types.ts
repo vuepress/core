@@ -10,6 +10,7 @@ export type DocsearchLocaleData = Pick<
   | 'searchParameters'
   | 'disableUserPersonalization'
   | 'initialQuery'
+  | 'translations'
 >
 
 export interface DocsearchOptions extends DocsearchLocaleData {

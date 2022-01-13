@@ -1,6 +1,7 @@
 // @ts-ignore: docsearch type issue
 import docsearch from '@docsearch/js'
 import { usePageLang, useRouteLocale } from '@vuepress/client'
+import { isArray } from '@vuepress/shared'
 import { computed, defineComponent, h, onMounted, watch } from 'vue'
 import type { PropType } from 'vue'
 import type { DocsearchOptions } from '../../shared'
@@ -32,11 +33,13 @@ export const Docsearch = defineComponent({
     const facetFilters: string[] = []
 
     const initialize = (): void => {
+      const rawFacetFilters =
+        propsLocale.value.searchParameters?.facetFilters ?? []
       facetFilters.splice(
         0,
         facetFilters.length,
         `lang:${lang.value}`,
-        ...(propsLocale.value.searchParameters?.facetFilters ?? [])
+        ...(isArray(rawFacetFilters) ? rawFacetFilters : [rawFacetFilters])
       )
       docsearch({
         ...docsearchShim,
