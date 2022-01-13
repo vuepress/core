@@ -96,12 +96,6 @@
     width: 100%;
     box-sizing: border-box;
 
-    &.active {
-      font-weight: 600;
-      color: var(--c-text-accent);
-      border-left-color: var(--c-text-accent);
-    }
-
     & + .sidebar-item-children {
       padding-left: 1rem;
       font-size: 0.95em;
@@ -123,5 +117,11 @@ a.sidebar-item {
 
   &:hover {
     color: var(--c-text-accent);
+  }
+
+  &.active {
+    font-weight: 600;
+    color: var(--c-text-accent);
+    border-left-color: var(--c-text-accent);
   }
 }
