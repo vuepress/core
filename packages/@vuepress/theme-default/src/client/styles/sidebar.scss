@@ -56,14 +56,21 @@
 
 .sidebar-item {
   cursor: default;
+  border-left: 0.25rem solid transparent;
+  color: var(--c-text);
 
   &:focus-visible {
     outline-width: 1px;
     outline-offset: -1px;
   }
 
+  &.active:not(p.sidebar-heading) {
+    font-weight: 600;
+    color: var(--c-text-accent);
+    border-left-color: var(--c-text-accent);
+  }
+
   &.sidebar-heading {
-    color: var(--c-text);
     transition: color 0.15s ease;
     font-size: 1.1em;
     font-weight: bold;
@@ -71,7 +78,6 @@
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    border-left: 0.25rem solid transparent;
 
     &.collapsible {
       cursor: pointer;
@@ -93,19 +99,11 @@
     font-size: 1em;
     font-weight: 400;
     display: inline-block;
-    color: var(--c-text);
-    border-left: 0.25rem solid transparent;
     margin: 0;
     padding: 0.35rem 1rem 0.35rem 2rem;
     line-height: 1.4;
     width: 100%;
     box-sizing: border-box;
-
-    &.active {
-      font-weight: 600;
-      color: var(--c-text-accent);
-      border-left-color: var(--c-text-accent);
-    }
 
     & + .sidebar-item-children {
       padding-left: 1rem;
@@ -119,6 +117,10 @@
         font-weight: 500;
         border-left-color: transparent;
       }
+    }
+
+    a.sidebar-heading + .sidebar-item-children &.active {
+      border-left-color: transparent;
     }
   }
 }
