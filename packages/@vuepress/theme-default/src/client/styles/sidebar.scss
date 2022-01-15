@@ -57,6 +57,11 @@
 .sidebar-item {
   cursor: default;
 
+  &:focus-visible {
+    outline-width: 1px;
+    outline-offset: -1px;
+  }
+
   &.sidebar-heading {
     color: var(--c-text);
     transition: color 0.15s ease;

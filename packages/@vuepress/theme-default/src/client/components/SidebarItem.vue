@@ -51,7 +51,13 @@ if (item.value.collapsible) {
 <template>
   <li>
     <AutoLink v-if="item.link" :class="itemClass" :item="item" />
-    <p v-else :class="itemClass" @click="onClick">
+    <p
+      v-else
+      tabindex="0"
+      :class="itemClass"
+      @click="onClick"
+      @keydown.enter="onClick"
+    >
       {{ item.text }}
       <span
         v-if="item.collapsible"
