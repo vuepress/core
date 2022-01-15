@@ -49,7 +49,7 @@ code {
   background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
-  transition: background-color var(--t-color), color var(--t-color);
+  transition: background-color var(--t-color);
 }
 
 blockquote {
@@ -151,18 +151,22 @@ table {
   margin: 1rem 0;
   display: block;
   overflow-x: auto;
+  transition: border-color var(--t-color);
 }
 
 tr {
   border-top: 1px solid var(--c-border-dark);
+  transition: border-color var(--t-color);
 
   &:nth-child(2n) {
     background-color: var(--c-bg-light);
+    transition: background-color var(--t-color);
   }
 }
 
 th,
 td {
-  border: 1px solid var(--c-border-dark);
   padding: 0.6em 1em;
+  border: 1px solid var(--c-border-dark);
+  transition: border-color var(--t-color);
 }
