@@ -7,6 +7,7 @@ import type {
   StylusLoaderOptions,
   WebpackBundlerOptions,
 } from '../types'
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 
 type StyleRule = Config.Rule<Config.Rule<Config.Module>>
 
@@ -60,7 +61,7 @@ export const handleModuleStyles = ({
       if (isBuild) {
         rule
           .use('extract-css-loader')
-          .loader(require('mini-css-extract-plugin').loader)
+          .loader(MiniCSSExtractPlugin.loader)
       } else {
         rule.use('style-loader').loader('style-loader')
       }

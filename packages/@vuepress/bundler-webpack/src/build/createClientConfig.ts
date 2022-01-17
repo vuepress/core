@@ -1,6 +1,7 @@
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import type * as Config from 'webpack-chain'
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import { createClientBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 import { createClientPlugin } from './ssr'
@@ -46,7 +47,7 @@ export const createClientConfig = async (
 
   // optimizations for production mode
   // extract-css
-  config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
+  config.plugin('extract-css').use(MiniCSSExtractPlugin, [
     {
       filename: app.env.isBuild
         ? 'assets/css/styles.[chunkhash:8].css'

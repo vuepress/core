@@ -43,7 +43,7 @@
     "esbuild-loader": "~2.16.0",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.4.6",
+    "mini-css-extract-plugin": "^2.5.0",
     "portfinder": "^1.0.28",
     "postcss": "^8.4.5",
     "postcss-csso": "^6.0.0",
