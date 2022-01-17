@@ -29,7 +29,6 @@ export const siteData = {
           "Looks like we've got some broken links.",
         ],
         backToHome: 'Take me home',
-        openInNewWindow: 'open in new window',
       },
       '/zh/': {
         info: '提示',
@@ -42,7 +41,6 @@ export const siteData = {
           '看起来我们进入了错误的链接',
         ],
         backToHome: '返回首页',
-        openInNewWindow: '在新窗口打开',
       },
     },
   },

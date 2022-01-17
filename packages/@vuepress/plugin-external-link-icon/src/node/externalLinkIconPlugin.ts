@@ -2,10 +2,21 @@ import type { Plugin } from '@vuepress/core'
 import type { MarkdownEnv } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
-export type ExternalLinkIconPluginOptions = Record<never, never>
+export type ExternalLinkIconPluginOptions = {
+  /**
+   * i18n config
+   */
+  i18n: Record<string, string>
+}
 
-export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = {
+export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = (
+  options
+) => ({
   name: '@vuepress/plugin-external-link-icon',
+
+  alias: {
+    EXTERNAL_LINK_ICON_I18N: options.i18n,
+  },
 
   clientAppEnhanceFiles: path.resolve(
     __dirname,
@@ -44,4 +55,4 @@ export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = {
       return result
     }
   },
-}
+})
