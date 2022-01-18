@@ -1,12 +1,14 @@
-import type { Plugin } from '@vuepress/core'
+import type { LocaleConfig, Plugin } from '@vuepress/core'
 import type { MarkdownEnv } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 
 export type ExternalLinkIconPluginOptions = {
   /**
-   * i18n config
+   * locales config
    */
-  i18n: Record<string, string>
+  locales: LocaleConfig<{
+    openinNewWindow: string
+  }>
 }
 
 export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = (
@@ -15,7 +17,7 @@ export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = (
   name: '@vuepress/plugin-external-link-icon',
 
   define: {
-    EXTERNAL_LINK_ICON_I18N: options.i18n || {},
+    EXTERNAL_LINK_ICON_LOCALES: options.locales || {},
   },
 
   clientAppEnhanceFiles: path.resolve(

@@ -1,11 +1,14 @@
 import { useRouteLocale } from '@vuepress/client'
+import type { LocaleConfig } from '@vuepress/core'
 import { h } from 'vue'
 import type { FunctionalComponent } from 'vue'
 
 import '../styles/vars.css'
 import '../styles/external-link-icon.css'
 
-declare const EXTERNAL_LINK_ICON_I18N: Record<string, string>
+declare const EXTERNAL_LINK_ICON_LOCALES: LocaleConfig<{
+  openinNewWindow: string
+}>
 
 const svg = h(
   'svg',
@@ -40,7 +43,8 @@ export const ExternalLinkIcon: FunctionalComponent = (_, { slots }) =>
       h(
         'span',
         { class: 'external-link-sr-only-text' },
-        EXTERNAL_LINK_ICON_I18N[useRouteLocale().value] || 'open in new window'
+        EXTERNAL_LINK_ICON_LOCALES[useRouteLocale().value].openinNewWindow ||
+          'open in new window'
       ),
   ])
 
