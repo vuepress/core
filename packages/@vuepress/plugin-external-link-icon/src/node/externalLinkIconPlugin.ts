@@ -14,8 +14,8 @@ export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = (
 ) => ({
   name: '@vuepress/plugin-external-link-icon',
 
-  alias: {
-    EXTERNAL_LINK_ICON_I18N: options.i18n,
+  define: {
+    EXTERNAL_LINK_ICON_I18N: options.i18n || {},
   },
 
   clientAppEnhanceFiles: path.resolve(
