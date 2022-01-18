@@ -188,7 +188,7 @@ import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    '@theme/HomeFooter.vue': path.resolve(__dirname, './theme/components/MyHomeFooter.vue'),
   },
 })
 ```
