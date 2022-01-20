@@ -82,7 +82,6 @@ export const zh: NavbarConfig = [
         text: '主题开发',
         children: [
           '/zh/reference/plugin/active-header-links.md',
-          '/zh/reference/plugin/debug.md',
           '/zh/reference/plugin/git.md',
           '/zh/reference/plugin/palette.md',
           '/zh/reference/plugin/theme-data.md',

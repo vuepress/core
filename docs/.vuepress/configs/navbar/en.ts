@@ -85,7 +85,6 @@ export const en: NavbarConfig = [
         text: 'Theme Development',
         children: [
           '/reference/plugin/active-header-links.md',
-          '/reference/plugin/debug.md',
           '/reference/plugin/git.md',
           '/reference/plugin/palette.md',
           '/reference/plugin/theme-data.md',

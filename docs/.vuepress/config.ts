@@ -154,7 +154,6 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   plugins: [
-    ['@vuepress/plugin-debug'],
     [
       '@vuepress/plugin-docsearch',
       {
