@@ -1,4 +1,3 @@
-import type { ExternalLinkIconPluginOptions } from '@vuepress/plugin-external-link-icon'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from '@vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav'
@@ -29,7 +28,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-external-link-icon or not
    */
-  externalLinkIcon?: ExternalLinkIconPluginOptions | boolean
+  externalLinkIcon?: boolean
 
   /**
    * Enable @vuepress/plugin-git or not
@@ -260,6 +259,11 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Text of back-to-home link in 404 page
    */
   backToHome?: string
+
+  /**
+   * A11y text for external link icon
+   */
+  openInNewWindow?: string
 
   /**
    * A11y text for dark mode toggle button

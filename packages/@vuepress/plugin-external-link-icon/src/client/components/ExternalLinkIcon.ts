@@ -1,14 +1,10 @@
 import { useRouteLocale } from '@vuepress/client'
-import type { LocaleConfig } from '@vuepress/core'
-import { h } from 'vue'
-import type { FunctionalComponent } from 'vue'
+import type { PropType } from 'vue'
+import { computed, defineComponent, h } from 'vue'
+import type { ExternalLinkIconLocales } from '../../shared'
 
 import '../styles/vars.css'
 import '../styles/external-link-icon.css'
-
-declare const EXTERNAL_LINK_ICON_LOCALES: LocaleConfig<{
-  openinNewWindow: string
-}>
 
 const svg = h(
   'svg',
@@ -36,16 +32,35 @@ const svg = h(
   ]
 )
 
-export const ExternalLinkIcon: FunctionalComponent = (_, { slots }) =>
-  h('span', [
-    svg,
-    slots.default?.() ||
-      h(
-        'span',
-        { class: 'external-link-sr-only-text' },
-        EXTERNAL_LINK_ICON_LOCALES[useRouteLocale().value].openinNewWindow ||
-          'open in new window'
-      ),
-  ])
+export const ExternalLinkIcon = defineComponent({
+  name: 'ExternalLinkIcon',
 
-ExternalLinkIcon.displayName = 'ExternalLinkIcon'
+  props: {
+    locales: {
+      type: Object as PropType<ExternalLinkIconLocales>,
+      required: false,
+      default: () => ({}),
+    },
+  },
+
+  setup(props) {
+    const routeLocale = useRouteLocale()
+    const locale = computed(
+      () =>
+        props.locales[routeLocale.value] ?? {
+          openInNewWindow: 'open in new window',
+        }
+    )
+    return () =>
+      h('span', [
+        svg,
+        h(
+          'span',
+          {
+            class: 'external-link-icon-sr-only',
+          },
+          locale.value.openInNewWindow
+        ),
+      ])
+  },
+})
