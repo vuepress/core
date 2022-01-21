@@ -13,7 +13,6 @@ const clientPackages = [
   '@vuepress/plugin-active-header-links',
   '@vuepress/plugin-back-to-top',
   '@vuepress/plugin-container',
-  '@vuepress/plugin-debug',
   '@vuepress/plugin-docsearch',
   '@vuepress/plugin-external-link-icon',
   '@vuepress/plugin-git',

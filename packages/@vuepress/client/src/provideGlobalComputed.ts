@@ -19,19 +19,45 @@ import {
 } from './composables'
 import type {
   PageData,
+  PageDataRef,
   PageFrontmatter,
+  PageFrontmatterRef,
+  PageHead,
+  PageHeadRef,
   PageHeadTitle,
+  PageHeadTitleRef,
   PageLang,
+  PageLangRef,
   RouteLocale,
+  RouteLocaleRef,
   SiteData,
+  SiteDataRef,
   SiteLocaleData,
+  SiteLocaleDataRef,
 } from './composables'
 import { withBase } from './utils'
 
 /**
+ * Vuepress client global computed
+ */
+export interface GlobalComputed {
+  pageData: PageDataRef
+  pageFrontmatter: PageFrontmatterRef
+  pageHead: PageHeadRef
+  pageHeadTitle: PageHeadTitleRef
+  pageLang: PageLangRef
+  routeLocale: RouteLocaleRef
+  siteData: SiteDataRef
+  siteLocaleData: SiteLocaleDataRef
+}
+
+/**
  * Create and provide global computed
  */
-export const provideGlobalComputed = (app: App, router: Router): void => {
+export const provideGlobalComputed = (
+  app: App,
+  router: Router
+): GlobalComputed => {
   // create global computed
   const routeLocale = computed(() =>
     resolveRouteLocale(siteData.value.locales, router.currentRoute.value.path)
@@ -63,6 +89,7 @@ export const provideGlobalComputed = (app: App, router: Router): void => {
   // provide global helpers
   Object.defineProperties(app.config.globalProperties, {
     $frontmatter: { get: () => pageFrontmatter.value },
+    $head: { get: () => pageHead.value },
     $headTitle: { get: () => pageHeadTitle.value },
     $lang: { get: () => pageLang.value },
     $page: { get: () => pageData.value },
@@ -71,11 +98,23 @@ export const provideGlobalComputed = (app: App, router: Router): void => {
     $siteLocale: { get: () => siteLocaleData.value },
     $withBase: { get: () => withBase },
   })
+
+  return {
+    pageData,
+    pageFrontmatter,
+    pageHead,
+    pageHeadTitle,
+    pageLang,
+    routeLocale,
+    siteData,
+    siteLocaleData,
+  }
 }
 
 declare module '@vue/runtime-core' {
   export interface ComponentCustomProperties {
     $frontmatter: PageFrontmatter
+    $head: PageHead
     $headTitle: PageHeadTitle
     $lang: PageLang
     $page: PageData

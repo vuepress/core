@@ -22,6 +22,7 @@ import {
 } from './composables'
 import { provideGlobalComputed } from './provideGlobalComputed'
 import { registerGlobalComponents } from './registerGlobalComponents'
+import { setupDevtools } from './setupDevtools'
 
 /**
  * - use `createApp` in dev mode
@@ -83,9 +84,14 @@ export const createVueApp: CreateVueAppFunction = async () => {
     }
   })
 
-  // global computed and global components
-  provideGlobalComputed(app, router)
+  // global components and computed
   registerGlobalComponents(app)
+  const globalComputed = provideGlobalComputed(app, router)
+
+  // setup devtools in dev mode
+  if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {
+    setupDevtools(app, globalComputed)
+  }
 
   // invoke all clientAppEnhances
   for (const clientAppEnhance of clientAppEnhances) {

@@ -138,6 +138,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     themePlugins: {
       // only enable git plugin in production mode
       git: isProd,
+      // use shiki plugin in production mode instead
+      prismjs: !isProd,
     },
   },
 
@@ -152,7 +154,6 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   plugins: [
-    ['@vuepress/plugin-debug'],
     [
       '@vuepress/plugin-docsearch',
       {
