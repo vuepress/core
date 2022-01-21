@@ -20,7 +20,7 @@ export const useActiveHeaderLinks = ({
   const router = useRouter()
   const page = usePageData()
 
-  const setActiveRouteHash = debounce((): void => {
+  const setActiveRouteHash = (): void => {
     // get all header links
     const headerLinks: HTMLAnchorElement[] = Array.from(
       document.querySelectorAll(headerLinkSelector)
@@ -104,21 +104,18 @@ export const useActiveHeaderLinks = ({
       })
       return
     }
-  }, delay)
+  }
 
-  const onScroll = (): Promise<void> => setActiveRouteHash()
+  const onScroll: () => Promise<void> = debounce(setActiveRouteHash, delay)
 
   onMounted(() => {
-    setActiveRouteHash()
+    onScroll()
     window.addEventListener('scroll', onScroll)
   })
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', onScroll)
   })
-  watch(
-    () => page.value.path,
-    () => onScroll()
-  )
+  watch(() => page.value.path, onScroll)
 }
 
 /**
