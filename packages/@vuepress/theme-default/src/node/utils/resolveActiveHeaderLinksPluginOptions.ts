@@ -14,5 +14,7 @@ export const resolveActiveHeaderLinksPluginOptions = (
   return {
     headerLinkSelector: 'a.sidebar-item',
     headerAnchorSelector: '.header-anchor',
+    // should greater than page transition duration
+    delay: 300,
   }
 }
