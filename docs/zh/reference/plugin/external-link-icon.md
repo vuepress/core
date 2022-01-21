@@ -12,6 +12,43 @@
 npm i -D @vuepress/plugin-external-link-icon@next
 ```
 
+## 配置项
+
+### locales
+
+- 类型： `Record<string, { openInNewWindow: string }>`
+
+- 详情：
+
+  外部链接图标在不同 locales 下的 A11y 文字。
+
+  如果没有指定该配置项，它会降级使用默认文字。
+
+- 示例：
+
+```js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/plugin-external-link-icon',
+      {
+        locales: {
+          '/': {
+            openInNewWindow: 'open in new window',
+          },
+          '/zh/': {
+            openInNewWindow: '在新窗口打开',
+          },
+        },
+      },
+    ],
+  ],
+}
+```
+
+- 参考：
+  - [指南 > 多语言支持](../../guide/i18n.md)
+
 ## Frontmatter
 
 ### externalLinkIcon
