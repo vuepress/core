@@ -12,6 +12,43 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-external-link-icon@next
 ```
 
+## Options
+
+### locales
+
+- Type: `Record<string, { openInNewWindow: string }>`
+
+- Details:
+
+  The a11y text of the external link icon in different locales.
+
+  If this option is not specified, it will fallback to default text.
+
+- Example:
+
+```js
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/plugin-external-link-icon',
+      {
+        locales: {
+          '/': {
+            openInNewWindow: 'open in new window',
+          },
+          '/zh/': {
+            openInNewWindow: '在新窗口打开',
+          },
+        },
+      },
+    ],
+  ],
+}
+```
+
+- Also see:
+  - [Guide > I18n](../../guide/i18n.md)
+
 ## Frontmatter
 
 ### externalLinkIcon
