@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.34](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.33...v2.0.0-beta.34) (2022-01-21)
+
+
+### Bug Fixes
+
+* **theme-default:** add missing color transitions ([0955c9f](https://github.com/vuepress/vuepress-next/commit/0955c9f48a4811d681f8b20620a1c5134dcb3c14))
+* **theme-default:** highlight sidebar heading when used as a link (close [#628](https://github.com/vuepress/vuepress-next/issues/628)) ([1a5f4fb](https://github.com/vuepress/vuepress-next/commit/1a5f4fb7bf66671a2b0acbaf5bca47a00a48daaa))
+
+
+### Code Refactoring
+
+* remove debug plugin ([f8481eb](https://github.com/vuepress/vuepress-next/commit/f8481eb06b001c81e54cd6fab7d12f1ab75cdbc7))
+
+
+### Features
+
+* **client:** add vue-devtools support ([a19d945](https://github.com/vuepress/vuepress-next/commit/a19d945445a4b50455553c1221eaeefda6e73211))
+* **plugin-docsearch:** bump docsearch version to support translations ([47a0ef1](https://github.com/vuepress/vuepress-next/commit/47a0ef149c7acdd8317f83c2a374b80dd39761ef))
+* **plugin-external-link-icon:** add locales option ([#636](https://github.com/vuepress/vuepress-next/issues/636)) ([c7f0c43](https://github.com/vuepress/vuepress-next/commit/c7f0c43366405ef1a8e6b69aadfb35c9c9361452))
+* **plugin-theme-data:** add devtools support ([dab437c](https://github.com/vuepress/vuepress-next/commit/dab437cc7f331fb8da619485a47d2529cb4ce91a))
+* **theme-default:** improve sidebar a11y (close [#604](https://github.com/vuepress/vuepress-next/issues/604)) ([8033b82](https://github.com/vuepress/vuepress-next/commit/8033b826123e8d57f00cbd393a10b8a268239fe0))
+
+
+### BREAKING CHANGES
+
+* `@vuepress/plugin-debug` package has been removed
+
+
+
+
+
 # [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
 
 

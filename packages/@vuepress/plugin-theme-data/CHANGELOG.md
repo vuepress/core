@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.34](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.33...v2.0.0-beta.34) (2022-01-21)
+
+
+### Features
+
+* **plugin-theme-data:** add devtools support ([dab437c](https://github.com/vuepress/vuepress-next/commit/dab437cc7f331fb8da619485a47d2529cb4ce91a))
+
+
+
+
+
 # [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
 
 **Note:** Version bump only for package @vuepress/plugin-theme-data

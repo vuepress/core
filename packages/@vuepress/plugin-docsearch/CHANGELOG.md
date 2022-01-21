@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.34](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.33...v2.0.0-beta.34) (2022-01-21)
+
+
+### Features
+
+* **plugin-docsearch:** bump docsearch version to support translations ([47a0ef1](https://github.com/vuepress/vuepress-next/commit/47a0ef149c7acdd8317f83c2a374b80dd39761ef))
+
+
+
+
+
 # [2.0.0-beta.33](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.32...v2.0.0-beta.33) (2022-01-12)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

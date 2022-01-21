@@ -1,6 +1,6 @@
 {
   "name": "vuepress-webpack",
-  "version": "2.0.0-beta.33",
+  "version": "2.0.0-beta.34",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -33,9 +33,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/bundler-webpack": "2.0.0-beta.33",
-    "@vuepress/cli": "2.0.0-beta.33",
-    "@vuepress/core": "2.0.0-beta.33",
-    "@vuepress/theme-default": "2.0.0-beta.33"
+    "@vuepress/bundler-webpack": "2.0.0-beta.34",
+    "@vuepress/cli": "2.0.0-beta.34",
+    "@vuepress/core": "2.0.0-beta.34",
+    "@vuepress/theme-default": "2.0.0-beta.34"
   }
 }

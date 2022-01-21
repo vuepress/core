@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-external-link-icon",
-  "version": "2.0.0-beta.33",
+  "version": "2.0.0-beta.34",
   "description": "VuePress plugin - external link icon",
   "keywords": [
     "vuepress-plugin",
@@ -29,8 +29,8 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.33",
-    "@vuepress/core": "2.0.0-beta.33",
+    "@vuepress/client": "2.0.0-beta.34",
+    "@vuepress/core": "2.0.0-beta.34",
     "@vuepress/markdown": "2.0.0-beta.33",
     "@vuepress/utils": "2.0.0-beta.33",
     "vue": "^3.2.26"
