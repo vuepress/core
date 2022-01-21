@@ -34,6 +34,7 @@ export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
   backToHome: 'Take me home',
 
   // a11y
+  openInNewWindow: 'open in new window',
   toggleDarkMode: 'toggle dark mode',
   toggleSidebar: 'toggle sidebar',
 }
