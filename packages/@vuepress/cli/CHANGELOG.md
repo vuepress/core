@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
+
+
+### Bug Fixes
+
+* **cli:** watch user config correctly on win32 (close [#611](https://github.com/vuepress/vuepress-next/issues/611)) ([055b174](https://github.com/vuepress/vuepress-next/commit/055b174d5eb30aae76fe409b948da2be5a7fbe58))
+
+
+
+
+
 # [2.0.0-beta.34](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.33...v2.0.0-beta.34) (2022-01-21)
 
 

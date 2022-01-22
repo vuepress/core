@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
+
+
+### Features
+
+* **client:** allow customizing global computed resolvers (close [#338](https://github.com/vuepress/vuepress-next/issues/338)) ([405fc8d](https://github.com/vuepress/vuepress-next/commit/405fc8d7aa579d04b43bf21f926176da761ea2e6))
+
+
+
+
+
 # [2.0.0-beta.34](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.33...v2.0.0-beta.34) (2022-01-21)
 
 
