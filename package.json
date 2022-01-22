@@ -30,25 +30,25 @@
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^16.0.2",
+    "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/jest": "^27.4.0",
     "anywhere": "^1.5.0",
     "cpx2": "^4.1.2",
     "cross-env": "^7.0.3",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-config-vuepress": "^3.5.0",
     "eslint-config-vuepress-typescript": "^2.5.0",
     "husky": "^7.0.4",
     "jest": "^27.4.7",
     "jest-serializer-vue": "^2.0.2",
     "lerna": "^4.0.0",
-    "lint-staged": "^12.1.7",
+    "lint-staged": "^12.2.2",
     "prettier": "^2.5.1",
     "prettier-config-vuepress": "^1.3.0",
     "rimraf": "^3.0.2",
     "sort-package-json": "^1.53.1",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.5.4"
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
   }
 }

@@ -39,7 +39,7 @@
     "@vuepress/shared": "2.0.0-beta.33",
     "@vuepress/utils": "2.0.0-beta.33",
     "preact": "^10.6.4",
-    "vue": "^3.2.26",
+    "vue": "^3.2.28",
     "vue-router": "^4.0.12"
   },
   "publishConfig": {

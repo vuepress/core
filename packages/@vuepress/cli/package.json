@@ -33,7 +33,7 @@
     "@vuepress/core": "2.0.0-beta.34",
     "@vuepress/utils": "2.0.0-beta.33",
     "cac": "^6.7.12",
-    "chokidar": "^3.5.2",
+    "chokidar": "^3.5.3",
     "envinfo": "^7.8.1",
     "esbuild": "^0.13.12"
   },
