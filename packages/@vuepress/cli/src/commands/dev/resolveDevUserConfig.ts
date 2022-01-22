@@ -1,5 +1,13 @@
+import * as os from 'os'
+import { win32 } from 'path'
 import { loadUserConfig } from '../../config'
 import type { UserConfig } from '../../config'
+
+/**
+ * The key of `require.cache` is using backslash as separator on win32
+ */
+const normalizeRequireCacheKey: (key: string) => string = (key) =>
+  os.platform() === 'win32' ? win32.normalize(key) : key
 
 /**
  * Resolve dependencies of a file if the file has been required
@@ -11,7 +19,7 @@ const resolveDeps = (
   seen: Set<string> = new Set()
 ): Set<string> => {
   // check if the file has been required as a module
-  const mod = require.cache[filename]
+  const mod = require.cache[normalizeRequireCacheKey(filename)]
   if (!mod) return deps
 
   // check if the file has been seen
@@ -48,9 +56,9 @@ export const resolveDevUserConfig = async (
 
   // clear cache to ensure user config could be reloaded correctly on changed
   resolveDeps(userConfigPath).forEach((item) => {
-    delete require.cache[item]
+    delete require.cache[normalizeRequireCacheKey(item)]
   })
-  delete require.cache[userConfigPath]
+  delete require.cache[normalizeRequireCacheKey(userConfigPath)]
 
   const userConfig = await loadUserConfig(userConfigPath)
   const userConfigDeps = Array.from(resolveDeps(userConfigPath))
