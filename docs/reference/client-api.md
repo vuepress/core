@@ -6,28 +6,6 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 ## Composition API
 
-### useSiteData
-
-- Details:
-
-  Returns the site data ref object.
-
-### useSiteLocaleData
-
-- Details:
-
-  Returns the site data ref object of current locale.
-
-  The properties of current locale have been merged into the root-level properties.
-
-### useRouteLocale
-
-- Details:
-
-  Returns the locale path ref object of current route.
-
-  The value is one of the keys of the [locales](./config.md#locales) config.
-
 ### usePageData
 
 - Details:
@@ -70,7 +48,29 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
   The value is the `lang` property of the page data.
 
-## Utils
+### useRouteLocale
+
+- Details:
+
+  Returns the locale path ref object of current route.
+
+  The value is one of the keys of the [locales](./config.md#locales) config.
+
+### useSiteData
+
+- Details:
+
+  Returns the site data ref object.
+
+### useSiteLocaleData
+
+- Details:
+
+  Returns the site data ref object of current locale.
+
+  The properties of current locale have been merged into the root-level properties.
+
+## Helpers
 
 ### defineClientAppEnhance
 
@@ -157,3 +157,31 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 - Details:
 
   An environment flag indicating whether it is currently running in server-side-rendering (SSR) build.
+
+## Advanced
+
+### resolvers <Badge text="experimental" />
+
+- Type: `Record<string, Function>`
+
+- Details:
+
+  An reactive object, methods of which determining how to resolve global computed.
+
+- Example:
+
+Customizing the format of `<title>` in `clientAppEnhance.ts` file:
+
+```ts
+import { defineClientAppEnhance, resolvers } from '@vuepress/client'
+
+export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+  resolvers.resolvePageHeadTitle = (page, siteLocale) =>
+    `${siteLocale.title} > ${page.title}`
+})
+```
+
+::: danger
+`resolvers` will affect the basic functionality of VuePress. Please make sure you have fully understood its purpose before modifying it.
+:::

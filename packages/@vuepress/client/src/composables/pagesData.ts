@@ -9,7 +9,7 @@ import type { Ref } from 'vue'
  * The key is page key, and the value is an async function that
  * returns the page data
  */
-export type PagesData = Record<string, () => Promise<PageData>>
+export type PagesData = Record<string, (() => Promise<PageData>) | undefined>
 
 /**
  * Ref wrapper of `PagesData`

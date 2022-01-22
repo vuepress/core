@@ -1,7 +1,5 @@
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { PageData } from './pageData'
-import type { SiteLocaleData } from './siteLocaleData'
 
 /**
  * Page head title, which would be used as the content of `head > title` tag
@@ -30,13 +28,3 @@ export const usePageHeadTitle = (): PageHeadTitleRef => {
   }
   return pageHeadTitle
 }
-
-/**
- * Resolve the content of page head title
- *
- * It would be used as the content of the `<title>` tag
- */
-export const resolvePageHeadTitle = (
-  page: PageData,
-  siteLocale: SiteLocaleData
-): PageHeadTitle => `${page.title ? `${page.title} | ` : ``}${siteLocale.title}`

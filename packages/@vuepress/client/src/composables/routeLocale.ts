@@ -1,5 +1,3 @@
-import { resolveLocalePath } from '@vuepress/shared'
-import type { SiteData } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 
@@ -30,11 +28,3 @@ export const useRouteLocale = (): RouteLocaleRef => {
   }
   return routeLocale
 }
-
-/**
- * Resolve locale path according to route path and locales config
- */
-export const resolveRouteLocale = (
-  locales: SiteData['locales'],
-  routePath: string
-): RouteLocale => resolveLocalePath(locales, routePath)

@@ -14,7 +14,7 @@ export type PageDataRef<T extends Record<any, any> = Record<never, never>> =
 /**
  * Empty page data to be used as the fallback value
  */
-const pageDataEmpty = readonly({
+export const pageDataEmpty = readonly({
   key: '',
   path: '',
   title: '',
@@ -35,18 +35,6 @@ export const pageData: PageDataRef = ref(pageDataEmpty)
 export const usePageData = <
   T extends Record<any, any> = Record<never, never>
 >(): PageDataRef<T> => pageData as PageDataRef<T>
-
-/**
- * Resolve page data according to page key
- */
-export const resolvePageData = async (pageKey: string): Promise<PageData> => {
-  const pageDataResolver = pagesData.value[pageKey]
-  if (!pageDataResolver) {
-    return pageDataEmpty
-  }
-  const pageData = await pageDataResolver()
-  return pageData ?? pageDataEmpty
-}
 
 if (import.meta.webpackHot || import.meta.hot) {
   // reuse vue HMR runtime

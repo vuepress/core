@@ -1,7 +1,6 @@
 import type { SiteData } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { RouteLocale } from './routeLocale'
 
 /**
  * Site data of current locale
@@ -30,16 +29,3 @@ export const useSiteLocaleData = (): SiteLocaleDataRef => {
   }
   return siteLocaleData
 }
-
-/**
- * Resolve site data for specific locale
- *
- * It would merge the locales fields to the root fields
- */
-export const resolveSiteLocaleData = (
-  site: SiteData,
-  routeLocale: RouteLocale
-): SiteLocaleData => ({
-  ...site,
-  ...site.locales[routeLocale],
-})

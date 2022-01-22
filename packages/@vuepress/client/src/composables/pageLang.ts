@@ -1,4 +1,3 @@
-import type { PageData } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 
@@ -29,11 +28,3 @@ export const usePageLang = (): PageLangRef => {
   }
   return pageLang
 }
-
-/**
- * Resolve page language from page data
- *
- * It would be used as the `lang` attribute of `<html>` tag
- */
-export const resolvePageLang = (pageData: PageData): PageLang =>
-  pageData.lang || 'en'

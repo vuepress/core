@@ -1,6 +1,6 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import type { App } from 'vue'
-import type { GlobalComputed } from './provideGlobalComputed'
+import type { GlobalComputed } from './setupGlobalComputed'
 
 export const setupDevtools = (
   app: App,

@@ -1,6 +1,12 @@
 import type { NavLink } from '../../shared'
 import { useResolveRouteWithRedirect } from './useResolveRouteWithRedirect'
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    title?: string
+  }
+}
+
 /**
  * Resolve NavLink props from string
  *

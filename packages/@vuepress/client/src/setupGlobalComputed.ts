@@ -7,12 +7,6 @@ import {
   pageHeadSymbol,
   pageHeadTitleSymbol,
   pageLangSymbol,
-  resolvePageFrontmatter,
-  resolvePageHead,
-  resolvePageHeadTitle,
-  resolvePageLang,
-  resolveRouteLocale,
-  resolveSiteLocaleData,
   routeLocaleSymbol,
   siteData,
   siteLocaleDataSymbol,
@@ -35,7 +29,8 @@ import type {
   SiteLocaleData,
   SiteLocaleDataRef,
 } from './composables'
-import { withBase } from './utils'
+import { withBase } from './helpers'
+import { resolvers } from './resolvers'
 
 /**
  * Vuepress client global computed
@@ -54,29 +49,34 @@ export interface GlobalComputed {
 /**
  * Create and provide global computed
  */
-export const provideGlobalComputed = (
+export const setupGlobalComputed = (
   app: App,
   router: Router
 ): GlobalComputed => {
   // create global computed
   const routeLocale = computed(() =>
-    resolveRouteLocale(siteData.value.locales, router.currentRoute.value.path)
+    resolvers.resolveRouteLocale(
+      siteData.value.locales,
+      router.currentRoute.value.path
+    )
   )
   const siteLocaleData = computed(() =>
-    resolveSiteLocaleData(siteData.value, routeLocale.value)
+    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
   )
-  const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
+  const pageFrontmatter = computed(() =>
+    resolvers.resolvePageFrontmatter(pageData.value)
+  )
   const pageHeadTitle = computed(() =>
-    resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value)
   )
   const pageHead = computed(() =>
-    resolvePageHead(
+    resolvers.resolvePageHead(
       pageHeadTitle.value,
       pageFrontmatter.value,
       siteLocaleData.value
     )
   )
-  const pageLang = computed(() => resolvePageLang(pageData.value))
+  const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
 
   // provide global computed
   app.provide(routeLocaleSymbol, routeLocale)

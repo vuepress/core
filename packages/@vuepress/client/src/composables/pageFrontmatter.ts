@@ -1,4 +1,4 @@
-import type { PageData, PageFrontmatter } from '@vuepress/shared'
+import type { PageFrontmatter } from '@vuepress/shared'
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 
@@ -30,9 +30,3 @@ export const usePageFrontmatter = <
   }
   return pageFrontmatter as PageFrontmatterRef<T>
 }
-
-/**
- * Resolve page frontmatter from page data
- */
-export const resolvePageFrontmatter = (pageData: PageData): PageFrontmatter =>
-  pageData.frontmatter
