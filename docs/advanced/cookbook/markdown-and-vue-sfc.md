@@ -1,6 +1,6 @@
 # Markdown and Vue SFC
 
-Each Markdown file is first compiled into HTML, and then converted to a Vue SFC. In other words, you can take Markdown as Vue SFC:
+Each Markdown file is first compiled into HTML, and then converted to a Vue SFC. In other words, you can write a Markdown file like a Vue SFC:
 
 - Blocks `<script>` and `<style>` are treated as Vue SFC blocks as they are. In other words, they are hoisted from the `<template>` block to the top-level of SFC.
 - Everything outside `<script>` and `<style>` will be compiled into HTML, and be treated as Vue SFC `<template>` block.
@@ -24,7 +24,7 @@ _Current count is: {{ count }}_
 
 <button @click="count++">Click Me!</button>
 
-<script>
+<script setup>
 import { h, ref } from 'vue'
 
 const RedDiv = (_, ctx) => h(
@@ -34,22 +34,8 @@ const RedDiv = (_, ctx) => h(
   },
   ctx.slots.default()
 )
-
-export default {
-  components: {
-    RedDiv,
-  },
-
-  setup() {
-    const msg = 'Vue in Markdown'
-    const count = ref(0)
-
-    return {
-      msg,
-      count,
-    }
-  }
-}
+const msg = 'Vue in Markdown'
+const count = ref(0)
 </script>
 
 <style>
@@ -71,7 +57,7 @@ _Current count is: {{ count }}_
 
 <button @click="count++">Click Me!</button>
 
-<script>
+<script setup>
 import { h, ref } from 'vue'
 
 const RedDiv = (_, ctx) => h(
@@ -81,22 +67,8 @@ const RedDiv = (_, ctx) => h(
   },
   ctx.slots.default()
 )
-
-export default {
-  components: {
-    RedDiv,
-  },
-
-  setup() {
-    const msg = 'Vue in Markdown'
-    const count = ref(0)
-
-    return {
-      msg,
-      count,
-    }
-  }
-}
+const msg = 'Vue in Markdown'
+const count = ref(0)
 </script>
 
 <style>

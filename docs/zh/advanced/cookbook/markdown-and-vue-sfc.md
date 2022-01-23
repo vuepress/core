@@ -1,6 +1,6 @@
 # Markdown 与 Vue SFC
 
-每一个 Markdown 文件，首先都会编译为 HTML ，然后转换为一个 Vue 单文件组件 (SFC) 。换句话说，你可以把 Markdown 作为 Vue SFC 来看待：
+每一个 Markdown 文件，首先都会编译为 HTML ，然后转换为一个 Vue 单文件组件 (SFC) 。换句话说，你可以像写 Vue SFC 一样来写 Markdown 文件：
 
 - `<script>` 和 `<style>` 标签会直接被当作 Vue SFC 中的标签。换句话说，它们是从 `<template>` 标签中提升到了 SFC 的顶层。
 - 所有 `<script>` 和 `<style>` 标签的以外的内容，会先被编译为 HTML ，然后被当作 Vue SFC 的 `<template>` 标签。
@@ -24,7 +24,7 @@ _当前计数为： {{ count }}_
 
 <button @click="count++">点我！</button>
 
-<script>
+<script setup>
 import { h, ref } from 'vue'
 
 const RedDiv = (_, ctx) => h(
@@ -34,22 +34,8 @@ const RedDiv = (_, ctx) => h(
   },
   ctx.slots.default()
 )
-
-export default {
-  components: {
-    RedDiv,
-  },
-
-  setup() {
-    const msg = 'Markdown 中的 Vue'
-    const count = ref(0)
-
-    return {
-      msg,
-      count,
-    }
-  }
-}
+const msg = 'Markdown 中的 Vue'
+const count = ref(0)
 </script>
 
 <style>
@@ -71,7 +57,7 @@ _当前计数为： {{ count }}_
 
 <button @click="count++">点我！</button>
 
-<script>
+<script setup>
 import { h, ref } from 'vue'
 
 const RedDiv = (_, ctx) => h(
@@ -81,22 +67,8 @@ const RedDiv = (_, ctx) => h(
   },
   ctx.slots.default()
 )
-
-export default {
-  components: {
-    RedDiv,
-  },
-
-  setup() {
-    const msg = 'Markdown 中的 Vue'
-    const count = ref(0)
-
-    return {
-      msg,
-      count,
-    }
-  }
-}
+const msg = 'Markdown 中的 Vue'
+const count = ref(0)
 </script>
 
 <style>
