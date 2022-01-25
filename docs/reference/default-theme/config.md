@@ -373,6 +373,32 @@ module.exports = {
 }
 ```
 
+- Example 4: Options based on locale
+
+```js
+module.exports = {
+  themeConfig: {
+    // collapsible sidebar
+    sidebar: {
+      // Default locale
+      "/": [
+        {
+          text: "Guide",
+          link: "/guide/",
+        }
+      ],
+      // 中文版
+      "/zh": [
+        {
+          text: "指南",
+          link: "/zh/guide/",
+        }
+      ]
+    },
+  },
+}
+```
+
 ### sidebarDepth
 
 - Type: `number`
