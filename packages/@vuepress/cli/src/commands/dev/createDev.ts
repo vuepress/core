@@ -101,7 +101,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     }
 
     // watch page files
-    watchers.push(watchPageFiles(app))
+    watchers.push(...watchPageFiles(app))
 
     // watch user config file
     if (userConfigPath) {

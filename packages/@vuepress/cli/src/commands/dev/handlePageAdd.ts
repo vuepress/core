@@ -6,35 +6,39 @@ import {
   preparePagesData,
   preparePagesRoutes,
 } from '@vuepress/core'
-import type { App } from '@vuepress/core'
+import type { App, Page } from '@vuepress/core'
 
 /**
  * Event handler for page add event
+ *
+ * Returns the added page
  */
 export const handlePageAdd = async (
   app: App,
   filePath: string
-): Promise<void> => {
+): Promise<Page | null> => {
   // check if the added page is duplicated
   const pageIndex = app.pages.findIndex((page) => page.filePath === filePath)
   if (pageIndex !== -1) {
-    return
+    return null
   }
 
   // create page
-  const addedPage = await createPage(app, {
+  const page = await createPage(app, {
     filePath,
   })
 
   // add the new page
-  app.pages.push(addedPage)
+  app.pages.push(page)
 
   // prepare page files
-  await preparePageComponent(app, addedPage)
-  await preparePageData(app, addedPage)
+  await preparePageComponent(app, page)
+  await preparePageData(app, page)
 
   // prepare pages entry
   await preparePagesComponents(app)
   await preparePagesData(app)
   await preparePagesRoutes(app)
+
+  return page
 }
