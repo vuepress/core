@@ -1,11 +1,9 @@
 import type { HeadConfig } from './head'
 
 /**
- * Vuepress page data
+ * Vuepress basic page properties
  */
-export type PageData<
-  ExtraPageData extends Record<any, any> = Record<never, never>
-> = ExtraPageData & {
+export type PageBase<ExtraPageFields, Frontmatter> = ExtraPageFields & {
   /**
    * Identifier of the page
    *
@@ -40,7 +38,7 @@ export type PageData<
   /**
    * Front matter of the page
    */
-  frontmatter: PageFrontmatter
+  frontmatter: Frontmatter
 
   /**
    * Excerpt of the page
@@ -52,6 +50,14 @@ export type PageData<
    */
   headers: PageHeader[]
 }
+
+/**
+ * Vuepress page data
+ */
+export type PageData<
+  ExtraPageData extends Record<any, any> = Record<never, never>,
+  Frontmatter extends PageFrontmatter = PageFrontmatter
+> = PageBase<ExtraPageData, Frontmatter>
 
 /**
  * Vuepress page frontmatter
