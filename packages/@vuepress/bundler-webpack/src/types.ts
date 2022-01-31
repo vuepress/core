@@ -22,7 +22,7 @@ export interface WebpackBundlerOptions {
     config: WebpackConfiguration,
     isServer: boolean,
     isBuild: boolean
-  ) => WebpackConfiguration
+  ) => WebpackConfiguration | void
 
   /**
    * use webpack-chain to set webpack config

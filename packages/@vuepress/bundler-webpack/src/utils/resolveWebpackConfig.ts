@@ -24,10 +24,15 @@ export const resolveWebpackConfig = ({
 
   // allow modify webpack config via `configureWebpack`
   if (options.configureWebpack) {
-    return merge(
+    const returnedConfig = options.configureWebpack(
       webpackConfig,
-      options.configureWebpack(webpackConfig, isServer, isBuild)
+      isServer,
+      isBuild
     )
+
+    if (returnedConfig) {
+      return merge(webpackConfig, returnedConfig)
+    }
   }
 
   return webpackConfig
