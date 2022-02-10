@@ -14,25 +14,23 @@ export const resolveWebpackConfig = ({
   isServer: boolean
   isBuild: boolean
 }): Configuration => {
-  // allow modify webpack config via `chainWebpack`
-  if (options.chainWebpack) {
-    options.chainWebpack(config, isServer, isBuild)
-  }
+  // allow modifying webpack config via `chainWebpack`
+  options.chainWebpack?.(config, isServer, isBuild)
 
   // generate webpack config from webpack-chain
   const webpackConfig = config.toConfig()
 
-  // allow modify webpack config via `configureWebpack`
-  if (options.configureWebpack) {
-    const returnedConfig = options.configureWebpack(
-      webpackConfig,
-      isServer,
-      isBuild
-    )
+  // allow modifying webpack config via `configureWebpack`
+  const configureWebpackResult = options.configureWebpack?.(
+    webpackConfig,
+    isServer,
+    isBuild
+  )
 
-    if (returnedConfig) {
-      return merge(webpackConfig, returnedConfig)
-    }
+  // if `configureWebpack` returns a configuration object,
+  // use webpack-merge to merge it
+  if (configureWebpackResult) {
+    return merge(webpackConfig, configureWebpackResult)
   }
 
   return webpackConfig
