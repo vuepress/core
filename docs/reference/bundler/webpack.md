@@ -52,12 +52,12 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
 ### configureWebpack
 
-- Type: `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration`
+- Type: `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration | void`
 
 - Details:
 
   Edit the internal webpack config.
-  
+
   This option accepts a function that will receive a webpack config object as the 1st argument, an `isServer` flag as the 2nd argument and an `isBuild` flag as the 3rd argument. You can either mutate the config directly, or return an object to be merged by [webpack-merge](https://github.com/survivejs/webpack-merge).
 
 ### chainWebpack

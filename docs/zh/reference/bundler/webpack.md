@@ -50,7 +50,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
 ### configureWebpack
 
-- 类型： `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration`
+- 类型： `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration | void`
 
 - 详情：
 
