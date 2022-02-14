@@ -291,7 +291,7 @@ Some major breaking changes:
   - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option.
   - Files in `theme/templates/` directory will not be used as dev / ssr template automatically.
   - Always provide a theme entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry.
-- To access the themeConfig as you would via `this.$site.themeConfig` in v1, we now recommend using the [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) plugin and it's useThemeData compoition function
+- To access the themeConfig as you would via `this.$site.themeConfig` in v1, we now recommend using the [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) plugin and it's `useThemeData` composition function
 - Stylus is no longer the default CSS pre-processor, and the stylus palette system is not embedded. If you still want to use similar palette system as v1, [@vuepress/plugin-palette](../reference/plugin/palette.md) may help.
 - Markdown code blocks syntax highlighting by Prism.js is not enabled by default. You can use either [@vuepress/plugin-prismjs](../reference/plugin/prismjs.md) or [@vuepress/plugin-shiki](../reference/plugin/shiki.md), or implement syntax highlighting in your own way.
 - For scalability concerns, `$site.pages` is not available any more.
