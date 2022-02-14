@@ -24,7 +24,7 @@ npm i -D @vuepress/plugin-active-header-links@next
 
   _标题链接_ 的选择器。
 
-  如果一个 _标题锚点_ 没有对应的 _标题链接_ ，那么及时滚动到这个 _标题锚点_ ，该插件也不会更改路由 Hash 。
+  如果一个 _标题锚点_ 没有对应的 _标题链接_ ，那么即使滚动到这个 _标题锚点_ ，该插件也不会更改路由 Hash 。
 
 ### headerAnchorSelector
 
