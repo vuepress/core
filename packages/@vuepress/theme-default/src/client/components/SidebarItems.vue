@@ -20,8 +20,8 @@ watch(
     if (activeSidebarItem && sidebar) {
       // the top and height of the sidebarItem
       const activeSidebarItemTop = activeSidebarItem.getBoundingClientRect().top
-      const activeSidebarItemHeight = activeSidebarItem.getBoundingClientRect().height
-      
+      const activeSidebarItemHeight =
+        activeSidebarItem.getBoundingClientRect().height
       // the top and height of the sidebar
       const sidebarTop = sidebar.getBoundingClientRect().top
       const sidebarHeight = sidebar.getBoundingClientRect().height
