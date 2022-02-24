@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import SidebarItem from '@theme/SidebarItem.vue'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
-import SidebarItem from '@theme/SidebarItem.vue'
 import { useSidebarItems } from '../composables'
 
 const sidebarItems = useSidebarItems()
