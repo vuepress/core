@@ -59,28 +59,26 @@ export const PwaPopup = defineComponent({
         {
           name: 'pwa-popup',
         },
-        {
-          default: () =>
-            show.value
-              ? h(
-                  'div',
-                  {
-                    class: 'pwa-popup',
-                  },
-                  [
-                    locale.value.message,
-                    h('br'),
-                    h(
-                      'button',
-                      {
-                        onClick,
-                      },
-                      locale.value.buttonText
-                    ),
-                  ]
-                )
-              : null,
-        }
+        () =>
+          show.value
+            ? h(
+                'div',
+                {
+                  class: 'pwa-popup',
+                },
+                [
+                  locale.value.message,
+                  h('br'),
+                  h(
+                    'button',
+                    {
+                      onClick,
+                    },
+                    locale.value.buttonText
+                  ),
+                ]
+              )
+            : null
       )
   },
 })

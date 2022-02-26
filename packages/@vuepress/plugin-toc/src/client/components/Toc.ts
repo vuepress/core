@@ -42,9 +42,7 @@ const renderLink = (
         class: linkClass,
         ariaLabel: header.title,
       },
-      {
-        default: () => header.title,
-      }
+      () => header.title
     )
   }
 
