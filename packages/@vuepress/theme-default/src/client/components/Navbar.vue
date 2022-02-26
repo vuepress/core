@@ -3,15 +3,33 @@ import NavbarBrand from '@theme/NavbarBrand.vue'
 import NavbarItems from '@theme/NavbarItems.vue'
 import ToggleDarkModeButton from '@theme/ToggleDarkModeButton.vue'
 import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
+import { usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, ref } from 'vue'
+import type {
+  DefaultThemeHomePageFrontmatter,
+  DefaultThemeNormalPageFrontmatter,
+} from '../../shared'
 import { useThemeLocaleData } from '../composables'
 
 defineEmits(['toggle-sidebar'])
 
 const themeLocale = useThemeLocaleData()
+const frontmatter = usePageFrontmatter<
+  DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
+>()
 
 const navbar = ref<HTMLElement | null>(null)
 const navbarBrand = ref<HTMLElement | null>(null)
+
+const shouldShowSidebar = computed(
+  () =>
+    // sidebar not disabled
+    ((!('sidebar' in frontmatter.value) ||
+      frontmatter.value.sidebar !== false) &&
+      themeLocale.value.sidebar !== false) ||
+    // sidebar is enabled in current page
+    ('sidebar' in frontmatter.value && Boolean(frontmatter.value.sidebar))
+)
 
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
@@ -59,7 +77,10 @@ function getCssValue(el: HTMLElement | null, property: string): number {
 
 <template>
   <header ref="navbar" class="navbar">
-    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+    <ToggleSidebarButton
+      v-if="shouldShowSidebar"
+      @toggle="$emit('toggle-sidebar')"
+    />
 
     <span ref="navbarBrand">
       <NavbarBrand />
