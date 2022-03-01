@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import SidebarItem from '@theme/SidebarItem.vue'
 import { watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useSidebarItems } from '../composables'
 
 const sidebarItems = useSidebarItems()
 
-const router = useRouter()
+const route = useRoute()
 
 watch(
-  () => router.currentRoute.value.hash,
+  () => route.hash,
   (hash) => {
     // the sidebarItem dom whose href equals to the current href of the page
     const activeSidebarItem = document.querySelector(
-      `.sidebar a.sidebar-item[href="${router.currentRoute.value.path}${hash}"]`
+      `.sidebar a.sidebar-item[href="${route.path}${hash}"]`
     )
 
     const sidebar = document.querySelector('.sidebar')
