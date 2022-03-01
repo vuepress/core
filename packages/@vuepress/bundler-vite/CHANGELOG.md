@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
+
+
+### Bug Fixes
+
+* avoid user content to be used as string params (close [#727](https://github.com/vuepress/vuepress-next/issues/727)) ([788afda](https://github.com/vuepress/vuepress-next/commit/788afdab56e4048f61505280113e4a073f418f4f))
+
+
+
+
+
 # [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
 
 **Note:** Version bump only for package @vuepress/bundler-vite

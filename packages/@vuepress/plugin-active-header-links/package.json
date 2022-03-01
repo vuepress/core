@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "2.0.0-beta.35",
+  "version": "2.0.0-beta.36",
   "description": "VuePress plugin - active header links",
   "keywords": [
     "vuepress-plugin",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-beta.35",
-    "@vuepress/core": "2.0.0-beta.35",
+    "@vuepress/core": "2.0.0-beta.36",
     "@vuepress/utils": "2.0.0-beta.35",
     "ts-debounce": "^4.0.0",
     "vue": "^3.2.28",
