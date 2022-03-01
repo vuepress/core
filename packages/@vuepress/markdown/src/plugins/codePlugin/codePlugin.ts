@@ -112,7 +112,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
         .map((_, index) => `<span class="line-number">${index + 1}</span><br>`)
         .join('')
 
-      result = `${result}<div class="line-numbers">${lineNumbersCode}</div>`
+      result = `${result}<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
     }
 
     result = `<div class="${languageClass} ext-${language.ext}${
