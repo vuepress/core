@@ -154,18 +154,16 @@
   .navbar-dropdown-wrapper {
     height: 1.8rem;
 
-    &:hover .navbar-dropdown,
     &.open .navbar-dropdown {
-      // override the inline style.
-      display: block !important;
-    }
-
-    &.open:blur {
-      display: none;
+      opacity: 1;
+      transform: none;
     }
 
     .navbar-dropdown {
-      display: none;
+      display: block;
+      opacity: 0;
+      transform: translateY(-0.5rem);
+      transition: opacity 0.3s ease, transform 0.3s ease;
       // Avoid height shaked by clicking
       height: auto !important;
       box-sizing: border-box;
