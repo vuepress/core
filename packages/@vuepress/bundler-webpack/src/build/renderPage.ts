@@ -94,7 +94,11 @@ export const renderPage = async ({
       '<!--vuepress-ssr-styles-->',
       renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta })
     )
-    .replace('<!--vuepress-ssr-app-->', pageRendered)
+    // page content
+    // notice that some special chars in string like `$&` would be recognized by `replace()`,
+    // and they won't be html-escaped and will be kept as is when they are inside a code block,
+    // so we use a replace function as the second param to avoid those potential issues
+    .replace('<!--vuepress-ssr-app-->', () => pageRendered)
     // page scripts
     .replace(
       '<!--vuepress-ssr-scripts-->',
