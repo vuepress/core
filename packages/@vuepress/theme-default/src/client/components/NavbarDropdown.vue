@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import DropdownTransition from '@theme/DropdownTransition.vue'
-import { computed, ref, toRefs, watch } from 'vue'
+import { computed, h, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import type { NavbarItem, ResolvedNavbarItem } from '../../shared'
@@ -9,6 +9,10 @@ import type { NavbarItem, ResolvedNavbarItem } from '../../shared'
 const props = defineProps({
   item: {
     type: Object as PropType<Exclude<ResolvedNavbarItem, NavbarItem>>,
+    required: true,
+  },
+  isHeader: {
+    type: Boolean,
     required: true,
   },
 })
@@ -52,6 +56,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
 <template>
   <div class="navbar-dropdown-wrapper" :class="{ open }">
     <button
+      v-if="isHeader"
       class="navbar-dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
@@ -62,6 +67,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     </button>
 
     <button
+      v-else
       class="navbar-dropdown-title-mobile"
       type="button"
       :aria-label="dropdownAriaLabel"
