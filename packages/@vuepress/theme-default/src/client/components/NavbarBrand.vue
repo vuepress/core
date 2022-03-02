@@ -36,7 +36,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
   }
   // wrap brand logo with <ClientOnly> to avoid ssr-mismatch
   // when using a different brand logo in dark mode
-  return h(ClientOnly, img)
+  return h(ClientOnly, () => img)
 }
 </script>
 

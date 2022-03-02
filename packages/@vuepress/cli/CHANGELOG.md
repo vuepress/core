@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
+
+
+### Features
+
+* **cli:** watch page dependencies on dev ([e6ed487](https://github.com/vuepress/vuepress-next/commit/e6ed487c6d7002fdde1034a961853218b0eb4418))
+
+
+
+
+
 # [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
+
+
+### Bug Fixes
+
+* avoid user content to be used as string params (close [#727](https://github.com/vuepress/vuepress-next/issues/727)) ([788afda](https://github.com/vuepress/vuepress-next/commit/788afdab56e4048f61505280113e4a073f418f4f))
+* **bundler-webpack:** allow `configureWebpack` option to return void ([#662](https://github.com/vuepress/vuepress-next/issues/662)) ([4488cb3](https://github.com/vuepress/vuepress-next/commit/4488cb31d01cf9a198124631f5e3296d1d0f12ab))
+* **theme-default:** fix title style when no content in custom container (close [#648](https://github.com/vuepress/vuepress-next/issues/648)) ([#657](https://github.com/vuepress/vuepress-next/issues/657)) ([73d297f](https://github.com/vuepress/vuepress-next/commit/73d297f321750de098c22c8c774dbe934475ddcb))
+* use function to pass a single default slot in render function (close [#716](https://github.com/vuepress/vuepress-next/issues/716)) ([4550161](https://github.com/vuepress/vuepress-next/commit/455016192955fb6af74821baf52d3c2c1e4d42c9))
+
+
+### Features
+
+* **cli:** watch page dependencies on dev ([e6ed487](https://github.com/vuepress/vuepress-next/commit/e6ed487c6d7002fdde1034a961853218b0eb4418))
+* **markdown:** add aria-hidden for line-numbers ([#731](https://github.com/vuepress/vuepress-next/issues/731)) ([6f5d132](https://github.com/vuepress/vuepress-next/commit/6f5d13289dd41dbb55d883ff8bff996e77b6daf9))
+
+
+
+
+
 # [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
 
 

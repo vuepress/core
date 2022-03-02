@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
+
+
+### Bug Fixes
+
+* **theme-default:** fix title style when no content in custom container (close [#648](https://github.com/vuepress/vuepress-next/issues/648)) ([#657](https://github.com/vuepress/vuepress-next/issues/657)) ([73d297f](https://github.com/vuepress/vuepress-next/commit/73d297f321750de098c22c8c774dbe934475ddcb))
+* use function to pass a single default slot in render function (close [#716](https://github.com/vuepress/vuepress-next/issues/716)) ([4550161](https://github.com/vuepress/vuepress-next/commit/455016192955fb6af74821baf52d3c2c1e4d42c9))
+
+
+
+
+
 # [2.0.0-beta.35](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.34...v2.0.0-beta.35) (2022-01-22)
 
 

@@ -68,7 +68,7 @@ const HomeHeroImage: FunctionalComponent = () => {
   }
   // wrap hero image with <ClientOnly> to avoid ssr-mismatch
   // when using a different hero image in dark mode
-  return h(ClientOnly, img)
+  return h(ClientOnly, () => img)
 }
 </script>
 
