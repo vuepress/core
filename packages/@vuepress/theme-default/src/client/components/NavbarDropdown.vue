@@ -11,6 +11,10 @@ const props = defineProps({
     type: Object as PropType<Exclude<ResolvedNavbarItem, NavbarItem>>,
     required: true,
   },
+  isHeader: {
+    type: Boolean,
+    required: true,
+  },
 })
 
 const { item } = toRefs(props)
@@ -38,7 +42,7 @@ watch(
  */
 const handleDropdown = (e): void => {
   const isTriggerByTab = e.detail === 0
-  if (isTriggerByTab) {
+  if (isTriggerByTab || props.isHeader) {
     open.value = !open.value
   } else {
     open.value = false
@@ -50,18 +54,25 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
 </script>
 
 <template>
-  <div class="navbar-dropdown-wrapper" :class="{ open }">
+  <div
+    class="navbar-dropdown-wrapper"
+    :class="{ open }"
+    @mouseleave="open = false"
+  >
     <button
+      v-if="isHeader"
       class="navbar-dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
+      @mouseenter="open = true"
     >
       <span class="title">{{ item.text }}</span>
       <span class="arrow down" />
     </button>
 
     <button
+      v-else
       class="navbar-dropdown-title-mobile"
       type="button"
       :aria-label="dropdownAriaLabel"
@@ -72,7 +83,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     </button>
 
     <DropdownTransition>
-      <ul v-show="open" class="navbar-dropdown">
+      <ul v-show="isHeader ? true : open" class="navbar-dropdown">
         <li
           v-for="child in item.children"
           :key="child.text"
