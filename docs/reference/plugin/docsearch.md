@@ -22,45 +22,141 @@ You need to [submit the URL of your site](https://docsearch.algolia.com/apply/) 
 
 Alternatively, you can [run your own crawler](https://docsearch.algolia.com/docs/run-your-own/) to generate the index, and then use your own [appId](#appId), [apiKey](#apikey) and [indexName](#indexname) to configure this plugin.
 
-::: details Click to show the example crawler config
-```json{19-23,25-27}
-{
-  "index_name": "your_index_name",
-  "start_urls": [
-    "https://your.domain.name/"
+::: details Official crawler config
+
+```js{35-50,59}
+new Crawler({
+  appId: 'YOUR_APP_ID',
+  apiKey: 'YOUR_API_KEY',
+  rateLimit: 8,
+  startUrls: [
+    // These are urls which algolia start to craw
+    // If your site is divided in to mutiple parts,
+    // you may want to set mutiple entry links
+    'https://YOUR_WEBSITE_URL/',
   ],
-  "stop_urls": [],
-  "selectors": {
-    "lvl0": {
-      "selector": ".sidebar-heading.active",
-      "global": true,
-      "default_value": "Documentation"
+  sitemaps: [
+    // if you are using sitemap plugins (e.g.: vuepress-plugin-sitemap2), you may provide one
+    'https://YOUR_WEBSITE_URL/sitemap.xml',
+  ],
+  ignoreCanonicalTo: false,
+  exclusionPatterns: [
+    // You can use this to stop algolia crawing some paths
+  ],
+  discoveryPatterns: [
+    // These are urls which algolia looking for,
+    'https://YOUR_WEBSITE_URL/**',
+  ],
+  // Crawler schedule, set it according to your docs update frequency
+  schedule: 'at 02:00 every 1 day',
+  actions: [
+    // you may have mutiple actions, especially when you are deploying mutiple docs under one domain
+    {
+      // name the index with name you like
+      indexName: 'YOUR_INDEX_NAME',
+      // paths where the index take effect
+      pathsToMatch: ['https://YOUR_WEBSITE_URL/**'],
+      // controls how algolia extracts records from your site
+      recordExtractor: ({ $, helpers }) => {
+        // options for @vuepress/theme-default
+        return helpers.docsearch({
+          recordProps: {
+            lvl0: {
+              selectors: '.sidebar-heading.active',
+              defaultValue: 'Documentation',
+            },
+            lvl1: '.theme-default-content h1',
+            lvl2: '.theme-default-content h2',
+            lvl3: '.theme-default-content h3',
+            lvl4: '.theme-default-content h4',
+            lvl5: '.theme-default-content h5',
+            lvl6: '.theme-default-content h6',
+            content: '.theme-default-content p, .theme-default-content li',
+          },
+          indexHeadings: true,
+        })
+      },
     },
-    "lvl1": ".theme-default-content h1",
-    "lvl2": ".theme-default-content h2",
-    "lvl3": ".theme-default-content h3",
-    "lvl4": ".theme-default-content h4",
-    "lvl5": ".theme-default-content h5",
-    "text": ".theme-default-content p, .theme-default-content li",
-    "lang": {
-      "selector": "/html/@lang",
-      "type": "xpath",
-      "global": true
-    }
+  ],
+  initialIndexSettings: {
+    // controls how index are initialized
+    // only has effects before index are initialize
+    // you may need to delete your index and recraw after modification
+    YOUR_INDEX_NAME: {
+      attributesForFaceting: ['type', 'lang'],
+      attributesToRetrieve: ['hierarchy', 'content', 'anchor', 'url'],
+      attributesToHighlight: ['hierarchy', 'hierarchy_camel', 'content'],
+      attributesToSnippet: ['content:10'],
+      camelCaseAttributes: ['hierarchy', 'hierarchy_radio', 'content'],
+      searchableAttributes: [
+        'unordered(hierarchy_radio_camel.lvl0)',
+        'unordered(hierarchy_radio.lvl0)',
+        'unordered(hierarchy_radio_camel.lvl1)',
+        'unordered(hierarchy_radio.lvl1)',
+        'unordered(hierarchy_radio_camel.lvl2)',
+        'unordered(hierarchy_radio.lvl2)',
+        'unordered(hierarchy_radio_camel.lvl3)',
+        'unordered(hierarchy_radio.lvl3)',
+        'unordered(hierarchy_radio_camel.lvl4)',
+        'unordered(hierarchy_radio.lvl4)',
+        'unordered(hierarchy_radio_camel.lvl5)',
+        'unordered(hierarchy_radio.lvl5)',
+        'unordered(hierarchy_radio_camel.lvl6)',
+        'unordered(hierarchy_radio.lvl6)',
+        'unordered(hierarchy_camel.lvl0)',
+        'unordered(hierarchy.lvl0)',
+        'unordered(hierarchy_camel.lvl1)',
+        'unordered(hierarchy.lvl1)',
+        'unordered(hierarchy_camel.lvl2)',
+        'unordered(hierarchy.lvl2)',
+        'unordered(hierarchy_camel.lvl3)',
+        'unordered(hierarchy.lvl3)',
+        'unordered(hierarchy_camel.lvl4)',
+        'unordered(hierarchy.lvl4)',
+        'unordered(hierarchy_camel.lvl5)',
+        'unordered(hierarchy.lvl5)',
+        'unordered(hierarchy_camel.lvl6)',
+        'unordered(hierarchy.lvl6)',
+        'content',
+      ],
+      distinct: true,
+      attributeForDistinct: 'url',
+      customRanking: [
+        'desc(weight.pageRank)',
+        'desc(weight.level)',
+        'asc(weight.position)',
+      ],
+      ranking: [
+        'words',
+        'filters',
+        'typo',
+        'attribute',
+        'proximity',
+        'exact',
+        'custom',
+      ],
+      highlightPreTag: '<span class="algolia-docsearch-suggestion--highlight">',
+      highlightPostTag: '</span>',
+      minWordSizefor1Typo: 3,
+      minWordSizefor2Typos: 7,
+      allowTyposOnNumericTokens: false,
+      minProximity: 1,
+      ignorePlurals: true,
+      advancedSyntax: true,
+      attributeCriteriaComputedByMinProximity: true,
+      removeWordsIfNoResults: 'allOptional',
+    },
   },
-  "custom_settings": {
-    "attributesForFaceting": ["lang"]
-  }
-}
+})
 ```
 
-The above `selectors` is the configuration used for the default theme. You can modify them according to the theme you are using.
+The above `recordProps` is the configuration used for the default theme. You can modify them according to the theme you are using.
 
-Notice that the `selectors.lang` and the `custom_settings.attributesForFaceting` fields are **required** to make this plugin work properly.
+Notice that the `initialIndexSettings.YOUR_INDEX_NAME.attributesForFaceting` fields must include `'lang'` to make this plugin work properly.
 :::
 
 ::: tip
-If you are not using default theme, or you meet any problems when using docsearch, you can also check the above example crawler config, and submit a PR to the config file of your site in the [docsearch-configs](https://github.com/algolia/docsearch-configs) repo.
+If you are not using default theme, or you meet any problems when using docsearch, you can also check the above example crawler config, and ahead to [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/), and edit your config with 'Editor' panel in project sidebar.
 :::
 
 ## Options
@@ -95,9 +191,11 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 - Type: `string`
 
+- Required: `true`
+
 - Details:
 
-  Required if you're [running the DocSearch crawler on your own](https://docsearch.algolia.com/docs/legacy/run-your-own/) or already have been [migrated to the new DocSearch infrastructure](https://docsearch.algolia.com/docs/migrating-from-legacy). It defines your own application ID.
+  It defines your own application ID.
 
 - Also see:
   - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
@@ -108,7 +206,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 - Details:
 
-  This API parameters of Algolia API.
+  Parameters of Algolia Search API.
 
 - Also see:
   - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
@@ -211,7 +309,7 @@ module.exports = {
 
 ## Styles
 
-You can customize styles via CSS variables that provided by [@docsearch/css](https://autocomplete-experimental.netlify.app/docs/docsearch-css):
+You can customize styles via CSS variables that provided by [@docsearch/css](https://docsearch.algolia.com/docs/styling):
 
 ```css
 :root {
@@ -228,8 +326,8 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
   --docsearch-modal-width: 560px;
   --docsearch-modal-height: 600px;
   --docsearch-modal-background: rgb(245, 246, 247);
-  --docsearch-modal-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.5),
-    0 3px 8px 0 rgba(85, 90, 100, 1);
+  --docsearch-modal-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.5), 0 3px
+      8px 0 rgba(85, 90, 100, 1);
 
   /* searchbox */
   --docsearch-searchbox-height: 56px;
@@ -250,14 +348,13 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
     rgb(213, 219, 228) 0%,
     rgb(248, 248, 248) 100%
   );
-  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230),
-    inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230), inset 0 0 1px 1px
+      #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
 
   /* footer */
   --docsearch-footer-height: 44px;
   --docsearch-footer-background: #fff;
-  --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232),
-    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+  --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232), 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 ```
 
