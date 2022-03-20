@@ -23,8 +23,10 @@ The path of style file is `.vuepress/styles/index.scss`.
 You can add extra styles here, or override default styles:
 
 ```scss
-:root {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  :root:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 ```
 
