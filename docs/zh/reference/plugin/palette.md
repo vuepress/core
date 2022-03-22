@@ -38,7 +38,7 @@ export default {
 }
 ```
 
-在你主题的 `Layout.vue` 中引入调色板和样式：
+在你主题的 `Layout.vue` 中引入调色板：
 
 ```vue
 <template>
@@ -57,8 +57,6 @@ $color: red !default;
   color: $color;
 }
 </style>
-
-<style lang="scss" src="@vuepress/plugin-palette/style"></style>
 ```
 
 然后，用户就可以在 `.vuepress/styles/palette.scss` 中自定义变量：
@@ -67,11 +65,19 @@ $color: red !default;
 $color: green;
 ```
 
-并在 `.vuepress/styles/index.scss` 中添加额外样式：
+在你主题的客户端增强文件中，在主题样式之后导入样式
+
+```ts
+// 导入主题样式...
+// 从调色板插件中导入用户央视
+import '@vuepress/plugin-palette/style'
+```
+
+这样用户就能在 `.vuepress/styles/index.scss` 中添加额外样式：
 
 ```scss
-:root {
-  scroll-behavior: smooth;
+h1 {
+  font-size: 2.5rem;
 }
 ```
 
@@ -94,6 +100,7 @@ $color: green;
 - 类型： `string`
 
 - 默认值：
+
   - css: `'.vuepress/styles/palette.css'`
   - sass: `'.vuepress/styles/palette.scss'`
   - less: `'.vuepress/styles/palette.less'`
@@ -112,6 +119,7 @@ $color: green;
 - 类型： `string`
 
 - 默认值：
+
   - css: `'styles/palette.css'`
   - sass: `'styles/palette.scss'`
   - less: `'styles/palette.less'`
@@ -130,6 +138,7 @@ $color: green;
 - 类型： `string`
 
 - 默认值：
+
   - css: `'.vuepress/styles/index.css'`
   - sass: `'.vuepress/styles/index.scss'`
   - less: `'.vuepress/styles/index.less'`
@@ -148,6 +157,7 @@ $color: green;
 - 类型： `string`
 
 - 默认值：
+
   - css: `'styles/index.css'`
   - sass: `'styles/index.scss'`
   - less: `'styles/index.less'`
@@ -166,6 +176,7 @@ $color: green;
 - 类型： `(filePath: string) => string`
 
 - 默认值：
+
   - css: `` (filePath) => `@import '${filePath}';\n` ``
   - sass: `` (filePath) => `@forward '${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``

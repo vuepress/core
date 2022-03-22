@@ -38,7 +38,7 @@ export default {
 }
 ```
 
-Import the palette and style in the `Layout.vue` of your theme:
+Import the palette in the `Layout.vue` of your theme:
 
 ```vue
 <template>
@@ -57,8 +57,6 @@ $color: red !default;
   color: $color;
 }
 </style>
-
-<style lang="scss" src="@vuepress/plugin-palette/style"></style>
 ```
 
 Then users can customize variables in `.vuepress/styles/palette.scss`:
@@ -67,11 +65,19 @@ Then users can customize variables in `.vuepress/styles/palette.scss`:
 $color: green;
 ```
 
-And add extra styles in `.vuepress/styles/index.scss`:
+Also import styles after your theme styles in clientAppEnhanceFile:
+
+```ts
+// import theme styles...
+// import user's styles from palette
+import '@vuepress/plugin-palette/style'
+```
+
+So users can add extra styles in `.vuepress/styles/index.scss`:
 
 ```scss
-:root {
-  scroll-behavior: smooth;
+h1 {
+  font-size: 2.5rem;
 }
 ```
 
@@ -94,6 +100,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'.vuepress/styles/palette.css'`
   - sass: `'.vuepress/styles/palette.scss'`
   - less: `'.vuepress/styles/palette.less'`
@@ -112,6 +119,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'styles/palette.css'`
   - sass: `'styles/palette.scss'`
   - less: `'styles/palette.less'`
@@ -130,6 +138,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'.vuepress/styles/index.css'`
   - sass: `'.vuepress/styles/index.scss'`
   - less: `'.vuepress/styles/index.less'`
@@ -148,6 +157,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'styles/index.css'`
   - sass: `'styles/index.scss'`
   - less: `'styles/index.less'`
@@ -166,6 +176,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `(filePath: string) => string`
 
 - Default:
+
   - css: `` (filePath) => `@import '${filePath}';\n` ``
   - sass: `` (filePath) => `@forward '${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
