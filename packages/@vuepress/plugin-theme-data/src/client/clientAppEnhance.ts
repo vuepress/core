@@ -34,7 +34,8 @@ export default defineClientAppEnhance(({ app }) => {
   if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {
     setupDevtoolsPlugin(
       {
-        app,
+        // fix recursive reference
+        app: app as any,
         id: 'org.vuejs.vuepress.plugin-theme-data',
         label: 'VuePress Theme Data Plugin',
         packageName: '@vuepress/plugin-theme-data',

@@ -44,11 +44,11 @@
     "@vuepress/plugin-theme-data": "2.0.0-beta.36",
     "@vuepress/shared": "2.0.0-beta.35",
     "@vuepress/utils": "2.0.0-beta.35",
-    "@vueuse/core": "^7.5.4",
-    "sass": "^1.49.0",
-    "sass-loader": "^12.4.0",
-    "vue": "^3.2.28",
-    "vue-router": "^4.0.12"
+    "@vueuse/core": "^8.2.1",
+    "sass": "^1.49.10",
+    "sass-loader": "^12.6.0",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
   },
   "publishConfig": {
     "access": "public"
