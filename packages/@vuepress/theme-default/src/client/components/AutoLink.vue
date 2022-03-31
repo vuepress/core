@@ -107,7 +107,7 @@ const isActive = computed(() => {
   >
     <slot name="before" />
     {{ item.text }}
-    <ExternalLinkIcon v-if="isBlankTarget" />
+    <AutoLinkExternalIcon v-if="isBlankTarget" />
     <slot name="after" />
   </a>
 </template>
