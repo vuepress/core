@@ -67,7 +67,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
 
     <div class="navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
-      <NavbarItems class="can-hide" is-header />
+      <NavbarItems class="can-hide" />
       <slot name="after" />
       <ToggleDarkModeButton v-if="enableDarkMode" />
       <NavbarSearch />

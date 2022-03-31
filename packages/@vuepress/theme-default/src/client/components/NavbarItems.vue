@@ -10,14 +10,6 @@ import type { NavbarGroup, NavbarItem, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
 
-defineProps({
-  isHeader: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-})
-
 /**
  * Get navbar config of select language dropdown
  */
@@ -155,7 +147,7 @@ const navbarLinks = computed(() => [
 <template>
   <nav v-if="navbarLinks.length" class="navbar-items">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
-      <NavbarDropdown v-if="item.children" :item="item" :is-header="isHeader" />
+      <NavbarDropdown v-if="item.children" :item="item" />
       <AutoLink v-else :item="item" />
     </div>
   </nav>
