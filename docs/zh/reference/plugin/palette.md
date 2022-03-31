@@ -65,11 +65,11 @@ $color: red !default;
 $color: green;
 ```
 
-在你主题的客户端增强文件中，在主题样式之后导入样式
+通过你主题的 Client App Enhance 文件，在主题样式之后导入样式：
 
 ```ts
 // 导入主题样式...
-// 从调色板插件中导入用户央视
+// 从调色板插件中导入用户样式
 import '@vuepress/plugin-palette/style'
 ```
 
