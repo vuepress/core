@@ -14,7 +14,7 @@ export const docsearchPlugin: Plugin<DocsearchPluginOptions> = (
       app.options.bundlerConfig.viteOptions,
       {
         optimizeDeps: {
-          exclude: ['@docsearch/js', 'preact'],
+          exclude: ['@docsearch/js', 'preact', 'ts-debounce'],
         },
       }
     )

@@ -2,6 +2,7 @@ import type { DocSearchProps } from '@docsearch/react'
 import { useSiteData } from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import { createElement } from 'preact'
+import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
 
 const isSpecialClick = (event: MouseEvent): boolean =>
@@ -52,6 +53,15 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
       navigate: ({ itemUrl }) => {
         router.push(itemUrl)
       },
+    },
+
+    // add search debounce
+    transformSearchClient: (searchClient) => {
+      const searchWithDebounce = debounce(searchClient.search, 500)
+      return {
+        ...searchClient,
+        search: async (...args) => searchWithDebounce(...args),
+      }
     },
   } as Partial<DocSearchProps>
 }
