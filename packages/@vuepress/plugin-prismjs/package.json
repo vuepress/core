@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-beta.36",
-    "prismjs": "^1.26.0"
+    "prismjs": "^1.27.0"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.16.6"
+    "@types/prismjs": "^1.26.0"
   },
   "publishConfig": {
     "access": "public"

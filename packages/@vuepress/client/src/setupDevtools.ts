@@ -8,7 +8,8 @@ export const setupDevtools = (
 ): void => {
   setupDevtoolsPlugin(
     {
-      app,
+      // fix recursive reference
+      app: app as any,
       id: 'org.vuejs.vuepress',
       label: 'VuePress',
       packageName: '@vuepress/client',
