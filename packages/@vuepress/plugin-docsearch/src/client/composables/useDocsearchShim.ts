@@ -56,9 +56,12 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     },
 
     // add search debounce
-    transformSearchClient: (searchClient) => ({
-      ...searchClient,
-      search: async (...args) => debounce(searchClient.search, 500)(...args),
-    }),
+    transformSearchClient: (searchClient) => {
+      const searchWithDebounce = debounce(searchClient.search, 500)
+      return {
+        ...searchClient,
+        search: async (...args) => searchWithDebounce(...args),
+      }
+    },
   } as Partial<DocSearchProps>
 }
