@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "Markdown package of VuePress",
   "keywords": [
     "vuepress",
@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@types/markdown-it": "^12.2.3",
-    "@vuepress/shared": "2.0.0-beta.35",
-    "@vuepress/utils": "2.0.0-beta.35",
+    "@vuepress/shared": "2.0.0-beta.37",
+    "@vuepress/utils": "2.0.0-beta.37",
     "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^8.4.1",
     "markdown-it-emoji": "^2.0.0",

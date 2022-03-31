@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.37](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.36...v2.0.0-beta.37) (2022-03-31)
+
+
+### Bug Fixes
+
+* **theme-default:** fallback external-link-icon when the plugin is disabled (close [#766](https://github.com/vuepress/vuepress-next/issues/766)) ([#769](https://github.com/vuepress/vuepress-next/issues/769)) ([3628fbf](https://github.com/vuepress/vuepress-next/commit/3628fbfa96ffd7a9ea218808d8e412e3d8ae7fbd))
+
+
+### Features
+
+* **theme-default:** enhance header dropdown experience ([#736](https://github.com/vuepress/vuepress-next/issues/736)) ([ad530e7](https://github.com/vuepress/vuepress-next/commit/ad530e78f95ef71077ad0c2d1b1c7c0054a54ef3))
+* **theme-default:** scroll active sidebar item into view ([#698](https://github.com/vuepress/vuepress-next/issues/698)) ([08b9e9a](https://github.com/vuepress/vuepress-next/commit/08b9e9a74d07de976da4da14c83279faf759579d))
+
+
+### Reverts
+
+* feat(theme-default): enhance header dropdown experience ([#736](https://github.com/vuepress/vuepress-next/issues/736)) ([#786](https://github.com/vuepress/vuepress-next/issues/786)) ([856be61](https://github.com/vuepress/vuepress-next/commit/856be61f2f2ae5d16fe46e36ef57fcf31ffe00e4))
+
+
+
+
+
 # [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
 
 

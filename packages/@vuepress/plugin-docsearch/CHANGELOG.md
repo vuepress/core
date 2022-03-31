@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.37](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.36...v2.0.0-beta.37) (2022-03-31)
+
+
+### Features
+
+* **plugin-docsearch:** add debounce on search (close [#216](https://github.com/vuepress/vuepress-next/issues/216)) ([#771](https://github.com/vuepress/vuepress-next/issues/771)) ([c82f735](https://github.com/vuepress/vuepress-next/commit/c82f735a54e4b837c77ec4e9e5ef87fd0ba8ddb8))
+* **plugin-docsearch:** bump docsearch to 3.0.0 (close [#718](https://github.com/vuepress/vuepress-next/issues/718)) ([#721](https://github.com/vuepress/vuepress-next/issues/721)) ([85819c3](https://github.com/vuepress/vuepress-next/commit/85819c3011005727322804896fedc47c447fe5dd))
+
+
+
+
+
 # [2.0.0-beta.36](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.35...v2.0.0-beta.36) (2022-03-01)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

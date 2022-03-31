@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-nprogress",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "VuePress plugin - nprogress",
   "keywords": [
     "vuepress-plugin",
@@ -29,9 +29,9 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.35",
-    "@vuepress/core": "2.0.0-beta.36",
-    "@vuepress/utils": "2.0.0-beta.35",
+    "@vuepress/client": "2.0.0-beta.37",
+    "@vuepress/core": "2.0.0-beta.37",
+    "@vuepress/utils": "2.0.0-beta.37",
     "nprogress": "^0.2.0",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14"

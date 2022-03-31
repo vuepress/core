@@ -1,6 +1,6 @@
 {
   "name": "vuepress-vite",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -33,9 +33,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/bundler-vite": "2.0.0-beta.36",
-    "@vuepress/cli": "2.0.0-beta.36",
-    "@vuepress/core": "2.0.0-beta.36",
-    "@vuepress/theme-default": "2.0.0-beta.36"
+    "@vuepress/bundler-vite": "2.0.0-beta.37",
+    "@vuepress/cli": "2.0.0-beta.37",
+    "@vuepress/core": "2.0.0-beta.37",
+    "@vuepress/theme-default": "2.0.0-beta.37"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
@@ -28,7 +28,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.36",
+    "@vuepress/core": "2.0.0-beta.37",
     "execa": "^5.1.1"
   },
   "publishConfig": {

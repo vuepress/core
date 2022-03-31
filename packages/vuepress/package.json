@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -32,6 +32,6 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "vuepress-vite": "2.0.0-beta.36"
+    "vuepress-vite": "2.0.0-beta.37"
   }
 }

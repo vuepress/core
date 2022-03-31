@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "2.0.0-beta.36",
+  "version": "2.0.0-beta.37",
   "description": "Core package of VuePress",
   "keywords": [
     "vuepress",
@@ -26,10 +26,10 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.35",
-    "@vuepress/markdown": "2.0.0-beta.36",
-    "@vuepress/shared": "2.0.0-beta.35",
-    "@vuepress/utils": "2.0.0-beta.35",
+    "@vuepress/client": "2.0.0-beta.37",
+    "@vuepress/markdown": "2.0.0-beta.37",
+    "@vuepress/shared": "2.0.0-beta.37",
+    "@vuepress/utils": "2.0.0-beta.37",
     "gray-matter": "^4.0.3",
     "toml": "^3.0.0"
   },
