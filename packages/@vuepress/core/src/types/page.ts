@@ -1,18 +1,19 @@
 import type { MarkdownLink } from '@vuepress/markdown'
-import type { PageData, PageFrontmatter } from '@vuepress/shared'
+import type { PageBase, PageData, PageFrontmatter } from '@vuepress/shared'
 
 /**
  * Vuepress Page
  */
 export type Page<
   ExtraPageData extends Record<any, any> = Record<never, never>,
+  ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
   ExtraPageFields extends Record<any, any> = Record<never, never>
-> = PageData &
+> = PageBase<ExtraPageFrontmatter> &
   ExtraPageFields & {
     /**
      * Data of the page, which will be available in client code
      */
-    data: PageData<ExtraPageData>
+    data: PageData<ExtraPageData, ExtraPageFrontmatter>
 
     /**
      * Raw Content of the page

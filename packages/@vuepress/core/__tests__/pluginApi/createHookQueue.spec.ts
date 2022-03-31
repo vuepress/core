@@ -183,14 +183,18 @@ describe('core > pluginApi > createHookQueue', () => {
 
       const hook = createHookQueue(hookName)
       const page = (await createPage(app, { path: '/' })) as Page<
-        { bar: string },
-        { foo: string }
+        { extraData: string },
+        { extraFrontmatter: string },
+        { extraField: string }
       >
       const func1 = jest.fn((page) => {
-        page.foo = 'foo'
+        page.data.extraData = 'foo'
       })
       const func2 = jest.fn((page) => {
-        page.data.bar = 'bar'
+        page.frontmatter.extraFrontmatter = 'bar'
+      })
+      const func3 = jest.fn((page) => {
+        page.extraField = 'baz'
       })
       hook.add({
         pluginName: 'test1',
@@ -200,14 +204,19 @@ describe('core > pluginApi > createHookQueue', () => {
         pluginName: 'test2',
         hook: func2,
       })
+      hook.add({
+        pluginName: 'test3',
+        hook: func3,
+      })
       await hook.process(page, app)
 
       expect(func1).toHaveBeenCalledTimes(1)
       expect(func1).toHaveBeenCalledWith(page, app)
       expect(func2).toHaveBeenCalledTimes(1)
       expect(func2).toHaveBeenCalledWith(page, app)
-      expect(page.foo).toEqual('foo')
-      expect(page.data.bar).toEqual('bar')
+      expect(page.data.extraData).toEqual('foo')
+      expect(page.frontmatter.extraFrontmatter).toEqual('bar')
+      expect(page.extraField).toEqual('baz')
     })
   })
 
