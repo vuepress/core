@@ -15,6 +15,7 @@
   由[@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon) 提供。
 
 - 参考：
+
   - [默认主题 > 配置 > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
 
 ### navbar
@@ -28,6 +29,7 @@
   如果你在主题配置中禁用了导航栏，那么该 Frontmatter 将不会生效。
 
 - 参考：
+
   - [默认主题 > 配置 > navbar](./config.md#navbar)
 
 ### pageClass
@@ -55,6 +57,7 @@ pageClass: custom-page-class
 ```
 
 - 参考：
+
   - [默认主题 > 样式 > Style 文件](./styles.md#style-文件)
 
 ## 首页
@@ -99,6 +102,7 @@ pageClass: custom-page-class
   ```
 
 - 参考：
+
   - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
 
 ### heroImageDark
@@ -112,6 +116,7 @@ pageClass: custom-page-class
   如果你想在夜间模式中使用不同的首页图片，就可以使用该配置项。
 
 - 参考：
+
   - [默认主题 > Frontmatter > heroImage](#heroimage)
   - [默认主题 > 配置 > darkMode](./config.md#darkmode)
 
@@ -239,6 +244,7 @@ features:
   是否在本页面中启用 _编辑此页_ 链接。
 
 - 参考：
+
   - [默认主题 > 配置 > editLink](./config.md#editlink)
 
 ### editLinkPattern
@@ -250,6 +256,7 @@ features:
   本页面中 _编辑此页_ 链接的 Pattern 。
 
 - 参考：
+
   - [默认主题 > 配置 > editLinkPattern](./config.md#editlinkpattern)
 
 ### lastUpdated
@@ -261,6 +268,7 @@ features:
   是否在本页面中启用 _最近更新时间戳_ 。
 
 - 参考：
+
   - [默认主题 > 配置 > lastUpdated](./config.md#lastupdated)
 
 ### contributors
@@ -272,6 +280,7 @@ features:
   是否在本页面中启用 _贡献者列表_ 。
 
 - 参考：
+
   - [默认主题 > 配置 > contributors](./config.md#contributors)
 
 ### sidebar
@@ -283,6 +292,7 @@ features:
   配置本页面的侧边栏。
 
 - 参考：
+
   - [默认主题 > 配置 > sidebar](./config.md#sidebar)
 
 ### sidebarDepth
@@ -294,6 +304,7 @@ features:
   配置本页面的侧边栏深度。
 
 - 参考：
+
   - [默认主题 > 配置 > sidebarDepth](./config.md#sidebardepth)
 
 ### prev

@@ -53,6 +53,7 @@ const build = async () => {
 ```
 
 - 参考：
+
   - [Node API > App 方法 > build](#build)
 
 ### createDevApp
@@ -108,6 +109,7 @@ const dev = async () => {
 ```
 
 - 参考：
+
   - [Node API > App 方法 > dev](#dev)
 
 ## App 属性
@@ -274,6 +276,7 @@ init(): Promise<void>
   初始化 VuePress App 。
 
 - 参考：
+
   - [深入 > 架构 > 核心流程与 Hooks](../advanced/architecture.md#核心流程与-hooks)
 
 ### prepare
@@ -289,6 +292,7 @@ prepare(): Promise<void>
   准备客户端临时文件。
 
 - 参考：
+
   - [深入 > 架构 > 核心流程与 Hooks](../advanced/architecture.md#核心流程与-hooks)
 
 ### build
@@ -306,6 +310,7 @@ build(): Promise<void>
   该方法仅在 [BuildApp](#createbuildapp) 中可用。
 
 - 参考：
+
   - [深入 > 架构 > 核心流程与 Hooks](../advanced/architecture.md#核心流程与-hooks)
 
 ### dev
@@ -323,6 +328,7 @@ dev(): Promise<() => Promise<void>>
   该方法仅在 [DevApp](#createdevapp) 中可用。
 
 - 参考：
+
   - [深入 > 架构 > 核心流程与 Hooks](../advanced/architecture.md#核心流程与-hooks)
 
 ## Page
@@ -372,6 +378,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [Node API > App 属性 > pages](#pages)
   - [Cookbook > 添加额外页面](../advanced/cookbook/adding-extra-pages.md)
 
@@ -388,6 +395,7 @@ module.exports = {
   Page Key 会被用作页面路由的 [name](https://next.router.vuejs.org/api/#name-2)。
 
 - 参考：
+
   - [Built-in Components > Content](./components.md#content)
 
 ### path
@@ -399,6 +407,7 @@ module.exports = {
   该 Page 的路由路径。
 
 - 参考：
+
   - [指南 > 页面 > 路由](../guide/page.md#路由)
   - [Node API > Page 属性 > pathInferred](#pathinferred)
 
@@ -411,6 +420,7 @@ module.exports = {
   该 Page 的标题。
 
 - 参考：
+
   - [Frontmatter > title](./frontmatter.md#title)
 
 ### lang
@@ -427,6 +437,7 @@ module.exports = {
   - `'zh-CN'`
 
 - 参考：
+
   - [Frontmatter > lang](./frontmatter.md#title)
 
 ### frontmatter
@@ -438,6 +449,7 @@ module.exports = {
   该 Page 的 Frontmatter 。
 
 - 参考：
+
   - [Frontmatter](./frontmatter.md)
 
 ### excerpt
@@ -482,6 +494,7 @@ interface PageHeader {
   该 Page 的小标题。
 
 - 参考：
+
   - [配置 > markdown.extractHeaders](./config.md#markdown-extractheaders)
 
 ### data
@@ -507,6 +520,7 @@ interface PageData {
   Page 数据可以在客户端代码中使用。
 
 - 参考：
+
   - [客户端 API > usePageData](./client-api.md#usepagedata)
   - [插件 API > extendsPage](./plugin-api.md#extendspage)
 
@@ -540,6 +554,7 @@ interface PageData {
   - `'2021-08-16`'
 
 - 参考：
+
   - [Frontmatter > date](./frontmatter.md#date)
 
 ### deps
@@ -553,6 +568,7 @@ interface PageData {
   举例来说，如果在页面中导入了代码片段，那么被导入文件的绝对路径就会被添加到 `deps` 中。
 
 - 参考：
+
   - [配置 > markdown.importCode](./config.md#markdown-importcode)
 
 ### hoistedTags
@@ -564,6 +580,7 @@ interface PageData {
   该 Page 中提升的 Tags。
 
 - 参考：
+
   - [配置 > markdown.hoistTags](./config.md#markdown-hoisttags)
 
 ### links
@@ -600,6 +617,7 @@ interface MarkdownLink {
   - `'/foo.html'`
 
 - 参考：
+
   - [指南 > 页面 > 路由](../guide/page.md#路由)
   - [Node API > Page 属性 > path](#path)
 
@@ -620,6 +638,7 @@ interface MarkdownLink {
   - `'/zh/'`
 
 - 参考：
+
   - [配置 > locales](./config.md#locales)
 
 ### permalink
@@ -631,6 +650,7 @@ interface MarkdownLink {
   该 Page 的永久链接。
 
 - 参考：
+
   - [Frontmatter > permalink](./frontmatter.md#permalink)
   - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
 
@@ -643,6 +663,7 @@ interface MarkdownLink {
   附加到 vue-router 路由记录上的额外数据。
 
 - 参考：
+
   - [Frontmatter > routeMeta](./frontmatter.md#routemeta)
   - [vue-router > API 参考 > RouteRecordRaw > meta](https://next.router.vuejs.org/zh/api/#meta)
 

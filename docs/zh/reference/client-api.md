@@ -13,6 +13,7 @@
   返回当前页面数据的 Ref 对象。
 
 - 参考：
+
   - [Node API > Page 属性 > data](./node-api.md#data)
   - [插件 API > extendsPage](./plugin-api.md#extendspage)
 
@@ -91,6 +92,7 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 ```
 
 - 参考：
+
   - [Cookbook > Client App Enhance 的使用方法](../advanced/cookbook/usage-of-client-app-enhance.md)
 
 ### defineClientAppSetup
@@ -118,6 +120,7 @@ export default defineClientAppSetup(() => {
   在 URL 前添加站点 [base](./config.md#base) 前缀。
 
 - 参考：
+
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
 
 ## 常量

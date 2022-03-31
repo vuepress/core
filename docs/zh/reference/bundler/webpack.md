@@ -79,6 +79,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   函数的参数即是 `devServer.setupMiddlewares` 的参数。
 
 - 参考：
+
   - [Webpack > Configuration > DevServer > devServer.setupMiddlewares](https://webpack.js.org/configuration/dev-server/#devserversetupmiddlewares)
 
 ### vue
@@ -90,6 +91,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   `vue-loader` 的配置项。
 
 - 参考：
+
   - [vue-loader > 选项参考](https://vue-loader.vuejs.org/zh/options.html)
 
 ### postcss
@@ -101,6 +103,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   `postcss-loader` 的配置项。
 
 - 参考：
+
   - [postcss-loader > Options](https://github.com/webpack-contrib/postcss-loader#options)
 
 ### stylus
@@ -112,6 +115,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   `stylus-loader` 的配置项。
 
 - 参考：
+
   - [stylus-loader > Options](https://github.com/webpack-contrib/stylus-loader#options)
 
 ### scss
@@ -123,6 +127,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   针对 `.scss` 文件的 `sass-loader` 的配置项。
 
 - 参考：
+
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
 ### sass
@@ -134,6 +139,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   针对 `.sass` 文件的 `sass-loader` 的配置项。
 
 - 参考：
+
   - [sass-loader > Options](https://github.com/webpack-contrib/sass-loader#options)
 
 ### less
@@ -145,6 +151,7 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
   `less-loader` 的配置项。
 
 - 参考：
+
   - [less-loader > Options](https://github.com/webpack-contrib/less-loader#options)
 
 ### evergreen

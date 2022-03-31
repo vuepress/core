@@ -31,6 +31,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
   `base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 - 参考：
+
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
   - [指南 > 部署](../guide/deployment.md)
 
@@ -49,6 +50,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
   它可以设置在不同语言的 locales 中。
 
 - 参考：
+
   - [配置 > locales](#locales)
 
 ### title
@@ -66,6 +68,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
   它可以设置在不同语言的 locales 中。
 
 - 参考：
+
   - [配置 > locales](#locales)
 
 ### description
@@ -83,6 +86,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
   它可以设置在不同语言的 locales 中。
 
 - 参考：
+
   - [配置 > locales](#locales)
   - [Frontmatter > description](./frontmatter.md#description)
 
@@ -119,6 +123,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [配置 > locales](#locales)
   - [Frontmatter > head](./frontmatter.md#head)
 
@@ -140,6 +145,7 @@ module.exports = {
   - [head](#head)
 
 - 参考：
+
   - [指南 > I18n](../guide/i18n.md)
 
 ## 主题配置
@@ -167,6 +173,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [themeConfig](#themeconfig)
   - [指南 > 主题](../guide/theme.md)
 
@@ -194,6 +201,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [theme](#theme)
   - [默认主题 > 配置](./default-theme/config.md)
 
@@ -212,6 +220,7 @@ module.exports = {
   可以使用打包工具名称的简称。
 
 - 参考：
+
   - [指南 > 打包工具](../guide/bundler.md)
 
 ::: tip
@@ -229,6 +238,7 @@ module.exports = {
   为当前使用的打包工具提供的配置项。具体的配置项取决于你使用的打包工具。
 
 - 参考：
+
   - [指南 > 打包工具](../guide/bundler.md)
   - [打包工具 > Webpack](./bundler/webpack.md)
   - [打包工具 > Vite](./bundler/vite.md)
@@ -276,6 +286,7 @@ module.exports = {
   指定 Public 文件目录。
 
 - 参考：
+
   - [指南 > 静态资源 > Public 文件](../guide/assets.md#public-文件)
 
 ### debug
@@ -393,6 +404,7 @@ module.exports = {
   它可以接收 [markdown-it](https://github.com/markdown-it/markdown-it) 的所有配置项，以及下列额外的配置项。
 
 - 参考：
+
   - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
   - [指南 > Markdown > 语法扩展](../guide/markdown.md#语法扩展)
 
@@ -407,6 +419,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 标题锚点](../guide/markdown.md#标题锚点)
 
 ### markdown.assets
@@ -434,6 +447,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 代码块](../guide/markdown.md#代码块)
 
 #### markdown.code.highlightLines
@@ -447,6 +461,7 @@ module.exports = {
   是否启用代码块行高亮。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 代码块 > 行高亮](../guide/markdown.md#行高亮)
 
 #### markdown.code.lineNumbers
@@ -463,6 +478,7 @@ module.exports = {
   - 数字 `number` 代表显示行号所需的最少行数。例如，如果你将它设置为 `4` ，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 代码块 > 行号](../guide/markdown.md#行号)
 
 #### markdown.code.preWrapper
@@ -492,6 +508,7 @@ module.exports = {
   是否在 `<pre>` 标签上添加 `v-pre` 指令。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)
 
 ### markdown.customComponent
@@ -519,6 +536,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > Emoji](../guide/markdown.md#emoji)
 
 ### markdown.extractHeaders
@@ -534,6 +552,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [Node API > Page 属性 > headers](./node-api.md#headers)
 
 #### markdown.extractHeaders.level
@@ -599,6 +618,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
   - [Node API > Page 属性 > hoistedTags](./node-api.md#hoistedtags)
 
@@ -627,6 +647,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 导入代码块](../guide/markdown.md#导入代码块)
 
 #### markdown.importCode.handleImportPath
@@ -652,6 +673,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 链接](../guide/markdown.md#链接)
 
 #### markdown.links.internalTag
@@ -687,6 +709,7 @@ module.exports = {
   设置为 `false` 可以禁用该插件。
 
 - 参考：
+
   - [指南 > Markdown > 语法扩展 > 目录](../guide/markdown.md#目录)
 
 ### markdown.toc.pattern
@@ -773,6 +796,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [指南 > 插件](../guide/plugin.md)
 
 ## 插件 API

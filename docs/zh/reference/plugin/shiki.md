@@ -31,6 +31,7 @@ npm i -D @vuepress/plugin-shiki@next
   该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
 
 - 参考：
+
   - [shiki > themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md)
 
 ### langs
@@ -48,4 +49,5 @@ npm i -D @vuepress/plugin-shiki@next
   如果没有传入语言， Shiki 会自动加载所有可用的语言。
 
 - 参考：
+
   - [shiki > languages](https://github.com/shikijs/shiki/blob/master/docs/languages.md)

@@ -21,6 +21,7 @@
   该配置项仅能在默认主题内生效，注意不要和 [站点配置](../config.md#locales) 中的 `locales` 混淆。
 
 - 参考：
+
   - [指南 > 多语言支持](../../guide/i18n.md)
 
 ## Locale 配置
@@ -149,6 +150,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
 
 ### logoDark
@@ -164,6 +166,7 @@ module.exports = {
   设置为 `null` 可以在夜间模式下禁用 Logo 。忽略该配置项将会在夜间模式中使用 [logo](#logo) 配置。
 
 - 参考：
+
   - [默认主题 > 配置 > logo](./config.md#logo)
   - [默认主题 > 配置 > darkMode](./config.md#darkmode)
 
@@ -603,6 +606,7 @@ module.exports = {
   它主要是为了站点的可访问性 (a11y) 。
 
 - 参考：
+
   - [默认主题 > 配置 > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
 
 ### toggleDarkMode
@@ -677,6 +681,7 @@ module.exports = {
   - `codeGroupItem`
 
 - 参考：
+
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
 
 ### themePlugins.externalLinkIcon

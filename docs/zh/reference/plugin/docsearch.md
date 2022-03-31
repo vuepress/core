@@ -171,6 +171,7 @@ new Crawler({
   从 DocSearch 团队收到的 `apiKey` ，或者由你自己生成。
 
 - 参考：
+
   - [DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey)
 
 ### indexName
@@ -184,6 +185,7 @@ new Crawler({
   从 DocSearch 团队收到的 `indexName` ，或者由你自己生成。
 
 - 参考：
+
   - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)
 
 ### appId
@@ -197,6 +199,7 @@ new Crawler({
   用于设置你的 Application ID。
 
 - 参考：
+
   - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
 
 ### searchParameters
@@ -208,6 +211,7 @@ new Crawler({
   Algolia 搜索 API 参数。
 
 - 参考：
+
   - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
   - [Algolia > Search API Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/)
 
@@ -222,6 +226,7 @@ new Crawler({
   搜索输入框的 placeholder 属性。
 
 - 参考：
+
   - [DocSearch > Options > placeholder](https://docsearch.algolia.com/docs/api#placeholder)
 
 ### disableUserPersonalization
@@ -235,6 +240,7 @@ new Crawler({
   是否禁用所有的个性化功能：最近的搜索、收藏的搜索结果等。
 
 - 参考：
+
   - [DocSearch > Options > disableUserPersonalization](https://docsearch.algolia.com/docs/api#disableuserpersonalization)
 
 ### initialQuery
@@ -246,6 +252,7 @@ new Crawler({
   打开弹窗时的初始请求。
 
 - 参考：
+
   - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api#initialquery)
 
 ### translations
@@ -257,6 +264,7 @@ new Crawler({
   允许替换 DocSearch 按钮和弹窗内的默认文字。
 
 - 参考：
+
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
 ### locales
@@ -304,6 +312,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [指南 > 多语言支持](../../guide/i18n.md)
 
 ## 样式

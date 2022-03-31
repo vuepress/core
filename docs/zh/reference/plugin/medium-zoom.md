@@ -47,6 +47,7 @@ npm i -D @vuepress/plugin-medium-zoom@next
   medium-zoom 的配置项。
 
 - 参考：
+
   - [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)
 
 ## 样式

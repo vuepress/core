@@ -117,6 +117,7 @@ module.exports = {
   主题中要使用的插件。
 
 - 参考：
+
   - [配置 > plugins](./config.md#plugins)
 
 ### templateBuild
@@ -130,6 +131,7 @@ module.exports = {
   它会覆盖 [templateBuild](./config.md#templatebuild) 的默认值，但是也会被用户配置覆盖。
 
 - 参考：
+
   - [配置 > templateBuild](./config.md#templatebuild)
 
 ### templateDev
@@ -143,4 +145,5 @@ module.exports = {
   它会覆盖 [templateDev](./config.md#templatedev) 的默认值，但是也会被用户配置覆盖。
 
 - 参考：
+
   - [配置 > templateDev](./config.md#templatedev)

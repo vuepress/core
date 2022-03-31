@@ -53,6 +53,7 @@
   - Scoped: `@org/vuepress-plugin-foo`
 
 - 参考：
+
   - [插件 API > multiple](#multiple)
 
 ### multiple
@@ -70,6 +71,7 @@
   如果设置为 `true` ，相同名称的插件可以被多次使用且不会被替换。
 
 - 参考：
+
   - [插件 API > name](#name)
 
 ## 开发 Hooks
@@ -146,6 +148,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [配置 > markdown](./config.md#markdown)
 
 ### extendsMarkdown
@@ -199,6 +202,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [Node API > Page > createPage](./node-api.md#createPage)
 
 ### extendsPage
@@ -240,6 +244,7 @@ export default {
 ```
 
 - 参考：
+
   - [客户端 API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page 属性 > data](./node-api.md#data)
   - [Node API > Page 属性 > routeMeta](./node-api.md#routemeta)
@@ -272,6 +277,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [客户端 API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
   - [Cookbook > Client App Enhance 的使用方法](../advanced/cookbook/usage-of-client-app-enhance.md)
 
@@ -323,6 +329,7 @@ module.exports = {
 ```
 
 - 参考：
+
   - [客户端 API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## 生命周期 Hooks
