@@ -1,4 +1,4 @@
-import type { DepOptimizationMetadata, Plugin, ViteDevServer } from 'vite'
+import type { OptimizedDeps, Plugin, ViteDevServer } from 'vite'
 
 /**
  * Vite will inject version hash into file queries, which does not work
@@ -7,9 +7,7 @@ import type { DepOptimizationMetadata, Plugin, ViteDevServer } from 'vite'
  * As a workaround, we remove the version hash to avoid the injection.
  */
 export const createWorkaroundPlugin = (): Plugin => {
-  let server:
-    | (ViteDevServer & { _optimizeDepsMetadata?: DepOptimizationMetadata })
-    | null
+  let server: (ViteDevServer & { _optimizedDeps?: OptimizedDeps }) | null
   return {
     name: 'vuepress:workaround',
 
@@ -20,8 +18,8 @@ export const createWorkaroundPlugin = (): Plugin => {
     },
 
     resolveId() {
-      if (server?._optimizeDepsMetadata?.browserHash) {
-        server._optimizeDepsMetadata.browserHash = ''
+      if (server?._optimizedDeps?.metadata.browserHash) {
+        server._optimizedDeps.metadata.browserHash = ''
       }
       return null
     },
