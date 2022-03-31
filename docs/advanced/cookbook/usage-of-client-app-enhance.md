@@ -6,7 +6,10 @@ The [clientAppEnhanceFiles](../../reference/plugin-api.md#clientappenhancefiles)
 import { path } from '@vuepress/utils'
 
 const pluginOrTheme = {
-  clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.ts'),
+  clientAppEnhanceFiles: path.resolve(
+    __dirname,
+    './path/to/clientAppEnhance.ts'
+  ),
 }
 ```
 

@@ -99,7 +99,6 @@ module.exports = {
 - Example:
 
 ```js
-
 module.exports = {
   plugins: [
     [
@@ -128,7 +127,6 @@ module.exports = {
 - Example:
 
 ```js
-
 module.exports = {
   plugins: [
     [

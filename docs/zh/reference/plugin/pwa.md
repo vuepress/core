@@ -69,7 +69,7 @@ module.exports = {
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     // ...其他标签
-  ]
+  ],
 }
 ```
 
@@ -138,9 +138,9 @@ export default {
 
 - 参数：
 
-|  参数         | 类型                        | 描述                                       |
-| ------------ | --------------------------- | ----------------------------------------- |
-| registration | `ServiceWorkerRegistration` | 你想要激活的 Service Worker 的 Registration  |
+| 参数         | 类型                        | 描述                                        |
+| ------------ | --------------------------- | ------------------------------------------- |
+| registration | `ServiceWorkerRegistration` | 你想要激活的 Service Worker 的 Registration |
 
 - 详情：
 
@@ -149,10 +149,7 @@ export default {
 - 示例：
 
 ```ts
-import {
-  usePwaEvent,
-  useSkipWaiting,
-} from '@vuepress/plugin-pwa/lib/client'
+import { usePwaEvent, useSkipWaiting } from '@vuepress/plugin-pwa/lib/client'
 
 export default {
   setup() {

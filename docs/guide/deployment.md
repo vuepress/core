@@ -19,15 +19,16 @@ The following guides are based on some shared assumptions:
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Choose your preferred CI tools. Here we take [GitHub Actions](https://github.com/features/actions) as an example.
 
-    Create `.github/workflows/docs.yml` to set up the workflow.
+   Create `.github/workflows/docs.yml` to set up the workflow.
 
 ::: details Click to expand sample config
+
 ```yaml
 name: docs
 
@@ -87,6 +88,7 @@ jobs:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
 :::
 
 ::: tip
@@ -97,13 +99,14 @@ Please refer to [GitHub Pages official guide](https://pages.github.com/) for mor
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
 
 ::: details Click to expand sample config
+
 ```yaml
 # choose a docker image to use
 image: node:14-buster
@@ -111,22 +114,23 @@ image: node:14-buster
 pages:
   # trigger deployment on every push to main branch
   only:
-  - main
+    - main
 
   # cache node_modules
   cache:
     paths:
-    - node_modules/
+      - node_modules/
 
   # install dependencies and run build script
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - yarn --frozen-lockfile
+    - yarn docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
+
 :::
 
 ::: tip
@@ -198,12 +202,12 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `yarn docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. Hit the deploy button.
 

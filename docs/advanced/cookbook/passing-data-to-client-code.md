@@ -43,7 +43,10 @@ First, write a temp file `foo.js`, which will be generated in the [temp](../../r
 module.exports = (options) => ({
   async onPrepared(app) {
     // write temp file
-    await app.writeTemp('foo.js', `export const foo = ${JSON.stringify(options.foo)}`)
+    await app.writeTemp(
+      'foo.js',
+      `export const foo = ${JSON.stringify(options.foo)}`
+    )
   },
 })
 ```

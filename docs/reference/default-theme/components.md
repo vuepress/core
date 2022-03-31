@@ -5,6 +5,7 @@
 ## Badge <Badge text="badge" />
 
 - Props:
+
   - type
     - Type: `'tip' | 'warning' | 'danger'`
     - Default: `'tip'`
@@ -40,6 +41,7 @@
 ## CodeGroupItem
 
 - Props:
+
   - title
     - Type: `string`
     - Required: `true`

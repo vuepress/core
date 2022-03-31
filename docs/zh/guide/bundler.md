@@ -1,6 +1,6 @@
 # 打包工具
 
-VuePress 一直以来都在使用 [Webpack](https://webpack.js.org/) 作为打包工具来进行网站的开发和构建。从 VuePress v2 开始，我们还支持使用其他的打包工具，并且现在使用 [Vite](https://vitejs.dev/) 作为默认的打包工具。当然，你仍然可以选择使用 Webpack 。 
+VuePress 一直以来都在使用 [Webpack](https://webpack.js.org/) 作为打包工具来进行网站的开发和构建。从 VuePress v2 开始，我们还支持使用其他的打包工具，并且现在使用 [Vite](https://vitejs.dev/) 作为默认的打包工具。当然，你仍然可以选择使用 Webpack 。
 
 ## 选择一个打包工具
 

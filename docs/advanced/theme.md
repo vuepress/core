@@ -6,7 +6,7 @@ Before reading this guide, you'd better learn the guide of [Writing a Plugin](./
 
 ## Create a Theme
 
-A VuePress theme is a special plugin, which should satisfy the [Theme API](../reference/theme-api.md). Like plugins, a theme can also be a *Theme Object* or a *Theme Function*.
+A VuePress theme is a special plugin, which should satisfy the [Theme API](../reference/theme-api.md). Like plugins, a theme can also be a _Theme Object_ or a _Theme Function_.
 
 <CodeGroup>
   <CodeGroupItem title="Theme Object" active>

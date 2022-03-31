@@ -117,7 +117,7 @@ app.component(
 - Details:
 
   A function to get component name from the filename.
-  
+
   It will only take effect on the files in the [componentsDir](#componentsdir) which are matched with the [componentsPatterns](#componentspatterns).
 
   Notice that the `filename` is a filepath relative to [componentsDir](#componentsdir).

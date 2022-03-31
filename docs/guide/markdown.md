@@ -78,7 +78,7 @@ Take our documentation source files as an example:
 [Getting Started](./getting-started.md)  
 [Guide](/guide/README.md)  
 [Config Reference > markdown.links](/reference/config.md#links)  
-[GitHub](https://github.com)  
+[GitHub](https://github.com)
 
 **Explanation**
 

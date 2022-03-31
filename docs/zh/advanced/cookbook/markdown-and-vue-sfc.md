@@ -27,13 +27,14 @@ _当前计数为： {{ count }}_
 <script setup>
 import { h, ref } from 'vue'
 
-const RedDiv = (_, ctx) => h(
-  'div',
-  {
-    class: 'red-div',
-  },
-  ctx.slots.default()
-)
+const RedDiv = (_, ctx) =>
+  h(
+    'div',
+    {
+      class: 'red-div',
+    },
+    ctx.slots.default()
+  )
 const msg = 'Markdown 中的 Vue'
 const count = ref(0)
 </script>

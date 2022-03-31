@@ -21,7 +21,6 @@ module.exports = (options) => ({
 
 然后，在客户端代码中直接使用它们：
 
-
 ```js
 const foo = __FOO__
 const obj = __OBJ__
@@ -44,7 +43,10 @@ declare const __OBJ__: { bar: number }
 module.exports = (options) => ({
   async onPrepared(app) {
     // 写入临时文件
-    await app.writeTemp('foo.js', `export const foo = ${JSON.stringify(options.foo)}`)
+    await app.writeTemp(
+      'foo.js',
+      `export const foo = ${JSON.stringify(options.foo)}`
+    )
   },
 })
 ```

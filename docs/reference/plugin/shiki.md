@@ -28,7 +28,7 @@ npm i -D @vuepress/plugin-shiki@next
 
   Theme of shiki.
 
-  This option will be forwarded to `getHighlighter()` method of shiki. 
+  This option will be forwarded to `getHighlighter()` method of shiki.
 
 - Also see:
   - [shiki > themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md)
@@ -43,7 +43,7 @@ npm i -D @vuepress/plugin-shiki@next
 
   Languages of shiki.
 
-  This option will be forwarded to `getHighlighter()` method of shiki. 
+  This option will be forwarded to `getHighlighter()` method of shiki.
 
   If no languages are provided, shiki will load all available languages automatically.
 

@@ -19,11 +19,11 @@ module.exports = {
 
 你可以使用插件名称或者它的简称：
 
-|          插件名称          |         简称         |
-|---------------------------|---------------------|
-| `vuepress-plugin-foo`     | `foo`               |
-| `@org/vuepress-plugin-bar`| `@org/bar`          |
-| `@vuepress/plugin-foobar` | `@vuepress/foobar`  |
+| 插件名称                   | 简称               |
+| -------------------------- | ------------------ |
+| `vuepress-plugin-foo`      | `foo`              |
+| `@org/vuepress-plugin-bar` | `@org/bar`         |
+| `@vuepress/plugin-foobar`  | `@vuepress/foobar` |
 
 ::: tip
 大部分插件只能使用一次，如果同一个插件被多次使用，那么只有最后一次会生效。

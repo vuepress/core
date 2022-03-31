@@ -6,7 +6,7 @@
 
 ## 创建一个主题
 
-VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../reference/theme-api.md) 。和插件一样，主题可以是一个 *主题对象* 或一个 *主题函数* 。
+VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../reference/theme-api.md) 。和插件一样，主题可以是一个 _主题对象_ 或一个 _主题函数_ 。
 
 <CodeGroup>
   <CodeGroupItem title="主题对象" active>

@@ -20,8 +20,8 @@ module.exports = {
 
 你可以使用主题名称或者它的简称：
 
-|          主题名称          |         简称         |
-|---------------------------|---------------------|
+| 主题名称                  | 简称                |
+| ------------------------- | ------------------- |
 | `vuepress-theme-foo`      | `foo`               |
 | `@org/vuepress-theme-bar` | `@org/bar`          |
 | `@vuepress/theme-default` | `@vuepress/default` |

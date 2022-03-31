@@ -19,11 +19,11 @@ module.exports = {
 
 You can use either plugin name or its shorthand:
 
-|        Plugin Name        |      Shorthand      |
-|---------------------------|---------------------|
-| `vuepress-plugin-foo`     | `foo`               |
-| `@org/vuepress-plugin-bar`| `@org/bar`          |
-| `@vuepress/plugin-foobar` | `@vuepress/foobar`  |
+| Plugin Name                | Shorthand          |
+| -------------------------- | ------------------ |
+| `vuepress-plugin-foo`      | `foo`              |
+| `@org/vuepress-plugin-bar` | `@org/bar`         |
+| `@vuepress/plugin-foobar`  | `@vuepress/foobar` |
 
 ::: tip
 Most plugins can only be used once. If the same plugin is used multiple times, only the last one will take effect.

@@ -21,8 +21,8 @@ For more info, run any command with the `--help` flag:
   $ vuepress info --help
 
 Options:
-  -v, --version  Display version number 
-  -h, --help     Display this message 
+  -v, --version  Display version number
+  -h, --help     Display this message
 ```
 
 ::: tip
@@ -40,17 +40,17 @@ Usage:
   $ vuepress dev [sourceDir]
 
 Options:
-  -c, --config <config>  Set path to config file 
-  -p, --port <port>      Use specified port (default: 8080) 
-  -t, --temp <temp>      Set the directory of the temporary files 
-  --host <host>          Use specified host (default: 0.0.0.0) 
-  --cache <cache>        Set the directory of the cache files 
-  --clean-temp           Clean the temporary files before dev 
-  --clean-cache          Clean the cache files before dev 
-  --open                 Open browser when ready 
-  --debug                Enable debug mode 
+  -c, --config <config>  Set path to config file
+  -p, --port <port>      Use specified port (default: 8080)
+  -t, --temp <temp>      Set the directory of the temporary files
+  --host <host>          Use specified host (default: 0.0.0.0)
+  --cache <cache>        Set the directory of the cache files
+  --clean-temp           Clean the temporary files before dev
+  --clean-cache          Clean the cache files before dev
+  --open                 Open browser when ready
+  --debug                Enable debug mode
   --no-watch             Disable watching page and config files (default: true)
-  -v, --version          Display version number 
+  -v, --version          Display version number
   -h, --help             Display this message
 ```
 
@@ -67,14 +67,14 @@ Usage:
   $ vuepress build [sourceDir]
 
 Options:
-  -c, --config <config>  Set path to config file 
-  -d, --dest <dest>      Set the directory build output (default: .vuepress/dist) 
-  -t, --temp <temp>      Set the directory of the temporary files 
-  --cache <cache>        Set the directory of the cache files 
-  --clean-temp           Clean the temporary files before build 
-  --clean-cache          Clean the cache files before build 
-  --debug                Enable debug mode 
-  -v, --version          Display version number 
+  -c, --config <config>  Set path to config file
+  -d, --dest <dest>      Set the directory build output (default: .vuepress/dist)
+  -t, --temp <temp>      Set the directory of the temporary files
+  --cache <cache>        Set the directory of the cache files
+  --clean-temp           Clean the temporary files before build
+  --clean-cache          Clean the cache files before build
+  --debug                Enable debug mode
+  -v, --version          Display version number
   -h, --help             Display this message
 ```
 

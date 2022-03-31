@@ -137,13 +137,13 @@ layout: CustomLayout
 
 - Usage:
 
-  |  Pattern  |         Description         |
-  |-----------|-----------------------------|
-  | `:year`   | Year part of created date   |
-  | `:month`  | Month part of created date  |
-  | `:day`    | Day part of created date    |
-  | `:slug`   | Slug of page filename       |
-  | `:raw`    | Raw route path              |
+  | Pattern  | Description                |
+  | -------- | -------------------------- |
+  | `:year`  | Year part of created date  |
+  | `:month` | Month part of created date |
+  | `:day`   | Day part of created date   |
+  | `:slug`  | Slug of page filename      |
+  | `:raw`   | Raw route path             |
 
   The `:year`, `:month` and `:day` patterns are resolved according to the following priority:
 
@@ -165,7 +165,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-  Then the permalink of the page would be `2021/01/03/foo-bar.html`.
+Then the permalink of the page would be `2021/01/03/foo-bar.html`.
 
 - Example 2:
 
@@ -179,7 +179,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-  Then the permalink of the page would be `2021/01/03/bar-baz.html`.
+Then the permalink of the page would be `2021/01/03/bar-baz.html`.
 
 - Also see:
   - [Frontmatter > date](#date)

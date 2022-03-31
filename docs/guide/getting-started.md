@@ -6,8 +6,10 @@
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
 ::: tip
+
 - With [pnpm](https://pnpm.io/), you need to set `shamefully-hoist=true` in your [`.npmrc`](https://pnpm.io/npmrc#shamefully-hoist) file.
 - With [yarn 2](https://yarnpkg.com/), you need to set `nodeLinker: 'node-modules'` in your [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) file.
+
 :::
 
 ## Manual Installation
@@ -109,6 +111,6 @@ npm run docs:dev
   </CodeGroupItem>
 </CodeGroup>
 
-  VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080). When you modify your markdown files, the content in the browser will be auto updated.
+VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080). When you modify your markdown files, the content in the browser will be auto updated.
 
 By now, you should have a basic but functional VuePress documentation site. Next, learn about the basics of [configuration](./configuration.md) in VuePress.

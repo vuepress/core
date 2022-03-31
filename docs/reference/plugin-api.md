@@ -180,7 +180,7 @@ module.exports = {
   Page options extension.
 
   This hook accepts a function that will receive the options of `createPage`.
-  
+
   This hook can be used for modifying page options
 
 - Example:

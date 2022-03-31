@@ -19,15 +19,16 @@
 
 1. 设置正确的 [base](../reference/config.md#base) 选项。
 
-    如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
+   如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
 
-    如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
+   如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
 2. 选择你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
 
-    创建 `.github/workflows/docs.yml` 文件来配置工作流。
+   创建 `.github/workflows/docs.yml` 文件来配置工作流。
 
 ::: details 点击展开配置样例
+
 ```yaml
 name: docs
 
@@ -87,8 +88,8 @@ jobs:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
-:::
 
+:::
 
 ::: tip
 请参考 [GitHub Pages 官方指南](https://pages.github.com/) 来获取更多信息。
@@ -98,13 +99,14 @@ jobs:
 
 1. 设置正确的 [base](../reference/config.md#base) 选项。
 
-    如果你准备发布到 `https://<USERNAME>.gitlab.io/` ，你可以省略这一步，因此 `base` 默认就是 `"/"` 。
+   如果你准备发布到 `https://<USERNAME>.gitlab.io/` ，你可以省略这一步，因此 `base` 默认就是 `"/"` 。
 
-    如果你准备发布到 `https://<USERNAME>.gitlab.io/<REPO>/` ，也就是说你的仓库地址是 `https://gitlab.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
+   如果你准备发布到 `https://<USERNAME>.gitlab.io/<REPO>/` ，也就是说你的仓库地址是 `https://gitlab.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
 2. 创建 `.gitlab-ci.yml` 文件来配置 [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) 工作流。
 
 ::: details 点击展开配置样例
+
 ```yaml
 # 选择你要使用的 docker 镜像
 image: node:14-buster
@@ -112,22 +114,23 @@ image: node:14-buster
 pages:
   # 每当 push 到 main 分支时触发部署
   only:
-  - main
+    - main
 
   # 缓存 node_modules
   cache:
     paths:
-    - node_modules/
+      - node_modules/
 
   # 安装依赖并运行构建脚本
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - yarn --frozen-lockfile
+    - yarn docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
+
 :::
 
 ::: tip
@@ -199,12 +202,12 @@ heroku login
 
 1. 前往 [Netlify](https://netlify.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `yarn docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. 点击 deploy 按钮。
 
@@ -231,11 +234,11 @@ cloudbase init --without-template
 cloudbase framework:deploy
 ```
 
-  CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
+CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
 
-  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
 ::: tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)

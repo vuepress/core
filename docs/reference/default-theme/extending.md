@@ -135,7 +135,10 @@ module.exports = {
   name: 'vuepress-theme-local',
   extends: '@vuepress/theme-default',
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    '@theme/HomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue'
+    ),
   },
 }
 ```
@@ -152,7 +155,10 @@ const localTheme: ThemeObject = {
   name: 'vuepress-theme-local',
   extends: '@vuepress/theme-default',
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    '@theme/HomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue'
+    ),
   },
 }
 
@@ -172,7 +178,10 @@ const { path } = require('@vuepress/utils')
 
 module.exports = {
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    '@theme/HomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue'
+    ),
   },
 }
 ```
@@ -188,7 +197,10 @@ import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    '@theme/HomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue'
+    ),
   },
 })
 ```

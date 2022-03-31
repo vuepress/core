@@ -19,13 +19,13 @@ The `BuildApp` and `DevApp` share almost the same properties and methods, except
 - Signature:
 
 ```ts
-const createBuildApp: (config: AppConfig) => BuildApp;
+const createBuildApp: (config: AppConfig) => BuildApp
 ```
 
 - Parameters:
 
 | Parameter | Type        | Description                      |
-|-----------|-------------|----------------------------------|
+| --------- | ----------- | -------------------------------- |
 | config    | `AppConfig` | Config to create a VuePress app. |
 
 - Details:
@@ -66,7 +66,7 @@ const createDevApp: (config: AppConfig) => DevApp
 - Parameters:
 
 | Parameter | Type        | Description                      |
-|-----------|-------------|----------------------------------|
+| --------- | ----------- | -------------------------------- |
 | config    | `AppConfig` | Config to create a VuePress app. |
 
 - Details:
@@ -197,6 +197,7 @@ const dev = async () => {
 ### dir
 
 - Utils:
+
   - `dir.cache()`: resolve to cache directory
   - `dir.temp()`: resolve to temp directory
   - `dir.source()`: resolve to source directory
@@ -234,7 +235,7 @@ writeTemp(file: string, content: string): Promise<string>
 - Parameters:
 
 | Parameter | Type     | Description                                                                   |
-|-----------|----------|-------------------------------------------------------------------------------|
+| --------- | -------- | ----------------------------------------------------------------------------- |
 | file      | `string` | Filepath of the temp file that going to be wrote. Relative to temp directory. |
 | content   | `string` | Content of the temp file that going to be wrote.                              |
 
@@ -250,8 +251,8 @@ writeTemp(file: string, content: string): Promise<string>
 module.exports = {
   // write temp file in onPrepared hook
   async onPrepared() {
-    await app.writeTemp('foo.js', 'export const foo = \'bar\'')
-  }
+    await app.writeTemp('foo.js', "export const foo = 'bar'")
+  },
 }
 ```
 
@@ -338,10 +339,10 @@ const createPage: (app: App, options: PageOptions) => Promise<Page>
 
 - Parameters:
 
-| Parameter | Type          | Description                       |
-|-----------|---------------|-----------------------------------|
-| app       | `App`         | The VuePress app instance.        |
-| options   | `PageOptions` | Options to create VuePress page.  |
+| Parameter | Type          | Description                      |
+| --------- | ------------- | -------------------------------- |
+| app       | `App`         | The VuePress app instance.       |
+| options   | `PageOptions` | Options to create VuePress page. |
 
 - Details:
 
@@ -368,7 +369,7 @@ Hello, world.
 `,
       })
     )
-  }
+  },
 }
 ```
 
@@ -423,6 +424,7 @@ Hello, world.
   Language of the page.
 
 - Example:
+
   - `'en-US'`
   - `'zh-CN'`
 
@@ -535,6 +537,7 @@ interface PageData {
   Date of the page, in 'yyyy-MM-dd' format.
 
 - Example:
+
   - `'0000-00-00'`
   - `'2021-08-16`'
 
@@ -594,6 +597,7 @@ interface MarkdownLink {
   It would be `null` if the page does not come from a Markdown source file.
 
 - Example:
+
   - `'/'`
   - `'/foo.html'`
 
@@ -612,6 +616,7 @@ interface MarkdownLink {
   It is inferred from the relative file path of the Markdown source file and the key of `locales` option in user config.
 
 - Example:
+
   - `'/'`
   - `'/en/'`
   - `'/zh/'`

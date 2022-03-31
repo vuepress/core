@@ -5,6 +5,7 @@
 ## Badge <Badge text="badge" />
 
 - Props:
+
   - type
     - 类型： `'tip' | 'warning' | 'danger'`
     - 默认值： `'tip'`
@@ -40,6 +41,7 @@
 ## CodeGroupItem
 
 - Props:
+
   - title
     - 类型： `string`
     - 是否必需： `true`

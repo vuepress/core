@@ -365,7 +365,10 @@ module.exports = {
         {
           text: 'Bundlers Reference',
           collapsible: true,
-          children: ['/reference/bundler/vite.md', '/reference/bundler/webpack.md'],
+          children: [
+            '/reference/bundler/vite.md',
+            '/reference/bundler/webpack.md',
+          ],
         },
       ],
     },

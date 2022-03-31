@@ -47,6 +47,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 **原始 Markdown**
 
+
 ```md
 <!-- 相对路径 -->
 [首页](../README.md)  
@@ -79,7 +80,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 [快速上手](./getting-started.md)  
 [指南](/zh/guide/README.md)  
 [配置参考 > markdown.links](/zh/reference/config.md#links)  
-[GitHub](https://github.com) 
+[GitHub](https://github.com)
 
 **解释**
 
@@ -140,8 +141,7 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 目录中的标题将会链接到对应的 [标题锚点](#标题锚点)，因此如果你禁用了标题锚点，可能会影响目录的功能。
 
 ::: tip
-目录扩展是由我们的内置插件支持的，该扩展 Fork 并修改自  [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right)。
-
+目录扩展是由我们的内置插件支持的，该扩展 Fork 并修改自 [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right)。
 
 配置参考： [markdown.toc](../reference/config.md#markdown-toc)
 :::
@@ -191,7 +191,7 @@ export const config: UserConfig = {
 - 组合： `{4,7-13,16,23-27,40}`
 
 ::: tip
-行高亮扩展是由我们的内置插件支持的，该扩展 Fork 并修改自  [markdown-it-highlight-lines](https://github.com/egoist/markdown-it-highlight-lines)。
+行高亮扩展是由我们的内置插件支持的，该扩展 Fork 并修改自 [markdown-it-highlight-lines](https://github.com/egoist/markdown-it-highlight-lines)。
 
 配置参考： [markdown.code.highlightLines](../reference/config.md#markdown-code-highlightlines)
 :::
@@ -243,7 +243,6 @@ const line3 = 'This is line 3'
 由于 [模板语法可以在 Markdown 中使用](#模板语法)，它也同样可以在代码块中生效。
 
 为了避免你的代码块被 Vue 编译， VuePress 默认会在你的代码块添加 [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) 指令。这一默认行为可以在配置中关闭。
-
 
 你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。
 

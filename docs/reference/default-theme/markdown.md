@@ -15,13 +15,14 @@
   The `type` is required, and the `title` and `content` are optional.
 
   Supported `type` :
-    - `tip`
-    - `warning`
-    - `danger`
-    - `details`
-    - Alias of [CodeGroup](./components.md#codegroup) and [CodeGroupItem](./components.md#codegroupitem):
-      - `code-group`
-      - `code-group-item`
+
+  - `tip`
+  - `warning`
+  - `danger`
+  - `details`
+  - Alias of [CodeGroup](./components.md#codegroup) and [CodeGroupItem](./components.md#codegroupitem):
+    - `code-group`
+    - `code-group-item`
 
 - Example 1 (default title):
 
@@ -73,9 +74,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
 console.log('Hello, VuePress!')
 ```
+
 :::
 ````
 
@@ -86,9 +89,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
 console.log('Hello, VuePress!')
 ```
+
 :::
 
 - Example 3 (code group alias):
@@ -98,14 +103,18 @@ console.log('Hello, VuePress!')
 ````md
 :::: code-group
 ::: code-group-item FOO
+
 ```js
 const foo = 'foo'
 ```
+
 :::
 ::: code-group-item BAR
+
 ```js
 const bar = 'bar'
 ```
+
 :::
 ::::
 ````
@@ -114,13 +123,17 @@ const bar = 'bar'
 
 :::: code-group
 ::: code-group-item FOO
+
 ```js
 const foo = 'foo'
 ```
+
 :::
 ::: code-group-item BAR
+
 ```js
 const bar = 'bar'
 ```
+
 :::
 ::::

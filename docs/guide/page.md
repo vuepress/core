@@ -19,8 +19,8 @@ Assuming this is the directory structure of your markdown files:
 
 Take the `docs` directory as your [sourceDir](../reference/cli.md), e.g. you are running `vuepress dev docs` command. Then the route paths of your markdown files would be:
 
-|   Relative Path    |      Route Path      |
-|--------------------|----------------------|
+| Relative Path      | Route Path           |
+| ------------------ | -------------------- |
 | `/README.md`       | `/`                  |
 | `/contributing.md` | `/contributing.html` |
 | `/guide/README.md` | `/guide/`            |

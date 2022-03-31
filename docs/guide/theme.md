@@ -20,8 +20,8 @@ module.exports = {
 
 You can use either theme name or its shorthand:
 
-|        Theme Name         |      Shorthand      |
-|---------------------------|---------------------|
+| Theme Name                | Shorthand           |
+| ------------------------- | ------------------- |
 | `vuepress-theme-foo`      | `foo`               |
 | `@org/vuepress-theme-bar` | `@org/bar`          |
 | `@vuepress/theme-default` | `@vuepress/default` |

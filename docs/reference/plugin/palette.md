@@ -94,6 +94,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'.vuepress/styles/palette.css'`
   - sass: `'.vuepress/styles/palette.scss'`
   - less: `'.vuepress/styles/palette.less'`
@@ -112,6 +113,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'styles/palette.css'`
   - sass: `'styles/palette.scss'`
   - less: `'styles/palette.less'`
@@ -130,6 +132,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'.vuepress/styles/index.css'`
   - sass: `'.vuepress/styles/index.scss'`
   - less: `'.vuepress/styles/index.less'`
@@ -148,6 +151,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `string`
 
 - Default:
+
   - css: `'styles/index.css'`
   - sass: `'styles/index.scss'`
   - less: `'styles/index.less'`
@@ -166,6 +170,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 - Type: `(filePath: string) => string`
 
 - Default:
+
   - css: `` (filePath) => `@import '${filePath}';\n` ``
   - sass: `` (filePath) => `@forward '${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``

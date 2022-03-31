@@ -6,7 +6,8 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "[markdown]": {
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
+    "editor.formatOnSave": false
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.validate": [
