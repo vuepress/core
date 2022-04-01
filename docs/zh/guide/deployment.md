@@ -218,7 +218,7 @@ heroku login
     - **Build Command:** `yarn docs:build`
     - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
 
-3.推送vuepress所有源文件至GitHub仓库，Vercel将自动部署。
+3. 将文档源文件推送至 GitHub 仓库，Vercel 将自动部署。
 
 <!-- 下列平台是中文文档特有的，放在最下方 -->
 
