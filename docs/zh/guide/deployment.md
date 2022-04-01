@@ -210,7 +210,15 @@ heroku login
 
 ## Vercel
 
-请查看 [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，转到项目页>Settings>General>Build & Development Settings
+
+2. 进行如下配置：
+
+    - **FRAMEWORK PRESET** `Other`
+    - **Build Command:** `yarn docs:build`
+    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+
+3.推送vuepress所有源文件至GitHub仓库，Vercel将自动部署。
 
 <!-- 下列平台是中文文档特有的，放在最下方 -->
 
