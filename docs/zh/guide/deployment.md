@@ -210,7 +210,7 @@ heroku login
 
 ## Vercel
 
-1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，转到项目页>Settings>General>Build & Development Settings
+1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，转到 `项目页` > `Settings` > `General` > `Build & Development Settings`
 
 2. 进行如下配置：
 
