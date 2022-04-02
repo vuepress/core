@@ -29,6 +29,19 @@ npm i -D @vuepress/plugin-shiki@next
   Shiki 的主题。
 
   该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
+  
+- 示例：
+
+  ```js
+  plugins:[
+    [
+      '@vuepress/plugin-shiki',
+      {
+        theme: 'dark-plus',
+      }
+    ]
+  ]
+  ```
 
 - 参考：
   - [shiki > themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md)
