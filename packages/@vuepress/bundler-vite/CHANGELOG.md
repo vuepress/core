@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.38](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.37...v2.0.0-beta.38) (2022-04-05)
+
+
+### Features
+
+* **bundler-vite:** bump to vite 2.9 (close [#781](https://github.com/vuepress/vuepress-next/issues/781)) ([7b3e88e](https://github.com/vuepress/vuepress-next/commit/7b3e88e1877e047f97851e3c6ea9ca57fb9a00bc))
+
+
+
+
+
 # [2.0.0-beta.37](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.36...v2.0.0-beta.37) (2022-03-31)
 
 **Note:** Version bump only for package @vuepress/bundler-vite
