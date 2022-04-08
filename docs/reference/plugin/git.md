@@ -64,7 +64,7 @@ After using this plugin, you can get the collected git information in page data:
 
 ```ts
 import { usePageData } from '@vuepress/client'
-import type { GitPluginPageData } from '@vuepress/client'
+import type { GitPluginPageData } from '@vuepress/plugin-git'
 
 export default {
   setup() {
