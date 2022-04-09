@@ -214,9 +214,7 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 2. Configure as follows:
 
     - **FRAMEWORK PRESET** `Other`
-    
-    - **Build Command:** `yarn docs:build`
-   
+    - **Build Command:** `yarn docs:build` 
     - **OUTPUT DIRECTORY:** `docs/. vuepress/dist`
    
 3. Push the document source file to GitHub repository, and Vercel will deploy it automatically.
