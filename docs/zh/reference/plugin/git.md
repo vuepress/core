@@ -64,7 +64,7 @@ npm i -D @vuepress/plugin-git@next
 
 ```ts
 import { usePageData } from '@vuepress/client'
-import type { GitPluginPageData } from '@vuepress/client'
+import type { GitPluginPageData } from '@vuepress/plugin-git'
 
 export default {
   setup() {
