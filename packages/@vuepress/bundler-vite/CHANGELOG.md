@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.39](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.38...v2.0.0-beta.39) (2022-04-10)
+
+
+### Bug Fixes
+
+* **bundler-vite:** clear file hash in workaround plugin (close [#800](https://github.com/vuepress/vuepress-next/issues/800)) ([3569cd9](https://github.com/vuepress/vuepress-next/commit/3569cd98f217a0e2e3a74bc5e71490efa7d697d1))
+
+
+
+
+
 # [2.0.0-beta.38](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.37...v2.0.0-beta.38) (2022-04-05)
 
 
