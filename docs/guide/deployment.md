@@ -213,6 +213,6 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
     - **FRAMEWORK PRESET:** `Other`
     - **BUILD COMMAND:** `yarn docs:build` 
-    - **OUTPUT DIRECTORY:** `docs/. vuepress/dist`
+    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
    
 2. Hit the deploy button.
