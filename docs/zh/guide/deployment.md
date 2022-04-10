@@ -214,7 +214,7 @@ heroku login
 
     - **FRAMEWORK PRESET:** `Other`
     - **BUILD COMMAND:** `yarn docs:build` 
-    - **OUTPUT DIRECTORY:** `docs/. vuepress/dist`
+    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮。
 
