@@ -209,4 +209,10 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 ## Vercel
 
-See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+1. Go to [Vercel](https://vercel.com), set up a new project from GitHub with the following settings:
+
+    - **FRAMEWORK PRESET:** `Other`
+    - **BUILD COMMAND:** `yarn docs:build` 
+    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+   
+2. Hit the deploy button.
