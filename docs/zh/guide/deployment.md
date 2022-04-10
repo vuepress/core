@@ -210,15 +210,13 @@ heroku login
 
 ## Vercel
 
-1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，转到 `项目页` > `Settings` > `General` > `Build & Development Settings`
+1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-2. 进行如下配置：
+    - **FRAMEWORK PRESET:** `Other`
+    - **BUILD COMMAND:** `yarn docs:build` 
+    - **OUTPUT DIRECTORY:** `docs/. vuepress/dist`
 
-     - **FRAMEWORK PRESET** `Other`
-     - **Build Command:** `yarn docs:build`
-     - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
-
-3. 将文档源文件推送至 GitHub 仓库，Vercel 将自动部署。
+2. 点击 deploy 按钮。
 
 <!-- 下列平台是中文文档特有的，放在最下方 -->
 
