@@ -1,10 +1,7 @@
 import type { OptimizedDeps, Plugin, ViteDevServer } from 'vite'
 
 /**
- * Vite will inject version hash into file queries, which does not work
- * well with VuePress.
- *
- * As a workaround, we remove the version hash to avoid the injection.
+ * Workaround for https://github.com/vitejs/vite/issues/7621
  */
 export const createWorkaroundPlugin = (): Plugin => {
   let server: (ViteDevServer & { _optimizedDeps?: OptimizedDeps }) | null
@@ -19,6 +16,7 @@ export const createWorkaroundPlugin = (): Plugin => {
 
     resolveId() {
       if (server?._optimizedDeps?.metadata.browserHash) {
+        server._optimizedDeps.metadata.hash = ''
         server._optimizedDeps.metadata.browserHash = ''
       }
       return null
