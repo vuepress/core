@@ -602,7 +602,7 @@ module.exports = {
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
   - [Node API > Page 属性 > hoistedTags](./node-api.md#hoistedtags)
 
-### markdown.hoistTags.customBlocks
+#### markdown.hoistTags.customBlocks
 
 - 类型： `string[]`
 
@@ -689,7 +689,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 目录](../guide/markdown.md#目录)
 
-### markdown.toc.pattern
+#### markdown.toc.pattern
 
 - 类型： `RegExp`
 
@@ -699,7 +699,7 @@ module.exports = {
 
   识别 Markdown 中的目录语法的 Pattern 。
 
-### markdown.toc.slugify
+#### markdown.toc.slugify
 
 - 类型： `(str: string) => string`
 

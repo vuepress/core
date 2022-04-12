@@ -603,7 +603,7 @@ You should not configure it unless you understand what it is for.
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
   - [Node API > Page Properties > hoistedTags](./node-api.md#hoistedtags)
 
-### markdown.hoistTags.customBlocks
+#### markdown.hoistTags.customBlocks
 
 - Type: `string[]`
 
@@ -690,7 +690,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
 
-### markdown.toc.pattern
+#### markdown.toc.pattern
 
 - Type: `RegExp`
 
@@ -700,7 +700,7 @@ You should not configure it unless you understand what it is for.
 
   The pattern serving as the TOC placeholder in your markdown.
 
-### markdown.toc.slugify
+#### markdown.toc.slugify
 
 - Type: `(str: string) => string`
 
