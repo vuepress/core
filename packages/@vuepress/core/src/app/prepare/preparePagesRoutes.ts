@@ -1,6 +1,9 @@
 import { ensureLeadingSlash } from '@vuepress/shared'
-import type { App } from '../../types'
+import type { App, Page } from '../../types'
 
+/**
+ * Route item type, which will be used for generating route records
+ */
 type RouteItem = [
   name: string,
   path: string,
@@ -9,54 +12,58 @@ type RouteItem = [
 ]
 
 /**
+ * Transform a page object to a route item
+ */
+const transformPageToRouteItem = ({
+  key,
+  path,
+  pathInferred,
+  filePathRelative,
+  routeMeta,
+}: Page): RouteItem => {
+  // paths that should redirect to this page, use set to dedupe
+  const redirectsSet = new Set<string>()
+
+  // redirect from decoded path
+  redirectsSet.add(decodeURI(path))
+
+  if (path.endsWith('/')) {
+    // redirect from index path
+    redirectsSet.add(path + 'index.html')
+  } else {
+    // redirect from the path that does not end with `.html`
+    redirectsSet.add(path.replace(/.html$/, ''))
+  }
+
+  // redirect from inferred path
+  if (pathInferred !== null) {
+    redirectsSet.add(pathInferred)
+    redirectsSet.add(encodeURI(pathInferred))
+  }
+
+  // redirect from filename path
+  if (filePathRelative !== null) {
+    const filenamePath = ensureLeadingSlash(filePathRelative)
+    redirectsSet.add(filenamePath)
+    redirectsSet.add(encodeURI(filenamePath))
+  }
+
+  // avoid redirect from the page path itself
+  redirectsSet.delete(path)
+
+  return [key, path, routeMeta, [...redirectsSet]]
+}
+
+/**
  * Generate routes temp file
  */
 export const preparePagesRoutes = async (app: App): Promise<void> => {
+  const routeItems = app.pages.map(transformPageToRouteItem)
   const content = `\
 import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
 
 const routeItems = [\
-${app.pages
-  .map(({ key, path, pathInferred, filePathRelative, routeMeta }) => {
-    const redirects: string[] = []
-    const routeItem: RouteItem = [key, path, routeMeta, redirects]
-
-    // paths that should redirect to this page
-    const redirectsSet = new Set<string>()
-
-    // redirect from decoded path
-    redirectsSet.add(decodeURI(path))
-
-    if (path.endsWith('/')) {
-      // redirect from index path
-      redirectsSet.add(path + 'index.html')
-    } else {
-      // redirect from the path that does not end with `.html`
-      redirectsSet.add(path.replace(/.html$/, ''))
-    }
-
-    // redirect from inferred path
-    if (pathInferred !== null) {
-      redirectsSet.add(pathInferred)
-      redirectsSet.add(encodeURI(pathInferred))
-    }
-
-    // redirect from filename path
-    if (filePathRelative !== null) {
-      const filenamePath = ensureLeadingSlash(filePathRelative)
-      redirectsSet.add(filenamePath)
-      redirectsSet.add(encodeURI(filenamePath))
-    }
-
-    // avoid redirect from the page path itself
-    redirectsSet.delete(path)
-
-    // add redirects to route item
-    redirects.push(...redirectsSet)
-
-    return `\n  ${JSON.stringify(routeItem)},`
-  })
-  .join('')}
+${routeItems.map((routeItem) => `\n  ${JSON.stringify(routeItem)},`).join('')}
 ]
 
 export const pagesRoutes = routeItems.reduce(
@@ -77,8 +84,8 @@ export const pagesRoutes = routeItems.reduce(
   },
   [
     {
-      name: "404",
-      path: "/:catchAll(.*)",
+      name: '404',
+      path: '/:catchAll(.*)',
       component: Vuepress,
     }
   ]
