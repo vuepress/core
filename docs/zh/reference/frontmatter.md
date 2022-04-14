@@ -44,10 +44,8 @@
 head:
   - - meta
     - name: foo
-      content: bar
-  - - link
-    - rel: canonical
-      href: foobar
+      content: yaml 数组语法
+  - [meta, { name: bar , content: 方括号语法 }]
 ---
 ```
 
@@ -55,8 +53,8 @@ head:
 
 ```html
 <head>
-  <meta name="foo" content="bar" />
-  <link rel="canonical" href="foobar" />
+  <meta name="foo" content="yaml 数组语法" />
+  <meta name="bar" content="方括号语法" />
 </head>
 ```
 
