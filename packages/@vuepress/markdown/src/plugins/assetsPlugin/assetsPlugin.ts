@@ -38,11 +38,34 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
     (rawHtmlRule: RenderRule): RenderRule =>
     (tokens, idx, options, env: MarkdownEnv, self) => {
       // replace the original link with resolved link
-      tokens[idx].content = tokens[idx].content.replace(
-        /(<img\b.*?src=")([^"]*)(")/gs,
-        (_, prefix, link, suffix) =>
-          `${prefix}${resolveLink(link, relativePathPrefix, env)}${suffix}`
-      )
+      tokens[idx].content = tokens[idx].content
+        // handle src
+        .replace(
+          /(<img\b.*?src=")([^"]*)(")/gs,
+          (_, prefix, src, suffix) =>
+            `${prefix}${resolveLink(src, relativePathPrefix, env)}${suffix}`
+        )
+        // handle srcset
+        .replace(
+          /(<img\b.*?srcset=")([^"]*)(")/gs,
+          (_, prefix, srcset, suffix) =>
+            `${prefix}${srcset
+              .split(',')
+              .map((item) =>
+                item
+                  .trim()
+                  .replace(
+                    /^([^ ]*?)( .*)?$/,
+                    (_, url, descriptor = '') =>
+                      `${resolveLink(
+                        url,
+                        relativePathPrefix,
+                        env
+                      )}${descriptor}`
+                  )
+              )
+              .join(', ')}${suffix}`
+        )
 
       return rawHtmlRule(tokens, idx, options, env, self)
     }

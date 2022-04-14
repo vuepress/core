@@ -158,6 +158,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
   describe('html <img> tag', () => {
     const source = [
+      /* src */
       // relative paths
       '<img src="./foo.png">',
       '<img src="../sub/foo.png">',
@@ -189,6 +190,41 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '<img src=".../汉字.png">',
       '<img src=".../100%.png">',
       '<img alt="attrs" src=".../attrs.png" width="100px">',
+
+      /* srcset */
+
+      // relative paths
+      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w ,../sub/foo/bar.png 2048w, ../baz.png 4096w,../../out.png">',
+      '<img srcset="./汉字.png 1x, ./100%.png">',
+      '<img alt="attrs" srcset="./attrs.png" width="100px">',
+      // aliases
+      '<img srcset="@alias/foo.png 1x,@alias/汉字.png 2x, @alias/100%.png 3x">',
+      '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+      // webpack legacy aliases
+      '<img srcset="~@alias/foo.png 1x,~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+      '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+      // keep as is
+      '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+      '<img srcset="">',
+      '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+      // invalid paths
+      '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+      '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+      // invalid srcset
+      '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
+
+      /** both */
+      // relative paths
+      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w ,../sub/foo/bar.png 2048w, ../baz.png 4096w,../../out.png 3x" src="./default.png">',
+      '<img src="./100%.png"  srcset="./汉字.png 1x" >',
+      '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
+
+      // aliases
+      '<img srcset="@alias/foo.png 1x,@alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+      '<img srcset="~@alias/foo.png 1x,~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+
+      // keep as is
+      '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
     ]
 
     const testCases: {
@@ -204,6 +240,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           filePathRelative: 'sub/foo.md',
         },
         expected: [
+          /* src */
           // relative paths
           '<img src="@source/sub/foo.png">',
           '<img src="@source/sub/foo.png">',
@@ -235,6 +272,40 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src=".../汉字.png">',
           '<img src=".../100%.png">',
           '<img alt="attrs" src=".../attrs.png" width="100px">',
+
+          /* srcset */
+
+          // relative paths
+          '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png">',
+          '<img srcset="@source/sub/汉字.png 1x, @source/sub/100%.png">',
+          '<img alt="attrs" srcset="@source/sub/attrs.png" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+          // webpack legacy aliases
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+          // keep as is
+          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          '<img srcset="">',
+          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+          // invalid paths
+          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+          // invalid srcset
+          '<img srcset="@source/invalid.png, @source/汉字.png, .../100%.png 3x">',
+
+          /* both */
+
+          // relative paths
+          '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
+          '<img src="@source/sub/100%.png"  srcset="@source/sub/汉字.png 1x" >',
+          '<img src="@source/sub/default.png" srcset="@source/sub/attrs1.png 1x, @source/sub/attrs2.png 2x" alt="attrs" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+          // keep as is
+          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
         ],
       },
       {
@@ -246,6 +317,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           filePathRelative: 'sub/foo.md',
         },
         expected: [
+          /* src */
+
           // relative paths
           '<img src="@foo/sub/foo.png">',
           '<img src="@foo/sub/foo.png">',
@@ -277,6 +350,40 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src=".../汉字.png">',
           '<img src=".../100%.png">',
           '<img alt="attrs" src=".../attrs.png" width="100px">',
+
+          /* srcset */
+
+          // relative paths
+          '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png">',
+          '<img srcset="@foo/sub/汉字.png 1x, @foo/sub/100%.png">',
+          '<img alt="attrs" srcset="@foo/sub/attrs.png" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+          // webpack legacy aliases
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+          // keep as is
+          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          '<img srcset="">',
+          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+          // invalid paths
+          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+          // invalid srcset
+          '<img srcset="@foo/invalid.png, @foo/汉字.png, .../100%.png 3x">',
+
+          /* both */
+
+          // relative paths
+          '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
+          '<img src="@foo/sub/100%.png"  srcset="@foo/sub/汉字.png 1x" >',
+          '<img src="@foo/sub/default.png" srcset="@foo/sub/attrs1.png 1x, @foo/sub/attrs2.png 2x" alt="attrs" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+          // keep as is
+          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
         ],
       },
       {
@@ -316,6 +423,40 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src=".../汉字.png">',
           '<img src=".../100%.png">',
           '<img alt="attrs" src=".../attrs.png" width="100px">',
+
+          /* srcset */
+
+          // relative paths
+          '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
+          '<img srcset="./汉字.png 1x, ./100%.png">',
+          '<img alt="attrs" srcset="./attrs.png" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+          // webpack legacy aliases
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+          // keep as is
+          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          '<img srcset="">',
+          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+          // invalid paths
+          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+          // invalid srcset
+          '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
+
+          /* both */
+
+          // relative paths
+          '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
+          '<img src="./100%.png"  srcset="./汉字.png 1x" >',
+          '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
+          // aliases
+          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+          // keep as is
+          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
         ],
       },
     ]
