@@ -297,7 +297,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ::: tip
 v-pre 扩展是由我们的内置插件支持的。
 
-配置参考： [markdown.code.vPre](../reference/config.md#markdown-vpre)
+配置参考： [markdown.code.vPre.block](../reference/config.md#markdown-code-vpre-block)
 :::
 
 ### 导入代码块

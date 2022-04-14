@@ -421,7 +421,7 @@ VuePress 在构建过程中会在输出目录下生成临时文件，因此该�
 如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
 :::
 
-#### markdown.code.vPre
+#### markdown.code.vPre.block
 
 - 类型： `boolean`
 
@@ -429,7 +429,20 @@ VuePress 在构建过程中会在输出目录下生成临时文件，因此该�
 
 - 详情：
 
-  是否在 `<pre>` 标签上添加 `v-pre` 指令。
+  是否在代码块的 `<pre>` 标签上添加 `v-pre` 指令。
+
+- 参考：
+  - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)
+
+#### markdown.code.vPre.inline
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在行内代码的 `<code>` 标签上添加 `v-pre` 指令。
 
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)

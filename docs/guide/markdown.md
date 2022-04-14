@@ -294,7 +294,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ::: tip
 This v-pre extension is supported by our built-in plugin.
 
-Config reference: [markdown.code.vPre](../reference/config.md#markdown-vpre)
+Config reference: [markdown.code.vPre.block](../reference/config.md#markdown-code-vpre-block)
 :::
 
 ### Import Code Blocks
