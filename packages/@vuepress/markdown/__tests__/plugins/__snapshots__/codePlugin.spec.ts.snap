@@ -621,6 +621,15 @@ function bar (): number {
 , lang: typescript</code></pre>
   <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
 </div>
+<div class="language-vue-html ext-vue-html line-numbers-mode"><pre v-pre class="language-vue-html"><code>highlighted code: <template>
+  <div>msg: {{msg}}</div>
+</template>
+<script setup lang="ts">
+const msg = 'hello world';
+</script>
+, lang: vue-html</code></pre>
+  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div>
+</div>
 `;
 
 exports[`@vuepress/markdown > plugins > codePlugin syntax highlighting should work if highlighted code is wrapped with \`<pre>\` 1`] = `
@@ -643,5 +652,14 @@ function bar (): number {
 }
 , lang: typescript</code></pre>
   <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+</div>
+<div class="language-vue-html ext-vue-html line-numbers-mode"><pre v-pre><code>highlighted code: <template>
+  <div>msg: {{msg}}</div>
+</template>
+<script setup lang="ts">
+const msg = 'hello world';
+</script>
+, lang: vue-html</code></pre>
+  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div>
 </div>
 `;

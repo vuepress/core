@@ -305,6 +305,15 @@ function bar (): number {
   return 1024
 }
 ${codeFence}
+
+${codeFence}vue-html
+<template>
+  <div>msg: {{msg}}</div>
+</template>
+<script setup lang="ts">
+const msg = 'hello world';
+</script>
+${codeFence}
 `
 
     it('should work if highlighted code is wrapped with `<pre>`', () => {
@@ -315,7 +324,7 @@ ${codeFence}
       const md = MarkdownIt({ highlight }).use(codePlugin)
 
       expect(md.render(source)).toMatchSnapshot()
-      expect(highlight).toHaveBeenCalledTimes(3)
+      expect(highlight).toHaveBeenCalledTimes(4)
     })
 
     it('should work if highlighted code is not wrapped with `<pre>`', () => {
@@ -325,7 +334,7 @@ ${codeFence}
       const md = MarkdownIt({ highlight }).use(codePlugin)
 
       expect(md.render(source)).toMatchSnapshot()
-      expect(highlight).toHaveBeenCalledTimes(3)
+      expect(highlight).toHaveBeenCalledTimes(4)
     })
   })
 })
