@@ -59,9 +59,12 @@ export const setupUpdateHead = (): void => {
   onMounted(() => {
     loadHead()
     updateHead()
-    // only update head on route change
     watch(
-      () => route.path,
+      // when watching `head`, route hash changes will also trigger the watcher,
+      // causing unnecessary head updates
+      // so we watch `head` in dev mode to support hot-reload of `frontmatter.head`,
+      // and watch `route.path` in production mode to avoid extra updates
+      () => (__VUEPRESS_DEV__ ? head.value : route.path),
       () => updateHead()
     )
   })
