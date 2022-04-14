@@ -29,9 +29,19 @@ export interface CodePluginOptions {
   preWrapper?: boolean
 
   /**
-   * Add `v-pre` directive to `<pre>` tag or not
+   * Add `v-pre` directive or not
    */
-  vPre?: boolean
+  vPre?: {
+    /**
+     * Add `v-pre` directive to `<pre>` tag of code block or not
+     */
+    block?: boolean
+
+    /**
+     * Add `v-pre` directive `<code>` tag of inline code or not
+     */
+    inline?: boolean
+  }
 }
 
 /**
@@ -43,7 +53,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     highlightLines = true,
     lineNumbers = true,
     preWrapper = true,
-    vPre = true,
+    vPre: { block: vPreBlock = true, inline: vPreInline = true } = {},
   }: CodePluginOptions = {}
 ): void => {
   // override default fence renderer
@@ -68,7 +78,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       : `<pre class="${languageClass}"><code>${code}</code></pre>`
 
     // resolve v-pre mark from token info
-    const useVPre = resolveVPre(info) ?? vPre
+    const useVPre = resolveVPre(info) ?? vPreBlock
     if (useVPre) {
       result = `<pre v-pre${result.slice('<pre'.length)}`
     }
@@ -120,5 +130,13 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }">${result}</div>`
 
     return result
+  }
+
+  if (vPreInline) {
+    const rawInlineCodeRule = md.renderer.rules.code_inline!
+    md.renderer.rules.code_inline = (tokens, idx, options, env, slf) => {
+      const result = rawInlineCodeRule(tokens, idx, options, env, slf)
+      return `<code v-pre${result.slice('<code'.length)}`
+    }
   }
 }
