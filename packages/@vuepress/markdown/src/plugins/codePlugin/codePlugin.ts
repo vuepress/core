@@ -109,7 +109,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     if (useLineNumbers) {
       // generate line numbers code
       const lineNumbersCode = lines
-        .map((_, index) => `<span class="line-number">${index + 1}</span><br>`)
+        .map(() => `<div class="line-number"></div>`)
         .join('')
 
       result = `${result}<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
