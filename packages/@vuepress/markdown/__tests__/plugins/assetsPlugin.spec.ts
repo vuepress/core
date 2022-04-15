@@ -194,14 +194,14 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       /* srcset */
 
       // relative paths
-      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w ,../sub/foo/bar.png 2048w, ../baz.png 4096w,../../out.png">',
+      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
       '<img srcset="./汉字.png 1x, ./100%.png">',
       '<img alt="attrs" srcset="./attrs.png" width="100px">',
       // aliases
-      '<img srcset="@alias/foo.png 1x,@alias/汉字.png 2x, @alias/100%.png 3x">',
+      '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
       '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
       // webpack legacy aliases
-      '<img srcset="~@alias/foo.png 1x,~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+      '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
       '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
       // keep as is
       '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
@@ -215,13 +215,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
       /** both */
       // relative paths
-      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w ,../sub/foo/bar.png 2048w, ../baz.png 4096w,../../out.png 3x" src="./default.png">',
-      '<img src="./100%.png"  srcset="./汉字.png 1x" >',
+      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
+      '<img src="./100%.png" srcset="./汉字.png 1x" >',
       '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
 
       // aliases
-      '<img srcset="@alias/foo.png 1x,@alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
-      '<img srcset="~@alias/foo.png 1x,~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+      '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+      '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
 
       // keep as is
       '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
@@ -241,6 +241,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
         expected: [
           /* src */
+
           // relative paths
           '<img src="@source/sub/foo.png">',
           '<img src="@source/sub/foo.png">',
@@ -299,7 +300,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
-          '<img src="@source/sub/100%.png"  srcset="@source/sub/汉字.png 1x" >',
+          '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x" >',
           '<img src="@source/sub/default.png" srcset="@source/sub/attrs1.png 1x, @source/sub/attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
@@ -377,7 +378,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
-          '<img src="@foo/sub/100%.png"  srcset="@foo/sub/汉字.png 1x" >',
+          '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x" >',
           '<img src="@foo/sub/default.png" srcset="@foo/sub/attrs1.png 1x, @foo/sub/attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
@@ -392,6 +393,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         md: MarkdownIt({ html: true }).use(assetsPlugin),
         env: {},
         expected: [
+          /* src */
+
           // relative paths
           '<img src="./foo.png">',
           '<img src="../sub/foo.png">',
@@ -450,7 +453,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
-          '<img src="./100%.png"  srcset="./汉字.png 1x" >',
+          '<img src="./100%.png" srcset="./汉字.png 1x" >',
           '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
@@ -534,6 +537,127 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           expected
             .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
             .join('\n')
+        )
+      })
+    )
+
+    const source2 = [
+      /* src */
+
+      // not formated
+      `<img alt="attrs" src="
+          .../attrs.png
+          " width="100px">`,
+
+      /* srcset */
+
+      // not formatted
+      `<img srcset="./foo.png      1x  ,
+              ../sub/foo.png  2x,./foo/bar.png
+    1024w ,../../out.png">`,
+      `<img alt="attrs"  srcset=" ./attrs.png 1x
+    ,default.png " width="100px">`,
+
+      /** both */
+
+      // not formatted
+      `<img src="
+          ./default.png
+    " srcset="./foo.png      1x  ,
+              ../sub/foo.png  2x,./foo/bar.png
+    1024w ,../../out.png">`,
+      `<img alt="attrs" src="./default.png" srcset=" ./attrs.png 1x
+    ,default.png " width="100px">`,
+    ]
+
+    const testCases2: {
+      description: string
+      md: MarkdownIt
+      env: MarkdownEnv
+      expected: string[]
+    }[] = [
+      {
+        description: 'should handle assets link with default options',
+        md: MarkdownIt({ html: true }).use(assetsPlugin),
+        env: {
+          filePathRelative: 'sub/foo.md',
+        },
+        expected: [
+          /* src */
+
+          // not formatted
+          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+
+          /* srcset */
+
+          // not formatted
+          '<p><img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
+          '<p><img alt="attrs"  srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
+
+          /* both */
+
+          // not formatted
+          '<p><img src="@source/sub/default.png" srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
+          '<p><img alt="attrs" src="@source/sub/default.png" srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
+        ],
+      },
+      {
+        description: 'should respect `relativePathPrefix` option',
+        md: MarkdownIt({ html: true }).use(assetsPlugin, {
+          relativePathPrefix: '@foo',
+        }),
+        env: {
+          filePathRelative: 'sub/foo.md',
+        },
+        expected: [
+          /* src */
+          // not formatted
+          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+
+          /* srcset */
+
+          // not formatted
+          '<p><img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
+          '<p><img alt="attrs"  srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
+
+          /* both */
+
+          // not formatted
+          '<p><img src="@foo/sub/default.png" srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
+          '<p><img alt="attrs" src="@foo/sub/default.png" srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
+        ],
+      },
+      {
+        description:
+          'should not handle assets link if `filePathRelative` is not provided',
+        md: MarkdownIt({ html: true }).use(assetsPlugin),
+        env: {},
+        expected: [
+          /* src */
+
+          // not formatted
+          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+
+          /* srcset */
+
+          // not formatted
+          '<p><img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
+          '<p><img alt="attrs"  srcset="./attrs.png 1x, default.png" width="100px"></p>',
+
+          /* both */
+
+          // not formatted
+          '<p><img src="./default.png" srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
+          '<p><img alt="attrs" src="./default.png" srcset="./attrs.png 1x, default.png" width="100px"></p>',
+        ],
+      },
+    ]
+
+    testCases2.forEach(({ description, md, env, expected }) =>
+      it(description, () => {
+        // mutiline element is rendered as block
+        expect(md.render(source2.join('\n\n'), env)).toEqual(
+          expected.map((item) => `${item}`).join('\n') + '\n'
         )
       })
     )

@@ -43,7 +43,11 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
         .replace(
           /(<img\b.*?src=")([^"]*)(")/gs,
           (_, prefix, src, suffix) =>
-            `${prefix}${resolveLink(src, relativePathPrefix, env)}${suffix}`
+            `${prefix}${resolveLink(
+              src.trim(),
+              relativePathPrefix,
+              env
+            )}${suffix}`
         )
         // handle srcset
         .replace(
@@ -55,13 +59,13 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                 item
                   .trim()
                   .replace(
-                    /^([^ ]*?)( .*)?$/,
+                    /^([^ ]*?)([ \n].*)?$/,
                     (_, url, descriptor = '') =>
                       `${resolveLink(
-                        url,
+                        url.trim(),
                         relativePathPrefix,
                         env
-                      )}${descriptor}`
+                      )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`
                   )
               )
               .join(', ')}${suffix}`
