@@ -216,7 +216,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       /** both */
       // relative paths
       '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
-      '<img src="./100%.png" srcset="./汉字.png 1x" >',
+      '<img src="./100%.png" srcset="./汉字.png 1x">',
       '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
 
       // aliases
@@ -300,7 +300,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
-          '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x" >',
+          '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x">',
           '<img src="@source/sub/default.png" srcset="@source/sub/attrs1.png 1x, @source/sub/attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
@@ -378,7 +378,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
-          '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x" >',
+          '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x">',
           '<img src="@foo/sub/default.png" srcset="@foo/sub/attrs1.png 1x, @foo/sub/attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
@@ -453,7 +453,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
           // relative paths
           '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
-          '<img src="./100%.png" srcset="./汉字.png 1x" >',
+          '<img src="./100%.png" srcset="./汉字.png 1x">',
           '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
           // aliases
           '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
