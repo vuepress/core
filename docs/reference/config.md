@@ -247,9 +247,9 @@ When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) pa
   Specify the output directory for `vuepress build` command.
 
 ::: warning
-Since VuePress will generate temp files under dest dir during build process, the folder should be inside project root.
+Since VuePress will generate temp files under the output directory during build process, the directory should be inside project root to resolve dependencies correctly.
 
-You can manually move it to another location if you want after building.
+You can manually move it to another location after building.
 :::
 
 ### temp
