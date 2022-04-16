@@ -28,7 +28,7 @@ export const renderPage = async ({
   ssrTemplate: string
   output: RollupOutput['output']
   outputEntryChunk: OutputChunk
-  outputCssAsset: OutputAsset
+  outputCssAsset: OutputAsset | undefined
 }): Promise<void> => {
   // switch to current page route
   await vueRouter.push(page.path)
