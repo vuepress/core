@@ -4,6 +4,10 @@
 
 该插件使用 [Prism.js](https://prismjs.com/) 来为 Markdown 代码块启用代码高亮。
 
+::: tip
+该插件仅负责为代码块的字符添加 HTML 标记，您需要自己选择和导入 prism 主题。
+:::
+
 ## 安装
 
 ```bash

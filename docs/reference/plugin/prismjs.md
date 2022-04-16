@@ -4,6 +4,10 @@
 
 This plugin will enable syntax highlighting for markdown code fence with [Prism.js](https://prismjs.com/).
 
+::: tip
+The plugin only highlight code blocks by marking tokens you need to choose and import prism theme yourself.
+:::
+
 ## Install
 
 ```bash
