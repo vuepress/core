@@ -44,8 +44,9 @@ export const createBuild =
         (item) => item.type === 'chunk' && item.isEntry
       ) as OutputChunk
       const clientCssAsset = clientOutput.output.find(
-        (item) => item.type === 'asset' && item.fileName.endsWith('.css')
-      ) as OutputAsset
+        (item): item is OutputAsset =>
+          item.type === 'asset' && item.fileName.endsWith('.css')
+      )
 
       // get server bundle entry chunk
       const serverEntryChunk = serverOutput.output.find(
