@@ -54,10 +54,9 @@ export const createBuild =
       ) as OutputChunk
 
       // load the compiled server bundle
-      const { createVueApp } = require(app.dir.dest(
-        '.server',
-        serverEntryChunk.fileName
-      )) as {
+      const serverEntryPath = app.dir.dest('.server', serverEntryChunk.fileName);
+      delete require.cache[serverEntryPath];
+      const { createVueApp } = require(serverEntryPath) as {
         createVueApp: CreateVueAppFunction
       }
 
