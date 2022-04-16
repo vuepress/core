@@ -70,7 +70,25 @@ module.exports = {
 
 ### hotKeys
 
-- Type: `string[]`
+- Type: `(string | HotKeyOptions)[]`
+
+```ts
+interface HotKeyOptions {
+  key: string
+  /**
+   * @default false
+   */
+  ctrl?: boolean
+  /**
+   * @default false
+   */
+  alt?: boolean
+  /**
+   * @default false
+   */
+  shift?: boolean
+}
+```
 
 - Default: `['s', '/']`
 

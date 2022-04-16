@@ -70,7 +70,25 @@ module.exports = {
 
 ### hotKeys
 
-- 类型： `string[]`
+- 类型： `(string | HotKeyOptions)[]`
+
+```ts
+interface HotKeyOptions {
+  key: string
+  /**
+   * @default false
+   */
+  ctrl?: boolean
+  /**
+   * @default false
+   */
+  alt?: boolean
+  /**
+   * @default false
+   */
+  shift?: boolean
+}
+```
 
 - 默认值： `['s', '/']`
 
