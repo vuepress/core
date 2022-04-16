@@ -245,6 +245,12 @@ module.exports = {
 
   指定 `vuepress build` 命令的输出目录。
 
+::: warning
+由于 VuePress 在构建过程中会在 dest 目录下生成临时文件，因此该文件夹应位于项目根目录中。
+
+如果有相关需求，您可以在构建后手动将其移动到另一个位置。
+:::
+
 ### temp
 
 - 类型： `string`
