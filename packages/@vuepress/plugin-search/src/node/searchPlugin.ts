@@ -2,13 +2,14 @@ import type { Page, Plugin } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 import * as chokidar from 'chokidar'
+import type { HotKeyOptions } from '../shared'
 import { prepareSearchIndex } from './prepareSearchIndex'
 
 export interface SearchPluginOptions {
   locales?: LocaleConfig<{
     placeholder: string
   }>
-  hotKeys: string[]
+  hotKeys: (string | HotKeyOptions)[]
   maxSuggestions: number
   isSearchable: (page: Page) => boolean
   getExtraFields: (page: Page) => string[]
