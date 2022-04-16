@@ -73,7 +73,11 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const { base = '/', filePathRelative = null } = env
 
     // check if a link is an external link
-    if (isLinkExternal(hrefLink, base)) {
+    if (
+      // all markdown link are regarded as internal links
+      !hrefLink.endsWith('.md') &&
+      isLinkExternal(hrefLink, base)
+    ) {
       // set `externalAttrs` to current token
       Object.entries(externalAttrs).forEach(([key, val]) =>
         token.attrSet(key, val)

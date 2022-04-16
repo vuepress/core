@@ -11,13 +11,23 @@ export const resolvePaths = (
   absolutePath: string
   relativePath: string
 } => {
-  let relativePath: string
   let absolutePath: string
+  let relativePath: string
 
   if (rawPath.startsWith('/')) {
     // if raw path is absolute
-    absolutePath = rawPath
-    relativePath = path.relative(base, absolutePath)
+
+    if (rawPath.endsWith('.md')) {
+      // if raw path is a markdown link
+
+      absolutePath = path.join(base, rawPath)
+      relativePath = absolutePath.substring(1)
+    } else {
+      // if raw path is a normal link
+
+      absolutePath = rawPath
+      relativePath = path.relative(base, absolutePath)
+    }
   } else {
     // if raw path is relative
     if (filePathRelative) {

@@ -86,8 +86,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
     describe('absolute links', () => {
       const source = [
-        '[md](/path/to/index.md)',
         '[html](/path/to/index.html)',
+        '[html](/path/to/normal.html)',
+        '[pdf](/path/to/file.pdf)',
+        '[png](/path/to/image.png)',
       ].join('\n\n')
 
       it('should render default attrs', () => {
@@ -100,8 +102,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<a href="/path/to/index.md" target="_blank" rel="noopener noreferrer">md</a>',
             '<a href="/path/to/index.html" target="_blank" rel="noopener noreferrer">html</a>',
+            '<a href="/path/to/normal.html" target="_blank" rel="noopener noreferrer">html</a>',
+            '<a href="/path/to/file.pdf" target="_blank" rel="noopener noreferrer">pdf</a>',
+            '<a href="/path/to/image.png" target="_blank" rel="noopener noreferrer">png</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -773,12 +777,12 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
     })
 
     describe('absolute links', () => {
-      const source = [
-        '[md](/base/path/to/index.md)',
-        '[html](/base/path/to/index.html)',
-      ].join('\n\n')
+      it('all markdown links should resolve to internal links correctly', () => {
+        const source = [
+          '[md](/path/to/index.md)',
+          '[md](/path/to/markdown.md)',
+        ].join('\n\n')
 
-      it('should resolve to internal links correctly', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = {
           base: '/base/',
@@ -789,7 +793,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<RouterLink to="/path/to/">md</RouterLink>',
-            '<RouterLink to="/path/to/index.html">html</RouterLink>',
+            '<RouterLink to="/path/to/markdown.html">md</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -797,16 +801,66 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(env.links).toEqual([
           {
-            raw: '/base/path/to/index.md',
-            relative: 'path/to/index.md',
+            raw: '/path/to/index.md',
+            relative: 'base/path/to/index.md',
             absolute: '/base/path/to/index.md',
           },
+          {
+            raw: '/path/to/markdown.md',
+            relative: 'base/path/to/markdown.md',
+            absolute: '/base/path/to/markdown.md',
+          },
+        ])
+      })
+
+      it('html links should resolve to internal links correctly', () => {
+        const source = ['[html](/base/path/to/index.html)'].join('\n\n')
+
+        const md = MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          base: '/base/',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          ['<RouterLink to="/path/to/index.html">html</RouterLink>']
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+
+        expect(env.links).toEqual([
           {
             raw: '/base/path/to/index.html',
             relative: 'path/to/index.html',
             absolute: '/base/path/to/index.html',
           },
         ])
+      })
+
+      it('other links should resolve as anchor links correctly', () => {
+        const source = [
+          '[pdf](/base/path/to/file.pdf)',
+          '[png](/base/path/to/image.png)',
+        ].join('\n\n')
+
+        const md = MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          base: '/base/',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="/base/path/to/file.pdf">pdf</a>',
+            '<a href="/base/path/to/image.png">png</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+
+        expect(env.links).toBeUndefined()
       })
     })
   })
