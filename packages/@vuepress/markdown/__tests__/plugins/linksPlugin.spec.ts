@@ -8,7 +8,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
       const source = [
         '[https-github](https://github.com)',
         '[http-github](http://github.com)',
+        '[https-github-markdown](https://github.com/vuepress/vuepress-next/blob/main/README.md)',
+        '[http-github-markdown](http://github.com/vuepress/vuepress-next/blob/main/README.md)',
         '[github](//github.com)',
+        '[github-markdown](//github.com/vuepress/vuepress-next/blob/main/README.md)',
         // autolink
         '<https://github.com>',
         '<http://github.com>',
@@ -24,7 +27,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           [
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http-github</a>',
+            '<a href="https://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer">https-github-markdown</a>',
+            '<a href="http://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer">http-github-markdown</a>',
             '<a href="//github.com" target="_blank" rel="noopener noreferrer">github</a>',
+            '<a href="//github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer">github-markdown</a>',
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com</a>',
           ]
@@ -49,7 +55,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           [
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer" foo="bar">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer" foo="bar">http-github</a>',
+            '<a href="https://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">https-github-markdown</a>',
+            '<a href="http://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">http-github-markdown</a>',
             '<a href="//github.com" target="_blank" rel="noopener noreferrer" foo="bar">github</a>',
+            '<a href="//github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">github-markdown</a>',
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer" foo="bar">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer" foo="bar">http://github.com</a>',
           ]
@@ -73,7 +82,10 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           [
             '<a href="https://github.com" target="_blank" rel="foobar">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="foobar">http-github</a>',
+            '<a href="https://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="foobar">https-github-markdown</a>',
+            '<a href="http://github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="foobar">http-github-markdown</a>',
             '<a href="//github.com" target="_blank" rel="foobar">github</a>',
+            '<a href="//github.com/vuepress/vuepress-next/blob/main/README.md" target="_blank" rel="foobar">github-markdown</a>',
             '<a href="https://github.com" target="_blank" rel="foobar">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="foobar">http://github.com</a>',
           ]
