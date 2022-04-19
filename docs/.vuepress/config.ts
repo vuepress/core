@@ -157,7 +157,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/plugin-docsearch',
       {
-        apiKey: '3a539aab83105f01761a137c61004d85',
+        appId: '34YFD9IUQ2',
+        apiKey: '9a9058b8655746634e01071411c366b8',
         indexName: 'vuepress',
         searchParameters: {
           facetFilters: ['tags:v2'],
