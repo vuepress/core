@@ -45,7 +45,7 @@ The following hooks will be processed in dev / build:
 
   Name of the plugin.
 
-  It will be used for identifying plugins to avoid using a same plugin multiple times, so make sure to use a unique plugin name.
+  It will be used for identifying plugins to handle plugin correctly for specific bundlers and to avoid using a same plugin multiple times, so make sure it's the same as plugin package name.
 
   It should follow the naming convention:
 
@@ -180,7 +180,7 @@ module.exports = {
   Page options extension.
 
   This hook accepts a function that will receive the options of `createPage`.
-  
+
   This hook can be used for modifying page options
 
 - Example:

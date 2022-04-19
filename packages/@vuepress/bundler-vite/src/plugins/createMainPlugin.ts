@@ -1,36 +1,13 @@
 import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { fs, requireResolve } from '@vuepress/utils'
 import * as history from 'connect-history-api-fallback'
 import type { Connect, Plugin } from 'vite'
 import type { ViteBundlerOptions } from '../types'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
 
-// packages that include client code, which should not
-// be optimized nor externalized
-const clientPackages = [
-  '@vuepress/client',
-  '@vuepress/plugin-active-header-links',
-  '@vuepress/plugin-back-to-top',
-  '@vuepress/plugin-container',
-  '@vuepress/plugin-docsearch',
-  '@vuepress/plugin-external-link-icon',
-  '@vuepress/plugin-git',
-  '@vuepress/plugin-google-analytics',
-  '@vuepress/plugin-medium-zoom',
-  '@vuepress/plugin-nprogress',
-  '@vuepress/plugin-palette',
-  '@vuepress/plugin-prismjs',
-  '@vuepress/plugin-pwa',
-  '@vuepress/plugin-pwa-popup',
-  '@vuepress/plugin-register-components',
-  '@vuepress/plugin-search',
-  '@vuepress/plugin-shiki',
-  '@vuepress/plugin-theme-data',
-  '@vuepress/plugin-toc',
-  '@vuepress/shared',
-  '@vuepress/theme-default',
-]
+// built-in packages that include client code, which should not be optimized nor externalized
+const BUILT_IN_PACKAGES = ['@vuepress/client', '@vuepress/shared']
 
 export const createMainPlugin = ({
   app,
@@ -102,10 +79,20 @@ import '@vuepress/client/lib/app.js'
       },
       optimizeDeps: {
         include: ['@vuepress/shared'],
-        exclude: clientPackages,
+        exclude: [
+          ...BUILT_IN_PACKAGES,
+          ...app.pluginApi.plugins
+            .map((plugin) => plugin.name)
+            .filter(requireResolve),
+        ],
       },
       ssr: {
-        noExternal: clientPackages,
+        noExternal: [
+          ...BUILT_IN_PACKAGES,
+          ...app.pluginApi.plugins
+            .map((plugin) => plugin.name)
+            .filter(requireResolve),
+        ],
       },
     }
   },
