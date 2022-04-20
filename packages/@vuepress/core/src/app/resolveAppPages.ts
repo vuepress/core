@@ -16,6 +16,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
     cwd: app.dir.source(),
   })
 
+  // sort page files to avoid different order in different platforms
   pageFilePaths.sort((lhs, rhs) =>
     rhs.toLocaleLowerCase().localeCompare(lhs.toLocaleLowerCase())
   )
