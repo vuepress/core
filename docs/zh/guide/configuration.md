@@ -43,9 +43,9 @@ import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
   // 站点配置
-  lang: 'en-US',
-  title: 'Hello VuePress',
-  description: 'Just playing around',
+  lang: 'zh-CN',
+  title: '你好， VuePress ！',
+  description: '这是我的第一个 VuePress 站点',
 
   // 主题和它的配置
   theme: '@vuepress/theme-default',
