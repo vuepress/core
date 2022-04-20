@@ -28,12 +28,12 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.38",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "mitt": "^3.0.0",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.2.31",
+    "vue": "^3.2.33",
     "workbox-build": "^6.5.2"
   },
   "publishConfig": {

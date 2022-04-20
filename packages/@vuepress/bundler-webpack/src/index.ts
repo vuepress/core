@@ -1,2 +1,2 @@
-export * from './createBundler'
 export * from './types'
+export * from './webpackBundler'

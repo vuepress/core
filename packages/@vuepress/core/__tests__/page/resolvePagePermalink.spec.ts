@@ -1,4 +1,4 @@
-import { resolvePagePermalink } from '@vuepress/core'
+import { resolvePagePermalink } from '../../src'
 
 describe('core > page > resolvePagePermalink', () => {
   it('should return null', () => {

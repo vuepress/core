@@ -62,9 +62,8 @@ export const createBuild =
       ).toString()
 
       // load the client manifest file
-      const clientManifest = require(app.dir.dest(
-        clientManifestFilename
-      )) as ClientManifest
+      const clientManifestPath = app.dir.dest(clientManifestFilename)
+      const clientManifest = require(clientManifestPath) as ClientManifest
 
       // resolve client files meta
       const {
@@ -75,7 +74,8 @@ export const createBuild =
       } = resolveClientManifestMeta(clientManifest)
 
       // load the compiled server bundle
-      const { createVueApp } = require(app.dir.dest('.server/app')) as {
+      const serverEntryPath = app.dir.dest('.server/app')
+      const { createVueApp } = require(serverEntryPath) as {
         createVueApp: CreateVueAppFunction
       }
 

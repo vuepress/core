@@ -1,5 +1,5 @@
 import { isLinkHttp, removeLeadingSlash } from '@vuepress/shared'
-import { useSiteData } from '../composables'
+import { useSiteData } from './composables'
 
 /**
  * Prefix url with site base

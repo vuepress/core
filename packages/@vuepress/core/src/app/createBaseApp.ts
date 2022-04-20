@@ -9,8 +9,7 @@ import { resolveAppOptions } from './resolveAppOptions'
 import { resolveAppSiteData } from './resolveAppSiteData'
 import { resolveAppVersion } from './resolveAppVersion'
 import { resolveAppWriteTemp } from './resolveAppWriteTemp'
-import { setupAppPlugins } from './setupAppPlugins'
-import { setupAppTheme } from './setupAppTheme'
+import { setupAppThemeAndPlugins } from './setupAppThemeAndPlugins'
 
 /**
  * Create vuepress app
@@ -44,8 +43,7 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
   // setup theme and plugins
   // notice that we setup theme before plugins,
   // so user plugins could override theme plugins
-  setupAppTheme(app, config)
-  setupAppPlugins(app)
+  setupAppThemeAndPlugins(app, config)
 
   return app
 }

@@ -39,26 +39,23 @@ export interface PalettePluginOptions {
   importCode?: (filePath: string) => string
 }
 
-export const palettePlugin: Plugin<PalettePluginOptions> = (
-  {
-    preset = 'css',
-    userPaletteFile = presetOptions[preset].userPaletteFile,
-    tempPaletteFile = presetOptions[preset].tempPaletteFile,
-    userStyleFile = presetOptions[preset].userStyleFile,
-    tempStyleFile = presetOptions[preset].tempStyleFile,
-    importCode = presetOptions[preset].importCode,
-  },
-  app
-) => ({
+export const palettePlugin = ({
+  preset = 'css',
+  userPaletteFile = presetOptions[preset].userPaletteFile,
+  tempPaletteFile = presetOptions[preset].tempPaletteFile,
+  userStyleFile = presetOptions[preset].userStyleFile,
+  tempStyleFile = presetOptions[preset].tempStyleFile,
+  importCode = presetOptions[preset].importCode,
+}: PalettePluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-palette',
 
-  alias: {
+  alias: (app) => ({
     '@vuepress/plugin-palette/palette': app.dir.temp(tempPaletteFile),
     '@vuepress/plugin-palette/style': app.dir.temp(tempStyleFile),
-  },
+  }),
 
-  onPrepared: () =>
-    Promise.all([
+  onPrepared: async (app) => {
+    await Promise.all([
       preparePaletteFile(app, {
         userPaletteFile,
         tempPaletteFile,
@@ -69,7 +66,8 @@ export const palettePlugin: Plugin<PalettePluginOptions> = (
         tempStyleFile,
         importCode,
       }),
-    ]),
+    ])
+  },
 
   onWatched: (app, watchers) => {
     const paletteWatcher = chokidar.watch(userPaletteFile, {
@@ -113,5 +111,3 @@ export const palettePlugin: Plugin<PalettePluginOptions> = (
     watchers.push(styleWatcher)
   },
 })
-
-export default palettePlugin

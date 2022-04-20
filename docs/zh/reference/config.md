@@ -3,17 +3,6 @@
 <NpmBadge package="@vuepress/cli" />
 <NpmBadge package="@vuepress/core" />
 
-VuePress 配置的参考文档，可以通过配置文件来设置这些配置。 VuePress 约定的配置文件为（按照优先顺序）：
-
-- 当前工作目录 `cwd` 下：
-  - `vuepress.config.ts`
-  - `vuepress.config.js`
-- 源文件目录 `sourceDir` 下：
-  - `.vuepress/config.ts`
-  - `.vuepress/config.js`
-
-你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件。
-
 ## 站点配置
 
 ### base
@@ -342,7 +331,7 @@ VuePress 在构建过程中会在输出目录下生成临时文件，因此该�
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/client/templates/index.dev.html'`
+- 默认值： `'@vuepress/client/templates/dev.html'`
 
 - 详情：
 
@@ -378,7 +367,7 @@ VuePress 在构建过程中会在输出目录下生成临时文件，因此该�
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/client/templates/index.build.html'`
+- 默认值： `'@vuepress/client/templates/build.html'`
 
 - 详情：
 

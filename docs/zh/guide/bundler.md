@@ -28,10 +28,27 @@ npm install -D vuepress-webpack@next
   </CodeGroupItem>
 </CodeGroup>
 
-## 打包工具配置
+## 配置打包工具
 
-通常情况下，你不要任何额外配置就可以使用一个打包工具，因为我们已经帮你配置好了它们。
+一般情况下，你不要任何额外配置就可以使用打包工具，因为我们已经帮你配置好了它们。
 
-类似于 [themeConfig](../reference/config.md#themeconfig) ， VuePress 同样允许用户通过 [bundlerConfig](../reference/config.md#bundlerconfig) 来配置打包工具。
+通过 [bundler](../reference/config.md#bundler) 配置项，你可以对打包工具进行进阶配置：
+
+```js
+const { viteBundler } = require('vuepress')
+// const { webpackBundler } = require('vuepress-webpack')
+
+module.exports = {
+  bundler: viteBundler({
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag === 'center',
+        },
+      },
+    },
+  }),
+}
+```
 
 你可以参考 [打包工具 > Vite](../reference/bundler/vite.md) 和 [打包工具 > Webpack](../reference/bundler/webpack.md) 来查看对应打包工具的所有配置项。

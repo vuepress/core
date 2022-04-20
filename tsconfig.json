@@ -15,8 +15,8 @@
       "vuepress": ["./packages/vuepress/src"],
       "vuepress-vite": ["./packages/vuepress-vite/src"],
       "vuepress-webpack": ["./packages/vuepress-webpack/src"]
-    },
-    "types": ["webpack-env", "vite/client", "@types/jest"]
+    }
+    // "types": ["webpack-env", "vite/client", "@types/jest"]
   },
   "include": ["**/.vuepress/**/*", "packages/**/*"],
   "exclude": ["node_modules", ".temp", "lib", "dist"]

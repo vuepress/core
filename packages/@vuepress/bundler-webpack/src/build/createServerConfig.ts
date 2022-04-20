@@ -30,7 +30,9 @@ export const createServerConfig = async (
   config.target('node')
 
   // set externals
-  config.externals([/(^(vue|vue-router)$)|(^@vue\/[^/]*$)/])
+  // externalize vue in ssr mode, because we need to `require('vue')` in node side
+  // for ssr usage, then we also need vue as peer-dependency when using pnpm
+  config.externals(['vue'])
 
   // devtool
   config.devtool('source-map')
@@ -39,7 +41,6 @@ export const createServerConfig = async (
   config.optimization.minimize(false)
 
   // use internal vuepress-loader to handle SSR dependencies
-  // TODO: remove this loader and modify `build/renderPage` when vue-loader supports SSR
   config.module
     .rule('vue')
     .test(/\.vue$/)

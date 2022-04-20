@@ -1,0 +1,25 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "docs:build": "vuepress build --clean-cache",
+    "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
+    "docs:dev": "vuepress dev --clean-cache",
+    "docs:serve": "anywhere -s -h localhost -d .vuepress/dist"
+  },
+  "dependencies": {
+    "@vuepress/bundler-vite": "workspace:*",
+    "@vuepress/bundler-webpack": "workspace:*",
+    "@vuepress/cli": "workspace:*",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/plugin-docsearch": "workspace:*",
+    "@vuepress/plugin-google-analytics": "workspace:*",
+    "@vuepress/plugin-register-components": "workspace:*",
+    "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "anywhere": "^1.5.0",
+    "sass-loader": "^12.6.0",
+    "vue": "^3.2.33"
+  }
+}

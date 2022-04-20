@@ -1,5 +1,5 @@
-import { getComponentsFromDir } from '@vuepress/plugin-register-components'
 import { path } from '@vuepress/utils'
+import { getComponentsFromDir } from '../../src/node'
 
 describe('plugin-register-components > node > getComponentsFromDir', () => {
   it('should get empty object if `componentsDir` is `null`', async () => {

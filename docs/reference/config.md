@@ -3,17 +3,6 @@
 <NpmBadge package="@vuepress/cli" />
 <NpmBadge package="@vuepress/core" />
 
-Reference of VuePress config, which can be set via config file. The conventional config files are (in order of precedence):
-
-- In current working directory `cwd`:
-  - `vuepress.config.ts`
-  - `vuepress.config.js`
-- In source directory `sourceDir`:
-  - `.vuepress/config.ts`
-  - `.vuepress/config.js`
-
-You can also specify the config file via `--config` option of [CLI](./cli.md).
-
 ## Site Config
 
 ### base
@@ -343,11 +332,11 @@ You can manually move it to another location after building.
 
 - Type: `string`
 
-- Default: `'@vuepress/client/templates/index.dev.html'`
+- Default: `'@vuepress/client/templates/dev.html'`
 
 - Details:
 
-  Specify the HTML template to be used for dev.
+  Specify the path of the HTML template to be used for dev.
 
 ## Build Config
 
@@ -379,11 +368,11 @@ You can manually move it to another location after building.
 
 - Type: `string`
 
-- Default: `'@vuepress/client/templates/index.build.html'`
+- Default: `'@vuepress/client/templates/build.html'`
 
 - Details:
 
-  Specify the HTML template to be used for build.
+  Specify the path of the HTML template to be used for build.
 
 ## Markdown Config
 

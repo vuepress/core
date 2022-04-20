@@ -1,4 +1,4 @@
-import { resolveAppEnv, resolveAppOptions } from '@vuepress/core'
+import { resolveAppEnv, resolveAppOptions } from '../../src'
 
 const source = '/foo'
 
@@ -7,7 +7,10 @@ const testCases: [
   ReturnType<typeof resolveAppEnv>
 ][] = [
   [
-    [resolveAppOptions({ source }), false],
+    [
+      resolveAppOptions({ source, theme: {} as any, bundler: {} as any }),
+      false,
+    ],
     {
       isBuild: false,
       isDev: true,
@@ -15,7 +18,15 @@ const testCases: [
     },
   ],
   [
-    [resolveAppOptions({ source, debug: true }), false],
+    [
+      resolveAppOptions({
+        source,
+        theme: {} as any,
+        bundler: {} as any,
+        debug: true,
+      }),
+      false,
+    ],
     {
       isBuild: false,
       isDev: true,
@@ -23,7 +34,7 @@ const testCases: [
     },
   ],
   [
-    [resolveAppOptions({ source }), true],
+    [resolveAppOptions({ source, theme: {} as any, bundler: {} as any }), true],
     {
       isBuild: true,
       isDev: false,

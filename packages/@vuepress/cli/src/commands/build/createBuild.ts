@@ -7,7 +7,7 @@ import {
   resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from '../../config'
-import { resolveAppConfigFromCommandOptions } from '../../utils'
+import { resolveAppConfig, resolveCliAppConfig } from '../../utils'
 import type { BuildCommand } from './types'
 
 const log = debug('vuepress:cli/build')
@@ -21,30 +21,28 @@ export const createBuild =
       process.env.NODE_ENV = 'production'
     }
 
-    // resolve base app config
-    const cliAppConfig = resolveAppConfigFromCommandOptions(
-      sourceDir,
-      commandOptions
-    )
+    // resolve app config from cli options
+    const cliAppConfig = resolveCliAppConfig(sourceDir, commandOptions)
 
     // resolve user config file
     const userConfigPath = commandOptions.config
       ? resolveUserConfigPath(commandOptions.config)
       : resolveUserConfigConventionalPath(cliAppConfig.source)
-
     log(`userConfigPath:`, userConfigPath)
-
     const userConfig = await loadUserConfig(userConfigPath)
 
-    // create vuepress app
-    const app = createBuildApp({
-      // allow setting default app config via `cli()`
-      // for example, set different default bundler in `vuepress` and `vuepress-vite` package
-      ...defaultAppConfig,
-      // use cli options to override config file
-      ...userConfig,
-      ...cliAppConfig,
+    // resolve the final app config to use
+    const appConfig = resolveAppConfig({
+      defaultAppConfig,
+      cliAppConfig,
+      userConfig,
     })
+    if (appConfig === null) {
+      return
+    }
+
+    // create vuepress app
+    const app = createBuildApp(appConfig)
 
     // use user-config plugin
     app.use(transformUserConfigToPlugin(app, userConfig))

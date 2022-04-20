@@ -1,22 +1,21 @@
+import { isArray } from '@vuepress/shared'
 import type { App, AppConfig } from '../types'
 import { resolveThemeInfo } from './resolveThemeInfo'
 
 /**
- * Setup theme for vuepress app
+ * Setup theme and plugins for vuepress app
  */
-export const setupAppTheme = (app: App, config: AppConfig): void => {
+export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
   // recursively resolve theme info
-  const themeInfo = resolveThemeInfo(
-    app,
-    app.options.theme,
-    app.options.themeConfig
-  )
+  const themeInfo = resolveThemeInfo(app, app.options.theme)
   // set up app layouts and templates
   app.layouts = themeInfo.layouts
   app.options.templateDev =
     config.templateDev ?? themeInfo.templateDev ?? app.options.templateDev
   app.options.templateBuild =
     config.templateBuild ?? themeInfo.templateBuild ?? app.options.templateBuild
-  // use theme plugins
-  themeInfo.plugins.forEach((plugin) => app.use(plugin))
+  // use plugins
+  ;[...themeInfo.plugins, ...app.options.plugins].forEach((item) =>
+    (isArray(item) ? item : [item]).forEach((plugin) => app.use(plugin))
+  )
 }

@@ -1,4 +1,4 @@
-import type { App, BundlerDev } from '@vuepress/core'
+import type { App, Bundler } from '@vuepress/core'
 import { chalk, logger, ora } from '@vuepress/utils'
 import * as webpack from 'webpack'
 import * as WebpackDevServer from 'webpack-dev-server'
@@ -11,7 +11,7 @@ import { createDevServerConfig } from './createDevServerConfig'
  * Create the dev method of webpack bundler
  */
 export const createDev =
-  (options: WebpackBundlerOptions): BundlerDev =>
+  (options: WebpackBundlerOptions): Bundler['dev'] =>
   async (app: App) => {
     // create webpack config
     const config = await createDevConfig(app, options)
