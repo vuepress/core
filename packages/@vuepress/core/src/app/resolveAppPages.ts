@@ -16,6 +16,10 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
     cwd: app.dir.source(),
   })
 
+  pageFilePaths.sort((lhs, rhs) =>
+    rhs.toLocaleLowerCase().localeCompare(lhs.toLocaleLowerCase())
+  )
+
   // create pages from files
   const pages = await Promise.all(
     pageFilePaths.map((filePath) => createPage(app, { filePath }))
