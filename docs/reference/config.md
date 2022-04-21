@@ -136,87 +136,32 @@ Rendered as：
 
 ### theme
 
-- Type: `string`
-
-- Default: `'@vuepress/theme-default'`
+- Type: `Theme`
 
 - Details:
 
-  Name or absolute path of theme your want to use.
+  Set the theme of your site.
 
-  This option accepts theme name, theme name shorthand, or absolute path to theme.
-
-- Example:
-
-```js
-module.exports = {
-  theme: 'vuepress-theme-foo',
-  theme: 'bar',
-  theme: path.resolve(__dirname, './path/to/local/theme'),
-}
-```
+  If this option is not set, the default theme will be used.
 
 - Also see:
-  - [themeConfig](#themeconfig)
   - [Guide > Theme](../guide/theme.md)
-
-### themeConfig
-
-- Type: `ThemeConfig`
-
-- Default: `{}`
-
-- Details:
-
-  Provide config to the used theme. The options will vary depending on the theme you are using.
-
-- Example:
-
-```js
-module.exports = {
-  // use default theme
-  theme: '@vuepress/theme-default',
-  // configure default theme
-  themeConfig: {
-    logo: '/logo.png',
-  },
-}
-```
-
-- Also see:
-  - [theme](#theme)
   - [Default Theme > Config](./default-theme/config.md)
 
 ## Bundler Config
 
 ### bundler
 
-- Type: `string`
-
-- Default: `'@vuepress/bundler-vite'`
+- Type: `Bundler`
 
 - Details:
 
-  Name of bundler your want to use.
+  Set the bundler of your site.
 
-  Bundler name shorthand is acceptable.
+  If this option is not set, the default bundler will be used:
 
-- Also see:
-  - [Guide > Bundler](../guide/bundler.md)
-
-::: tip
-When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package, the default bundler will be set to `'@vuepress/bundler-webpack'`.
-:::
-
-### bundlerConfig
-
-- Type: `BundlerConfig`
-
-- Default: `{}`
-
-- Details:
-
-  Provide config options to the used bundler. The options will vary depending on the bundler you are using.
+  - With `vuepress` or `vuepress-vite`, the default bundler is vite.
+  - With `vuepress-webpack`, the default bundler is webpack.
 
 - Also see:
   - [Guide > Bundler](../guide/bundler.md)
@@ -733,40 +678,13 @@ You should not configure it unless you understand what it is for.
 
 ### plugins
 
-- Type: `PluginConfig[]`
+- Type: `(Plugin | Plugin[])[]`
 
 - Details:
 
   Plugins to use.
 
-  This option accepts an array, each item of which is a two-element tuple:
-
-  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
-  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to skip the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
-
-  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
-
-- Example:
-
-```js
-module.exports = {
-  plugins: [
-    // two-element tuple
-    ['vuepress-plugin-foo', false],
-    ['bar', true],
-    [
-      path.resolve(__dirname, './path/to/local/plugin'),
-      {
-        /* options */
-      },
-    ],
-    [require('vuepress-plugin-baz'), true],
-
-    // only use the first element
-    'foobar', // equals to ['foobar', true]
-  ],
-}
-```
+  This option accepts an array, each item of which could be a plugin or an array of plugins.
 
 - Also see:
   - [Guide > Plugin](../guide/plugin.md)

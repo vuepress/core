@@ -24,7 +24,7 @@ export type ThemeFunction = PluginFunction<ThemeObject>
 /**
  * Vuepress theme object
  */
-export interface ThemeObject extends Exclude<PluginObject, 'multiple'> {
+export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
   /**
    * Extended parent theme
    */

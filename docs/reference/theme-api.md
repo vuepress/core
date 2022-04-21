@@ -14,7 +14,7 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 
   Name of the theme.
 
-  It should follow the naming convention:
+  It should follow the naming convention, and ensure consistency with the package name when publishing to NPM:
 
   - Non-scoped: `vuepress-theme-foo`
   - Scoped: `@org/vuepress-theme-foo`
@@ -23,17 +23,17 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 
 - Details:
 
-  A theme should never be used multiple times, so this option should not be set.
+  A theme should never be used multiple times, so this option is not supported in theme API.
 
 ## Theme Specific Options
 
 ### extends
 
-- Type: `string`
+- Type: `Theme`
 
 - Details:
 
-  The name of the theme to inherit.
+  The theme to inherit.
 
   All of the Theme API of the parent theme will be inherited, but the child theme will not override the parent theme directly. Theme specific options will override according to following rules:
 
@@ -46,11 +46,12 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 - Example:
 
 ```js
+const { defaultTheme } = require('@vuepress/theme-default')
 const { path } = require('@vuepress/utils')
 
 module.exports = {
   // inherit the default theme
-  extends: '@vuepress/theme-default',
+  extends: defaultTheme(),
 
   // override the `404` layout
   layouts: {
@@ -110,7 +111,7 @@ module.exports = {
 
 ### plugins
 
-- Type: `PluginConfig[]`
+- Type: `(Plugin | Plugin[])[]`
 
 - Details:
 

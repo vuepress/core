@@ -2,7 +2,15 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-Reference of default theme config, which can be set via [themeConfig](../config.md#themeconfig).
+```js
+const { defaultTheme } = require('@vuepress/theme-default')
+
+module.exports = {
+  theme: defaultTheme({
+    // set config here
+  }),
+}
+```
 
 ## Basic Config
 
