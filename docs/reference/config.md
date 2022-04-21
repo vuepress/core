@@ -367,7 +367,7 @@ You can manually move it to another location after building.
 
 - Type: `((file: string, type: string) => boolean)) | boolean`
 
-- Default: `false`
+- Default: `true`
 
 - Details:
 

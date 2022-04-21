@@ -33,7 +33,7 @@ describe('core > app > resolveAppOptions', () => {
         require.resolve('@vuepress/client/templates/index.build.html')
       ),
       shouldPreload: true,
-      shouldPrefetch: false,
+      shouldPrefetch: true,
       markdown: {},
       plugins: [],
     })

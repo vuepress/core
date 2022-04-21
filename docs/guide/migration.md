@@ -22,7 +22,7 @@ Core ideas and processes of VuePress v2 are the same with v1, while v2 API has b
 
 #### shouldPrefetch
 
-Default value is changed from `() => true` to `false`.
+Default value is changed from `() => true` to `true`.
 
 #### extraWatchFiles
 

@@ -44,7 +44,7 @@ export const resolveAppOptions = ({
     require.resolve('@vuepress/client/templates/index.build.html')
   ),
   shouldPreload = true,
-  shouldPrefetch = false,
+  shouldPrefetch = true,
 
   // plugin config
   plugins = [],
