@@ -6,7 +6,7 @@ import type { Page, PageOptions } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: {} as any,
+  theme: { name: 'test' },
   bundler: {} as any,
 })
 app.markdown = createMarkdown()

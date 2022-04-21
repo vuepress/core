@@ -6,7 +6,7 @@ import { externalLinkIconPlugin } from '../../src/node'
 const getTestApp = async (markdown?: MarkdownOptions) => {
   const app = createBaseApp({
     source: path.resolve(__dirname, 'fake-source'),
-    theme: {} as any,
+    theme: { name: 'test' },
     bundler: {} as any,
     markdown,
   }).use(externalLinkIconPlugin)

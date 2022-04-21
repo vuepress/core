@@ -8,7 +8,11 @@ const testCases: [
 ][] = [
   [
     [
-      resolveAppOptions({ source, theme: {} as any, bundler: {} as any }),
+      resolveAppOptions({
+        source,
+        theme: { name: 'test' },
+        bundler: {} as any,
+      }),
       false,
     ],
     {
@@ -21,7 +25,7 @@ const testCases: [
     [
       resolveAppOptions({
         source,
-        theme: {} as any,
+        theme: { name: 'test' },
         bundler: {} as any,
         debug: true,
       }),
@@ -34,7 +38,14 @@ const testCases: [
     },
   ],
   [
-    [resolveAppOptions({ source, theme: {} as any, bundler: {} as any }), true],
+    [
+      resolveAppOptions({
+        source,
+        theme: { name: 'test' },
+        bundler: {} as any,
+      }),
+      true,
+    ],
     {
       isBuild: true,
       isDev: false,

@@ -7,17 +7,22 @@ const log = debug('vuepress:core/app')
 export const appUse = (app: App, rawPlugin: Plugin): App => {
   const pluginObject = resolvePluginObject(app, rawPlugin)
 
+  // ignore anonymous plugins
+  if (!pluginObject.name) {
+    warn(`an anonymous plugin was detected and ignored`)
+    return app
+  }
+
   log(`use plugin ${chalk.magenta(pluginObject.name)}`)
 
+  // handle duplicated plugins
   if (pluginObject.multiple !== true) {
-    // remove duplicated plugin
     const duplicateIndex = app.pluginApi.plugins.findIndex(
       ({ name }) => name === pluginObject.name
     )
     if (duplicateIndex !== -1) {
+      // remove the previous duplicated plugin
       app.pluginApi.plugins.splice(duplicateIndex, 1)
-
-      // show warning when duplicate plugins are detected
       warn(
         `plugin ${chalk.magenta(
           pluginObject.name

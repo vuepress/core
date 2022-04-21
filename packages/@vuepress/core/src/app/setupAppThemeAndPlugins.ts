@@ -1,4 +1,3 @@
-import { isArray } from '@vuepress/shared'
 import type { App, AppConfig } from '../types'
 import { resolveThemeInfo } from './resolveThemeInfo'
 
@@ -14,8 +13,8 @@ export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
     config.templateDev ?? themeInfo.templateDev ?? app.options.templateDev
   app.options.templateBuild =
     config.templateBuild ?? themeInfo.templateBuild ?? app.options.templateBuild
-  // use plugins
-  ;[...themeInfo.plugins, ...app.options.plugins].forEach((item) =>
-    (isArray(item) ? item : [item]).forEach((plugin) => app.use(plugin))
-  )
+  // use options plugins after theme plugins, allowing user to override theme plugins
+  ;[...themeInfo.plugins, ...app.options.plugins]
+    .flat()
+    .forEach((plugin) => app.use(plugin))
 }

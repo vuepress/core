@@ -4,7 +4,7 @@ import type { ClientFilesHook } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: {} as any,
+  theme: { name: 'test' },
   bundler: {} as any,
 })
 const clientFile = path.resolve(
