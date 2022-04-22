@@ -7,9 +7,9 @@ const log = debug('vuepress:core/app')
 export const appUse = (app: App, rawPlugin: Plugin): App => {
   const pluginObject = resolvePluginObject(app, rawPlugin)
 
-  // ignore anonymous plugins
+  // ignore anonymous plugins or theme
   if (!pluginObject.name) {
-    warn(`an anonymous plugin was detected and ignored`)
+    warn(`an anonymous plugin or theme was detected and ignored`)
     return app
   }
 
