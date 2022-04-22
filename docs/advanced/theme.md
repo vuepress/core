@@ -60,7 +60,7 @@ You can provide more layouts, and users can change layout via [layout](../refere
 
 ## Publish to NPM
 
-Also, there are some conventions for theme in [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json):
+Also, there are some conventions for theme in [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json):
 
 ```json
 {

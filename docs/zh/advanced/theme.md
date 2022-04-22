@@ -60,7 +60,7 @@ const barTheme = (options) => {
 
 ## 发布到 NPM
 
-同样的，对于主题也有 [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) 相关的约定：
+同样的，对于主题也有 [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) 相关的约定：
 
 ```json
 {

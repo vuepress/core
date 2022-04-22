@@ -48,7 +48,7 @@ const barPlugin = (options) => {
 
 ## 发布到 NPM
 
-在创建了插件之后，你需要在 [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) 文件中遵循一定的约定，然后再将其发布到 NPM 上：
+在创建了插件之后，你需要在 [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) 文件中遵循一定的约定，然后再将其发布到 NPM 上：
 
 ```json
 {
