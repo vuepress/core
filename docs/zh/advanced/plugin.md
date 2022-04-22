@@ -54,7 +54,7 @@ const barPlugin = (options) => {
 {
   "name": "vuepress-plugin-foo",
   "keywords": [
-    "vuepress-plugin",
+    "vuepress-plugin"
   ]
 }
 ```

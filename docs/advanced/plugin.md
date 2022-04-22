@@ -48,13 +48,13 @@ const barPlugin = (options) => {
 
 ## Publish to NPM
 
-After creating a plugin, you should following some conventions in the [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) file before publishing it to NPM:
+After creating a plugin, you should follow some conventions in the [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) file before publishing it to NPM:
 
 ```json
 {
   "name": "vuepress-plugin-foo",
   "keywords": [
-    "vuepress-plugin",
+    "vuepress-plugin"
   ]
 }
 ```
