@@ -19,6 +19,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./app": "./dist/app.js",
     "./helpers": "./helpers/index.js",
     "./package.json": "./package.json",
     "./templates/*": "./templates/*",
@@ -51,6 +52,7 @@
       "src/index.ts"
     ],
     "entry": [
+      "src/app.ts",
       "src/index.ts"
     ],
     "external": [

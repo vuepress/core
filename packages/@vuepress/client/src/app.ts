@@ -1,13 +1,15 @@
+import { clientAppEnhances } from '@internal/clientAppEnhances'
+import { clientAppRootComponents } from '@internal/clientAppRootComponents'
+import { clientAppSetups } from '@internal/clientAppSetups'
 import { createApp, createSSRApp, h } from 'vue'
-import type { App } from 'vue'
 import { RouterView } from 'vue-router'
-import type { Router } from 'vue-router'
 import { siteData } from './composables'
 import { createVueRouter } from './router'
 import { setupDevtools } from './setupDevtools'
 import { setupGlobalComponents } from './setupGlobalComponents'
 import { setupGlobalComputed } from './setupGlobalComputed'
 import { setupUpdateHead } from './setupUpdateHead'
+import type { CreateVueAppFunction } from './types'
 
 /**
  * - use `createApp` in dev mode
@@ -15,24 +17,7 @@ import { setupUpdateHead } from './setupUpdateHead'
  */
 const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 
-export type CreateVueAppFunction = () => Promise<{
-  app: App
-  router: Router
-}>
-
 export const createVueApp: CreateVueAppFunction = async () => {
-  // use dynamic imports to avoid circular imports caused by `defineXxx` helpers
-  // TODO: build a standalone helpers entry
-  const [
-    { clientAppEnhances },
-    { clientAppSetups },
-    { clientAppRootComponents },
-  ] = await Promise.all([
-    import('@internal/clientAppEnhances'),
-    import('@internal/clientAppSetups'),
-    import('@internal/clientAppRootComponents'),
-  ])
-
   // create vue app
   const app = appCreator({
     name: 'VuepressApp',

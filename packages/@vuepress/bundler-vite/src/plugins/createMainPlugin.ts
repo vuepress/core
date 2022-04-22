@@ -31,7 +31,7 @@ export const createMainPlugin = ({
             /<\/body>/,
             `\
 <script type="module">
-import '@vuepress/client'
+import '@vuepress/client/app'
 </script>
 </body>`
           )
@@ -69,7 +69,7 @@ import '@vuepress/client'
         emptyOutDir: false,
         cssCodeSplit: false,
         rollupOptions: {
-          input: app.dir.client('dist/index.js'),
+          input: app.dir.client('dist/app.js'),
           preserveEntrySignatures: 'allow-extension',
         },
         minify: isServer ? false : !app.env.isDebug,
