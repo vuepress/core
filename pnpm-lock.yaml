@@ -287,7 +287,6 @@ importers:
       '@vuepress/core': workspace:*
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
-      preact: ^10.7.0
       ts-debounce: ^4.0.0
       vue: ^3.2.33
       vue-router: ^4.0.14
@@ -300,7 +299,6 @@ importers:
       '@vuepress/core': link:../core
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
-      preact: 10.7.1
       ts-debounce: 4.0.0
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33

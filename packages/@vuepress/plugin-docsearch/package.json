@@ -38,12 +38,20 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "preact": "^10.7.0",
     "ts-debounce": "^4.0.0",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "react",
+        "react-dom"
+      ]
+    }
   }
 }
