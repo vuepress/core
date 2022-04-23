@@ -1,12 +1,12 @@
 import type { Bundler } from '@vuepress/core'
-import { createBuild } from './build'
-import { createDev } from './dev'
+import { build } from './build'
+import { dev } from './dev'
 import type { WebpackBundlerOptions } from './types'
 
 export const webpackBundler = (
   options: WebpackBundlerOptions = {}
 ): Bundler => ({
   name: '@vuepress/bundler-webpack',
-  dev: createDev(options),
-  build: createBuild(options),
+  dev: (app) => dev(options, app),
+  build: (app) => build(options, app),
 })

@@ -8,13 +8,13 @@ import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions'
 export const handleModuleJs = ({
   options,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   options: WebpackBundlerOptions
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   // only enable transpilation in production client bundle
   // when `evergreen` option is set to `false`

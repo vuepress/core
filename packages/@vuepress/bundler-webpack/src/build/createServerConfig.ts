@@ -7,14 +7,14 @@ export const createServerConfig = async (
   app: App,
   options: WebpackBundlerOptions
 ): Promise<Config> => {
-  const isServer = true
   const isBuild = true
+  const isServer = true
 
   const config = await createBaseConfig({
     app,
     options,
-    isServer,
     isBuild,
+    isServer,
   })
 
   // server output
@@ -48,9 +48,6 @@ export const createServerConfig = async (
     .before('vue-loader')
     .loader(require.resolve('./ssr/vuepressLoader'))
     .end()
-
-  // allow users to set webpack config via webpack-chain
-  options.chainWebpack?.(config, isServer, isBuild)
 
   return config
 }

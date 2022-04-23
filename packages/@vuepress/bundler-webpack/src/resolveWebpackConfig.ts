@@ -1,7 +1,7 @@
 import type { Configuration } from 'webpack'
 import type * as Config from 'webpack-chain'
 import { merge } from 'webpack-merge'
-import type { WebpackBundlerOptions } from '../types'
+import type { WebpackBundlerOptions } from './types'
 
 export const resolveWebpackConfig = ({
   config,

@@ -10,13 +10,13 @@ import type * as Config from 'webpack-chain'
 export const handleOtherOptions = ({
   app,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   // set infrastructureLogging options
   config.set('infrastructureLogging', {
@@ -29,8 +29,8 @@ export const handleOtherOptions = ({
     cacheDirectory: app.dir.cache(),
     version: JSON.stringify({
       // vuepress identifiers
-      isServer,
       isBuild,
+      isServer,
       'version': app.version,
       // dependencies
       'esbuild-loader': require('esbuild-loader/package.json').version,

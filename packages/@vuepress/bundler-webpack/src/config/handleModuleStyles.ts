@@ -17,14 +17,14 @@ export const handleModuleStyles = ({
   app,
   options,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: WebpackBundlerOptions
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   const createStyleRules = ({
     lang,
