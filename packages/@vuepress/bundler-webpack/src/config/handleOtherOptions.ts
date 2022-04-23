@@ -33,7 +33,6 @@ export const handleOtherOptions = ({
       'isBuild': isBuild,
       'version': app.version,
       // dependencies
-      '@vue/compiler-sfc': require('@vue/compiler-sfc/package.json').version,
       'esbuild-loader': require('esbuild-loader/package.json').version,
       'vue-loader': require('vue-loader/package.json').version,
       'webpack': require('webpack/package.json').version,

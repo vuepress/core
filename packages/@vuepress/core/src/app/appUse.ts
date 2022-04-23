@@ -1,37 +1,38 @@
 import { chalk, debug, warn } from '@vuepress/utils'
-import type { App, Plugin, PluginOptions } from '../types'
+import type { App, Plugin } from '../types'
 import { resolvePluginObject } from './resolvePluginObject'
 
 const log = debug('vuepress:core/app')
 
-export const appUse = <T extends PluginOptions>(
-  app: App,
-  rawPlugin: Plugin<T> | string,
-  config?: Partial<T>
-): App => {
-  const plugin = resolvePluginObject(app, rawPlugin, config)
+export const appUse = (app: App, rawPlugin: Plugin): App => {
+  const pluginObject = resolvePluginObject(app, rawPlugin)
 
-  log(`use plugin ${chalk.magenta(plugin.name)}`)
+  // ignore anonymous plugins or theme
+  if (!pluginObject.name) {
+    warn(`an anonymous plugin or theme was detected and ignored`)
+    return app
+  }
 
-  if (plugin.multiple !== true) {
-    // remove duplicated plugin
+  log(`use plugin ${chalk.magenta(pluginObject.name)}`)
+
+  // handle duplicated plugins
+  if (pluginObject.multiple !== true) {
     const duplicateIndex = app.pluginApi.plugins.findIndex(
-      ({ name }) => name === plugin.name
+      ({ name }) => name === pluginObject.name
     )
     if (duplicateIndex !== -1) {
+      // remove the previous duplicated plugin
       app.pluginApi.plugins.splice(duplicateIndex, 1)
-
-      // show warning when duplicate plugins are detected
       warn(
         `plugin ${chalk.magenta(
-          plugin.name
+          pluginObject.name
         )} has been used multiple times, only the last one will take effect`
       )
     }
   }
 
   // use plugin
-  app.pluginApi.plugins.push(plugin)
+  app.pluginApi.plugins.push(pluginObject)
 
   return app
 }

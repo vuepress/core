@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@types/markdown-it": "^12.2.3",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/markdown": "2.0.0-beta.38",
-    "@vuepress/shared": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/markdown": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "markdown-it": "^12.3.2",
     "markdown-it-container": "^3.0.0"
   },

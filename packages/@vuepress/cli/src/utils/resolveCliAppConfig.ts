@@ -7,15 +7,15 @@ const OPTIONS_DIRECTORY = ['cache', 'dest', 'temp'] as const
 /**
  * Resolve app config according to command options of cli
  */
-export const resolveAppConfigFromCommandOptions = (
+export const resolveCliAppConfig = (
   sourceDir: string,
   commandOptions: Partial<AppConfig>,
   cwd = process.cwd()
-): AppConfig => {
+): Partial<AppConfig> & Pick<AppConfig, 'source'> => {
   // resolve the source directory
   const source = path.resolve(cwd, sourceDir)
 
-  const appConfig: AppConfig = {
+  const appConfig: Partial<AppConfig> & Pick<AppConfig, 'source'> = {
     source,
   }
 

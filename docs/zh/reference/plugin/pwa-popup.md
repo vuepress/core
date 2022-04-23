@@ -8,10 +8,24 @@
 
 当新的 Service Worker 就绪时，会在页面右下角出现一个弹窗，询问用户是否需要激活处于 Waiting 状态的 Service Worker 。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-pwa-popup@next
+```
+
+```js
+const { pwaPlugin } = require('@vuepress/plugin-pwa')
+const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
+
+module.exports = {
+  plugins: [
+    pwaPlugin(),
+    pwaPopupPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项
@@ -31,22 +45,19 @@ npm i -D @vuepress/plugin-pwa-popup@next
 ```js
 module.exports = {
   plugins: [
-    ['@vuepress/plugin-pwa'],
-    [
-      '@vuepress/plugin-pwa-popup',
-      {
-        locales: {
-          '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh',
-          },
-          '/zh/': {
-            message: '发现新内容可用',
-            buttonText: '刷新',
-          },
+    pwaPlugin(),
+    pwaPopupPlugin({
+      locales: {
+        '/': {
+          message: 'New content is available.',
+          buttonText: 'Refresh',
+        },
+        '/zh/': {
+          message: '发现新内容可用',
+          buttonText: '刷新',
         },
       },
-    ],
+    }),
   ],
 }
 ```

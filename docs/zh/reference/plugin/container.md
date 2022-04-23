@@ -8,10 +8,22 @@
 
 默认主题的 [自定义容器](../default-theme/markdown.md#自定义容器) 就是由该插件支持的。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-container@next
+```
+
+```js
+const { containerPlugin } = require('@vuepress/plugin-container')
+
+module.exports = {
+  plugins: [
+    containerPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 容器语法
@@ -57,20 +69,17 @@ npm i -D @vuepress/plugin-container@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/container',
-      {
-        type: 'tip',
-        locales: {
-          '/': {
-            defaultInfo: 'TIP',
-          },
-          '/zh/': {
-            defaultInfo: '提示',
-          },
+    containerPlugin({
+      type: 'tip',
+      locales: {
+        '/': {
+          defaultInfo: 'TIP',
+        },
+        '/zh/': {
+          defaultInfo: '提示',
         },
       },
-    ],
+    }),
   ],
 }
 ```

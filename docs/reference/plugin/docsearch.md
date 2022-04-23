@@ -10,10 +10,22 @@ Default theme will add DocSearch to the navbar once you configure this plugin co
 This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
 :::
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-docsearch@next
+```
+
+```js
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+
+module.exports = {
+  plugins: [
+    docsearchPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Get Search Index
@@ -275,31 +287,28 @@ If you are not using default theme, or you meet any problems when using docsearc
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/docsearch',
-      {
-        apiKey: '<API_KEY>',
-        indexName: '<INDEX_NAME>',
-        locales: {
-          '/': {
-            placeholder: 'Search Documentation',
-            translations: {
-              button: {
-                buttonText: 'Search Documentation',
-              },
+    docsearchPlugin({
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>',
+      locales: {
+        '/': {
+          placeholder: 'Search Documentation',
+          translations: {
+            button: {
+              buttonText: 'Search Documentation',
             },
           },
-          '/zh/': {
-            placeholder: '搜索文档',
-            translations: {
-              button: {
-                buttonText: '搜索文档',
-              },
+        },
+        '/zh/': {
+          placeholder: '搜索文档',
+          translations: {
+            button: {
+              buttonText: '搜索文档',
             },
           },
         },
       },
-    ],
+    }),
   ],
 }
 ```

@@ -6,10 +6,22 @@
 
 该插件使用 [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) 来生成 Service Worker 文件，并通过 [register-service-worker](https://github.com/yyx990803/register-service-worker) 来注册 Service Worker 。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-pwa@next
+```
+
+```js
+const { pwaPlugin } = require('@vuepress/plugin-pwa')
+
+module.exports = {
+  plugins: [
+    pwaPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## Web App Manifests
@@ -82,12 +94,9 @@ module.exports = {
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/pwa',
-      {
-        skipWaiting: true,
-      },
-    ],
+    pwaPlugin({
+      skipWaiting: true,
+    }),
   ],
 }
 ```

@@ -8,19 +8,19 @@ export interface SearchPluginOptions {
   locales?: LocaleConfig<{
     placeholder: string
   }>
-  hotKeys: string[]
-  maxSuggestions: number
-  isSearchable: (page: Page) => boolean
-  getExtraFields: (page: Page) => string[]
+  hotKeys?: string[]
+  maxSuggestions?: number
+  isSearchable?: (page: Page) => boolean
+  getExtraFields?: (page: Page) => string[]
 }
 
-export const searchPlugin: Plugin<SearchPluginOptions> = ({
+export const searchPlugin = ({
   locales = {},
   hotKeys = ['s', '/'],
   maxSuggestions = 5,
   isSearchable = () => true,
   getExtraFields = () => [],
-}) => ({
+}: SearchPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-search',
 
   clientAppEnhanceFiles: path.resolve(
@@ -34,8 +34,9 @@ export const searchPlugin: Plugin<SearchPluginOptions> = ({
     __SEARCH_MAX_SUGGESTIONS__: maxSuggestions,
   },
 
-  onPrepared: (app) =>
-    prepareSearchIndex({ app, isSearchable, getExtraFields }),
+  onPrepared: async (app) => {
+    await prepareSearchIndex({ app, isSearchable, getExtraFields })
+  },
 
   onWatched: (app, watchers) => {
     // here we only watch the page data files

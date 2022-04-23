@@ -8,10 +8,22 @@
 
 对于主题作者，该插件可以提供与 VuePress 及默认主题相同的多语言支持机制。但是如果你的主题不需要提供多语言支持，或者你想用你自己的方式来实现多语言支持，那么你不需要使用该插件。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-theme-data@next
+```
+
+```js
+const { themeDataPlugin } = require('@vuepress/plugin-theme-data')
+
+module.exports = {
+  plugins: [
+    themeDataPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项
@@ -33,19 +45,16 @@ npm i -D @vuepress/plugin-theme-data@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-theme-data',
-      {
-        themeData: {
-          foo: 'foo',
-          locales: {
-            '/zh/': {
-              foo: 'zh-foo',
-            },
+    themeDataPlugin({
+      themeData: {
+        foo: 'foo',
+        locales: {
+          '/zh/': {
+            foo: 'zh-foo',
           },
         },
       },
-    ],
+    }),
   ],
 }
 ```

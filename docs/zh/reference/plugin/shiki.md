@@ -10,10 +10,22 @@
 你可以考虑在 `dev` 模式下禁用该插件来获取更好的开发体验。
 :::
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-shiki@next
+```
+
+```js
+const { shikiPlugin } = require('@vuepress/plugin-shiki')
+
+module.exports = {
+  plugins: [
+    shikiPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项

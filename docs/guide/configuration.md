@@ -13,23 +13,29 @@ Without any configuration, the VuePress site is pretty minimal. To customize you
 └─ package.json
 ```
 
-The essential file for configuring a VuePress site is `.vuepress/config.js`, which should export a JavaScript object. If you are using TypeScript, you can use `.vuepress/config.ts` instead to get better types hint for VuePress Config.
+The essential file for configuring a VuePress site is `.vuepress/config.js`, while TypeScript config file is also supported. You can use `.vuepress/config.ts` instead to get better types hint for VuePress Config.
+
+To be more specific, we have a convention for config file paths (in order of precedence):
+
+- In current working directory `cwd`:
+  - `vuepress.config.ts`
+  - `vuepress.config.js`
+- In source directory `sourceDir`:
+  - `.vuepress/config.ts`
+  - `.vuepress/config.js`
+
+You can also specify the config file via `--config` option of [CLI](./cli.md).
+
+A basic config file looks like this:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
 
 ```js
 module.exports = {
-  // site config
   lang: 'en-US',
   title: 'Hello, VuePress!',
   description: 'This is my first VuePress site',
-
-  // theme and its config
-  theme: '@vuepress/theme-default',
-  themeConfig: {
-    logo: 'https://vuejs.org/images/logo.png',
-  },
 }
 ```
 
@@ -39,19 +45,11 @@ module.exports = {
 
 ```ts
 import { defineUserConfig } from 'vuepress'
-import type { DefaultThemeOptions } from 'vuepress'
 
-export default defineUserConfig<DefaultThemeOptions>({
-  // site config
+export default defineUserConfig({
   lang: 'en-US',
   title: 'Hello VuePress',
   description: 'Just playing around',
-
-  // theme and its config
-  theme: '@vuepress/theme-default',
-  themeConfig: {
-    logo: 'https://vuejs.org/images/logo.png',
-  },
 })
 ```
 
@@ -60,26 +58,4 @@ export default defineUserConfig<DefaultThemeOptions>({
 
 ::: tip
 Check out the [Config Reference](../reference/config.md) for a full list of VuePress config.
-:::
-
-## Config Scopes
-
-You may have noticed that there is a `themeConfig` option in VuePress config.
-
-Options outside `themeConfig` are **Site Config**, while options inside `themeConfig` are **Theme Config**.
-
-### Site Config
-
-Site config means that, no matter what theme you are using, these configurations are always valid.
-
-As we know, every site should have its own `lang`, `title`, `description`, etc. Thus, VuePress has built-in support for those options.
-
-### Theme Config
-
-Theme config will be processed by VuePress theme, so it depends on the theme you are using.
-
-If you don't specify the `theme` option of VuePress config, the default theme will be used.
-
-::: tip
-Check out the [Default Theme > Config Reference](../reference/default-theme/config.md) for theme config of default theme.
 :::

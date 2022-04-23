@@ -1,10 +1,11 @@
-import { createBaseApp, normalizeReturnObjectHook } from '@vuepress/core'
-import type { ReturnObjectHook } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, normalizeReturnObjectHook } from '../../src'
+import type { ReturnObjectHook } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 
 describe('core > pluginApi > normalizeReturnObjectHook', () => {

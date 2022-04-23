@@ -156,30 +156,30 @@ You can highlight specified lines of your code blocks by adding line ranges mark
 
 ````md
 ```ts{1,6-8}
-import type { UserConfig } from '@vuepress/cli'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 
-export const config: UserConfig = {
+export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
-  },
-}
+  }),
+})
 ```
 ````
 
 **Output**
 
 ```ts{1,6-8}
-import type { UserConfig } from '@vuepress/cli'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 
-export const config: UserConfig = {
+export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
-  },
-}
+  }),
+})
 ```
 
 Examples for line ranges mark:
