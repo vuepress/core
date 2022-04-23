@@ -517,7 +517,6 @@ importers:
       '@vuepress/utils': workspace:*
       '@vueuse/core': ^8.2.1
       sass: ^1.49.10
-      sass-loader: ^12.6.0
       vue: ^3.2.33
       vue-router: ^4.0.14
     dependencies:
@@ -537,7 +536,6 @@ importers:
       '@vuepress/utils': link:../utils
       '@vueuse/core': 8.2.6_vue@3.2.33
       sass: 1.50.0
-      sass-loader: 12.6.0_sass@1.50.0
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
 
@@ -8010,30 +8008,6 @@ packages:
     dependencies:
       klona: 2.0.5
       neo-async: 2.6.2
-    dev: false
-
-  /sass-loader/12.6.0_sass@1.50.0:
-    resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
-    engines: {node: '>= 12.13.0'}
-    peerDependencies:
-      fibers: '>= 3.1.0'
-      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-      sass: ^1.3.0
-      sass-embedded: '*'
-      webpack: ^5.0.0
-    peerDependenciesMeta:
-      fibers:
-        optional: true
-      node-sass:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-    dependencies:
-      klona: 2.0.5
-      neo-async: 2.6.2
-      sass: 1.50.0
     dev: false
 
   /sass/1.50.0:
