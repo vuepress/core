@@ -9,13 +9,13 @@ import { resolveDefine } from './resolveDefine'
 export const createMainPlugin = ({
   app,
   options,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: ViteBundlerOptions
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): Plugin => ({
   name: 'vuepress:main',
 
