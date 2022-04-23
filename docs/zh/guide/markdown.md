@@ -158,30 +158,30 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 
 ````md
 ```ts{1,6-8}
-import type { UserConfig } from '@vuepress/cli'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 
-export const config: UserConfig = {
+export default defineUserConfig({
   title: '你好， VuePress',
 
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
-  },
-}
+  }),
+})
 ```
 ````
 
 **输出**
 
 ```ts{1,6-8}
-import type { UserConfig } from '@vuepress/cli'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 
-export const config: UserConfig = {
+export default defineUserConfig({
   title: '你好， VuePress',
 
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
-  },
-}
+  }),
+})
 ```
 
 行数范围标记的例子：
