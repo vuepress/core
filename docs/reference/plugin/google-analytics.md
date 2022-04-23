@@ -6,10 +6,22 @@ Integrate [Google Analytics](https://analytics.google.com/) into VuePress.
 
 This plugin will import [gtag.js](https://developers.google.com/analytics/devguides/collection/gtagjs) for [Google Analytics 4](https://support.google.com/analytics/answer/10089681).
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-google-analytics@next
+```
+
+```js
+const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+
+module.exports = {
+  plugins: [
+    googleAnalyticsPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Reporting Events
@@ -37,12 +49,9 @@ After using this plugin, the global `gtag()` function is available on the `windo
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-google-analytics',
-      {
-        id: 'G-XXXXXXXXXX',
-      },
-    ],
+    googleAnalyticsPlugin({
+      id: 'G-XXXXXXXXXX',
+    }),
   ],
 }
 ```

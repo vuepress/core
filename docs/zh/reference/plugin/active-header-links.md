@@ -6,10 +6,22 @@
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-active-header-links@next
+```
+
+```js
+const { activeHeaderLinksPlugin } = require('@vuepress/plugin-active-header-links')
+
+module.exports = {
+  plugins: [
+    activeHeaderLinksPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项

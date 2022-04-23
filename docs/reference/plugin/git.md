@@ -8,10 +8,22 @@ The [lastUpdated](../default-theme/config.md#lastupdated) and [contributors](../
 
 This plugin is mainly used to develop themes. You won't need to use it directly in most cases.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-git@next
+```
+
+```js
+const { gitPlugin } = require('@vuepress/plugin-git')
+
+module.exports = {
+  plugins: [
+    gitPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Git Repository

@@ -8,10 +8,22 @@ This plugin simplifies the use of [markdown-it-container](https://github.com/mar
 
 The [Custom Containers](../default-theme/markdown.md#custom-containers) of default theme is powered by this plugin.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-container@next
+```
+
+```js
+const { containerPlugin } = require('@vuepress/plugin-container')
+
+module.exports = {
+  plugins: [
+    containerPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Container Syntax
@@ -57,20 +69,17 @@ This plugin can be used multiple times to support different types of containers.
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/container',
-      {
-        type: 'tip',
-        locales: {
-          '/': {
-            defaultInfo: 'TIP',
-          },
-          '/zh/': {
-            defaultInfo: '提示',
-          },
+    containerPlugin({
+      type: 'tip',
+      locales: {
+        '/': {
+          defaultInfo: 'TIP',
+        },
+        '/zh/': {
+          defaultInfo: '提示',
         },
       },
-    ],
+    }),
   ],
 }
 ```

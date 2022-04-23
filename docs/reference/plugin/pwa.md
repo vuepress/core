@@ -6,10 +6,22 @@ Make your VuePress site a [Progressive Web Application (PWA)](https://developer.
 
 This plugin uses [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) to generate service worker file, and uses [register-service-worker](https://github.com/yyx990803/register-service-worker) to register service worker.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-pwa@next
+```
+
+```js
+const { pwaPlugin } = require('@vuepress/plugin-pwa')
+
+module.exports = {
+  plugins: [
+    pwaPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Web App Manifests
@@ -82,12 +94,9 @@ For example, you can set `skipWaiting: true` to auto activate the new service wo
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/pwa',
-      {
-        skipWaiting: true,
-      },
-    ],
+    pwaPlugin({
+      skipWaiting: true,
+    }),
   ],
 }
 ```

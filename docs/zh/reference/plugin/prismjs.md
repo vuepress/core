@@ -4,10 +4,22 @@
 
 该插件使用 [Prism.js](https://prismjs.com/) 来为 Markdown 代码块启用代码高亮。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-prismjs@next
+```
+
+```js
+const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+
+module.exports = {
+  plugins: [
+    prismjsPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项

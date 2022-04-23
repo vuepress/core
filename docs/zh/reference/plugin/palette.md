@@ -8,10 +8,22 @@
 
 对于主题作者，该插件可以帮助你提供用户自定义样式的能力。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-palette@next
+```
+
+```js
+const { palettePlugin } = require('@vuepress/plugin-palette')
+
+module.exports = {
+  plugins: [
+    palettePlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 调色板和样式
@@ -27,13 +39,10 @@ npm i -D @vuepress/plugin-palette@next
 在你的主题中使用该插件，假设你使用 SASS 作为 CSS 预处理器：
 
 ```ts
-export default {
+module.exports = {
   // ...
   plugins: [
-    [
-      '@vuepress/plugin-palette',
-      { preset: 'sass' },
-    ],
+    palettePlugin({ preset: 'sass' }),
   ],
 }
 ```

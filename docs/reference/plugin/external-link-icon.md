@@ -6,10 +6,22 @@ This plugin will add a icon to the external link in your markdown content, i.e. 
 
 This plugin has been integrated into the default theme.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-external-link-icon@next
+```
+
+```js
+const { externalLinkIconPlugin } = require('@vuepress/plugin-external-link-icon')
+
+module.exports = {
+  plugins: [
+    externalLinkIconPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options
@@ -29,19 +41,16 @@ npm i -D @vuepress/plugin-external-link-icon@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-external-link-icon',
-      {
-        locales: {
-          '/': {
-            openInNewWindow: 'open in new window',
-          },
-          '/zh/': {
-            openInNewWindow: '在新窗口打开',
-          },
+    externalLinkIconPlugin({
+      locales: {
+        '/': {
+          openInNewWindow: 'open in new window',
+        },
+        '/zh/': {
+          openInNewWindow: '在新窗口打开',
         },
       },
-    ],
+    }),
   ],
 }
 ```
