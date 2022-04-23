@@ -44,14 +44,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search",
-        "react",
-        "react-dom"
-      ]
-    }
   }
 }

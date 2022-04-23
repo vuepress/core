@@ -29,8 +29,8 @@ export const handleOtherOptions = ({
     cacheDirectory: app.dir.cache(),
     version: JSON.stringify({
       // vuepress identifiers
-      'isServer': isServer,
-      'isBuild': isBuild,
+      isServer,
+      isBuild,
       'version': app.version,
       // dependencies
       'esbuild-loader': require('esbuild-loader/package.json').version,

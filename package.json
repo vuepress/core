@@ -29,13 +29,13 @@
     "@types/jest": "^27.4.1",
     "@types/webpack-env": "^1.16.4",
     "cpx2": "^4.2.0",
-    "eslint": "^8.13.0",
-    "eslint-config-vuepress": "^3.6.0",
-    "eslint-config-vuepress-typescript": "^2.6.0",
+    "eslint": "^8.14.0",
+    "eslint-config-vuepress": "^3.7.1",
+    "eslint-config-vuepress-typescript": "^2.7.1",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "jest-serializer-vue": "^2.0.2",
-    "lint-staged": "^12.3.8",
+    "lint-staged": "^12.4.0",
     "prettier": "^2.6.2",
     "prettier-config-vuepress": "^1.4.0",
     "rimraf": "^3.0.2",
@@ -49,5 +49,18 @@
   "engines": {
     "node": ">=14",
     "pnpm": ">=6"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "eslint-plugin-import",
+        "eslint-plugin-n",
+        "eslint-plugin-promise",
+        "react",
+        "react-dom",
+        "webpack"
+      ]
+    }
   }
 }
