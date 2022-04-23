@@ -14,10 +14,20 @@ title: nprogress
 
 该插件已经集成到默认主题中。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-nprogress@next
+```
+
+```js
+const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
+
+module.exports = {
+  plugins: [
+    nprogressPlugin(),
+  ],
+}
 ```
 
 ## 样式

@@ -27,45 +27,42 @@ export interface GitPluginOptions {
   contributors?: boolean
 }
 
-export const gitPlugin: Plugin<GitPluginOptions> = (
-  { createdTime, updatedTime, contributors },
-  app
-) => {
-  const cwd = app.dir.source()
-  const isGitRepoValid = checkGitRepo(cwd)
+export const gitPlugin =
+  ({ createdTime, updatedTime, contributors }: GitPluginOptions = {}): Plugin =>
+  (app) => {
+    const cwd = app.dir.source()
+    const isGitRepoValid = checkGitRepo(cwd)
 
-  return {
-    name: '@vuepress/plugin-git',
+    return {
+      name: '@vuepress/plugin-git',
 
-    extendsPage: async (page: Page<GitPluginPageData>) => {
-      page.data.git = {}
+      extendsPage: async (page: Page<GitPluginPageData>) => {
+        page.data.git = {}
 
-      if (!isGitRepoValid || page.filePathRelative === null) {
-        return
-      }
+        if (!isGitRepoValid || page.filePathRelative === null) {
+          return
+        }
 
-      if (createdTime !== false) {
-        page.data.git.createdTime = await getCreatedTime(
-          page.filePathRelative,
-          cwd
-        )
-      }
+        if (createdTime !== false) {
+          page.data.git.createdTime = await getCreatedTime(
+            page.filePathRelative,
+            cwd
+          )
+        }
 
-      if (updatedTime !== false) {
-        page.data.git.updatedTime = await getUpdatedTime(
-          page.filePathRelative,
-          cwd
-        )
-      }
+        if (updatedTime !== false) {
+          page.data.git.updatedTime = await getUpdatedTime(
+            page.filePathRelative,
+            cwd
+          )
+        }
 
-      if (contributors !== false) {
-        page.data.git.contributors = await getContributors(
-          page.filePathRelative,
-          cwd
-        )
-      }
-    },
+        if (contributors !== false) {
+          page.data.git.contributors = await getContributors(
+            page.filePathRelative,
+            cwd
+          )
+        }
+      },
+    }
   }
-}
-
-export default gitPlugin

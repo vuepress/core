@@ -1,4 +1,4 @@
-import { resolvePageFrontmatter } from '@vuepress/core'
+import { resolvePageFrontmatter } from '../../src'
 
 describe('core > page > resolvePageFrontmatter', () => {
   it('should merge raw frontmatter and options frontmatter', () => {

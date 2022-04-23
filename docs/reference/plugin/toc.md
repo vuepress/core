@@ -4,10 +4,22 @@
 
 This plugin will provide a table-of-contents (TOC) component.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-toc@next
+```
+
+```js
+const { tocPlugin } = require('@vuepress/plugin-toc')
+
+module.exports = {
+  plugins: [
+    tocPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Differences with Markdown TOC Syntax

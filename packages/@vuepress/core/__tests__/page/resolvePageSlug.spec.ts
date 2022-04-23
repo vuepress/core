@@ -1,4 +1,4 @@
-import { resolvePageSlug } from '@vuepress/core'
+import { resolvePageSlug } from '../../src'
 
 describe('core > page > resolvePageSlug', () => {
   it('should return empty string', () => {

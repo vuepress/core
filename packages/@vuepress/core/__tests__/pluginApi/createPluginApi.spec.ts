@@ -1,10 +1,11 @@
-import { createBaseApp, createPluginApi } from '@vuepress/core'
-import type { HooksName } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, createPluginApi } from '../../src'
+import type { HooksName } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 
 describe('core > pluginApi > createPluginApi', () => {

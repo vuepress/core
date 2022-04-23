@@ -1,4 +1,5 @@
 import { defineClientAppEnhance } from '@vuepress/client'
+import {} from 'vue/compiler-sfc'
 import { h } from 'vue'
 import Badge from './components/global/Badge.vue'
 import CodeGroup from './components/global/CodeGroup'

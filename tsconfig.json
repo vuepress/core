@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "jsx": "preserve",
     "module": "ES2020",
     "paths": {
       "@internal/searchIndex": [

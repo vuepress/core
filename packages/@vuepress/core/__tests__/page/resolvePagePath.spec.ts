@@ -1,4 +1,4 @@
-import { resolvePagePath } from '@vuepress/core'
+import { resolvePagePath } from '../../src'
 
 const testCases: [
   Parameters<typeof resolvePagePath>,

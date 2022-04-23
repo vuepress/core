@@ -1,4 +1,4 @@
-import { resolvePageDate } from '@vuepress/core'
+import { resolvePageDate } from '../../src'
 
 const testCases: [
   Parameters<typeof resolvePageDate>,

@@ -14,7 +14,7 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
   主题的名称。
 
-  它应遵从如下命名约定：
+  它应遵从如下命名约定，并且在发布到 NPM 时应确保和包名保持一致：
 
   - 非 Scoped: `vuepress-theme-foo`
   - Scoped: `@org/vuepress-theme-foo`
@@ -23,17 +23,17 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
 - 详情：
 
-  主题永远不能被多次使用，因此不应设置该配置项。
+  主题永远不能被多次使用，因此主题 API 不支持该配置项。
 
 ## 主题特定配置项
 
 ### extends
 
-- 类型： `string`
+- 类型： `Theme`
 
 - 详情：
 
-  要继承的主题名称。
+  要继承的主题。
 
   父主题的所有主题 API 都会被继承，但是子主题不会直接覆盖父主题。主题特定的配置项会根据以下规则进行覆盖：
 
@@ -46,11 +46,12 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 - 示例：
 
 ```js
+const { defaultTheme } = require('@vuepress/theme-default')
 const { path } = require('@vuepress/utils')
 
 module.exports = {
   // 继承默认主题
-  extends: '@vuepress/theme-default',
+  extends: defaultTheme(),
 
   // 覆盖 `404` 布局
   layouts: {
@@ -110,7 +111,7 @@ module.exports = {
 
 ### plugins
 
-- 类型： `PluginConfig[]`
+- 类型： `(Plugin | Plugin[])[]`
 
 - 详情：
 

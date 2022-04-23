@@ -10,10 +10,22 @@
 该插件不一定能在其他主题中直接使用，因此你应参考主题本身的文档来获取更多信息。
 :::
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-docsearch@next
+```
+
+```js
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+
+module.exports = {
+  plugins: [
+    docsearchPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 获取搜索索引
@@ -274,31 +286,28 @@ new Crawler({
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/docsearch',
-      {
-        apiKey: '<API_KEY>',
-        indexName: '<INDEX_NAME>',
-        locales: {
-          '/': {
-            placeholder: 'Search Documentation',
-            translations: {
-              button: {
-                buttonText: 'Search Documentation',
-              },
+    docsearchPlugin({
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>',
+      locales: {
+        '/': {
+          placeholder: 'Search Documentation',
+          translations: {
+            button: {
+              buttonText: 'Search Documentation',
             },
           },
-          '/zh/': {
-            placeholder: '搜索文档',
-            translations: {
-              button: {
-                buttonText: '搜索文档',
-              },
+        },
+        '/zh/': {
+          placeholder: '搜索文档',
+          translations: {
+            button: {
+              buttonText: '搜索文档',
             },
           },
         },
       },
-    ],
+    }),
   ],
 }
 ```

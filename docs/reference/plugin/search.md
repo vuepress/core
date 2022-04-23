@@ -10,10 +10,22 @@ Default theme will add search box to the navbar once you configure this plugin c
 This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
 :::
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-search@next
+```
+
+```js
+const { searchPlugin } = require('@vuepress/plugin-search')
+
+module.exports = {
+  plugins: [
+    searchPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Local Search Index
@@ -39,19 +51,16 @@ However, when your site has a large number of pages, the size of search index fi
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search',
-          },
-          '/zh/': {
-            placeholder: '搜索',
-          },
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
         },
       },
-    ],
+    }),
   ],
 }
 ```
@@ -102,13 +111,10 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        // exclude the homepage
-        isSearchable: (page) => page.path !== '/',
-      },
-    ],
+    searchPlugin({
+      // exclude the homepage
+      isSearchable: (page) => page.path !== '/',
+    }),
   ],
 }
 ```
@@ -131,13 +137,10 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        // allow searching the `tags` frontmatter
-        getExtraFields: (page) => page.frontmatter.tags ?? [],
-      },
-    ],
+    searchPlugin({
+      // allow searching the `tags` frontmatter
+      getExtraFields: (page) => page.frontmatter.tags ?? [],
+    }),
   ],
 }
 ```

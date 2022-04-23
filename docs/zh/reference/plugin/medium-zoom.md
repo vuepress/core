@@ -6,10 +6,22 @@
 
 该插件已经集成到默认主题中。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-medium-zoom@next
+```
+
+```js
+const { mediumZoomPlugin } = require('@vuepress/plugin-medium-zoom')
+
+module.exports = {
+  plugins: [
+    mediumZoomPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项

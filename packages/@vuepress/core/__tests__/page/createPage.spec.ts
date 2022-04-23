@@ -1,9 +1,10 @@
-import { createBaseApp, createPage } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, createPage } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 
 beforeAll(async () => {
@@ -80,10 +81,11 @@ describe('core > page > createPage', () => {
   it('should be extended by plugin correctly', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, 'fake-source'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+      theme: { name: 'test' },
+      bundler: {} as any,
     })
     app.use({
-      name: 'test',
+      name: 'foo',
       extendsPageOptions: (options) => {
         options.path = '/foo/'
       },

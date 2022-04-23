@@ -13,12 +13,12 @@ export interface PrismjsPluginOptions {
    *
    * @see https://github.com/PrismJS/prism/issues/2716
    */
-  preloadLanguages: string[]
+  preloadLanguages?: string[]
 }
 
-export const prismjsPlugin: Plugin<PrismjsPluginOptions> = ({
+export const prismjsPlugin = ({
   preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
-}) => ({
+}: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
 
   extendsMarkdown(md) {

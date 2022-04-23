@@ -1,5 +1,5 @@
-import { resolveThemeLayouts } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { resolveThemeLayouts } from '../../src'
 
 const fixtures = (...args: string[]) =>
   path.resolve(__dirname, '../__fixtures__/layouts', ...args)

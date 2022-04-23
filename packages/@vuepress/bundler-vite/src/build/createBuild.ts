@@ -14,7 +14,7 @@ export const createBuild =
     let clientOutput!: RollupOutput
     let serverOutput!: RollupOutput
     await withSpinner('Compiling with vite')(async () => {
-      // create webpack config
+      // create vite config
       const clientConfig = resolveViteConfig({
         app,
         options,
@@ -54,10 +54,8 @@ export const createBuild =
       ) as OutputChunk
 
       // load the compiled server bundle
-      const { createVueApp } = require(app.dir.dest(
-        '.server',
-        serverEntryChunk.fileName
-      )) as {
+      const serverEntryPath = app.dir.dest('.server', serverEntryChunk.fileName)
+      const { createVueApp } = require(serverEntryPath) as {
         createVueApp: CreateVueAppFunction
       }
 

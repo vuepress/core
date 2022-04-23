@@ -12,5 +12,5 @@ export const handleEntry = ({
   config: Config
 }): void => {
   // set client app as entry point
-  config.entry('app').add(app.dir.client('lib/app.js'))
+  config.entry('app').add(app.dir.client('dist/app.js'))
 }

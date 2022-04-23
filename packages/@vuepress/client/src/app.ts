@@ -2,26 +2,20 @@ import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppRootComponents } from '@internal/clientAppRootComponents'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { createApp, createSSRApp, h } from 'vue'
-import type { App } from 'vue'
 import { RouterView } from 'vue-router'
-import type { Router } from 'vue-router'
 import { siteData } from './composables'
 import { createVueRouter } from './router'
 import { setupDevtools } from './setupDevtools'
 import { setupGlobalComponents } from './setupGlobalComponents'
 import { setupGlobalComputed } from './setupGlobalComputed'
 import { setupUpdateHead } from './setupUpdateHead'
+import type { CreateVueAppFunction } from './types'
 
 /**
  * - use `createApp` in dev mode
  * - use `createSSRApp` in build mode
  */
 const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
-
-export type CreateVueAppFunction = () => Promise<{
-  app: App
-  router: Router
-}>
 
 export const createVueApp: CreateVueAppFunction = async () => {
   // create vue app
