@@ -13,6 +13,11 @@ export const Docsearch = defineComponent({
   name: 'Docsearch',
 
   props: {
+    containerId: {
+      type: String,
+      required: false,
+      default: 'docsearch-container',
+    },
     options: {
       type: Object as PropType<DocsearchOptions>,
       required: true,
@@ -44,7 +49,7 @@ export const Docsearch = defineComponent({
       docsearch({
         ...docsearchShim,
         ...propsLocale.value,
-        container: '#docsearch-container',
+        container: `#${props.containerId}`,
         searchParameters: {
           ...propsLocale.value.searchParameters,
           facetFilters,
@@ -85,6 +90,6 @@ export const Docsearch = defineComponent({
       })
     })
 
-    return () => h('div', { id: 'docsearch-container' })
+    return () => h('div', { id: props.containerId })
   },
 })
