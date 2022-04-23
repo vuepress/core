@@ -60,11 +60,11 @@ const transformPageToRouteItem = ({
 export const preparePagesRoutes = async (app: App): Promise<void> => {
   const routeItems = app.pages.map(transformPageToRouteItem)
   const content = `\
+import { Vuepress } from '@vuepress/client'
+
 const routeItems = [\
 ${routeItems.map((routeItem) => `\n  ${JSON.stringify(routeItem)},`).join('')}
 ]
-
-const component = () => import('@vuepress/client').then(({ Vuepress }) => Vuepress)
 
 export const pagesRoutes = routeItems.reduce(
   (result, [name, path, meta, redirects]) => {
@@ -72,7 +72,7 @@ export const pagesRoutes = routeItems.reduce(
       {
         name,
         path,
-        component,
+        component: Vuepress,
         meta,
       },
       ...redirects.map((item) => ({
@@ -86,7 +86,7 @@ export const pagesRoutes = routeItems.reduce(
     {
       name: '404',
       path: '/:catchAll(.*)',
-      component,
+      component: Vuepress,
     }
   ]
 )
