@@ -1,7 +1,6 @@
 {
   "extends": "../../../tsconfig.base.json",
   "references": [
-    { "path": "../client/tsconfig.build.json" },
     { "path": "../core/tsconfig.build.json" },
     { "path": "../utils/tsconfig.build.json" },
     { "path": "./tsconfig.esm.json" },

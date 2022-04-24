@@ -17,7 +17,7 @@ export const handleModuleTs = ({
     .test(/\.tsx?/)
     // use esbuild-loader
     .use('esbuild-loader')
-    .loader('esbuild-loader')
+    .loader(require.resolve('esbuild-loader'))
     .options({
       target: 'es2018',
       loader: 'tsx',

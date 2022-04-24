@@ -13,13 +13,13 @@ import { handleResolve } from './handleResolve'
 export const createBaseConfig = async ({
   app,
   options,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: WebpackBundlerOptions
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): Promise<Config> => {
   // create new webpack-chain config
   const config = new Config()
@@ -52,7 +52,7 @@ export const createBaseConfig = async ({
   /**
    * module
    */
-  handleModule({ app, options, config, isServer, isBuild })
+  handleModule({ app, options, config, isBuild, isServer })
 
   /**
    * plugins
@@ -62,7 +62,7 @@ export const createBaseConfig = async ({
   /**
    * other options
    */
-  handleOtherOptions({ app, config, isServer, isBuild })
+  handleOtherOptions({ app, config, isBuild, isServer })
 
   return config
 }

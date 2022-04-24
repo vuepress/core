@@ -17,7 +17,7 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
+  "author": "meteorlxy",
   "main": "lib/node/index.js",
   "types": "lib/node/index.d.ts",
   "files": [
@@ -30,25 +30,32 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.38",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/plugin-active-header-links": "2.0.0-beta.38",
-    "@vuepress/plugin-back-to-top": "2.0.0-beta.38",
-    "@vuepress/plugin-container": "2.0.0-beta.38",
-    "@vuepress/plugin-external-link-icon": "2.0.0-beta.38",
-    "@vuepress/plugin-git": "2.0.0-beta.38",
-    "@vuepress/plugin-medium-zoom": "2.0.0-beta.38",
-    "@vuepress/plugin-nprogress": "2.0.0-beta.38",
-    "@vuepress/plugin-palette": "2.0.0-beta.38",
-    "@vuepress/plugin-prismjs": "2.0.0-beta.38",
-    "@vuepress/plugin-theme-data": "2.0.0-beta.38",
-    "@vuepress/shared": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/plugin-active-header-links": "workspace:*",
+    "@vuepress/plugin-back-to-top": "workspace:*",
+    "@vuepress/plugin-container": "workspace:*",
+    "@vuepress/plugin-external-link-icon": "workspace:*",
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/plugin-medium-zoom": "workspace:*",
+    "@vuepress/plugin-nprogress": "workspace:*",
+    "@vuepress/plugin-palette": "workspace:*",
+    "@vuepress/plugin-prismjs": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "@vueuse/core": "^8.2.1",
     "sass": "^1.49.10",
-    "sass-loader": "^12.6.0",
-    "vue": "^3.2.31",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.14"
+  },
+  "peerDependencies": {
+    "sass-loader": "^12.6.0"
+  },
+  "peerDependenciesMeta": {
+    "sass-loader": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

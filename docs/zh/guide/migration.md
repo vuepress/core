@@ -20,9 +20,59 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 
 ### 用户配置变更
 
+#### theme
+
+不再支持通过字符串使用主题。需要直接引入主题。
+
+```diff
+- module.exports = {
+-   theme: '@vuepress/theme-default',
+-   themeConfig: {
+-     // 默认主题配置
+-   },
+- }
+
++ const { defaultTheme } = require('@vuepress/theme-default')
++ module.exports = {
++   theme: defaultTheme({
++     // 默认主题配置
++   })
++ }
+```
+
+#### themeConfig
+
+移除。直接向主题传入配置。
+
+#### plugins
+
+不再支持通过字符串使用插件。需要直接引入插件。
+
+```diff
+- module.exports = {
+-   plugins: [
+-     [
+-       '@vuepress/plugin-google-analytics',
+-       {
+-         id: 'G-XXXXXXXXXX',
+-       },
+-     ],
+-   ],
+- }
+
++ const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
++ module.exports = {
++   plugins: [
++     googleAnalyticsPlugin({
++         id: 'G-XXXXXXXXXX',
++     }),
++   ],
++ }
+```
+
 #### shouldPrefetch
 
-默认值从 `() => true` 更改为 `false` 。
+默认值从 `() => true` 更改为 `true` 。
 
 #### extraWatchFiles
 
@@ -33,12 +83,6 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 #### patterns
 
 重命名为 `pagePatterns` 。
-
-#### plugins
-
-只允许 [Babel 式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#babel-式) 选项。
-
-v2 不再支持 [对象式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plugin.html#对象式) 选项。
 
 #### markdown.lineNumbers
 
@@ -90,18 +134,31 @@ v2 不再支持 [对象式](https://v1.vuepress.vuejs.org/zh/plugin/using-a-plug
 
 #### Webpack 相关配置
 
-所有 Webpack 相关的配置都移动至 `@vuepress/bundler-webpack` 的配置项中，所以你需要在 [bundlerConfig](../reference/config.md#bundlerconfig) 中设置它们：
+所有 Webpack 相关的配置都移动至 `@vuepress/bundler-webpack` 的配置项中，包括：
 
-- `postcss`：移动至 `bundlerConfig.postcss`
-- `stylus`：移动至 `bundlerConfig.stylus`
-- `scss`：移动至 `bundlerConfig.scss`
-- `sass`：移动至 `bundlerConfig.sass`
-- `less`：移动至 `bundlerConfig.less`
-- `chainWebpack`：移动至 `bundlerConfig.chainWebpack`
-- `configureWebpack`：移动至 `bundlerConfig.configureWebpack`
-- `evergreen`：移动至 `bundlerConfig.evergreen` ，且默认值从 `false` 更改为 `true` 。
+- `postcss`
+- `stylus`
+- `scss`
+- `sass`
+- `less`
+- `chainWebpack`
+- `configureWebpack`
+- `evergreen`：默认值从 `false` 更改为 `true`
 
-参考 [打包工具 > Webpack](../reference/bundler/webpack.md)
+```diff
+- module.exports = {
+-   sass: { /* ... */ },
+- }
+
++ const { webpackBundler } = require('@vuepress/bundler-webpack')
++ module.exports = {
++   bundler: webpackBundler({
++     sass: { /* ... */ },
++   }),
++ }
+```
+
+请参考 [Guide > Bundler](./bundler.md) 。
 
 ### Frontmatter 变更
 
@@ -179,51 +236,11 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 即使该目录存在，也不会被隐式默认当作本地主题目录。
 
-你需要在 [theme](../reference/config.md#theme) 配置项中显式声明本地主题的路径。
+你需要在 [theme](../reference/config.md#theme) 配置项中显式引入并使用本地主题。
 
 ### Markdown 插槽变更
 
 Markdown 插槽不再被支持。
-
-### 插件 API 变更
-
-- `plugins`：移除
-- `ready`：重命名为 `onPrepared`
-- `updated`：重命名为 `onWatched`
-- `generated`：重命名为 `onGenerated`
-- `additionalPages`：移除，改为在 `onInitialized` Hook 中使用 `app.pages.push(createPage())`
-- `clientDynamicModules`：移除，改为在 `onPrepared` Hook 中使用 `app.writeTemp()`
-- `enhanceAppFiles`：重命名为 `clientAppEnhanceFiles`
-- `globalUIComponents`：重命名为 `clientAppRootComponentFiles`
-- `clientRootMixin`：重命名为`clientAppSetupFiles`
-- `extendMarkdown`：重命名为 `extendsMarkdown`
-- `chainMarkdown`：移除
-- `extendPageData`：重命名为 `extendsPage`
-- `extendsCli`：移除
-- `configureWebpack`：移除
-- `chainWebpack`：移除
-- `beforeDevServer`：移除
-- `afterDevServer`：移除
-
-参考 [插件 API](../reference/plugin-api.md) 。
-
-### 主题 API 变更
-
-#### layouts
-
-现在你需要手动设置布局目录或布局组件。
-
-参考 [主题 API > layouts](../reference/theme-api.md#layouts) 。
-
-#### extend
-
-重命名为 `extends` 。
-
-你仍然可以通过 `extends: 'parent-theme'` 来继承一个父主题，这将会继承其插件和布局等。
-
-`@theme` 和 `@parent-theme` 别名默认被移除了，但在默认主题中你仍可以通过类似的方式来替换组件。
-
-你可以参考 [默认主题 > 继承](../reference/default-theme/extending.md) 来了解如何继承默认主题。
 
 ### CLI 变更
 
@@ -269,13 +286,35 @@ v1 的主题和插件和 v2 并不兼容。
 
 ## 给插件作者
 
-请先浏览 [插件 API 变更](#插件-api-变更) 。
-
 一些主要的 Breaking Changes ：
 
-- 你不能再在你的插件中使用其他插件了，这避免了很多由于插件嵌套引发的问题。如果你的插件依赖于别的插件，你应在文档中列出他们。
+- 你不能再在你的插件中使用其他插件了，这避免了很多由于插件嵌套引发的问题。如果你的插件依赖于别的插件，你可以在文档中列出他们，并让用户手动引入。或者，你也可以向用户提供一个插件数组以方便使用。
 - 大部分 v1 Hook 都在 v2 中存在等效的 Hook 或实现方式。唯一的例外是 `extendsCli` ，它被移除了。
-- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。如果你仍然想要在插件中修改 Webpack 配置，可以尝试直接修改 `app.options.bundlerConfig` 。
+- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。
+
+你可以参考 [深入 > 开发插件](../advanced/plugin.md) 来了解如何开发一个 v2 插件。
+
+### 插件 API 变更
+
+- `plugins`：移除
+- `ready`：重命名为 `onPrepared`
+- `updated`：重命名为 `onWatched`
+- `generated`：重命名为 `onGenerated`
+- `additionalPages`：移除，改为在 `onInitialized` Hook 中使用 `app.pages.push(createPage())`
+- `clientDynamicModules`：移除，改为在 `onPrepared` Hook 中使用 `app.writeTemp()`
+- `enhanceAppFiles`：重命名为 `clientAppEnhanceFiles`
+- `globalUIComponents`：重命名为 `clientAppRootComponentFiles`
+- `clientRootMixin`：重命名为`clientAppSetupFiles`
+- `extendMarkdown`：重命名为 `extendsMarkdown`
+- `chainMarkdown`：移除
+- `extendPageData`：重命名为 `extendsPage`
+- `extendsCli`：移除
+- `configureWebpack`：移除
+- `chainWebpack`：移除
+- `beforeDevServer`：移除
+- `afterDevServer`：移除
+
+参考 [插件 API](../reference/plugin-api.md) 。
 
 ## 给主题作者
 
@@ -289,9 +328,29 @@ v1 的主题和插件和 v2 并不兼容。
   - `theme/enhanceApp.js` 或 `theme/clientAppEnhance.{js,ts}` 文件不会被隐式作为 Client App Enhance 文件。你需要在 `clientAppEnhanceFiles` Hook 中显式指定它。
   - `theme/global-components/` 目录下的文件不会被自动注册为 Vue 组件。你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `clientAppEnhance.{js,ts}` 中手动注册组件。
   - `theme/layouts/` 目录下的文件不会被自动注册为布局组件。你需要通过 `layouts` 配置项来显式指定。
-  - `theme/templates/` 目录下的文件不会被自动作为 dev / ssr 的模板。
-  - 你始终需要提供主题入口文件，并且不要使用 `"main": "layouts/Layout.vue"` 作为主题入口。
-- `themeConfig` 从站点数据中移除。如果你想要像 v1 一样通过 `this.$site.themeConfig` 来访问 `themeConfig` ，我们现在建议使用 [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) 插件和它提供的 Composition API `useThemeData` 。
+  - `theme/templates/` 目录下的文件不会被自动用作 dev / ssr 的模板。你需要通过 `templateBuild` 和 `templateDev` 配置项来显式指定。
+  - 你始终需要提供一个合法的 JS 入口文件，不要再使用 `"main": "layouts/Layout.vue"` 作为主题入口。
+- `themeConfig` 已经从用户配置和站点数据中移除。如果你想要像 v1 一样通过 `this.$site.themeConfig` 来访问 `themeConfig` ，我们现在建议使用 [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) 插件和它提供的 Composition API `useThemeData` 。
 - Stylus 不再是默认的 CSS 预处理器，并且 Stylus 调色板系统不再被默认支持。如果你仍然想要使用和 v1 类似的调色板系统，可以使用 [@vuepress/plugin-palette](../reference/plugin/palette.md) 。
 - 由 Prism.js 提供的 Markdown 代码块的语法高亮不再被默认支持。你可以选择使用 [@vuepress/plugin-prismjs](../reference/plugin/prismjs.md) 或 [@vuepress/plugin-shiki](../reference/plugin/shiki.md) ，或者用你自己的方式实现语法高亮。
 - 考虑到可扩展性， `this.$site.pages` 不再可用。
+
+你可以参考 [深入 > 开发主题](../advanced/theme.md) 来了解如何开发一个 v2 主题。
+
+### 主题 API 变更
+
+#### layouts
+
+现在你需要手动设置布局目录或布局组件。
+
+参考 [主题 API > layouts](../reference/theme-api.md#layouts) 。
+
+#### extend
+
+重命名为 `extends` 。
+
+你仍然可以通过 `extends: parentTheme()` 来继承一个父主题，这将会继承其插件和布局等。
+
+你可以参考 [默认主题 > 继承](../reference/default-theme/extending.md) 来了解如何继承默认主题。
+
+`@theme` 和 `@parent-theme` 别名默认被移除了，但你仍然可以使用类似的方式来开发一个可继承的主题，参考 [深入 > Cookbook > 开发一个可继承的主题](../advanced/cookbook/making-a-theme-extendable.md) 。

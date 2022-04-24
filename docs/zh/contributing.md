@@ -6,7 +6,7 @@ sidebar: auto
 
 ## 概览
 
-项目仓库借助于 [Yarn Classic 工作区](https://classic.yarnpkg.com/zh-Hans/docs/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，在 `packages` 目录下存放了多个互相关联的独立 Package 。
+项目仓库借助于 [pnpm 工作空间](https://pnpm.io/zh/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，在 `packages` 目录下存放了多个互相关联的独立 Package 。
 
 - `@vuepress/core`: Core 模块。提供 Node API 来创建 VuePress App ，包括页面逻辑、插件系统、数据准备等功能。
 
@@ -37,24 +37,24 @@ sidebar: auto
 开发要求：
 
 - [Node.js](http://nodejs.org) **version 14+**
-- [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/docs/install)
+- [pnpm](https://pnpm.io/zh/) **version 6+**
 
 克隆代码仓库，并安装依赖：
 
 ```bash
-yarn
+pnpm install
 ```
 
-监听源文件修改：
+构建并复制源文件：
 
 ```bash
-yarn dev
+pnpm build && pnpm copy
 ```
 
-打开另一个终端，开始开发项目文档网站：
+开始开发项目文档网站：
 
 ```bash
-yarn docs:dev
+pnpm docs:dev
 ```
 
 本项目开发使用的一些主要工具：
@@ -65,13 +65,13 @@ yarn docs:dev
 
 ## 开发脚本
 
-### `yarn build`
+### `pnpm build`
 
 `build` 命令会使用 `tsc` 将 TS 源文件编译为 JS 文件。
 
 你在克隆代码仓库后，可能需要先执行该命令来确保项目代码可以顺利运行，因为编译后的 JS 文件被 `.gitignore` 排除在仓库以外了。
 
-### `yarn copy`
+### `pnpm copy`
 
 `copy` 命令会执行所有子 Package 中的 `copy` 命令，将一些资源文件从源代码目录复制到输出目录。
 
@@ -79,37 +79,37 @@ yarn docs:dev
 
 你在克隆代码仓库后，可能也需要先执行该命令来确保项目代码可以顺利运行。
 
-### `yarn dev`
-
-`dev` 命令使用监听 (watch) 模式执行 `copy` 和 `build` 命令。
-
-### `yarn clean`
+### `pnpm clean`
 
 `clean` 命令会执行所有子 Package 中的 `clean` 命令，清除所有的输出文件目录和缓存文件。换言之，它将移除所有通过 `build` 和 `copy` 命令生成的文件。
 
 当你想要从最初状态重新构建源代码时，你可以执行该命令。
 
-### `yarn docs:*`
+### `pnpm dev:*`
 
-#### `yarn docs:build`, `yarn docs:dev`, `yarn docs:clean`
+`dev:` 前缀表明，这些命令是针对开发使用的，将会以监听模式运行对应的脚本。
+
+### `pnpm docs:*`
+
+#### `pnpm docs:build`, `pnpm docs:dev`, `pnpm docs:clean`
 
 `docs:` 前缀表明，这些命令是针对文档 (documentation) 进行操作的，即 `docs` 目录。
 
 VuePress 使用它自己来构建自己的文档网站。
 
-你需要先执行 `yarn build && yarn copy` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
+你需要先执行 `pnpm build && pnpm copy` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
 
-#### `yarn docs:serve`
+#### `pnpm docs:serve`
 
 在本地启动文档网站服务器。
 
-你需要先运行 `yarn docs:build` 来生成文档网站的输出文件，然后再通过该命令来启动文档网站。
+你需要先运行 `pnpm docs:build` 来生成文档网站的输出文件，然后再通过该命令来启动文档网站。
 
-### `yarn lint`
+### `pnpm lint`
 
 `lint` 命令使用 ESLint 来检查所有源文件。
 
-### `yarn test`
+### `pnpm test`
 
 `test` 命令使用 Jest 来运行单元测试。
 

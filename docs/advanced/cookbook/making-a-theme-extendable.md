@@ -28,14 +28,18 @@ This approach requires you to consider which components of your theme should be 
 
 First, set `alias` for replaceable components of you theme:
 
-```js
-module.exports = {
-  name: 'vuepress-theme-foo',
-  alias: {
-    // set alias for replaceable components
-    '@theme/Navbar.vue': path.resolve(__dirname, 'components/Navbar.vue'),
-    '@theme/Sidebar.vue': path.resolve(__dirname, 'components/Sidebar.vue'),
-  },
+```ts
+import type { Theme } from '@vuepress/core'
+
+export const fooTheme = (options): Theme => {
+  return {
+    name: 'vuepress-theme-foo',
+    alias: {
+      // set alias for replaceable components
+      '@theme/Navbar.vue': path.resolve(__dirname, 'components/Navbar.vue'),
+      '@theme/Sidebar.vue': path.resolve(__dirname, 'components/Sidebar.vue'),
+    },
+  }
 }
 ```
 

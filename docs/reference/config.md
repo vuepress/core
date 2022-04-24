@@ -3,17 +3,6 @@
 <NpmBadge package="@vuepress/cli" />
 <NpmBadge package="@vuepress/core" />
 
-Reference of VuePress config, which can be set via config file. The conventional config files are (in order of precedence):
-
-- In current working directory `cwd`:
-  - `vuepress.config.ts`
-  - `vuepress.config.js`
-- In source directory `sourceDir`:
-  - `.vuepress/config.ts`
-  - `.vuepress/config.js`
-
-You can also specify the config file via `--config` option of [CLI](./cli.md).
-
 ## Site Config
 
 ### base
@@ -147,87 +136,32 @@ Rendered as：
 
 ### theme
 
-- Type: `string`
-
-- Default: `'@vuepress/theme-default'`
+- Type: `Theme`
 
 - Details:
 
-  Name or absolute path of theme your want to use.
+  Set the theme of your site.
 
-  This option accepts theme name, theme name shorthand, or absolute path to theme.
-
-- Example:
-
-```js
-module.exports = {
-  theme: 'vuepress-theme-foo',
-  theme: 'bar',
-  theme: path.resolve(__dirname, './path/to/local/theme'),
-}
-```
+  If this option is not set, the default theme will be used.
 
 - Also see:
-  - [themeConfig](#themeconfig)
   - [Guide > Theme](../guide/theme.md)
-
-### themeConfig
-
-- Type: `ThemeConfig`
-
-- Default: `{}`
-
-- Details:
-
-  Provide config to the used theme. The options will vary depending on the theme you are using.
-
-- Example:
-
-```js
-module.exports = {
-  // use default theme
-  theme: '@vuepress/theme-default',
-  // configure default theme
-  themeConfig: {
-    logo: '/logo.png',
-  },
-}
-```
-
-- Also see:
-  - [theme](#theme)
   - [Default Theme > Config](./default-theme/config.md)
 
 ## Bundler Config
 
 ### bundler
 
-- Type: `string`
-
-- Default: `'@vuepress/bundler-vite'`
+- Type: `Bundler`
 
 - Details:
 
-  Name of bundler your want to use.
+  Set the bundler of your site.
 
-  Bundler name shorthand is acceptable.
+  If this option is not set, the default bundler will be used:
 
-- Also see:
-  - [Guide > Bundler](../guide/bundler.md)
-
-::: tip
-When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package, the default bundler will be set to `'@vuepress/bundler-webpack'`.
-:::
-
-### bundlerConfig
-
-- Type: `BundlerConfig`
-
-- Default: `{}`
-
-- Details:
-
-  Provide config options to the used bundler. The options will vary depending on the bundler you are using.
+  - With `vuepress` or `vuepress-vite`, the default bundler is vite.
+  - With `vuepress-webpack`, the default bundler is webpack.
 
 - Also see:
   - [Guide > Bundler](../guide/bundler.md)
@@ -245,6 +179,12 @@ When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) pa
 - Details:
 
   Specify the output directory for `vuepress build` command.
+
+::: warning
+Since VuePress will generate temp files under the output directory during build process, the directory should be inside project root to resolve dependencies correctly.
+
+You can manually move it to another location after building.
+:::
 
 ### temp
 
@@ -337,11 +277,11 @@ When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) pa
 
 - Type: `string`
 
-- Default: `'@vuepress/client/templates/index.dev.html'`
+- Default: `'@vuepress/client/templates/dev.html'`
 
 - Details:
 
-  Specify the HTML template to be used for dev.
+  Specify the path of the HTML template to be used for dev.
 
 ## Build Config
 
@@ -361,7 +301,7 @@ When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) pa
 
 - Type: `((file: string, type: string) => boolean)) | boolean`
 
-- Default: `false`
+- Default: `true`
 
 - Details:
 
@@ -373,11 +313,11 @@ When using [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) pa
 
 - Type: `string`
 
-- Default: `'@vuepress/client/templates/index.build.html'`
+- Default: `'@vuepress/client/templates/build.html'`
 
 - Details:
 
-  Specify the HTML template to be used for build.
+  Specify the path of the HTML template to be used for build.
 
 ## Markdown Config
 
@@ -738,40 +678,13 @@ You should not configure it unless you understand what it is for.
 
 ### plugins
 
-- Type: `PluginConfig[]`
+- Type: `(Plugin | Plugin[])[]`
 
 - Details:
 
   Plugins to use.
 
-  This option accepts an array, each item of which is a two-element tuple:
-
-  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
-  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to skip the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
-
-  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
-
-- Example:
-
-```js
-module.exports = {
-  plugins: [
-    // two-element tuple
-    ['vuepress-plugin-foo', false],
-    ['bar', true],
-    [
-      path.resolve(__dirname, './path/to/local/plugin'),
-      {
-        /* options */
-      },
-    ],
-    [require('vuepress-plugin-baz'), true],
-
-    // only use the first element
-    'foobar', // equals to ['foobar', true]
-  ],
-}
-```
+  This option accepts an array, each item of which could be a plugin or an array of plugins.
 
 - Also see:
   - [Guide > Plugin](../guide/plugin.md)

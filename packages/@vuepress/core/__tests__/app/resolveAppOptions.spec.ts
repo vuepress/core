@@ -1,21 +1,25 @@
-import { resolveAppOptions } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { resolveAppOptions } from '../../src'
 
 describe('core > app > resolveAppOptions', () => {
   it('should create app options with default values', () => {
     const source = '/foo'
 
-    expect(resolveAppOptions({ source })).toEqual({
+    expect(
+      resolveAppOptions({
+        source,
+        theme: { name: 'theme' } as any,
+        bundler: { name: 'bundler' } as any,
+      })
+    ).toEqual({
       base: '/',
       lang: 'en-US',
       title: '',
       description: '',
       head: [],
       locales: {},
-      theme: '@vuepress/theme-default',
-      themeConfig: {},
-      bundler: '@vuepress/bundler-vite',
-      bundlerConfig: {},
+      theme: { name: 'theme' },
+      bundler: { name: 'bundler' },
       source,
       dest: path.resolve(source, '.vuepress/dist'),
       temp: path.resolve(source, '.vuepress/.temp'),
@@ -27,13 +31,13 @@ describe('core > app > resolveAppOptions', () => {
       open: false,
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
       templateDev: path.normalize(
-        require.resolve('@vuepress/client/templates/index.dev.html')
+        require.resolve('@vuepress/client/templates/dev.html')
       ),
       templateBuild: path.normalize(
-        require.resolve('@vuepress/client/templates/index.build.html')
+        require.resolve('@vuepress/client/templates/build.html')
       ),
       shouldPreload: true,
-      shouldPrefetch: false,
+      shouldPrefetch: true,
       markdown: {},
       plugins: [],
     })

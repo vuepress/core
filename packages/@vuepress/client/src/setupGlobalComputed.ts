@@ -29,8 +29,8 @@ import type {
   SiteLocaleData,
   SiteLocaleDataRef,
 } from './composables'
-import { withBase } from './helpers'
 import { resolvers } from './resolvers'
+import { withBase } from './withBase'
 
 /**
  * Vuepress client global computed
@@ -111,7 +111,7 @@ export const setupGlobalComputed = (
   }
 }
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   export interface ComponentCustomProperties {
     $frontmatter: PageFrontmatter
     $head: PageHead

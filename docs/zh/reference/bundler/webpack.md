@@ -10,19 +10,19 @@ npm i -D @vuepress/bundler-webpack@next
 
 ## 配置项
 
-Webpack 打包工具配置的参考文档，可以通过 [bundlerConfig](../config.md#bundlerconfig) 来设置这些配置。
+Webpack 打包工具的配置项：
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
 
 ```js
+const { webpackBundler } = require('@vuepress/bundler-webpack')
+
 module.exports = {
-  // 在使用 vuepress-webpack 包的时候，你可以忽略这个字段，因为 Webpack 是默认打包工具
-  bundler: '@vuepress/bundler-webpack',
-  // Webpack 打包工具的配置项
-  bundlerConfig: {
-    // 查看下方
-  },
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {},
+  }),
 }
 ```
 
@@ -31,17 +31,14 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
-export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
-  // 在使用 vuepress 包的时候，你可以忽略这个字段，因为 Webpack 是默认打包工具
-  bundler: '@vuepress/bundler-webpack',
-  // Webpack 打包工具的配置项
-  bundlerConfig: {
-    // 查看下方
-  },
+export default defineUserConfig({
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {},
+  }),
 })
 ```
 

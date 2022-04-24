@@ -29,17 +29,13 @@
     "copy": "cpx \"src/**/*.{d.ts,css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.38",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/shared": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "chokidar": "^3.5.3",
-    "vue": "^3.2.31",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
-    "@types/webpack-env": "^1.16.3",
-    "vite": "~2.9.1"
   },
   "publishConfig": {
     "access": "public"

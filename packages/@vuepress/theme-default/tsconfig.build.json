@@ -1,7 +1,6 @@
 {
   "extends": "../../../tsconfig.base.json",
   "references": [
-    { "path": "../client/tsconfig.build.json" },
     { "path": "../core/tsconfig.build.json" },
     { "path": "../plugin-active-header-links/tsconfig.build.json" },
     { "path": "../plugin-back-to-top/tsconfig.build.json" },
@@ -13,7 +12,6 @@
     { "path": "../plugin-palette/tsconfig.build.json" },
     { "path": "../plugin-prismjs/tsconfig.build.json" },
     { "path": "../plugin-theme-data/tsconfig.build.json" },
-    { "path": "../shared/tsconfig.build.json" },
     { "path": "../utils/tsconfig.build.json" },
     { "path": "./tsconfig.esm.json" },
     { "path": "./tsconfig.cjs.json" }

@@ -20,21 +20,65 @@ Core ideas and processes of VuePress v2 are the same with v1, while v2 API has b
 
 ### User Config Change
 
+#### theme
+
+Using a theme via string is not supported. Import the theme directly.
+
+```diff
+- module.exports = {
+-   theme: '@vuepress/theme-default',
+-   themeConfig: {
+-     // default theme config
+-   },
+- }
+
++ const { defaultTheme } = require('@vuepress/theme-default')
++ module.exports = {
++   theme: defaultTheme({
++     // default theme config
++   })
++ }
+```
+
+#### themeConfig
+
+Removed. Set config to the theme directly.
+
+#### plugins
+
+Using a plugin via string is not supported. Import the plugin directly.
+
+```diff
+- module.exports = {
+-   plugins: [
+-     [
+-       '@vuepress/plugin-google-analytics',
+-       {
+-         id: 'G-XXXXXXXXXX',
+-       },
+-     ],
+-   ],
+- }
+
++ const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
++ module.exports = {
++   plugins: [
++     googleAnalyticsPlugin({
++         id: 'G-XXXXXXXXXX',
++     }),
++   ],
++ }
+```
+
 #### shouldPrefetch
 
-Default value is changed from `() => true` to `false`.
+Default value is changed from `() => true` to `true`.
 
 #### extraWatchFiles
 
 Removed.
 
 You can watch files manually in [onWatched](../reference/plugin-api.md#onwatched) hook.
-
-#### plugins
-
-Only [Babel Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#babel-style) config is allowed.
-
-[Object Style](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html#object-style) config is **NOT** supported in v2.
 
 #### patterns
 
@@ -90,18 +134,31 @@ See [Config > markdown.extractHeaders](../reference/config.md#markdown-extracthe
 
 #### Webpack Related Configs
 
-All webpack related configs are moved to options of `@vuepress/bundler-webpack`, so you should set them in [bundlerConfig](../reference/config.md#bundlerconfig):
+All webpack related configs are moved to options of `@vuepress/bundler-webpack`, including:
 
-- `postcss`: moved to `bundlerConfig.postcss`
-- `stylus`: moved to `bundlerConfig.stylus`
-- `scss`: moved to `bundlerConfig.scss`
-- `sass`: moved to `bundlerConfig.sass`
-- `less`: moved to `bundlerConfig.less`
-- `chainWebpack`: moved to `bundlerConfig.chainWebpack`
-- `configureWebpack`: moved to `bundlerConfig.configureWebpack`
-- `evergreen`: moved to `bundlerConfig.evergreen`, and default value is changed from `false` to `true`.
+- `postcss`
+- `stylus`
+- `scss`
+- `sass`
+- `less`
+- `chainWebpack`
+- `configureWebpack`
+- `evergreen`: default value is changed from `false` to `true`
 
-See [Bundlers > Webpack](../reference/bundler/webpack.md)
+```diff
+- module.exports = {
+-   sass: { /* ... */ },
+- }
+
++ const { webpackBundler } = require('@vuepress/bundler-webpack')
++ module.exports = {
++   bundler: webpackBundler({
++     sass: { /* ... */ },
++   }),
++ }
+```
+
+Please refer to [Guide > Bundler](./bundler.md).
 
 ### Frontmatter Change
 
@@ -179,51 +236,11 @@ You need to use [@vuepress/plugin-register-components](../reference/plugin/regis
 
 This directory will not be used as local theme implicitly if it is existed.
 
-You need to set the path to the local theme explicitly via [theme](../reference/config.md#theme) option.
+You need to import and set your local theme via [theme](../reference/config.md#theme) option.
 
 ### Markdown slot Change
 
 Markdown slot is no longer supported.
-
-### Plugin API Change
-
-- `plugins`: removed
-- `ready`: renamed to `onPrepared`
-- `updated`: renamed to `onWatched`
-- `generated`: renamed to `onGenerated`
-- `additionalPages`: removed, use `app.pages.push(createPage())` in `onInitialized` hook
-- `clientDynamicModules`: removed, use `app.writeTemp()` in `onPrepared` hook
-- `enhanceAppFiles`: renamed to `clientAppEnhanceFiles`
-- `globalUIComponents`: renamed to `clientAppRootComponentFiles`
-- `clientRootMixin`: renamed to`clientAppSetupFiles`
-- `extendMarkdown`: renamed to `extendsMarkdown`
-- `chainMarkdown`: removed
-- `extendPageData`: renamed to `extendsPage`
-- `extendsCli`: removed
-- `configureWebpack`: removed
-- `chainWebpack`: removed
-- `beforeDevServer`: removed
-- `afterDevServer`: removed
-
-See [Plugin API](../reference/plugin-api.md).
-
-### Theme API Change
-
-#### layouts
-
-Now you need to specify the layouts directory or layout components manually.
-
-See [Theme API > layouts](../reference/theme-api.md#layouts).
-
-#### extend
-
-Renamed to `extends`.
-
-You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
-
-The `@theme` and `@parent-theme` aliases are removed by default, but you can still replace components in default theme with similar approach.
-
-You can refer to [Default Theme > Extending](../reference/default-theme/extending.md) for how to extend default theme.
 
 ### CLI Change
 
@@ -269,17 +286,37 @@ Please make sure that those themes and plugins you are using have supported v2, 
 
 ## For Plugin Authors
 
-Read the [Plugin API Change](#plugin-api-change) first.
-
 Some major breaking changes:
 
-- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you should list them in the docs.
+- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you could list them in the to ask users import them manually. Alternatively, you can provide users with an array of plugins for convenience.
 - Most of the v1 hooks have equivalents in v2. The only exception is `extendsCli`, which has been removed.
-- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. If you still want to modify webpack config in plugin, try modifying `app.options.bundlerConfig` directly.
+- Webpack related hooks are removed, because VuePress Core has decoupled with webpack.
+
+For more detailed guide about how to write a plugin in v2, see [Advanced > Writing a Plugin](../advanced/plugin.md).
+
+### Plugin API Change
+
+- `plugins`: removed
+- `ready`: renamed to `onPrepared`
+- `updated`: renamed to `onWatched`
+- `generated`: renamed to `onGenerated`
+- `additionalPages`: removed, use `app.pages.push(createPage())` in `onInitialized` hook
+- `clientDynamicModules`: removed, use `app.writeTemp()` in `onPrepared` hook
+- `enhanceAppFiles`: renamed to `clientAppEnhanceFiles`
+- `globalUIComponents`: renamed to `clientAppRootComponentFiles`
+- `clientRootMixin`: renamed to`clientAppSetupFiles`
+- `extendMarkdown`: renamed to `extendsMarkdown`
+- `chainMarkdown`: removed
+- `extendPageData`: renamed to `extendsPage`
+- `extendsCli`: removed
+- `configureWebpack`: removed
+- `chainWebpack`: removed
+- `beforeDevServer`: removed
+- `afterDevServer`: removed
+
+See [Plugin API](../reference/plugin-api.md).
 
 ## For Theme Authors
-
-Read the [Plugin API Change](#plugin-api-change) and [Theme API Change](#theme-api-change) first.
 
 Although we do not allow using other plugins in a plugin, you can still use plugins in your theme.
 
@@ -289,9 +326,29 @@ Some major breaking changes:
   - The file `theme/enhanceApp.js` or `theme/clientAppEnhance.{js,ts}` will not be used as client app enhance file implicitly. You need to specify it explicitly in `clientAppEnhanceFiles` hook.
   - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register components manually in `clientAppEnhance.{js,ts}`.
   - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option.
-  - Files in `theme/templates/` directory will not be used as dev / ssr template automatically.
-  - Always provide a theme entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry.
-- `themeConfig` is removed from site data. To access the `themeConfig` as you would via `this.$site.themeConfig` in v1, we now recommend using the [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) plugin and its `useThemeData` composition API.
+  - Files in `theme/templates/` directory will not be used as dev / ssr template automatically. You need to specify theme explicitly in `templateBuild` and `templateDev` option.
+  - Always provide a valid js entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry anymore.
+- `themeConfig` is removed from user config and site data. To access the `themeConfig` as you would via `this.$site.themeConfig` in v1, we now recommend using the [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) plugin and its `useThemeData` composition API.
 - Stylus is no longer the default CSS pre-processor, and the stylus palette system is not embedded. If you still want to use similar palette system as v1, [@vuepress/plugin-palette](../reference/plugin/palette.md) may help.
 - Markdown code blocks syntax highlighting by Prism.js is not embedded by default. You can use either [@vuepress/plugin-prismjs](../reference/plugin/prismjs.md) or [@vuepress/plugin-shiki](../reference/plugin/shiki.md), or implement syntax highlighting in your own way.
 - For scalability concerns, `this.$site.pages` is not available any more.
+
+For more detailed guide about how to write a theme in v2, see [Advanced > Writing a Theme](../advanced/theme.md).
+
+### Theme API Change
+
+#### layouts
+
+Now you need to specify the layouts directory or layout components manually.
+
+See [Theme API > layouts](../reference/theme-api.md#layouts).
+
+#### extend
+
+Renamed to `extends`.
+
+You can still inherit a parent theme with `extends: parentTheme()`, which will extends the plugins, layouts, etc.
+
+You can refer to [Default Theme > Extending](../reference/default-theme/extending.md) for how to extend default theme.
+
+The `@theme` and `@parent-theme` aliases are removed by default, but you can still make a extendable theme with similar approach, see [Advanced > Cookbook > Making a Theme Extendable](../advanced/cookbook/making-a-theme-extendable.md).

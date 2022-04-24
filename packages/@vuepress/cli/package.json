@@ -15,7 +15,7 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
+  "author": "meteorlxy",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
@@ -30,12 +30,15 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "cac": "^6.7.12",
     "chokidar": "^3.5.3",
     "envinfo": "^7.8.1",
-    "esbuild": "^0.14.29"
+    "esbuild": "^0.14.36"
+  },
+  "devDependencies": {
+    "@types/envinfo": "^7.8.1"
   },
   "publishConfig": {
     "access": "public"

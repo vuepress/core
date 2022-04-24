@@ -4,10 +4,22 @@
 
 Register Vue components from component files or directory automatically.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-register-components@next
+```
+
+```js
+const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
+
+module.exports = {
+  plugins: [
+    registerComponentsPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options
@@ -33,14 +45,11 @@ const { path } = require('@vuepress/utils')
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/register-components',
-      {
-        components: {
-          FooBar: path.resolve(__dirname, './components/FooBar.vue'),
-        },
+    registerComponentsPlugin({
+      components: {
+        FooBar: path.resolve(__dirname, './components/FooBar.vue'),
       },
-    ],
+    }),
   ],
 }
 ```
@@ -60,14 +69,13 @@ module.exports = {
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   plugins: [
-    [
-      '@vuepress/register-components',
-      {
-        componentsDir: path.resolve(__dirname, './components'),
-      },
-    ],
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    }),
   ],
 }
 ```

@@ -5,7 +5,7 @@ export const getComponentsFromDir = async ({
   componentsDir,
   componentsPatterns,
   getComponentName,
-}: Omit<RegisterComponentsPluginOptions, 'components'>): Promise<
+}: Omit<Required<RegisterComponentsPluginOptions>, 'components'>): Promise<
   Record<string, string>
 > => {
   if (!componentsDir) {

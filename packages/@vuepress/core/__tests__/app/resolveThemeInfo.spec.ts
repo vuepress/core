@@ -1,5 +1,5 @@
-import { createBaseApp, resolveThemeInfo } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, resolveThemeInfo } from '../../src'
 
 const fixtures = (...args: string[]) =>
   path.resolve(__dirname, '../__fixtures__/', ...args)
@@ -7,7 +7,8 @@ const fixtures = (...args: string[]) =>
 const createTestApp = (themePath: string) =>
   createBaseApp({
     source: path.resolve(__dirname, 'fake-source'),
-    theme: themePath,
+    theme: require(themePath),
+    bundler: {} as any,
   })
 
 const themeEntryTypes = ['func', 'obj'] as const
@@ -23,10 +24,7 @@ describe('core > app > resolveThemeInfo', () => {
       themeEntryTypes.forEach((item) =>
         it(item, () => {
           const app = createTestApp(fixtures(`themes/${item}-empty.js`))
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-              .layouts
-          ).toEqual({})
+          expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({})
         })
       )
     })
@@ -35,10 +33,7 @@ describe('core > app > resolveThemeInfo', () => {
       themeEntryTypes.forEach((item) =>
         it(item, () => {
           const app = createTestApp(fixtures(`themes/${item}.js`))
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-              .layouts
-          ).toEqual({
+          expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({
             Layout: fixtures('layouts/Layout.vue'),
             404: fixtures('layouts/404.vue'),
           })
@@ -53,10 +48,9 @@ describe('core > app > resolveThemeInfo', () => {
         it(item, () => {
           const themePath = fixtures(`themes/${item}-empty.js`)
           const app = createTestApp(themePath)
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-              .plugins
-          ).toEqual([getThemePlugin(themePath)])
+          expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
+            getThemePlugin(themePath),
+          ])
         })
       )
     })
@@ -66,10 +60,7 @@ describe('core > app > resolveThemeInfo', () => {
         it(item, () => {
           const themePath = fixtures(`themes/${item}.js`)
           const app = createTestApp(themePath)
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-              .plugins
-          ).toEqual([
+          expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
             require(fixtures('plugins/obj.js')),
             getThemePlugin(themePath),
           ])
@@ -86,9 +77,7 @@ describe('core > app > resolveThemeInfo', () => {
           const parentThemePath = fixtures(`themes/${item}.js`)
           const app = createTestApp(themePath)
 
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-          ).toEqual({
+          expect(resolveThemeInfo(app, app.options.theme)).toEqual({
             plugins: [
               require(fixtures('plugins/obj.js')),
               getThemePlugin(parentThemePath),
@@ -115,9 +104,7 @@ describe('core > app > resolveThemeInfo', () => {
           const grandparentThemePath = fixtures(`themes/${item}.js`)
           const app = createTestApp(themePath)
 
-          expect(
-            resolveThemeInfo(app, app.options.theme, app.options.themeConfig)
-          ).toEqual({
+          expect(resolveThemeInfo(app, app.options.theme)).toEqual({
             plugins: [
               require(fixtures('plugins/obj.js')),
               getThemePlugin(grandparentThemePath),

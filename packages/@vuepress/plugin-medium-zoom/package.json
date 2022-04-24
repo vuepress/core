@@ -31,11 +31,11 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.38",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "medium-zoom": "^1.0.6",
-    "vue": "^3.2.31"
+    "vue": "^3.2.33"
   },
   "publishConfig": {
     "access": "public"

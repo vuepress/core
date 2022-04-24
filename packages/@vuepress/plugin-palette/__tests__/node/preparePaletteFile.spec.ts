@@ -1,9 +1,11 @@
 import { createBaseApp } from '@vuepress/core'
-import { preparePaletteFile, presetOptions } from '@vuepress/plugin-palette'
 import { fs, path } from '@vuepress/utils'
+import { preparePaletteFile, presetOptions } from '../../src/node'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
+  theme: { name: 'test' },
+  bundler: {} as any,
   temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 

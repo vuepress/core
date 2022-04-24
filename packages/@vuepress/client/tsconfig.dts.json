@@ -1,0 +1,11 @@
+{
+  "extends": "tsconfig-vuepress/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": false,
+    "paths": {
+      "@internal/*": ["./src/types/internal/*"]
+    },
+    "types": ["./types", "webpack-env", "vite/client"]
+  }
+}

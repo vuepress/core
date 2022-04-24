@@ -1,10 +1,11 @@
-import { createBaseApp, normalizeClientFilesHook } from '@vuepress/core'
-import type { ClientFilesHook } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, normalizeClientFilesHook } from '../../src'
+import type { ClientFilesHook } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 const clientFile = path.resolve(
   __dirname,

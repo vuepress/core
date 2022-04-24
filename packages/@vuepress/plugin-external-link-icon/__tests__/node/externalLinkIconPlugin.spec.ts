@@ -1,12 +1,13 @@
 import { createBaseApp } from '@vuepress/core'
 import type { MarkdownEnv, MarkdownOptions } from '@vuepress/markdown'
-import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { path } from '@vuepress/utils'
+import { externalLinkIconPlugin } from '../../src/node'
 
 const getTestApp = async (markdown?: MarkdownOptions) => {
   const app = createBaseApp({
     source: path.resolve(__dirname, 'fake-source'),
-    theme: path.resolve(__dirname, '../__fixtures__/theme-empty.js'),
+    theme: { name: 'test' },
+    bundler: {} as any,
     markdown,
   }).use(externalLinkIconPlugin)
   await app.init()
