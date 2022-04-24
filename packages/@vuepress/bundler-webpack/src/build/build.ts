@@ -76,6 +76,9 @@ export const build = async (
 
     // load the compiled server bundle
     const serverEntryPath = app.dir.dest('.server/app')
+    // delete server entry cache to allow building multiple times
+    // in the same dest dir
+    delete require.cache[serverEntryPath]
     const { createVueApp } = require(serverEntryPath) as {
       createVueApp: CreateVueAppFunction
     }
