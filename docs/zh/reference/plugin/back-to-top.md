@@ -6,10 +6,20 @@
 
 该插件已经集成到默认主题中。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-back-to-top@next
+```
+
+```js
+const { backToTopPlugin } = require('@vuepress/plugin-back-to-top')
+
+module.exports = {
+  plugins: [
+    backToTopPlugin(),
+  ],
+}
 ```
 
 ## 样式

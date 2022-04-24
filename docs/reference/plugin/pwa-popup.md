@@ -8,10 +8,24 @@ This plugin must be used together with [pwa plugin](./pwa.md), and the `skipWait
 
 When the new service worker is ready, a popup will appear in the right bottom of the page to ask users to activate the waiting service worker.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-pwa-popup@next
+```
+
+```js
+const { pwaPlugin } = require('@vuepress/plugin-pwa')
+const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
+
+module.exports = {
+  plugins: [
+    pwaPlugin(),
+    pwaPopupPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options
@@ -31,22 +45,19 @@ npm i -D @vuepress/plugin-pwa-popup@next
 ```js
 module.exports = {
   plugins: [
-    ['@vuepress/plugin-pwa'],
-    [
-      '@vuepress/plugin-pwa-popup',
-      {
-        locales: {
-          '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh',
-          },
-          '/zh/': {
-            message: '发现新内容可用',
-            buttonText: '刷新',
-          },
+    pwaPlugin(),
+    pwaPopupPlugin({
+      locales: {
+        '/': {
+          message: 'New content is available.',
+          buttonText: 'Refresh',
+        },
+        '/zh/': {
+          message: '发现新内容可用',
+          buttonText: '刷新',
         },
       },
-    ],
+    }),
   ],
 }
 ```

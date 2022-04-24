@@ -44,11 +44,7 @@ module.exports = {
       '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*.spec.ts'],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/__fixtures__/',
-    '@vuepress/client',
-  ],
+  testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
   snapshotSerializers: [require.resolve('jest-serializer-vue')],
 
   // coverage config

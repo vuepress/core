@@ -34,13 +34,12 @@
     "@docsearch/js": "^3.0.0",
     "@docsearch/react": "^3.0.0",
     "@types/react": "^17.0.43",
-    "@vuepress/client": "2.0.0-beta.38",
-    "@vuepress/core": "2.0.0-beta.38",
-    "@vuepress/shared": "2.0.0-beta.38",
-    "@vuepress/utils": "2.0.0-beta.38",
-    "preact": "^10.7.0",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.2.31",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },
   "publishConfig": {

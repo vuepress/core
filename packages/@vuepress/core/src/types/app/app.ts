@@ -1,8 +1,8 @@
 import type { Markdown } from '@vuepress/markdown'
 import type { SiteData } from '@vuepress/shared'
-import type { BundlerBuild, BundlerDev } from '../bundler'
+import type { Bundler } from '../bundler'
 import type { Page } from '../page'
-import type { Plugin, PluginOptions } from '../plugin'
+import type { Plugin } from '../plugin'
 import type { PluginApi } from '../pluginApi'
 import type { AppOptions } from './options'
 import type { AppDir, AppEnv, AppWriteTemp } from './utils'
@@ -49,10 +49,7 @@ export interface App {
   /**
    * Use a plugin
    */
-  use: <T extends PluginOptions>(
-    plugin: Plugin<T> | string,
-    config?: Partial<T>
-  ) => this
+  use: (plugin: Plugin) => this
 
   /**
    * Initialize app.
@@ -100,7 +97,7 @@ export interface DevApp extends App {
    *
    * Should be called after `app.prepare()`.
    */
-  dev: () => ReturnType<BundlerDev>
+  dev: () => ReturnType<Bundler['dev']>
 }
 
 /**
@@ -112,5 +109,5 @@ export interface BuildApp extends App {
    *
    * Should be called after `app.prepare()`.
    */
-  build: () => ReturnType<BundlerBuild>
+  build: () => ReturnType<Bundler['build']>
 }

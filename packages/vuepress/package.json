@@ -17,7 +17,7 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
+  "author": "meteorlxy",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
@@ -32,6 +32,6 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "vuepress-vite": "2.0.0-beta.39"
+    "vuepress-vite": "workspace:*"
   }
 }

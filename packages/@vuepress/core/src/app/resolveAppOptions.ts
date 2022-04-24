@@ -12,42 +12,32 @@ export const resolveAppOptions = ({
   description = '',
   head = [],
   locales = {},
-
-  // theme config
-  theme = '@vuepress/theme-default',
-  themeConfig = {},
-
-  // bundler config
-  bundler = '@vuepress/bundler-vite',
-  bundlerConfig = {},
-
   // directory config
   source,
   dest = path.resolve(source, '.vuepress/dist'),
   temp = path.resolve(source, '.vuepress/.temp'),
   cache = path.resolve(source, '.vuepress/.cache'),
   public: publicDir = path.resolve(source, '.vuepress/public'),
-
-  // markdown config
-  markdown = {},
-
-  // development config
+  // dev config
   host = '0.0.0.0',
   port = 8080,
-  debug = false,
   open = false,
-  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
   templateDev = path.normalize(
-    require.resolve('@vuepress/client/templates/index.dev.html')
+    require.resolve('@vuepress/client/templates/dev.html')
   ),
-  templateBuild = path.normalize(
-    require.resolve('@vuepress/client/templates/index.build.html')
-  ),
+  // build config
   shouldPreload = true,
-  shouldPrefetch = false,
-
-  // plugin config
+  shouldPrefetch = true,
+  templateBuild = path.normalize(
+    require.resolve('@vuepress/client/templates/build.html')
+  ),
+  // common config
+  bundler,
+  debug = false,
+  markdown = {},
+  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
   plugins = [],
+  theme,
 }: AppConfig): AppOptions => ({
   base,
   lang,
@@ -55,24 +45,22 @@ export const resolveAppOptions = ({
   description,
   head,
   locales,
-  theme,
-  themeConfig,
-  bundler,
-  bundlerConfig,
   source,
   dest,
   temp,
   cache,
   public: publicDir,
-  markdown,
-  debug,
   host,
   port,
   open,
-  pagePatterns,
   templateDev,
-  templateBuild,
   shouldPreload,
   shouldPrefetch,
+  templateBuild,
+  bundler,
+  debug,
+  markdown,
+  pagePatterns,
   plugins,
+  theme,
 })

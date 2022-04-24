@@ -58,9 +58,6 @@ export const useActiveHeaderLinks = ({
       const anchor = existedHeaderAnchors[i]
       const nextAnchor = existedHeaderAnchors[i + 1]
 
-      // if this is the first anchor and now it's on the top of the page
-      const isTheFirstAnchorActive = i === 0 && scrollTop === 0
-
       // notice the `scrollTop` might not be exactly equal to `offsetTop` after clicking the anchor
       // so we add offset
 
@@ -74,9 +71,7 @@ export const useActiveHeaderLinks = ({
         scrollTop < (nextAnchor.parentElement?.offsetTop ?? 0) - offset
 
       // if this anchor is the active anchor
-      const isActive =
-        isTheFirstAnchorActive ||
-        (hasPassedCurrentAnchor && hasNotPassedNextAnchor)
+      const isActive = hasPassedCurrentAnchor && hasNotPassedNextAnchor
 
       // continue to find the active anchor
       if (!isActive) continue

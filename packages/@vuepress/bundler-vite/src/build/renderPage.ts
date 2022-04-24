@@ -1,10 +1,9 @@
-import { renderToString } from '@vue/server-renderer'
-import type { SSRContext } from '@vue/server-renderer'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import type { App as VueApp } from 'vue'
 import type { Router as VueRouter } from 'vue-router'
+import type { SSRContext } from 'vue/server-renderer'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
 import { renderPageScripts } from './renderPageScripts'
@@ -28,7 +27,7 @@ export const renderPage = async ({
   ssrTemplate: string
   output: RollupOutput['output']
   outputEntryChunk: OutputChunk
-  outputCssAsset: OutputAsset
+  outputCssAsset: OutputAsset | undefined
 }): Promise<void> => {
   // switch to current page route
   await vueRouter.push(page.path)
@@ -41,7 +40,10 @@ export const renderPage = async ({
   }
 
   // render current page to string
-  const pageRendered = await renderToString(vueApp, ssrContext)
+  const pageRendered = await require('vue/server-renderer').renderToString(
+    vueApp,
+    ssrContext
+  )
 
   // resolve page chunks
   const pageChunkFiles = resolvePageChunkFiles({ page, output })

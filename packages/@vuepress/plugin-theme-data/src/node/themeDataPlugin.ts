@@ -10,12 +10,12 @@ export interface ThemeDataPluginOptions {
   /**
    * Theme data to be used in client side
    */
-  themeData?: ThemeData
+  themeData: ThemeData
 }
 
-export const themeDataPlugin: Plugin<ThemeDataPluginOptions> = ({
-  themeData = {},
-}) => ({
+export const themeDataPlugin = ({
+  themeData,
+}: ThemeDataPluginOptions): Plugin => ({
   name: '@vuepress/plugin-theme-data',
 
   clientAppEnhanceFiles: path.resolve(

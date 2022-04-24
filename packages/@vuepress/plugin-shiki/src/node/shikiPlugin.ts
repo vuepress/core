@@ -7,13 +7,13 @@ import type { HighlighterOptions } from 'shiki'
  */
 export type ShikiPluginOptions = Pick<HighlighterOptions, 'theme' | 'langs'>
 
-export const shikiPlugin: Plugin<ShikiPluginOptions> = ({
+export const shikiPlugin = ({
   theme = 'nord',
   langs = [],
-}) => ({
+}: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
 
-  async extendsMarkdown(md) {
+  extendsMarkdown: async (md) => {
     const highlighter = await getHighlighter({
       theme,
       langs,

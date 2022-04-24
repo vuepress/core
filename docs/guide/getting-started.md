@@ -6,7 +6,6 @@
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
 ::: tip
-- With [pnpm](https://pnpm.io/), you need to set `shamefully-hoist=true` in your [`.npmrc`](https://pnpm.io/npmrc#shamefully-hoist) file.
 - With [yarn 2](https://yarnpkg.com/), you need to set `nodeLinker: 'node-modules'` in your [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) file.
 :::
 

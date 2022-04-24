@@ -1,43 +1,57 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
 import type { SiteData } from '@vuepress/shared'
-import type { BundlerConfig } from '../bundler'
+import type { Bundler } from '../bundler'
 import type { PluginConfig } from '../plugin'
-import type { ThemeConfig } from '../theme'
+import type { Theme } from '../theme'
 
 /**
- * Config to create vuepress app
+ * Vuepress app common config that shared between dev and build
  */
-export type AppConfig<
-  T extends ThemeConfig = ThemeConfig,
-  U extends BundlerConfig = BundlerConfig
-> = Partial<SiteData> &
-  AppConfigDev &
-  AppConfigBuild & {
-    theme?: string
-    themeConfig?: Partial<T>
-    bundler?: string
-    bundlerConfig?: Partial<U>
+export interface AppConfigCommon extends Partial<SiteData> {
+  source: string
+  dest?: string
+  temp?: string
+  cache?: string
+  public?: string
 
-    source: string
-    dest?: string
-    temp?: string
-    cache?: string
-    public?: string
-
-    debug?: boolean
-    pagePatterns?: string[]
-
-    markdown?: MarkdownOptions
-    plugins?: PluginConfig[]
-  }
+  debug?: boolean
+  markdown?: MarkdownOptions
+  pagePatterns?: string[]
+  bundler: Bundler
+  theme: Theme
+  plugins?: PluginConfig
+}
 
 /**
  * Vuepress app config for dev
  */
 export interface AppConfigDev {
+  /**
+   * Specify the host to use for the dev server
+   *
+   * @default '0.0.0.0'
+   */
   host?: string
+
+  /**
+   * Specify the port to use for the dev server
+   *
+   * @default 8080
+   */
   port?: number
+
+  /**
+   * Whether to open the browser after dev-server had been started
+   *
+   * @default false
+   */
   open?: boolean
+
+  /**
+   * Specify the path of the HTML template to be used for dev
+   *
+   * @default '@vuepress/client/templates/dev.html'
+   */
   templateDev?: string
 }
 
@@ -45,15 +59,36 @@ export interface AppConfigDev {
  * Vuepress app config for build
  */
 export interface AppConfigBuild {
+  /**
+   * Determine what resource files should be preloaded. Use boolean value to
+   * totally enable / disable.
+   *
+   * @default true
+   */
   shouldPreload?: ((file: string, type: string) => boolean) | boolean
+
+  /**
+   * Determine what resource files should be prefetched. Use boolean value to
+   * totally enable / disable.
+   *
+   * @default false
+   */
   shouldPrefetch?: ((file: string, type: string) => boolean) | boolean
+
+  /**
+   * Specify the path of the HTML template to be used for build
+   *
+   * @default '@vuepress/client/templates/build.html'
+   */
   templateBuild?: string
 }
 
 /**
+ * Vuepress app config
+ */
+export type AppConfig = AppConfigCommon & AppConfigDev & AppConfigBuild
+
+/**
  * Vuepress app options
  */
-export type AppOptions<
-  T extends ThemeConfig = ThemeConfig,
-  U extends BundlerConfig = BundlerConfig
-> = Required<AppConfig<T, U>>
+export type AppOptions = Required<AppConfig>

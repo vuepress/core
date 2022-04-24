@@ -8,10 +8,22 @@
 
 该插件主要用于开发主题，大部分情况下你不需要直接使用它。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-git@next
+```
+
+```js
+const { gitPlugin } = require('@vuepress/plugin-git')
+
+module.exports = {
+  plugins: [
+    gitPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## Git 仓库

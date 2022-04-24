@@ -4,7 +4,6 @@
     { "path": "./packages/@vuepress/bundler-vite/tsconfig.build.json" },
     { "path": "./packages/@vuepress/bundler-webpack/tsconfig.build.json" },
     { "path": "./packages/@vuepress/cli/tsconfig.build.json" },
-    { "path": "./packages/@vuepress/client/tsconfig.build.json" },
     { "path": "./packages/@vuepress/core/tsconfig.build.json" },
     { "path": "./packages/@vuepress/markdown/tsconfig.build.json" },
     {
@@ -37,7 +36,6 @@
     { "path": "./packages/@vuepress/plugin-shiki/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-theme-data/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-toc/tsconfig.build.json" },
-    { "path": "./packages/@vuepress/shared/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
     { "path": "./packages/@vuepress/utils/tsconfig.build.json" },
     { "path": "./packages/vuepress/tsconfig.build.json" },

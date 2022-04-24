@@ -1,24 +1,16 @@
-import type { App, ThemeConfig, ThemeInfo } from '../types'
-import { resolvePluginsFromConfig } from './resolvePluginsFromConfig'
+import type { App, Theme, ThemeInfo } from '../types'
+import { resolvePluginObject } from './resolvePluginObject'
 import { resolveThemeLayouts } from './resolveThemeLayouts'
-import { resolveThemeObject } from './resolveThemeObject'
 
 /**
  * Resolve theme info and its parent theme info
  */
-export const resolveThemeInfo = (
-  app: App,
-  theme: string,
-  themeConfig: ThemeConfig
-): ThemeInfo => {
+export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
   // resolve current theme info
-  const themeObject = resolveThemeObject(app, theme, themeConfig)
+  const themeObject = resolvePluginObject(app, theme)
   const themeInfo: ThemeInfo = {
     layouts: resolveThemeLayouts(themeObject.layouts),
-    plugins: [
-      ...resolvePluginsFromConfig(app, themeObject.plugins),
-      themeObject,
-    ],
+    plugins: [...(themeObject.plugins ?? []), themeObject],
     templateBuild: themeObject.templateBuild,
     templateDev: themeObject.templateDev,
   }
@@ -29,11 +21,7 @@ export const resolveThemeInfo = (
   }
 
   // resolve parent theme info recursively
-  const parentThemeInfo = resolveThemeInfo(
-    app,
-    themeObject.extends,
-    themeConfig
-  )
+  const parentThemeInfo = resolveThemeInfo(app, themeObject.extends)
   return {
     layouts: { ...parentThemeInfo.layouts, ...themeInfo.layouts },
     plugins: [...parentThemeInfo.plugins, ...themeInfo.plugins],

@@ -4,10 +4,22 @@
 
 This plugin will enable syntax highlighting for markdown code fence with [Prism.js](https://prismjs.com/).
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-prismjs@next
+```
+
+```js
+const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+
+module.exports = {
+  plugins: [
+    prismjsPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options

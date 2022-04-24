@@ -8,10 +8,22 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 
 For theme authors, this plugin will help you to provide styles customization for users.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-palette@next
+```
+
+```js
+const { palettePlugin } = require('@vuepress/plugin-palette')
+
+module.exports = {
+  plugins: [
+    palettePlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Palette and Style
@@ -27,13 +39,10 @@ The style file is used for overriding the default styles or adding extra styles,
 Use this plugin in your theme, assuming you are using SASS:
 
 ```ts
-export default {
+module.exports = {
   // ...
   plugins: [
-    [
-      '@vuepress/plugin-palette',
-      { preset: 'sass' },
-    ],
+    palettePlugin({ preset: 'sass' }),
   ],
 }
 ```

@@ -1,9 +1,10 @@
-import { createBaseApp, inferPagePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+import { createBaseApp, inferPagePath } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
   locales: {
     '/': {},
     '/en/': {},
@@ -12,7 +13,8 @@ const app = createBaseApp({
 })
 const appWithoutLocales = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 
 const testCases: [string, ReturnType<typeof inferPagePath>][] = [

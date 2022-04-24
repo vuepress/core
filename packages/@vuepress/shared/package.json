@@ -16,21 +16,45 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
-  "main": "lib/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/index.d.ts",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf lib *.tsbuildinfo"
+    "build": "tsup",
+    "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/shared": "^3.2.31"
+    "@vue/shared": "^3.2.33"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": [
+      "src/index.ts"
+    ],
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "outDir": "dist",
+    "sourcemap": false,
+    "tsconfig": "tsconfig.dts.json"
   }
 }
