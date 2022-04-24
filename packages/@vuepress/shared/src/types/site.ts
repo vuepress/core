@@ -5,10 +5,34 @@ import type { LocaleConfig } from './locale'
  * Vuepress site data
  */
 export interface SiteData extends SiteLocaleData {
-  // site base
+  /**
+   * The base URL the site will be deployed at
+   *
+   * It should always start and end with a slash
+   *
+   * @default '/'
+   */
   base: '/' | `/${string}/`
 
-  // locale config
+  /**
+   * Specify locales for i18n support
+   *
+   * It will override the root-level site data in different subpath
+   *
+   * @example
+   * {
+   *   '/en/': {
+   *     lang: 'en-US',
+   *     title: 'Hello',
+   *     description: 'This will take effect under /en/ subpath',
+   *   },
+   *   '/zh/': {
+   *     lang: 'zh-CN',
+   *     title: '你好',
+   *     description: '它将会在 /zh/ 子路径下生效',
+   *   }
+   * }
+   */
   locales: SiteLocaleConfig
 }
 
@@ -22,34 +46,41 @@ export interface SiteData extends SiteLocaleData {
  * used for specific locale
  */
 export interface SiteLocaleData {
-  // site language
+  /**
+   * Language for the site
+   *
+   * @default 'en-US'
+   */
   lang: string
 
-  // site title
+  /**
+   * Title for the site
+   *
+   * @default ''
+   */
   title: string
 
-  // site description
+  /**
+   * Description for the site
+   *
+   * @default ''
+   */
   description: string
 
-  // tags in site <head>
+  /**
+   * Head config
+   *
+   * Descibe the tags to be appended into the `<head>` tag
+   *
+   * @default []
+   *
+   * @example ['link', { rel: 'icon', href: '/logo.png' }]
+   * @example ['style', { type: 'text/css' }, 'p { color: red; }']
+   */
   head: HeadConfig[]
 }
 
 /**
  * Site locale config
- *
- * @example
- * {
- *   '/en/': {
- *     lang: 'en-US',
- *     title: 'Hello',
- *   },
- *   '/zh/: {
- *     lang: 'zh-CN',
- *     title: '你好',
- *   }
- * }
- *
- * @remark suffix `Config` means this is for user config
  */
 export type SiteLocaleConfig = LocaleConfig<SiteLocaleData>

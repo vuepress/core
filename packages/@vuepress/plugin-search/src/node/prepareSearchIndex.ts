@@ -23,8 +23,8 @@ export const prepareSearchIndex = async ({
   getExtraFields,
 }: {
   app: App
-  isSearchable: SearchPluginOptions['isSearchable']
-  getExtraFields: SearchPluginOptions['getExtraFields']
+  isSearchable: Required<SearchPluginOptions>['isSearchable']
+  getExtraFields: Required<SearchPluginOptions>['getExtraFields']
 }): Promise<string> => {
   // generate search index
   const searchIndex: SearchIndex = app.pages

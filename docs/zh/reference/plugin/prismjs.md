@@ -8,10 +8,22 @@
 该插件仅负责为代码块的字符添加 HTML 标记，您需要自己选择和导入 prism 主题。
 :::
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-prismjs@next
+```
+
+```js
+const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+
+module.exports = {
+  plugins: [
+    prismjsPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项

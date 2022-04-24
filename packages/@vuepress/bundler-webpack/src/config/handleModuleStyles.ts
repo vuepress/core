@@ -17,14 +17,14 @@ export const handleModuleStyles = ({
   app,
   options,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: WebpackBundlerOptions
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   const createStyleRules = ({
     lang,
@@ -62,14 +62,14 @@ export const handleModuleStyles = ({
           .use('extract-css-loader')
           .loader(require('mini-css-extract-plugin').loader)
       } else {
-        rule.use('style-loader').loader('style-loader')
+        rule.use('style-loader').loader(require.resolve('style-loader'))
       }
     }
 
     // use css-loader
     rule
       .use('css-loader')
-      .loader('css-loader')
+      .loader(require.resolve('css-loader'))
       .options({
         modules: cssModules
           ? {
@@ -83,7 +83,7 @@ export const handleModuleStyles = ({
     // use postcss-loader
     rule
       .use('postcss-loader')
-      .loader('postcss-loader')
+      .loader(require.resolve('postcss-loader'))
       .options({
         postcssOptions: {
           plugins: [require('autoprefixer'), require('postcss-csso')],

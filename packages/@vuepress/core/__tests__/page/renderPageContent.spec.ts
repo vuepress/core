@@ -1,10 +1,11 @@
-import { createBaseApp, renderPageContent } from '@vuepress/core'
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
+import { createBaseApp, renderPageContent } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 app.markdown = createMarkdown()
 

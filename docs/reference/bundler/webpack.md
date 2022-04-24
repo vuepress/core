@@ -10,20 +10,19 @@ npm i -D @vuepress/bundler-webpack@next
 
 ## Options
 
-Reference of webpack bundler config, which can be set via [bundlerConfig](../config.md#bundlerconfig).
+Reference of webpack bundler options:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
 
 ```js
+const { webpackBundler } = require('@vuepress/bundler-webpack')
+
 module.exports = {
-  // when using vuepress-webpack package, you can omit this field
-  // because webpack is the default bundler
-  bundler: '@vuepress/bundler-webpack',
-  // options for webpack bundler
-  bundlerConfig: {
-    // see below
-  },
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {},
+  }),
 }
 ```
 
@@ -32,18 +31,14 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
-export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
-  // when using vuepress package, you can omit this field
-  // because webpack is the default bundler
-  bundler: '@vuepress/bundler-webpack',
-  // options for webpack bundler
-  bundlerConfig: {
-    // see below
-  },
+export default defineUserConfig({
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {},
+  }),
 })
 ```
 

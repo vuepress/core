@@ -6,10 +6,22 @@
 
 该插件已经集成到默认主题中。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-external-link-icon@next
+```
+
+```js
+const { externalLinkIconPlugin } = require('@vuepress/plugin-external-link-icon')
+
+module.exports = {
+  plugins: [
+    externalLinkIconPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项
@@ -29,19 +41,16 @@ npm i -D @vuepress/plugin-external-link-icon@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-external-link-icon',
-      {
-        locales: {
-          '/': {
-            openInNewWindow: 'open in new window',
-          },
-          '/zh/': {
-            openInNewWindow: '在新窗口打开',
-          },
+    externalLinkIconPlugin({
+      locales: {
+        '/': {
+          openInNewWindow: 'open in new window',
+        },
+        '/zh/': {
+          openInNewWindow: '在新窗口打开',
         },
       },
-    ],
+    }),
   ],
 }
 ```

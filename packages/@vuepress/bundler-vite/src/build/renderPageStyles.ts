@@ -9,6 +9,8 @@ export const renderPageStyles = ({
   outputCssAsset,
 }: {
   app: App
-  outputCssAsset: OutputAsset
+  outputCssAsset: OutputAsset | undefined
 }): string =>
-  `<link rel="stylesheet" href="${app.options.base}${outputCssAsset.fileName}">`
+  outputCssAsset
+    ? `<link rel="stylesheet" href="${app.options.base}${outputCssAsset.fileName}">`
+    : ''

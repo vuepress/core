@@ -1,4 +1,4 @@
-import { resolvePageRouteMeta } from '@vuepress/core'
+import { resolvePageRouteMeta } from '../../src'
 
 describe('core > page > resolvePageRouteMeta', () => {
   it('should use frontmatter routeMeta', () => {

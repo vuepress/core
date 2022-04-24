@@ -19,7 +19,7 @@ export const presetOptions: Record<
     tempPaletteFile: 'styles/palette.scss',
     userStyleFile: '.vuepress/styles/index.scss',
     tempStyleFile: 'styles/index.scss',
-    importCode: (filePath) => `@forward '${filePath}';\n`,
+    importCode: (filePath) => `@forward 'file:///${filePath}';\n`,
   },
   less: {
     userPaletteFile: '.vuepress/styles/palette.less',

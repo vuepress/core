@@ -8,37 +8,20 @@ export interface ActiveHeaderLinksPluginOptions {
   offset?: number
 }
 
-export const activeHeaderLinksPlugin: Plugin<ActiveHeaderLinksPluginOptions> = (
-  {
-    headerLinkSelector = 'a.sidebar-item',
-    headerAnchorSelector = '.header-anchor',
-    delay = 200,
-    offset = 5,
+export const activeHeaderLinksPlugin = ({
+  headerLinkSelector = 'a.sidebar-item',
+  headerAnchorSelector = '.header-anchor',
+  delay = 200,
+  offset = 5,
+}: ActiveHeaderLinksPluginOptions = {}): Plugin => ({
+  name: '@vuepress/plugin-active-header-links',
+
+  clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+
+  define: {
+    __AHL_HEADER_LINK_SELECTOR__: headerLinkSelector,
+    __AHL_HEADER_ANCHOR_SELECTOR__: headerAnchorSelector,
+    __AHL_DELAY__: delay,
+    __AHL_OFFSET__: offset,
   },
-  app
-) => {
-  if (app.env.isDev && app.options.bundler.endsWith('vite')) {
-    // eslint-disable-next-line import/no-extraneous-dependencies
-    app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
-      app.options.bundlerConfig.viteOptions,
-      {
-        optimizeDeps: {
-          exclude: ['ts-debounce'],
-        },
-      }
-    )
-  }
-
-  return {
-    name: '@vuepress/plugin-active-header-links',
-
-    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
-
-    define: {
-      __AHL_HEADER_LINK_SELECTOR__: headerLinkSelector,
-      __AHL_HEADER_ANCHOR_SELECTOR__: headerAnchorSelector,
-      __AHL_DELAY__: delay,
-      __AHL_OFFSET__: offset,
-    },
-  }
-}
+})

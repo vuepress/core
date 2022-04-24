@@ -3,14 +3,14 @@ import { path } from '@vuepress/utils'
 import type { TocPropsOptions } from '../shared'
 
 export interface TocPluginOptions {
-  componentName: string
-  defaultPropsOptions: TocPropsOptions
+  componentName?: string
+  defaultPropsOptions?: Partial<TocPropsOptions>
 }
 
-export const tocPlugin: Plugin<TocPluginOptions> = ({
+export const tocPlugin = ({
   componentName = 'Toc',
   defaultPropsOptions = {},
-}) => ({
+}: TocPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-toc',
 
   clientAppEnhanceFiles: path.resolve(

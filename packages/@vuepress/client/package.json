@@ -15,30 +15,62 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./app": "./dist/app.js",
+    "./helpers": "./helpers/index.js",
+    "./package.json": "./package.json",
+    "./templates/*": "./templates/*",
+    "./types": "./types.d.ts"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib",
+    "dist",
     "templates",
     "types.d.ts"
   ],
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf lib *.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{d.ts,css}\" lib"
+    "build": "tsup",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@vue/devtools-api": "^6.1.4",
-    "@vuepress/shared": "2.0.0-beta.38",
-    "vue": "^3.2.31",
+    "@vuepress/shared": "workspace:*",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
-    "@types/webpack-env": "^1.16.3",
-    "vite": "~2.9.1"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": [
+      "src/index.ts"
+    ],
+    "entry": [
+      "src/app.ts",
+      "src/index.ts"
+    ],
+    "external": [
+      "@internal/clientAppEnhances",
+      "@internal/clientAppRootComponents",
+      "@internal/clientAppSetups",
+      "@internal/layoutComponents",
+      "@internal/pagesComponents",
+      "@internal/pagesData",
+      "@internal/pagesRoutes",
+      "@internal/siteData"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "dist",
+    "sourcemap": false,
+    "target": "es2020",
+    "tsconfig": "tsconfig.dts.json"
   }
 }

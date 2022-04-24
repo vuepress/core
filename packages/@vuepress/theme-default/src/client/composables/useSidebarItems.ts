@@ -56,7 +56,7 @@ export const resolveSidebarItems = (
   frontmatter: DefaultThemeNormalPageFrontmatter,
   themeLocale: DefaultThemeData
 ): ResolvedSidebarItem[] => {
-  // get sidebar config from frontmatter > themeConfig
+  // get sidebar config from frontmatter > theme data
   const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'
   const sidebarDepth = frontmatter.sidebarDepth ?? themeLocale.sidebarDepth ?? 2
 

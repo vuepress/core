@@ -14,10 +14,20 @@ Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, whic
 
 This plugin has been integrated into the default theme.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-nprogress@next
+```
+
+```js
+const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
+
+module.exports = {
+  plugins: [
+    nprogressPlugin(),
+  ],
+}
 ```
 
 ## Styles

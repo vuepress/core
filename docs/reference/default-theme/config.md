@@ -2,7 +2,15 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-Reference of default theme config, which can be set via [themeConfig](../config.md#themeconfig).
+```js
+const { defaultTheme } = require('@vuepress/theme-default')
+
+module.exports = {
+  theme: defaultTheme({
+    // set config here
+  }),
+}
+```
 
 ## Basic Config
 
@@ -64,7 +72,7 @@ Config of this section can be used as normal config, and can also be used in the
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     navbar: [
       // NavbarItem
       {
@@ -79,7 +87,7 @@ module.exports = {
       // string - page file path
       '/bar/README.md',
     ],
-  },
+  }),
 }
 ```
 
@@ -87,7 +95,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     navbar: [
       // nested group - max depth is 2
       {
@@ -119,7 +127,7 @@ module.exports = {
         ],
       },
     ],
-  },
+  }),
 }
 ```
 
@@ -139,12 +147,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // public file path
     logo: '/hero.png',
     // url
     logo: 'https://vuejs.org/images/logo.png',
-  },
+  }),
 }
 ```
 
@@ -191,13 +199,13 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // If you set it in the form of `organization/repository`
     // we will take it as a GitHub repo
     repo: 'vuejs/vuepress',
     // You can also set it to a URL directly
     repo: 'https://gitlab.com/foo/bar',
-  },
+  }),
 }
 ```
 
@@ -255,7 +263,7 @@ module.exports = {
       lang: 'zh-CN',
     },
   },
-  themeConfig: {
+  theme: defaultTheme({
     locales: {
       '/': {
         selectLanguageName: 'English',
@@ -264,7 +272,7 @@ module.exports = {
         selectLanguageName: '简体中文',
       },
     },
-  },
+  }),
 }
 ```
 
@@ -298,7 +306,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // sidebar array
     // all pages will use the same sidebar
     sidebar: [
@@ -320,7 +328,7 @@ module.exports = {
       // string - page file path
       '/bar/README.md',
     ],
-  },
+  }),
 }
 ```
 
@@ -328,7 +336,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // sidebar object
     // pages under different sub paths will use different sidebar
     sidebar: {
@@ -345,7 +353,7 @@ module.exports = {
         },
       ],
     },
-  },
+  }),
 }
 ```
 
@@ -353,7 +361,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // collapsible sidebar
     sidebar: {
       '/reference/': [
@@ -369,7 +377,7 @@ module.exports = {
         },
       ],
     },
-  },
+  }),
 }
 ```
 
@@ -440,12 +448,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',
     docsDir: 'docs',
     editLinkPattern: ':repo/-/edit/:branch/:path',
-  },
+  }),
 }
 ```
 
@@ -497,9 +505,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   Enable the _last updated timestamp_ or not.
 
-  You can override this global option via [lastUpdated](./frontmatter.md#lastupdated) frontmatter in your pages.
-
-  Notice that if you set `themeConfig.lastUpdated` to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
+  You can override this global option via [lastUpdated](./frontmatter.md#lastupdated) frontmatter in your pages. Notice that if you have already set this option to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
 
 ### lastUpdatedText
 
@@ -521,9 +527,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   Enable the _contributors list_ or not.
 
-  You can override this global option via [contributors](./frontmatter.md#contributors) frontmatter in your pages.
-
-  Notice that if you set `themeConfig.contributors` to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
+  You can override this global option via [contributors](./frontmatter.md#contributors) frontmatter in your pages. Notice that if you have already set this option to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
 
 ### contributorsText
 

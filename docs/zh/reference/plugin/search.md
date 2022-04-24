@@ -10,10 +10,22 @@
 该插件不一定能在其他主题中直接使用，因此你应参考主题本身的文档来获取更多信息。
 :::
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-search@next
+```
+
+```js
+const { searchPlugin } = require('@vuepress/plugin-search')
+
+module.exports = {
+  plugins: [
+    searchPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 本地搜索索引
@@ -39,19 +51,16 @@ npm i -D @vuepress/plugin-search@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search',
-          },
-          '/zh/': {
-            placeholder: '搜索',
-          },
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
         },
       },
-    ],
+    }),
   ],
 }
 ```
@@ -102,13 +111,10 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        // 排除首页
-        isSearchable: (page) => page.path !== '/',
-      },
-    ],
+    searchPlugin({
+      // 排除首页
+      isSearchable: (page) => page.path !== '/',
+    }),
   ],
 }
 ```
@@ -131,13 +137,10 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        // 允许搜索 Frontmatter 中的 `tags`
-        getExtraFields: (page) => page.frontmatter.tags ?? [],
-      },
-    ],
+    searchPlugin({
+      // 允许搜索 Frontmatter 中的 `tags`
+      getExtraFields: (page) => page.frontmatter.tags ?? [],
+    }),
   ],
 }
 ```
