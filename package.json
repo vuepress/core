@@ -1,4 +1,6 @@
 {
+  "name": "@vuepress/monorepo",
+  "version": "2.0.0-beta.39",
   "private": true,
   "scripts": {
     "build": "pnpm run -r build --stream",
@@ -14,7 +16,11 @@
     "docs:serve": "pnpm --filter=docs docs:serve",
     "lint": "eslint --ext .js,.ts,.vue .",
     "prepare": "husky install",
-    "release": "pnpm lint && pnpm clean && pnpm copy && pnpm build && pnpm test && lerna publish prerelease --dist-tag next",
+    "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
+    "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release:check": "pnpm lint && pnpm clean && pnpm copy && pnpm build && pnpm test",
+    "release:publish": "pnpm -r publish --tag next",
+    "release:version": "bumpp package.json packages/*/package.json packages/@vuepress/*/package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --tag",
     "test": "jest --runInBand"
   },
   "lint-staged": {
@@ -28,6 +34,8 @@
     "@commitlint/config-conventional": "^16.2.1",
     "@types/jest": "^27.4.1",
     "@types/webpack-env": "^1.16.4",
+    "bumpp": "^7.1.1",
+    "conventional-changelog-cli": "^2.2.2",
     "cpx2": "^4.2.0",
     "eslint": "^8.14.0",
     "eslint-config-vuepress": "^3.7.1",
