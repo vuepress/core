@@ -81,20 +81,20 @@ export const defaultTheme = ({
       themePlugins.backToTop !== false ? backToTopPlugin() : [],
 
       // @vuepress/plugin-container
-      themePlugins?.container?.tip !== false
+      themePlugins.container?.tip !== false
         ? containerPlugin(resolveContainerPluginOptions(localeOptions, 'tip'))
         : [],
-      themePlugins?.container?.warning !== false
+      themePlugins.container?.warning !== false
         ? containerPlugin(
             resolveContainerPluginOptions(localeOptions, 'warning')
           )
         : [],
-      themePlugins?.container?.danger !== false
+      themePlugins.container?.danger !== false
         ? containerPlugin(
             resolveContainerPluginOptions(localeOptions, 'danger')
           )
         : [],
-      themePlugins?.container?.details !== false
+      themePlugins.container?.details !== false
         ? containerPlugin({
             type: 'details',
             before: (info) =>
@@ -104,14 +104,14 @@ export const defaultTheme = ({
             after: () => '</details>\n',
           })
         : [],
-      themePlugins?.container?.codeGroup !== false
+      themePlugins.container?.codeGroup !== false
         ? containerPlugin({
             type: 'code-group',
             before: () => `<CodeGroup>\n`,
             after: () => '</CodeGroup>\n',
           })
         : [],
-      themePlugins?.container?.codeGroupItem !== false
+      themePlugins.container?.codeGroupItem !== false
         ? containerPlugin({
             type: 'code-group-item',
             before: (info) => `<CodeGroupItem title="${info}">\n`,
@@ -120,7 +120,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-external-link-icon
-      themePlugins?.externalLinkIcon !== false
+      themePlugins.externalLinkIcon !== false
         ? externalLinkIconPlugin({
             locales: Object.entries(localeOptions.locales || {}).reduce(
               (result, [key, value]) => {
@@ -136,7 +136,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-git
-      themePlugins?.git !== false
+      themePlugins.git !== false
         ? gitPlugin({
             createdTime: false,
             updatedTime: localeOptions.lastUpdated !== false,
@@ -145,7 +145,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-medium-zoom
-      themePlugins?.mediumZoom !== false
+      themePlugins.mediumZoom !== false
         ? mediumZoomPlugin({
             selector:
               '.theme-default-content > img, .theme-default-content :not(a) > img',
@@ -156,13 +156,13 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-nprogress
-      themePlugins?.nprogress !== false ? nprogressPlugin() : [],
+      themePlugins.nprogress !== false ? nprogressPlugin() : [],
 
       // @vuepress/plugin-palette
       palettePlugin({ preset: 'sass' }),
 
       // @vuepress/plugin-prismjs
-      themePlugins?.prismjs !== false ? prismjsPlugin() : [],
+      themePlugins.prismjs !== false ? prismjsPlugin() : [],
 
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),
