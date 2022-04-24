@@ -1,0 +1,7 @@
+{
+  "extends": "tsconfig-vuepress/base.json",
+  "compilerOptions": {
+    "composite": false,
+    "types": []
+  }
+}

@@ -1,4 +1,4 @@
-import { resolvePageKey } from '@vuepress/core'
+import { resolvePageKey } from '../../src'
 
 describe('core > page > resolvePageKey', () => {
   it('should begin with "v-"', () => {

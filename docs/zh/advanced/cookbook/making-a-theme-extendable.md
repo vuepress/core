@@ -28,14 +28,18 @@
 
 首先，为你主题的可替换组件设置 `alias` 别名：
 
-```js
-module.exports = {
-  name: 'vuepress-theme-foo',
-  alias: {
-    // 为可替换的组件设置别名
-    '@theme/Navbar.vue': path.resolve(__dirname, 'components/Navbar.vue'),
-    '@theme/Sidebar.vue': path.resolve(__dirname, 'components/Sidebar.vue'),
-  },
+```ts
+import type { Theme } from '@vuepress/core'
+
+export const fooTheme = (options): Theme => {
+  return {
+    name: 'vuepress-theme-foo',
+    alias: {
+      // 为可替换的组件设置别名
+      '@theme/Navbar.vue': path.resolve(__dirname, 'components/Navbar.vue'),
+      '@theme/Sidebar.vue': path.resolve(__dirname, 'components/Sidebar.vue'),
+    },
+  }
 }
 ```
 

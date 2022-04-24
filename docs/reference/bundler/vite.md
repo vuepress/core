@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/bundler-vite" />
 
-Vite bundler is provided by [@vuepress/bundler-vite](https://www.npmjs.com/package/@vuepress/bundler-vite) package. It is a dependency of the [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package, and you can also install it separately.
+Vite bundler is provided by [@vuepress/bundler-vite](https://www.npmjs.com/package/@vuepress/bundler-vite) package. It is a dependency of the [vuepress](https://www.npmjs.com/package/vuepress) package, and you can also install it separately.
 
 ```bash
 npm i -D @vuepress/bundler-vite@next
@@ -10,20 +10,19 @@ npm i -D @vuepress/bundler-vite@next
 
 ## Options
 
-Reference of vite bundler config, which can be set via [bundlerConfig](../config.md#bundlerconfig).
+Reference of vite bundler options:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
 
 ```js
+const { viteBundler } = require('@vuepress/bundler-vite')
+
 module.exports = {
-  // when using vuepress-vite package, you can omit this field
-  // because vite is the default bundler
-  bundler: '@vuepress/bundler-vite',
-  // bundler options
-  bundlerConfig: {
-    // see below
-  },
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
 }
 ```
 
@@ -32,18 +31,14 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
+import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
-export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
-  // when using vuepress-vite package, you can omit this field
-  // because vite is the default bundler
-  bundler: '@vuepress/bundler-vite',
-  // options for vite bundler
-  bundlerConfig: {
-    // see below
-  },
+export default defineUserConfig({
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
 })
 ```
 

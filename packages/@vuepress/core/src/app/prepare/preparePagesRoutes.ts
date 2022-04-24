@@ -60,7 +60,7 @@ const transformPageToRouteItem = ({
 export const preparePagesRoutes = async (app: App): Promise<void> => {
   const routeItems = app.pages.map(transformPageToRouteItem)
   const content = `\
-import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
+import { Vuepress } from '@vuepress/client'
 
 const routeItems = [\
 ${routeItems.map((routeItem) => `\n  ${JSON.stringify(routeItem)},`).join('')}

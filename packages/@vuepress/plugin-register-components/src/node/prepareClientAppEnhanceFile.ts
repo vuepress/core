@@ -4,7 +4,7 @@ import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin
 
 export const prepareClientAppEnhanceFile = async (
   app: App,
-  options: RegisterComponentsPluginOptions,
+  options: Required<RegisterComponentsPluginOptions>,
   identifier: string
 ): Promise<string> => {
   // get components from directory

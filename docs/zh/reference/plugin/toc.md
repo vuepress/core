@@ -4,11 +4,22 @@
 
 该插件会提供一个目录 (table-of-contents, TOC) 组件。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-toc@next
 ```
+
+```js
+const { tocPlugin } = require('@vuepress/plugin-toc')
+
+module.exports = {
+  plugins: [
+    tocPlugin({
+      // 配置项
+    }),
+  ],
+}
 
 ## 与 Markdown 目录语法的区别
 

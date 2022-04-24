@@ -3,8 +3,10 @@ import type { AliasOptions } from 'vite'
 
 export const resolveAlias = async ({
   app,
+  isServer,
 }: {
   app: App
+  isServer: boolean
 }): Promise<AliasOptions> => {
   const alias: AliasOptions = {
     '@internal': app.dir.temp('internal'),
@@ -22,19 +24,21 @@ export const resolveAlias = async ({
   )
 
   return [
-    ...Object.keys(alias).map((p) => ({
-      find: p,
-      replacement: alias[p],
+    ...Object.keys(alias).map((item) => ({
+      find: item,
+      replacement: alias[item],
     })),
-    {
-      find: /^vue$/,
-      replacement: require.resolve(
-        '@vue/runtime-dom/dist/runtime-dom.esm-bundler.js'
-      ),
-    },
-    {
-      find: /^vue-router$/,
-      replacement: require.resolve('vue-router/dist/vue-router.esm-bundler.js'),
-    },
+    ...(isServer
+      ? []
+      : [
+          {
+            find: /^vue$/,
+            replacement: 'vue/dist/vue.runtime.esm-bundler.js',
+          },
+          {
+            find: /^vue-router$/,
+            replacement: 'vue-router/dist/vue-router.esm-bundler.js',
+          },
+        ]),
   ]
 }

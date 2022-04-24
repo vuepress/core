@@ -24,7 +24,7 @@ export const handleModuleVue = ({
     .test(/\.vue$/)
     // use vue-loader
     .use('vue-loader')
-    .loader('vue-loader')
+    .loader(require.resolve('vue-loader'))
     .options({
       ...options.vue,
       isServerBuild: isServer,

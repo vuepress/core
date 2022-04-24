@@ -1,9 +1,11 @@
 import { createBaseApp } from '@vuepress/core'
-import { prepareClientAppEnhanceFile } from '@vuepress/plugin-register-components'
 import { fs, path } from '@vuepress/utils'
+import { prepareClientAppEnhanceFile } from '../../src/node'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
+  theme: { name: 'test' },
+  bundler: {} as any,
   temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 let identifier = 0

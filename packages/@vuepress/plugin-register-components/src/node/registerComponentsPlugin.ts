@@ -4,25 +4,20 @@ import * as chokidar from 'chokidar'
 import { prepareClientAppEnhanceFile } from './prepareClientAppEnhanceFile'
 
 export interface RegisterComponentsPluginOptions {
-  components: Record<string, string>
-  componentsDir: string | null
-  componentsPatterns: string[]
-  getComponentName: (filename: string) => string
+  components?: Record<string, string>
+  componentsDir?: string | null
+  componentsPatterns?: string[]
+  getComponentName?: (filename: string) => string
 }
 
-export const registerComponentsPlugin: Plugin<
-  RegisterComponentsPluginOptions
-> = (
-  {
-    components = {},
-    componentsDir = null,
-    componentsPatterns = ['**/*.vue'],
-    getComponentName = (filename) =>
-      path.trimExt(filename.replace(/\/|\\/g, '-')),
-  },
-  app
-) => {
-  const options: RegisterComponentsPluginOptions = {
+export const registerComponentsPlugin = ({
+  components = {},
+  componentsDir = null,
+  componentsPatterns = ['**/*.vue'],
+  getComponentName = (filename) =>
+    path.trimExt(filename.replace(/\/|\\/g, '-')),
+}: RegisterComponentsPluginOptions = {}): Plugin => {
+  const options = {
     components,
     componentsDir,
     componentsPatterns,
@@ -38,7 +33,7 @@ export const registerComponentsPlugin: Plugin<
 
     multiple: true,
 
-    clientAppEnhanceFiles: () =>
+    clientAppEnhanceFiles: (app) =>
       prepareClientAppEnhanceFile(app, options, optionsHash),
 
     onWatched: (app, watchers) => {

@@ -14,29 +14,21 @@ import type {
  *
  * A theme package should have a `Theme` as the default export
  */
-export type Theme<T extends ThemeConfig = ThemeConfig> = Plugin<T, ThemeObject>
+export type Theme = Plugin<ThemeObject>
 
 /**
  * Vuepress theme function
  */
-export type ThemeFunction<T extends ThemeConfig = ThemeConfig> = PluginFunction<
-  T,
-  ThemeObject
->
+export type ThemeFunction = PluginFunction<ThemeObject>
 
 /**
  * Vuepress theme object
  */
-export interface ThemeObject extends PluginObject {
-  /**
-   * Theme plugin should never be multiple
-   */
-  multiple?: false
-
+export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
   /**
    * Extended parent theme
    */
-  extends?: string
+  extends?: Theme
 
   /**
    * Specify the layouts directory or components map
@@ -46,7 +38,7 @@ export interface ThemeObject extends PluginObject {
   /**
    * Allow using plugins in theme
    */
-  plugins?: PluginConfig[]
+  plugins?: PluginConfig
 
   /**
    * Allow overriding default templateBuild
@@ -60,17 +52,6 @@ export interface ThemeObject extends PluginObject {
 }
 
 /**
- * Theme config to be used in user config file
- *
- * It will be used by a theme itself, but not by vuepress.
- *
- * Vuepress will only transfer this config to theme
- *
- * @remark suffix `Config` means this is for user config
- */
-export type ThemeConfig = Record<string, any>
-
-/**
  * Resolved theme info
  */
 export interface ThemeInfo {
@@ -82,7 +63,7 @@ export interface ThemeInfo {
   /**
    * Plugins, including theme itself and plugins used by theme
    */
-  plugins: PluginObject[]
+  plugins: PluginConfig
 
   /**
    * Default build template

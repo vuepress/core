@@ -4,10 +4,22 @@
 
 根据组件文件或目录自动注册 Vue 组件。
 
-## 安装
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-register-components@next
+```
+
+```js
+const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
+
+module.exports = {
+  plugins: [
+    registerComponentsPlugin({
+      // 配置项
+    }),
+  ],
+}
 ```
 
 ## 配置项
@@ -33,14 +45,11 @@ const { path } = require('@vuepress/utils')
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/register-components',
-      {
-        components: {
-          FooBar: path.resolve(__dirname, './components/FooBar.vue'),
-        },
+    registerComponentsPlugin({
+      components: {
+        FooBar: path.resolve(__dirname, './components/FooBar.vue'),
       },
-    ],
+    }),
   ],
 }
 ```
@@ -60,14 +69,13 @@ module.exports = {
 - 示例：
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   plugins: [
-    [
-      '@vuepress/register-components',
-      {
-        componentsDir: path.resolve(__dirname, './components'),
-      },
-    ],
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    }),
   ],
 }
 ```

@@ -1,13 +1,13 @@
-import { createBaseApp, createHookQueue, createPage } from '@vuepress/core'
-import type { Page } from '@vuepress/core'
 import { createMarkdown } from '@vuepress/markdown'
 import type { MarkdownOptions } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
-import type { PageOptions } from '../../src'
+import { createBaseApp, createHookQueue, createPage } from '../../src'
+import type { Page, PageOptions } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+  theme: { name: 'test' },
+  bundler: {} as any,
 })
 app.markdown = createMarkdown()
 

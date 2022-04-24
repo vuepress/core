@@ -9,13 +9,13 @@ import { createWorkaroundPlugin } from './createWorkaroundPlugin'
 export const createPlugins = ({
   app,
   options,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: ViteBundlerOptions
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): Plugin[] => [
   // official vue plugin
   createVuePlugin(options.vuePluginOptions),
@@ -25,8 +25,8 @@ export const createPlugins = ({
   createMainPlugin({
     app,
     options,
-    isServer,
     isBuild,
+    isServer,
   }),
   createWorkaroundPlugin(),
 ]

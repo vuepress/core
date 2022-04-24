@@ -10,9 +10,9 @@ export type ExternalLinkIconPluginOptions = {
   locales?: ExternalLinkIconLocales
 }
 
-export const externalLinkIconPlugin: Plugin<ExternalLinkIconPluginOptions> = ({
+export const externalLinkIconPlugin = ({
   locales = {},
-}) => ({
+}: ExternalLinkIconPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-external-link-icon',
 
   define: {

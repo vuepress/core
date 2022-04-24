@@ -15,7 +15,7 @@
     "url": "git+https://github.com/vuepress/vuepress-next.git"
   },
   "license": "MIT",
-  "author": "Evan You",
+  "author": "meteorlxy",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -28,8 +28,7 @@
   "dependencies": {
     "@types/debug": "^4.1.7",
     "@types/fs-extra": "^9.0.13",
-    "@types/hash-sum": "^1.0.0",
-    "@vuepress/shared": "2.0.0-beta.38",
+    "@vuepress/shared": "workspace:*",
     "chalk": "^4.1.2",
     "debug": "^4.3.4",
     "fs-extra": "^10.0.1",

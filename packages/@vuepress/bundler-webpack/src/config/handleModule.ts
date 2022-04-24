@@ -15,14 +15,14 @@ export const handleModule = ({
   app,
   options,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: WebpackBundlerOptions
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   // noParse
   config.module.noParse(
@@ -39,11 +39,11 @@ export const handleModule = ({
   handleModuleAssets({ app, config })
 
   // js files
-  handleModuleJs({ options, config, isServer, isBuild })
+  handleModuleJs({ options, config, isBuild, isServer })
 
   // ts files
   handleModuleTs({ app, config })
 
   // styles files
-  handleModuleStyles({ app, options, config, isServer, isBuild })
+  handleModuleStyles({ app, options, config, isBuild, isServer })
 }

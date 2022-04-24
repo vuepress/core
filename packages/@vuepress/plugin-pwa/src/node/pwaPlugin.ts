@@ -19,30 +19,35 @@ export interface PwaPluginOptions
   serviceWorkerFilename?: string
 }
 
-export const pwaPlugin: Plugin<PwaPluginOptions> = (
-  { serviceWorkerFilename = 'service-worker.js', ...generateSWConfig },
-  app
-) => {
-  const plugin: PluginObject = {
-    name: '@vuepress/plugin-pwa',
-  }
+export const pwaPlugin =
+  ({
+    serviceWorkerFilename = 'service-worker.js',
+    ...generateSWConfig
+  }: PwaPluginOptions): Plugin =>
+  (app) => {
+    const plugin: PluginObject = {
+      name: '@vuepress/plugin-pwa',
+    }
 
-  if (app.env.isDev) {
-    return plugin
-  }
+    if (app.env.isDev) {
+      return plugin
+    }
 
-  return {
-    ...plugin,
+    return {
+      ...plugin,
 
-    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
-
-    define: {
-      __PWA_SW_FILENAME__: serviceWorkerFilename,
-    },
-
-    onGenerated: (app) =>
-      withSpinner('Generating service worker')(() =>
-        generateServiceWorker(app, serviceWorkerFilename, generateSWConfig)
+      clientAppSetupFiles: path.resolve(
+        __dirname,
+        '../client/clientAppSetup.js'
       ),
+
+      define: {
+        __PWA_SW_FILENAME__: serviceWorkerFilename,
+      },
+
+      onGenerated: (app) =>
+        withSpinner('Generating service worker')(() =>
+          generateServiceWorker(app, serviceWorkerFilename, generateSWConfig)
+        ),
+    }
   }
-}

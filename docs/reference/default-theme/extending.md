@@ -20,48 +20,28 @@ Default theme's `Layout` provides some slots:
 
 With the help of them, you can add or replace content easily. Here comes an example to introduce how to extend default theme with layout slots.
 
-Firstly, create the theme directory and the theme entry `.vuepress/theme/index.js`:
-
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-const { path } = require('@vuepress/utils')
-
-module.exports = {
-  name: 'vuepress-theme-local',
-  extends: '@vuepress/theme-default',
-  layouts: {
-    Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-  },
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
+Firstly, create your local theme `.vuepress/theme/index.ts`:
 
 ```ts
-import type { ThemeObject } from '@vuepress/core'
+import type { Theme } from '@vuepress/core'
+import { defaultTheme } from '@vuepress/theme-default'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 
-const localTheme: ThemeObject = {
-  name: 'vuepress-theme-local',
-  extends: '@vuepress/theme-default',
-  layouts: {
-    Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-  },
+export const localTheme = (options: DefaultThemeOptions): Theme => {
+  return {
+    name: 'vuepress-theme-local',
+    extends: defaultTheme(options),
+    layouts: {
+      Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
+    },
+  }
 }
-
-export default localTheme
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+Then your theme will extend default theme, and override the `Layout` layout.
 
-Your local theme will extend default theme, and override the `Layout` layout.
-
-Next, create `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
+Next, create the `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
 
 ```vue
 <script setup>
@@ -83,35 +63,19 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 </style>
 ```
 
-Finally, remember to use your local theme in `.vuepress/config.js`:
-
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-const { path } = require('@vuepress/utils')
-
-module.exports = {
-  theme: path.resolve(__dirname, './theme'),
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
+Finally, remember to use your theme in the config file:
 
 ```ts
 import { path } from '@vuepress/utils'
 import { defineUserConfig } from 'vuepress'
-import type { DefaultThemeOptions } from 'vuepress'
+import { localTheme } from './theme'
 
-export default defineUserConfig<DefaultThemeOptions>({
-  theme: path.resolve(__dirname, './theme'),
+export default defineUserConfig({
+  theme: localTheme({
+    // default theme options
+  }),
 })
 ```
-
-  </CodeGroupItem>
-</CodeGroup>
 
 You will add a custom footer to every normal pages in default theme (excluding homepage):
 
@@ -125,73 +89,33 @@ Default theme has registered [alias](../plugin-api.md#alias) for every [non-glob
 
 Then, if you want to replace the `HomeFooter.vue` component, just override the alias:
 
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-const { path } = require('@vuepress/utils')
-
-module.exports = {
-  name: 'vuepress-theme-local',
-  extends: '@vuepress/theme-default',
-  alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
-  },
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
-
 ```ts
-import type { ThemeObject } from '@vuepress/core'
+import type { Theme } from '@vuepress/core'
+import { defaultTheme } from '@vuepress/theme-default'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 
-const localTheme: ThemeObject = {
-  name: 'vuepress-theme-local',
-  extends: '@vuepress/theme-default',
-  alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
-  },
+export const localTheme = (options: DefaultThemeOptions): Theme => {
+  return {
+    name: 'vuepress-theme-local',
+    extends: defaultTheme(options),
+    alias: {
+      '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    },
+  }
 }
-
-export default localTheme
 ```
-
-  </CodeGroupItem>
-</CodeGroup>
 
 In fact, you can even use components replacement without extending default theme. The [alias](../plugin-api.md#alias) option is part of [Plugin API](../plugin-api.md), so you only need to set the aliases in your config file to replace components.
 
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-const { path } = require('@vuepress/utils')
-
-module.exports = {
-  alias: {
-    '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
-  },
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
-
 ```ts
 import { path } from '@vuepress/utils'
-import { defineUserConfig } from 'vuepress'
-import type { DefaultThemeOptions } from 'vuepress'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig({
+  theme: defaultTheme(),
   alias: {
     '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
   },
 })
 ```
-
-  </CodeGroupItem>
-</CodeGroup>

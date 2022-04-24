@@ -6,10 +6,22 @@ This plugin will listen to page scroll event. When the page scrolls to a certain
 
 This plugin is mainly used to develop themes, and has been integrated into the default theme. You won't need to use it directly in most cases.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-active-header-links@next
+```
+
+```js
+const { activeHeaderLinksPlugin } = require('@vuepress/plugin-active-header-links')
+
+module.exports = {
+  plugins: [
+    activeHeaderLinksPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options
