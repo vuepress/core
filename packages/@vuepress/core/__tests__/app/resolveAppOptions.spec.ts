@@ -42,4 +42,27 @@ describe('core > app > resolveAppOptions', () => {
       plugins: [],
     })
   })
+
+  describe('should check and handle important options', () => {
+    it('should insure base syntax', () => {
+      // @ts-expect-error
+      expect(resolveAppOptions({ base: 'base', source: '/foo' }).base).toEqual(
+        '/base/'
+      )
+    })
+
+    it('should ensure dest does not include source file', () => {
+      const source = path.resolve(__dirname, 'foo')
+      const dest = path.resolve(__dirname, 'foo/.vuepress/dist')
+
+      expect(
+        resolveAppOptions({
+          dest: path.resolve(__dirname),
+          theme: { name: 'theme' } as any,
+          bundler: { name: 'bundler' } as any,
+          source,
+        }).dest
+      ).toEqual(dest)
+    })
+  })
 })
