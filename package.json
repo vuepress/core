@@ -3,9 +3,9 @@
   "version": "2.0.0-beta.39",
   "private": true,
   "scripts": {
-    "build": "pnpm run -r build --stream",
-    "clean": "pnpm run -r clean --stream",
-    "copy": "pnpm run -r copy --stream",
+    "build": "pnpm run -r --stream build",
+    "clean": "pnpm run -r --stream clean",
+    "copy": "pnpm run -r --stream copy",
     "dev:copy": "pnpm --filter=* --parallel copy -- --watch",
     "dev:tsc": "tsc -b tsconfig.build.json --watch",
     "dev:tsup": "pnpm --filter=@vuepress/client --filter=@vuepress/shared --parallel build -- --watch",
@@ -20,7 +20,7 @@
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release:check": "pnpm lint && pnpm clean && pnpm copy && pnpm build && pnpm test",
     "release:publish": "pnpm -r publish --tag next",
-    "release:version": "bumpp package.json packages/*/package.json packages/@vuepress/*/package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --tag",
+    "release:version": "bumpp package.json packages/*/package.json packages/@vuepress/*/package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --tag --push",
     "test": "jest --runInBand"
   },
   "lint-staged": {
