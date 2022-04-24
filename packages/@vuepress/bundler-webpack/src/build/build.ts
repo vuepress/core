@@ -48,7 +48,6 @@ export const build = async (
               console.warn(warning)
             })
           }
-
           resolve()
         }
       })

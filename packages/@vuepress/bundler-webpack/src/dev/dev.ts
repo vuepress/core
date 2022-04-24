@@ -15,9 +15,8 @@ export const dev = async (
   app: App
 ): ReturnType<Bundler['dev']> => {
   // create webpack config
-  const config = await createDevConfig(app, options)
   const webpackConfig = resolveWebpackConfig({
-    config,
+    config: await createDevConfig(app, options),
     options,
     isServer: false,
     isBuild: false,
