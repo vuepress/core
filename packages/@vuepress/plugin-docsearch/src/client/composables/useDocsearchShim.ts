@@ -1,7 +1,6 @@
 import type { DocSearchProps } from '@docsearch/react'
 import { useSiteData } from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
-import { createElement } from 'preact'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
 
@@ -31,9 +30,12 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
 
     // render the hit component with custom `onClick` handler
     hitComponent: ({ hit, children }) =>
-      createElement(
-        'a',
-        {
+      ({
+        type: 'a',
+        ref: undefined,
+        constructor: undefined,
+        key: undefined,
+        props: {
           href: hit.url,
           // handle `onClick` by `router.push`
           onClick: (event: MouseEvent) => {
@@ -43,9 +45,10 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
             event.preventDefault()
             router.push(hit.url)
           },
+          children,
         },
-        children
-      ),
+        __v: null,
+      } as unknown),
 
     // navigation behavior triggered by `onKeyDown` internally
     navigator: {

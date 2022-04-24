@@ -6,10 +6,22 @@ Integrate [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme)
 
 This plugin has been integrated into the default theme.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-medium-zoom@next
+```
+
+```js
+const { mediumZoomPlugin } = require('@vuepress/plugin-medium-zoom')
+
+module.exports = {
+  plugins: [
+    mediumZoomPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options

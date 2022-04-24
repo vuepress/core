@@ -8,10 +8,22 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 
 For theme authors, this plugin will help you to use the same i18n mechanism as VuePress and the default theme. But if you don't want to provide i18n support, or you want to implement in your own way, you don't need this plugin.
 
-## Install
+## Usage
 
 ```bash
 npm i -D @vuepress/plugin-theme-data@next
+```
+
+```js
+const { themeDataPlugin } = require('@vuepress/plugin-theme-data')
+
+module.exports = {
+  plugins: [
+    themeDataPlugin({
+      // options
+    }),
+  ],
+}
 ```
 
 ## Options
@@ -33,19 +45,16 @@ npm i -D @vuepress/plugin-theme-data@next
 ```js
 module.exports = {
   plugins: [
-    [
-      '@vuepress/plugin-theme-data',
-      {
-        themeData: {
-          foo: 'foo',
-          locales: {
-            '/zh/': {
-              foo: 'zh-foo',
-            },
+    themeDataPlugin({
+      themeData: {
+        foo: 'foo',
+        locales: {
+          '/zh/': {
+            foo: 'zh-foo',
           },
         },
       },
-    ],
+    }),
   ],
 }
 ```

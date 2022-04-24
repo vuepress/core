@@ -38,7 +38,7 @@ export interface ContainerPluginOptions extends MarkdownItContainerOptions {
   after?: RenderPlaceFunction
 }
 
-export const containerPlugin: Plugin<ContainerPluginOptions> = ({
+export const containerPlugin = ({
   // plugin options
   type,
   after,
@@ -49,18 +49,16 @@ export const containerPlugin: Plugin<ContainerPluginOptions> = ({
   validate,
   marker,
   render,
-}) => {
-  const pluginObj: PluginObject = {
+}: ContainerPluginOptions): Plugin => {
+  const plugin: PluginObject = {
     name: '@vuepress/plugin-container',
     multiple: true,
   }
 
   // `type` option is required
   if (!type) {
-    logger.warn(
-      `[${pluginObj.name}] ${chalk.magenta('type')} option is required`
-    )
-    return pluginObj
+    logger.warn(`[${plugin.name}] ${chalk.magenta('type')} option is required`)
+    return plugin
   }
 
   // if `render` option is not specified
@@ -127,9 +125,9 @@ export const containerPlugin: Plugin<ContainerPluginOptions> = ({
   }
 
   // use markdown-it-container
-  pluginObj.extendsMarkdown = (md) => {
+  plugin.extendsMarkdown = (md) => {
     md.use(container, type, { render, validate, marker })
   }
 
-  return pluginObj
+  return plugin
 }

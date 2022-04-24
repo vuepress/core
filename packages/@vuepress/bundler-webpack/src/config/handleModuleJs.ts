@@ -8,13 +8,13 @@ import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions'
 export const handleModuleJs = ({
   options,
   config,
-  isServer,
   isBuild,
+  isServer,
 }: {
   options: WebpackBundlerOptions
   config: Config
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): void => {
   // only enable transpilation in production client bundle
   // when `evergreen` option is set to `false`
@@ -47,7 +47,7 @@ export const handleModuleJs = ({
     .end()
     // use esbuild-loader
     .use('esbuild-loader')
-    .loader('esbuild-loader')
+    .loader(require.resolve('esbuild-loader'))
     .options({
       target: 'es2015',
       loader: 'jsx',

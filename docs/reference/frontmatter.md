@@ -44,10 +44,8 @@
 head:
   - - meta
     - name: foo
-      content: bar
-  - - link
-    - rel: canonical
-      href: foobar
+      content: yaml array syntax
+  - [meta, { name: bar , content: square brackets syntax }]
 ---
 ```
 
@@ -55,8 +53,8 @@ head:
 
 ```html
 <head>
-  <meta name="foo" content="bar" />
-  <link rel="canonical" href="foobar" />
+  <meta name="foo" content="yaml array syntax" />
+  <meta name="bar" content="square brackets syntax" />
 </head>
 ```
 

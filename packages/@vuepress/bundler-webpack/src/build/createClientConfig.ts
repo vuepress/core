@@ -21,7 +21,6 @@ export const createClientConfig = async (
   })
 
   // use internal vuepress-loader to handle SSR dependencies
-  // TODO: remove this loader and modify `build/renderPage` when vue-loader supports SSR
   config.module
     .rule('vue')
     .test(/\.vue$/)

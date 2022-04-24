@@ -3,17 +3,6 @@
 <NpmBadge package="@vuepress/cli" />
 <NpmBadge package="@vuepress/core" />
 
-VuePress 配置的参考文档，可以通过配置文件来设置这些配置。 VuePress 约定的配置文件为（按照优先顺序）：
-
-- 当前工作目录 `cwd` 下：
-  - `vuepress.config.ts`
-  - `vuepress.config.js`
-- 源文件目录 `sourceDir` 下：
-  - `.vuepress/config.ts`
-  - `.vuepress/config.js`
-
-你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件。
-
 ## 站点配置
 
 ### base
@@ -146,87 +135,32 @@ module.exports = {
 
 ### theme
 
-- 类型： `string`
-
-- 默认值： `'@vuepress/theme-default'`
+- 类型： `Theme`
 
 - 详情：
 
-  你想要使用的主题的名称或绝对路径。
+  设置站点要使用的主题。
 
-  这个选项可以接收主题名称、主题简称或主题的绝对路径。
-
-- 示例：
-
-```js
-module.exports = {
-  theme: 'vuepress-theme-foo',
-  theme: 'bar',
-  theme: path.resolve(__dirname, './path/to/local/theme'),
-}
-```
+  如果不设置该选项，将会使用默认主题。
 
 - 参考：
-  - [themeConfig](#themeconfig)
   - [指南 > 主题](../guide/theme.md)
-
-### themeConfig
-
-- 类型： `ThemeConfig`
-
-- 默认值： `{}`
-
-- 详情：
-
-  为当前使用的主题提供的配置项。具体的配置项取决于你使用的主题。
-
-- 示例：
-
-```js
-module.exports = {
-  // 使用默认主题
-  theme: '@vuepress/theme-default',
-  // 配置默认主题
-  themeConfig: {
-    logo: '/logo.png',
-  },
-}
-```
-
-- 参考：
-  - [theme](#theme)
   - [默认主题 > 配置](./default-theme/config.md)
 
 ## 打包工具配置
 
 ### bundler
 
-- 类型： `string`
-
-- 默认值： `'@vuepress/bundler-vite'`
+- 类型： `Bundler`
 
 - 详情：
 
-  你想要使用的打包工具的名称。
+  设置站点要使用的打包工具。
 
-  可以使用打包工具名称的简称。
+  如果不设置该选项，将会使用默认的打包工具：
 
-- 参考：
-  - [指南 > 打包工具](../guide/bundler.md)
-
-::: tip
-在使用 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) Package 时，默认的打包工具会被设置为 `'@vuepress/bundler-webpack'` 。
-:::
-
-### bundlerConfig
-
-- 类型： `BundlerConfig`
-
-- 默认值： `{}`
-
-- 详情：
-
-  为当前使用的打包工具提供的配置项。具体的配置项取决于你使用的打包工具。
+  - 使用 `vuepress` 或 `vuepress-vite` 时，默认的打包工具是 Vite 。
+  - 使用 `vuepress-webpack` 时，默认的打包工具是 Webpack 。
 
 - 参考：
   - [指南 > 打包工具](../guide/bundler.md)
@@ -244,6 +178,12 @@ module.exports = {
 - 详情：
 
   指定 `vuepress build` 命令的输出目录。
+
+::: warning
+VuePress 在构建过程中会在输出目录下生成临时文件，因此该文件夹应位于项目根目录内部，以便正确地解析到依赖。
+
+你可以在构建完成后手动将其移动到另一个位置。
+:::
 
 ### temp
 
@@ -336,7 +276,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/client/templates/index.dev.html'`
+- 默认值： `'@vuepress/client/templates/dev.html'`
 
 - 详情：
 
@@ -360,7 +300,7 @@ module.exports = {
 
 - 类型： `((file: string, type: string) => boolean)) | boolean`
 
-- 默认值： `false`
+- 默认值： `true`
 
 - 详情：
 
@@ -372,7 +312,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/client/templates/index.build.html'`
+- 默认值： `'@vuepress/client/templates/build.html'`
 
 - 详情：
 
@@ -743,34 +683,7 @@ module.exports = {
 
   要使用的插件。
 
-  该配置项接收一个数组，其中的每一个数组项是一个包含两个元素的元组：
-
-  - 第一个元素是插件名称或插件本身。它可以接收插件名称、插件简称、插件的绝对路径或插件对象。
-  - 第二个元素是插件选项。它可以接收布尔值或一个对象。设置为 `false` 可以跳过该插件。设置为 `true` 可以启用该插件但不设置任何选项。使用对象可以启用该插件并且传入选项。
-
-  为了简便起见，你可以将上述元组的第一个元素直接作为数组项，它等价于启用该插件但不设置任何选项。
-
-- 示例：
-
-```js
-module.exports = {
-  plugins: [
-    // 包含两个元素的元组
-    ['vuepress-plugin-foo', false],
-    ['bar', true],
-    [
-      path.resolve(__dirname, './path/to/local/plugin'),
-      {
-        /* 选项 */
-      },
-    ],
-    [require('vuepress-plugin-baz'), true],
-
-    // 只使用第一个元素
-    'foobar', // 等价于 ['foobar', true]
-  ],
-}
-```
+  该配置项接收一个数组，其中的每一个数组项是一个或一组插件。
 
 - 参考：
   - [指南 > 插件](../guide/plugin.md)

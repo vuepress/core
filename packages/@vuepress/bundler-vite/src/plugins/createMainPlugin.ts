@@ -6,42 +6,16 @@ import type { ViteBundlerOptions } from '../types'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
 
-// packages that include client code, which should not
-// be optimized nor externalized
-const clientPackages = [
-  '@vuepress/client',
-  '@vuepress/plugin-active-header-links',
-  '@vuepress/plugin-back-to-top',
-  '@vuepress/plugin-container',
-  '@vuepress/plugin-docsearch',
-  '@vuepress/plugin-external-link-icon',
-  '@vuepress/plugin-git',
-  '@vuepress/plugin-google-analytics',
-  '@vuepress/plugin-medium-zoom',
-  '@vuepress/plugin-nprogress',
-  '@vuepress/plugin-palette',
-  '@vuepress/plugin-prismjs',
-  '@vuepress/plugin-pwa',
-  '@vuepress/plugin-pwa-popup',
-  '@vuepress/plugin-register-components',
-  '@vuepress/plugin-search',
-  '@vuepress/plugin-shiki',
-  '@vuepress/plugin-theme-data',
-  '@vuepress/plugin-toc',
-  '@vuepress/shared',
-  '@vuepress/theme-default',
-]
-
 export const createMainPlugin = ({
   app,
   options,
-  isServer,
   isBuild,
+  isServer,
 }: {
   app: App
   options: ViteBundlerOptions
-  isServer: boolean
   isBuild: boolean
+  isServer: boolean
 }): Plugin => ({
   name: 'vuepress:main',
 
@@ -57,7 +31,7 @@ export const createMainPlugin = ({
             /<\/body>/,
             `\
 <script type="module">
-import '@vuepress/client/lib/app.js'
+import '@vuepress/client/app'
 </script>
 </body>`
           )
@@ -72,7 +46,7 @@ import '@vuepress/client/lib/app.js'
       publicDir: app.dir.public(),
       cacheDir: app.dir.cache(),
       resolve: {
-        alias: await resolveAlias({ app }),
+        alias: await resolveAlias({ app, isServer }),
       },
       css: {
         postcss: {
@@ -95,17 +69,27 @@ import '@vuepress/client/lib/app.js'
         emptyOutDir: false,
         cssCodeSplit: false,
         rollupOptions: {
-          input: app.dir.client('lib/app.js'),
+          input: app.dir.client('dist/app.js'),
           preserveEntrySignatures: 'allow-extension',
         },
         minify: isServer ? false : !app.env.isDebug,
       },
       optimizeDeps: {
         include: ['@vuepress/shared'],
-        exclude: clientPackages,
+        // packages that include client code, which should not be optimized
+        exclude: [
+          '@vuepress/client',
+          ...app.pluginApi.plugins.map(({ name }) => name),
+        ],
       },
+      // bundle all dependencies except vue in ssr mode:
+      // - transform esm modules to cjs, otherwise we may wrongly `require()` esm modules
+      // - bundle dependencies all together, otherwise we may fail to resolve them with pnpm
+      // - force externalize vue, because we need to `require('vue')` in node side for ssr usage,
+      //   then we also need vue as peer-dependency when using pnpm
       ssr: {
-        noExternal: clientPackages,
+        external: ['vue'],
+        noExternal: [/^(?!(vue)$).*$/],
       },
     }
   },

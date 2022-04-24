@@ -1,10 +1,5 @@
 /**
  * Config for `<head>` tags
- *
- * @example ['link', { rel: 'icon', href: '/logo.png' }]
- * @example ['style', { type: 'text/css' }, 'p { color: red; }']
- *
- * @remark suffix `Config` means this is for user config
  */
 export type HeadConfig =
   | [HeadTagEmpty, HeadAttrsConfig]

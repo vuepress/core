@@ -1,4 +1,4 @@
-import { resolvePageContent } from '@vuepress/core'
+import { resolvePageContent } from '../../src'
 
 const testCases: [string, ReturnType<typeof resolvePageContent>][] = [
   [

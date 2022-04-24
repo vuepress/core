@@ -10,20 +10,18 @@ import type { HooksExposed } from './pluginApi'
  *
  * A plugin package should have a `Plugin` as the default export
  */
-export type Plugin<
-  T extends PluginOptions = PluginOptions,
-  U extends PluginObject = PluginObject
-> = U | PluginFunction<T, U>
+export type Plugin<T extends PluginObject = PluginObject> =
+  | T
+  | PluginFunction<T>
 
 /**
  * Vuepress plugin function
  *
  * It accepts plugin options and vuepress app, returns plugin object
  */
-export type PluginFunction<
-  T extends PluginOptions = PluginOptions,
-  U extends PluginObject = PluginObject
-> = (pluginConfig: Partial<T>, app: App) => U
+export type PluginFunction<T extends PluginObject = PluginObject> = (
+  app: App
+) => T
 
 /**
  * Vuepress plugin object
@@ -37,28 +35,6 @@ export interface PluginObject extends Partial<HooksExposed> {
 }
 
 /**
- * Vuepress plugin options basic type
+ * Config field for plugins
  */
-export type PluginOptions = Record<string, any>
-
-/**
- * Plugin config to be used in user config file
- *
- * Users can use this config to control which plugins to be used,
- * and set the plugin options
- *
- * @remark suffix `Config` means this is for user config
- */
-export type PluginConfig<T extends PluginOptions = PluginOptions> =
-  | string
-  | Plugin<T>
-  | [string | Plugin<T>]
-  | [string | Plugin<T>, Partial<T> | boolean]
-
-/**
- * Normalized plugin config
- */
-export type PluginConfigNormalized<T extends PluginOptions = PluginOptions> = [
-  Plugin<T> | string,
-  Partial<T> | boolean
-]
+export type PluginConfig = (Plugin | Plugin[])[]

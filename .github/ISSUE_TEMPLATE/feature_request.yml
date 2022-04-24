@@ -1,0 +1,35 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: '[Feature request] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in the project and taking the time to fill out this feature request!
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Clear and concise description of the problem
+      description: As a developer using VuePress, what feature your want in details. If you intend to submit a PR for this issue, tell us in the description. Thanks!
+      placeholder: Feature description
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-solution
+    attributes:
+      label: Suggested solution
+      description: We could provide following implementation...
+      placeholder: Suggested solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative
+      description: Clear and concise description of any alternative solutions or features you've considered.
+      placeholder: Alternative solution
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Any other context or screenshots about the feature request here.

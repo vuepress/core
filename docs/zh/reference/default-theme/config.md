@@ -2,7 +2,15 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-默认主题配置的参考文档，可以通过 [themeConfig](../config.md#themeconfig) 来设置这些配置。
+```js
+const { defaultTheme } = require('@vuepress/theme-default')
+
+module.exports = {
+  theme: defaultTheme({
+    // 在这里进行配置
+  }),
+}
+```
 
 ## 基础配置
 
@@ -64,7 +72,7 @@
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     navbar: [
       // NavbarItem
       {
@@ -79,7 +87,7 @@ module.exports = {
       // 字符串 - 页面文件路径
       '/bar/README.md',
     ],
-  },
+  }),
 }
 ```
 
@@ -87,7 +95,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     navbar: [
       // 嵌套 Group - 最大深度为 2
       {
@@ -119,7 +127,7 @@ module.exports = {
         ],
       },
     ],
-  },
+  }),
 }
 ```
 
@@ -139,12 +147,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // Public 文件路径
     logo: '/images/hero.png',
     // URL
     logo: 'https://vuejs.org/images/logo.png',
-  },
+  }),
 }
 ```
 
@@ -191,13 +199,13 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
     repo: 'vuejs/vuepress',
     // 你也可以直接将它设置为一个 URL
     repo: 'https://gitlab.com/foo/bar',
-  },
+  }),
 }
 ```
 
@@ -255,7 +263,7 @@ module.exports = {
       lang: 'zh-CN',
     },
   },
-  themeConfig: {
+  theme: defaultTheme({
     locales: {
       '/': {
         selectLanguageName: 'English',
@@ -264,7 +272,7 @@ module.exports = {
         selectLanguageName: '简体中文',
       },
     },
-  },
+  }),
 }
 ```
 
@@ -298,7 +306,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // 侧边栏数组
     // 所有页面会使用相同的侧边栏
     sidebar: [
@@ -320,7 +328,7 @@ module.exports = {
       // 字符串 - 页面文件路径
       '/bar/README.md',
     ],
-  },
+  }),
 }
 ```
 
@@ -328,7 +336,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // 侧边栏对象
     // 不同子路径下的页面会使用不同的侧边栏
     sidebar: {
@@ -345,7 +353,7 @@ module.exports = {
         },
       ],
     },
-  },
+  }),
 }
 ```
 
@@ -353,7 +361,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     // 可折叠的侧边栏
     sidebar: {
       '/reference/': [
@@ -369,7 +377,7 @@ module.exports = {
         },
       ],
     },
-  },
+  }),
 }
 ```
 
@@ -440,12 +448,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  themeConfig: {
+  theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',
     docsDir: 'docs',
     editLinkPattern: ':repo/-/edit/:branch/:path',
-  },
+  }),
 }
 ```
 
@@ -497,9 +505,7 @@ module.exports = {
 
   是否启用 _最近更新时间戳_ 。
 
-  你可以通过页面的 [lastUpdated](./frontmatter.md#lastupdated) frontmatter 来覆盖这个全局配置。
-
-  要注意的是，如果你将 `themeConfig.lastUpdated` 设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
+  你可以通过页面的 [lastUpdated](./frontmatter.md#lastupdated) frontmatter 来覆盖这个全局配置。要注意的是，如果你已经将该选项设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
 
 ### lastUpdatedText
 
@@ -521,9 +527,7 @@ module.exports = {
 
   是否启用 _贡献者列表_ 。
 
-  你可以通过页面的 [contributors](./frontmatter.md#contributors) frontmatter 来覆盖这个全局配置。
-
-  要注意的是，如果你将 `themeConfig.contributors` 设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
+  你可以通过页面的 [contributors](./frontmatter.md#contributors) frontmatter 来覆盖这个全局配置。要注意的是，如果你已经将该选项设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
 
 ### contributorsText
 

@@ -1,12 +1,13 @@
-import { createBaseApp, resolveAppPages } from '@vuepress/core'
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
+import { createBaseApp, resolveAppPages } from '../../src'
 
 describe('core > app > resolveAppPages', () => {
   it('should create two pages with default 404 page', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+      theme: { name: 'test' },
+      bundler: {} as any,
     })
     app.markdown = createMarkdown()
 
@@ -25,7 +26,8 @@ describe('core > app > resolveAppPages', () => {
   it('should create two pages with custom 404 page', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+      theme: { name: 'test' },
+      bundler: {} as any,
     })
     app.markdown = createMarkdown()
 
@@ -43,7 +45,8 @@ describe('core > app > resolveAppPages', () => {
   it('should process extendsPageOptions hook correctly', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+      theme: { name: 'test' },
+      bundler: {} as any,
     })
 
     app.use({
@@ -66,7 +69,8 @@ describe('core > app > resolveAppPages', () => {
   it('should process extendsPage hook correctly', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
+      theme: { name: 'test' },
+      bundler: {} as any,
     })
 
     app.use({
