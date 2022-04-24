@@ -36,6 +36,7 @@ export const resolveAppOptions = ({
   debug = false,
   markdown = {},
   pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
+  permalinkPattern = null,
   plugins = [],
   theme,
 }: AppConfig): AppOptions => ({
@@ -61,6 +62,7 @@ export const resolveAppOptions = ({
   debug,
   markdown,
   pagePatterns,
+  permalinkPattern,
   plugins,
   theme,
 })

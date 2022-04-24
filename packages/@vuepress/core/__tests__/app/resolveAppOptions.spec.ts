@@ -30,6 +30,7 @@ describe('core > app > resolveAppOptions', () => {
       port: 8080,
       open: false,
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
+      permalinkPattern: null,
       templateDev: path.normalize(
         require.resolve('@vuepress/client/templates/dev.html')
       ),
