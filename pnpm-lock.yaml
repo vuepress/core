@@ -222,7 +222,7 @@ importers:
       '@types/markdown-it': ^12.2.3
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
-      markdown-it: ^12.3.2
+      markdown-it: ^13.0.0
       markdown-it-anchor: ^8.4.1
       markdown-it-emoji: ^2.0.0
       mdurl: ^1.0.1
@@ -230,8 +230,8 @@ importers:
       '@types/markdown-it': 12.2.3
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
-      markdown-it: 12.3.2
-      markdown-it-anchor: 8.6.2_d643ca6eb40ae68ab966a77bead78073
+      markdown-it: 13.0.0
+      markdown-it-anchor: 8.6.2_e65554cf9708eb5a747b25768b7e70ba
       markdown-it-emoji: 2.0.2
       mdurl: 1.0.1
 
@@ -270,7 +270,7 @@ importers:
       '@vuepress/markdown': workspace:*
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
-      markdown-it: ^12.3.2
+      markdown-it: ^13.0.0
       markdown-it-container: ^3.0.0
     dependencies:
       '@types/markdown-it': 12.2.3
@@ -278,7 +278,7 @@ importers:
       '@vuepress/markdown': link:../markdown
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
-      markdown-it: 12.3.2
+      markdown-it: 13.0.0
       markdown-it-container: 3.0.0
 
   packages/@vuepress/plugin-docsearch:
@@ -4647,12 +4647,13 @@ packages:
       tapable: 2.2.1
     dev: false
 
-  /entities/2.1.0:
-    resolution: {integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==}
-    dev: false
-
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
+    dev: false
+
+  /entities/3.0.1:
+    resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==}
+    engines: {node: '>=0.12'}
     dev: false
 
   /envinfo/7.8.1:
@@ -7063,8 +7064,8 @@ packages:
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /linkify-it/3.0.3:
-    resolution: {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
+  /linkify-it/4.0.0:
+    resolution: {integrity: sha512-QAxkXyzT/TXgwGyY4rTgC95Ex6/lZ5/lYTV9nug6eJt93BCBQGOE47D/g2+/m5J1MrVLr2ot97OXkBZ9bBpR4A==}
     dependencies:
       uc.micro: 1.0.6
     dev: false
@@ -7272,14 +7273,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /markdown-it-anchor/8.6.2_d643ca6eb40ae68ab966a77bead78073:
+  /markdown-it-anchor/8.6.2_e65554cf9708eb5a747b25768b7e70ba:
     resolution: {integrity: sha512-JNaekTlIwwyYGBN3zifZDxgz4bSL8sbEj58fdTZGmPSMMGXBZapFjcZk2I33Jy79c1fvCKHpF7MA/67FOTjvzA==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
     dependencies:
       '@types/markdown-it': 12.2.3
-      markdown-it: 12.3.2
+      markdown-it: 13.0.0
     dev: false
 
   /markdown-it-container/3.0.0:
@@ -7290,13 +7291,13 @@ packages:
     resolution: {integrity: sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ==}
     dev: false
 
-  /markdown-it/12.3.2:
-    resolution: {integrity: sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==}
+  /markdown-it/13.0.0:
+    resolution: {integrity: sha512-WArlIpVFvVwb8t3wgJuOsbMLhNWlzuQM7H2qXmuUEnBtXRqKjLjwFUMbZOyJgHygVZSjvcLR4EcXcRilqMavrA==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
-      entities: 2.1.0
-      linkify-it: 3.0.3
+      entities: 3.0.1
+      linkify-it: 4.0.0
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: false

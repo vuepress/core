@@ -29,7 +29,7 @@
     "@types/markdown-it": "^12.2.3",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "markdown-it": "^12.3.2",
+    "markdown-it": "^13.0.0",
     "markdown-it-anchor": "^8.4.1",
     "markdown-it-emoji": "^2.0.0",
     "mdurl": "^1.0.1"
