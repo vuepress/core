@@ -37,5 +37,8 @@
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.33"
   }
 }

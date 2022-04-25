@@ -34,9 +34,6 @@
     "toml": "^3.0.0",
     "vue": "^3.2.33"
   },
-  "peerDependencies": {
-    "vue": "^3.2.33"
-  },
   "publishConfig": {
     "access": "public"
   }
