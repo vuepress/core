@@ -9,6 +9,12 @@
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm docs:dev"
+    },
+    {
+      "name": "docs:build",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm docs:build"
     }
   ]
 }
