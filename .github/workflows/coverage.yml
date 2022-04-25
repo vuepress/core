@@ -36,8 +36,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Copy and build
-        run: pnpm copy && pnpm build
+      - name: Build source code
+        run: pnpm build
 
       - name: Test coverage
         run: pnpm test -- --coverage

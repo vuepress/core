@@ -91,7 +91,7 @@ The `docs:` prefix indicates that these scripts are for documentation, i.e. the 
 
 VuePress is using itself to build its own documentation site.
 
-You need to run `pnpm build && pnpm copy` to build VuePress source files first, then run these `docs:` scripts to develop and build our documentation.
+You need to run `pnpm build` to build VuePress source files first, then run these `docs:` scripts to develop and build our documentation.
 
 #### `pnpm docs:serve`
 

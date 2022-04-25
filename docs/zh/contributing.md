@@ -91,7 +91,7 @@ pnpm docs:dev
 
 VuePress 使用它自己来构建自己的文档网站。
 
-你需要先执行 `pnpm build && pnpm copy` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
+你需要先执行 `pnpm build` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
 
 #### `pnpm docs:serve`
 
