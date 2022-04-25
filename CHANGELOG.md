@@ -1,3 +1,13 @@
+# [2.0.0-beta.41](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.40...v2.0.0-beta.41) (2022-04-25)
+
+
+### Bug Fixes
+
+* **bundler-vite:** add client package to peerDependencies ([a82fc60](https://github.com/vuepress/vuepress-next/commit/a82fc60b5c3dcbe90c5b409be79dd342d4e13aeb))
+* **plugin-nprogress:** fork nprogress to local ([45770b1](https://github.com/vuepress/vuepress-next/commit/45770b1b82f27e9c37e0689f99aa098cc7a73fee))
+
+
+
 # [2.0.0-beta.40](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.39...v2.0.0-beta.40) (2022-04-25)
 
 
