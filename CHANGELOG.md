@@ -1,3 +1,43 @@
+# [2.0.0-beta.40](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.39...v2.0.0-beta.40) (2022-04-25)
+
+
+### Bug Fixes
+
+* allow building multiple times in the same dest dir (close [#772](https://github.com/vuepress/vuepress-next/issues/772)) ([30bb4a8](https://github.com/vuepress/vuepress-next/commit/30bb4a8aa9d06fd52ffce5611dd7b255387c0c71))
+* **bundler-vite:** disable scss charset by default ([f3f8772](https://github.com/vuepress/vuepress-next/commit/f3f877209a5800f7ceafdda9d73047fe8a19a785))
+* **bundler-vite:** fix build failure when there are no css files (close [#697](https://github.com/vuepress/vuepress-next/issues/697)) ([#829](https://github.com/vuepress/vuepress-next/issues/829)) ([f6101a5](https://github.com/vuepress/vuepress-next/commit/f6101a591b79469c18e6bb1cf368aa9d36120a5e))
+* **bundler-vite:** remove redundant use of postcss-csso (close [#759](https://github.com/vuepress/vuepress-next/issues/759)) ([00c27c3](https://github.com/vuepress/vuepress-next/commit/00c27c32fb290d757725181d4cd57e9c9df85835))
+* **client:** support hot-reload of frontmatter head ([effa95f](https://github.com/vuepress/vuepress-next/commit/effa95f821957dc293205ce9e13c46cddc0d1ea5))
+* **plugin-active-header-links:** do not append hash at page top (close [#693](https://github.com/vuepress/vuepress-next/issues/693)) ([#722](https://github.com/vuepress/vuepress-next/issues/722)) ([f71cb50](https://github.com/vuepress/vuepress-next/commit/f71cb5020da1d84cac54e5f02812f36c02dd85f4))
+* **plugin-palette:** fix sass import when path contains spaces (close [#481](https://github.com/vuepress/vuepress-next/issues/481)) ([#814](https://github.com/vuepress/vuepress-next/issues/814)) ([bbea812](https://github.com/vuepress/vuepress-next/commit/bbea812698cbe8f19e39671e9bf7bd6b49deede4))
+
+
+### Code Refactoring
+
+* drop support for using bundler, theme and plugins by name ([#843](https://github.com/vuepress/vuepress-next/issues/843)) ([b85b1c3](https://github.com/vuepress/vuepress-next/commit/b85b1c3b39e80a8de92a7469381061f75ef33623))
+
+
+### Features
+
+* **cli:** enable sourcemap for ts files (close [#457](https://github.com/vuepress/vuepress-next/issues/457)) ([bf8c4bc](https://github.com/vuepress/vuepress-next/commit/bf8c4bc440ffdb6ea0d880309eb1dbb1f9372a39))
+* **core:** enable prefetch by default ([9d40851](https://github.com/vuepress/vuepress-next/commit/9d408519c69234d793359ef27977941fd80dfae1))
+* **markdown:** bump markdown-it to v13 ([09a3637](https://github.com/vuepress/vuepress-next/commit/09a3637c0dc81d2afe61db9da13229cd4409e0f1))
+* **markdown:** improve code fence language detection (close [#752](https://github.com/vuepress/vuepress-next/issues/752)) ([#815](https://github.com/vuepress/vuepress-next/issues/815)) ([1c4d237](https://github.com/vuepress/vuepress-next/commit/1c4d23764d51134a5807a14f881ce24e6ce2378a))
+* **plugin-docsearch:** remove preact dependency ([bb4a2ca](https://github.com/vuepress/vuepress-next/commit/bb4a2cabe4ab6ed29c5a698454f6a8be5729c69a))
+
+
+### BREAKING CHANGES
+
+* config `bundler` should import the bundler directly, and `bundlerConfig` has been removed
+* config `theme` should import the theme directly, and `themeConfig` has been removed
+* config `plugins` should import the plugins directly
+* theme API `plugins` should import the plugins directly
+* theme API `extends` should import the parent theme directly
+* plugin function and theme function should no longer accept user options as the first param, please check out the guide for how to write a plugin and a theme
+* **core:** default value of `shouldPrefetch` option has been changed from `false` to `true`
+
+
+
 # [2.0.0-beta.39](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.38...v2.0.0-beta.39) (2022-04-10)
 
 
