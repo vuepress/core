@@ -50,12 +50,7 @@ import '@vuepress/client/app'
       },
       css: {
         postcss: {
-          plugins: isServer
-            ? []
-            : [
-                require('autoprefixer'),
-                ...(isBuild ? [require('postcss-csso')] : []),
-              ],
+          plugins: isServer ? [] : [require('autoprefixer')],
         },
       },
       server: {

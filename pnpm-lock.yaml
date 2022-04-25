@@ -91,8 +91,6 @@ importers:
       '@vuepress/utils': workspace:*
       autoprefixer: ^10.4.4
       connect-history-api-fallback: ^1.6.0
-      postcss: ^8.4.12
-      postcss-csso: ^6.0.0
       rollup: ^2.70.2
       vite: ~2.9.5
       vue: ^3.2.33
@@ -103,10 +101,8 @@ importers:
       '@vuepress/core': link:../core
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
-      autoprefixer: 10.4.4_postcss@8.4.12
+      autoprefixer: 10.4.4
       connect-history-api-fallback: 1.6.0
-      postcss: 8.4.12
-      postcss-csso: 6.0.0_postcss@8.4.12
       rollup: 2.70.2
       vite: 2.9.5
       vue: 3.2.33
@@ -3413,6 +3409,21 @@ packages:
   /at-least-node/1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
+    dev: false
+
+  /autoprefixer/10.4.4:
+    resolution: {integrity: sha512-Tm8JxsB286VweiZ5F0anmbyGiNI3v3wGv3mz9W+cxEDYB/6jbnj6GM9H9mK3wIL8ftgl+C07Lcwb8PG5PCCPzA==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.20.2
+      caniuse-lite: 1.0.30001332
+      fraction.js: 4.2.0
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /autoprefixer/10.4.4_postcss@8.4.12:

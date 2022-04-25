@@ -35,8 +35,6 @@
     "@vuepress/utils": "workspace:*",
     "autoprefixer": "^10.4.4",
     "connect-history-api-fallback": "^1.6.0",
-    "postcss": "^8.4.12",
-    "postcss-csso": "^6.0.0",
     "rollup": "^2.70.2",
     "vite": "~2.9.5",
     "vue": "^3.2.33",
