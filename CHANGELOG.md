@@ -3,13 +3,77 @@
 
 ### Bug Fixes
 
-* **bundler-vite:** add client package to peerDependencies ([a82fc60](https://github.com/vuepress/vuepress-next/commit/a82fc60b5c3dcbe90c5b409be79dd342d4e13aeb))
 * **plugin-nprogress:** fork nprogress to local ([45770b1](https://github.com/vuepress/vuepress-next/commit/45770b1b82f27e9c37e0689f99aa098cc7a73fee))
 
 
 
 # [2.0.0-beta.40](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.39...v2.0.0-beta.40) (2022-04-25)
 
+## IMPORTANT
+
+This release contains important breaking changes. The way to use bundler, theme and plugins has been totally changed.
+
+The old way is a legacy of VuePress v1. We finally decided to drop it for following reasons:
+
+- To get better type hint. The old string-based way is difficult to provide good types support.
+- To be more explicit. Now we should import and use theme / plugins explicitly, instead of simply putting a string there.
+- To be more normalized. With the old string-based way, we have to `require.resolve` dependencies inside the core package, which could not work with some strict package manager like [pnpm](https://pnpm.io/).
+
+You could migrate your config file as follow, and check our latest docs for more details:
+
+```diff
+- module.exports = {
+-   theme: '@vuepress/theme-default',
+-   themeConfig: {
+-     // default theme config
+-   },
+- }
+
++ const { defaultTheme } = require('vuepress')
++ module.exports = {
++   theme: defaultTheme({
++     // default theme config
++   })
++ }
+```
+
+```diff
+- module.exports = {
+-   bundler: '@vuepress/bundler-vite',
+-   bundlerConfig: {
+-     // vite bundler config
+-   },
+- }
+
++ const { viteBundler } = require('vuepress')
++ module.exports = {
++   bundler: viteBundler({
++     // vite bundler config
++   })
++ }
+```
+
+```diff
+- module.exports = {
+-   plugins: [
+-     [
+-       '@vuepress/plugin-google-analytics',
+-       {
+-         id: 'G-XXXXXXXXXX',
+-       },
+-     ],
+-   ],
+- }
+
++ const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
++ module.exports = {
++   plugins: [
++     googleAnalyticsPlugin({
++         id: 'G-XXXXXXXXXX',
++     }),
++   ],
++ }
+```
 
 ### Bug Fixes
 
