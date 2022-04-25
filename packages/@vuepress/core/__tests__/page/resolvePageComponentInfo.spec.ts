@@ -11,7 +11,6 @@ describe('core > page > resolvePageComponentInfo', () => {
   it('should resolve page component info correctly', async () => {
     const resolved = await resolvePageComponentInfo({
       app,
-      hoistedTags: [],
       htmlFilePathRelative: 'foo.html',
       key: 'key',
     })
