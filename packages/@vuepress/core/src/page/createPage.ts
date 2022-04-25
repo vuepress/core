@@ -103,7 +103,6 @@ export const createPage = async (
     componentFileChunkName,
   } = await resolvePageComponentInfo({
     app,
-    hoistedTags,
     htmlFilePathRelative,
     key,
   })

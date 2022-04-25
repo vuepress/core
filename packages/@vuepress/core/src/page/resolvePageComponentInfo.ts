@@ -6,12 +6,10 @@ import type { App } from '../types'
  */
 export const resolvePageComponentInfo = async ({
   app,
-  hoistedTags,
   htmlFilePathRelative,
   key,
 }: {
   app: App
-  hoistedTags: string[]
   htmlFilePathRelative: string
   key: string
 }): Promise<{
