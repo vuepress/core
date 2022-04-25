@@ -52,6 +52,9 @@ import '@vuepress/client/app'
         postcss: {
           plugins: isServer ? [] : [require('autoprefixer')],
         },
+        preprocessorOptions: {
+          scss: { charset: false },
+        },
       },
       server: {
         host: app.options.host,
