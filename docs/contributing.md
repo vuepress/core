@@ -45,10 +45,10 @@ Clone the repo, and install dependencies:
 pnpm install
 ```
 
-Build and copy source files:
+Build source code:
 
 ```bash
-pnpm build && pnpm copy
+pnpm build
 ```
 
 Start developing the documentation site:
@@ -67,17 +67,11 @@ Main tools that used in this project:
 
 ### `pnpm build`
 
-The `build` script uses `tsc` to compile typescript source files to javascript dist files.
+The `build` script uses `tsc` and `tsup` to compile TypeScript source files to JavaScript dist files.
+
+Also, it will copy necessary resources from source directory to dist directory, because some source files (e.g. `.vue`, `.css` files) would not be processed by `tsc` nor `tsup`, but should keep the same relative path in the dist directory.
 
 You may need to run this script first after your clone this repository, because the dist files are ignored by `.gitignore`.
-
-### `pnpm copy`
-
-The `copy` script of root project runs `copy` script in all packages, copying some resources from source directory to dist directory.
-
-Some source files (e.g. `.vue`, `.css` files) can not be processed by `build` script, but should keep the same relative path in the dist directory.
-
-You may need to run this script after your clone this repository, too.
 
 ### `pnpm clean`
 
