@@ -32,12 +32,8 @@
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "nprogress": "^0.2.0",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
-    "@types/nprogress": "^0.2.0"
   },
   "publishConfig": {
     "access": "public"

@@ -353,22 +353,17 @@ importers:
 
   packages/@vuepress/plugin-nprogress:
     specifiers:
-      '@types/nprogress': ^0.2.0
       '@vuepress/client': workspace:*
       '@vuepress/core': workspace:*
       '@vuepress/utils': workspace:*
-      nprogress: ^0.2.0
       vue: ^3.2.33
       vue-router: ^4.0.14
     dependencies:
       '@vuepress/client': link:../client
       '@vuepress/core': link:../core
       '@vuepress/utils': link:../utils
-      nprogress: 0.2.0
       vue: 3.2.33
       vue-router: 4.0.14_vue@3.2.33
-    devDependencies:
-      '@types/nprogress': 0.2.0
 
   packages/@vuepress/plugin-palette:
     specifiers:
@@ -2634,10 +2629,6 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
-    dev: true
-
-  /@types/nprogress/0.2.0:
-    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -7561,10 +7552,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
-
-  /nprogress/0.2.0:
-    resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
-    dev: false
 
   /nth-check/2.0.1:
     resolution: {integrity: sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==}
