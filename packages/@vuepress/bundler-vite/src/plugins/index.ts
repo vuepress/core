@@ -1,3 +1,1 @@
-export * from './createPlugins'
-export * from './resolveAlias'
-export * from './resolveDefine'
+export * from './vuepressPlugin'

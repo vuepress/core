@@ -3,7 +3,7 @@ import type { OptimizedDeps, Plugin, ViteDevServer } from 'vite'
 /**
  * Workaround for https://github.com/vitejs/vite/issues/7621
  */
-export const createWorkaroundPlugin = (): Plugin => {
+export const workaroundPlugin = (): Plugin => {
   let server: (ViteDevServer & { _optimizedDeps?: OptimizedDeps }) | null
   return {
     name: 'vuepress:workaround',

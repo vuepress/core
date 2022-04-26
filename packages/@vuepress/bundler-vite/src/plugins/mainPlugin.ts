@@ -2,18 +2,15 @@ import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import * as history from 'connect-history-api-fallback'
 import type { Connect, Plugin } from 'vite'
-import type { ViteBundlerOptions } from '../types'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
 
-export const createMainPlugin = ({
+export const mainPlugin = ({
   app,
-  options,
   isBuild,
   isServer,
 }: {
   app: App
-  options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
 }): Plugin => ({

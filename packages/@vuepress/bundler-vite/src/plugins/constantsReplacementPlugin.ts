@@ -17,7 +17,7 @@ const vueTemplateBreaker = '<wbr>'
  *
  * @see https://vitejs.dev/guide/env-and-mode.html#production-replacement
  */
-export const createConstantsReplacementPlugin = (app: App): Plugin => {
+export const constantsReplacementPlugin = (app: App): Plugin => {
   const pagesDirPrefix = `${app.dir.temp('pages')}/`
 
   let constantsRegexp: RegExp
