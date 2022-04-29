@@ -38,6 +38,7 @@
     { "path": "./packages/@vuepress/plugin-toc/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
     { "path": "./packages/@vuepress/utils/tsconfig.build.json" },
+    { "path": "./packages/vite-merge/tsconfig.build.json" },
     { "path": "./packages/vuepress/tsconfig.build.json" },
     { "path": "./packages/vuepress-vite/tsconfig.build.json" },
     { "path": "./packages/vuepress-webpack/tsconfig.build.json" }

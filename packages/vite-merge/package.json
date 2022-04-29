@@ -1,0 +1,29 @@
+{
+  "name": "vite-merge",
+  "version": "2.0.0-beta.41",
+  "description": "Helper to merge vite config",
+  "keywords": [
+    "helper",
+    "vite",
+    "vite-merge"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Mr.Hope",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  }
+}

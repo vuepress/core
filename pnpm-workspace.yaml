@@ -1,6 +1,7 @@
 packages:
   - docs
   - packages/@vuepress/*
+  - packages/vite-merge
   - packages/vuepress
   - packages/vuepress-vite
   - packages/vuepress-webpack
