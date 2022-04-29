@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    // .vue files
+    "johnsoncodehk.volar",
+    // scss
+    "mrmlnc.vscode-scss",
+    // yaml
+    "redhat.vscode-yaml",
+    // frontmatter
+    "bierner.markdown-yaml-preamble",
+    // eslint
+    "dbaeumer.vscode-eslint"
+  ]
+}
