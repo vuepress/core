@@ -118,6 +118,9 @@ const onBeforeLeave = scrollPromise.pending
           <template #top>
             <slot name="page-top" />
           </template>
+          <template #content-bottom>
+            <slot name="content-bottom" />
+          </template>
           <template #bottom>
             <slot name="page-bottom" />
           </template>

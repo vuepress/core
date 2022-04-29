@@ -11,6 +11,8 @@ import PageNav from '@theme/PageNav.vue'
       <Content />
     </div>
 
+    <slot name="content-bottom" />
+
     <PageMeta />
 
     <PageNav />
