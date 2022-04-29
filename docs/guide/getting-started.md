@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [Node.js v12+](https://nodejs.org/)
+- [Node.js v14+](https://nodejs.org/)
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
 ::: tip
