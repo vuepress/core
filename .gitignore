@@ -24,3 +24,6 @@ node_modules/
 
 # Typescript build info
 *.tsbuildinfo
+
+# VSCode Settings
+.vscode/settings.json
