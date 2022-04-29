@@ -192,7 +192,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '<img alt="attrs" src=".../attrs.png" width="100px">',
 
       /* srcset */
-
       // relative paths
       '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
       '<img srcset="./汉字.png 1x, ./100%.png">',
@@ -241,7 +240,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
         expected: [
           /* src */
-
           // relative paths
           '<img src="@source/sub/foo.png">',
           '<img src="@source/sub/foo.png">',
@@ -275,7 +273,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img alt="attrs" src=".../attrs.png" width="100px">',
 
           /* srcset */
-
           // relative paths
           '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png">',
           '<img srcset="@source/sub/汉字.png 1x, @source/sub/100%.png">',
@@ -297,7 +294,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img srcset="@source/invalid.png, @source/汉字.png, .../100%.png 3x">',
 
           /* both */
-
           // relative paths
           '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
           '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x">',
@@ -319,7 +315,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
         expected: [
           /* src */
-
           // relative paths
           '<img src="@foo/sub/foo.png">',
           '<img src="@foo/sub/foo.png">',
@@ -353,7 +348,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img alt="attrs" src=".../attrs.png" width="100px">',
 
           /* srcset */
-
           // relative paths
           '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png">',
           '<img srcset="@foo/sub/汉字.png 1x, @foo/sub/100%.png">',
@@ -375,7 +369,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img srcset="@foo/invalid.png, @foo/汉字.png, .../100%.png 3x">',
 
           /* both */
-
           // relative paths
           '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
           '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x">',
@@ -394,7 +387,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         env: {},
         expected: [
           /* src */
-
           // relative paths
           '<img src="./foo.png">',
           '<img src="../sub/foo.png">',
@@ -428,7 +420,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img alt="attrs" src=".../attrs.png" width="100px">',
 
           /* srcset */
-
           // relative paths
           '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
           '<img srcset="./汉字.png 1x, ./100%.png">',
@@ -450,7 +441,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
 
           /* both */
-
           // relative paths
           '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
           '<img src="./100%.png" srcset="./汉字.png 1x">',
@@ -543,14 +533,12 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
     const source2 = [
       /* src */
-
       // not formated
       `<img alt="attrs" src="
           .../attrs.png
           " width="100px">`,
 
       /* srcset */
-
       // not formatted
       `<img srcset="./foo.png      1x  ,
               ../sub/foo.png  2x,./foo/bar.png
@@ -559,7 +547,6 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
     ,default.png " width="100px">`,
 
       /** both */
-
       // not formatted
       `<img src="
           ./default.png
@@ -584,18 +571,15 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
         expected: [
           /* src */
-
           // not formatted
           '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
 
           /* srcset */
-
           // not formatted
           '<p><img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
           '<p><img alt="attrs"  srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
 
           /* both */
-
           // not formatted
           '<p><img src="@source/sub/default.png" srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
           '<p><img alt="attrs" src="@source/sub/default.png" srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
@@ -615,13 +599,11 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
 
           /* srcset */
-
           // not formatted
           '<p><img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
           '<p><img alt="attrs"  srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
 
           /* both */
-
           // not formatted
           '<p><img src="@foo/sub/default.png" srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
           '<p><img alt="attrs" src="@foo/sub/default.png" srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
@@ -634,18 +616,15 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         env: {},
         expected: [
           /* src */
-
           // not formatted
           '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
 
           /* srcset */
-
           // not formatted
           '<p><img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
           '<p><img alt="attrs"  srcset="./attrs.png 1x, default.png" width="100px"></p>',
 
           /* both */
-
           // not formatted
           '<p><img src="./default.png" srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
           '<p><img alt="attrs" src="./default.png" srcset="./attrs.png 1x, default.png" width="100px"></p>',

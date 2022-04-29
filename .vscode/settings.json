@@ -9,10 +9,6 @@
     "files.trimTrailingWhitespace": false
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "jest.autoRun": {
-    "enabled": false,
-    "watch": false
-  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
