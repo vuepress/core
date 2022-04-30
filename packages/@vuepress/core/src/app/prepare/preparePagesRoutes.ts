@@ -25,9 +25,7 @@ const transformPageToRouteItem = ({
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
-  // redirect from decoded path
-  addPath(path)
-  function addPath(path) {
+  function addPath(path): void {
     redirectsSet.add(decodeURI(path))
     if (path.endsWith('/')) {
       // redirect from index path
@@ -37,6 +35,9 @@ const transformPageToRouteItem = ({
       redirectsSet.add(path.replace(/.html$/, ''))
     }
   }
+
+  // redirect from decoded path
+  addPath(path)
 
   // redirect from inferred path
   if (pathInferred !== null) {
