@@ -184,6 +184,14 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page Properties > permalink](./node-api.md#permalink)
 
+## redirectFrom
+
+- Type: `string[]`
+
+- Details:
+
+  Sometimes we need to modify the structure of the document, resulting in old links inaccessible to user. `redirectFrom` provides a way to specify a set of legacy paths. User accessing one of those paths will be automatically redirected to the current page.
+
 ## routeMeta
 
 - Type: `Record<string, unknown>`

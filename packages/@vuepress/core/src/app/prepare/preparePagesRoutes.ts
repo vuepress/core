@@ -32,8 +32,7 @@ const transformPageToRouteItem = ({
     if (path.endsWith('/')) {
       // redirect from index path
       redirectsSet.add(path + 'index.html')
-    }
-    else {
+    } else {
       // redirect from the path that does not end with `.html`
       redirectsSet.add(path.replace(/.html$/, ''))
     }
