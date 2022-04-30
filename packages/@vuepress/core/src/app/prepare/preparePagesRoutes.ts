@@ -25,14 +25,17 @@ const transformPageToRouteItem = ({
   const redirectsSet = new Set<string>()
 
   // redirect from decoded path
-  redirectsSet.add(decodeURI(path))
-
-  if (path.endsWith('/')) {
-    // redirect from index path
-    redirectsSet.add(path + 'index.html')
-  } else {
-    // redirect from the path that does not end with `.html`
-    redirectsSet.add(path.replace(/.html$/, ''))
+  addPath(path);
+  function addPath(path) {
+      redirectsSet.add(decodeURI(path));
+      if (path.endsWith('/')) {
+          // redirect from index path
+          redirectsSet.add(path + 'index.html');
+      }
+      else {
+          // redirect from the path that does not end with `.html`
+          redirectsSet.add(path.replace(/.html$/, ''));
+      }
   }
 
   // redirect from inferred path
@@ -46,6 +49,13 @@ const transformPageToRouteItem = ({
     const filenamePath = ensureLeadingSlash(filePathRelative)
     redirectsSet.add(filenamePath)
     redirectsSet.add(encodeURI(filenamePath))
+  }
+
+  // redirect from frontmatter
+  if (frontmatter.redirectFrom) {
+    for (const path of frontmatter.redirectFrom) {
+      addPath(path);
+    }
   }
 
   // avoid redirect from the page path itself
