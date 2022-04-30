@@ -20,21 +20,22 @@ const transformPageToRouteItem = ({
   pathInferred,
   filePathRelative,
   routeMeta,
+  frontmatter,
 }: Page): RouteItem => {
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
   // redirect from decoded path
-  addPath(path);
+  addPath(path)
   function addPath(path) {
-    redirectsSet.add(decodeURI(path));
+    redirectsSet.add(decodeURI(path))
     if (path.endsWith('/')) {
       // redirect from index path
-      redirectsSet.add(path + 'index.html');
+      redirectsSet.add(path + 'index.html')
     }
     else {
       // redirect from the path that does not end with `.html`
-      redirectsSet.add(path.replace(/.html$/, ''));
+      redirectsSet.add(path.replace(/.html$/, ''))
     }
   }
 
@@ -54,7 +55,7 @@ const transformPageToRouteItem = ({
   // redirect from frontmatter
   if (frontmatter.redirectFrom) {
     for (const path of frontmatter.redirectFrom) {
-      addPath(path);
+      addPath(path)
     }
   }
 
