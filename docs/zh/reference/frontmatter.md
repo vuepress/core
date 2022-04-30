@@ -184,6 +184,14 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page 属性 > permalink](./node-api.md#permalink)
 
+## redirectFrom
+
+- Type: `string[]`
+
+- Details:
+
+  有时我们需要修改文档的结构，导致旧的链接无法访问。`redirectFrom` 提供了一种描述了过时路径的方式。当用户访问这些路径中的任意一个时，会被自动重定向到当前页面。
+
 ## routeMeta
 
 - 类型： `Record<string, unknown>`

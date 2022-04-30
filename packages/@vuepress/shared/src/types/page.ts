@@ -77,6 +77,7 @@ export type PageFrontmatter<
   layout?: string
   permalink?: string
   permalinkPattern?: string
+  redirectFrom?: string[]
   routeMeta?: Record<string, unknown>
   title?: string
 }
