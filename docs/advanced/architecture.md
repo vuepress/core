@@ -31,4 +31,6 @@ The above figure shows the core process of VuePress Node App and the hooks of [P
 - In the **prepare** stage:
   - Temp files will be generated, so all hooks related to client files will be processed here.
 - In the **dev / build** stage:
-  - Bundler will be resolved. The [alias](../reference/plugin-api.md#alias) and [define](../reference/plugin-api.md#define) hooks depend on bundler configuration, so they will be processed here.
+  - Bundler will be resolved:
+    - [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) hook will be processed to create bundler configuration.
+    - [alias](../reference/plugin-api.md#alias) hook and [define](../reference/plugin-api.md#define) hook would be used in bundler configuration, so they will be processed here.

@@ -55,6 +55,7 @@ export interface Hooks {
   extendsMarkdown: ExtendsHook<Markdown>
   extendsPageOptions: ExtendsHook<PageOptions>
   extendsPage: ExtendsHook<Page>
+  extendsBundlerOptions: ExtendsHook<any>
   clientAppEnhanceFiles: ClientFilesHook
   clientAppRootComponentFiles: ClientFilesHook
   clientAppSetupFiles: ClientFilesHook

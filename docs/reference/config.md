@@ -165,8 +165,8 @@ Rendered as：
 
 - Also see:
   - [Guide > Bundler](../guide/bundler.md)
-  - [Bundlers > Webpack](./bundler/webpack.md)
   - [Bundlers > Vite](./bundler/vite.md)
+  - [Bundlers > Webpack](./bundler/webpack.md)
 
 ## Common Config
 

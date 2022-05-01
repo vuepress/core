@@ -28,6 +28,7 @@
 
 下列 Hooks 会在 dev / build 时处理：
 
+- [extendsBundlerOptions](#extendsbundleroptions)
 - [alias](#alias)
 - [define](#define)
 - [onWatched](#onwatched)
@@ -87,7 +88,7 @@
 - 示例：
 
 ```js
-module.exports = {
+export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/alias'),
   },
@@ -109,7 +110,7 @@ module.exports = {
 - 示例：
 
 ```js
-module.exports = {
+export default {
   define: {
     __GLOBAL_BOOLEAN__: true,
     __GLOBAL_STRING__: 'foobar',
@@ -117,6 +118,57 @@ module.exports = {
   },
 }
 ```
+
+### extendsBundlerOptions
+
+- 类型： `(options: BundlerOptions, app: App) => void | Promise<void>`
+
+- 详情：
+
+  Bundler 配置项扩展。
+
+  该 Hook 接收一个函数，在参数中会收到 Bundler 配置项。
+
+  该 Hook 可以用于修改 Bundler 配置项。
+
+  你可以通过 `app.options.bundler.name` 判断用户当前使用的 Bundler。
+
+- 示例：
+
+添加默认的 [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) 配置：
+
+```js
+export default {
+  extendsBundlerOptions: (bundlerOptions, app) => {
+    // 修改 @vuepress/bundler-vite 的配置项
+    if (app.options.bundler.name === '@vuepress/bundler-vite') {
+      bundlerOptions.vuePluginOptions ??= {}
+      bundlerOptions.vuePluginOptions.template ??= {}
+      bundlerOptions.vuePluginOptions.template.compilerOptions ??= {}
+      const isCustomElement = bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
+      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement = (tag) => {
+        if (isCustomElement?.(tag)) return true
+        if (tag === 'my-custom-element') return true
+      }
+    }
+
+    // 修改 @vuepress/bundler-webpack 的配置项
+    if (app.options.bundler.name === '@vuepress/bundler-webpack') {
+      bundlerOptions.vue ??= {}
+      bundlerOptions.vue.compilerOptions ??= {}
+      const isCustomElement = bundlerOptions.vue.compilerOptions.isCustomElement
+      bundlerOptions.vue.compilerOptions.isCustomElement = (tag) => {
+        if (isCustomElement?.(tag)) return true
+        if (tag === 'my-custom-element') return true
+      }
+    }
+  },
+}
+```
+
+- 参考：
+  - [打包工具 > Vite](./bundler/vite.md)
+  - [打包工具 > Webpack](./bundler/webpack.md)
 
 ### extendsMarkdownOptions
 
@@ -135,10 +187,10 @@ module.exports = {
 修改默认提取的子标题层级：
 
 ```js
-module.exports = {
+export default {
   extendsMarkdownOptions: (markdownOptions, app) => {
     if (markdownOptions.extractHeaders === false) return
-    markdownOptions.extractHeaders = markdownOptions.extractHeaders ?? {}
+    markdownOptions.extractHeaders ??= {}
     if (markdownOptions.extractHeaders.level) return
     markdownOptions.extractHeaders.level = [2, 3, 4, 5, 6]
   },
@@ -163,7 +215,7 @@ module.exports = {
 - 示例：
 
 ```js
-module.exports = {
+export default {
   extendsMarkdown: (md) => {
     md.use(plugin1)
     md.linkify.set({ fuzzyEmail: false })
@@ -188,7 +240,7 @@ module.exports = {
 为 `_posts` 目录下的页面设置永久链接 Pattern ：
 
 ```js
-module.exports = {
+export default {
   extendsPageOptions: (pageOptions, app) => {
     if (pageOptions.filePath?.startsWith(app.dir.source('_posts/'))) {
       pageOptions.frontmatter = pageOptions.frontmatter ?? {}
@@ -218,7 +270,7 @@ module.exports = {
 - 示例：
 
 ```js
-module.exports = {
+export default {
   extendsPage: (page) => {
     page.foo = 'foo'
     page.data.bar = 'bar'
@@ -263,7 +315,7 @@ export default {
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppEnhanceFiles: path.resolve(
     __dirname,
     './path/to/clientAppEnhance.js'
@@ -292,7 +344,7 @@ module.exports = {
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppRootComponentFiles: path.resolve(
     __dirname,
     './path/to/RootComponent.vue'
@@ -317,7 +369,7 @@ module.exports = {
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }
 ```

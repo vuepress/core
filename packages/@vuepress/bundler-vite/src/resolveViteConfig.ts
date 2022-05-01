@@ -5,7 +5,7 @@ import type { InlineConfig } from 'vite'
 import { vuepressPlugin } from './plugins'
 import type { ViteBundlerOptions } from './types'
 
-export const resolveViteConfig = ({
+export const resolveViteConfig = async ({
   app,
   options,
   isBuild,
@@ -15,8 +15,11 @@ export const resolveViteConfig = ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): InlineConfig =>
-  mergeConfig(
+}): Promise<InlineConfig> => {
+  // plugin hook: extendsBundlerOptions
+  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
+  const config: InlineConfig = mergeConfig(
     {
       clearScreen: false,
       configFile: false,
@@ -28,3 +31,6 @@ export const resolveViteConfig = ({
     },
     options.viteOptions ?? {}
   )
+
+  return config
+}

@@ -28,6 +28,7 @@ The following hooks will be processed when preparing files:
 
 The following hooks will be processed in dev / build:
 
+- [extendsBundlerOptions](#extendsbundleroptions)
 - [alias](#alias)
 - [define](#define)
 - [onWatched](#onwatched)
@@ -87,7 +88,7 @@ The following hooks will be processed in dev / build:
 - Example:
 
 ```js
-module.exports = {
+export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/alias'),
   },
@@ -109,7 +110,7 @@ module.exports = {
 - Example:
 
 ```js
-module.exports = {
+export default {
   define: {
     __GLOBAL_BOOLEAN__: true,
     __GLOBAL_STRING__: 'foobar',
@@ -117,6 +118,57 @@ module.exports = {
   },
 }
 ```
+
+### extendsBundlerOptions
+
+- Type: `(options: BundlerOptions, app: App) => void | Promise<void>`
+
+- Details:
+
+  Bundler options extension.
+
+  This hook accepts a function that will receive the bundler options.
+
+  This hook can be used for modifying bundler options.
+
+  You could determine which bundler the user is using by `app.options.bundler.name`.
+
+- Example:
+
+Adding default [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) option:
+
+```js
+export default {
+  extendsBundlerOptions: (bundlerOptions, app) => {
+    // extends options of @vuepress/bundler-vite
+    if (app.options.bundler.name === '@vuepress/bundler-vite') {
+      bundlerOptions.vuePluginOptions ??= {}
+      bundlerOptions.vuePluginOptions.template ??= {}
+      bundlerOptions.vuePluginOptions.template.compilerOptions ??= {}
+      const isCustomElement = bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
+      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement = (tag) => {
+        if (isCustomElement?.(tag)) return true
+        if (tag === 'my-custom-element') return true
+      }
+    }
+
+    // extends options of @vuepress/bundler-webpack
+    if (app.options.bundler.name === '@vuepress/bundler-webpack') {
+      bundlerOptions.vue ??= {}
+      bundlerOptions.vue.compilerOptions ??= {}
+      const isCustomElement = bundlerOptions.vue.compilerOptions.isCustomElement
+      bundlerOptions.vue.compilerOptions.isCustomElement = (tag) => {
+        if (isCustomElement?.(tag)) return true
+        if (tag === 'my-custom-element') return true
+      }
+    }
+  },
+}
+```
+
+- Also see:
+  - [Bundlers > Vite](./bundler/vite.md)
+  - [Bundlers > Webpack](./bundler/webpack.md)
 
 ### extendsMarkdownOptions
 
@@ -135,10 +187,10 @@ module.exports = {
 Modifying the default header levels that going to be extracted:
 
 ```js
-module.exports = {
+export default {
   extendsMarkdownOptions: (markdownOptions, app) => {
     if (markdownOptions.extractHeaders === false) return
-    markdownOptions.extractHeaders = markdownOptions.extractHeaders ?? {}
+    markdownOptions.extractHeaders ??= {}
     if (markdownOptions.extractHeaders.level) return
     markdownOptions.extractHeaders.level = [2, 3, 4, 5, 6]
   },
@@ -163,7 +215,7 @@ module.exports = {
 - Example:
 
 ```js
-module.exports = {
+export default {
   extendsMarkdown: (md) => {
     md.use(plugin1)
     md.linkify.set({ fuzzyEmail: false })
@@ -188,7 +240,7 @@ module.exports = {
 Set permalink pattern for pages in `_posts` directory:
 
 ```js
-module.exports = {
+export default {
   extendsPageOptions: (pageOptions, app) => {
     if (pageOptions.filePath?.startsWith(app.dir.source('_posts/'))) {
       pageOptions.frontmatter = pageOptions.frontmatter ?? {}
@@ -218,7 +270,7 @@ module.exports = {
 - Example:
 
 ```js
-module.exports = {
+export default {
   extendsPage: (page) => {
     page.foo = 'foo'
     page.data.bar = 'bar'
@@ -263,7 +315,7 @@ export default {
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppEnhanceFiles: path.resolve(
     __dirname,
     './path/to/clientAppEnhance.js'
@@ -292,7 +344,7 @@ module.exports = {
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppRootComponentFiles: path.resolve(
     __dirname,
     './path/to/RootComponent.vue'
@@ -310,14 +362,14 @@ module.exports = {
 
   This hook accepts absolute file paths, or a function that returns the paths.
 
-  Files listed in this hook will be invoked in the [setup](https://v3.vuejs.org/guide/composition-api-setup.html) function of the client app.
+  Files listed in this hook will be invoked in the [setup](https://vuejs.org/api/composition-api-setup.html) function of the client app.
 
 - Example:
 
 ```js
 const { path } = require('@vuepress/utils')
 
-module.exports = {
+export default {
   clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }
 ```

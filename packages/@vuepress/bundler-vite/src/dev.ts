@@ -8,7 +8,7 @@ export const dev = async (
   options: ViteBundlerOptions,
   app: App
 ): ReturnType<Bundler['dev']> => {
-  const viteConfig = resolveViteConfig({
+  const viteConfig = await resolveViteConfig({
     app,
     options,
     isBuild: false,

@@ -31,4 +31,6 @@
 - 在 **prepare** 阶段：
   - 临时文件会被生成，因此所有和客户端文件相关的 Hooks 会在此处调用。
 - 在 **dev / build** 阶段：
-  - Bundler 会被加载。由于 [alias](../reference/plugin-api.md#alias) 和 [define](../reference/plugin-api.md#define) 依赖于 Bundler 的配置，所以它们会在此处调用。
+  - Bundler 会被加载：
+    - [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) Hook 会被调用，用以生成 Bundler 的配置。
+    - [alias](../reference/plugin-api.md#alias) Hook 和 [define](../reference/plugin-api.md#define) Hook 会被用在 Bundler 的配置中，所以它们会在此处调用。

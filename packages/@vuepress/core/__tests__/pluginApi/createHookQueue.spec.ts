@@ -22,6 +22,7 @@ describe('core > pluginApi > createHookQueue', () => {
       'extendsMarkdown',
       'extendsPageOptions',
       'extendsPage',
+      'extendsBundlerOptions',
       'clientAppEnhanceFiles',
       'clientAppRootComponentFiles',
       'clientAppSetupFiles',
@@ -217,6 +218,34 @@ describe('core > pluginApi > createHookQueue', () => {
       expect(page.data.extraData).toEqual('foo')
       expect(page.frontmatter.extraFrontmatter).toEqual('bar')
       expect(page.extraField).toEqual('baz')
+    })
+
+    it(`extendsBundlerOptions`, async () => {
+      const hookName = 'extendsBundlerOptions'
+
+      const hook = createHookQueue(hookName)
+      const func1 = jest.fn((bundlerOptions) => {
+        bundlerOptions.foo = 'foo'
+      })
+      const func2 = jest.fn((bundlerOptions) => {
+        bundlerOptions.bar = 'bar'
+      })
+      hook.add({
+        pluginName: 'test1',
+        hook: func1,
+      })
+      hook.add({
+        pluginName: 'test2',
+        hook: func2,
+      })
+      const markdownOptions: MarkdownOptions = {}
+      await hook.process(markdownOptions, app)
+
+      expect(func1).toHaveBeenCalledTimes(1)
+      expect(func1).toHaveBeenCalledWith(markdownOptions, app)
+      expect(func2).toHaveBeenCalledTimes(1)
+      expect(func2).toHaveBeenCalledWith(markdownOptions, app)
+      expect(markdownOptions).toEqual({ foo: 'foo', bar: 'bar' })
     })
   })
 

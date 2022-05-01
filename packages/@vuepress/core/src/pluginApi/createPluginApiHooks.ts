@@ -13,6 +13,7 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   extendsMarkdown: createHookQueue('extendsMarkdown'),
   extendsPageOptions: createHookQueue('extendsPageOptions'),
   extendsPage: createHookQueue('extendsPage'),
+  extendsBundlerOptions: createHookQueue('extendsBundlerOptions'),
 
   // client files hooks
   clientAppEnhanceFiles: createHookQueue('clientAppEnhanceFiles'),

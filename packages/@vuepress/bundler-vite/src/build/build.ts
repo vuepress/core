@@ -16,13 +16,13 @@ export const build = async (
   let serverOutput!: RollupOutput
   await withSpinner('Compiling with vite')(async () => {
     // create vite config
-    const clientConfig = resolveViteConfig({
+    const clientConfig = await resolveViteConfig({
       app,
       options,
       isBuild: true,
       isServer: false,
     })
-    const serverConfig = resolveViteConfig({
+    const serverConfig = await resolveViteConfig({
       app,
       options,
       isBuild: true,
