@@ -8,6 +8,9 @@ export const dev = async (
   options: ViteBundlerOptions,
   app: App
 ): ReturnType<Bundler['dev']> => {
+  // plugin hook: extendsBundlerOptions
+  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
   const viteConfig = await resolveViteConfig({
     app,
     options,

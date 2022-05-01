@@ -17,9 +17,6 @@ export const resolveWebpackConfig = async ({
   isServer: boolean
   isBuild: boolean
 }): Promise<Configuration> => {
-  // plugin hook: extendsBundlerOptions
-  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
-
   const config = await getConfig()
 
   // allow modifying webpack config via `chainWebpack`

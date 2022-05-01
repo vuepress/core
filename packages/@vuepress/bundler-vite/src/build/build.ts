@@ -15,6 +15,9 @@ export const build = async (
   let clientOutput!: RollupOutput
   let serverOutput!: RollupOutput
   await withSpinner('Compiling with vite')(async () => {
+    // plugin hook: extendsBundlerOptions
+    await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
     // create vite config
     const clientConfig = await resolveViteConfig({
       app,

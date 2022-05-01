@@ -19,6 +19,9 @@ export const build = async (
 ): ReturnType<Bundler['build']> => {
   // webpack compile
   await withSpinner('Compiling with webpack')(async () => {
+    // plugin hook: extendsBundlerOptions
+    await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
     // create webpack config
     const clientConfig = await resolveWebpackConfig({
       app,
