@@ -79,12 +79,17 @@ import '@vuepress/client/app'
       },
       // bundle all dependencies except vue in ssr mode:
       // - transform esm modules to cjs, otherwise we may wrongly `require()` esm modules
-      // - bundle dependencies all together, otherwise we may fail to resolve them with pnpm
+      // - bundle plugins and themes all together, otherwise we may fail to resolve them with pnpm
+      // - we can not force noExternal all dependencies, because some of theme may not be SSR friendly
+      // - developer should mark plugin deps as noExternal to avoid pnpm resolve issues
       // - force externalize vue, because we need to `require('vue')` in node side for ssr usage,
       //   then we also need vue as peer-dependency when using pnpm
       ssr: {
         external: ['vue'],
-        noExternal: [/^(?!(vue)$).*$/],
+        noExternal: [
+          '@vuepress/client',
+          ...app.pluginApi.plugins.map(({ name }) => name),
+        ],
       },
     }
   },
