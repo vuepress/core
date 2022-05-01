@@ -38,7 +38,7 @@
 
   This component will render the Markdown content of a page.
 
-  The page key is the [name](https://next.router.vuejs.org/api/#name-2) of the page route. If the `pageKey` prop is not provided, it will render the page of current route.
+  The page key is the [name](https://router.vuejs.org/api/#name-2) of the page route. If the `pageKey` prop is not provided, it will render the page of current route.
 
   This component is mainly for developing themes. You won't need it in most cases.
 

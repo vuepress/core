@@ -20,8 +20,8 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 })
 ```
 
-- The `app` is the Vue application instance that created by [createApp](https://v3.vuejs.org/api/application-api.html).
-- The `router` is the Vue Router instance that created by [createRouter](https://next.router.vuejs.org/api/#createrouter).
+- The `app` is the Vue application instance that created by [createApp](https://vuejs.org/api/application.html#createapp).
+- The `router` is the Vue Router instance that created by [createRouter](https://router.vuejs.org/api/#createrouter).
 - The `siteData` is an object that generated from user config, including [base](../../reference/config.md#base), [lang](../../reference/config.md#lang), [title](../../reference/config.md#title), [description](../../reference/config.md#description), [head](../../reference/config.md#head) and [locales](../../reference/config.md#locales).
 
 The client app enhance will be invoked after the client app is created. It's possible to implement any enhancements to the Vue application.
@@ -32,7 +32,7 @@ For ease of use in user config, the `.vuepress/clientAppEnhance.{js,ts}` file wi
 
 ## Register Vue Components
 
-You can register global Vue components via the [component](https://v3.vuejs.org/api/application-api.html#component) method:
+You can register global Vue components via the [app.component](https://vuejs.org/api/application.html#app-component) method:
 
 ```ts
 import { defineClientAppEnhance } from '@vuepress/client'
@@ -64,7 +64,7 @@ export default defineClientAppEnhance(async ({ app, router, siteData }) => {
 
 ## Use Router Methods
 
-You can make use of the [Router Methods](https://next.router.vuejs.org/api/#router-methods) that provided by vue-router. For example, add navigation guard:
+You can make use of the [Router Methods](https://router.vuejs.org/api/#router-methods) that provided by vue-router. For example, add navigation guard:
 
 ```ts
 import { defineClientAppEnhance } from '@vuepress/client'

@@ -21,7 +21,7 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 ```
 
 - `app` 是由 [createApp](https://v3.cn.vuejs.org/api/application-api.html) 创建的 Vue 应用实例。
-- `router` 是由 [createRouter](https://next.router.vuejs.org/zh/api/index.html#createrouter) 创建的路由实例。
+- `router` 是由 [createRouter](https://router.vuejs.org/zh/api/index.html#createrouter) 创建的路由实例。
 - `siteData` 是一个根据用户配置生成的对象，包含 [base](../../reference/config.md#base), [lang](../../reference/config.md#lang), [title](../../reference/config.md#title), [description](../../reference/config.md#description), [head](../../reference/config.md#head) 和 [locales](../../reference/config.md#locales)。
 
 Client App Enhance 会在客户端应用创建后被调用，它可以为 Vue 应用添加任意功能。
@@ -64,7 +64,7 @@ export default defineClientAppEnhance(async ({ app, router, siteData }) => {
 
 ## 使用 Router 方法
 
-你可以使用 vue-router 提供的 [Router 方法](https://next.router.vuejs.org/zh/api/index.html#router-方法) 。例如，添加导航钩子：
+你可以使用 vue-router 提供的 [Router 方法](https://router.vuejs.org/zh/api/index.html#router-方法) 。例如，添加导航钩子：
 
 ```ts
 import { defineClientAppEnhance } from '@vuepress/client'

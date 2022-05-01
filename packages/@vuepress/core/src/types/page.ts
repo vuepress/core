@@ -75,7 +75,7 @@ export type Page<
     /**
      * Custom data to be attached to the page route record of vue-router
      *
-     * @see https://next.router.vuejs.org/api/#meta
+     * @see https://router.vuejs.org/api/#meta
      */
     routeMeta: Record<string, unknown>
 

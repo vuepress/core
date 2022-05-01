@@ -384,7 +384,7 @@ module.exports = {
 
   该 Page 的标识。
 
-  Page Key 会被用作页面路由的 [name](https://next.router.vuejs.org/api/#name-2)。
+  Page Key 会被用作页面路由的 [name](https://router.vuejs.org/api/#name-2)。
 
 - 参考：
   - [Built-in Components > Content](./components.md#content)
@@ -640,7 +640,7 @@ interface MarkdownLink {
 
 - 参考：
   - [Frontmatter > routeMeta](./frontmatter.md#routemeta)
-  - [vue-router > API 参考 > RouteRecordRaw > meta](https://next.router.vuejs.org/zh/api/#meta)
+  - [vue-router > API 参考 > RouteRecordRaw > meta](https://router.vuejs.org/zh/api/#meta)
 
 ::: tip Route Meta 和 Page Data 的区别是什么？
 [Route Meta](#routemeta) 和 [Page Data](#data) 都可以在客户端代码中使用。然而， Route Meta 是附加在路由记录上的，因此当用户进入你的站点时，所有页面的 Route Meta 都会立即被加载。相比之下， Page Data 是存储在单独的文件中的，只有在用户进入对应页面时才会被加载。

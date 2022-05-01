@@ -38,7 +38,7 @@
 
   该组件会渲染页面的 Markdown 内容。
 
-  页面 Key 是页面路由的 [name](https://next.router.vuejs.org/zh/api/#name-2) 。如果没有传入 `pageKey` Prop ，它会渲染当前路由下的页面。
+  页面 Key 是页面路由的 [name](https://router.vuejs.org/zh/api/#name-2) 。如果没有传入 `pageKey` Prop ，它会渲染当前路由下的页面。
 
   该组件主要是为了开发主题时使用。在绝大多数情况下你不会用到它。
 

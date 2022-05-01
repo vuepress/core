@@ -240,7 +240,7 @@ Config reference: [markdown.code.lineNumbers](../reference/config.md#markdown-co
 
 As [template syntax is allowed in Markdown](#template-syntax), it would also work in code blocks, too.
 
-To avoid your code blocks being compiled by Vue, VuePress will add [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) directive to your code blocks by default, which can be disabled in config.
+To avoid your code blocks being compiled by Vue, VuePress will add [v-pre](https://vuejs.org/api/built-in-directives.html#v-pre) directive to your code blocks by default, which can be disabled in config.
 
 You can add `:v-pre` / `:no-v-pre` mark in your fenced code blocks to override the value set in config.
 
@@ -375,7 +375,7 @@ As we know:
 - HTML is allowed in Markdown.
 - Vue template syntax is compatible with HTML.
 
-That means, [Vue template syntax](https://v3.vuejs.org/guide/template-syntax.html) is allowed in Markdown.
+That means, [Vue template syntax](https://vuejs.org/guide/essentials/template-syntax.html) is allowed in Markdown.
 
 **Input**
 
@@ -422,7 +422,7 @@ Non-standard HTML tags would not be recognized as native HTML tags by Vue templa
 
 If you want to use those tags anyway, try either of the following workarounds:
 
-- Adding a [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) directive to skip the compilation of the element and its children. Notice that the template syntax would also be invalid.
-- Using [compilerOptions.isCustomElement](https://v3.vuejs.org/api/application-config.html#compileroptions) to tell Vue template compiler not try to resolve them as components.
+- Adding a [v-pre](https://vuejs.org/api/built-in-directives.html#v-pre) directive to skip the compilation of the element and its children. Notice that the template syntax would also be invalid.
+- Using [compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) to tell Vue template compiler not try to resolve them as components.
   - For `@bundler-webpack`, set [vue.compilerOptions](../reference/bundler/webpack.md#vue)
   - For `@bundler-vite`, set [vuePluginOptions.template.compilerOptions](../reference/bundler/vite.md#vuepluginoptions)

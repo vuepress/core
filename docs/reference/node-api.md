@@ -386,7 +386,7 @@ Hello, world.
 
   Identifier of the page.
 
-  The page key would be used as the [name](https://next.router.vuejs.org/api/#name-2) of the page route.
+  The page key would be used as the [name](https://router.vuejs.org/api/#name-2) of the page route.
 
 - Also see:
   - [Built-in Components > Content](./components.md#content)
@@ -641,7 +641,7 @@ interface MarkdownLink {
 
 - Also see:
   - [Frontmatter > routeMeta](./frontmatter.md#routemeta)
-  - [vue-router > API Reference > RouteRecordRaw > meta](https://next.router.vuejs.org/api/#meta)
+  - [vue-router > API Reference > RouteRecordRaw > meta](https://router.vuejs.org/api/#meta)
 
 ::: tip What's the difference between route meta and page data?
 Both [route meta](#routemeta) and [page data](#data) is available in client side. However, route meta is attached to the route record, so the route meta of all pages would be loaded at once when users enter your site. In the contrast, page data is saved in separated files, which would be loaded only when users enter the corresponding page.

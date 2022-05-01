@@ -6,7 +6,7 @@ VuePress 诞生的初衷是为了支持 Vue.js 及其子项目的文档需求，
 
 ## 它是如何工作的？
 
-一个 VuePress 站点本质上是一个由 [Vue](https://v3.vuejs.org/) 和 [Vue Router](https://next.router.vuejs.org) 驱动的单页面应用 (SPA)。
+一个 VuePress 站点本质上是一个由 [Vue](https://vuejs.org/) 和 [Vue Router](https://router.vuejs.org) 驱动的单页面应用 (SPA)。
 
 路由会根据你的 Markdown 文件的相对路径来自动生成。每个 Markdown 文件都通过 [markdown-it](https://github.com/markdown-it/markdown-it) 编译为 HTML ，然后将其作为 Vue 组件的模板。因此，你可以在 Markdown 文件中直接使用 Vue 语法，便于你嵌入一些动态内容。
 
