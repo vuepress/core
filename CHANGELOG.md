@@ -1,3 +1,22 @@
+# [2.0.0-beta.42](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.41...v2.0.0-beta.42) (2022-05-01)
+
+
+### Build System
+
+* drop support for node 12 ([#852](https://github.com/vuepress/vuepress-next/issues/852)) ([fc1c51b](https://github.com/vuepress/vuepress-next/commit/fc1c51b3a13aa3ddf1b9824e5e98dac350a39449))
+
+
+### Features
+
+* **core:** support extendsBundlerOptions hook ([9c56052](https://github.com/vuepress/vuepress-next/commit/9c56052c072623e7a19224eedb88784330c9f310))
+
+
+### BREAKING CHANGES
+
+* drop support for node 12
+
+
+
 # [2.0.0-beta.41](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.40...v2.0.0-beta.41) (2022-04-25)
 
 
