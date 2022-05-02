@@ -12,6 +12,7 @@
     "@vuepress/bundler-webpack": "workspace:*",
     "@vuepress/cli": "workspace:*",
     "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
     "@vuepress/plugin-docsearch": "workspace:*",
     "@vuepress/plugin-google-analytics": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",

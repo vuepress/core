@@ -60,6 +60,7 @@ importers:
       '@vuepress/bundler-webpack': workspace:*
       '@vuepress/cli': workspace:*
       '@vuepress/client': workspace:*
+      '@vuepress/core': workspace:*
       '@vuepress/plugin-docsearch': workspace:*
       '@vuepress/plugin-google-analytics': workspace:*
       '@vuepress/plugin-register-components': workspace:*
@@ -74,6 +75,7 @@ importers:
       '@vuepress/bundler-webpack': link:../packages/@vuepress/bundler-webpack
       '@vuepress/cli': link:../packages/@vuepress/cli
       '@vuepress/client': link:../packages/@vuepress/client
+      '@vuepress/core': link:../packages/@vuepress/core
       '@vuepress/plugin-docsearch': link:../packages/@vuepress/plugin-docsearch
       '@vuepress/plugin-google-analytics': link:../packages/@vuepress/plugin-google-analytics
       '@vuepress/plugin-register-components': link:../packages/@vuepress/plugin-register-components
