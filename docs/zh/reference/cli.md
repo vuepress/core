@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/cli" />
 
-VuePress 命令行接口是由 [@vuepress/cli](https://www.npmjs.com/package/@vuepress/cli) 包提供的。它是 [vuepress](https://www.npmjs.com/package/vuepress) 包的依赖之一，当然你也可以单独安装它。
+VuePress 命令行接口是由 [@vuepress/cli](https://www.npmjs.com/package/@vuepress/cli) 包提供的。它包含在 [vuepress](https://www.npmjs.com/package/vuepress) 包之中，当然你也可以单独安装它。
 
 执行 `vuepress --help` 来获取下列帮助信息：
 

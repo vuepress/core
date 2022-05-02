@@ -19,7 +19,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "vuepress": "bin/vuepress.js"
+    "vuepress-cli": "bin/vuepress.js"
   },
   "files": [
     "bin",

@@ -2,9 +2,9 @@
   "name": "docs",
   "private": true,
   "scripts": {
-    "docs:build": "vuepress build --clean-cache",
+    "docs:build": "vuepress-cli build --clean-cache",
     "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
-    "docs:dev": "vuepress dev --clean-cache",
+    "docs:dev": "vuepress-cli dev --clean-cache",
     "docs:serve": "anywhere -s -h localhost -d .vuepress/dist"
   },
   "dependencies": {
