@@ -1,3 +1,25 @@
+# [2.0.0-beta.43](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.42...v2.0.0-beta.43) (2022-05-02)
+
+
+### Bug Fixes
+
+* avoid processing extendsBundlerOptions hook twice in build (close [#863](https://github.com/vuepress/vuepress-next/issues/863)) ([8d69ffb](https://github.com/vuepress/vuepress-next/commit/8d69ffb532fe990352c1696c20837cd88187a6f3))
+* **bundler-vite:** only set client packages in noExternal (close [#866](https://github.com/vuepress/vuepress-next/issues/866)) ([ff62e2a](https://github.com/vuepress/vuepress-next/commit/ff62e2ad5954cff2950b4c65981d90b6c8a40c26))
+* **cli:** avoid bin name conflicts (close [#869](https://github.com/vuepress/vuepress-next/issues/869)) ([6d7db43](https://github.com/vuepress/vuepress-next/commit/6d7db43fcf4e516ec8db30d7db0bca0f2e7ca371))
+
+
+### Features
+
+* **markdown:** support vPre for inline code (close [#683](https://github.com/vuepress/vuepress-next/issues/683)) ([ef2a014](https://github.com/vuepress/vuepress-next/commit/ef2a014de2ddff8e4dd4318746d90923deb0da4c))
+
+
+### BREAKING CHANGES
+
+* **markdown:** type of `code.vPre` option changed from `boolean` to
+`Record<'block' | 'inline', boolean>`
+
+
+
 # [2.0.0-beta.42](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.41...v2.0.0-beta.42) (2022-05-01)
 
 
