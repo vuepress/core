@@ -1,27 +1,19 @@
-import type { App } from '@vuepress/core'
 import type { Configuration } from 'webpack'
 import type * as Config from 'webpack-chain'
 import { merge } from 'webpack-merge'
 import type { WebpackBundlerOptions } from './types'
 
-export const resolveWebpackConfig = async ({
-  app,
-  getConfig,
+export const resolveWebpackConfig = ({
+  config,
   options,
   isServer,
   isBuild,
 }: {
-  app: App
-  getConfig: () => Promise<Config>
+  config: Config
   options: WebpackBundlerOptions
   isServer: boolean
   isBuild: boolean
-}): Promise<Configuration> => {
-  // plugin hook: extendsBundlerOptions
-  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
-
-  const config = await getConfig()
-
+}): Configuration => {
   // allow modifying webpack config via `chainWebpack`
   options.chainWebpack?.(config, isServer, isBuild)
 

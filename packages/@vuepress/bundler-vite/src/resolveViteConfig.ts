@@ -15,11 +15,8 @@ export const resolveViteConfig = async ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): Promise<InlineConfig> => {
-  // plugin hook: extendsBundlerOptions
-  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
-
-  const config: InlineConfig = mergeConfig(
+}): Promise<InlineConfig> =>
+  mergeConfig(
     {
       clearScreen: false,
       configFile: false,
@@ -31,6 +28,3 @@ export const resolveViteConfig = async ({
     },
     options.viteOptions ?? {}
   )
-
-  return config
-}

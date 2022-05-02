@@ -17,19 +17,20 @@ export const build = async (
   options: WebpackBundlerOptions,
   app: App
 ): ReturnType<Bundler['build']> => {
+  // plugin hook: extendsBundlerOptions
+  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
   // webpack compile
   await withSpinner('Compiling with webpack')(async () => {
     // create webpack config
-    const clientConfig = await resolveWebpackConfig({
-      app,
-      getConfig: () => createClientConfig(app, options),
+    const clientConfig = resolveWebpackConfig({
+      config: await createClientConfig(app, options),
       options,
       isServer: false,
       isBuild: true,
     })
-    const serverConfig = await resolveWebpackConfig({
-      app,
-      getConfig: () => createServerConfig(app, options),
+    const serverConfig = resolveWebpackConfig({
+      config: await createServerConfig(app, options),
       options,
       isServer: true,
       isBuild: true,

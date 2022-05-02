@@ -11,6 +11,9 @@ export const build = async (
   options: ViteBundlerOptions,
   app: App
 ): ReturnType<Bundler['build']> => {
+  // plugin hook: extendsBundlerOptions
+  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
   // vite compile
   let clientOutput!: RollupOutput
   let serverOutput!: RollupOutput

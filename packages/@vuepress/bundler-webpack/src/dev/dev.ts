@@ -14,10 +14,12 @@ export const dev = async (
   options: WebpackBundlerOptions,
   app: App
 ): ReturnType<Bundler['dev']> => {
+  // plugin hook: extendsBundlerOptions
+  await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
+
   // create webpack config
-  const webpackConfig = await resolveWebpackConfig({
-    app,
-    getConfig: () => createDevConfig(app, options),
+  const webpackConfig = resolveWebpackConfig({
+    config: await createDevConfig(app, options),
     options,
     isServer: false,
     isBuild: false,
