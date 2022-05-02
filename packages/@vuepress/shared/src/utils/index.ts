@@ -1,4 +1,4 @@
-export { isArray, isFunction, isPromise, isString } from '@vue/shared'
+export { isArray, isFunction, isString } from '@vue/shared'
 
 export * from './dedupeHead'
 export * from './ensureLeadingSlash'
