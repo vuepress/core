@@ -35,6 +35,14 @@ import '@vuepress/client/app'
       )
     }
 
+    // vuepress related packages that include pure esm client code,
+    // which should not be optimized in dev mode, and should not be
+    // externalized in build ssr mode
+    const clientPackages = [
+      '@vuepress/client',
+      ...app.pluginApi.plugins.map(({ name }) => name),
+    ]
+
     return {
       root: app.dir.temp('vite-root'),
       base: app.options.base,
@@ -71,20 +79,10 @@ import '@vuepress/client/app'
       },
       optimizeDeps: {
         include: ['@vuepress/shared'],
-        // packages that include client code, which should not be optimized
-        exclude: [
-          '@vuepress/client',
-          ...app.pluginApi.plugins.map(({ name }) => name),
-        ],
+        exclude: clientPackages,
       },
-      // bundle all dependencies except vue in ssr mode:
-      // - transform esm modules to cjs, otherwise we may wrongly `require()` esm modules
-      // - bundle dependencies all together, otherwise we may fail to resolve them with pnpm
-      // - force externalize vue, because we need to `require('vue')` in node side for ssr usage,
-      //   then we also need vue as peer-dependency when using pnpm
       ssr: {
-        external: ['vue'],
-        noExternal: [/^(?!(vue)$).*$/],
+        noExternal: clientPackages,
       },
     }
   },
