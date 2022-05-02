@@ -37,7 +37,7 @@ This repository employs a [monorepo](https://en.wikipedia.org/wiki/Monorepo) set
 Pre-requirement:
 
 - [Node.js](http://nodejs.org) **version 14+**
-- [pnpm](https://pnpm.io/) **version 6+**
+- [pnpm](https://pnpm.io/) **version 7+**
 
 Clone the repo, and install dependencies:
 

@@ -25,7 +25,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 6
+          version: 7
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -40,7 +40,7 @@ jobs:
         run: pnpm build
 
       - name: Test coverage
-        run: pnpm test -- --coverage
+        run: pnpm run test --coverage
 
       - name: Coveralls
         uses: coverallsapp/github-action@master

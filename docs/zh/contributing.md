@@ -37,7 +37,7 @@ sidebar: auto
 开发要求：
 
 - [Node.js](http://nodejs.org) **version 14+**
-- [pnpm](https://pnpm.io/zh/) **version 6+**
+- [pnpm](https://pnpm.io/zh/) **version 7+**
 
 克隆代码仓库，并安装依赖：
 
