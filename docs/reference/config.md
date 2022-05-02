@@ -422,7 +422,7 @@ You should not configure it unless you understand what it is for.
 You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
 :::
 
-#### markdown.code.vPre
+#### markdown.code.vPre.block
 
 - Type: `boolean`
 
@@ -430,7 +430,20 @@ You can disable it if you want to implement them in client side. For example, [P
 
 - Details:
 
-  Enable the `v-pre` directive on `<pre>` tag or not.
+  Add `v-pre` directive to `<pre>` tag of code block or not.
+
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
+
+#### markdown.code.vPre.inline
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Add `v-pre` directive to `<code>` tag of inline code or not.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)

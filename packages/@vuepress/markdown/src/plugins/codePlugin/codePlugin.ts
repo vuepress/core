@@ -38,7 +38,7 @@ export interface CodePluginOptions {
     block?: boolean
 
     /**
-     * Add `v-pre` directive `<code>` tag of inline code or not
+     * Add `v-pre` directive to `<code>` tag of inline code or not
      */
     inline?: boolean
   }
