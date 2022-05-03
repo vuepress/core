@@ -1,5 +1,6 @@
 import type { AppConfig } from '@vuepress/core'
-import { chalk, logger } from '@vuepress/utils'
+import { ensureEndingSlash, ensureLeadingSlash } from '@vuepress/shared'
+import { chalk, logger, path } from '@vuepress/utils'
 
 /**
  * Resolve app config according to:
@@ -31,6 +32,32 @@ export const resolveAppConfig = ({
       `${chalk.magenta('bundler')} and ${chalk.magenta('theme')} are required`
     )
     return null
+  }
+
+  if (
+    appConfig.base &&
+    !(appConfig.base.startsWith('/') && appConfig.base.endsWith('/'))
+  ) {
+    const rawBase = appConfig.base
+    appConfig.base = ensureLeadingSlash(ensureEndingSlash(rawBase)) as
+      | '/'
+      | `/${string}/`
+    logger.warn(
+      `${chalk.magenta('base')} should start and end with a slash (/),` +
+        ` so it has been normalized from ${chalk.magenta(rawBase)}` +
+        ` to ${chalk.magenta(appConfig.base)}`
+    )
+  }
+
+  if (
+    appConfig.dest &&
+    path.normalize(appConfig.source).includes(path.normalize(appConfig.dest))
+  ) {
+    logger.warn(
+      `${chalk.magenta('dest')} directory would be emptied during build,` +
+        ` so we fallback it to the default directory for the safety of your source files`
+    )
+    delete appConfig.dest
   }
 
   return appConfig
