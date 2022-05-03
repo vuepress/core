@@ -10,11 +10,15 @@ html.dark {
   color-scheme: dark;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--c-text);
 }
 
