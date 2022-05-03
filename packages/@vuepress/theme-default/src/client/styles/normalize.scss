@@ -6,12 +6,12 @@ body {
   transition: background-color var(--t-color);
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 html {
   font-size: 16px;
-
-  &.dark {
-    color-scheme: dark;
-  }
 }
 
 body {
