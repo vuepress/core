@@ -47,7 +47,9 @@ module.exports = {
 }
 ```
 
-在你主题的 `Layout.vue` 中引入调色板和样式：
+### 使用调色板
+
+在你主题需要使用对应变量的地方引入该插件的调色板文件，比如在 `Layout.vue` 中：
 
 ```vue
 <template>
@@ -55,7 +57,7 @@ module.exports = {
 </template>
 
 <style lang="scss">
-/* 从调色板中引入变量 */
+/* 从该插件的调色板中引入变量 */
 @import '@vuepress/plugin-palette/palette';
 
 /* 设置变量的默认值 */
@@ -66,8 +68,6 @@ $color: red !default;
   color: $color;
 }
 </style>
-
-<style lang="scss" src="@vuepress/plugin-palette/style"></style>
 ```
 
 然后，用户就可以在 `.vuepress/styles/palette.scss` 中自定义变量：
@@ -76,11 +76,22 @@ $color: red !default;
 $color: green;
 ```
 
-并在 `.vuepress/styles/index.scss` 中添加额外样式：
+### 使用样式
+
+在你主题的样式之后引入该插件的样式文件，比如在 `clientAppEnhance.ts` 中：
+
+```ts
+// 引入你主题本身的样式文件
+import 'path/to/your/theme/style'
+// 引入该插件的样式文件
+import '@vuepress/plugin-palette/style'
+```
+
+然后，用户就可以在 `.vuepress/styles/index.scss` 中添加额外样式，并可以覆盖你主题本身的样式：
 
 ```scss
-:root {
-  scroll-behavior: smooth;
+h1 {
+  font-size: 2.5rem;
 }
 ```
 
@@ -176,7 +187,7 @@ $color: green;
 
 - 默认值：
   - css: `` (filePath) => `@import '${filePath}';\n` ``
-  - sass: `` (filePath) => `@forward '${filePath}';\n` ``
+  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
   - stylus: `` (filePath) => `@require '${filePath}';\n` ``
 

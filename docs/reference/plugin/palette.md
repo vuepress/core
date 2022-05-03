@@ -47,7 +47,9 @@ module.exports = {
 }
 ```
 
-Import the palette and style in the `Layout.vue` of your theme:
+### Usage of Palette
+
+Import the plugin's palette file where your theme needs to use the corresponding variables, such as in the `Layout.vue` file:
 
 ```vue
 <template>
@@ -55,7 +57,7 @@ Import the palette and style in the `Layout.vue` of your theme:
 </template>
 
 <style lang="scss">
-/* import variables from palette */
+/* import variables from the plugin's palette file */
 @import '@vuepress/plugin-palette/palette';
 
 /* set default value for variables */
@@ -66,8 +68,6 @@ $color: red !default;
   color: $color;
 }
 </style>
-
-<style lang="scss" src="@vuepress/plugin-palette/style"></style>
 ```
 
 Then users can customize variables in `.vuepress/styles/palette.scss`:
@@ -76,11 +76,22 @@ Then users can customize variables in `.vuepress/styles/palette.scss`:
 $color: green;
 ```
 
-And add extra styles in `.vuepress/styles/index.scss`:
+### Usage of Style
+
+Import the plugin's style file after your theme's styles, for example, in the `clientAppEnhance.ts` file:
+
+```ts
+// import your theme's style file
+import 'path/to/your/theme/style'
+// import the plugin's style file
+import '@vuepress/plugin-palette/style'
+```
+
+Then users can add extra styles in `.vuepress/styles/index.scss` and override the default styles of your theme:
 
 ```scss
-:root {
-  scroll-behavior: smooth;
+h1 {
+  font-size: 2.5rem;
 }
 ```
 
@@ -176,7 +187,7 @@ And add extra styles in `.vuepress/styles/index.scss`:
 
 - Default:
   - css: `` (filePath) => `@import '${filePath}';\n` ``
-  - sass: `` (filePath) => `@forward '${filePath}';\n` ``
+  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
   - stylus: `` (filePath) => `@require '${filePath}';\n` ``
 
