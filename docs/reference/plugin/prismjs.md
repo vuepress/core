@@ -6,7 +6,7 @@ This plugin will enable syntax highlighting for markdown code fence with [Prism.
 
 This plugin has been integrated into the default theme.
 
-Notice that this plugin would only tokenize the code fence without adding styles. When using it with a custom theme, you may need to choose and import prismjs theme yourself.
+Notice that this plugin would only tokenize the code fence without adding styles. When using it with a custom theme, you may need to choose and import Prism.js style theme yourself.
 
 ## Usage
 
