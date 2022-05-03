@@ -1,6 +1,6 @@
 export * from './defineUserConfig'
 export * from './loadUserConfig'
-export * from './loadUserConfigEs'
+export * from './loadUserConfigCjs'
 export * from './resolveUserConfigConventionalPath'
 export * from './resolveUserConfigPath'
 export * from './transformUserConfigToPlugin'

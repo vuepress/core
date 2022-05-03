@@ -10,6 +10,8 @@ export const resolveUserConfigConventionalPath = (
   [
     path.resolve(cwd, 'vuepress.config.ts'),
     path.resolve(cwd, 'vuepress.config.js'),
+    path.resolve(cwd, 'vuepress.config.cjs'),
     path.resolve(source, '.vuepress/config.ts'),
     path.resolve(source, '.vuepress/config.js'),
+    path.resolve(source, '.vuepress/config.cjs'),
   ].find((item) => fs.pathExistsSync(item))

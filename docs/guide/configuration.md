@@ -20,9 +20,11 @@ To be more specific, we have a convention for config file paths (in order of pre
 - In current working directory `cwd`:
   - `vuepress.config.ts`
   - `vuepress.config.js`
+  - `vuepress.config.cjs`
 - In source directory `sourceDir`:
   - `.vuepress/config.ts`
   - `.vuepress/config.js`
+  - `.vuepress/config.cjs`
 
 You can also specify the config file via `--config` option of [CLI](./cli.md).
 
