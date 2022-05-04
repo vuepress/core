@@ -62,3 +62,30 @@ export default defineUserConfig({
 
 - 参考：
   - [Vite > 插件 > 官方插件](https://cn.vitejs.dev/plugins/#vitejsplugin-vue)
+
+## 常见问题
+
+### SSR Externals 问题
+
+当你引入一个第三方库（如 `foo-lib`）时，你可能会在构建时遇到一个常见的错误：
+
+```sh
+Error [ERR_REQUIRE_ESM]: Must use import to load ES Module: /path/to/foo-lib
+```
+
+此时，你需要设置 `ssr.noExternal` 配置项来解决它：
+
+```ts
+export default defineUserConfig({
+  bundler: viteBundler({
+    viteOptions: {
+      // @ts-expect-error: vite 还没有给 ssr 配置项提供类型
+      ssr: {
+        noExternal: ['foo-lib'],
+      },
+    },
+  }),
+})
+```
+
+VuePress 使用 Vite 服务端渲染 (SSR) 来将 Markdown 预渲染成 HTML 文件。尽管它可以在 VuePress 中正常使用，但该功能仍然被标记为实验性能力，因此可能会有一些小问题。想要完全理解上面的报错原因，你可以去了解一下 [Vite SSR Externals 文档](https://cn.vitejs.dev/guide/ssr.html#ssr-externals) 。
