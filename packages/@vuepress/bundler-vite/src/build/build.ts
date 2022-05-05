@@ -60,7 +60,7 @@ export const build = async (
     ) as OutputChunk
 
     // load the compiled server bundle
-    const serverEntryPath = app.dir.dest('.server', serverEntryChunk.fileName)
+    const serverEntryPath = app.dir.temp('.server', serverEntryChunk.fileName)
     // delete server entry cache to allow building multiple times
     // in the same dest dir
     delete require.cache[serverEntryPath]
@@ -91,7 +91,7 @@ export const build = async (
 
   // keep the server bundle files in debug mode
   if (!app.env.isDebug) {
-    // remove server dest directory after pages rendered
-    await fs.remove(app.dir.dest('.server'))
+    // remove server temp directory after pages rendered
+    await fs.remove(app.dir.temp('.server'))
   }
 }

@@ -68,7 +68,7 @@ import '@vuepress/client/app'
       },
       build: {
         ssr: isServer,
-        outDir: isServer ? app.dir.dest('.server') : app.dir.dest(),
+        outDir: isServer ? app.dir.temp('.server') : app.dir.dest(),
         emptyOutDir: false,
         cssCodeSplit: false,
         rollupOptions: {

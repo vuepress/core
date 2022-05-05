@@ -20,7 +20,7 @@ export const createServerConfig = async (
   // server output
   // remove after pages rendered
   config.output
-    .path(app.dir.dest('.server'))
+    .path(app.dir.temp('.server'))
     .filename('app.js')
     .publicPath(app.options.base)
     .libraryTarget('commonjs2')

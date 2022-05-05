@@ -180,12 +180,6 @@ Rendered as：
 
   Specify the output directory for `vuepress build` command.
 
-::: warning
-Since VuePress will generate temp files under the output directory during build process, the directory should be inside project root to resolve dependencies correctly.
-
-You can manually move it to another location after building.
-:::
-
 ### temp
 
 - Type: `string`
@@ -196,6 +190,10 @@ You can manually move it to another location after building.
 
   Specify the directory for temporary files.
 
+::: warning
+Since VuePress will load temp files during dev and build, the temp directory should be inside project root to resolve dependencies correctly.
+:::
+
 ### cache
 
 - Type: `string`
@@ -204,7 +202,7 @@ You can manually move it to another location after building.
 
 - Details:
 
-  Specify the directory for cache .
+  Specify the directory for cache files.
 
 ### public
 

@@ -32,7 +32,7 @@ export const createClientConfig = async (
   // vuepress client plugin, handle client assets info for ssr
   config
     .plugin('vuepress-client')
-    .use(createClientPlugin(app.dir.dest(clientManifestFilename)))
+    .use(createClientPlugin(app.dir.temp(clientManifestFilename)))
 
   // copy files from public dir to dest dir
   if (fs.pathExistsSync(app.dir.public())) {

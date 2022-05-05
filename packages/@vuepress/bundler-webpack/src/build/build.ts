@@ -65,7 +65,8 @@ export const build = async (
     ).toString()
 
     // load the client manifest file
-    const clientManifestPath = app.dir.dest(clientManifestFilename)
+    const clientManifestPath = app.dir.temp(clientManifestFilename)
+    delete require.cache[clientManifestPath]
     const clientManifest = require(clientManifestPath) as ClientManifest
 
     // resolve client files meta
@@ -77,7 +78,7 @@ export const build = async (
     } = resolveClientManifestMeta(clientManifest)
 
     // load the compiled server bundle
-    const serverEntryPath = app.dir.dest('.server/app')
+    const serverEntryPath = app.dir.temp('.server/app')
     // delete server entry cache to allow building multiple times
     // in the same dest dir
     delete require.cache[serverEntryPath]
@@ -109,7 +110,7 @@ export const build = async (
 
   // keep the server bundle files in debug mode
   if (!app.env.isDebug) {
-    // remove server dest directory after pages rendered
-    await fs.remove(app.dir.dest('.server'))
+    // remove server temp directory after pages rendered
+    await fs.remove(app.dir.temp('.server'))
   }
 }
