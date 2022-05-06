@@ -39,7 +39,7 @@
     "@vuepress/theme-default": "workspace:*"
   },
   "peerDependencies": {
-    "@vuepress/client": "^2.0.0-beta.42",
+    "@vuepress/client": "workspace:*",
     "vue": "^3.2.33"
   }
 }
