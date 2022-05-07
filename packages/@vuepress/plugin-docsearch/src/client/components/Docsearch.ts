@@ -9,6 +9,8 @@ import { useDocsearchShim } from '../composables'
 
 import '@docsearch/css'
 
+import '../styles/docsearch.css'
+
 export const Docsearch = defineComponent({
   name: 'Docsearch',
 
