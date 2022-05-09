@@ -34,7 +34,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "markdown-it": "^13.0.0",
+    "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0"
   },
   "publishConfig": {

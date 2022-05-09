@@ -34,7 +34,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.7",
     "chokidar": "^3.5.3",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
@@ -49,10 +49,10 @@
     "style-loader": "^3.3.1",
     "vue": "^3.2.33",
     "vue-loader": "^17.0.0",
-    "vue-router": "^4.0.14",
-    "webpack": "^5.70.0",
+    "vue-router": "^4.0.15",
+    "webpack": "^5.72.0",
     "webpack-chain": "^6.5.1",
-    "webpack-dev-server": "^4.7.4",
+    "webpack-dev-server": "^4.9.0",
     "webpack-merge": "^5.8.0"
   },
   "publishConfig": {

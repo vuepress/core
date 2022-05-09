@@ -28,18 +28,18 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^2.3.1",
+    "@vitejs/plugin-vue": "^2.3.2",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.7",
     "connect-history-api-fallback": "^1.6.0",
     "postcss": "^8.4.13",
-    "rollup": "^2.71.1",
-    "vite": "~2.9.6",
+    "rollup": "^2.72.1",
+    "vite": "~2.9.8",
     "vue": "^3.2.33",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.15"
   },
   "publishConfig": {
     "access": "public"

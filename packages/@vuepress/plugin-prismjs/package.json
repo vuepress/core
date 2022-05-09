@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vuepress/core": "workspace:*",
-    "prismjs": "^1.27.0"
+    "prismjs": "^1.28.0"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0"

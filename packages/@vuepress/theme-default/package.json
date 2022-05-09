@@ -44,10 +44,10 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "@vueuse/core": "^8.2.1",
+    "@vueuse/core": "^8.4.2",
     "sass": "^1.51.0",
     "vue": "^3.2.33",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.15"
   },
   "peerDependencies": {
     "sass-loader": "^12.6.0"
