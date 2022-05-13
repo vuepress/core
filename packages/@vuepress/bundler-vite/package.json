@@ -28,7 +28,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^2.3.2",
+    "@vitejs/plugin-vue": "^2.3.3",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
@@ -37,7 +37,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "postcss": "^8.4.13",
     "rollup": "^2.72.1",
-    "vite": "~2.9.8",
+    "vite": "~2.9.9",
     "vue": "^3.2.33",
     "vue-router": "^4.0.15"
   },

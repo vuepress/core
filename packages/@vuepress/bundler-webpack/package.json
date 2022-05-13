@@ -50,7 +50,7 @@
     "vue": "^3.2.33",
     "vue-loader": "^17.0.0",
     "vue-router": "^4.0.15",
-    "webpack": "^5.72.0",
+    "webpack": "^5.72.1",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^4.9.0",
     "webpack-merge": "^5.8.0"

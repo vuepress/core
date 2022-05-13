@@ -19,7 +19,7 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "anywhere": "^1.5.0",
+    "anywhere": "^1.6.0",
     "sass-loader": "^12.6.0",
     "vue": "^3.2.33"
   }
