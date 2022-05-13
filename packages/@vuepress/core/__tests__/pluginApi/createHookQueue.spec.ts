@@ -23,9 +23,7 @@ describe('core > pluginApi > createHookQueue', () => {
       'extendsPageOptions',
       'extendsPage',
       'extendsBundlerOptions',
-      'clientAppEnhanceFiles',
-      'clientAppRootComponentFiles',
-      'clientAppSetupFiles',
+      'clientConfigFile',
       'alias',
       'define',
     ] as const
@@ -249,26 +247,22 @@ describe('core > pluginApi > createHookQueue', () => {
     })
   })
 
-  describe('client files hooks', () => {
-    const hookNames = [
-      'clientAppEnhanceFiles',
-      'clientAppRootComponentFiles',
-      'clientAppSetupFiles',
-    ] as const
+  describe('client config file hook', () => {
+    const hookNames = ['clientConfigFile'] as const
     const file1 = path.resolve(
       __dirname,
-      '../__fixtures__/clientFiles/clientAppEnhance.ts'
+      '../__fixtures__/clientConfigs/clientConfig.ts'
     )
     const file2 = path.resolve(
       __dirname,
-      '../__fixtures__/clientFiles/clientAppSetup.ts'
+      '../__fixtures__/clientConfigs/clientConfig2.ts'
     )
 
     hookNames.forEach((hookName) =>
       it(`${hookName}`, async () => {
         const hook = createHookQueue(hookName)
-        const func1 = jest.fn(() => Promise.resolve([file1]))
-        const func2 = jest.fn(() => Promise.resolve([file2]))
+        const func1 = jest.fn(() => Promise.resolve(file1))
+        const func2 = jest.fn(() => Promise.resolve(file2))
         hook.add({
           pluginName: 'test1',
           hook: func1,

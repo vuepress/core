@@ -55,9 +55,7 @@
       "src/index.ts"
     ],
     "external": [
-      "@internal/clientAppEnhances",
-      "@internal/clientAppRootComponents",
-      "@internal/clientAppSetups",
+      "@internal/clientConfigs",
       "@internal/layoutComponents",
       "@internal/pagesComponents",
       "@internal/pagesData",

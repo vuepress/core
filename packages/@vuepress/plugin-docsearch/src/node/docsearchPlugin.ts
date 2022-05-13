@@ -7,10 +7,7 @@ export type DocsearchPluginOptions = DocsearchOptions
 export const docsearchPlugin = (options: DocsearchPluginOptions): Plugin => ({
   name: '@vuepress/plugin-docsearch',
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   define: {
     __DOCSEARCH_OPTIONS__: options,

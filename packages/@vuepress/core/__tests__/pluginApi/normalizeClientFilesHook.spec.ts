@@ -1,40 +1,29 @@
 import { path } from '@vuepress/utils'
-import { createBaseApp, normalizeClientFilesHook } from '../../src'
-import type { ClientFilesHook } from '../../src'
+import { createBaseApp, normalizeClientConfigFileHook } from '../../src'
+import type { ClientConfigFileHook } from '../../src'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
   bundler: {} as any,
 })
-const clientFile = path.resolve(
+const clientConfigFile = path.resolve(
   __dirname,
-  '../__fixtures__/clientFiles/clientAppSetup.ts'
+  '../__fixtures__/clientConfigs/clientConfig.ts'
 )
-const clientFileNonExistent = path.resolve(
+const clientConfigFileNonExistent = path.resolve(
   __dirname,
-  '../__fixtures__/clientFiles/non-existent.ts'
+  '../__fixtures__/clientConfigs/non-existent.ts'
 )
-const clientFiles = [
-  path.resolve(__dirname, '../__fixtures__/clientFiles/clientAppSetup.ts'),
-  path.resolve(__dirname, '../__fixtures__/clientFiles/clientAppEnhance.ts'),
-]
-const clientFilesNonExistent = [clientFile, clientFileNonExistent]
 
-describe('core > pluginApi > normalizeClientFilesHook', () => {
+describe('core > pluginApi > normalizeClientConfigFileHook', () => {
   describe('should keep function as is', () => {
     it('return value is string', async () => {
-      const rawHook: ClientFilesHook['exposed'] = jest.fn((app) => clientFile)
-      const normalizedHook = normalizeClientFilesHook(rawHook)
-      expect(await normalizedHook(app)).toEqual([clientFile])
-      expect(rawHook).toHaveBeenCalledTimes(1)
-      expect(rawHook).toHaveBeenCalledWith(app)
-    })
-
-    it('return value is string array', async () => {
-      const rawHook: ClientFilesHook['exposed'] = jest.fn((app) => clientFiles)
-      const normalizedHook = normalizeClientFilesHook(rawHook)
-      expect(await normalizedHook(app)).toEqual(clientFiles)
+      const rawHook: ClientConfigFileHook['exposed'] = jest.fn(
+        () => clientConfigFile
+      )
+      const normalizedHook = normalizeClientConfigFileHook(rawHook)
+      expect(await normalizedHook(app)).toEqual([clientConfigFile])
       expect(rawHook).toHaveBeenCalledTimes(1)
       expect(rawHook).toHaveBeenCalledWith(app)
     })
@@ -43,8 +32,9 @@ describe('core > pluginApi > normalizeClientFilesHook', () => {
       const consoleError = console.error
       console.error = jest.fn()
 
-      const rawHook: ClientFilesHook['exposed'] = clientFileNonExistent
-      const normalizedHook = normalizeClientFilesHook(rawHook)
+      const rawHook: ClientConfigFileHook['exposed'] =
+        clientConfigFileNonExistent
+      const normalizedHook = normalizeClientConfigFileHook(rawHook)
       await expect(normalizedHook(app)).rejects.toThrow()
       expect(console.error).toHaveBeenCalled()
 
@@ -54,23 +44,18 @@ describe('core > pluginApi > normalizeClientFilesHook', () => {
 
   describe('should wrap raw value with a function', () => {
     it('value is string', async () => {
-      const rawHook: ClientFilesHook['exposed'] = clientFile
-      const normalizedHook = normalizeClientFilesHook(rawHook)
-      expect(await normalizedHook(app)).toEqual([clientFile])
-    })
-
-    it('value is string array', async () => {
-      const rawHook: ClientFilesHook['exposed'] = clientFiles
-      const normalizedHook = normalizeClientFilesHook(rawHook)
-      expect(await normalizedHook(app)).toEqual(clientFiles)
+      const rawHook: ClientConfigFileHook['exposed'] = clientConfigFile
+      const normalizedHook = normalizeClientConfigFileHook(rawHook)
+      expect(await normalizedHook(app)).toEqual([clientConfigFile])
     })
 
     it('should throw an error if file does not exist', async () => {
       const consoleError = console.error
       console.error = jest.fn()
 
-      const rawHook: ClientFilesHook['exposed'] = clientFilesNonExistent
-      const normalizedHook = normalizeClientFilesHook(rawHook)
+      const rawHook: ClientConfigFileHook['exposed'] =
+        clientConfigFileNonExistent
+      const normalizedHook = normalizeClientConfigFileHook(rawHook)
       await expect(normalizedHook(app)).rejects.toThrow()
       expect(console.error).toHaveBeenCalled()
 

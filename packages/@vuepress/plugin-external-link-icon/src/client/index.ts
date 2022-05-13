@@ -1,1 +1,1 @@
-export * from './components/ExternalLinkIcon'
+export * from './components'

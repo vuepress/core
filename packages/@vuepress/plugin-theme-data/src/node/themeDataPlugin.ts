@@ -18,10 +18,7 @@ export const themeDataPlugin = ({
 }: ThemeDataPluginOptions): Plugin => ({
   name: '@vuepress/plugin-theme-data',
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   onPrepared: (app) => prepareThemeData(app, themeData),
 })

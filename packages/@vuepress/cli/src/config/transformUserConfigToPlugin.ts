@@ -14,12 +14,12 @@ export const transformUserConfigToPlugin = (
     ...userConfig,
   }
 
-  // if `clientAppEnhanceFiles` is not set explicitly,
+  // if `clientConfig` is not set explicitly,
   // try to load conventional files
-  if (userConfigPlugin.clientAppEnhanceFiles === undefined) {
-    userConfigPlugin.clientAppEnhanceFiles = [
-      app.dir.source('.vuepress/clientAppEnhance.ts'),
-      app.dir.source('.vuepress/clientAppEnhance.js'),
+  if (userConfigPlugin.clientConfigFile === undefined) {
+    userConfigPlugin.clientConfigFile = [
+      app.dir.source('.vuepress/clientConfig.ts'),
+      app.dir.source('.vuepress/clientConfig.js'),
     ].find((item) => fs.pathExistsSync(item))
   }
 

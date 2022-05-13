@@ -31,10 +31,10 @@ export type ExtendsHook<T> = Hook<
   (extendable: T, app: App) => PromiseOrNot<void>
 >
 
-// hook that generates client files
-export type ClientFilesHook = Hook<
-  string | string[] | ((app: App) => PromiseOrNot<string | string[]>),
-  (app: App) => Promise<string[]>
+// hook that returns a string
+export type ClientConfigFileHook = Hook<
+  string | ((app: App) => PromiseOrNot<string>),
+  (app: App) => Promise<string>
 >
 
 // hook that returns an object
@@ -56,9 +56,7 @@ export interface Hooks {
   extendsPageOptions: ExtendsHook<PageOptions>
   extendsPage: ExtendsHook<Page>
   extendsBundlerOptions: ExtendsHook<any>
-  clientAppEnhanceFiles: ClientFilesHook
-  clientAppRootComponentFiles: ClientFilesHook
-  clientAppSetupFiles: ClientFilesHook
+  clientConfigFile: ClientConfigFileHook
   alias: ReturnObjectHook
   define: ReturnObjectHook
 }

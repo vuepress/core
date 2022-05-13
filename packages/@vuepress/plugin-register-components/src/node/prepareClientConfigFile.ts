@@ -2,7 +2,7 @@ import type { App } from '@vuepress/core'
 import { getComponentsFromDir } from './getComponentsFromDir'
 import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin'
 
-export const prepareClientAppEnhanceFile = async (
+export const prepareClientConfigFile = async (
   app: App,
   options: Required<RegisterComponentsPluginOptions>,
   identifier: string
@@ -21,19 +21,21 @@ export const prepareClientAppEnhanceFile = async (
   const content = `\
 import { defineAsyncComponent } from 'vue'
 
-export default ({ app }) => {\
-${Object.entries(componentsMap).map(
-  ([name, filepath]) => `
-  app.component(${JSON.stringify(
-    name
-  )}, defineAsyncComponent(() => import(${JSON.stringify(filepath)})))`
-)}
+export default {
+  enhance: ({ app }) => {\
+    ${Object.entries(componentsMap).map(
+      ([name, filepath]) => `
+      app.component(${JSON.stringify(
+        name
+      )}, defineAsyncComponent(() => import(${JSON.stringify(filepath)})))`
+    )}
+  },
 }
 `
 
   // write temp file and return the file path
   return app.writeTemp(
-    `register-components/clientAppEnhance.${identifier}.js`,
+    `register-components/clientConfig.${identifier}.js`,
     content
   )
 }

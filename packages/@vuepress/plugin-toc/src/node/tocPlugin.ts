@@ -13,10 +13,7 @@ export const tocPlugin = ({
 }: TocPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-toc',
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   define: {
     __TOC_COMPONENT_NAME__: componentName,

@@ -1,7 +1,7 @@
 import type { Plugin } from '@vuepress/core'
 import { hash, path } from '@vuepress/utils'
 import * as chokidar from 'chokidar'
-import { prepareClientAppEnhanceFile } from './prepareClientAppEnhanceFile'
+import { prepareClientConfigFile } from './prepareClientConfigFile'
 
 export interface RegisterComponentsPluginOptions {
   components?: Record<string, string>
@@ -33,8 +33,8 @@ export const registerComponentsPlugin = ({
 
     multiple: true,
 
-    clientAppEnhanceFiles: (app) =>
-      prepareClientAppEnhanceFile(app, options, optionsHash),
+    clientConfigFile: (app) =>
+      prepareClientConfigFile(app, options, optionsHash),
 
     onWatched: (app, watchers) => {
       if (componentsDir) {
@@ -43,10 +43,10 @@ export const registerComponentsPlugin = ({
           ignoreInitial: true,
         })
         componentsWatcher.on('add', () => {
-          prepareClientAppEnhanceFile(app, options, optionsHash)
+          prepareClientConfigFile(app, options, optionsHash)
         })
         componentsWatcher.on('unlink', () => {
-          prepareClientAppEnhanceFile(app, options, optionsHash)
+          prepareClientConfigFile(app, options, optionsHash)
         })
         watchers.push(componentsWatcher)
       }

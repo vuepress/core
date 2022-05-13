@@ -26,10 +26,7 @@ export const pwaPopupPlugin =
     return {
       ...plugin,
 
-      clientAppRootComponentFiles: path.resolve(
-        __dirname,
-        '../client/components/PwaPopupWrapper.js'
-      ),
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
       define: {
         __PWA_POPUP_LOCALES__: locales,

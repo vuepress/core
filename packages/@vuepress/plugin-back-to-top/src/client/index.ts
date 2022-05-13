@@ -1,2 +1,2 @@
-export * from './components/BackToTop'
+export * from './components'
 export * from './utils'

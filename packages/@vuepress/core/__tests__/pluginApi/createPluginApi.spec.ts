@@ -19,9 +19,7 @@ describe('core > pluginApi > createPluginApi', () => {
       'extendsMarkdown',
       'extendsPageOptions',
       'extendsPage',
-      'clientAppEnhanceFiles',
-      'clientAppRootComponentFiles',
-      'clientAppSetupFiles',
+      'clientConfigFile',
       'alias',
       'define',
     ]
