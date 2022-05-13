@@ -290,7 +290,6 @@ importers:
       '@docsearch/css': ^3.0.0
       '@docsearch/js': ^3.0.0
       '@docsearch/react': ^3.0.0
-      '@types/react': ^17.0.43
       '@vuepress/client': workspace:*
       '@vuepress/core': workspace:*
       '@vuepress/shared': workspace:*
@@ -300,9 +299,8 @@ importers:
       vue-router: ^4.0.15
     dependencies:
       '@docsearch/css': 3.0.0
-      '@docsearch/js': 3.0.0_@types+react@17.0.44
-      '@docsearch/react': 3.0.0_@types+react@17.0.44
-      '@types/react': 17.0.44
+      '@docsearch/js': 3.0.0
+      '@docsearch/react': 3.0.0
       '@vuepress/client': link:../client
       '@vuepress/core': link:../core
       '@vuepress/shared': link:../shared
@@ -2023,10 +2021,10 @@ packages:
     resolution: {integrity: sha512-1kkV7tkAsiuEd0shunYRByKJe3xQDG2q7wYg24SOw1nV9/2lwEd4WrUYRJC/ukGTl2/kHeFxsaUvtiOy0y6fFA==}
     dev: false
 
-  /@docsearch/js/3.0.0_@types+react@17.0.44:
+  /@docsearch/js/3.0.0:
     resolution: {integrity: sha512-j3tUJWlgW3slYqzGB8fm7y05kh2qqrIK1dZOXHeMUm/5gdKE85fiz/ltfCPMDFb/MXF+bLZChJXSMzqY0Ck30Q==}
     dependencies:
-      '@docsearch/react': 3.0.0_@types+react@17.0.44
+      '@docsearch/react': 3.0.0
       preact: 10.7.1
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -2035,7 +2033,7 @@ packages:
       - react-dom
     dev: false
 
-  /@docsearch/react/3.0.0_@types+react@17.0.44:
+  /@docsearch/react/3.0.0:
     resolution: {integrity: sha512-yhMacqS6TVQYoBh/o603zszIb5Bl8MIXuOc6Vy617I74pirisDzzcNh0NEaYQt50fVVR3khUbeEhUEWEWipESg==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 18.0.0'
@@ -2050,7 +2048,6 @@ packages:
       '@algolia/autocomplete-core': 1.5.2
       '@algolia/autocomplete-preset-algolia': 1.5.2_algoliasearch@4.13.0
       '@docsearch/css': 3.0.0
-      '@types/react': 17.0.44
       algoliasearch: 4.13.0
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -2668,24 +2665,12 @@ packages:
     resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
-  /@types/prop-types/15.7.5:
-    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: false
-
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: false
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
-    dev: false
-
-  /@types/react/17.0.44:
-    resolution: {integrity: sha512-Ye0nlw09GeMp2Suh8qoOv0odfgCoowfM/9MG6WeRD60Gq9wS90bdkdRtYbRkNhXOpG4H+YXGvj4wOWhAC0LJ1g==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.0.11
     dev: false
 
   /@types/resolve/1.17.1:
@@ -2696,10 +2681,6 @@ packages:
 
   /@types/retry/0.12.0:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
-    dev: false
-
-  /@types/scheduler/0.16.2:
-    resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: false
 
   /@types/serve-index/1.9.1:
@@ -4461,10 +4442,6 @@ packages:
 
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
-    dev: false
-
-  /csstype/3.0.11:
-    resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
     dev: false
 
   /dargs/7.0.0:

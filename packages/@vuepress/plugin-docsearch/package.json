@@ -33,7 +33,6 @@
     "@docsearch/css": "^3.0.0",
     "@docsearch/js": "^3.0.0",
     "@docsearch/react": "^3.0.0",
-    "@types/react": "^17.0.43",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
