@@ -1,13 +1,14 @@
-import type { App, PluginObject } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import type { PluginObject } from '@vuepress/core'
+import { fs, path } from '@vuepress/utils'
 import type { UserConfig } from './types'
 
 /**
  * Transform user config to a vuepress plugin
  */
 export const transformUserConfigToPlugin = (
-  app: App,
-  userConfig: UserConfig
+  userConfig: UserConfig,
+  source: string,
+  cwd = process.cwd()
 ): PluginObject => {
   const userConfigPlugin: PluginObject = {
     name: 'user-config',
@@ -18,8 +19,12 @@ export const transformUserConfigToPlugin = (
   // try to load conventional files
   if (userConfigPlugin.clientConfigFile === undefined) {
     userConfigPlugin.clientConfigFile = [
-      app.dir.source('.vuepress/client.ts'),
-      app.dir.source('.vuepress/client.js'),
+      path.resolve(cwd, 'vuepress.client.ts'),
+      path.resolve(cwd, 'vuepress.client.js'),
+      path.resolve(cwd, 'vuepress.client.mjs'),
+      path.resolve(source, '.vuepress/client.ts'),
+      path.resolve(source, '.vuepress/client.js'),
+      path.resolve(source, '.vuepress/client.mjs'),
     ].find((item) => fs.pathExistsSync(item))
   }
 

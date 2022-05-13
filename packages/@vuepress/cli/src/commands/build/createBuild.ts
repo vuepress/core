@@ -45,7 +45,7 @@ export const createBuild =
     const app = createBuildApp(appConfig)
 
     // use user-config plugin
-    app.use(transformUserConfigToPlugin(app, userConfig))
+    app.use(transformUserConfigToPlugin(userConfig, cliAppConfig.source))
 
     // clean temp and cache
     if (commandOptions.cleanTemp === true) {
