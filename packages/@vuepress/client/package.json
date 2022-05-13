@@ -20,7 +20,6 @@
   "exports": {
     ".": "./dist/index.js",
     "./app": "./dist/app.js",
-    "./helpers": "./helpers/index.js",
     "./package.json": "./package.json",
     "./templates/*": "./templates/*",
     "./types": "./types.d.ts"
