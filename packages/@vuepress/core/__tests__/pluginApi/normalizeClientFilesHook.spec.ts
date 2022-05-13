@@ -23,7 +23,7 @@ describe('core > pluginApi > normalizeClientConfigFileHook', () => {
         () => clientConfigFile
       )
       const normalizedHook = normalizeClientConfigFileHook(rawHook)
-      expect(await normalizedHook(app)).toEqual([clientConfigFile])
+      expect(await normalizedHook(app)).toEqual(clientConfigFile)
       expect(rawHook).toHaveBeenCalledTimes(1)
       expect(rawHook).toHaveBeenCalledWith(app)
     })
@@ -46,7 +46,7 @@ describe('core > pluginApi > normalizeClientConfigFileHook', () => {
     it('value is string', async () => {
       const rawHook: ClientConfigFileHook['exposed'] = clientConfigFile
       const normalizedHook = normalizeClientConfigFileHook(rawHook)
-      expect(await normalizedHook(app)).toEqual([clientConfigFile])
+      expect(await normalizedHook(app)).toEqual(clientConfigFile)
     })
 
     it('should throw an error if file does not exist', async () => {

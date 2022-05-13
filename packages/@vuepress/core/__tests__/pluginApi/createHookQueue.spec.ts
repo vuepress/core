@@ -277,7 +277,7 @@ describe('core > pluginApi > createHookQueue', () => {
         expect(func1).toHaveBeenCalledWith(app)
         expect(func2).toHaveBeenCalledTimes(1)
         expect(func2).toHaveBeenCalledWith(app)
-        expect(result).toEqual([[file1], [file2]])
+        expect(result).toEqual([file1, file2])
       })
     )
   })
