@@ -1,3 +1,29 @@
+# [2.0.0-beta.44](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.43...v2.0.0-beta.44) (2022-05-14)
+
+
+### Bug Fixes
+
+* **theme-default:** allow non-url-encoded filename in theme config (close [#884](https://github.com/vuepress/vuepress-next/issues/884)) ([dd1d240](https://github.com/vuepress/vuepress-next/commit/dd1d2408ba67519f6bfaa1dd55772d80d894f5ac))
+
+
+### Features
+
+* **cli:** add check for base and dest config ([c060a6c](https://github.com/vuepress/vuepress-next/commit/c060a6c9d7d49fc099a9f14fdae6861ddea109c2))
+* **cli:** allow .cjs config file ([e1152d1](https://github.com/vuepress/vuepress-next/commit/e1152d1212296622c6a1349ed9e1de8c292561c2))
+* **core:** merge all client files hooks into clientConfigFile ([#888](https://github.com/vuepress/vuepress-next/issues/888)) ([ad8b5a8](https://github.com/vuepress/vuepress-next/commit/ad8b5a804295f806274d9fe776f68d5610b92545))
+* **markdown:** improve line-number DOM structure ([#819](https://github.com/vuepress/vuepress-next/issues/819)) ([d938852](https://github.com/vuepress/vuepress-next/commit/d938852328672b09d61a2488e72079ff625fe3a4))
+* **markdown:** prepend base to absolute links to markdown files (close [#653](https://github.com/vuepress/vuepress-next/issues/653)) ([e4155a0](https://github.com/vuepress/vuepress-next/commit/e4155a0dc688671d5ffa493d4646e3bc8c09b273))
+* **theme-default:** normalize html and body font-size ([#817](https://github.com/vuepress/vuepress-next/issues/817)) ([fd26901](https://github.com/vuepress/vuepress-next/commit/fd26901fbc238a1a2d6c3d80191851e965f4d7a7))
+
+
+### BREAKING CHANGES
+
+* **markdown:** now absolute links to markdown files will be treated as internal links, and do not need to prepend `base` manually
+* **core:** `clientAppEnhanceFiles`, `clientAppRootComponentFiles` and `clientAppSetupFiles` hooks are removed, use `clientConfigFile` hook instead
+* **core:** conventional file `.vuepress/clientAppEnhance.{js,ts}` has been renamed to `.vuepress/client.{js,ts}`, and the usage has been changed too
+
+
+
 # [2.0.0-beta.43](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.42...v2.0.0-beta.43) (2022-05-02)
 
 
