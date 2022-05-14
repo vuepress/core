@@ -9,7 +9,7 @@ declare const __PWA_SW_FILENAME__: string
 const swFilename = __PWA_SW_FILENAME__
 
 export default defineClientConfig({
-  setup: () => {
+  setup() {
     if (__VUEPRESS_SSR__ || !swFilename) return
 
     const log = (...args: any[]): void =>

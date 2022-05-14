@@ -8,7 +8,7 @@ import {
 } from './composables'
 
 export default defineClientConfig({
-  enhance: ({ app }) => {
+  enhance({ app }) {
     // provide theme data & theme locale data
     const themeData = useThemeData()
     const routeLocale =

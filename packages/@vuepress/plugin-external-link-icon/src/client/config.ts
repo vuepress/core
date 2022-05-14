@@ -8,7 +8,7 @@ declare const __EXTERNAL_LINK_ICON_LOCALES__: ExternalLinkIconLocales
 const locales = __EXTERNAL_LINK_ICON_LOCALES__
 
 export default defineClientConfig({
-  enhance: ({ app }) => {
+  enhance({ app }) {
     // wrap the `<ExternalLinkIcon />` component with plugin options
     app.component('ExternalLinkIcon', h(ExternalLinkIcon, { locales }))
   },

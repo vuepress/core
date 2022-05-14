@@ -15,7 +15,7 @@ const zoomOptions = __MZ_ZOOM_OPTIONS__
 const delay = __MZ_DELAY__
 
 export default defineClientConfig({
-  enhance: ({ app, router }) => {
+  enhance({ app, router }) {
     if (__VUEPRESS_SSR__ || !selector) return
 
     // create zoom instance and provide it

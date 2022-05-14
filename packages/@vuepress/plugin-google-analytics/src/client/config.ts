@@ -6,7 +6,7 @@ declare const __GA_ID__: string
 const id = __GA_ID__
 
 export default defineClientConfig({
-  enhance: () => {
+  enhance() {
     if (__VUEPRESS_SSR__) return
     useGoogleAnalytics(id)
   },

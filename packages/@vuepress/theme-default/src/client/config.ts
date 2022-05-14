@@ -12,7 +12,7 @@ import {
 import './styles/index.scss'
 
 export default defineClientConfig({
-  enhance: ({ app, router }) => {
+  enhance({ app, router }) {
     app.component('Badge', Badge)
     app.component('CodeGroup', CodeGroup)
     app.component('CodeGroupItem', CodeGroupItem)
@@ -44,7 +44,7 @@ export default defineClientConfig({
     }
   },
 
-  setup: () => {
+  setup() {
     setupDarkMode()
     setupSidebarItems()
   },

@@ -15,7 +15,7 @@ const hotKeys = __SEARCH_HOT_KEYS__
 const maxSuggestions = __SEARCH_MAX_SUGGESTIONS__
 
 export default defineClientConfig({
-  enhance: ({ app }) => {
+  enhance({ app }) {
     // wrap the `<SearchBox />` component with plugin options
     app.component('SearchBox', (props) =>
       h(SearchBox, {
