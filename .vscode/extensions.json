@@ -1,7 +1,7 @@
 {
   "recommendations": [
     // .vue files
-    "johnsoncodehk.volar",
+    "vue.volar",
     // scss
     "mrmlnc.vscode-scss",
     // yaml
