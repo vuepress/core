@@ -89,11 +89,10 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 **建议**
 
-对于内部链接，尽可能使用相对路径而不是绝对路径。
+对于指向内部 Markdown 文件的链接，尽可能使用相对路径而不是绝对路径。
 
 - 相对路径是指向目标文件的有效链接，在你的编辑器或者代码仓库中浏览源文件时也可以正确跳转。
 - 相对路径在不同 locales 下都是一致的，这样在翻译你的内容时就不需要修改 locale 路径了。
-- 在使用绝对路径时，如果你站点的 [base](../reference/config.md#base) 不是 `"/"`，你需要手动添加 `base` 或者使用 [base helper](./assets.md#base-helper) 。
 
 ::: tip
 链接扩展是由我们的内置插件支持的。

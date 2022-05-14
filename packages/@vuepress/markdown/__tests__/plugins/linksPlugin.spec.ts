@@ -9,9 +9,14 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         '[https-github](https://github.com)',
         '[http-github](http://github.com)',
         '[github](//github.com)',
+        '[https-github-md](https://github.com/foo/bar/blob/main/README.md)',
+        '[http-github-md](http://github.com/foo/bar/blob/main/README.md)',
+        '[github-md](//github.com/foo/bar/blob/main/README.md)',
         // autolink
         '<https://github.com>',
         '<http://github.com>',
+        '<https://github.com/foo/bar/blob/main/README.md>',
+        '<http://github.com/foo/bar/blob/main/README.md>',
       ].join('\n\n')
 
       it('should render default attrs', () => {
@@ -25,8 +30,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http-github</a>',
             '<a href="//github.com" target="_blank" rel="noopener noreferrer">github</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">https-github-md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">http-github-md</a>',
+            '<a href="//github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">github-md</a>',
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">https://github.com/foo/bar/blob/main/README.md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -50,8 +60,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer" foo="bar">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer" foo="bar">http-github</a>',
             '<a href="//github.com" target="_blank" rel="noopener noreferrer" foo="bar">github</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">https-github-md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">http-github-md</a>',
+            '<a href="//github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">github-md</a>',
             '<a href="https://github.com" target="_blank" rel="noopener noreferrer" foo="bar">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="noopener noreferrer" foo="bar">http://github.com</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">https://github.com/foo/bar/blob/main/README.md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -74,8 +89,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="https://github.com" target="_blank" rel="foobar">https-github</a>',
             '<a href="http://github.com" target="_blank" rel="foobar">http-github</a>',
             '<a href="//github.com" target="_blank" rel="foobar">github</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">https-github-md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">http-github-md</a>',
+            '<a href="//github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">github-md</a>',
             '<a href="https://github.com" target="_blank" rel="foobar">https://github.com</a>',
             '<a href="http://github.com" target="_blank" rel="foobar">http://github.com</a>',
+            '<a href="https://github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">https://github.com/foo/bar/blob/main/README.md</a>',
+            '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -86,8 +106,9 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
     describe('absolute links', () => {
       const source = [
-        '[md](/path/to/index.md)',
         '[html](/path/to/index.html)',
+        '[pdf](/path/to/index.pdf)',
+        '[png](/path/to/index.png)',
       ].join('\n\n')
 
       it('should render default attrs', () => {
@@ -100,8 +121,9 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<a href="/path/to/index.md" target="_blank" rel="noopener noreferrer">md</a>',
             '<a href="/path/to/index.html" target="_blank" rel="noopener noreferrer">html</a>',
+            '<a href="/path/to/index.pdf" target="_blank" rel="noopener noreferrer">pdf</a>',
+            '<a href="/path/to/index.png" target="_blank" rel="noopener noreferrer">png</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'
@@ -774,7 +796,8 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
     describe('absolute links', () => {
       const source = [
-        '[md](/base/path/to/index.md)',
+        '[md](/path/to/index.md)',
+        '[md-with-redundant-base](/base/path/to/index.md)',
         '[html](/base/path/to/index.html)',
       ].join('\n\n')
 
@@ -789,6 +812,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<RouterLink to="/path/to/">md</RouterLink>',
+            '<RouterLink to="/base/path/to/">md-with-redundant-base</RouterLink>',
             '<RouterLink to="/path/to/index.html">html</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
@@ -797,9 +821,14 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(env.links).toEqual([
           {
-            raw: '/base/path/to/index.md',
+            raw: '/path/to/index.md',
             relative: 'path/to/index.md',
             absolute: '/base/path/to/index.md',
+          },
+          {
+            raw: '/base/path/to/index.md',
+            relative: 'base/path/to/index.md',
+            absolute: '/base/base/path/to/index.md',
           },
           {
             raw: '/base/path/to/index.html',

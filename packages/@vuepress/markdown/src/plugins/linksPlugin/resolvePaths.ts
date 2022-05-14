@@ -1,3 +1,4 @@
+import { removeLeadingSlash } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 
 /**
@@ -11,13 +12,25 @@ export const resolvePaths = (
   absolutePath: string
   relativePath: string
 } => {
-  let relativePath: string
   let absolutePath: string
+  let relativePath: string
 
   if (rawPath.startsWith('/')) {
     // if raw path is absolute
-    absolutePath = rawPath
-    relativePath = path.relative(base, absolutePath)
+
+    if (rawPath.endsWith('.md')) {
+      // if raw path is a link to markdown file
+
+      // prepend `base` to the link
+      absolutePath = path.join(base, rawPath)
+      relativePath = removeLeadingSlash(rawPath)
+    } else {
+      // if raw path is a link to other kind of file
+
+      // keep the link as is
+      absolutePath = rawPath
+      relativePath = path.relative(base, absolutePath)
+    }
   } else {
     // if raw path is relative
     if (filePathRelative) {

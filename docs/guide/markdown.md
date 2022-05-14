@@ -88,11 +88,10 @@ Take our documentation source files as an example:
 
 **Suggestion**
 
-Try to use relative paths instead of absolute paths for internal links.
+Try to use relative paths instead of absolute paths for internal links to markdown files.
 
 - Relative paths are a valid links to the target files, and they can navigate correctly when browsing the source files in your editor or repository.
 - Relative paths are consistent in different locales, so you don't need to change the locale path when translating your content.
-- When using absolute paths, if the [base](../reference/config.md#base) of your site is not `"/"`, you will need to prepend the `base` manually or use [base helper](./assets.md#base-helper).
 
 ::: tip
 This links extension is supported by our built-in plugin.

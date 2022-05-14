@@ -10,8 +10,8 @@ export const isLinkExternal = (link: string, base = '/'): boolean => {
     return true
   }
 
-  // absolute link that does not start with `base`
-  if (link.startsWith('/') && !link.startsWith(base)) {
+  // absolute link that does not start with `base` and does not end with `.md`
+  if (link.startsWith('/') && !link.startsWith(base) && !link.endsWith('.md')) {
     return true
   }
 
