@@ -78,7 +78,7 @@ $color: green;
 
 ### 使用样式
 
-在你主题的样式之后引入该插件的样式文件，比如在 `clientAppEnhance.ts` 中：
+在你主题的样式之后引入该插件的样式文件，比如在 `clientConfigFile` 中：
 
 ```ts
 // 引入你主题本身的样式文件

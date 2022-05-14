@@ -33,7 +33,7 @@ export const en: SidebarConfig = {
       text: 'Cookbook',
       children: [
         '/advanced/cookbook/README.md',
-        '/advanced/cookbook/usage-of-client-app-enhance.md',
+        '/advanced/cookbook/usage-of-client-config.md',
         '/advanced/cookbook/adding-extra-pages.md',
         '/advanced/cookbook/making-a-theme-extendable.md',
         '/advanced/cookbook/passing-data-to-client-code.md',
