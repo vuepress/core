@@ -1,3 +1,7 @@
+# [2.0.0-beta.45](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.44...v2.0.0-beta.45) (2022-05-14)
+
+
+
 # [2.0.0-beta.44](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.43...v2.0.0-beta.44) (2022-05-14)
 
 

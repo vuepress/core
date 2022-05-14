@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-beta.44",
+  "version": "2.0.0-beta.45",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
