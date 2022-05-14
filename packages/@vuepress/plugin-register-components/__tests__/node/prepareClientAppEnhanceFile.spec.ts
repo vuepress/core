@@ -1,6 +1,6 @@
 import { createBaseApp } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
-import { prepareClientAppEnhanceFile } from '../../src/node'
+import { prepareClientConfigFile } from '../../src/node'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
@@ -10,9 +10,9 @@ const app = createBaseApp({
 })
 let identifier = 0
 
-describe('plugin-register-components > node > prepareClientAppEnhanceFile', () => {
+describe('plugin-register-components > node > prepareClientConfigFile', () => {
   it('should write a noop temp file', async () => {
-    const tempFile = await prepareClientAppEnhanceFile(
+    const tempFile = await prepareClientConfigFile(
       app,
       {
         components: {},
@@ -28,7 +28,7 @@ describe('plugin-register-components > node > prepareClientAppEnhanceFile', () =
   })
 
   it('should write a correct temp file', async () => {
-    const tempFile = await prepareClientAppEnhanceFile(
+    const tempFile = await prepareClientConfigFile(
       app,
       {
         components: {},
@@ -45,7 +45,7 @@ describe('plugin-register-components > node > prepareClientAppEnhanceFile', () =
   })
 
   it('should override correctly', async () => {
-    const tempFile = await prepareClientAppEnhanceFile(
+    const tempFile = await prepareClientConfigFile(
       app,
       {
         components: {

@@ -1,5 +1,5 @@
 import type { PluginApi } from '../types'
-import { normalizeClientFilesHook } from './normalizeClientFilesHook'
+import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook'
 import { normalizeReturnObjectHook } from './normalizeReturnObjectHook'
 
 export const createPluginApiRegisterHooks =
@@ -14,9 +14,7 @@ export const createPluginApiRegisterHooks =
 
         alias,
         define,
-        clientAppEnhanceFiles,
-        clientAppRootComponentFiles,
-        clientAppSetupFiles,
+        clientConfigFile,
 
         ...commonHooks
       }) => {
@@ -37,24 +35,10 @@ export const createPluginApiRegisterHooks =
           })
         }
 
-        if (clientAppEnhanceFiles) {
-          hooks.clientAppEnhanceFiles.add({
+        if (clientConfigFile) {
+          hooks.clientConfigFile.add({
             pluginName,
-            hook: normalizeClientFilesHook(clientAppEnhanceFiles),
-          })
-        }
-
-        if (clientAppRootComponentFiles) {
-          hooks.clientAppRootComponentFiles.add({
-            pluginName,
-            hook: normalizeClientFilesHook(clientAppRootComponentFiles),
-          })
-        }
-
-        if (clientAppSetupFiles) {
-          hooks.clientAppSetupFiles.add({
-            pluginName,
-            hook: normalizeClientFilesHook(clientAppSetupFiles),
+            hook: normalizeClientConfigFileHook(clientConfigFile),
           })
         }
 

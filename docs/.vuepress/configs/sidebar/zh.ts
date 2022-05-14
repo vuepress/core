@@ -33,7 +33,7 @@ export const zh: SidebarConfig = {
       text: 'Cookbook',
       children: [
         '/zh/advanced/cookbook/README.md',
-        '/zh/advanced/cookbook/usage-of-client-app-enhance.md',
+        '/zh/advanced/cookbook/usage-of-client-config.md',
         '/zh/advanced/cookbook/adding-extra-pages.md',
         '/zh/advanced/cookbook/making-a-theme-extendable.md',
         '/zh/advanced/cookbook/passing-data-to-client-code.md',

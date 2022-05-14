@@ -89,14 +89,16 @@ head:
 
 - 示例：
 
-在 `.vuepress/clientAppEnhance.ts` 文件中注册一个布局组件：
+在 `.vuepress/client.ts` 文件中注册一个布局组件：
 
 ```ts
-import { defineClientAppEnhance } from '@vuepress/client'
+import { defineClientConfig } from '@vuepress/client'
 import CustomLayout from './CustomLayout.vue'
 
-export default defineClientAppEnhance(({ app }) => {
-  app.component('CustomLayout', CustomLayout)
+export default defineClientConfig({
+  enhance({ app }) {
+    app.component('CustomLayout', CustomLayout)
+  },
 })
 ```
 

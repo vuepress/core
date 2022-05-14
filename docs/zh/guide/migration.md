@@ -220,17 +220,15 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 #### .vuepress/enhanceApp.js
 
-重命名为 `.vuepress/clientAppEnhance.{js,ts}` 。
+重命名为 `.vuepress/client.{js,ts}` ，使用方法也有改动。
 
-函数接收的参数也有改动。
-
-参考 [客户端 API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance) 。
+参考 [深入 > Cookbook > 客户端配置的使用方法](../advanced/cookbook/usage-of-client-config.md) 。
 
 #### .vuepress/components/
 
 在该目录下的文件不会被自动注册为 Vue 组件。
 
-你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `.vuepress/clientAppEnhance.{js,ts}` 中手动注册你的组件。
+你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `.vuepress/client.{js,ts}` 中手动注册你的组件。
 
 #### .vuepress/theme/
 
@@ -302,9 +300,9 @@ v1 的主题和插件和 v2 并不兼容。
 - `generated`：重命名为 `onGenerated`
 - `additionalPages`：移除，改为在 `onInitialized` Hook 中使用 `app.pages.push(createPage())`
 - `clientDynamicModules`：移除，改为在 `onPrepared` Hook 中使用 `app.writeTemp()`
-- `enhanceAppFiles`：重命名为 `clientAppEnhanceFiles`
-- `globalUIComponents`：重命名为 `clientAppRootComponentFiles`
-- `clientRootMixin`：重命名为`clientAppSetupFiles`
+- `enhanceAppFiles`：移除，使用 `clientConfigFile` Hook
+- `globalUIComponents`：移除，使用 `clientConfigFile` Hook
+- `clientRootMixin`：移除，使用 `clientConfigFile` Hook
 - `extendMarkdown`：重命名为 `extendsMarkdown`
 - `chainMarkdown`：移除
 - `extendPageData`：重命名为 `extendsPage`
@@ -325,8 +323,8 @@ v1 的主题和插件和 v2 并不兼容。
 一些主要的 Breaking Changes ：
 
 - 所谓的 **主题目录结构约定** 不再存在。
-  - `theme/enhanceApp.js` 或 `theme/clientAppEnhance.{js,ts}` 文件不会被隐式作为 Client App Enhance 文件。你需要在 `clientAppEnhanceFiles` Hook 中显式指定它。
-  - `theme/global-components/` 目录下的文件不会被自动注册为 Vue 组件。你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `clientAppEnhance.{js,ts}` 中手动注册组件。
+  - `theme/enhanceApp.js` 文件不会被隐式作为 Client App Enhance 文件。你需要在 `clientConfigFile` Hook 中显式指定它。
+  - `theme/global-components/` 目录下的文件不会被自动注册为 Vue 组件。你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `clientConfigFile` 中手动注册组件。
   - `theme/layouts/` 目录下的文件不会被自动注册为布局组件。你需要通过 `layouts` 配置项来显式指定。
   - `theme/templates/` 目录下的文件不会被自动用作 dev / ssr 的模板。你需要通过 `templateBuild` 和 `templateDev` 配置项来显式指定。
   - 你始终需要提供一个合法的 JS 入口文件，不要再使用 `"main": "layouts/Layout.vue"` 作为主题入口。

@@ -26,7 +26,11 @@ VuePress 站点的基本配置文件是 `.vuepress/config.js` ，但也同样支
   - `.vuepress/config.js`
   - `.vuepress/config.cjs`
 
-你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件。
+你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件：
+
+```sh
+vuepress dev docs --config my-config.js
+```
 
 一个基础的配置文件是这样的：
 
@@ -60,4 +64,47 @@ export default defineUserConfig({
 
 ::: tip
 前往 [配置参考](../reference/config.md) 查看所有 VuePress 配置。
+:::
+
+## 客户端配置文件
+
+在大多数情况下，配置文件已经足够帮助你配置好你的 VuePress 站点。不过，有些时候用户们可能希望直接添加一些客户端代码。 VuePress 通过客户端配置文件来支持这种需求：
+
+```
+├─ docs
+│  ├─ .vuepress
+│  │  ├─ client.js   <--- 客户端配置文件
+│  │  └─ config.js   <--- 配置文件
+│  └─ README.md
+├─ .gitignore
+└─ package.json
+```
+
+同样的，我们也有关于客户端配置文件的路径约定（按照优先顺序）：
+
+- 当前工作目录 `cwd` 下：
+  - `vuepress.client.ts`
+  - `vuepress.client.js`
+  - `vuepress.client.mjs`
+- 源文件目录 `sourceDir` 下：
+  - `.vuepress/client.ts`
+  - `.vuepress/client.js`
+  - `.vuepress/client.mjs`
+
+需要注意的是，客户端配置文件需要使用 ESM 格式：
+
+```ts
+import { defineClientConfig } from '@vuepress/client'
+
+export default defineClientConfig({
+  enhance({ app, router, siteData }) {},
+  setup() {},
+  rootComponents: [],
+})
+```
+
+::: tip
+和配置文件不同，客户端配置文件不能通过命令行接口的选项来指定。
+
+可以前往 [深入 > Cookbook > 客户端配置的使用方法](../advanced/cookbook/usage-of-client-config.md) 来了解更多信息。
 :::

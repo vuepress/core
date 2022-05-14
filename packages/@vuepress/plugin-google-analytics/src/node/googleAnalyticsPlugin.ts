@@ -24,10 +24,7 @@ export const googleAnalyticsPlugin =
     return {
       ...plugin,
 
-      clientAppEnhanceFiles: path.resolve(
-        __dirname,
-        '../client/clientAppEnhance.js'
-      ),
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
       define: {
         __GA_ID__: id,

@@ -21,9 +21,7 @@
 
 下列 Hooks 会在准备文件时处理：
 
-- [clientAppEnhanceFiles](#clientappenhancefiles)
-- [clientAppRootComponentFiles](#clientapprootcomponentfiles)
-- [clientAppSetupFiles](#clientappsetupfiles)
+- [clientConfigFile](#clientconfigfile)
 - [onPrepared](#onprepared)
 
 下列 Hooks 会在 dev / build 时处理：
@@ -94,6 +92,33 @@ export default {
   },
 }
 ```
+
+### clientConfigFile
+
+- 类型： `string | ((app: App) => string | Promise<string>)`
+
+- 详情：
+
+  客户端配置文件路径。
+
+  该 Hook 接收文件绝对路径，或者一个返回路径的函数。
+
+- 示例：
+
+```js
+const { path } = require('@vuepress/utils')
+
+export default {
+  clientConfigFile: path.resolve(
+    __dirname,
+    './path/to/clientConfig.js'
+  ),
+}
+```
+
+- 参考：
+  - [客户端 API > defineClientConfig](./client-api.md#defineclientconfig)
+  - [深入 > Cookbook > 客户端配置的使用方法](../advanced/cookbook/usage-of-client-config.md)
 
 ### define
 
@@ -295,87 +320,6 @@ export default {
   - [客户端 API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page 属性 > data](./node-api.md#data)
   - [Node API > Page 属性 > routeMeta](./node-api.md#routemeta)
-
-## 客户端文件 Hooks
-
-### clientAppEnhanceFiles
-
-- 类型： `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- 详情：
-
-  Client App Enhancement 文件路径。
-
-  该 Hook 接收文件绝对路径，或者一个返回路径的函数。
-
-  该 Hook 中的文件会在客户端 App 创建后被调用，用以对其进行一些增强。
-
-- 示例：
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    './path/to/clientAppEnhance.js'
-  ),
-}
-```
-
-- 参考：
-  - [客户端 API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
-  - [Cookbook > Client App Enhance 的使用方法](../advanced/cookbook/usage-of-client-app-enhance.md)
-
-### clientAppRootComponentFiles
-
-- 类型： `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- 详情：
-
-  Client Root Component 文件路径。
-
-  该 Hook 接收文件绝对路径，或者一个返回路径的函数。
-
-  该 Hook 中的组件会被渲染到客户端 App 的根节点。
-
-- 示例：
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppRootComponentFiles: path.resolve(
-    __dirname,
-    './path/to/RootComponent.vue'
-  ),
-}
-```
-
-### clientAppSetupFiles
-
-- 类型： `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- 详情：
-
-  Client App Setup 文件路径。
-
-  该 Hook 接收文件绝对路径，或者一个返回路径的函数。
-
-  该 Hook 中的文件会在客户端 App 的 [setup](https://v3.vuejs.org/guide/composition-api-setup.html) 函数中被调用。
-
-- 示例：
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
-}
-```
-
-- 参考：
-  - [客户端 API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## 生命周期 Hooks
 

@@ -72,44 +72,14 @@
 
 ## 工具函数
 
-### defineClientAppEnhance
+### defineClientConfig
 
 - 详情：
 
-  帮助你创建 [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles) 的工具函数。
-
-- 示例：
-
-创建 `clientAppEnhance.ts` 文件：
-
-```ts
-import { defineClientAppEnhance } from '@vuepress/client'
-
-export default defineClientAppEnhance(({ app, router, siteData }) => {
-  // ...
-})
-```
+  帮助你创建 [clientConfigFile](./plugin-api.md#clientconfigfile) 的工具函数。
 
 - 参考：
-  - [Cookbook > Client App Enhance 的使用方法](../advanced/cookbook/usage-of-client-app-enhance.md)
-
-### defineClientAppSetup
-
-- 详情：
-
-  帮助你创建 [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles) 的工具函数。
-
-- 示例：
-
-创建 `clientAppSetup.ts` 文件：
-
-```ts
-import { defineClientAppSetup } from '@vuepress/client'
-
-export default defineClientAppSetup(() => {
-  // ...
-})
-```
+  - [深入 > Cookbook > 客户端配置的使用方法](../advanced/cookbook/usage-of-client-config.md)
 
 ### withBase
 
@@ -170,15 +140,16 @@ export default defineClientAppSetup(() => {
 
 - 示例：
 
-在 `clientAppEnhance.ts` 文件中自定义 `<title>` 的格式：
+在客户端配置文件中自定义 `<title>` 的格式：
 
 ```ts
-import { defineClientAppEnhance, resolvers } from '@vuepress/client'
+import { defineClientConfig, resolvers } from '@vuepress/client'
 
-export default defineClientAppEnhance(({ app, router, siteData }) => {
-  // ...
-  resolvers.resolvePageHeadTitle = (page, siteLocale) =>
-    `${siteLocale.title} > ${page.title}`
+export default defineClientConfig({
+  enhance({ app, router, siteData }) {
+    resolvers.resolvePageHeadTitle = (page, siteLocale) =>
+      `${siteLocale.title} > ${page.title}`
+  },
 })
 ```
 

@@ -78,7 +78,7 @@ $color: green;
 
 ### Usage of Style
 
-Import the plugin's style file after your theme's styles, for example, in the `clientAppEnhance.ts` file:
+Import the plugin's style file after your theme's styles, for example, in the `clientConfigFile`:
 
 ```ts
 // import your theme's style file

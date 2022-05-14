@@ -52,7 +52,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     const app = createDevApp(appConfig)
 
     // use user-config plugin
-    app.use(transformUserConfigToPlugin(app, userConfig))
+    app.use(transformUserConfigToPlugin(userConfig, cliAppConfig.source))
 
     // clean temp and cache
     if (commandOptions.cleanTemp === true) {

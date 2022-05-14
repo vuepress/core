@@ -257,11 +257,13 @@ importers:
 
   packages/@vuepress/plugin-back-to-top:
     specifiers:
+      '@vuepress/client': workspace:*
       '@vuepress/core': workspace:*
       '@vuepress/utils': workspace:*
       ts-debounce: ^4.0.0
       vue: ^3.2.33
     dependencies:
+      '@vuepress/client': link:../client
       '@vuepress/core': link:../core
       '@vuepress/utils': link:../utils
       ts-debounce: 4.0.0
@@ -2040,6 +2042,8 @@ packages:
       react: '>= 16.8.0 < 18.0.0'
       react-dom: '>= 16.8.0 < 18.0.0'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
       react:
         optional: true
       react-dom:

@@ -15,10 +15,7 @@ export const mediumZoomPlugin = ({
 }: MediumZoomPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-medium-zoom',
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   define: {
     __MZ_SELECTOR__: selector,

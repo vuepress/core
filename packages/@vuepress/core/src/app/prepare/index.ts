@@ -1,6 +1,4 @@
-export * from './prepareClientAppEnhances'
-export * from './prepareClientAppRootComponents'
-export * from './prepareClientAppSetups'
+export * from './prepareClientConfigs'
 export * from './prepareLayoutComponents'
 export * from './preparePageComponent'
 export * from './preparePageData'

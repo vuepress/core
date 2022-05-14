@@ -21,9 +21,7 @@ The following hooks will be processed when initializing app:
 
 The following hooks will be processed when preparing files:
 
-- [clientAppEnhanceFiles](#clientappenhancefiles)
-- [clientAppRootComponentFiles](#clientapprootcomponentfiles)
-- [clientAppSetupFiles](#clientappsetupfiles)
+- [clientConfigFile](#clientconfigfile)
 - [onPrepared](#onprepared)
 
 The following hooks will be processed in dev / build:
@@ -94,6 +92,33 @@ export default {
   },
 }
 ```
+
+### clientConfigFile
+
+- Type: `string | ((app: App) => string | Promise<string>)`
+
+- Details:
+
+  Path of client config file.
+
+  This hook accepts an absolute file path, or a function that returns the path.
+
+- Example:
+
+```js
+const { path } = require('@vuepress/utils')
+
+export default {
+  clientConfigFile: path.resolve(
+    __dirname,
+    './path/to/clientConfig.js'
+  ),
+}
+```
+
+- Also see:
+  - [Client API > defineClientConfig](./client-api.md#defineclientconfig)
+  - [Advanced > Cookbook > Usage of Client Config](../advanced/cookbook/usage-of-client-config.md)
 
 ### define
 
@@ -295,87 +320,6 @@ export default {
   - [Client API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page Properties > data](./node-api.md#data)
   - [Node API > Page Properties > routeMeta](./node-api.md#routemeta)
-
-## Client Files Hooks
-
-### clientAppEnhanceFiles
-
-- Type: `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- Details:
-
-  Paths of client app enhancement files.
-
-  This hook accepts absolute file paths, or a function that returns the paths.
-
-  Files listed in this hook will be invoked after the client app is created to make some enhancement to it.
-
-- Example:
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    './path/to/clientAppEnhance.js'
-  ),
-}
-```
-
-- Also see:
-  - [Client API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
-  - [Cookbook > Usage of Client App Enhance](../advanced/cookbook/usage-of-client-app-enhance.md)
-
-### clientAppRootComponentFiles
-
-- Type: `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- Details:
-
-  Paths of client app root component files.
-
-  This hook accepts absolute file paths, or a function that returns the paths.
-
-  Components listed in this hook will be rendered to the root node of the client app.
-
-- Example:
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppRootComponentFiles: path.resolve(
-    __dirname,
-    './path/to/RootComponent.vue'
-  ),
-}
-```
-
-### clientAppSetupFiles
-
-- Type: `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
-
-- Details:
-
-  Paths of client app setup files.
-
-  This hook accepts absolute file paths, or a function that returns the paths.
-
-  Files listed in this hook will be invoked in the [setup](https://vuejs.org/api/composition-api-setup.html) function of the client app.
-
-- Example:
-
-```js
-const { path } = require('@vuepress/utils')
-
-export default {
-  clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
-}
-```
-
-- Also see:
-  - [Client API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## Lifecycle Hooks
 

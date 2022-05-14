@@ -23,10 +23,7 @@ export const searchPlugin = ({
 }: SearchPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-search',
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   define: {
     __SEARCH_LOCALES__: locales,

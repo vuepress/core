@@ -16,7 +16,7 @@ export const activeHeaderLinksPlugin = ({
 }: ActiveHeaderLinksPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-active-header-links',
 
-  clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
   define: {
     __AHL_HEADER_LINK_SELECTOR__: headerLinkSelector,

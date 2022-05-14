@@ -220,17 +220,15 @@ If you are using default theme, the palette system is still available but migrat
 
 #### .vuepress/enhanceApp.js
 
-Renamed to `.vuepress/clientAppEnhance.{js,ts}`.
+Renamed to `.vuepress/client.{js,ts}`, and the usage has been changed, too.
 
-The arguments of the function are changed, too.
-
-See [Client API > defineClientAppEnhance](../reference/client-api.md#defineclientappenhance).
+See [Advanced > Cookbook > Usage of Client Config](../advanced/cookbook/usage-of-client-config.md).
 
 #### .vuepress/components/
 
 Files in this directory will not be registered as Vue components automatically.
 
-You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register your components manually in `.vuepress/clientAppEnhance.{js,ts}`.
+You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register your components manually in `.vuepress/client.{js,ts}`.
 
 #### .vuepress/theme/
 
@@ -302,9 +300,9 @@ For more detailed guide about how to write a plugin in v2, see [Advanced > Writi
 - `generated`: renamed to `onGenerated`
 - `additionalPages`: removed, use `app.pages.push(createPage())` in `onInitialized` hook
 - `clientDynamicModules`: removed, use `app.writeTemp()` in `onPrepared` hook
-- `enhanceAppFiles`: renamed to `clientAppEnhanceFiles`
-- `globalUIComponents`: renamed to `clientAppRootComponentFiles`
-- `clientRootMixin`: renamed to`clientAppSetupFiles`
+- `enhanceAppFiles`: removed, use `clientConfigFile` hook
+- `globalUIComponents`: removed, use `clientConfigFile` hook
+- `clientRootMixin`: removed, use `clientConfigFile` hook
 - `extendMarkdown`: renamed to `extendsMarkdown`
 - `chainMarkdown`: removed
 - `extendPageData`: renamed to `extendsPage`
@@ -323,8 +321,8 @@ Although we do not allow using other plugins in a plugin, you can still use plug
 Some major breaking changes:
 
 - There is no **conventional theme directory structure** anymore.
-  - The file `theme/enhanceApp.js` or `theme/clientAppEnhance.{js,ts}` will not be used as client app enhance file implicitly. You need to specify it explicitly in `clientAppEnhanceFiles` hook.
-  - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register components manually in `clientAppEnhance.{js,ts}`.
+  - The file `theme/enhanceApp.js` will not be used as client app enhance file implicitly. You need to specify it explicitly in `clientConfigFile` hook.
+  - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register components manually in `clientConfigFile`.
   - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option.
   - Files in `theme/templates/` directory will not be used as dev / ssr template automatically. You need to specify theme explicitly in `templateBuild` and `templateDev` option.
   - Always provide a valid js entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry anymore.

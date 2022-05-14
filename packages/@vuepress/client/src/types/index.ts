@@ -1,3 +1,2 @@
-export * from './clientAppEnhance'
-export * from './clientAppSetup'
+export * from './clientConfig'
 export * from './createVueAppFunction'

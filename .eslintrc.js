@@ -42,7 +42,7 @@ module.exports = {
       },
     },
     {
-      files: ['clientAppEnhance.ts'],
+      files: ['**/client/config.ts'],
       rules: {
         'vue/match-component-file-name': 'off',
       },

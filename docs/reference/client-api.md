@@ -72,44 +72,14 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 ## Helpers
 
-### defineClientAppEnhance
+### defineClientConfig
 
 - Details:
 
-  Helper for creating [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles).
-
-- Example:
-
-Create `clientAppEnhance.ts` file:
-
-```ts
-import { defineClientAppEnhance } from '@vuepress/client'
-
-export default defineClientAppEnhance(({ app, router, siteData }) => {
-  // ...
-})
-```
+  Helper for creating [clientConfigFile](./plugin-api.md#clientconfigfile).
 
 - Also see:
-  - [Cookbook > Usage of Client App Enhance](../advanced/cookbook/usage-of-client-app-enhance.md)
-
-### defineClientAppSetup
-
-- Details:
-
-  Helper for creating [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles).
-
-- Example:
-
-Create `clientAppSetup.ts` file:
-
-```ts
-import { defineClientAppSetup } from '@vuepress/client'
-
-export default defineClientAppSetup(() => {
-  // ...
-})
-```
+  - [Advanced > Cookbook > Usage of Client Config](../advanced/cookbook/usage-of-client-config.md)
 
 ### withBase
 
@@ -170,15 +140,16 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
 - Example:
 
-Customizing the format of `<title>` in `clientAppEnhance.ts` file:
+Customizing the format of `<title>` in client config file:
 
 ```ts
-import { defineClientAppEnhance, resolvers } from '@vuepress/client'
+import { defineClientConfig, resolvers } from '@vuepress/client'
 
-export default defineClientAppEnhance(({ app, router, siteData }) => {
-  // ...
-  resolvers.resolvePageHeadTitle = (page, siteLocale) =>
-    `${siteLocale.title} > ${page.title}`
+export default defineClientConfig({
+  enhance({ app, router, siteData }) {
+    resolvers.resolvePageHeadTitle = (page, siteLocale) =>
+      `${siteLocale.title} > ${page.title}`
+  },
 })
 ```
 

@@ -36,10 +36,7 @@ export const pwaPlugin =
     return {
       ...plugin,
 
-      clientAppSetupFiles: path.resolve(
-        __dirname,
-        '../client/clientAppSetup.js'
-      ),
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
       define: {
         __PWA_SW_FILENAME__: serviceWorkerFilename,

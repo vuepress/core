@@ -52,12 +52,7 @@ export const defaultTheme = ({
         ])
     ),
 
-    clientAppEnhanceFiles: path.resolve(
-      __dirname,
-      '../client/clientAppEnhance.js'
-    ),
-
-    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+    clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
       // save relative file path into page data to generate edit link
