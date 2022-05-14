@@ -218,17 +218,19 @@ div[class*='language-'] {
       color: var(--code-ln-color);
       padding-top: 1.25rem;
       line-height: 1.4;
-
-      br {
-        user-select: none;
-      }
+      counter-reset: line-number;
 
       .line-number {
         position: relative;
         z-index: 3;
         user-select: none;
-        font-size: 0.85em;
-        line-height: 0;
+        height: 1.4em;
+
+        &::before {
+          counter-increment: line-number;
+          content: counter(line-number);
+          font-size: 0.85em;
+        }
       }
     }
 

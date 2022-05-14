@@ -6,7 +6,9 @@ exports[`@vuepress/markdown > plugins > codePlugin :line-numbers / :no-line-numb
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
@@ -24,7 +26,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -54,7 +62,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -72,11 +86,15 @@ function bar () {
 exports[`@vuepress/markdown > plugins > codePlugin :line-numbers / :no-line-numbers should work properly if \`lineNumbers\` is enabled by default 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
@@ -87,7 +105,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -95,7 +119,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -114,7 +144,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -126,7 +162,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -147,7 +189,9 @@ exports[`@vuepress/markdown > plugins > codePlugin :line-numbers / :no-line-numb
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
@@ -158,7 +202,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -166,7 +216,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -185,7 +241,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -197,7 +259,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -215,15 +283,21 @@ function bar () {
 exports[`@vuepress/markdown > plugins > codePlugin :v-pre / :no-v-pre should work properly if \`vPre.block\` is disabled by default 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -231,7 +305,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -239,7 +319,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -247,7 +333,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -259,7 +351,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -271,7 +369,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -283,22 +387,34 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 `;
 
 exports[`@vuepress/markdown > plugins > codePlugin :v-pre / :no-v-pre should work properly if \`vPre.block\` is enabled by default 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -306,7 +422,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -314,7 +436,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -322,7 +450,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -334,7 +468,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -346,7 +486,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -358,14 +504,22 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 `;
 
 exports[`@vuepress/markdown > plugins > codePlugin plugin options should disable \`highlightLines\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -373,7 +527,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -381,7 +541,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -393,7 +559,17 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <p><code v-pre>{{ inlineCode }}</code></p>
 `;
@@ -469,7 +645,9 @@ const baz = () =&gt; {
 exports[`@vuepress/markdown > plugins > codePlugin plugin options should disable \`vPre.block\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -477,7 +655,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -489,7 +673,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
@@ -508,7 +698,17 @@ const baz = () =&gt; {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <p><code v-pre>{{ inlineCode }}</code></p>
 `;
@@ -617,7 +817,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -629,7 +835,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -648,7 +860,17 @@ const baz = () =&gt; {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <p><code v-pre>{{ inlineCode }}</code></p>
 `;
@@ -656,7 +878,9 @@ const baz = () =&gt; {
 exports[`@vuepress/markdown > plugins > codePlugin plugin options should process code fences with default options 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -664,7 +888,13 @@ function bar () {
   return 1024
 }
 </code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -676,7 +906,13 @@ function bar () {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
@@ -695,7 +931,17 @@ const baz = () =&gt; {
     <div class="highlight-line">&nbsp;</div>
     <div class="highlight-line">&nbsp;</div><br><br><br><br>
   </div>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <p><code v-pre>{{ inlineCode }}</code></p>
 `;
@@ -703,7 +949,9 @@ const baz = () =&gt; {
 exports[`@vuepress/markdown > plugins > codePlugin syntax highlighting should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>highlighted code: Raw text
 , lang: text</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>highlighted code: const foo = 'foo'
 
@@ -711,7 +959,13 @@ function bar () {
   return 1024
 }
 , lang: javascript</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>highlighted code: const foo: string = 'foo'
 
@@ -719,7 +973,13 @@ function bar (): number {
   return 1024
 }
 , lang: typescript</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-vue-html ext-vue-html line-numbers-mode"><pre v-pre class="language-vue-html"><code>highlighted code: <template>
   <div>msg: {{msg}}</div>
@@ -735,7 +995,9 @@ const msg = 'hello world';
 exports[`@vuepress/markdown > plugins > codePlugin syntax highlighting should work if highlighted code is wrapped with \`<pre>\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre><code>highlighted code: Raw text
 , lang: text</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre><code>highlighted code: const foo = 'foo'
 
@@ -743,7 +1005,13 @@ function bar () {
   return 1024
 }
 , lang: javascript</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-typescript ext-ts line-numbers-mode"><pre v-pre><code>highlighted code: const foo: string = 'foo'
 
@@ -751,7 +1019,13 @@ function bar (): number {
   return 1024
 }
 , lang: typescript</code></pre>
-  <div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+  <div class="line-numbers" aria-hidden="true">
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+    <div class="line-number"></div>
+  </div>
 </div>
 <div class="language-vue-html ext-vue-html line-numbers-mode"><pre v-pre><code>highlighted code: <template>
   <div>msg: {{msg}}</div>
