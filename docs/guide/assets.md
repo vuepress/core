@@ -101,5 +101,5 @@ module.exports = {
 ```
 
 ::: tip
-Config reference: [alias](../reference/config.md#alias)
+Config reference: [alias](../reference/plugin-api.md#alias)
 :::

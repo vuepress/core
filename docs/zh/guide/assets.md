@@ -101,5 +101,5 @@ module.exports = {
 ```
 
 ::: tip
-配置参考： [alias](../reference/config.md#alias)
+配置参考： [alias](../reference/plugin-api.md#alias)
 :::
