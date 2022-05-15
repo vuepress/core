@@ -1,14 +1,6 @@
 {
   "recommendations": [
-    // .vue files
-    "vue.volar",
-    // scss
-    "mrmlnc.vscode-scss",
-    // yaml
-    "redhat.vscode-yaml",
-    // frontmatter
-    "bierner.markdown-yaml-preamble",
-    // eslint
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "vue.volar"
   ]
 }
