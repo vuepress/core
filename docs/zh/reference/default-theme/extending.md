@@ -17,6 +17,8 @@ VuePress 提供了继承主题的基础能力，但不同的主题可能会提�
 - `page`
 - `page-top`
 - `page-bottom`
+- `page-content-top`
+- `page-content-bottom`
 
 在它们的帮助下，你可以很容易地添加或替换内容。下面通过一个示例来介绍一下如何使用布局插槽来继承默认主题。
 

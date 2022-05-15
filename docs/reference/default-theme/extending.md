@@ -17,6 +17,8 @@ Default theme's `Layout` provides some slots:
 - `page`
 - `page-top`
 - `page-bottom`
+- `page-content-top`
+- `page-content-bottom`
 
 With the help of them, you can add or replace content easily. Here comes an example to introduce how to extend default theme with layout slots.
 

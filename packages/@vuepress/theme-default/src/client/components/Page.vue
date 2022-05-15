@@ -8,7 +8,11 @@ import PageNav from '@theme/PageNav.vue'
     <slot name="top" />
 
     <div class="theme-default-content">
+      <slot name="content-top" />
+
       <Content />
+
+      <slot name="content-bottom" />
     </div>
 
     <PageMeta />
