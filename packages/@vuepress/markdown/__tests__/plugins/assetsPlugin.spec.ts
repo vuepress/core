@@ -157,488 +157,482 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
   })
 
   describe('html <img> tag', () => {
-    const source = [
-      /* src */
-      // relative paths
-      '<img src="./foo.png">',
-      '<img src="../sub/foo.png">',
-      '<img src="./foo/bar.png">',
-      '<img src="../sub/foo/bar.png">',
-      '<img src="../baz.png">',
-      '<img src="../../out.png">',
-      '<img src="./汉字.png">',
-      '<img src="./100%.png">',
-      '<img alt="attrs" src="./attrs.png" width="100px">',
-      // aliases
-      '<img src="@alias/foo.png">',
-      '<img src="@alias/汉字.png">',
-      '<img src="@alias/100%.png">',
-      '<img alt="attrs" src="@alias/attrs.png" width="100px">',
-      // webpack legacy aliases
-      '<img src="~@alias/foo.png">',
-      '<img src="~@alias/汉字.png">',
-      '<img src="~@alias/100%.png">',
-      '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-      // keep as is
-      '<img src="/absolute.png">',
-      '<img src="no-prefix.png">',
-      '<img src="http://foobar.com/icon.png">',
-      '<img src="">',
-      '<img alt="attrs" src="attrs.png" width="100px">',
-      // invalid paths
-      '<img src=".../invalid.png">',
-      '<img src=".../汉字.png">',
-      '<img src=".../100%.png">',
-      '<img alt="attrs" src=".../attrs.png" width="100px">',
+    describe('single-line', () => {
+      const source = [
+        /* src */
+        // relative paths
+        '<img src="./foo.png">',
+        '<img src="../sub/foo.png">',
+        '<img src="./foo/bar.png">',
+        '<img src="../sub/foo/bar.png">',
+        '<img src="../baz.png">',
+        '<img src="../../out.png">',
+        '<img src="./汉字.png">',
+        '<img src="./100%.png">',
+        '<img alt="attrs" src="./attrs.png" width="100px">',
+        // aliases
+        '<img src="@alias/foo.png">',
+        '<img src="@alias/汉字.png">',
+        '<img src="@alias/100%.png">',
+        '<img alt="attrs" src="@alias/attrs.png" width="100px">',
+        // webpack legacy aliases
+        '<img src="~@alias/foo.png">',
+        '<img src="~@alias/汉字.png">',
+        '<img src="~@alias/100%.png">',
+        '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
+        // keep as is
+        '<img src="/absolute.png">',
+        '<img src="no-prefix.png">',
+        '<img src="http://foobar.com/icon.png">',
+        '<img src="">',
+        '<img alt="attrs" src="attrs.png" width="100px">',
+        // invalid paths
+        '<img src=".../invalid.png">',
+        '<img src=".../汉字.png">',
+        '<img src=".../100%.png">',
+        '<img alt="attrs" src=".../attrs.png" width="100px">',
 
-      /* srcset */
-      // relative paths
-      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
-      '<img srcset="./汉字.png 1x, ./100%.png">',
-      '<img alt="attrs" srcset="./attrs.png" width="100px">',
-      // aliases
-      '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
-      '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
-      // webpack legacy aliases
-      '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
-      '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
-      // keep as is
-      '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-      '<img srcset="">',
-      '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
-      // invalid paths
-      '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
-      '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
-      // invalid srcset
-      '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
+        /* srcset */
+        // relative paths
+        '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
+        '<img srcset="./汉字.png 1x, ./100%.png">',
+        '<img alt="attrs" srcset="./attrs.png" width="100px">',
+        // aliases
+        '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+        '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+        // webpack legacy aliases
+        '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+        '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+        // keep as is
+        '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+        '<img srcset="">',
+        '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+        // invalid paths
+        '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+        '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+        // invalid srcset
+        '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
 
-      /** both */
-      // relative paths
-      '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
-      '<img src="./100%.png" srcset="./汉字.png 1x">',
-      '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
+        /* both */
+        // relative paths
+        '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
+        '<img src="./100%.png" srcset="./汉字.png 1x">',
+        '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
+        // aliases
+        '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+        '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+        // keep as is
+        '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+      ]
 
-      // aliases
-      '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
-      '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+      const testCases: {
+        description: string
+        md: MarkdownIt
+        env: MarkdownEnv
+        expected: string[]
+      }[] = [
+        {
+          description: 'should handle assets link with default options',
+          md: MarkdownIt({ html: true }).use(assetsPlugin),
+          env: {
+            filePathRelative: 'sub/foo.md',
+          },
+          expected: [
+            /* src */
+            // relative paths
+            '<img src="@source/sub/foo.png">',
+            '<img src="@source/sub/foo.png">',
+            '<img src="@source/sub/foo/bar.png">',
+            '<img src="@source/sub/foo/bar.png">',
+            '<img src="@source/baz.png">',
+            '<img src="@source/../out.png">',
+            '<img src="@source/sub/汉字.png">',
+            '<img src="@source/sub/100%.png">',
+            '<img alt="attrs" src="@source/sub/attrs.png" width="100px">',
+            // aliases
+            '<img src="@alias/foo.png">',
+            '<img src="@alias/汉字.png">',
+            '<img src="@alias/100%.png">',
+            '<img alt="attrs" src="@alias/attrs.png" width="100px">',
+            // webpack legacy aliases
+            '<img src="~@alias/foo.png">',
+            '<img src="~@alias/汉字.png">',
+            '<img src="~@alias/100%.png">',
+            '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img src="/absolute.png">',
+            '<img src="no-prefix.png">',
+            '<img src="http://foobar.com/icon.png">',
+            '<img src="">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // invalid paths
+            '<img src=".../invalid.png">',
+            '<img src=".../汉字.png">',
+            '<img src=".../100%.png">',
+            '<img alt="attrs" src=".../attrs.png" width="100px">',
 
-      // keep as is
-      '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-    ]
+            /* srcset */
+            // relative paths
+            '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png">',
+            '<img srcset="@source/sub/汉字.png 1x, @source/sub/100%.png">',
+            '<img alt="attrs" srcset="@source/sub/attrs.png" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+            '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+            // webpack legacy aliases
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+            '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+            // keep as is
+            '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+            '<img srcset="">',
+            '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+            // invalid paths
+            '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+            '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+            // invalid srcset
+            '<img srcset="@source/invalid.png, @source/汉字.png, .../100%.png 3x">',
 
-    const testCases: {
-      description: string
-      md: MarkdownIt
-      env: MarkdownEnv
-      expected: string[]
-    }[] = [
-      {
-        description: 'should handle assets link with default options',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
-        env: {
-          filePathRelative: 'sub/foo.md',
+            /* both */
+            // relative paths
+            '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
+            '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x">',
+            '<img src="@source/sub/default.png" srcset="@source/sub/attrs1.png 1x, @source/sub/attrs2.png 2x" alt="attrs" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          ],
         },
-        expected: [
-          /* src */
-          // relative paths
-          '<img src="@source/sub/foo.png">',
-          '<img src="@source/sub/foo.png">',
-          '<img src="@source/sub/foo/bar.png">',
-          '<img src="@source/sub/foo/bar.png">',
-          '<img src="@source/baz.png">',
-          '<img src="@source/../out.png">',
-          '<img src="@source/sub/汉字.png">',
-          '<img src="@source/sub/100%.png">',
-          '<img alt="attrs" src="@source/sub/attrs.png" width="100px">',
-          // aliases
-          '<img src="@alias/foo.png">',
-          '<img src="@alias/汉字.png">',
-          '<img src="@alias/100%.png">',
-          '<img alt="attrs" src="@alias/attrs.png" width="100px">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png">',
-          '<img src="~@alias/汉字.png">',
-          '<img src="~@alias/100%.png">',
-          '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img src="/absolute.png">',
-          '<img src="no-prefix.png">',
-          '<img src="http://foobar.com/icon.png">',
-          '<img src="">',
-          '<img alt="attrs" src="attrs.png" width="100px">',
-          // invalid paths
-          '<img src=".../invalid.png">',
-          '<img src=".../汉字.png">',
-          '<img src=".../100%.png">',
-          '<img alt="attrs" src=".../attrs.png" width="100px">',
+        {
+          description: 'should respect `relativePathPrefix` option',
+          md: MarkdownIt({ html: true }).use(assetsPlugin, {
+            relativePathPrefix: '@foo',
+          }),
+          env: {
+            filePathRelative: 'sub/foo.md',
+          },
+          expected: [
+            /* src */
+            // relative paths
+            '<img src="@foo/sub/foo.png">',
+            '<img src="@foo/sub/foo.png">',
+            '<img src="@foo/sub/foo/bar.png">',
+            '<img src="@foo/sub/foo/bar.png">',
+            '<img src="@foo/baz.png">',
+            '<img src="@foo/../out.png">',
+            '<img src="@foo/sub/汉字.png">',
+            '<img src="@foo/sub/100%.png">',
+            '<img alt="attrs" src="@foo/sub/attrs.png" width="100px">',
+            // aliases
+            '<img src="@alias/foo.png">',
+            '<img src="@alias/汉字.png">',
+            '<img src="@alias/100%.png">',
+            '<img alt="attrs" src="@alias/attrs.png" width="100px">',
+            // webpack legacy aliases
+            '<img src="~@alias/foo.png">',
+            '<img src="~@alias/汉字.png">',
+            '<img src="~@alias/100%.png">',
+            '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img src="/absolute.png">',
+            '<img src="no-prefix.png">',
+            '<img src="http://foobar.com/icon.png">',
+            '<img src="">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // invalid paths
+            '<img src=".../invalid.png">',
+            '<img src=".../汉字.png">',
+            '<img src=".../100%.png">',
+            '<img alt="attrs" src=".../attrs.png" width="100px">',
 
-          /* srcset */
-          // relative paths
-          '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png">',
-          '<img srcset="@source/sub/汉字.png 1x, @source/sub/100%.png">',
-          '<img alt="attrs" srcset="@source/sub/attrs.png" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
-          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
-          // webpack legacy aliases
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
-          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
-          // keep as is
-          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-          '<img srcset="">',
-          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
-          // invalid paths
-          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
-          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
-          // invalid srcset
-          '<img srcset="@source/invalid.png, @source/汉字.png, .../100%.png 3x">',
+            /* srcset */
+            // relative paths
+            '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png">',
+            '<img srcset="@foo/sub/汉字.png 1x, @foo/sub/100%.png">',
+            '<img alt="attrs" srcset="@foo/sub/attrs.png" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+            '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+            // webpack legacy aliases
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+            '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+            // keep as is
+            '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+            '<img srcset="">',
+            '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+            // invalid paths
+            '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+            '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+            // invalid srcset
+            '<img srcset="@foo/invalid.png, @foo/汉字.png, .../100%.png 3x">',
 
-          /* both */
-          // relative paths
-          '<img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/sub/foo/bar.png 2048w, @source/baz.png 4096w, @source/../out.png 3x" src="@source/sub/default.png">',
-          '<img src="@source/sub/100%.png" srcset="@source/sub/汉字.png 1x">',
-          '<img src="@source/sub/default.png" srcset="@source/sub/attrs1.png 1x, @source/sub/attrs2.png 2x" alt="attrs" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-        ],
-      },
-      {
-        description: 'should respect `relativePathPrefix` option',
-        md: MarkdownIt({ html: true }).use(assetsPlugin, {
-          relativePathPrefix: '@foo',
-        }),
-        env: {
-          filePathRelative: 'sub/foo.md',
+            /* both */
+            // relative paths
+            '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
+            '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x">',
+            '<img src="@foo/sub/default.png" srcset="@foo/sub/attrs1.png 1x, @foo/sub/attrs2.png 2x" alt="attrs" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          ],
         },
-        expected: [
-          /* src */
-          // relative paths
-          '<img src="@foo/sub/foo.png">',
-          '<img src="@foo/sub/foo.png">',
-          '<img src="@foo/sub/foo/bar.png">',
-          '<img src="@foo/sub/foo/bar.png">',
-          '<img src="@foo/baz.png">',
-          '<img src="@foo/../out.png">',
-          '<img src="@foo/sub/汉字.png">',
-          '<img src="@foo/sub/100%.png">',
-          '<img alt="attrs" src="@foo/sub/attrs.png" width="100px">',
-          // aliases
-          '<img src="@alias/foo.png">',
-          '<img src="@alias/汉字.png">',
-          '<img src="@alias/100%.png">',
-          '<img alt="attrs" src="@alias/attrs.png" width="100px">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png">',
-          '<img src="~@alias/汉字.png">',
-          '<img src="~@alias/100%.png">',
-          '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img src="/absolute.png">',
-          '<img src="no-prefix.png">',
-          '<img src="http://foobar.com/icon.png">',
-          '<img src="">',
-          '<img alt="attrs" src="attrs.png" width="100px">',
-          // invalid paths
-          '<img src=".../invalid.png">',
-          '<img src=".../汉字.png">',
-          '<img src=".../100%.png">',
-          '<img alt="attrs" src=".../attrs.png" width="100px">',
+        {
+          description:
+            'should not handle assets link if `filePathRelative` is not provided',
+          md: MarkdownIt({ html: true }).use(assetsPlugin),
+          env: {},
+          expected: [
+            /* src */
+            // relative paths
+            '<img src="./foo.png">',
+            '<img src="../sub/foo.png">',
+            '<img src="./foo/bar.png">',
+            '<img src="../sub/foo/bar.png">',
+            '<img src="../baz.png">',
+            '<img src="../../out.png">',
+            '<img src="./汉字.png">',
+            '<img src="./100%.png">',
+            '<img alt="attrs" src="./attrs.png" width="100px">',
+            // aliases
+            '<img src="@alias/foo.png">',
+            '<img src="@alias/汉字.png">',
+            '<img src="@alias/100%.png">',
+            '<img alt="attrs" src="@alias/attrs.png" width="100px">',
+            // webpack legacy aliases
+            '<img src="~@alias/foo.png">',
+            '<img src="~@alias/汉字.png">',
+            '<img src="~@alias/100%.png">',
+            '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img src="/absolute.png">',
+            '<img src="no-prefix.png">',
+            '<img src="http://foobar.com/icon.png">',
+            '<img src="">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // invalid paths
+            '<img src=".../invalid.png">',
+            '<img src=".../汉字.png">',
+            '<img src=".../100%.png">',
+            '<img alt="attrs" src=".../attrs.png" width="100px">',
 
-          /* srcset */
-          // relative paths
-          '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png">',
-          '<img srcset="@foo/sub/汉字.png 1x, @foo/sub/100%.png">',
-          '<img alt="attrs" srcset="@foo/sub/attrs.png" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
-          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
-          // webpack legacy aliases
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
-          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
-          // keep as is
-          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-          '<img srcset="">',
-          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
-          // invalid paths
-          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
-          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
-          // invalid srcset
-          '<img srcset="@foo/invalid.png, @foo/汉字.png, .../100%.png 3x">',
+            /* srcset */
+            // relative paths
+            '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
+            '<img srcset="./汉字.png 1x, ./100%.png">',
+            '<img alt="attrs" srcset="./attrs.png" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
+            '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
+            // webpack legacy aliases
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
+            '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
+            // keep as is
+            '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+            '<img srcset="">',
+            '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
+            // invalid paths
+            '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
+            '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
+            // invalid srcset
+            '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
 
-          /* both */
-          // relative paths
-          '<img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/sub/foo/bar.png 2048w, @foo/baz.png 4096w, @foo/../out.png 3x" src="@foo/sub/default.png">',
-          '<img src="@foo/sub/100%.png" srcset="@foo/sub/汉字.png 1x">',
-          '<img src="@foo/sub/default.png" srcset="@foo/sub/attrs1.png 1x, @foo/sub/attrs2.png 2x" alt="attrs" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-        ],
-      },
-      {
-        description:
-          'should not handle assets link if `filePathRelative` is not provided',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
-        env: {},
-        expected: [
-          /* src */
-          // relative paths
-          '<img src="./foo.png">',
-          '<img src="../sub/foo.png">',
-          '<img src="./foo/bar.png">',
-          '<img src="../sub/foo/bar.png">',
-          '<img src="../baz.png">',
-          '<img src="../../out.png">',
-          '<img src="./汉字.png">',
-          '<img src="./100%.png">',
-          '<img alt="attrs" src="./attrs.png" width="100px">',
-          // aliases
-          '<img src="@alias/foo.png">',
-          '<img src="@alias/汉字.png">',
-          '<img src="@alias/100%.png">',
-          '<img alt="attrs" src="@alias/attrs.png" width="100px">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png">',
-          '<img src="~@alias/汉字.png">',
-          '<img src="~@alias/100%.png">',
-          '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img src="/absolute.png">',
-          '<img src="no-prefix.png">',
-          '<img src="http://foobar.com/icon.png">',
-          '<img src="">',
-          '<img alt="attrs" src="attrs.png" width="100px">',
-          // invalid paths
-          '<img src=".../invalid.png">',
-          '<img src=".../汉字.png">',
-          '<img src=".../100%.png">',
-          '<img alt="attrs" src=".../attrs.png" width="100px">',
+            /* both */
+            // relative paths
+            '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
+            '<img src="./100%.png" srcset="./汉字.png 1x">',
+            '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
+            // aliases
+            '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
+            '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
+            // keep as is
+            '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+          ],
+        },
+      ]
 
-          /* srcset */
-          // relative paths
-          '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png">',
-          '<img srcset="./汉字.png 1x, ./100%.png">',
-          '<img alt="attrs" srcset="./attrs.png" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x">',
-          '<img alt="attrs" srcset="@alias/attrs.png 1024w" width="100px">',
-          // webpack legacy aliases
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x">',
-          '<img alt="attrs" srcset="~@alias/attrs.png 1024w" width="100px">',
-          // keep as is
-          '<img srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-          '<img srcset="">',
-          '<img alt="attrs" srcset="attrs.png 1x, default.png" width="100px">',
-          // invalid paths
-          '<img srcset=".../invalid.png 1x, .../汉字.png 2x, .../100%.png 3x">',
-          '<img alt="attrs" srcset=".../attrs.png 1x, .../default.png" width="100px">',
-          // invalid srcset
-          '<img srcset="../invalid.png, ../汉字.png, .../100%.png 3x">',
-
-          /* both */
-          // relative paths
-          '<img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../sub/foo/bar.png 2048w, ../baz.png 4096w, ../../out.png 3x" src="./default.png">',
-          '<img src="./100%.png" srcset="./汉字.png 1x">',
-          '<img src="./default.png" srcset="./attrs1.png 1x, ./attrs2.png 2x" alt="attrs" width="100px">',
-          // aliases
-          '<img srcset="@alias/foo.png 1x, @alias/汉字.png 2x, @alias/100%.png 3x" alt="attrs" src="@alias/attrs.png" width="100px">',
-          '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
-          // keep as is
-          '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
-        ],
-      },
-    ]
-
-    testCases.forEach(({ description, md, env, expected }) =>
-      it(description, () => {
-        // block
-        expect(md.render(source.join('\n\n'), env)).toEqual(
-          expected.map((item) => `${item}`).join('\n')
-        )
-
-        // block with leading white space
-        expect(
-          md.render(source.map((item) => `   ${item}`).join('\n\n'), env)
-        ).toEqual(expected.map((item) => `   ${item}`).join('\n'))
-
-        // inline with prefix
-        expect(
-          md.render(source.map((item) => `foo${item}`).join('\n\n'), env)
-        ).toEqual(expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n')
-
-        // inline with suffix
-        expect(
-          md.render(source.map((item) => `${item}foo`).join('\n\n'), env)
-        ).toEqual(expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n')
-
-        // inline with line break
-        expect(
-          md.render(
-            source.map((item) => item.replace('<img', '<img\n')).join('\n\n'),
-            env
+      testCases.forEach(({ description, md, env, expected }) =>
+        it(description, () => {
+          // block
+          expect(md.render(source.join('\n\n'), env)).toEqual(
+            expected.map((item) => `${item}`).join('\n')
           )
-        ).toEqual(
-          expected
-            .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-            .join('\n') + '\n'
-        )
 
-        // wrapped item
-        expect(
-          md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env)
-        ).toEqual(expected.map((item) => `<p>${item}</p>`).join('\n'))
+          // block with leading white space
+          expect(
+            md.render(source.map((item) => `   ${item}`).join('\n\n'), env)
+          ).toEqual(expected.map((item) => `   ${item}`).join('\n'))
 
-        // wrapped item with line break
-        expect(
-          md.render(
-            source
+          // inline with prefix
+          expect(
+            md.render(source.map((item) => `foo${item}`).join('\n\n'), env)
+          ).toEqual(
+            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n'
+          )
+
+          // inline with suffix
+          expect(
+            md.render(source.map((item) => `${item}foo`).join('\n\n'), env)
+          ).toEqual(
+            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n'
+          )
+
+          // inline with line break
+          expect(
+            md.render(
+              source.map((item) => item.replace('<img', '<img\n')).join('\n\n'),
+              env
+            )
+          ).toEqual(
+            expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n\n'),
-            env
+              .join('\n') + '\n'
           )
-        ).toEqual(
-          expected
-            .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-            .join('\n')
-        )
 
-        // wrapped multiple items
-        expect(
-          md.render(
-            source.map((item) => `<p>${item}${item}</p>`).join('\n\n'),
-            env
+          // wrapped item
+          expect(
+            md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env)
+          ).toEqual(expected.map((item) => `<p>${item}</p>`).join('\n'))
+
+          // wrapped item with line break
+          expect(
+            md.render(
+              source
+                .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
+                .join('\n\n'),
+              env
+            )
+          ).toEqual(
+            expected
+              .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
+              .join('\n')
           )
-        ).toEqual(expected.map((item) => `<p>${item}${item}</p>`).join('\n'))
 
-        // deeply wrapped multiple items
-        expect(
-          md.render(
-            source
+          // wrapped multiple items
+          expect(
+            md.render(
+              source.map((item) => `<p>${item}${item}</p>`).join('\n\n'),
+              env
+            )
+          ).toEqual(expected.map((item) => `<p>${item}${item}</p>`).join('\n'))
+
+          // deeply wrapped multiple items
+          expect(
+            md.render(
+              source
+                .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
+                .join('\n\n'),
+              env
+            )
+          ).toEqual(
+            expected
               .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
-              .join('\n\n'),
-            env
+              .join('\n')
           )
-        ).toEqual(
-          expected
-            .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
-            .join('\n')
-        )
-      })
-    )
+        })
+      )
+    })
 
-    const source2 = [
-      /* src */
-      // not formated
-      `<img alt="attrs" src="
+    // multi-line `<img>` tag will be wrapped with `<p>` tag
+    describe('multi-line', () => {
+      const source = [
+        /* src */
+        `<img alt="attrs" src="
           .../attrs.png
           " width="100px">`,
 
-      /* srcset */
-      // not formatted
-      `<img srcset="./foo.png      1x  ,
+        /* srcset */
+        `<img srcset="./foo.png      1x  ,
               ../sub/foo.png  2x,./foo/bar.png
     1024w ,../../out.png">`,
-      `<img alt="attrs"  srcset=" ./attrs.png 1x
+        `<img alt="attrs"  srcset=" ./attrs.png 1x
     ,default.png " width="100px">`,
 
-      /** both */
-      // not formatted
-      `<img src="
+        /** both */
+        `<img src="
           ./default.png
     " srcset="./foo.png      1x  ,
               ../sub/foo.png  2x,./foo/bar.png
     1024w ,../../out.png">`,
-      `<img alt="attrs" src="./default.png" srcset=" ./attrs.png 1x
+        `<img alt="attrs" src="./default.png" srcset=" ./attrs.png 1x
     ,default.png " width="100px">`,
-    ]
+      ]
 
-    const testCases2: {
-      description: string
-      md: MarkdownIt
-      env: MarkdownEnv
-      expected: string[]
-    }[] = [
-      {
-        description: 'should handle assets link with default options',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
-        env: {
-          filePathRelative: 'sub/foo.md',
+      const testCases: {
+        description: string
+        md: MarkdownIt
+        env: MarkdownEnv
+        expected: string[]
+      }[] = [
+        {
+          description: 'should handle assets link with default options',
+          md: MarkdownIt({ html: true }).use(assetsPlugin),
+          env: {
+            filePathRelative: 'sub/foo.md',
+          },
+          expected: [
+            /* src */
+            '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+
+            /* srcset */
+            '<p><img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
+            '<p><img alt="attrs"  srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
+
+            /* both */
+            '<p><img src="@source/sub/default.png" srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
+            '<p><img alt="attrs" src="@source/sub/default.png" srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
+          ],
         },
-        expected: [
-          /* src */
-          // not formatted
-          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+        {
+          description: 'should respect `relativePathPrefix` option',
+          md: MarkdownIt({ html: true }).use(assetsPlugin, {
+            relativePathPrefix: '@foo',
+          }),
+          env: {
+            filePathRelative: 'sub/foo.md',
+          },
+          expected: [
+            /* src */
+            '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
 
-          /* srcset */
-          // not formatted
-          '<p><img srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
-          '<p><img alt="attrs"  srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
+            /* srcset */
+            '<p><img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
+            '<p><img alt="attrs"  srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
 
-          /* both */
-          // not formatted
-          '<p><img src="@source/sub/default.png" srcset="@source/sub/foo.png 1x, @source/sub/foo.png 2x, @source/sub/foo/bar.png 1024w, @source/../out.png"></p>',
-          '<p><img alt="attrs" src="@source/sub/default.png" srcset="@source/sub/attrs.png 1x, default.png" width="100px"></p>',
-        ],
-      },
-      {
-        description: 'should respect `relativePathPrefix` option',
-        md: MarkdownIt({ html: true }).use(assetsPlugin, {
-          relativePathPrefix: '@foo',
-        }),
-        env: {
-          filePathRelative: 'sub/foo.md',
+            /* both */
+            '<p><img src="@foo/sub/default.png" srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
+            '<p><img alt="attrs" src="@foo/sub/default.png" srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
+          ],
         },
-        expected: [
-          /* src */
-          // not formatted
-          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+        {
+          description:
+            'should not handle assets link if `filePathRelative` is not provided',
+          md: MarkdownIt({ html: true }).use(assetsPlugin),
+          env: {},
+          expected: [
+            /* src */
+            '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
 
-          /* srcset */
-          // not formatted
-          '<p><img srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
-          '<p><img alt="attrs"  srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
+            /* srcset */
+            '<p><img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
+            '<p><img alt="attrs"  srcset="./attrs.png 1x, default.png" width="100px"></p>',
 
-          /* both */
-          // not formatted
-          '<p><img src="@foo/sub/default.png" srcset="@foo/sub/foo.png 1x, @foo/sub/foo.png 2x, @foo/sub/foo/bar.png 1024w, @foo/../out.png"></p>',
-          '<p><img alt="attrs" src="@foo/sub/default.png" srcset="@foo/sub/attrs.png 1x, default.png" width="100px"></p>',
-        ],
-      },
-      {
-        description:
-          'should not handle assets link if `filePathRelative` is not provided',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
-        env: {},
-        expected: [
-          /* src */
-          // not formatted
-          '<p><img alt="attrs" src=".../attrs.png" width="100px"></p>',
+            /* both */
+            '<p><img src="./default.png" srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
+            '<p><img alt="attrs" src="./default.png" srcset="./attrs.png 1x, default.png" width="100px"></p>',
+          ],
+        },
+      ]
 
-          /* srcset */
-          // not formatted
-          '<p><img srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
-          '<p><img alt="attrs"  srcset="./attrs.png 1x, default.png" width="100px"></p>',
-
-          /* both */
-          // not formatted
-          '<p><img src="./default.png" srcset="./foo.png 1x, ../sub/foo.png 2x, ./foo/bar.png 1024w, ../../out.png"></p>',
-          '<p><img alt="attrs" src="./default.png" srcset="./attrs.png 1x, default.png" width="100px"></p>',
-        ],
-      },
-    ]
-
-    testCases2.forEach(({ description, md, env, expected }) =>
-      it(description, () => {
-        // mutiline element is rendered as block
-        expect(md.render(source2.join('\n\n'), env)).toEqual(
-          expected.map((item) => `${item}`).join('\n') + '\n'
-        )
-      })
-    )
+      testCases.forEach(({ description, md, env, expected }) =>
+        it(description, () => {
+          expect(md.render(source.join('\n\n'), env)).toEqual(
+            expected.map((item) => `${item}`).join('\n') + '\n'
+          )
+        })
+      )
+    })
   })
 })
