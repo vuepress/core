@@ -7,54 +7,16 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defaultTheme } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
-import { navbar, sidebar } from './configs'
+import { head, navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
+  // set site base to default value
   base: '/',
 
-  head: [
-    [
-      'link',
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: `/images/icons/favicon-16x16.png`,
-      },
-    ],
-    [
-      'link',
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: `/images/icons/favicon-32x32.png`,
-      },
-    ],
-    ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-    ['meta', { name: 'application-name', content: 'VuePress' }],
-    ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
-    [
-      'meta',
-      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    ],
-    [
-      'link',
-      { rel: 'apple-touch-icon', href: `/images/icons/apple-touch-icon.png` },
-    ],
-    [
-      'link',
-      {
-        rel: 'mask-icon',
-        href: '/images/icons/safari-pinned-tab.svg',
-        color: '#3eaf7c',
-      },
-    ],
-    ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-  ],
+  // extra tags in `<head>`
+  head,
 
   // site-level locales config
   locales: {
@@ -70,15 +32,14 @@ export default defineUserConfig({
     },
   },
 
+  // specify bundler via environment variable
   bundler:
-    // specify bundler via environment variable
     process.env.DOCS_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
+  // configure default theme
   theme: defaultTheme({
     logo: '/images/hero.png',
-
     repo: 'vuepress/vuepress-next',
-
     docsDir: 'docs',
 
     // theme-level locales config
@@ -91,11 +52,9 @@ export default defineUserConfig({
        */
       '/': {
         // navbar
-        navbar: navbar.en,
-
+        navbar: navbarEn,
         // sidebar
-        sidebar: sidebar.en,
-
+        sidebar: sidebarEn,
         // page meta
         editLinkText: 'Edit this page on GitHub',
       },
@@ -105,24 +64,20 @@ export default defineUserConfig({
        */
       '/zh/': {
         // navbar
-        navbar: navbar.zh,
+        navbar: navbarZh,
         selectLanguageName: '简体中文',
         selectLanguageText: '选择语言',
         selectLanguageAriaLabel: '选择语言',
-
         // sidebar
-        sidebar: sidebar.zh,
-
+        sidebar: sidebarZh,
         // page meta
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdatedText: '上次更新',
         contributorsText: '贡献者',
-
         // custom containers
         tip: '提示',
         warning: '注意',
         danger: '警告',
-
         // 404 page
         notFound: [
           '这里什么都没有',
@@ -131,7 +86,6 @@ export default defineUserConfig({
           '看起来我们进入了错误的链接',
         ],
         backToHome: '返回首页',
-
         // a11y
         openInNewWindow: '在新窗口打开',
         toggleDarkMode: '切换夜间模式',
@@ -147,6 +101,7 @@ export default defineUserConfig({
     },
   }),
 
+  // configure markdown
   markdown: {
     importCode: {
       handleImportPath: (str) =>
@@ -157,6 +112,7 @@ export default defineUserConfig({
     },
   },
 
+  // use plugins
   plugins: [
     docsearchPlugin({
       appId: '34YFD9IUQ2',

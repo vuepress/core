@@ -1,2 +1,3 @@
-export * as navbar from './navbar'
-export * as sidebar from './sidebar'
+export * from './head'
+export * from './navbar'
+export * from './sidebar'

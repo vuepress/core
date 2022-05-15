@@ -20,7 +20,6 @@ const badgeLabel = computed(() => {
   if (props.distTag) {
     return `${props.package}@${props.distTag}`
   }
-
   return props.package
 })
 const badgeImg = computed(

@@ -1,7 +1,7 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
 import { version } from '../meta'
 
-export const en: NavbarConfig = [
+export const navbarEn: NavbarConfig = [
   {
     text: 'Guide',
     link: '/guide/',

@@ -1,6 +1,6 @@
 import type { SidebarConfig } from '@vuepress/theme-default'
 
-export const zh: SidebarConfig = {
+export const sidebarZh: SidebarConfig = {
   '/zh/guide/': [
     {
       text: '指南',
