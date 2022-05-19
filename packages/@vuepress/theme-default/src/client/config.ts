@@ -1,8 +1,6 @@
 import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
-import Badge from './components/global/Badge.vue'
-import CodeGroup from './components/global/CodeGroup'
-import CodeGroupItem from './components/global/CodeGroupItem.vue'
+import { Badge, CodeGroup, CodeGroupItem } from './components/global'
 import {
   setupDarkMode,
   setupSidebarItems,

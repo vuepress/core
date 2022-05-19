@@ -1,7 +1,7 @@
 import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
-import type { Component, VNode } from 'vue'
+import type { Component, ComponentOptions, VNode } from 'vue'
 
-export default defineComponent({
+export const CodeGroup: ComponentOptions = defineComponent({
   name: 'CodeGroup',
 
   setup(_, { slots }) {

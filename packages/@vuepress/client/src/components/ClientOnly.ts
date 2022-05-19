@@ -1,6 +1,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
+import type { ComponentOptions } from 'vue'
 
-export const ClientOnly = defineComponent({
+export const ClientOnly: ComponentOptions = defineComponent({
   setup(_, ctx) {
     const isMounted = ref(false)
     onMounted(() => {
