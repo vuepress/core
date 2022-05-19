@@ -33,7 +33,7 @@
     "@vuepress/utils": "workspace:*",
     "mitt": "^3.0.0",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.2.33",
+    "vue": "^3.2.34",
     "workbox-build": "^6.5.3"
   },
   "publishConfig": {

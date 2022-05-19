@@ -34,7 +34,7 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "chokidar": "^3.5.3",
-    "vue": "^3.2.33",
+    "vue": "^3.2.34",
     "vue-router": "^4.0.15"
   },
   "publishConfig": {

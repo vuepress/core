@@ -33,7 +33,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.2.33"
+    "vue": "^3.2.34"
   },
   "publishConfig": {
     "access": "public"

@@ -31,7 +31,7 @@
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.2.33",
+    "vue": "^3.2.34",
     "vue-router": "^4.0.15"
   },
   "publishConfig": {

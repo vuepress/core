@@ -46,11 +46,11 @@
     "@vuepress/utils": "workspace:*",
     "@vueuse/core": "^8.4.2",
     "sass": "^1.51.0",
-    "vue": "^3.2.33",
+    "vue": "^3.2.34",
     "vue-router": "^4.0.15"
   },
   "peerDependencies": {
-    "sass-loader": "^12.6.0"
+    "sass-loader": "^13.0.0"
   },
   "peerDependenciesMeta": {
     "sass-loader": {
