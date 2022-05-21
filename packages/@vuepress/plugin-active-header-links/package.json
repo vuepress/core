@@ -33,7 +33,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.2.34",
+    "vue": "^3.2.35",
     "vue-router": "^4.0.15"
   },
   "publishConfig": {

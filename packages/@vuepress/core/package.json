@@ -32,7 +32,7 @@
     "@vuepress/utils": "workspace:*",
     "gray-matter": "^4.0.3",
     "toml": "^3.0.0",
-    "vue": "^3.2.34"
+    "vue": "^3.2.35"
   },
   "publishConfig": {
     "access": "public"

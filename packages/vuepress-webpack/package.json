@@ -39,6 +39,6 @@
     "@vuepress/theme-default": "workspace:*"
   },
   "peerDependencies": {
-    "vue": "^3.2.34"
+    "vue": "^3.2.35"
   }
 }
