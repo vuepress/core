@@ -11,8 +11,8 @@ export default defineClientConfig({
   rootComponents: [
     // wrap the `<PwaPopup />` component with plugin options
     defineComponent(() => {
-      if (__VUEPRESS_SSR__) return null
-      return h(PwaPopup, { locales })
+      if (__VUEPRESS_SSR__) return () => null
+      return () => h(PwaPopup, { locales })
     }),
   ],
 })
