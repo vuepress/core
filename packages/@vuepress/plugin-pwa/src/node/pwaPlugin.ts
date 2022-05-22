@@ -23,7 +23,7 @@ export const pwaPlugin =
   ({
     serviceWorkerFilename = 'service-worker.js',
     ...generateSWConfig
-  }: PwaPluginOptions): Plugin =>
+  }: PwaPluginOptions = {}): Plugin =>
   (app) => {
     const plugin: PluginObject = {
       name: '@vuepress/plugin-pwa',
