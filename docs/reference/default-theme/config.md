@@ -1,9 +1,9 @@
 # Config
 
-<NpmBadge package="@vuepress/theme-default" />
+<NpmBadge package="@vuepress" />
 
 ```js
-const { defaultTheme } = require('@vuepress/theme-default')
+const { defaultTheme } = require('vuepress')
 
 module.exports = {
   theme: defaultTheme({
