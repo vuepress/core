@@ -12,6 +12,7 @@ importers:
       bumpp: ^7.1.1
       conventional-changelog-cli: ^2.2.2
       cpx2: ^4.2.0
+      cz-git: ^1.3.2
       eslint: ^8.15.0
       eslint-config-vuepress: ^3.7.1
       eslint-config-vuepress-typescript: ^2.7.1
@@ -37,6 +38,7 @@ importers:
       bumpp: 7.1.1
       conventional-changelog-cli: 2.2.2
       cpx2: 4.2.0
+      cz-git: 1.3.2
       eslint: 8.15.0
       eslint-config-vuepress: 3.7.1_3qh2scsgxlojevijgvlplboswa
       eslint-config-vuepress-typescript: 2.7.1_64kojfg4cq4jlqzdwffg5ggq4e
@@ -4380,6 +4382,10 @@ packages:
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
     dev: false
+
+  /cz-git/1.3.2:
+    resolution: {integrity: sha512-XELDxdGxOGZ+4WmTKb3sZsVKutrsxxd2flNMoBeqjavJOwFgiVKPSksd3pvBOgbJbV1MMqkhg8/u2GPnXEu7Ig==}
+    dev: true
 
   /dargs/7.0.0:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
