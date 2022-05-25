@@ -15,7 +15,8 @@ export const getCreatedTime = async (
     }
   )
 
-  const timestamps = stdout.split('\n').map((item) => Number.parseInt(item, 10))
-
-  return Math.min(...timestamps) * 1000
+  return (
+    Math.min(...stdout.split('\n').map((item) => Number.parseInt(item, 10))) *
+    1000
+  )
 }

@@ -1,5 +1,6 @@
 import type { Page, Plugin } from '@vuepress/core'
-import type { GitPluginPageData } from './types'
+import { path } from '@vuepress/utils'
+import type { GitPluginFrontmatter, GitPluginPageData } from './types'
 import {
   checkGitRepo,
   getContributors,
@@ -36,32 +37,32 @@ export const gitPlugin =
     return {
       name: '@vuepress/plugin-git',
 
-      extendsPage: async (page: Page<GitPluginPageData>) => {
+      extendsPage: async (
+        page: Page<GitPluginPageData, GitPluginFrontmatter>
+      ) => {
         page.data.git = {}
 
         if (!isGitRepoValid || page.filePathRelative === null) {
           return
         }
 
+        const filePaths = [
+          page.filePathRelative,
+          ...(page.frontmatter.gitInclude ?? []).map((item) =>
+            path.join(page.filePathRelative, '..', item)
+          ),
+        ]
+
         if (createdTime !== false) {
-          page.data.git.createdTime = await getCreatedTime(
-            page.filePathRelative,
-            cwd
-          )
+          page.data.git.createdTime = await getCreatedTime(filePaths, cwd)
         }
 
         if (updatedTime !== false) {
-          page.data.git.updatedTime = await getUpdatedTime(
-            page.filePathRelative,
-            cwd
-          )
+          page.data.git.updatedTime = await getUpdatedTime(filePaths, cwd)
         }
 
         if (contributors !== false) {
-          page.data.git.contributors = await getContributors(
-            page.filePathRelative,
-            cwd
-          )
+          page.data.git.contributors = await getContributors(filePaths, cwd)
         }
       },
     }

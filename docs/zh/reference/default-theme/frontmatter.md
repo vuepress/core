@@ -274,14 +274,6 @@ features:
 - 参考：
   - [默认主题 > 配置 > contributors](./config.md#contributors)
 
-### gitInclude
-
-- 类型： `string[]`
-
-- 详情：
-
-  该值被 `@vuepress/plugin-git` 使用，详见[官方插件参考 > 主题开发 > git > Frontmatter 配置项](../plugin/git.md#frontmatter-配置项)
-
 ### sidebar
 
 - 类型： `false | 'auto' | SidebarConfigArray | SidebarConfigObject`

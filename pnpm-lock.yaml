@@ -330,9 +330,11 @@ importers:
   packages/@vuepress/plugin-git:
     specifiers:
       '@vuepress/core': workspace:*
+      '@vuepress/utils': workspace:*
       execa: ^5.1.1
     dependencies:
       '@vuepress/core': link:../core
+      '@vuepress/utils': link:../utils
       execa: 5.1.1
 
   packages/@vuepress/plugin-google-analytics:

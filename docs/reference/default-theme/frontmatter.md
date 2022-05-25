@@ -274,14 +274,6 @@ Frontmatter in this section will only take effect in normal pages.
 - Also see:
   - [Default Theme > Config > contributors](./config.md#contributors)
 
-### gitInclude
-
-- Type: `string[]`
-
-- Details:
-
-  This field is used by `@vuepress/plugin-git`, also see [Official Plugins Reference > Theme Development > git > Frontmatter Options](../plugin/git.md#frontmatter-options)
-
 ### sidebar
 
 - Type: `false | 'auto' | SidebarConfigArray | SidebarConfigObject`
