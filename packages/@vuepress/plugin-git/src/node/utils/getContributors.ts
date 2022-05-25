@@ -2,12 +2,12 @@ import * as execa from 'execa'
 import type { GitContributor } from '../types'
 
 export const getContributors = async (
-  filePath: string,
+  filePaths: string[],
   cwd: string
 ): Promise<GitContributor[]> => {
   const { stdout } = await execa(
     'git',
-    ['--no-pager', 'shortlog', '-nes', 'HEAD', '--', filePath],
+    ['--no-pager', 'shortlog', '-nes', 'HEAD', '--', ...filePaths],
     {
       cwd,
       stdin: 'inherit',

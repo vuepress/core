@@ -1,3 +1,7 @@
+export interface GitPluginFrontmatter {
+  gitInclude?: string[]
+}
+
 export interface GitPluginPageData {
   git: GitData
 }

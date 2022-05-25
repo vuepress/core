@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@vuepress/core": "workspace:*",
+    "@vuepress/utils": "workspace:*",
     "execa": "^5.1.1"
   },
   "publishConfig": {
