@@ -28,5 +28,6 @@ module.exports = {
     customScopesAlign: !scopeComplete ? 'top' : 'bottom',
     allowCustomIssuePrefixs: false,
     allowEmptyIssuePrefixs: false,
+    themeColorCode: '38;5;042',
   },
 }
