@@ -1,0 +1,5 @@
+@media (max-width: 750px) {
+  .DocSearch-Container {
+    position: fixed;
+  }
+}
