@@ -25,7 +25,7 @@ export const handlePluginDefine = async ({
       // @see http://link.vuejs.org/feature-flags
       // enable options API by default
       __VUE_OPTIONS_API__: JSON.stringify(true),
-      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(app.env.isDebug),
     },
   ])
 
