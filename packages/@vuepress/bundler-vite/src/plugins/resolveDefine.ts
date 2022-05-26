@@ -3,14 +3,16 @@ import type { UserConfig } from 'vite'
 
 export const resolveDefine = async ({
   app,
+  isBuild,
   isServer,
 }: {
   app: App
+  isBuild: boolean
   isServer: boolean
 }): Promise<UserConfig['define']> => {
   const define: UserConfig['define'] = {
     __VUEPRESS_VERSION__: JSON.stringify(app.version),
-    __VUEPRESS_DEV__: JSON.stringify(app.env.isDev),
+    __VUEPRESS_DEV__: JSON.stringify(!isBuild),
     __VUEPRESS_SSR__: JSON.stringify(isServer),
     // @see http://link.vuejs.org/feature-flags
     // enable options API by default

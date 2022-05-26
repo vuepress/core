@@ -47,7 +47,7 @@ import '@vuepress/client/app'
       root: app.dir.temp('vite-root'),
       base: app.options.base,
       mode: isBuild ? 'production' : 'development',
-      define: await resolveDefine({ app, isServer }),
+      define: await resolveDefine({ app, isBuild, isServer }),
       publicDir: app.dir.public(),
       cacheDir: app.dir.cache(),
       resolve: {
