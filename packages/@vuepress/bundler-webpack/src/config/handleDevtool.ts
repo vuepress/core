@@ -7,14 +7,16 @@ import type * as Config from 'webpack-chain'
 export const handleDevtool = ({
   app,
   config,
+  isBuild,
 }: {
   app: App
   config: Config
+  isBuild: boolean
 }): void => {
   if (app.env.isDebug) {
     // always enable source-map in debug mode
     config.devtool('source-map')
-  } else if (app.env.isDev) {
+  } else if (!isBuild) {
     // only enable eval-source-map in dev mode
     // TODO: remove type assertion when webpack-chain updates its types for webpack 5
     config.devtool('eval-cheap-module-source-map' as Config.DevTool)

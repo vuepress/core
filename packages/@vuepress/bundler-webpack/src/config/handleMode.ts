@@ -7,9 +7,11 @@ import type * as Config from 'webpack-chain'
 export const handleMode = ({
   app,
   config,
+  isBuild,
 }: {
   app: App
   config: Config
+  isBuild: boolean
 }): void => {
-  config.mode(app.env.isBuild ? 'production' : 'development')
+  config.mode(isBuild ? 'production' : 'development')
 }
