@@ -1,3 +1,8 @@
+/**
+ * NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
+ * @license MIT
+ */
+
 // Forked and modified from nprogress v0.2.0
 
 interface NProgressOptions {
