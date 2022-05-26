@@ -86,14 +86,16 @@
   }
 
   &.no-navbar {
-    .theme-default-content:not(.custom) > h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin-top: 1.5rem;
-      padding-top: 0;
+    .theme-default-content {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 1.5rem;
+        padding-top: 0;
+      }
     }
 
     .page {
@@ -118,13 +120,13 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  .theme-default-content:not(.custom) > & {
+.theme-default-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: calc(0.5rem - var(--navbar-height));
     padding-top: calc(1rem + var(--navbar-height));
     margin-bottom: 0;
@@ -141,7 +143,7 @@ h6 {
   }
 }
 
-.theme-default-content:not(.custom) {
+.theme-default-content {
   @include content_wrapper;
 
   padding-top: 0;
@@ -149,15 +151,6 @@ h6 {
   a:hover {
     text-decoration: underline;
   }
-
-  img {
-    max-width: 100%;
-  }
-}
-
-.theme-default-content.custom {
-  padding: 0;
-  margin: 0;
 
   img {
     max-width: 100%;

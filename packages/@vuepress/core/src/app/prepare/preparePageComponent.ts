@@ -11,7 +11,8 @@ export const preparePageComponent = async (
     page.componentFilePathRelative,
     [
       // take the rendered markdown content as <template>
-      `<template>${page.contentRendered}</template>\n`,
+      // #688: wrap the content with a <div> to avoid some potential issues of fragment component
+      `<template><div>${page.contentRendered}</div></template>\n`,
       // hoist `<script>`, `<style>` and other custom blocks
       ...page.hoistedTags,
     ].join('\n')

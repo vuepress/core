@@ -273,6 +273,7 @@ Frontmatter in this section will only take effect in normal pages.
 
 - Also see:
   - [Default Theme > Config > contributors](./config.md#contributors)
+
 ### sidebar
 
 - Type: `false | 'auto' | SidebarConfigArray | SidebarConfigObject`

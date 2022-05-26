@@ -4,16 +4,26 @@ import * as execa from 'execa'
  * Get unix timestamp in milliseconds of the last commit
  */
 export const getUpdatedTime = async (
-  filePath: string,
+  filePaths: string[],
   cwd: string
 ): Promise<number> => {
   const { stdout } = await execa(
     'git',
-    ['--no-pager', 'log', '-1', '--format=%at', filePath],
+    [
+      '--no-pager',
+      'log',
+      '--format=%at',
+      // if there is only one file to be included, add `-1` option
+      ...(filePaths.length > 1 ? [] : ['-1']),
+      ...filePaths,
+    ],
     {
       cwd,
     }
   )
 
-  return Number.parseInt(stdout, 10) * 1000
+  return (
+    Math.max(...stdout.split('\n').map((item) => Number.parseInt(item, 10))) *
+    1000
+  )
 }

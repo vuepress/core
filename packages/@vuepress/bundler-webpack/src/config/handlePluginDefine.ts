@@ -8,22 +8,24 @@ import type * as Config from 'webpack-chain'
 export const handlePluginDefine = async ({
   app,
   config,
+  isBuild,
   isServer,
 }: {
   app: App
   config: Config
+  isBuild: boolean
   isServer: boolean
 }): Promise<void> => {
   // define plugin
   config.plugin('define').use(DefinePlugin, [
     {
       __VUEPRESS_VERSION__: JSON.stringify(app.version),
-      __VUEPRESS_DEV__: JSON.stringify(app.env.isDev),
+      __VUEPRESS_DEV__: JSON.stringify(!isBuild),
       __VUEPRESS_SSR__: JSON.stringify(isServer),
       // @see http://link.vuejs.org/feature-flags
       // enable options API by default
       __VUE_OPTIONS_API__: JSON.stringify(true),
-      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(app.env.isDebug),
     },
   ])
 

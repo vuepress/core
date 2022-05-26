@@ -10,6 +10,8 @@ export const workaroundPlugin = (): Plugin => {
 
     enforce: 'pre',
 
+    apply: 'serve',
+
     configureServer(_server) {
       server = _server
     },

@@ -32,7 +32,7 @@ export const createBaseConfig = async ({
   /**
    * mode
    */
-  handleMode({ app, config })
+  handleMode({ app, config, isBuild })
 
   /**
    * node
@@ -42,7 +42,7 @@ export const createBaseConfig = async ({
   /**
    * devtool
    */
-  handleDevtool({ app, config })
+  handleDevtool({ app, config, isBuild })
 
   /**
    * resolve
@@ -57,7 +57,7 @@ export const createBaseConfig = async ({
   /**
    * plugins
    */
-  await handlePluginDefine({ app, config, isServer })
+  await handlePluginDefine({ app, config, isBuild, isServer })
 
   /**
    * other options
