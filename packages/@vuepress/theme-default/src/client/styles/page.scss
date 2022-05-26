@@ -4,6 +4,11 @@
 .page {
   padding-bottom: 2rem;
   display: block;
+
+  .theme-default-content {
+    @include content_wrapper;
+    padding-top: 0;
+  }
 }
 
 .page-meta {
