@@ -20,6 +20,11 @@ export const resolveDefine = async ({
     __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
   }
 
+  // override vite built-in define config in debug mode
+  if (app.env.isDebug) {
+    define['process.env.NODE_ENV'] = JSON.stringify('development')
+  }
+
   // plugin hook: define
   const defineResult = await app.pluginApi.hooks.define.process(app)
 
