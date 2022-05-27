@@ -9,7 +9,7 @@
 作为一个主题作者，你可能不想要求用户必须创建一个 `/README.md` 文件来作为主页，但是你希望提供一个默认的主页：
 
 ```ts
-import { createPage } from '@vuepress/core';
+import { createPage } from '@vuepress/core'
 
 export default {
   // 初始化之后，所有的页面已经加载完毕
@@ -33,6 +33,6 @@ export default {
       // 把它添加到 `app.pages`
       app.pages.push(homepage)
     }
-  }
-};
+  },
+}
 ```

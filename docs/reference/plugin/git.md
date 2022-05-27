@@ -102,7 +102,7 @@ export default {
   setup() {
     const page = usePageData<GitPluginPageData>()
     console.log(page.value.git)
-  }
+  },
 }
 ```
 

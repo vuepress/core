@@ -19,7 +19,7 @@ npm i -D @vuepress/core@next
 - 函数签名：
 
 ```ts
-const createBuildApp: (config: AppConfig) => BuildApp;
+const createBuildApp: (config: AppConfig) => BuildApp
 ```
 
 - 参数：
@@ -366,7 +366,7 @@ module.exports = {
 `,
       })
     )
-  }
+  },
 }
 ```
 

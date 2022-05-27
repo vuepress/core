@@ -9,7 +9,7 @@ With the help of [Plugin API](../../reference/plugin-api.md) and [Node API](../.
 As a theme author, you may not require users to create a `/README.md` file as the homepage, but you want to provide a default one:
 
 ```ts
-import { createPage } from '@vuepress/core';
+import { createPage } from '@vuepress/core'
 
 export default {
   // all pages have been loaded after initialization
@@ -33,6 +33,6 @@ This is the default homepage
       // add it to `app.pages`
       app.pages.push(homepage)
     }
-  }
-};
+  },
+}
 ```
