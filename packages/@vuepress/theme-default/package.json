@@ -44,9 +44,9 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "@vueuse/core": "^8.4.2",
-    "sass": "^1.51.0",
-    "vue": "^3.2.35",
+    "@vueuse/core": "^8.5.0",
+    "sass": "^1.52.1",
+    "vue": "^3.2.36",
     "vue-router": "^4.0.15"
   },
   "peerDependencies": {
