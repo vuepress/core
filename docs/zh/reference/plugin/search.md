@@ -72,23 +72,7 @@ module.exports = {
 
 - 类型： `(string | HotKeyOptions)[]`
 
-```ts
-interface HotKeyOptions {
-  key: string
-  /**
-   * @default false
-   */
-  ctrl?: boolean
-  /**
-   * @default false
-   */
-  alt?: boolean
-  /**
-   * @default false
-   */
-  shift?: boolean
-}
-```
+@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
 
 - 默认值： `['s', '/']`
 

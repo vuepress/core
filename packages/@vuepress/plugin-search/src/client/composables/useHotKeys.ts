@@ -21,7 +21,7 @@ export const useHotKeys = ({
       !input.value.contains(event.target as Node)
     ) {
       event.preventDefault()
-      input.value!.focus()
+      input.value.focus()
     }
   }
 
