@@ -14,6 +14,7 @@ jobs:
 
     env:
       DOCS_GA_ID: G-CTB8FQ7VMW
+      DOCS_HOSTNAME: https://vuepress.github.io
       NODE_VERSION: '16'
 
     steps:

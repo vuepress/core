@@ -17,6 +17,7 @@
     "@vuepress/plugin-google-analytics": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "sass-loader": "^13.0.0",

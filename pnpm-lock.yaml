@@ -65,6 +65,7 @@ importers:
       '@vuepress/plugin-google-analytics': workspace:*
       '@vuepress/plugin-register-components': workspace:*
       '@vuepress/plugin-shiki': workspace:*
+      '@vuepress/plugin-sitemap': workspace:*
       '@vuepress/theme-default': workspace:*
       '@vuepress/utils': workspace:*
       sass-loader: ^13.0.0
@@ -80,6 +81,7 @@ importers:
       '@vuepress/plugin-google-analytics': link:../packages/@vuepress/plugin-google-analytics
       '@vuepress/plugin-register-components': link:../packages/@vuepress/plugin-register-components
       '@vuepress/plugin-shiki': link:../packages/@vuepress/plugin-shiki
+      '@vuepress/plugin-sitemap': link:../packages/@vuepress/plugin-sitemap
       '@vuepress/theme-default': link:../packages/@vuepress/theme-default
       '@vuepress/utils': link:../packages/@vuepress/utils
       sass-loader: 13.0.0
@@ -465,6 +467,20 @@ importers:
     dependencies:
       '@vuepress/core': link:../core
       shiki: 0.10.1
+
+  packages/@vuepress/plugin-sitemap:
+    specifiers:
+      '@vuepress/core': workspace:*
+      '@vuepress/plugin-git': workspace:*
+      '@vuepress/shared': workspace:*
+      '@vuepress/utils': workspace:*
+      sitemap: ^7.1.1
+    dependencies:
+      '@vuepress/core': link:../core
+      '@vuepress/plugin-git': link:../plugin-git
+      '@vuepress/shared': link:../shared
+      '@vuepress/utils': link:../utils
+      sitemap: 7.1.1
 
   packages/@vuepress/plugin-theme-data:
     specifiers:
@@ -2682,6 +2698,12 @@ packages:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
     dev: false
 
+  /@types/sax/1.2.4:
+    resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
+    dependencies:
+      '@types/node': 17.0.35
+    dev: false
+
   /@types/serve-index/1.9.1:
     resolution: {integrity: sha512-d/Hs3nWDxNL2xAczmOVZNj92YZCS6RGxfBPjKzuu/XirCgXdpKEb88dYNbrYGint6IVWLNP+yonwVAuRC0T2Dg==}
     dependencies:
@@ -3329,6 +3351,10 @@ packages:
   /arg/4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
     dev: true
+
+  /arg/5.0.1:
+    resolution: {integrity: sha512-e0hDa9H2Z9AwFkk2qDlwhoMYE4eToKarchkQHovNdLTCYMHZHeRjI71crOh+dio4K6u1IcwubQqo79Ga4CyAQA==}
+    dev: false
 
   /argparse/1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
@@ -8957,6 +8983,10 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
+  /sax/1.2.4:
+    resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
   /saxes/5.0.1:
     resolution: {integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==}
     engines: {node: '>=10'}
@@ -9178,6 +9208,17 @@ packages:
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
+
+  /sitemap/7.1.1:
+    resolution: {integrity: sha512-mK3aFtjz4VdJN0igpIJrinf3EO8U8mxOPsTBzSsy06UtjZQJ3YY3o3Xa7zSc5nMqcMrRwlChHZ18Kxg0caiPBg==}
+    engines: {node: '>=12.0.0', npm: '>=5.6.0'}
+    hasBin: true
+    dependencies:
+      '@types/node': 17.0.35
+      '@types/sax': 1.2.4
+      arg: 5.0.1
+      sax: 1.2.4
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}

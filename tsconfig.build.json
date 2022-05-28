@@ -34,6 +34,7 @@
     },
     { "path": "./packages/@vuepress/plugin-search/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-shiki/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/plugin-sitemap/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-theme-data/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-toc/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },

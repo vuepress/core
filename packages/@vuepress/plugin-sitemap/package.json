@@ -1,0 +1,40 @@
+{
+  "name": "@vuepress/plugin-sitemap",
+  "version": "2.0.0-beta.46",
+  "description": "VuePress plugin - sitemap",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "sitemap"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Mr.Hope",
+  "main": "lib/node/index.js",
+  "types": "lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/core": "workspace:*",
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "sitemap": "^7.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

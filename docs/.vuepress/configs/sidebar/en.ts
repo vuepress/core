@@ -87,6 +87,7 @@ export const sidebarEn: SidebarConfig = {
             '/reference/plugin/medium-zoom.md',
             '/reference/plugin/nprogress.md',
             '/reference/plugin/register-components.md',
+            '/reference/plugin/sitemap.md',
           ],
         },
         {
