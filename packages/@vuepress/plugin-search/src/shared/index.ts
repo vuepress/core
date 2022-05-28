@@ -1,2 +1,2 @@
+export * from './hotKey'
 export * from './searchIndex'
-export * from './searchKey'

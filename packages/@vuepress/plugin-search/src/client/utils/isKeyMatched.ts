@@ -5,12 +5,12 @@ export const isKeyMatched = (
   event: KeyboardEvent,
   hotKeys: (string | HotKeyOptions)[]
 ): boolean =>
-  hotKeys.some((hotKey) => {
-    if (isString(hotKey)) {
-      return hotKey === event.key
+  hotKeys.some((item) => {
+    if (isString(item)) {
+      return item === event.key
     }
 
-    const { key, ctrl = false, shift = false, alt = false } = hotKey
+    const { key, ctrl = false, shift = false, alt = false } = item
     return (
       key === event.key &&
       ctrl === event.ctrlKey &&

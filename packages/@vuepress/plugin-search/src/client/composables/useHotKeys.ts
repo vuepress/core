@@ -10,16 +10,18 @@ export const useHotKeys = ({
   input: Ref<HTMLInputElement | null>
   hotKeys: Ref<(string | HotKeyOptions)[]>
 }): void => {
+  if (hotKeys.value.length === 0) return
+
   const onKeydown = (event: KeyboardEvent): void => {
-    if (!input.value || hotKeys.value.length === 0) return
+    if (!input.value) return
     if (
-      // key matched
+      // key matches
       isKeyMatched(event, hotKeys.value) &&
-      // event do not come from search box
-      !(event.target as HTMLElement).contains(input.value)
+      // event does not come from search box
+      !input.value.contains(event.target as Node)
     ) {
-      input.value.focus()
       event.preventDefault()
+      input.value!.focus()
     }
   }
 
