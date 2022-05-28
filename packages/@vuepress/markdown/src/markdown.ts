@@ -24,7 +24,7 @@ import type {
   TocPluginOptions,
 } from './plugins'
 import type { Markdown, MarkdownOptions } from './types'
-import { slugify } from './utils'
+import { vuepressSlugify } from './utils'
 
 /**
  * Create vuepress customized markdown-it instance
@@ -40,6 +40,7 @@ export const createMarkdown = ({
   hoistTags,
   importCode,
   links,
+  slugify = vuepressSlugify,
   toc,
   ...markdownItOptions
 }: MarkdownOptions = {}): Markdown => {

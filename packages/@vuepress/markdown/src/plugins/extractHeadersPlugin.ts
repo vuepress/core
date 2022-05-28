@@ -1,6 +1,10 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { MarkdownEnv, MarkdownHeader } from '../types'
-import { resolveHeadersFromTokens, slugify as slugifyDefault } from '../utils'
+import type {
+  MarkdownEnv,
+  MarkdownHeader,
+  MarkdownSlugifyFunction,
+} from '../types'
+import { resolveHeadersFromTokens, vuepressSlugify } from '../utils'
 
 export interface ExtractHeadersPluginOptions {
   /**
@@ -17,7 +21,7 @@ export interface ExtractHeadersPluginOptions {
    * Should use the same slugify function with markdown-it-anchor
    * to ensure the link is matched
    */
-  slugify?: (str: string) => string
+  slugify?: MarkdownSlugifyFunction
 
   /**
    * A function for formatting headers
@@ -36,7 +40,7 @@ export const extractHeadersPlugin: PluginWithOptions<
   md,
   {
     level = [2, 3],
-    slugify = slugifyDefault,
+    slugify = vuepressSlugify,
     format,
   }: ExtractHeadersPluginOptions = {}
 ): void => {

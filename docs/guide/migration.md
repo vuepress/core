@@ -90,16 +90,6 @@ Moved to [markdown.code.lineNumbers](../reference/config.md#markdown-code-linenu
 
 Default value is changed from `false` to `true`.
 
-#### markdown.slugify
-
-Removed.
-
-If you want to change the slugify function anyway, set the following options separately:
-
-- `markdown.anchor.slugify`
-- `markdown.toc.slugify`
-- `markdown.extractHeaders.slugify`
-
 #### markdown.pageSuffix
 
 Removed.

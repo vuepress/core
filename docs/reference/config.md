@@ -500,7 +500,7 @@ You should not configure it unless you understand what it is for.
 
   For example, if you set this option to `[2]`, only `##` headers will be extracted.
 
-  Should be a subset of [markdown.anchor.level](#markdownanchor) option to ensure the extracted links are existed.
+  Should be a subset of [markdown.anchor.level](#markdown-anchor) option to ensure the extracted links are existed.
 
 #### markdown.extractHeaders.slugify
 
@@ -510,7 +510,11 @@ You should not configure it unless you understand what it is for.
 
   A function to get the extracted slug of header from the raw header title.
 
-  Should use the same slugify function with [markdown.anchor.slugify](#markdownanchor) to ensure the links are matched.
+  Should use the same slugify function with [markdown.anchor.slugify](#markdown-anchor) to ensure the links are matched.
+
+::: tip
+If you really want to modify the slugify function, you'd better change the [markdown.slugify](#markdown-slugify) option instead of this one. Otherwise you have to set all the options about slugify function to ensure they are consistent.
+:::
 
 #### markdown.extractHeaders.format
 
@@ -628,6 +632,17 @@ You should not configure it unless you understand what it is for.
 
   Additional attributes for external links.
 
+### markdown.slugify
+
+- Type: `(str: string) => string`
+
+- Details:
+
+  The default slugify function. It would be used as the default value of the following options:
+  - [markdown.anchor.slugify](#markdown-anchor)
+  - [markdown.extractHeaders.slugify](#markdown-extractheaders-slugify)
+  - [markdown.toc.slugify](#markdown-toc-slugify)
+
 ### markdown.toc
 
 - Type: `TocPluginOptions | false`
@@ -659,7 +674,11 @@ You should not configure it unless you understand what it is for.
 
   A function to get the TOC slug of header from the raw header title.
 
-  Should use the same slugify function with [markdown.anchor.slugify](#markdownanchor) to ensure the links are matched.
+  Should use the same slugify function with [markdown.anchor.slugify](#markdown-anchor) to ensure the links are matched.
+
+::: tip
+If you really want to modify the slugify function, you'd better change the [markdown.slugify](#markdown-slugify) option instead of this one. Otherwise you have to set all the options about slugify function to ensure they are consistent.
+:::
 
 #### markdown.toc.format
 
@@ -683,7 +702,7 @@ You should not configure it unless you understand what it is for.
 
   For example, if you set this option to `[2]`, only `##` headers will be included.
 
-  Should be a subset of [markdown.anchor.level](#markdownanchor) option to ensure the links in the TOC are existed.
+  Should be a subset of [markdown.anchor.level](#markdown-anchor) option to ensure the links in the TOC are existed.
 
 ## Plugin Config
 

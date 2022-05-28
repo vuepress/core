@@ -25,6 +25,7 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   hoistTags?: false | HoistTagsPluginOptions
   importCode?: false | ImportCodePluginOptions
   links?: false | LinksPluginOptions
+  slugify?: MarkdownSlugifyFunction
   toc?: false | TocPluginOptions
 }
 
@@ -101,3 +102,8 @@ export interface MarkdownEnv {
    */
   title?: string
 }
+
+/**
+ * Type of `slugify` function
+ */
+export type MarkdownSlugifyFunction = (str: string) => string

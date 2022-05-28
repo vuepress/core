@@ -499,7 +499,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   举例来说，如果你把该选项设为 `[2]` ，那么只会提取 `##` 子标题。
 
-  它应该是 [markdown.anchor.level](#markdownanchor) 选项的一个子集，以便确保提取出来的链接是存在的。
+  它应该是 [markdown.anchor.level](#markdown-anchor) 选项的一个子集，以便确保提取出来的链接是存在的。
 
 #### markdown.extractHeaders.slugify
 
@@ -509,7 +509,11 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   一个函数，根据原始的子标题来获取提取出的子标题 slug 。
 
-  它应该使用和 [markdown.anchor.slugify](#markdownanchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+  它应该使用和 [markdown.anchor.slugify](#markdown-anchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+
+::: tip
+如果你确实想要修改 slugify 函数，建议你修改 [markdown.slugify](#markdown-slugify) 配置项，否则你必须同时修改其他的 slugify 函数配置来确保它们是一致的。
+:::
 
 #### markdown.extractHeaders.format
 
@@ -627,6 +631,17 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   为外部链接添加额外的属性。
 
+### markdown.slugify
+
+- 类型： `(str: string) => string`
+
+- 详情：
+
+  默认使用的 slugify 函数，它将被用作以下选项的默认值：
+  - [markdown.anchor.slugify](#markdown-anchor)
+  - [markdown.extractHeaders.slugify](#markdown-extractheaders-slugify)
+  - [markdown.toc.slugify](#markdown-toc-slugify)
+
 ### markdown.toc
 
 - 类型： `TocPluginOptions | false`
@@ -658,7 +673,11 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   一个函数，根据原始的子标题来获取目录中的子标题 slug 。
 
-  它应该使用和 [markdown.anchor.slugify](#markdownanchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+  它应该使用和 [markdown.anchor.slugify](#markdown-anchor) 选项相同的 slugify 函数，来确保链接是匹配的。
+
+::: tip
+如果你确实想要修改 slugify 函数，建议你修改 [markdown.slugify](#markdown-slugify) 配置项，否则你必须同时修改其他的 slugify 函数配置来确保它们是一致的。
+:::
 
 #### markdown.toc.format
 
@@ -682,7 +701,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   举例来说，如果你把该选项设为 `[2]` ，那么只会包含 `##` 子标题。
 
-  它应该是 [markdown.anchor.level](#markdownanchor) 选项的一个子集，以便确保目录中的链接是存在的。
+  它应该是 [markdown.anchor.level](#markdown-anchor) 选项的一个子集，以便确保目录中的链接是存在的。
 
 ## 插件配置
 
