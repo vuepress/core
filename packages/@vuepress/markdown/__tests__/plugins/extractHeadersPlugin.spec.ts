@@ -1,4 +1,8 @@
-import { anchorPlugin, extractHeadersPlugin, slugify } from '@vuepress/markdown'
+import {
+  anchorPlugin,
+  extractHeadersPlugin,
+  vuepressSlugify,
+} from '@vuepress/markdown'
 import type { MarkdownEnv, MarkdownHeader } from '@vuepress/markdown'
 import * as MarkdownIt from 'markdown-it'
 
@@ -81,8 +85,8 @@ describe('@vuepress/markdown > plugins > extractHeadersPlugin', () => {
     const md = MarkdownIt({
       html: true,
     })
-      .use(anchorPlugin, { slugify })
-      .use(extractHeadersPlugin, { slugify })
+      .use(anchorPlugin, { slugify: vuepressSlugify })
+      .use(extractHeadersPlugin, { slugify: vuepressSlugify })
 
     const testCases: [string, MarkdownHeader[]][] = [
       // html element should be ignored

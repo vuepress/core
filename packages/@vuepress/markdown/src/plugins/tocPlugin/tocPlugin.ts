@@ -1,9 +1,6 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { MarkdownHeader } from '../../types'
-import {
-  resolveHeadersFromTokens,
-  slugify as slugifyDefault,
-} from '../../utils'
+import type { MarkdownHeader, MarkdownSlugifyFunction } from '../../types'
+import { resolveHeadersFromTokens, vuepressSlugify } from '../../utils'
 import { createRenderHeaders } from './createRenderHeaders'
 import { createTocBlockRule } from './createTocBlockRule'
 
@@ -19,7 +16,7 @@ export interface TocPluginOptions {
    * Should use the same slugify function with markdown-it-anchor
    * to ensure the link is matched
    */
-  slugify?: (str: string) => string
+  slugify?: MarkdownSlugifyFunction
 
   /**
    * A function for formatting headers
@@ -85,7 +82,7 @@ export const tocPlugin: PluginWithOptions<TocPluginOptions> = (
   md,
   {
     pattern = /^\[\[toc\]\]$/i,
-    slugify = slugifyDefault,
+    slugify = vuepressSlugify,
     format,
     level = [2, 3],
     containerTag = 'nav',

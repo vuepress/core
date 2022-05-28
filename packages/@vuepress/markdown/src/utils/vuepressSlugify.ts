@@ -1,9 +1,14 @@
+import type { MarkdownSlugifyFunction } from '../types'
+
 // eslint-disable-next-line no-control-regex
 const rControl = /[\u0000-\u001f]/g
 const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g
 const rCombining = /[\u0300-\u036F]/g
 
-export const slugify = (str: string): string =>
+/**
+ * Default slugify function of vuepress
+ */
+export const vuepressSlugify: MarkdownSlugifyFunction = (str) =>
   str
     .normalize('NFKD')
     // Remove accents

@@ -90,16 +90,6 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 
 默认值从 `false` 更改为 `true` 。
 
-#### markdown.slugify
-
-移除。
-
-如果你无论如何都要修改 slugify 函数，分别设置以下选项：
-
-- `markdown.anchor.slugify`
-- `markdown.toc.slugify`
-- `markdown.extractHeaders.slugify`
-
 #### markdown.pageSuffix
 
 移除。

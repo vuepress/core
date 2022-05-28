@@ -1,4 +1,4 @@
-import { slugify } from '@vuepress/markdown'
+import { vuepressSlugify } from '@vuepress/markdown'
 
 const testCases: [string, string][] = [
   ['Привет', 'привет'],
@@ -23,11 +23,11 @@ const testCases: [string, string][] = [
   ['ABCDEFGHIJKLMNOPQRSTUVWXYZé', 'abcdefghijklmnopqrstuvwxyze'],
 ]
 
-describe('markdown > utils > slugify', () => {
+describe('markdown > utils > vuepressSlugify', () => {
   describe('should slugify string correctly', () => {
     testCases.forEach(([source, expected]) => {
       it(`${source} => ${expected}`, () => {
-        expect(slugify(source)).toBe(expected)
+        expect(vuepressSlugify(source)).toBe(expected)
       })
     })
   })

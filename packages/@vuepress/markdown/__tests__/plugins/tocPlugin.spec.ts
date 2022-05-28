@@ -1,4 +1,4 @@
-import { anchorPlugin, slugify, tocPlugin } from '@vuepress/markdown'
+import { anchorPlugin, tocPlugin, vuepressSlugify } from '@vuepress/markdown'
 import * as MarkdownIt from 'markdown-it'
 
 const fixtures = {
@@ -100,7 +100,7 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
     })
       .use(anchorPlugin, {
         level: [1, 2, 3, 4, 5, 6],
-        slugify,
+        slugify: vuepressSlugify,
         permalink: anchorPlugin.permalink.ariaHidden({
           class: 'header-anchor',
           symbol: '#',
@@ -108,7 +108,7 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
           placement: 'before',
         }),
       })
-      .use(tocPlugin, { slugify })
+      .use(tocPlugin, { slugify: vuepressSlugify })
 
     const testCases: [string, { slug: string; title: string; h2: string }][] = [
       // html element should be kept as is
