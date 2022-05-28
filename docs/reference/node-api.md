@@ -19,7 +19,7 @@ The `BuildApp` and `DevApp` share almost the same properties and methods, except
 - Signature:
 
 ```ts
-const createBuildApp: (config: AppConfig) => BuildApp;
+const createBuildApp: (config: AppConfig) => BuildApp
 ```
 
 - Parameters:
@@ -368,7 +368,7 @@ Hello, world.
 `,
       })
     )
-  }
+  },
 }
 ```
 

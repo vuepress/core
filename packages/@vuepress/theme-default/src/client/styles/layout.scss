@@ -121,6 +121,14 @@
 }
 
 .theme-default-content {
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
   h1,
   h2,
   h3,
@@ -140,20 +148,6 @@
         margin-top: 2rem;
       }
     }
-  }
-}
-
-.theme-default-content {
-  @include content_wrapper;
-
-  padding-top: 0;
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  img {
-    max-width: 100%;
   }
 }
 

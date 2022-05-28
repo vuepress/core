@@ -108,7 +108,6 @@ module.exports = {
 - 示例：
 
 ```js
-
 module.exports = {
   plugins: [
     searchPlugin({
@@ -134,7 +133,6 @@ module.exports = {
 - 示例：
 
 ```js
-
 module.exports = {
   plugins: [
     searchPlugin({

@@ -6,6 +6,7 @@ import { usePageData } from '../composables'
  * Markdown rendered content
  */
 export const Content = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Content',
 
   props: {
