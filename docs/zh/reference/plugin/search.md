@@ -70,7 +70,9 @@ module.exports = {
 
 ### hotKeys
 
-- 类型： `string[]`
+- 类型： `(string | HotKeyOptions)[]`
+
+@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
 
 - 默认值： `['s', '/']`
 

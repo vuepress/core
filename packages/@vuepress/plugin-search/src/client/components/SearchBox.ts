@@ -3,6 +3,7 @@ import type { LocaleConfig } from '@vuepress/shared'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRouter } from 'vue-router'
+import type { HotKeyOptions } from '../../shared'
 import {
   useHotKeys,
   useSearchIndex,
@@ -25,7 +26,7 @@ export const SearchBox = defineComponent({
     },
 
     hotKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | HotKeyOptions)[]>,
       required: false,
       default: () => [],
     },

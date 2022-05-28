@@ -70,7 +70,9 @@ module.exports = {
 
 ### hotKeys
 
-- Type: `string[]`
+- Type: `(string | HotKeyOptions)[]`
+
+@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
 
 - Default: `['s', '/']`
 

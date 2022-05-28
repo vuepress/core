@@ -1,18 +1,27 @@
 import { onBeforeUnmount, onMounted } from 'vue'
 import type { Ref } from 'vue'
+import type { HotKeyOptions } from '../../shared'
+import { isKeyMatched } from '../utils'
 
 export const useHotKeys = ({
   input,
   hotKeys,
 }: {
   input: Ref<HTMLInputElement | null>
-  hotKeys: Ref<string[]>
+  hotKeys: Ref<(string | HotKeyOptions)[]>
 }): void => {
+  if (hotKeys.value.length === 0) return
+
   const onKeydown = (event: KeyboardEvent): void => {
-    if (!input.value || hotKeys.value.length === 0) return
-    if (event.target === document.body && hotKeys.value.includes(event.key)) {
-      input.value.focus()
+    if (!input.value) return
+    if (
+      // key matches
+      isKeyMatched(event, hotKeys.value) &&
+      // event does not come from search box
+      !input.value.contains(event.target as Node)
+    ) {
       event.preventDefault()
+      input.value.focus()
     }
   }
 
