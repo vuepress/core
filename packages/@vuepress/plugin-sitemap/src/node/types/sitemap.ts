@@ -1,7 +1,9 @@
 /**
- * None standard sitemap options used by google
+ * Non-standard image sitemap options used by google
+ *
+ * @see https://developers.google.com/search/docs/advanced/sitemaps/image-sitemaps
  */
-export interface SitemapImageOption {
+export interface SitemapImageOptions {
   /**
    * The URL of the image.
    */
@@ -29,9 +31,11 @@ export interface SitemapImageOption {
 }
 
 /**
- * None standard sitemap options used by google
+ * Non-standard video sitemap options used by google
+ *
+ * @see https://developers.google.com/search/docs/advanced/sitemaps/video-sitemaps
  */
-export interface SitemapVideoOption {
+export interface SitemapVideoOptions {
   /**
    * A URL pointing to the video thumbnail image file.
    */
@@ -160,17 +164,21 @@ export interface SitemapVideoOption {
 }
 
 /**
- * None standard sitemap options used by google
+ * Non-standard link sitemap options used by google
+ *
+ * @see TODO
  */
-export interface SitemapLinkOption {
+export interface SitemapLinkOptions {
   lang: string
   url: string
 }
 
 /**
- * None standard sitemap options used by google
+ * Non-standard news sitemap options used by google
+ *
+ * @see TODO
  */
-export interface SitemapNewsOption {
+export interface SitemapNewsOptions {
   access: 'Registration' | 'Subscription'
   publication: {
     /**

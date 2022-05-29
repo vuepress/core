@@ -6,21 +6,21 @@ import { SitemapStream } from 'sitemap'
 import type {
   ModifyTimeGetter,
   SitemapFrontmatterOption,
-  SitemapImageOption,
-  SitemapLinkOption,
-  SitemapNewsOption,
+  SitemapImageOptions,
+  SitemapLinkOptions,
+  SitemapNewsOptions,
   SitemapOptions,
-  SitemapVideoOption,
+  SitemapVideoOptions,
 } from './types'
 
 interface SitemapPageInfo {
   lastmod?: string
   changefreq?: string
   priority?: number
-  img?: SitemapImageOption[]
-  video?: SitemapVideoOption[]
-  links?: SitemapLinkOption[]
-  news?: SitemapNewsOption[]
+  img?: SitemapImageOptions[]
+  video?: SitemapVideoOptions[]
+  links?: SitemapLinkOptions[]
+  news?: SitemapNewsOptions[]
 }
 
 const reportedLocales: string[] = []
@@ -91,7 +91,7 @@ const generatePageMap = (
     const { defaultPath } = stripLocalePrefix(page)
     const relatedLocales = pageLocalesMap.get(defaultPath) || []
 
-    let links: SitemapLinkOption[] = []
+    let links: SitemapLinkOptions[] = []
 
     if (relatedLocales.length > 1) {
       // warnings for missing `locale[path].lang` in debug mode
