@@ -11,6 +11,7 @@ export interface PrismjsPluginOptions {
    *
    * Workaround for prismjs language reloading issue
    *
+   * @default ['markdown', 'jsdoc', 'yaml']
    * @see https://github.com/PrismJS/prism/issues/2716
    */
   preloadLanguages?: string[]

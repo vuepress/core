@@ -62,7 +62,7 @@ module.exports = {
 
 - Details:
 
-  An absolute path of the components directory.
+  Absolute path to the components directory.
 
   Files in this directory which are matched with [componentsPatterns](#componentspatterns) will be registered as Vue components automatically.
 
