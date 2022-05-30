@@ -10,6 +10,8 @@ import { presetOptions } from './presetOptions'
 export interface PalettePluginOptions {
   /**
    * Preset of the palette
+   *
+   * @default 'css'
    */
   preset?: 'css' | 'sass' | 'less' | 'stylus'
 

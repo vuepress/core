@@ -7,6 +7,9 @@ import type { ExternalLinkIconLocales } from '../shared'
  * Options for @vuepress/plugin-external-link-icon
  */
 export type ExternalLinkIconPluginOptions = {
+  /**
+   * Locales config for external link icon
+   */
   locales?: ExternalLinkIconLocales
 }
 

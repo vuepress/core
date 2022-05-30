@@ -6,6 +6,9 @@ import { path } from '@vuepress/utils'
  * Options for @vuepress/plugin-pwa-popup
  */
 export interface PwaPopupPluginOptions {
+  /**
+   * Locales config for PWA popup
+   */
   locales?: LocaleConfig<{
     message: string
     buttonText: string

@@ -49,7 +49,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 - 类型： `string`
 
-- 默认值： `Toc`
+- 默认值： `'Toc'`
 
 - 详情：
 

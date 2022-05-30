@@ -50,7 +50,7 @@ Therefore, this plugin is more useful for theme developers.
 
 - Type: `string`
 
-- Default: `Toc`
+- Default: `'Toc'`
 
 - Details:
 

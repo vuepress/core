@@ -34,7 +34,7 @@ module.exports = {
 
 - Details:
 
-  Selector for zoomable images.
+  Selector of zoomable images.
 
   By default this plugin will make all images zoomable except those inside `<a>` tags.
 
