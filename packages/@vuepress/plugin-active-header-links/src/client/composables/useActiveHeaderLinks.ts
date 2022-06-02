@@ -54,7 +54,7 @@ export const useActiveHeaderLinks = ({
     // notice the `scrollBottom` might not be exactly equal to `scrollHeight`, so we add offset here
     const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
     
-    // check if we have reached page bottom
+    // check if we have reached page top
     const isAtPageTop = Math.abs(scrollTop - 0) < offset
     // if we have reached page Top, replace current route hash with empty string
     if (isAtPageTop) {
