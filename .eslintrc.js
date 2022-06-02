@@ -55,14 +55,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'vue/one-component-per-file': 'off',
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: true,
-            optionalDependencies: false,
-            peerDependencies: false,
-          },
-        ],
       },
     },
   ],
