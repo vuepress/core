@@ -56,14 +56,14 @@ export const useActiveHeaderLinks = ({
     
     // check if we have reached page bottom
     const isAtPageTop = Math.abs(scrollTop - 0) < offset
-        // if we have reached page Top, replace current route hash with empty string
-        if (isAtPageTop) {
-            // replace current route hash with empty string
-            replaceWithoutScrollBehavior(router, {
-                hash: '',
-                force: true,
-            })
-        }
+    // if we have reached page Top, replace current route hash with empty string
+    if (isAtPageTop) {
+        // replace current route hash with empty string
+        replaceWithoutScrollBehavior(router, {
+            hash: '',
+            force: true,
+        })
+    }
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
       const anchor = existedHeaderAnchors[i]
