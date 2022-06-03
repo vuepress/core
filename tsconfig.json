@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "jsx": "preserve",
     "module": "ES2020",
     "paths": {
@@ -12,6 +12,9 @@
         "./packages/@vuepress/plugin-theme-data/src/client/themeData"
       ],
       "@internal/*": ["./packages/@vuepress/client/src/types/internal/*"],
+      "@theme/*": [
+        "./packages/@vuepress/theme-default/src/client/components/*"
+      ],
       "@vuepress/*": ["./packages/@vuepress/*/src"],
       "vuepress": ["./packages/vuepress/src"],
       "vuepress-vite": ["./packages/vuepress-vite/src"],
