@@ -21,6 +21,34 @@ export const useActiveHeaderLinks = ({
   const page = usePageData()
 
   const setActiveRouteHash = (): void => {
+    // get current scrollTop
+    const scrollTop = Math.max(
+      window.scrollY,
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    )
+    // check if we are at page top
+    const isAtPageTop = Math.abs(scrollTop - 0) < offset
+    if (isAtPageTop) {
+      // replace current route hash with empty string
+      replaceWithoutScrollBehavior(router, {
+        hash: '',
+        force: true,
+      })
+      return
+    }
+
+    // get current scrollBottom
+    const scrollBottom = window.innerHeight + scrollTop
+    // get the total scroll length of current page
+    const scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    )
+    // check if we have reached page bottom
+    // notice the `scrollBottom` might not be exactly equal to `scrollHeight`, so we add offset here
+    const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
+
     // get all header links
     const headerLinks: HTMLAnchorElement[] = Array.from(
       document.querySelectorAll(headerLinkSelector)
@@ -33,37 +61,6 @@ export const useActiveHeaderLinks = ({
     const existedHeaderAnchors = headerAnchors.filter((anchor) =>
       headerLinks.some((link) => link.hash === anchor.hash)
     )
-
-    // get current scrollTop
-    const scrollTop = Math.max(
-      window.pageYOffset,
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    )
-
-    // get current scrollBottom
-    const scrollBottom = window.innerHeight + scrollTop
-
-    // get the total scroll length of current page
-    const scrollHeight = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    )
-
-    // check if we have reached page bottom
-    // notice the `scrollBottom` might not be exactly equal to `scrollHeight`, so we add offset here
-    const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
-    
-    // check if we have reached page top
-    const isAtPageTop = Math.abs(scrollTop - 0) < offset
-    // if we have reached page Top, replace current route hash with empty string
-    if (isAtPageTop) {
-        // replace current route hash with empty string
-        replaceWithoutScrollBehavior(router, {
-            hash: '',
-            force: true,
-        })
-    }
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
       const anchor = existedHeaderAnchors[i]
