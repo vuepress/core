@@ -6,7 +6,7 @@ VuePress 一直以来都在使用 [Webpack](https://webpack.js.org/) 作为打�
 
 在使用 [vuepress](https://www.npmjs.com/package/vuepress) 包时，会自动安装和使用 Vite 打包工具。
 
-如果你想改为使用 Webpack 打包工具，那么你可以切换为 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) 包：
+如果你想改为使用 Webpack 打包工具，那么你可以移除它，改为安装 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) 包：
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -27,6 +27,10 @@ npm install -D vuepress-webpack@next
 
   </CodeGroupItem>
 </CodeGroup>
+
+::: tip
+实际上， [vuepress](https://www.npmjs.com/package/vuepress) 包只是 [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) 包的一个封装而已。
+:::
 
 ## 配置打包工具
 

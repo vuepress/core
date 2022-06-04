@@ -258,13 +258,13 @@ Markdown 插槽不再被支持。
 
 #### 主题配置
 
-默认主题的配置有大量变更。
+默认主题的配置有大量变更，建议你阅读 v2 的默认主题配置参考文档来进行迁移。
 
 参考 [默认主题 > 配置](../reference/default-theme/config.md) 。
 
 ### 官方插件变更
 
-参考 [官方插件](../reference/plugin/README.md) 。
+查看 v2 版本的官方插件文档。
 
 ### 社区主题和插件
 
@@ -278,7 +278,7 @@ v1 的主题和插件和 v2 并不兼容。
 
 - 你不能再在你的插件中使用其他插件了，这避免了很多由于插件嵌套引发的问题。如果你的插件依赖于别的插件，你可以在文档中列出他们，并让用户手动引入。或者，你也可以向用户提供一个插件数组以方便使用。
 - 大部分 v1 Hook 都在 v2 中存在等效的 Hook 或实现方式。唯一的例外是 `extendsCli` ，它被移除了。
-- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。
+- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。你可以尝试使用 [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) Hook 来进行相似的操作，但要注意应适配所有不同的打包工具。
 
 你可以参考 [深入 > 开发插件](../advanced/plugin.md) 来了解如何开发一个 v2 插件。
 

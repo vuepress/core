@@ -8,7 +8,7 @@ Some major changes and enhancements of VuePress v2:
 
 - VuePress v2 is now using Vue 3, so make sure your components and other client files are compatible with Vue 3.
 - VuePress v2 is developed with TypeScript, so it provides better TS support now. It's highly recommended to use TypeScript to develop plugins and themes. VuePress config file also supports TypeScript, and you can use `.vuepress/config.ts` directly.
-- VuePress v2 add supports both Webpack and Vite as bundler. Now Vite is the default bundler, while you can still choose use Webpack. You can even use Vite in dev mode to get better development experience, and use Webpack in build mode to get better browser compatibility.
+- VuePress v2 supports both Webpack and Vite as bundler. Now Vite is the default bundler, while you can still choose to use Webpack. You can even use Vite in dev mode to get better development experience, and use Webpack in build mode to get better browser compatibility.
 
 Core ideas and processes of VuePress v2 are the same with v1, while v2 API has been re-designed and becomes more normalized. So you might encounter breaking changes when migrating an existing v1 project to v2. This guide is here to help you migrating v1 sites / plugins / themes to v2.
 
@@ -258,17 +258,17 @@ See [Default Theme > Styles](../reference/default-theme/styles.md).
 
 #### Theme Config
 
-Default theme config has changed a lot.
+Default theme config has been changed a lot. You'd better check the config reference of v2 default theme to migrate it properly.
 
 See [Default Theme > Config](../reference/default-theme/config.md).
 
 ### Official Plugins Change
 
-See [Official Plugins](../reference/plugin/README.md).
+Check the v2 docs of official plugins.
 
 ### Community Themes and Plugins
 
-Themes and plugins of v1 is not compatible with v2.
+Themes and plugins of v1 are not compatible with v2.
 
 Please make sure that those themes and plugins you are using have supported v2, and refer to their own documentation for migration guide.
 
@@ -276,9 +276,9 @@ Please make sure that those themes and plugins you are using have supported v2, 
 
 Some major breaking changes:
 
-- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you could list them in the to ask users import them manually. Alternatively, you can provide users with an array of plugins for convenience.
+- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you could list them in the docs to ask users import them manually. Alternatively, you can provide users with an array of plugins for convenience.
 - Most of the v1 hooks have equivalents in v2. The only exception is `extendsCli`, which has been removed.
-- Webpack related hooks are removed, because VuePress Core has decoupled with webpack.
+- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. You can try to use [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) hook for similar purpose, and make sure to work with all bundlers.
 
 For more detailed guide about how to write a plugin in v2, see [Advanced > Writing a Plugin](../advanced/plugin.md).
 
@@ -306,7 +306,7 @@ See [Plugin API](../reference/plugin-api.md).
 
 ## For Theme Authors
 
-Although we do not allow using other plugins in a plugin, you can still use plugins in your theme.
+Although we do not allow using other plugins in a plugin anymore, you can still use plugins in your theme.
 
 Some major breaking changes:
 

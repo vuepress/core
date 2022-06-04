@@ -6,7 +6,7 @@ VuePress has been using [Webpack](https://webpack.js.org/) as the bundler to dev
 
 When using the [vuepress](https://www.npmjs.com/package/vuepress) package, Vite bundler is installed and used automatically.
 
-If you want to use Webpack bundler instead, you can switch to [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package:
+If you want to use Webpack bundler instead, you can remove it and install the [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package instead:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -27,6 +27,10 @@ npm install -D vuepress-webpack@next
 
   </CodeGroupItem>
 </CodeGroup>
+
+::: tip
+In fact, the [vuepress](https://www.npmjs.com/package/vuepress) package is just a wrapper of the [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package.
+:::
 
 ## Configure Bundler
 
