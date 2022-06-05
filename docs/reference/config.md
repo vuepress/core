@@ -239,6 +239,21 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 
   Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
 
+### permalinkPattern
+
+- Type: `string | null`
+
+- Default: `null`
+
+- Details:
+
+  Specify the pattern to generate permalink.
+
+  This will be overrode by the `permalinkPattern` field of page frontmatter.
+
+- Also see:
+  - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
+
 ## Dev Config
 
 ### host

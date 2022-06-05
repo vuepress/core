@@ -7,7 +7,7 @@ const app = createBaseApp({
   bundler: {} as any,
 })
 
-const appWithPermalink = createBaseApp({
+const appWithPermalinkPattern = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
   bundler: {} as any,
@@ -19,19 +19,6 @@ beforeAll(async () => {
 })
 
 describe('core > page > resolvePagePermalink', () => {
-  it('should return null', () => {
-    const resolved = resolvePagePermalink({
-      app,
-      frontmatter: {},
-      slug: '',
-      date: '',
-      pathInferred: null,
-      pathLocale: '',
-    })
-
-    expect(resolved).toBe(null)
-  })
-
   describe('use permalink or pattern', () => {
     it('should use permalink in frontmatter', () => {
       const resolved = resolvePagePermalink({
@@ -65,7 +52,7 @@ describe('core > page > resolvePagePermalink', () => {
 
     it('should use permalinkPattern in app options', () => {
       const resolved = resolvePagePermalink({
-        app: appWithPermalink,
+        app: appWithPermalinkPattern,
         frontmatter: {},
         slug: 'foo-bar',
         date: '2020-10-07',
@@ -78,7 +65,7 @@ describe('core > page > resolvePagePermalink', () => {
 
     it('permalinkPattern in frontmatter should have higher priority', () => {
       const resolved = resolvePagePermalink({
-        app: appWithPermalink,
+        app: appWithPermalinkPattern,
         frontmatter: {
           permalinkPattern: '/:year/:month/:day/:slug/frontmatter',
         },
@@ -93,7 +80,7 @@ describe('core > page > resolvePagePermalink', () => {
 
     it('permalink in frontmatter should have highest priority', () => {
       const resolved = resolvePagePermalink({
-        app: appWithPermalink,
+        app: appWithPermalinkPattern,
         frontmatter: {
           permalink: '/frontmatter',
           permalinkPattern: '/:year/:month/:day/:slug/frontmatter',
@@ -167,6 +154,36 @@ describe('core > page > resolvePagePermalink', () => {
       })
 
       expect(resolved).toBe('/en/2020/10/07/foo-bar/raw.html')
+    })
+  })
+
+  describe('should return null', () => {
+    it('from permalinkPattern in frontmatter', () => {
+      const resolved = resolvePagePermalink({
+        app: appWithPermalinkPattern,
+        frontmatter: {
+          permalinkPattern: null,
+        },
+        slug: '',
+        date: '',
+        pathInferred: null,
+        pathLocale: '',
+      })
+
+      expect(resolved).toBe(null)
+    })
+
+    it('from permalinkPattern in app options', () => {
+      const resolved = resolvePagePermalink({
+        app,
+        frontmatter: {},
+        slug: '',
+        date: '',
+        pathInferred: null,
+        pathLocale: '',
+      })
+
+      expect(resolved).toBe(null)
     })
   })
 })

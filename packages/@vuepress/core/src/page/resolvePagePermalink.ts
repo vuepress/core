@@ -25,21 +25,17 @@ export const resolvePagePermalink = ({
     return frontmatter.permalink
   }
 
-  // get permalink pattern from frontmatter, page options or app options
-  const pattern = isString(frontmatter.permalinkPattern)
-    ? frontmatter.permalinkPattern
-    : app.options.permalinkPattern
-
-  if (!pattern) {
+  // get permalink pattern
+  const permalinkPattern = getPermalinkPattern({ app, frontmatter })
+  if (permalinkPattern === null) {
     return null
   }
 
   // resolve permalink according to the pattern
   const [year, month, day] = date.split('-')
-
   const link = path.join(
     pathLocale,
-    pattern
+    permalinkPattern
       .replace(/:year/, year!)
       .replace(/:month/, month!)
       .replace(/:day/, day!)
@@ -48,4 +44,23 @@ export const resolvePagePermalink = ({
   )
 
   return ensureLeadingSlash(link)
+}
+
+/**
+ * Get permalink pattern from frontmatter or app options
+ */
+const getPermalinkPattern = ({
+  app,
+  frontmatter,
+}: {
+  app: App
+  frontmatter: PageFrontmatter
+}): string | null => {
+  if (frontmatter.permalinkPattern === null) {
+    return null
+  }
+  if (isString(frontmatter.permalinkPattern)) {
+    return frontmatter.permalinkPattern
+  }
+  return app.options.permalinkPattern
 }
