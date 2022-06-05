@@ -25,12 +25,10 @@ export const resolvePagePermalink = ({
     return frontmatter.permalink
   }
 
-  // get permalink pattern from frontmatter, options or app config
+  // get permalink pattern from frontmatter, page options or app options
   const pattern = isString(frontmatter.permalinkPattern)
     ? frontmatter.permalinkPattern
-    : isString(app.options.permalinkPattern)
-    ? app.options.permalinkPattern
-    : null
+    : app.options.permalinkPattern
 
   if (!pattern) {
     return null
