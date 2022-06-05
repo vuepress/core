@@ -40,10 +40,8 @@ export const renderPage = async ({
   }
 
   // render current page to string
-  const pageRendered = await require('vue/server-renderer').renderToString(
-    vueApp,
-    ssrContext
-  )
+  const { renderToString } = await import('vue/server-renderer')
+  const pageRendered = await renderToString(vueApp, ssrContext)
 
   // resolve page chunks
   const pageChunkFiles = resolvePageChunkFiles({ page, output })

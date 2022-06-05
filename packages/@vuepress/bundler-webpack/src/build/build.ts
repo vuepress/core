@@ -67,7 +67,7 @@ export const build = async (
     // load the client manifest file
     const clientManifestPath = app.dir.temp(clientManifestFilename)
     delete require.cache[clientManifestPath]
-    const clientManifest = require(clientManifestPath) as ClientManifest
+    const clientManifest = (await import(clientManifestPath)) as ClientManifest
 
     // resolve client files meta
     const {
@@ -82,7 +82,7 @@ export const build = async (
     // delete server entry cache to allow building multiple times
     // in the same dest dir
     delete require.cache[serverEntryPath]
-    const { createVueApp } = require(serverEntryPath) as {
+    const { createVueApp } = (await import(serverEntryPath)) as {
       createVueApp: CreateVueAppFunction
     }
 

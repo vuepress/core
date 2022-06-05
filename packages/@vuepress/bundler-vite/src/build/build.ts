@@ -64,7 +64,7 @@ export const build = async (
     // delete server entry cache to allow building multiple times
     // in the same dest dir
     delete require.cache[serverEntryPath]
-    const { createVueApp } = require(serverEntryPath) as {
+    const { createVueApp } = (await import(serverEntryPath)) as {
       createVueApp: CreateVueAppFunction
     }
 

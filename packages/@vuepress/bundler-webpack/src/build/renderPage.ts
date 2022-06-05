@@ -56,10 +56,8 @@ export const renderPage = async ({
   }
 
   // render current page to string
-  const pageRendered = await require('vue/server-renderer').renderToString(
-    vueApp,
-    ssrContext
-  )
+  const { renderToString } = await import('vue/server-renderer')
+  const pageRendered = await renderToString(vueApp, ssrContext)
 
   // resolve client files that used by this page
   const pageClientFilesMeta = resolvePageClientFilesMeta({
