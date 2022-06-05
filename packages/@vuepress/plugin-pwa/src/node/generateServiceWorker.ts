@@ -1,6 +1,6 @@
 import type { App } from '@vuepress/core'
 import { logger } from '@vuepress/utils'
-import type { generateSW as GenerateSWFunc } from 'workbox-build'
+import type { GenerateSWOptions } from 'workbox-build'
 
 const assetsExtensions = [
   // basic
@@ -21,15 +21,18 @@ const assetsExtensions = [
   'otf',
 ]
 
+export type GenerateSWConfig = Omit<
+  GenerateSWOptions,
+  'swDest' | 'globDirectory'
+>
+
 export const generateServiceWorker = async (
   app: App,
   serviceWorkerFilename: string,
-  generateSWConfig: Partial<Parameters<typeof GenerateSWFunc>[0]>
+  generateSWConfig: GenerateSWConfig
 ): Promise<void> => {
   // lazy-load workbox-build
-  const { generateSW } = require('workbox-build') as {
-    generateSW: typeof GenerateSWFunc
-  }
+  const { generateSW } = await import('workbox-build')
 
   const globDirectory = app.dir.dest()
   const swDest = app.dir.dest(serviceWorkerFilename)

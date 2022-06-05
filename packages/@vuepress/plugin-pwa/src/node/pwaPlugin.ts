@@ -1,13 +1,12 @@
 import type { Plugin, PluginObject } from '@vuepress/core'
 import { path, withSpinner } from '@vuepress/utils'
 import { generateServiceWorker } from './generateServiceWorker'
+import type { GenerateSWConfig } from './generateServiceWorker'
 
 /**
  * Options for @vuepress/plugin-pwa
  */
-export interface PwaPluginOptions
-  // TODO: the type of the parameter of generateSW is missing
-  extends Omit<any, 'swDest' | 'globDirectory'> {
+export interface PwaPluginOptions extends GenerateSWConfig {
   /**
    * Filename of the generated service worker file
    *
