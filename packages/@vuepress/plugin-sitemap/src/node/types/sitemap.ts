@@ -7,27 +7,7 @@ export interface SitemapImageOptions {
   /**
    * The URL of the image.
    */
-  url: string
-
-  /**
-   * The caption of the image.
-   */
-  caption?: string
-
-  /**
-   * The title of the image.
-   */
-  title?: string
-
-  /**
-   * The geographic location of the image.
-   */
-  geoLocation?: string
-
-  /**
-   * A URL to the license of the image.
-   */
-  license?: string
+  loc: string
 }
 
 /**
@@ -65,11 +45,6 @@ export interface SitemapVideoOptions {
   'player_loc'?: string
 
   /**
-   * A string the search engine can append as a query param to enable automatic playback
-   */
-  'player_loc:autoplay'?: string
-
-  /**
    * Duration of video in seconds
    */
   'duration'?: number
@@ -90,37 +65,11 @@ export interface SitemapVideoOptions {
   'publication_date'?: string
 
   /**
-   * A short description of the broad category that the video belongs to.
-   * This is a string no longer than 256 characters.
-   */
-  'category'?: string
-
-  /**
    * Whether to show or hide your video in search results from specific countries.
    */
   'restriction'?: string
 
   'restriction:relationship'?: string
-
-  /**
-   * The price to download or view the video. Omit this tag for free videos.
-   */
-  'price'?: string
-
-  /**
-   * Specifies the resolution of the purchased version. Supported values are hd and sd.
-   */
-  'price:resolution'?: string
-
-  /**
-   * Specifies the currency in ISO 4217 format.
-   */
-  'price:currency'?: string
-
-  /**
-   * Specifies the purchase option. Supported values are rent and own.
-   */
-  'price:type'?: string
 
   /**
    * The video uploader's name. Only one video:uploader is allowed per video.
