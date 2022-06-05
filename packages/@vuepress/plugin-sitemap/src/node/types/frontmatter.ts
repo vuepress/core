@@ -1,4 +1,4 @@
-import type { SitemapImageOption, SitemapVideoOption } from './sitemap'
+import type { SitemapImageOptions, SitemapVideoOptions } from './sitemap'
 
 export interface SitemapFrontmatterOption {
   /**
@@ -26,10 +26,10 @@ export interface SitemapFrontmatterOption {
   /**
    * Image config
    */
-  img?: SitemapImageOption[]
+  img?: SitemapImageOptions[]
 
   /**
    * Video config
    */
-  video?: SitemapVideoOption[]
+  video?: SitemapVideoOptions[]
 }
