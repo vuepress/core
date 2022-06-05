@@ -238,6 +238,21 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
   指定页面文件的 Patterns 。这些 Patterns 是相对于 Source 目录的。
 
+### permalinkPattern
+
+- 类型： `string | null`
+
+- 默认值： `null`
+
+- 详情：
+
+  指定为页面生成永久链接的 Pattern 。
+
+  它会被每个页面的 Frontmatter 中的 `permalinkPattern` 字段覆盖。
+
+- 参考：
+  - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
+
 ## Dev 配置项
 
 ### host

@@ -24,7 +24,7 @@
 
   页面的描述。
 
-  它将会覆盖站点配置中的 `description` 配置项
+  它将会覆盖站点配置中的 `description` 配置项。
 
 - 参考：
   - [配置 > description](./config.md#description)
@@ -127,11 +127,13 @@ layout: CustomLayout
 
 ## permalinkPattern
 
-- 类型： `string`
+- 类型： `string | null`
 
 - 详情：
 
   为页面生成永久链接的 Pattern 。
+
+  它将会覆盖站点配置中的 `permalinkPattern` 配置项。
 
   如果 Frontmatter 中设置了 `permalink` ，那么这个字段则不会生效。
 
@@ -182,6 +184,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   那么页面的永久链接将会是 `2021/01/03/bar-baz.html` 。
 
 - 参考：
+  - [配置 > permalinkPattern](./config.md#permalinkpattern)
   - [Frontmatter > date](#date)
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page 属性 > permalink](./node-api.md#permalink)

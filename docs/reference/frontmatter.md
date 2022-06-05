@@ -127,11 +127,13 @@ layout: CustomLayout
 
 ## permalinkPattern
 
-- Type: `string`
+- Type: `string | null`
 
 - Details:
 
   Pattern to generate permalink for the page.
+
+  This will override the `permalinkPattern` option in your site config.
 
   This won't take effect if the `permalink` frontmatter has been set.
 
@@ -182,6 +184,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   Then the permalink of the page would be `2021/01/03/bar-baz.html`.
 
 - Also see:
+  - [Config > permalinkPattern](./config.md#permalinkpattern)
   - [Frontmatter > date](#date)
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page Properties > permalink](./node-api.md#permalink)

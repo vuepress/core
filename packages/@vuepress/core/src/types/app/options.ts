@@ -17,6 +17,7 @@ export interface AppConfigCommon extends Partial<SiteData> {
   debug?: boolean
   markdown?: MarkdownOptions
   pagePatterns?: string[]
+  permalinkPattern?: string | null
   bundler: Bundler
   theme: Theme
   plugins?: PluginConfig
