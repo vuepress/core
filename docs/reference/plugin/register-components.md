@@ -11,7 +11,7 @@ npm i -D @vuepress/plugin-register-components@next
 ```
 
 ```js
-const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
+const registerComponentsPlugin = require('@vuepress/plugin-register-components')
 
 module.exports = {
   plugins: [
