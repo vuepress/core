@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-beta.46",
+  "version": "2.0.0-beta.47",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "vuepress-plugin",

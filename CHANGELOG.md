@@ -1,3 +1,37 @@
+# [2.0.0-beta.47](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.46...v2.0.0-beta.47) (2022-06-10)
+
+
+### Bug Fixes
+
+* **plugin-active-header-links:** remove hash at page top (close [#913](https://github.com/vuepress/vuepress-next/issues/913)) ([#920](https://github.com/vuepress/vuepress-next/issues/920)) ([268fa6d](https://github.com/vuepress/vuepress-next/commit/268fa6d0848829c97433bd8bbe57c21bb26c8423))
+* **plugin-docsearch:** fix search modal on mobile ([52fda1e](https://github.com/vuepress/vuepress-next/commit/52fda1e2de5c02f5b51e3cfe7bddb50127b0a5f5))
+* **plugin-docsearch:** use min-width to avoid layout shift after initialization ([b208be5](https://github.com/vuepress/vuepress-next/commit/b208be5a86bb6cf11071798eccd1326d4d8f4a89))
+* **theme-default:** fix header anchor offset regression ([e4b4ded](https://github.com/vuepress/vuepress-next/commit/e4b4dedea8652b305d9092a7d236479ffcef6741))
+
+
+### Features
+
+* **bundler-vite:** enable vue prod devtools in debug mode ([39fe57b](https://github.com/vuepress/vuepress-next/commit/39fe57bb3a2d2536eb5fd2282047ff342f603ae4))
+* **bundler-webpack:** enable vue prod devtools in debug mode ([4acc725](https://github.com/vuepress/vuepress-next/commit/4acc725de7bd479dcba78e531a196fa6cbebb878))
+* **core:** support permalinkPattern in app options (close [#778](https://github.com/vuepress/vuepress-next/issues/778)) ([#834](https://github.com/vuepress/vuepress-next/issues/834)) ([07fbe43](https://github.com/vuepress/vuepress-next/commit/07fbe43ac3ba62411d85813351893ea83dff2cd5))
+* **markdown:** support markdown.slugify option ([0143ba6](https://github.com/vuepress/vuepress-next/commit/0143ba62eb2c4694ab77cee75bc036a7b2481c61))
+* **plugin-pwa:** improve types definition ([e7590f4](https://github.com/vuepress/vuepress-next/commit/e7590f49d38677f2d6065d13984fb9a928821aac))
+* **plugin-search:** improve search input hotkeys (close [#746](https://github.com/vuepress/vuepress-next/issues/746)) ([#831](https://github.com/vuepress/vuepress-next/issues/831)) ([c98d70a](https://github.com/vuepress/vuepress-next/commit/c98d70aad899e71f9f436a2b5366d137b7d2302b))
+* **theme-default:** support `colorMode` and `colorModeSwitch` options (close [#796](https://github.com/vuepress/vuepress-next/issues/796)) ([d89cf86](https://github.com/vuepress/vuepress-next/commit/d89cf864af39981df78a8173d0bdfffb0dc74155))
+
+
+### Performance Improvements
+
+* **bundler-vite:** only apply workaround plugin for serve ([05b88e6](https://github.com/vuepress/vuepress-next/commit/05b88e6da688956656ff05d5d03f506a6e9dc36d))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** `darkMode` has been replaced with `colorMode` and `colorModeSwitch`
+* **theme-default:** `toggleDarkMode` has been renamed to `toggleColorMode`
+
+
+
 # [2.0.0-beta.46](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.45...v2.0.0-beta.46) (2022-05-26)
 
 
