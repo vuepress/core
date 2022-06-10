@@ -113,7 +113,7 @@ pageClass: custom-page-class
 
 - 参考：
   - [默认主题 > Frontmatter > heroImage](#heroimage)
-  - [默认主题 > 配置 > darkMode](./config.md#darkmode)
+  - [默认主题 > 配置 > colorMode](./config.md#colormode)
 
 ### heroAlt
 

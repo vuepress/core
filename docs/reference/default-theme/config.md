@@ -35,6 +35,37 @@ module.exports = {
 
 Config of this section can be used as normal config, and can also be used in the [locales](#locales) option.
 
+### colorMode
+
+- Type: `'auto' | 'light' | 'dark'`
+
+- Default: `'auto'`
+
+- Details:
+
+  Default color mode.
+
+  If set to `'auto'`, the initial color mode will be automatically set according to [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
+- Also see:
+  - [Default Theme > Config > colorModeSwitch](#colormodeswitch)
+
+### colorModeSwitch
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable color mode switching or not.
+
+  If set to `true`, a button to switch color mode will be displayed in the navbar.
+
+- Also see:
+  - [Default Theme > Config > colorMode](#colormode)
+  - [Default Theme > Config > toggleColorMode](#togglecolormode)
+
 ### home
 
 - Type: `string`
@@ -172,20 +203,8 @@ module.exports = {
   Set to `null` to disable logo in dark mode. Omit this option to use [logo](#logo) in dark mode.
 
 - Also see:
-  - [Default Theme > Config > logo](./config.md#logo)
-  - [Default Theme > Config > darkMode](./config.md#darkmode)
-
-### darkMode
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable dark mode switching or not.
-
-  If set to `true`, a button to switch dark mode will be displayed in the navbar, and the initial mode will be automatically set according to [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+  - [Default Theme > Config > logo](#logo)
+  - [Default Theme > Config > colorMode](#colormode)
 
 ### repo
 
@@ -606,17 +625,20 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 - Also see:
   - [Default Theme > Config Reference > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
 
-### toggleDarkMode
+### toggleColorMode
 
 - Type: `string`
 
-- Default: `'toggle dark mode'`
+- Default: `'toggle color mode'`
 
 - Details:
 
-  Title text for dark mode toggle button.
+  Title text for the color mode toggle button.
 
   This is mainly for a11y purpose.
+
+- Also see:
+  - [Default Theme > Config > colorModeSwitch](#colormodeswitch)
 
 ### toggleSidebar
 

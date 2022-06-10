@@ -35,6 +35,37 @@ module.exports = {
 
 该章节内的配置项可以作为一般配置使用，也可以使用在 [locales](#locales) 内。
 
+### colorMode
+
+- 类型： `'auto' | 'light' | 'dark'`
+
+- 默认值： `'auto'`
+
+- 详情：
+
+  默认颜色模式。
+
+  如果设置为 `'auto'` ，则会根据 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) 自动设置初始颜色模式。
+
+- 参考：
+  - [默认主题 > 配置 > colorModeSwitch](#colormodeswitch)
+
+### colorModeSwitch
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用切换颜色模式的功能。
+
+  如果设置为 `true` ，将会在导航栏展示一个切换颜色模式的按钮。
+
+- 参考：
+  - [默认主题 > 配置 > colorMode](#colormode)
+  - [默认主题 > 配置 > toggleColorMode](#togglecolormode)
+
 ### home
 
 - 类型： `string`
@@ -172,20 +203,8 @@ module.exports = {
   设置为 `null` 可以在夜间模式下禁用 Logo 。忽略该配置项将会在夜间模式中使用 [logo](#logo) 配置。
 
 - 参考：
-  - [默认主题 > 配置 > logo](./config.md#logo)
-  - [默认主题 > 配置 > darkMode](./config.md#darkmode)
-
-### darkMode
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用切换夜间模式的功能。
-
-  如果设置为 `true` ，将会在导航栏展示一个切换夜间模式的按钮，并会根据 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) 自动设置初始模式。
+  - [默认主题 > 配置 > logo](#logo)
+  - [默认主题 > 配置 > colorMode](#colormode)
 
 ### repo
 
@@ -606,17 +625,20 @@ module.exports = {
 - 参考：
   - [默认主题 > 配置 > themePlugins.externalLinkIcon](#themeplugins-externallinkicon)
 
-### toggleDarkMode
+### toggleColorMode
 
 - 类型： `string`
 
-- 默认值： `'toggle dark mode'`
+- 默认值： `'toggle color mode'`
 
 - 详情：
 
-  切换夜间模式按钮的标题文字。
+  切换颜色模式按钮的标题文字。
 
   它主要是为了站点的可访问性 (a11y) 。
+
+- 参考：
+  - [默认主题 > 配置 > colorModeSwitch](#colormodeswitch)
 
 ### toggleSidebar
 

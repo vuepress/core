@@ -4,16 +4,16 @@ import { useDarkMode, useThemeLocaleData } from '../composables'
 const themeLocale = useThemeLocaleData()
 const isDarkMode = useDarkMode()
 
-const toggleDarkMode = (): void => {
+const toggleColorMode = (): void => {
   isDarkMode.value = !isDarkMode.value
 }
 </script>
 
 <template>
   <button
-    class="toggle-dark-button"
-    :title="themeLocale.toggleDarkMode"
-    @click="toggleDarkMode"
+    class="toggle-color-mode-button"
+    :title="themeLocale.toggleColorMode"
+    @click="toggleColorMode"
   >
     <svg
       v-show="!isDarkMode"

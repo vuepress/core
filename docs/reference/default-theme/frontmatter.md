@@ -113,7 +113,7 @@ heroImage: https://vuejs.org/images/logo.png
 
 - Also see:
   - [Default Theme > Frontmatter > heroImage](#heroimage)
-  - [Default Theme > Config > darkMode](./config.md#darkmode)
+  - [Default Theme > Config > colorMode](./config.md#colormode)
 
 ### heroAlt
 

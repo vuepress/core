@@ -57,6 +57,20 @@ export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 
 export interface DefaultThemeLocaleData extends LocaleData {
   /**
+   * Default color mode
+   *
+   * @default 'auto'
+   */
+  colorMode?: 'auto' | 'dark' | 'light'
+
+  /**
+   * Enable color mode switching and display a button in navbar or not
+   *
+   * @default true
+   */
+  colorModeSwitch?: boolean
+
+  /**
    * Home path of current locale
    *
    * Used as the link of back-to-home and navbar logo
@@ -83,13 +97,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Logo to display in navbar in dark mode
    */
   logoDark?: null | string
-
-  /**
-   * Navbar dark mode button config
-   *
-   * Enable dark mode switching and display a button in navbar or not
-   */
-  darkMode?: boolean
 
   /**
    * Navbar repository config
@@ -266,9 +273,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
   openInNewWindow?: string
 
   /**
-   * A11y text for dark mode toggle button
+   * A11y text for color mode toggle button
    */
-  toggleDarkMode?: string
+  toggleColorMode?: string
 
   /**
    * A11y text for sidebar toggle button

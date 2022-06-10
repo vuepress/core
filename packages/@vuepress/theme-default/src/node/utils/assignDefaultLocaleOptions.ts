@@ -4,10 +4,13 @@ import type {
 } from '../../shared'
 
 export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
+  // color mode
+  colorMode: 'auto',
+  colorModeSwitch: true,
+
   // navbar
   navbar: [],
   logo: null,
-  darkMode: true,
   repo: null,
   selectLanguageText: 'Languages',
   selectLanguageAriaLabel: 'Select language',
@@ -35,7 +38,7 @@ export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
 
   // a11y
   openInNewWindow: 'open in new window',
-  toggleDarkMode: 'toggle dark mode',
+  toggleColorMode: 'toggle color mode',
   toggleSidebar: 'toggle sidebar',
 }
 

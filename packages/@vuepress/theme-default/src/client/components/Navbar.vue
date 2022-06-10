@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NavbarBrand from '@theme/NavbarBrand.vue'
 import NavbarItems from '@theme/NavbarItems.vue'
-import ToggleDarkModeButton from '@theme/ToggleDarkModeButton.vue'
+import ToggleColorModeButton from '@theme/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
 import { computed, onMounted, ref } from 'vue'
 import { useThemeLocaleData } from '../composables'
@@ -22,7 +22,6 @@ const linksWrapperStyle = computed(() => {
     maxWidth: linksWrapperMaxWidth.value + 'px',
   }
 })
-const enableDarkMode = computed(() => themeLocale.value.darkMode)
 
 // avoid overlapping of long title and long navbar links
 onMounted(() => {
@@ -69,7 +68,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
       <slot name="before" />
       <NavbarItems class="can-hide" />
       <slot name="after" />
-      <ToggleDarkModeButton v-if="enableDarkMode" />
+      <ToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
       <NavbarSearch />
     </div>
   </header>

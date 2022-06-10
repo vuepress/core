@@ -88,7 +88,7 @@ export default defineUserConfig({
         backToHome: '返回首页',
         // a11y
         openInNewWindow: '在新窗口打开',
-        toggleDarkMode: '切换夜间模式',
+        toggleColorMode: '切换颜色模式',
         toggleSidebar: '切换侧边栏',
       },
     },
