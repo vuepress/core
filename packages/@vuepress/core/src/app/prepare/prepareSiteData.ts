@@ -20,7 +20,9 @@ if (import.meta.hot) {
  */
 export const prepareSiteData = async (app: App): Promise<void> => {
   let content = `\
-export const siteData = ${JSON.stringify(app.siteData, null, 2)}
+export const siteData = JSON.parse(${JSON.stringify(
+    JSON.stringify(app.siteData)
+  )})
 `
 
   // inject HMR code

@@ -20,7 +20,10 @@ if (import.meta.hot) {
  */
 export const preparePageData = async (app: App, page: Page): Promise<void> => {
   // page data file content
-  let content = `export const data = ${JSON.stringify(page.data, null, 2)}\n`
+  let content = `export const data = JSON.parse(${JSON.stringify(
+    JSON.stringify(page.data)
+  )})
+`
 
   // inject HMR code
   if (app.env.isDev) {
