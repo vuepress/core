@@ -19,18 +19,13 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
   const site = useSiteData()
 
   return {
-    // transform full url to route path
-    transformItems: (items) =>
-      items.map((item) => ({
-        ...item,
-        // the `item.url` is full url with protocol and hostname
-        // so we have to transform it to vue-router path
-        url: resolveRoutePathFromUrl(item.url, site.value.base),
-      })),
-
     // render the hit component with custom `onClick` handler
-    hitComponent: ({ hit, children }) =>
-      ({
+    hitComponent: ({ hit, children }) => {
+      // the `item.url` is full url with protocol and hostname
+      // so we have to transform it to vue-router path
+      const routePath = resolveRoutePathFromUrl(hit.url, site.value.base)
+
+      return {
         type: 'a',
         ref: undefined,
         constructor: undefined,
@@ -43,12 +38,13 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(hit.url)
+            router.push(routePath)
           },
           children,
         },
         __v: null,
-      } as unknown),
+      } as unknown
+    },
 
     // navigation behavior triggered by `onKeyDown` internally
     navigator: {
