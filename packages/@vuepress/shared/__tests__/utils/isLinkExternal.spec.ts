@@ -33,6 +33,9 @@ const testCases: [
   [['/foo/bar/baz.md'], false],
   [['/foo/bar/baz.md', '/base/'], false],
   [['/foo/bar/baz.md', '/foo/'], false],
+  [['/foo/bar/baz.html'], false],
+  [['/foo/bar/baz.html', '/base/'], true],
+  [['/foo/bar/baz.html', '/foo/'], false],
 
   // relative links
   [['foobar.com'], false],
@@ -43,13 +46,28 @@ const testCases: [
   [['foo/bar/baz.md'], false],
   [['foo/bar/baz.md', '/base/'], false],
   [['foo/bar/baz.md', '/foo/'], false],
+  [['foo/bar/baz.html'], false],
+  [['foo/bar/baz.html', '/base/'], false],
+  [['foo/bar/baz.html', '/foo/'], false],
+  [['./foo/bar'], false],
+  [['./foo/bar', '/base/'], false],
+  [['./foo/bar', '/foo/'], false],
+  [['./foo/bar/baz.md'], false],
+  [['./foo/bar/baz.md', '/base/'], false],
+  [['./foo/bar/baz.md', '/foo/'], false],
+  [['./foo/bar/baz.html'], false],
+  [['./foo/bar/baz.html', '/base/'], false],
+  [['./foo/bar/baz.html', '/foo/'], false],
 ]
 
 describe('shared > isLinkExternal', () => {
   describe('should determine external link correctly', () => {
-    testCases.forEach(([source, expected]) => {
-      it(`link: ${source[0]}, base: ${source[1] || '/'}`, () => {
-        expect(isLinkExternal(...source)).toBe(expected)
+    testCases.forEach(([[link, base = '/'], expected]) => {
+      it(`link: ${link}, base: ${base}`, () => {
+        expect(isLinkExternal(link, base)).toBe(expected)
+        expect(isLinkExternal(`${link}#foobar`, base)).toBe(expected)
+        expect(isLinkExternal(`${link}?foo=bar`, base)).toBe(expected)
+        expect(isLinkExternal(`${link}?foo=bar#foobar`, base)).toBe(expected)
       })
     })
   })
