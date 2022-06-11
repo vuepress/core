@@ -1,5 +1,4 @@
 import { pagesComponents } from '@internal/pagesComponents'
-import { pagesRoutes } from '@internal/pagesRoutes'
 import { removeEndingSlash } from '@vuepress/shared'
 import {
   createMemoryHistory,
@@ -10,6 +9,7 @@ import {
 import type { Router } from 'vue-router'
 import { pageData, siteData } from './composables'
 import { resolvers } from './resolvers'
+import { createRoutes } from './routes'
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
@@ -24,7 +24,7 @@ export const createVueRouter = (): Router => {
   const router = createRouter({
     // TODO: it might be an issue of vue-router that have to remove the ending slash
     history: historyCreator(removeEndingSlash(siteData.value.base)),
-    routes: pagesRoutes,
+    routes: createRoutes(),
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) return savedPosition
       if (to.hash) return { el: to.hash }

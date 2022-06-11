@@ -1,4 +1,4 @@
-import type { App, ComponentOptions } from 'vue'
+import type { App, Component } from 'vue'
 import type { Router } from 'vue-router'
 import type { SiteDataRef } from '../composables'
 
@@ -24,5 +24,5 @@ export interface ClientConfig {
   /**
    * Components to be placed directly into the root node of vue app
    */
-  rootComponents?: ComponentOptions[]
+  rootComponents?: Component[]
 }

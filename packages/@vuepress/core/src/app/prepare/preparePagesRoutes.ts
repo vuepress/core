@@ -1,26 +1,17 @@
+import type { PageRouteItem } from '@vuepress/client'
 import { ensureLeadingSlash } from '@vuepress/shared'
 import type { App, Page } from '../../types'
 
 /**
- * Route item type, which will be used for generating route records
+ * Resolve page route item
  */
-type RouteItem = [
-  name: string,
-  path: string,
-  meta: Record<string, unknown>,
-  redirects: string[]
-]
-
-/**
- * Transform a page object to a route item
- */
-const transformPageToRouteItem = ({
+const resolvePageRouteItem = ({
   key,
   path,
   pathInferred,
   filePathRelative,
   routeMeta,
-}: Page): RouteItem => {
+}: Page): PageRouteItem => {
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
@@ -58,38 +49,11 @@ const transformPageToRouteItem = ({
  * Generate routes temp file
  */
 export const preparePagesRoutes = async (app: App): Promise<void> => {
-  const routeItems = app.pages.map(transformPageToRouteItem)
+  const routeItems = app.pages.map(resolvePageRouteItem)
   const content = `\
-import { Vuepress } from '@vuepress/client'
-
-const routeItems = [\
+export const pagesRoutes = [\
 ${routeItems.map((routeItem) => `\n  ${JSON.stringify(routeItem)},`).join('')}
 ]
-
-export const pagesRoutes = routeItems.reduce(
-  (result, [name, path, meta, redirects]) => {
-    result.push(
-      {
-        name,
-        path,
-        component: Vuepress,
-        meta,
-      },
-      ...redirects.map((item) => ({
-        path: item,
-        redirect: path,
-      }))
-    )
-    return result
-  },
-  [
-    {
-      name: '404',
-      path: '/:catchAll(.*)',
-      component: Vuepress,
-    }
-  ]
-)
 `
 
   await app.writeTemp('internal/pagesRoutes.js', content)
