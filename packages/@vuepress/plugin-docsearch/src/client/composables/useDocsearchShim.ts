@@ -21,7 +21,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
   return {
     // render the hit component with custom `onClick` handler
     hitComponent: ({ hit, children }) => {
-      // the `item.url` is full url with protocol and hostname
+      // the `hit.url` is full url with protocol and hostname
       // so we have to transform it to vue-router path
       const routePath = resolveRoutePathFromUrl(hit.url, site.value.base)
 
