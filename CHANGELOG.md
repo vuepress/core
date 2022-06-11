@@ -1,3 +1,18 @@
+# [2.0.0-beta.48](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.47...v2.0.0-beta.48) (2022-06-11)
+
+
+### Bug Fixes
+
+* **plugin-docsearch:** keep base in result items (close [#933](https://github.com/vuepress/vuepress-next/issues/933)) ([35ebc91](https://github.com/vuepress/vuepress-next/commit/35ebc91bbcaf8ef6772baf037eb8c99083ab50dc))
+* **shared:** check markdown links correctly ([252f4ac](https://github.com/vuepress/vuepress-next/commit/252f4acb2f7b69b8c920aafac362d44027f9ae49))
+
+
+### Performance Improvements
+
+* replace object literals with json when generating client codes ([6db42f0](https://github.com/vuepress/vuepress-next/commit/6db42f0cb2030285e0e208a83bb6e9e82f82caf8))
+
+
+
 # [2.0.0-beta.47](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.46...v2.0.0-beta.47) (2022-06-10)
 
 
