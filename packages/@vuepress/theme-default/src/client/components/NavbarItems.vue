@@ -30,9 +30,12 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
 
     const languageDropdown: ResolvedNavbarItem = {
       text: themeLocale.value.selectLanguageText ?? 'unknown language',
-      ariaLabel: themeLocale.value.selectLanguageAriaLabel ?? 'unkown language',
+      ariaLabel:
+        themeLocale.value.selectLanguageAriaLabel ??
+        themeLocale.value.selectLanguageText ??
+        'unknown language',
       children: localePaths.map((targetLocalePath) => {
-        // target locale config of this langauge link
+        // target locale config of this language link
         const targetSiteLocale =
           siteLocale.value.locales?.[targetLocalePath] ?? {}
         const targetThemeLocale =
