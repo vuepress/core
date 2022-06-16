@@ -14,7 +14,7 @@
 
 你可以把一些静态资源放在 Public 目录中，它们会被复制到最终生成的网站的根目录下。
 
-默认的 Public 目录是  `.vuepress/public` ，可以通过配置来修改。
+默认的 Public 目录是 `.vuepress/public` ，可以通过 [public](../reference/config.md#public) 配置项来修改。
 
 在下列这些情况中，你可能会用到它：
 
@@ -46,33 +46,37 @@
 
 ![VuePress Logo](/images/hero.png)
 
-::: tip
-配置参考： [public](../reference/config.md#public)
-:::
-
 ### Base Helper
 
-如果你的网站部署在非根路径下，即 [base](../reference/config.md#base) 不是 `"/"` ，你需要把 `base` 添加到 Public 文件的绝对路径前。
+如果你的网站部署在非根路径下，例如 `https://foo.github.io/bar/` ，那么你应该把 [base](../reference/config.md#base) 设置为 `'/bar/'`。显然，此时你的 Public 文件会被部署在 `https://foo.github.io/bar/images/hero.png` 这样的链接下。
 
-举例来说，如果你想要把网站部署到 `https://foo.github.io/bar/` ，那么应该把 `base` 设置为 `"/bar/"` ，此时你必须在 Markdown 文件中这样引用 Public 文件：
+在大多数情况下，你不需要担心这些 Public 文件的引用路径，因为 VuePress 会自动帮你处理 `base` 前缀：
 
 ```md
-![VuePress Logo](/bar/images/hero.png)
+<!-- 你不需要给 `/images/hero.png` 手动添加 `/bar/` 前缀 -->
+![VuePress Logo](/images/hero.png)
 ```
 
-显然，一旦某一天你修改了 `base`，这样的路径引用将会显得异常脆弱。这也是我们推荐你使用相对路径来引用静态文件的原因。
+然而，有些情况下，你可能会有一些指向 Public 文件的动态路径，尤其是在你开发一个自定义主题的时候。在这种情况下， `base` 无法被自动处理。为了解决这个问题，VuePress 提供了 [withBase](../reference/client-api.md#withbase) 工具函数，它可以帮助你添加 `base` 前缀：
 
-为了解决这个问题，VuePress 提供了内置的一个 Helper `$withBase` ，它可以帮助你生成正确的路径：
+```vue
+<template>
+  <img :src="withBase(logoPath)">
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { withBase } from '@vuepress/client'
+
+const logoPath = ref('/images/hero.png')
+</script>
+```
+
+你也可以通过 `$withBase` 来直接使用这个工具函数：
 
 ```md
 <img :src="$withBase('/images/hero.png')" alt="VuePress Logo">
 ```
-
-在 Markdown 中使用这个 Helper 会显得有些冗长，因此它可能对主题和插件作者更有帮助。
-
-::: tip
-配置参考： [base](../reference/config.md#base)
-:::
 
 ## 依赖包和路径别名
 

@@ -153,3 +153,9 @@ export default defineUserConfig({
 - Details:
 
   Set to `true` if you are only targeting evergreen browsers. This will disable some transpilation and polyfills, and result in faster builds and smaller files.
+
+## FAQ
+
+### Referencing Public Files after Changing `base`
+
+Unlike Vite, Webpack won't handle `base` for public files automatically. So if you change the `base` of your site, you'd better to use [Base Helper](../../guide/assets.md#base-helper) when referencing an public image file.

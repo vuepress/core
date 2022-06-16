@@ -153,3 +153,9 @@ export default defineUserConfig({
 - 详情：
 
   如果你的对象只有那些 “常青树” 浏览器，你可以将其设置成 `true` 。这将会禁用一些转译过程和 Polyfills ，带来更快的构建速度和更小的文件体积。
+
+## 常见问题
+
+### 在修改 `base` 后引用 Public 文件
+
+与 Vite 不同， Webpack 不会为 Public 文件自动处理 `base`。因此如果你修改了网站的 `base`，建议你在引用 Public 图片文件时使用 [Base Helper](../../guide/assets.md#base-helper)。
