@@ -22,9 +22,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![~alias](~@alias/foo.png)',
       '![~汉字](~@alias/汉字.png)',
       '![~100%](~@alias/100%.png)',
-      // keep as is
+      // absolute paths
       '![absolute](/absolute.png)',
+      '![absolute-foo](/foo/absolute.png)',
+      // no-prefix paths
       '![no-prefix](no-prefix.png)',
+      '![no-prefix-foo](foo/no-prefix.png)',
+      // keep as is
       '![url](http://foobar.com/icon.png)',
       '![empty]()',
       // invalid paths
@@ -63,9 +67,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="~@alias/foo.png" alt="~alias">',
           '<img src="~@alias/汉字.png" alt="~汉字">',
           '<img src="~@alias/100%.png" alt="~100%">',
-          // keep as is
+          // absolute paths
           '<img src="/absolute.png" alt="absolute">',
+          '<img src="/foo/absolute.png" alt="absolute-foo">',
+          // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
+          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
@@ -100,9 +108,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="~@alias/foo.png" alt="~alias">',
           '<img src="~@alias/汉字.png" alt="~汉字">',
           '<img src="~@alias/100%.png" alt="~100%">',
-          // keep as is
+          // absolute paths
           '<img src="/absolute.png" alt="absolute">',
+          '<img src="/foo/absolute.png" alt="absolute-foo">',
+          // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
+          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
@@ -113,7 +125,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       },
       {
         description:
-          'should not handle assets link if `filePathRelative` is not provided',
+          'should not handle relative paths if `env.filePathRelative` is not provided',
         md: MarkdownIt().use(assetsPlugin),
         env: {},
         expected: [
@@ -134,9 +146,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="~@alias/foo.png" alt="~alias">',
           '<img src="~@alias/汉字.png" alt="~汉字">',
           '<img src="~@alias/100%.png" alt="~100%">',
-          // keep as is
+          // absolute paths
           '<img src="/absolute.png" alt="absolute">',
+          '<img src="/foo/absolute.png" alt="absolute-foo">',
+          // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
+          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
@@ -180,12 +196,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="~@alias/汉字.png">',
         '<img src="~@alias/100%.png">',
         '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-        // keep as is
+        // absolute paths
         '<img src="/absolute.png">',
+        '<img src="/foo/absolute.png">',
+        // no-prefix paths
         '<img src="no-prefix.png">',
+        '<img src="foo/no-prefix.png">',
+        '<img alt="attrs" src="attrs.png" width="100px">',
+        // keep as is
         '<img src="http://foobar.com/icon.png">',
         '<img src="">',
-        '<img alt="attrs" src="attrs.png" width="100px">',
         // invalid paths
         '<img src=".../invalid.png">',
         '<img src=".../汉字.png">',
@@ -259,12 +279,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img src="~@alias/汉字.png">',
             '<img src="~@alias/100%.png">',
             '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-            // keep as is
+            // absolute paths
             '<img src="/absolute.png">',
+            '<img src="/foo/absolute.png">',
+            // no-prefix paths
             '<img src="no-prefix.png">',
+            '<img src="foo/no-prefix.png">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // keep as is
             '<img src="http://foobar.com/icon.png">',
             '<img src="">',
-            '<img alt="attrs" src="attrs.png" width="100px">',
             // invalid paths
             '<img src=".../invalid.png">',
             '<img src=".../汉字.png">',
@@ -334,12 +358,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img src="~@alias/汉字.png">',
             '<img src="~@alias/100%.png">',
             '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-            // keep as is
+            // absolute paths
             '<img src="/absolute.png">',
+            '<img src="/foo/absolute.png">',
+            // no-prefix paths
             '<img src="no-prefix.png">',
+            '<img src="foo/no-prefix.png">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // keep as is
             '<img src="http://foobar.com/icon.png">',
             '<img src="">',
-            '<img alt="attrs" src="attrs.png" width="100px">',
             // invalid paths
             '<img src=".../invalid.png">',
             '<img src=".../汉字.png">',
@@ -381,7 +409,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
         {
           description:
-            'should not handle assets link if `filePathRelative` is not provided',
+            'should not handle relative paths if `env.filePathRelative` is not provided',
           md: MarkdownIt({ html: true }).use(assetsPlugin),
           env: {},
           expected: [
@@ -406,12 +434,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img src="~@alias/汉字.png">',
             '<img src="~@alias/100%.png">',
             '<img alt="attrs" src="~@alias/attrs.png" width="100px">',
-            // keep as is
+            // absolute paths
             '<img src="/absolute.png">',
+            '<img src="/foo/absolute.png">',
+            // no-prefix paths
             '<img src="no-prefix.png">',
+            '<img src="foo/no-prefix.png">',
+            '<img alt="attrs" src="attrs.png" width="100px">',
+            // keep as is
             '<img src="http://foobar.com/icon.png">',
             '<img src="">',
-            '<img alt="attrs" src="attrs.png" width="100px">',
             // invalid paths
             '<img src=".../invalid.png">',
             '<img src=".../汉字.png">',
