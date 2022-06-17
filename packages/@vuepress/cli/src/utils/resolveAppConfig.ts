@@ -1,6 +1,6 @@
 import type { AppConfig } from '@vuepress/core'
 import { ensureEndingSlash, ensureLeadingSlash } from '@vuepress/shared'
-import { chalk, logger, path } from '@vuepress/utils'
+import { chalk, isChildPath, logger } from '@vuepress/utils'
 
 /**
  * Resolve app config according to:
@@ -49,10 +49,7 @@ export const resolveAppConfig = ({
     )
   }
 
-  if (
-    appConfig.dest &&
-    path.normalize(appConfig.source).includes(path.normalize(appConfig.dest))
-  ) {
+  if (appConfig.dest && isChildPath(appConfig.source, appConfig.dest)) {
     logger.warn(
       `${chalk.magenta('dest')} directory would be emptied during build,` +
         ` so we fallback it to the default directory for the safety of your source files`
