@@ -9,6 +9,7 @@ export * as path from 'upath'
 
 export * from './hasExportDefault'
 export * from './hash'
+export * from './isChildPath'
 export * from './logger'
 export * from './renderHead'
 export * from './renderHeadAttrs'
