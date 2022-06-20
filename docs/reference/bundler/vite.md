@@ -73,7 +73,7 @@ When you are importing a third-party library (called `foo-lib`), a common error 
 Error [ERR_REQUIRE_ESM]: Must use import to load ES Module: /path/to/foo-lib
 ```
 
-To get grid of it, you need to set `ssr.noExternal` option:
+To get rid of it, you need to set `ssr.noExternal` option:
 
 ```ts
 export default defineUserConfig({
