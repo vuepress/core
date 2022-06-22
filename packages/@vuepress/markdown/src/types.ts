@@ -18,7 +18,7 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   anchor?: false | AnchorPluginOptions
   assets?: false | AssetsPluginOptions
   code?: false | CodePluginOptions
-  customComponent?: false
+  component?: false
   emoji?: false | EmojiPluginOptions
   extractHeaders?: false | ExtractHeadersPluginOptions
   extractTitle?: false

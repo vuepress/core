@@ -1,7 +1,8 @@
+export * from '@mdit-vue/plugin-component'
+
 export * from './anchorPlugin'
 export * from './assetsPlugin'
 export * from './codePlugin'
-export * from './customComponentPlugin'
 export * from './emojiPlugin'
 export * from './extractHeadersPlugin'
 export * from './extractTitlePlugin'

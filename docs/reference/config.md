@@ -461,13 +461,13 @@ You can disable it if you want to implement them in client side. For example, [P
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
 
-### markdown.customComponent
+### markdown.component
 
 - Type: `undefined | false`
 
 - Details:
 
-  Options for VuePress built-in markdown-it custom-component plugin.
+  Options for [@mdit-vue/plugin-component](https://www.npmjs.com/package/@mdit-vue/plugin-component).
 
   Set to `false` to disable this plugin.
 

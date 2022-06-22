@@ -460,13 +460,13 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)
 
-### markdown.customComponent
+### markdown.component
 
 - 类型： `undefined | false`
 
 - 详情：
 
-  VuePress 内置的 markdown-it custom-component 插件的配置项。
+  [@mdit-vue/plugin-component](https://www.npmjs.com/package/@mdit-vue/plugin-component) 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 

@@ -3,7 +3,7 @@ import {
   anchorPlugin,
   assetsPlugin,
   codePlugin,
-  customComponentPlugin,
+  componentPlugin,
   emojiPlugin,
   extractHeadersPlugin,
   extractTitlePlugin,
@@ -33,7 +33,7 @@ export const createMarkdown = ({
   anchor,
   assets,
   code,
-  customComponent,
+  component,
   emoji,
   extractHeaders,
   extractTitle,
@@ -103,9 +103,9 @@ export const createMarkdown = ({
   // following plugins modify or replace the rule in place
   // and have no conflicts, so the order is not important
 
-  // treat unknown html tags as custom components
-  if (customComponent !== false) {
-    md.use(customComponentPlugin)
+  // treat unknown html tags as components
+  if (component !== false) {
+    md.use(componentPlugin)
   }
 
   // replace relative link of assets with absolute link
