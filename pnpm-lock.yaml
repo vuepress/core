@@ -223,7 +223,9 @@ importers:
 
   packages/@vuepress/markdown:
     specifiers:
-      '@mdit-vue/plugin-component': ^0.1.0
+      '@mdit-vue/plugin-component': ^0.2.0
+      '@mdit-vue/plugin-sfc': ^0.2.0
+      '@mdit-vue/shared': ^0.2.0
       '@types/markdown-it': ^12.2.3
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
@@ -232,7 +234,9 @@ importers:
       markdown-it-emoji: ^2.0.2
       mdurl: ^1.0.1
     dependencies:
-      '@mdit-vue/plugin-component': 0.1.0
+      '@mdit-vue/plugin-component': 0.2.0
+      '@mdit-vue/plugin-sfc': 0.2.0
+      '@mdit-vue/shared': 0.2.0
       '@types/markdown-it': 12.2.3
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
@@ -2336,11 +2340,23 @@ packages:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: false
 
-  /@mdit-vue/plugin-component/0.1.0:
-    resolution: {integrity: sha512-v5cxtdKsJxLPxU0y272IgjMFoM8MkI0WoBY91V7Dt39yX1e0MQDOSy2wMIv3GzLcCXnzgA9EOC8qWLcfc/uWvw==}
+  /@mdit-vue/plugin-component/0.2.0:
+    resolution: {integrity: sha512-yHtzut9PmGcDNMkZC5HU4aMtildxw3X11ynmbNX8c4zNiaNaIDTB81uCOKmd8n7Qlzpp9He9ptMMaz5UVe2Zkw==}
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/plugin-sfc/0.2.0:
+    resolution: {integrity: sha512-xri5+POw8EbSYoTjsRXG99XHdf3QwN3dmp+RbMleQdfNIJOxCqTMyQUn7psKLEaRJBMkpQYncGUrUiSwUYXC+A==}
+    dependencies:
+      '@mdit-vue/shared': 0.2.0
+      '@types/markdown-it': 12.2.3
+      markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/shared/0.2.0:
+    resolution: {integrity: sha512-Bm0CfGIuhoiFN33lFsJ0CRrRclfHo7vJGVXwkzoHYwKGGtHJ64pWORstomkv3AwA0HL94ePnkVxhbjbPHrEvXQ==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

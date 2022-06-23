@@ -14,7 +14,7 @@ export const preparePageComponent = async (
       // #688: wrap the content with a <div> to avoid some potential issues of fragment component
       `<template><div>${page.contentRendered}</div></template>\n`,
       // hoist `<script>`, `<style>` and other custom blocks
-      ...page.hoistedTags,
+      ...page.sfcBlocks,
     ].join('\n')
   )
 }

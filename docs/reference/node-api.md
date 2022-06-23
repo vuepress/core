@@ -554,17 +554,6 @@ interface PageData {
 - Also see:
   - [Config > markdown.importCode](./config.md#markdown-importcode)
 
-### hoistedTags
-
-- Type: `string[]`
-
-- Details:
-
-  Hoisted tags of the page.
-
-- Also see:
-  - [Config > markdown.hoistTags](./config.md#markdown-hoisttags)
-
 ### links
 
 - Type: `MarkdownLink[]`
@@ -648,6 +637,17 @@ Both [route meta](#routemeta) and [page data](#data) is available in client side
 
 Therefore, it's not recommended to store large amounts of info into route meta, otherwise the initial loading speed will be affected a lot when your site has a large number of pages.
 :::
+
+### sfcBlocks
+
+- Type: `string[]`
+
+- Details:
+
+  Extracted vue SFC blocks of the page.
+
+- Also see:
+  - [Config > markdown.sfc](./config.md#markdown-sfc)
 
 ### slug
 

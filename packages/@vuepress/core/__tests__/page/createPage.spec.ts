@@ -50,7 +50,7 @@ describe('core > page > createPage', () => {
     expect(page.contentRendered).toBe('')
     expect(page.date).toBe('0000-00-00')
     expect(page.deps).toEqual([])
-    expect(page.hoistedTags).toEqual([])
+    expect(page.sfcBlocks).toEqual([])
     expect(page.links).toEqual([])
     expect(page.pathInferred).toBeNull()
     expect(page.pathLocale).toBe('/')

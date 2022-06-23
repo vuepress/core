@@ -8,8 +8,6 @@ describe('@vuepress/markdown > markdown', () => {
 
     it.todo('extractHeaders')
 
-    it.todo('hoistTags')
-
     it.todo('links')
 
     it.todo('toc')

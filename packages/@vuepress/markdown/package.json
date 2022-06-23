@@ -26,7 +26,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^0.1.0",
+    "@mdit-vue/plugin-component": "^0.2.0",
+    "@mdit-vue/plugin-sfc": "^0.2.0",
+    "@mdit-vue/shared": "^0.2.0",
     "@types/markdown-it": "^12.2.3",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",

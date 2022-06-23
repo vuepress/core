@@ -466,7 +466,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 详情：
 
-  [@mdit-vue/plugin-component](https://www.npmjs.com/package/@mdit-vue/plugin-component) 插件的配置项。
+  [@mdit-vue/plugin-component](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-component) 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
@@ -556,36 +556,6 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
-### markdown.hoistTags
-
-- 类型： `HoistTagsPluginOptions | false`
-
-- 详情：
-
-  VuePress 内置的 markdown-it hoist-tags 插件的配置项。
-
-  它将会把你的 Markdown 中特定的 HTML 标签提升到 SFC 的顶层。
-
-  设置为 `false` 可以禁用该插件。
-
-- 参考：
-  - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
-  - [Node API > Page 属性 > hoistedTags](./node-api.md#hoistedtags)
-
-#### markdown.hoistTags.customBlocks
-
-- 类型： `string[]`
-
-- 默认值： `[]`
-
-- 详情：
-
-  想要提升的 SFC 自定义块。
-
-  默认情况下，只会提升 `<script>` 和 `<style>` 标签。你可以设置该选项以便在 Markdown 中支持自定义块。
-
-  例如，如果你将该选项设置为 `['foo']` ，那么 Markdown 中的 `<foo>` 标签就会提升为 Vue SFC 的自定义块。需要提醒的是，为了处理自定义块，你还需要正确配置你的打包工具。
-
 ### markdown.importCode
 
 - 类型： `ImportCodePluginOptions | false`
@@ -645,6 +615,20 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 - 详情：
 
   为外部链接添加额外的属性。
+
+### markdown.sfc
+
+- 类型： `SfcPluginOptions | false`
+
+- 详情：
+
+  [@mdit-vue/plugin-sfc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-sfc) 插件的配置项。
+
+  设置为 `false` 可以禁用该插件。
+
+- 参考：
+  - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Page 属性 > sfcBlocks](./node-api.md#sfcblocks)
 
 ### markdown.slugify
 

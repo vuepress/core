@@ -467,7 +467,7 @@ You can disable it if you want to implement them in client side. For example, [P
 
 - Details:
 
-  Options for [@mdit-vue/plugin-component](https://www.npmjs.com/package/@mdit-vue/plugin-component).
+  Options for [@mdit-vue/plugin-component](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-component).
 
   Set to `false` to disable this plugin.
 
@@ -557,36 +557,6 @@ If you really want to modify the slugify function, you'd better change the [mark
 You should not configure it unless you understand what it is for.
 :::
 
-### markdown.hoistTags
-
-- Type: `HoistTagsPluginOptions | false`
-
-- Details:
-
-  Options for VuePress built-in markdown-it hoist-tags plugin.
-
-  It will hoist specific HTML tags in your markdown to the top-level of SFC.
-
-  Set to `false` to disable this plugin.
-
-- Also see:
-  - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
-  - [Node API > Page Properties > hoistedTags](./node-api.md#hoistedtags)
-
-#### markdown.hoistTags.customBlocks
-
-- Type: `string[]`
-
-- Default: `[]`
-
-- Details:
-
-  SFC custom blocks to be hoisted.
-
-  By default, only `<script>` and `<style>` tags will be hoisted. You can set this option to support SFC custom blocks in markdown.
-
-  For example, if you set this option to `['foo']`, the `<foo>` tag in your markdown content will be hoisted as Vue SFC custom block. Remember that you need to configure the bundler correctly to handle custom blocks.
-
 ### markdown.importCode
 
 - Type: `ImportCodePluginOptions | false`
@@ -646,6 +616,20 @@ You should not configure it unless you understand what it is for.
 - Details:
 
   Additional attributes for external links.
+
+### markdown.sfc
+
+- Type: `SfcPluginOptions | false`
+
+- Details:
+
+  Options for [@mdit-vue/plugin-sfc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-sfc).
+
+  Set to `false` to disable this plugin.
+
+- Also see:
+  - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Page Properties > sfcBlocks](./node-api.md#sfcblocks)
 
 ### markdown.slugify
 

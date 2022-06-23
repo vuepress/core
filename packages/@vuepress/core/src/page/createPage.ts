@@ -51,7 +51,7 @@ export const createPage = async (
   })
 
   // render page content and extract information
-  const { contentRendered, deps, headers, hoistedTags, links, title } =
+  const { contentRendered, deps, headers, links, sfcBlocks, title } =
     await renderPageContent({
       app,
       content,
@@ -137,12 +137,12 @@ export const createPage = async (
     contentRendered,
     date,
     deps,
-    hoistedTags,
     links,
     pathInferred,
     pathLocale,
     permalink,
     routeMeta,
+    sfcBlocks,
     slug,
 
     // file info

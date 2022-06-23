@@ -552,17 +552,6 @@ interface PageData {
 - 参考：
   - [配置 > markdown.importCode](./config.md#markdown-importcode)
 
-### hoistedTags
-
-- 类型： `string[]`
-
-- 详情：
-
-  该 Page 中提升的 Tags。
-
-- 参考：
-  - [配置 > markdown.hoistTags](./config.md#markdown-hoisttags)
-
 ### links
 
 - 类型： `MarkdownLink[]`
@@ -647,6 +636,17 @@ interface MarkdownLink {
 
 因此，不建议在 Route Meta 中存储大量的信息，否则在站点有很多页面时，将会影响站点的初始加载速度。
 :::
+
+### sfcBlocks
+
+- 类型： `string[]`
+
+- 详情：
+
+  该 Page 中提取出的 Vue SFC Blocks 。
+
+- 参考：
+  - [配置 > markdown.sfc](./config.md#markdown-sfc)
 
 ### slug
 

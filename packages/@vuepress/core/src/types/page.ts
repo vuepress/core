@@ -38,11 +38,6 @@ export type Page<
     deps: string[]
 
     /**
-     * Hoisted tags of the page
-     */
-    hoistedTags: string[]
-
-    /**
      * Links of the page
      */
     links: MarkdownLink[]
@@ -78,6 +73,11 @@ export type Page<
      * @see https://router.vuejs.org/api/#meta
      */
     routeMeta: Record<string, unknown>
+
+    /**
+     * Extracted sfc blocks of the page
+     */
+    sfcBlocks: string[]
 
     /**
      * Slug of the page

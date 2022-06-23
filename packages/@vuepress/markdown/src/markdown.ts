@@ -7,9 +7,9 @@ import {
   emojiPlugin,
   extractHeadersPlugin,
   extractTitlePlugin,
-  hoistTagsPlugin,
   importCodePlugin,
   linksPlugin,
+  sfcPlugin,
   tocPlugin,
 } from './plugins'
 import type {
@@ -18,9 +18,9 @@ import type {
   CodePluginOptions,
   EmojiPluginOptions,
   ExtractHeadersPluginOptions,
-  HoistTagsPluginOptions,
   ImportCodePluginOptions,
   LinksPluginOptions,
+  SfcPluginOptions,
   TocPluginOptions,
 } from './plugins'
 import type { Markdown, MarkdownOptions } from './types'
@@ -37,9 +37,9 @@ export const createMarkdown = ({
   emoji,
   extractHeaders,
   extractTitle,
-  hoistTags,
   importCode,
   links,
+  sfc,
   slugify = vuepressSlugify,
   toc,
   ...markdownItOptions
@@ -113,9 +113,9 @@ export const createMarkdown = ({
     md.use<AssetsPluginOptions>(assetsPlugin, assets)
   }
 
-  // hoist vue SFC blocks and extract them into env
-  if (hoistTags !== false) {
-    md.use<HoistTagsPluginOptions>(hoistTagsPlugin, hoistTags)
+  // extract vue SFC blocks into env
+  if (sfc !== false) {
+    md.use<SfcPluginOptions>(sfcPlugin, sfc)
   }
 
   // process external and internal links

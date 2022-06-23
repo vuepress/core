@@ -1,4 +1,5 @@
 export * from '@mdit-vue/plugin-component'
+export * from '@mdit-vue/plugin-sfc'
 
 export * from './anchorPlugin'
 export * from './assetsPlugin'
@@ -6,7 +7,6 @@ export * from './codePlugin'
 export * from './emojiPlugin'
 export * from './extractHeadersPlugin'
 export * from './extractTitlePlugin'
-export * from './hoistTagsPlugin'
 export * from './importCodePlugin'
 export * from './linksPlugin'
 export * from './tocPlugin'

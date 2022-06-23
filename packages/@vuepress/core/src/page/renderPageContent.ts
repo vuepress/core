@@ -24,8 +24,8 @@ export const renderPageContent = async ({
   contentRendered: string
   deps: string[]
   headers: MarkdownHeader[]
-  hoistedTags: string[]
   links: MarkdownLink[]
+  sfcBlocks: string[]
   title: string
 }> => {
   const markdownEnv: MarkdownEnv = {
@@ -40,9 +40,9 @@ export const renderPageContent = async ({
   /* istanbul ignore next */
   const {
     headers = [],
-    hoistedTags = [],
     importedFiles = [],
     links = [],
+    sfcBlocks = [],
     title = '',
   } = markdownEnv
 
@@ -50,8 +50,8 @@ export const renderPageContent = async ({
     contentRendered,
     deps: importedFiles,
     headers,
-    hoistedTags,
     links,
+    sfcBlocks,
     title,
   }
 }

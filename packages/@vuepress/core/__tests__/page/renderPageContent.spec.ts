@@ -23,8 +23,8 @@ describe('core > page > renderPageContent', () => {
       contentRendered: '<p>foobar</p>\n',
       deps: [],
       headers: [],
-      hoistedTags: [],
       links: [],
+      sfcBlocks: [],
       title: '',
     })
   })
