@@ -1,6 +1,6 @@
+import { resolveTitleFromToken } from '@mdit-vue/shared'
 import type { PluginSimple } from 'markdown-it'
 import type { MarkdownEnv } from '../types'
-import { resolveTitleFromToken } from '../utils'
 
 /**
  * Extracting markdown title to env
@@ -14,8 +14,8 @@ export const extractTitlePlugin: PluginSimple = (md): void => {
     const tokenIdx = state.tokens.findIndex((token) => token.tag === 'h1')
     if (tokenIdx > -1) {
       title = resolveTitleFromToken(state.tokens[tokenIdx + 1], {
-        escapeText: false,
-        allowHtml: false,
+        shouldAllowHtml: false,
+        shouldEscapeText: false,
       })
     } else {
       title = ''

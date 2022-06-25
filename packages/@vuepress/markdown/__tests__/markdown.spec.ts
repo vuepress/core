@@ -9,8 +9,6 @@ describe('@vuepress/markdown > markdown', () => {
     it.todo('extractHeaders')
 
     it.todo('links')
-
-    it.todo('toc')
   })
 
   describe('e2e', () => {
@@ -22,7 +20,5 @@ describe('@vuepress/markdown > markdown', () => {
       const rendered = md.render(':smile:')
       expect(rendered).toBe('<p>😄</p>\n')
     })
-
-    it.todo('toc')
   })
 })

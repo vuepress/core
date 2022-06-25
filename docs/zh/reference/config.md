@@ -636,10 +636,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 详情：
 
-  默认使用的 slugify 函数，它将被用作以下选项的默认值：
-  - [markdown.anchor.slugify](#markdown-anchor)
-  - [markdown.extractHeaders.slugify](#markdown-extractheaders-slugify)
-  - [markdown.toc.slugify](#markdown-toc-slugify)
+  默认使用的 slugify 函数。
 
 ### markdown.toc
 
@@ -647,60 +644,12 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 详情：
 
-  VuePress 内置的 markdown-it 目录插件的配置项。
+  [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc) 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
 - 参考：
   - [指南 > Markdown > 语法扩展 > 目录](../guide/markdown.md#目录)
-
-#### markdown.toc.pattern
-
-- 类型： `RegExp`
-
-- 默认值： `/^\[\[toc\]\]$/i`
-
-- 详情：
-
-  识别 Markdown 中的目录语法的 Pattern 。
-
-#### markdown.toc.slugify
-
-- 类型： `(str: string) => string`
-
-- 详情：
-
-  一个函数，根据原始的子标题来获取目录中的子标题 slug 。
-
-  它应该使用和 [markdown.anchor.slugify](#markdown-anchor) 选项相同的 slugify 函数，来确保链接是匹配的。
-
-::: tip
-如果你确实想要修改 slugify 函数，建议你修改 [markdown.slugify](#markdown-slugify) 配置项，否则你必须同时修改其他的 slugify 函数配置来确保它们是一致的。
-:::
-
-#### markdown.toc.format
-
-- 类型： `((str: string) => string) | undefined`
-
-- 默认值： `undefined`
-
-- 详情：
-
-  一个函数，将原始的子标题格式化为目录中的标题。
-
-#### markdown.toc.level
-
-- 类型： `number[]`
-
-- 默认值： `[2, 3]`
-
-- 详情：
-
-  需要包含在目录中的子标题层级。
-
-  举例来说，如果你把该选项设为 `[2]` ，那么只会包含 `##` 子标题。
-
-  它应该是 [markdown.anchor.level](#markdown-anchor) 选项的一个子集，以便确保目录中的链接是存在的。
 
 ## 插件配置
 

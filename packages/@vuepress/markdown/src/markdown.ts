@@ -1,3 +1,4 @@
+import { slugify as defaultSlugify } from '@mdit-vue/shared'
 import * as MarkdownIt from 'markdown-it'
 import {
   anchorPlugin,
@@ -24,7 +25,6 @@ import type {
   TocPluginOptions,
 } from './plugins'
 import type { Markdown, MarkdownOptions } from './types'
-import { vuepressSlugify } from './utils'
 
 /**
  * Create vuepress customized markdown-it instance
@@ -40,7 +40,7 @@ export const createMarkdown = ({
   importCode,
   links,
   sfc,
-  slugify = vuepressSlugify,
+  slugify = defaultSlugify,
   toc,
   ...markdownItOptions
 }: MarkdownOptions = {}): Markdown => {
@@ -80,7 +80,7 @@ export const createMarkdown = ({
     md.use<TocPluginOptions>(tocPlugin, {
       level: [2, 3],
       slugify,
-      linkTag: 'RouterLink',
+      linkTag: 'router-link',
       ...toc,
     })
   }

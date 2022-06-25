@@ -139,7 +139,7 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 目录中的标题将会链接到对应的 [标题锚点](#标题锚点)，因此如果你禁用了标题锚点，可能会影响目录的功能。
 
 ::: tip
-目录扩展是由我们的内置插件支持的，该扩展 Fork 并修改自  [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right)。
+目录扩展由 [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc) 支持。
 
 
 配置参考： [markdown.toc](../reference/config.md#markdown-toc)

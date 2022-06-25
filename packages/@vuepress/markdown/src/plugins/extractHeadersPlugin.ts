@@ -1,10 +1,13 @@
+import {
+  slugify as defaultSlugify,
+  resolveHeadersFromTokens,
+} from '@mdit-vue/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type {
   MarkdownEnv,
   MarkdownHeader,
   MarkdownSlugifyFunction,
 } from '../types'
-import { resolveHeadersFromTokens, vuepressSlugify } from '../utils'
 
 export interface ExtractHeadersPluginOptions {
   /**
@@ -40,7 +43,7 @@ export const extractHeadersPlugin: PluginWithOptions<
   md,
   {
     level = [2, 3],
-    slugify = vuepressSlugify,
+    slugify = defaultSlugify,
     format,
   }: ExtractHeadersPluginOptions = {}
 ): void => {
@@ -51,8 +54,8 @@ export const extractHeadersPlugin: PluginWithOptions<
   md.core.ruler.push('resolveExtractHeaders', (state) => {
     headers = resolveHeadersFromTokens(state.tokens, {
       level,
-      allowHtml: false,
-      escapeText: false,
+      shouldAllowHtml: false,
+      shouldEscapeText: false,
       slugify,
       format,
     })

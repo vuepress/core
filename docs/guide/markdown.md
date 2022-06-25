@@ -138,7 +138,7 @@ If you want to put the table of contents (TOC) of your current page inside your 
 The headers in TOC will link to the corresponding [header anchors](#header-anchors), so TOC won't work well if you disable header anchors.
 
 ::: tip
-This toc extension is supported by our built-in plugin, which is forked and modified from [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right).
+This toc extension is supported by [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc).
 
 Config reference: [markdown.toc](../reference/config.md#markdown-toc)
 :::

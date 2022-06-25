@@ -637,10 +637,7 @@ You should not configure it unless you understand what it is for.
 
 - Details:
 
-  The default slugify function. It would be used as the default value of the following options:
-  - [markdown.anchor.slugify](#markdown-anchor)
-  - [markdown.extractHeaders.slugify](#markdown-extractheaders-slugify)
-  - [markdown.toc.slugify](#markdown-toc-slugify)
+  The default slugify function.
 
 ### markdown.toc
 
@@ -648,60 +645,12 @@ You should not configure it unless you understand what it is for.
 
 - Details:
 
-  Options for VuePress built-in markdown-it table-of-contents plugin.
+  Options for [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc).
 
   Set to `false` to disable this plugin.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
-
-#### markdown.toc.pattern
-
-- Type: `RegExp`
-
-- Default: `/^\[\[toc\]\]$/i`
-
-- Details:
-
-  The pattern serving as the TOC placeholder in your markdown.
-
-#### markdown.toc.slugify
-
-- Type: `(str: string) => string`
-
-- Details:
-
-  A function to get the TOC slug of header from the raw header title.
-
-  Should use the same slugify function with [markdown.anchor.slugify](#markdown-anchor) to ensure the links are matched.
-
-::: tip
-If you really want to modify the slugify function, you'd better change the [markdown.slugify](#markdown-slugify) option instead of this one. Otherwise you have to set all the options about slugify function to ensure they are consistent.
-:::
-
-#### markdown.toc.format
-
-- Type: `((str: string) => string) | undefined`
-
-- Default: `undefined`
-
-- Details:
-
-  A function to format the TOC title of header from the raw header title.
-
-#### markdown.toc.level
-
-- Type: `number[]`
-
-- Default: `[2, 3]`
-
-- Details:
-
-  Header levels that going to be included in TOC.
-
-  For example, if you set this option to `[2]`, only `##` headers will be included.
-
-  Should be a subset of [markdown.anchor.level](#markdown-anchor) option to ensure the links in the TOC are existed.
 
 ## Plugin Config
 
