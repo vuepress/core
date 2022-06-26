@@ -228,6 +228,7 @@ importers:
       '@mdit-vue/plugin-toc': ^0.3.1
       '@mdit-vue/shared': ^0.3.0
       '@types/markdown-it': ^12.2.3
+      '@types/markdown-it-emoji': ^2.0.2
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
       markdown-it: ^13.0.1
@@ -240,6 +241,7 @@ importers:
       '@mdit-vue/plugin-toc': 0.3.1
       '@mdit-vue/shared': 0.3.0
       '@types/markdown-it': 12.2.3
+      '@types/markdown-it-emoji': 2.0.2
       '@vuepress/shared': link:../shared
       '@vuepress/utils': link:../utils
       markdown-it: 13.0.1
@@ -2651,6 +2653,12 @@ packages:
 
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: false
+
+  /@types/markdown-it-emoji/2.0.2:
+    resolution: {integrity: sha512-2ln8Wjbcj/0oRi/6VnuMeWEHHuK8uapFttvcLmDIe1GKCsFBLOLBX+D+xhDa9oWOQV0IpvxwrSfKKssAqqroog==}
+    dependencies:
+      '@types/markdown-it': 12.2.3
     dev: false
 
   /@types/markdown-it/12.2.3:

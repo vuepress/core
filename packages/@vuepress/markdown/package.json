@@ -31,6 +31,7 @@
     "@mdit-vue/plugin-toc": "^0.3.1",
     "@mdit-vue/shared": "^0.3.0",
     "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-emoji": "^2.0.2",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "markdown-it": "^13.0.1",
