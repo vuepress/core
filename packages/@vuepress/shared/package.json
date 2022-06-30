@@ -37,7 +37,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/shared": "^3.2.36"
+    "@vue/shared": "^3.2.37"
   },
   "publishConfig": {
     "access": "public"
