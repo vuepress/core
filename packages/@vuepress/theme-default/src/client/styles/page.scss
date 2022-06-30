@@ -8,6 +8,10 @@
   .theme-default-content {
     @include content_wrapper;
     padding-top: 0;
+
+    .header-anchor {
+      user-select: none;
+    }
   }
 }
 
