@@ -159,3 +159,7 @@ export default defineUserConfig({
 ### Referencing Public Files after Changing `base`
 
 Unlike Vite, Webpack won't handle `base` for public files automatically. So if you change the `base` of your site, you'd better to use [Base Helper](../../guide/assets.md#base-helper) when referencing an public image file.
+
+### Using with Default Theme
+
+Default theme is using [SASS](https://sass-lang.com/) as CSS pre-processor, so you might need to install [sass-loader](https://www.npmjs.com/package/sass-loader) as a peer dependency to make it work with Webpack, especially when you are using [pnpm](https://pnpm.io/).

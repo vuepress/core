@@ -159,3 +159,7 @@ export default defineUserConfig({
 ### 在修改 `base` 后引用 Public 文件
 
 与 Vite 不同， Webpack 不会为 Public 文件自动处理 `base`。因此如果你修改了网站的 `base`，建议你在引用 Public 图片文件时使用 [Base Helper](../../guide/assets.md#base-helper)。
+
+### 使用默认主题
+
+默认主题使用 [SASS](https://sass-lang.com/) 作为 CSS 预处理器，因此你在使用 Webpack 时（特别是在使用 [pnpm](https://pnpm.io/) 时）可能需要手动安装 [sass-loader](https://www.npmjs.com/package/sass-loader) 来确保其正常工作。

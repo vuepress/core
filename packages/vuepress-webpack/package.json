@@ -36,7 +36,8 @@
     "@vuepress/bundler-webpack": "workspace:*",
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
-    "@vuepress/theme-default": "workspace:*"
+    "@vuepress/theme-default": "workspace:*",
+    "sass-loader": "^13.0.2"
   },
   "peerDependencies": {
     "vue": "^3.2.36"
