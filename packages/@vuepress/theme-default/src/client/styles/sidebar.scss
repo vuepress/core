@@ -79,19 +79,19 @@
     box-sizing: border-box;
     margin: 0;
 
+    + .sidebar-item-children {
+      @include dropdown_wrapper;
+      margin-bottom: 0.75rem;
+    }
+
     &.collapsible {
       cursor: pointer;
 
-      & + .sidebar-item-children {
-        @include dropdown_wrapper;
-        margin-bottom: 0.75rem;
+      .arrow {
+        position: relative;
+        top: -0.12em;
+        left: 0.5em;
       }
-    }
-
-    .arrow {
-      position: relative;
-      top: -0.12em;
-      left: 0.5em;
     }
   }
 

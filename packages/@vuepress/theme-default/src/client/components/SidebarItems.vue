@@ -50,7 +50,7 @@ onMounted(() => {
   <ul v-if="sidebarItems.length" class="sidebar-items">
     <SidebarItem
       v-for="item in sidebarItems"
-      :key="item.link || item.text"
+      :key="`${item.text}${item.link}`"
       :item="item"
     />
   </ul>
