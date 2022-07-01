@@ -29,7 +29,7 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vue/devtools-api": "^6.1.4",
+    "@vue/devtools-api": "^6.2.0",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
