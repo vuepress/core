@@ -15,6 +15,9 @@ const vueTemplateBreaker = '<wbr>'
  * constant strings in page data, and insert `<wbr>` tag into constant strings
  * in template of page component.
  *
+ * Notice that `process.env.NODE_ENV` will be statically replaced even
+ * in dev mode, while the vite docs does not mention it yet.
+ *
  * @see https://vitejs.dev/guide/env-and-mode.html#production-replacement
  */
 export const constantsReplacementPlugin = (app: App): Plugin => {
@@ -32,13 +35,16 @@ export const constantsReplacementPlugin = (app: App): Plugin => {
 
     enforce: 'pre',
 
-    apply: 'build',
-
     configResolved(resolvedConfig) {
-      const constants = ['import.meta', 'process.env']
+      // `process.env` need to be handled in both dev and build
+      // @see https://github.com/vitejs/vite/blob/cad27ee8c00bbd5aeeb2be9bfb3eb164c1b77885/packages/vite/src/node/plugins/clientInjections.ts#L57-L64
+      const constants = ['process.env']
 
-      if (resolvedConfig.define) {
-        constants.push(...Object.keys(resolvedConfig.define))
+      if (app.env.isBuild) {
+        constants.push('import.meta')
+        if (resolvedConfig.define) {
+          constants.push(...Object.keys(resolvedConfig.define))
+        }
       }
 
       constantsRegexp = new RegExp(
