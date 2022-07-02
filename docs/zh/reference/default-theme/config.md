@@ -415,9 +415,9 @@ module.exports = {
   - 设为 `2` 来包含 `<h2>` 和 `<h3>` 标题。
   - ...
 
-  最大值取决于你通过 [markdown.extractHeaders.level](../config.md#markdown-extractheaders) 提取了哪些级别的标题。
+  最大值取决于你通过 [markdown.headers.level](../config.md#markdown-headers) 提取了哪些级别的标题。
 
-  由于 `markdown.extractHeaders.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
+  由于 `markdown.headers.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
 
   你可以通过页面的 [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter 来覆盖这个全局配置。
 

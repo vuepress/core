@@ -214,10 +214,10 @@ Modifying the default header levels that going to be extracted:
 ```js
 export default {
   extendsMarkdownOptions: (markdownOptions, app) => {
-    if (markdownOptions.extractHeaders === false) return
-    markdownOptions.extractHeaders ??= {}
-    if (markdownOptions.extractHeaders.level) return
-    markdownOptions.extractHeaders.level = [2, 3, 4, 5, 6]
+    if (markdownOptions.headers === false) return
+    markdownOptions.headers ??= {}
+    if (markdownOptions.headers.level) return
+    markdownOptions.headers.level = [2, 3, 4, 5, 6]
   },
 }
 ```

@@ -118,9 +118,7 @@ Use [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) hook.
 
 #### markdown.extractHeaders
 
-Changed.
-
-See [Config > markdown.extractHeaders](../reference/config.md#markdown-extractheaders)
+Moved to [markdown.headers](../reference/config.md#markdown-headers).
 
 #### Webpack Related Configs
 

@@ -107,7 +107,7 @@ describe('core > pluginApi > createHookQueue', () => {
         markdownOptions.emoji = false
       })
       const func2 = jest.fn((markdownOptions) => {
-        markdownOptions.extractHeaders = false
+        markdownOptions.headers = false
       })
       hook.add({
         pluginName: 'test1',
@@ -124,7 +124,7 @@ describe('core > pluginApi > createHookQueue', () => {
       expect(func1).toHaveBeenCalledWith(markdownOptions, app)
       expect(func2).toHaveBeenCalledTimes(1)
       expect(func2).toHaveBeenCalledWith(markdownOptions, app)
-      expect(markdownOptions).toEqual({ emoji: false, extractHeaders: false })
+      expect(markdownOptions).toEqual({ emoji: false, headers: false })
     })
 
     it(`extendsMarkdown`, async () => {

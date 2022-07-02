@@ -118,9 +118,7 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 
 #### markdown.extractHeaders
 
-有修改。
-
-参考 [配置 > markdown.extractHeaders](../reference/config.md#markdown-extractheaders)
+移动至 [markdown.headers](../reference/config.md#markdown-headers) 。
 
 #### Webpack 相关配置
 

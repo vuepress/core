@@ -487,68 +487,26 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 - 参考：
   - [指南 > Markdown > 语法扩展 > Emoji](../guide/markdown.md#emoji)
 
-### markdown.extractHeaders
+### markdown.headers
 
-- 类型： `ExtractHeadersPluginOptions | false`
+- 类型： `HeadersPluginOptions | false`
 
 - 详情：
 
-  VuePress 内置的 markdown-it extract-headers 插件的配置项。
-
-  它将会把页面的子标题提取到 Page Data 中，可以用于生成侧边栏、目录等。比如当前页面的侧边栏，就是由这个插件提取出的标题来自动生成的。
+  [@mdit-vue/plugin-headers](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-headers) 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
 - 参考：
   - [Node API > Page 属性 > headers](./node-api.md#headers)
 
-#### markdown.extractHeaders.level
-
-- 类型： `number[]`
-
-- 默认值： `[2, 3]`
-
-- 详情：
-
-  需要提取的子标题层级。
-
-  举例来说，如果你把该选项设为 `[2]` ，那么只会提取 `##` 子标题。
-
-  它应该是 [markdown.anchor.level](#markdown-anchor) 选项的一个子集，以便确保提取出来的链接是存在的。
-
-#### markdown.extractHeaders.slugify
-
-- 类型： `(str: string) => string`
-
-- 详情：
-
-  一个函数，根据原始的子标题来获取提取出的子标题 slug 。
-
-  它应该使用和 [markdown.anchor.slugify](#markdown-anchor) 选项相同的 slugify 函数，来确保链接是匹配的。
-
-::: tip
-如果你确实想要修改 slugify 函数，建议你修改 [markdown.slugify](#markdown-slugify) 配置项，否则你必须同时修改其他的 slugify 函数配置来确保它们是一致的。
-:::
-
-#### markdown.extractHeaders.format
-
-- 类型： `((str: string) => string) | undefined`
-
-- 默认值： `undefined`
-
-- 详情：
-
-  一个函数，将原始的子标题格式化为提取出的标题。
-
-### markdown.extractTitle
+### markdown.title
 
 - 类型： `undefined | false`
 
 - 详情：
 
-  VuePress 内置的 markdown-it extract-title 插件的配置项。
-
-  它将会把大标题提取到 Page Data 中，将会被用作页面标题。
+  [@mdit-vue/plugin-title](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-title) 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 

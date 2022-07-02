@@ -151,9 +151,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * - ...
    *
    * The max value depends on which headers you have extracted
-   * via `markdown.extractHeaders.level`.
+   * via `markdown.headers.level`.
    *
-   * The default value of `markdown.extractHeaders.level` is `[2, 3]`,
+   * The default value of `markdown.headers.level` is `[2, 3]`,
    * so the default max value of `sidebarDepth` is `2`
    */
   sidebarDepth?: number

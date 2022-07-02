@@ -6,8 +6,6 @@ describe('@vuepress/markdown > markdown', () => {
 
     it.todo('emoji')
 
-    it.todo('extractHeaders')
-
     it.todo('links')
   })
 

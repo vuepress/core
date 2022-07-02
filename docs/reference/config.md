@@ -488,74 +488,18 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
 
-### markdown.extractHeaders
+### markdown.headers
 
-- Type: `ExtractHeadersPluginOptions | false`
+- Type: `HeadersPluginOptions | false`
 
 - Details:
 
-  Options for VuePress built-in markdown-it extract-headers plugin.
-
-  It will extract page headers to page data, which would be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
+  Options for [@mdit-vue/plugin-headers](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-headers).
 
   Set to `false` to disable this plugin.
 
 - Also see:
   - [Node API > Page Properties > headers](./node-api.md#headers)
-
-#### markdown.extractHeaders.level
-
-- Type: `number[]`
-
-- Default: `[2, 3]`
-
-- Details:
-
-  Header levels that going to be extracted.
-
-  For example, if you set this option to `[2]`, only `##` headers will be extracted.
-
-  Should be a subset of [markdown.anchor.level](#markdown-anchor) option to ensure the extracted links are existed.
-
-#### markdown.extractHeaders.slugify
-
-- Type: `(str: string) => string`
-
-- Details:
-
-  A function to get the extracted slug of header from the raw header title.
-
-  Should use the same slugify function with [markdown.anchor.slugify](#markdown-anchor) to ensure the links are matched.
-
-::: tip
-If you really want to modify the slugify function, you'd better change the [markdown.slugify](#markdown-slugify) option instead of this one. Otherwise you have to set all the options about slugify function to ensure they are consistent.
-:::
-
-#### markdown.extractHeaders.format
-
-- Type: `((str: string) => string) | undefined`
-
-- Default: `undefined`
-
-- Details:
-
-  A function to format the extracted title of header from the raw header title.
-
-### markdown.extractTitle
-
-- Type: `undefined | false`
-
-- Details:
-
-  Options for VuePress built-in markdown-it extract-title plugin.
-
-  It will extract title to page data, which will be used as the page title.
-
-  Set to `false` to disable this plugin.
-
-::: danger
-You should not configure it unless you understand what it is for.
-:::
 
 ### markdown.importCode
 
@@ -638,6 +582,20 @@ You should not configure it unless you understand what it is for.
 - Details:
 
   The default slugify function.
+
+### markdown.title
+
+- Type: `undefined | false`
+
+- Details:
+
+  Options for [@mdit-vue/plugin-title](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-title).
+
+  Set to `false` to disable this plugin.
+
+::: danger
+You should not configure it unless you understand what it is for.
+:::
 
 ### markdown.toc
 

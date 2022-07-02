@@ -52,6 +52,6 @@ export const renderPageContent = async ({
     headers,
     links,
     sfcBlocks,
-    title,
+    title: frontmatter.title ?? title,
   }
 }

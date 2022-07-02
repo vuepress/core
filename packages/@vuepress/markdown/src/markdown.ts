@@ -6,11 +6,11 @@ import {
   codePlugin,
   componentPlugin,
   emojiPlugin,
-  extractHeadersPlugin,
-  extractTitlePlugin,
+  headersPlugin,
   importCodePlugin,
   linksPlugin,
   sfcPlugin,
+  titlePlugin,
   tocPlugin,
 } from './plugins'
 import type {
@@ -18,7 +18,7 @@ import type {
   AssetsPluginOptions,
   CodePluginOptions,
   EmojiPluginOptions,
-  ExtractHeadersPluginOptions,
+  HeadersPluginOptions,
   ImportCodePluginOptions,
   LinksPluginOptions,
   SfcPluginOptions,
@@ -35,8 +35,8 @@ export const createMarkdown = ({
   code,
   component,
   emoji,
-  extractHeaders,
-  extractTitle,
+  headers,
+  title,
   importCode,
   links,
   sfc,
@@ -86,17 +86,17 @@ export const createMarkdown = ({
   }
 
   // extract headers into env
-  if (extractHeaders !== false) {
-    md.use<ExtractHeadersPluginOptions>(extractHeadersPlugin, {
+  if (headers !== false) {
+    md.use<HeadersPluginOptions>(headersPlugin, {
       level: [2, 3],
       slugify,
-      ...extractHeaders,
+      ...headers,
     })
   }
 
   // extract title into env
-  if (extractTitle !== false) {
-    md.use(extractTitlePlugin)
+  if (title !== false) {
+    md.use(titlePlugin)
   }
 
   // =====================================================

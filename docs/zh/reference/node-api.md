@@ -480,7 +480,7 @@ interface PageHeader {
   该 Page 的小标题。
 
 - 参考：
-  - [配置 > markdown.extractHeaders](./config.md#markdown-extractheaders)
+  - [配置 > markdown.headers](./config.md#markdown-headers)
 
 ### data
 

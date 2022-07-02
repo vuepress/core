@@ -482,7 +482,7 @@ interface PageHeader {
   Headers of the page.
 
 - Also see:
-  - [Config > markdown.extractHeaders](./config.md#markdown-extractheaders)
+  - [Config > markdown.headers](./config.md#markdown-headers)
 
 ### data
 

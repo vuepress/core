@@ -415,9 +415,9 @@ module.exports = {
   - Set to `2` to include `<h2>` and `<h3>` headers.
   - ...
 
-  The max value depends on which levels of headers you have extracted via [markdown.extractHeaders.level](../config.md#markdown-extractheaders).
+  The max value depends on which levels of headers you have extracted via [markdown.headers.level](../config.md#markdown-headers).
 
-  The default value of `markdown.extractHeaders.level` is `[2, 3]`, so the default max value of `sidebarDepth` is `2`.
+  The default value of `markdown.headers.level` is `[2, 3]`, so the default max value of `sidebarDepth` is `2`.
 
   You can override this global option via [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter in your pages.
 

@@ -6,7 +6,7 @@ import type {
   AssetsPluginOptions,
   CodePluginOptions,
   EmojiPluginOptions,
-  ExtractHeadersPluginOptions,
+  HeadersPluginOptions,
   ImportCodePluginOptions,
   LinksPluginOptions,
   SfcPluginOptions,
@@ -21,8 +21,8 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   code?: false | CodePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
-  extractHeaders?: false | ExtractHeadersPluginOptions
-  extractTitle?: false
+  headers?: false | HeadersPluginOptions
+  title?: false
   importCode?: false | ImportCodePluginOptions
   links?: false | LinksPluginOptions
   sfc?: false | SfcPluginOptions
@@ -79,11 +79,6 @@ export interface MarkdownEnv extends MarkdownItEnv {
   // Output
 
   /**
-   * Headers that extracted by extractHeadersPlugin
-   */
-  headers?: MarkdownHeader[]
-
-  /**
    * Imported file that extracted by importCodePlugin
    */
   importedFiles?: string[]
@@ -92,11 +87,6 @@ export interface MarkdownEnv extends MarkdownItEnv {
    * Links that extracted by linksPlugin
    */
   links?: MarkdownLink[]
-
-  /**
-   * Title that extracted by extractTitlePlugin
-   */
-  title?: string
 }
 
 /**
