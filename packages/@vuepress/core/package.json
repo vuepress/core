@@ -31,7 +31,6 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "gray-matter": "^4.0.3",
-    "toml": "^3.0.0",
     "vue": "^3.2.37"
   },
   "publishConfig": {

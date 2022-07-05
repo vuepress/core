@@ -1,5 +1,4 @@
 import * as matter from 'gray-matter'
-import * as toml from 'toml'
 import type { PageFrontmatter } from '../types'
 
 /**
@@ -29,9 +28,6 @@ export const resolvePageContent = ({
     excerpt = '',
   } = matter(contentRaw, {
     excerpt_separator: '<!-- more -->',
-    engines: {
-      toml: toml.parse.bind(toml),
-    },
   })
 
   return {
