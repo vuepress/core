@@ -353,6 +353,20 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 类型： `AnchorPluginOptions | false`
 
+- 默认值：
+
+```ts
+const defaultOptions = {
+  level: [1, 2, 3, 4, 5, 6],
+  permalink: anchorPlugin.permalink.ariaHidden({
+    class: 'header-anchor',
+    symbol: '#',
+    space: true,
+    placement: 'before',
+  }),
+}
+```
+
 - 详情：
 
   [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) 的配置项。
@@ -487,9 +501,47 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 - 参考：
   - [指南 > Markdown > 语法扩展 > Emoji](../guide/markdown.md#emoji)
 
+### markdown.frontmatter
+
+- 类型： `FrontmatterPluginOptions | false`
+
+- 默认值：
+
+```ts
+const defaultOptions = {
+  grayMatterOptions: {
+    excerpt: true,
+    excerpt_separator: '<!-- more -->',
+  },
+}
+```
+
+- 详情：
+
+  [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter) 插件的配置项。
+
+  设置为 `false` 可以禁用该插件。
+
+- 参考：
+  - [指南 > 页面 > Frontmatter](../guide/page.md#frontmatter)
+  - [Node API > Page 属性 > frontmatter](./node-api.md#frontmatter)
+  - [Node API > Page 属性 > excerpt](./node-api.md#excerpt)
+
+::: danger
+除非你了解它的用途，否则你不应该设置该配置项。
+:::
+
 ### markdown.headers
 
 - 类型： `HeadersPluginOptions | false`
+
+- 默认值：
+
+```ts
+const defaultOptions = {
+  level: [2, 3],
+}
+```
 
 - 详情：
 
@@ -599,6 +651,14 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 ### markdown.toc
 
 - 类型： `TocPluginOptions | false`
+
+- 默认值：
+
+```ts
+const defaultOptions = {
+  level: [2, 3],
+}
+```
 
 - 详情：
 

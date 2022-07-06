@@ -146,7 +146,7 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 + }
 ```
 
-请参考 [Guide > Bundler](./bundler.md) 。
+请参考 [指南 > Bundler](./bundler.md) 。
 
 ### Frontmatter 变更
 

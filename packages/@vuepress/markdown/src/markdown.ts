@@ -6,6 +6,7 @@ import {
   codePlugin,
   componentPlugin,
   emojiPlugin,
+  frontmatterPlugin,
   headersPlugin,
   importCodePlugin,
   linksPlugin,
@@ -18,6 +19,7 @@ import type {
   AssetsPluginOptions,
   CodePluginOptions,
   EmojiPluginOptions,
+  FrontmatterPluginOptions,
   HeadersPluginOptions,
   ImportCodePluginOptions,
   LinksPluginOptions,
@@ -35,6 +37,7 @@ export const createMarkdown = ({
   code,
   component,
   emoji,
+  frontmatter,
   headers,
   title,
   importCode,
@@ -106,6 +109,17 @@ export const createMarkdown = ({
   // treat unknown html tags as components
   if (component !== false) {
     md.use(componentPlugin)
+  }
+
+  if (frontmatter !== false) {
+    md.use<FrontmatterPluginOptions>(frontmatterPlugin, {
+      ...frontmatter,
+      grayMatterOptions: {
+        excerpt: true,
+        excerpt_separator: '<!-- more -->',
+        ...frontmatter?.grayMatterOptions,
+      },
+    })
   }
 
   // replace relative link of assets with absolute link

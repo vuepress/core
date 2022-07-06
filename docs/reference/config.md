@@ -354,6 +354,20 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 
 - Type: `AnchorPluginOptions | false`
 
+- Default:
+
+```ts
+const defaultOptions = {
+  level: [1, 2, 3, 4, 5, 6],
+  permalink: anchorPlugin.permalink.ariaHidden({
+    class: 'header-anchor',
+    symbol: '#',
+    space: true,
+    placement: 'before',
+  }),
+}
+```
+
 - Details:
 
   Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
@@ -488,9 +502,47 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
 
+### markdown.frontmatter
+
+- Type: `FrontmatterPluginOptions | false`
+
+- Default:
+
+```ts
+const defaultOptions = {
+  grayMatterOptions: {
+    excerpt: true,
+    excerpt_separator: '<!-- more -->',
+  },
+}
+```
+
+- Details:
+
+  Options for [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter).
+
+  Set to `false` to disable this plugin.
+
+- Also see:
+  - [Guide > Page > Frontmatter](../guide/page.md#frontmatter)
+  - [Node API > Page Properties > frontmatter](./node-api.md#frontmatter)
+  - [Node API > Page Properties > excerpt](./node-api.md#excerpt)
+
+::: danger
+You should not configure it unless you understand what it is for.
+:::
+
 ### markdown.headers
 
 - Type: `HeadersPluginOptions | false`
+
+- Default:
+
+```ts
+const defaultOptions = {
+  level: [2, 3],
+}
+```
 
 - Details:
 
@@ -600,6 +652,14 @@ You should not configure it unless you understand what it is for.
 ### markdown.toc
 
 - Type: `TocPluginOptions | false`
+
+- Default:
+
+```ts
+const defaultOptions = {
+  level: [2, 3],
+}
+```
 
 - Details:
 

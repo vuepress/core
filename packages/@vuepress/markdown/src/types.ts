@@ -6,6 +6,7 @@ import type {
   AssetsPluginOptions,
   CodePluginOptions,
   EmojiPluginOptions,
+  FrontmatterPluginOptions,
   HeadersPluginOptions,
   ImportCodePluginOptions,
   LinksPluginOptions,
@@ -21,6 +22,7 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   code?: false | CodePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
+  frontmatter?: false | FrontmatterPluginOptions
   headers?: false | HeadersPluginOptions
   title?: false
   importCode?: false | ImportCodePluginOptions

@@ -1,4 +1,5 @@
 export * from '@mdit-vue/plugin-component'
+export * from '@mdit-vue/plugin-frontmatter'
 export * from '@mdit-vue/plugin-headers'
 export * from '@mdit-vue/plugin-sfc'
 export * from '@mdit-vue/plugin-title'

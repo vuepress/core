@@ -1,14 +1,11 @@
 import type { App, Page, PageOptions } from '../types'
 import { inferPagePath } from './inferPagePath'
 import { renderPageContent } from './renderPageContent'
-import { renderPageExcerpt } from './renderPageExcerpt'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo'
-import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDataInfo } from './resolvePageDataInfo'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
-import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
@@ -31,34 +28,25 @@ export const createPage = async (
   })
 
   // read the raw file content according to the absolute file path
-  const contentRaw = await resolvePageFileContent({ filePath, options })
-
-  // resolve content & frontmatter & raw excerpt from raw content
-  const { content, frontmatterRaw, excerptRaw } = resolvePageContent({
-    contentRaw,
-  })
-
-  // resolve frontmatter from raw frontmatter and page options
-  const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
-
-  // render excerpt
-  const excerpt = renderPageExcerpt({
-    app,
-    excerptRaw,
-    filePath,
-    filePathRelative,
-    frontmatter,
-  })
+  const content = await resolvePageFileContent({ filePath, options })
 
   // render page content and extract information
-  const { contentRendered, deps, headers, links, sfcBlocks, title } =
-    await renderPageContent({
-      app,
-      content,
-      filePath,
-      filePathRelative,
-      frontmatter,
-    })
+  const {
+    contentRendered,
+    deps,
+    excerpt,
+    frontmatter,
+    headers,
+    links,
+    sfcBlocks,
+    title,
+  } = await renderPageContent({
+    app,
+    content,
+    filePath,
+    filePathRelative,
+    options,
+  })
 
   // resolve route meta from frontmatter
   const routeMeta = resolvePageRouteMeta({ frontmatter })

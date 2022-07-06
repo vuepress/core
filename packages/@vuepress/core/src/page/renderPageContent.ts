@@ -3,7 +3,7 @@ import type {
   MarkdownHeader,
   MarkdownLink,
 } from '@vuepress/markdown'
-import type { App, PageFrontmatter } from '../types'
+import type { App, PageFrontmatter, PageOptions } from '../types'
 
 /**
  * Render page content and extract related info
@@ -11,18 +11,20 @@ import type { App, PageFrontmatter } from '../types'
 export const renderPageContent = async ({
   app,
   content,
-  frontmatter,
   filePath,
   filePathRelative,
+  options,
 }: {
   app: App
   content: string
-  frontmatter: PageFrontmatter
   filePath: string | null
   filePathRelative: string | null
+  options: PageOptions
 }): Promise<{
   contentRendered: string
   deps: string[]
+  excerpt: string
+  frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
   sfcBlocks: string[]
@@ -32,13 +34,15 @@ export const renderPageContent = async ({
     base: app.options.base,
     filePath,
     filePathRelative,
-    frontmatter,
+    frontmatter: { ...options.frontmatter },
   }
 
   const contentRendered = app.markdown.render(content, markdownEnv)
 
   /* istanbul ignore next */
   const {
+    excerpt = '',
+    frontmatter = {},
     headers = [],
     importedFiles = [],
     links = [],
@@ -49,6 +53,8 @@ export const renderPageContent = async ({
   return {
     contentRendered,
     deps: importedFiles,
+    excerpt,
+    frontmatter,
     headers,
     links,
     sfcBlocks,

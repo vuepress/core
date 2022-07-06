@@ -30,7 +30,6 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "gray-matter": "^4.0.3",
     "vue": "^3.2.37"
   },
   "publishConfig": {
