@@ -111,6 +111,7 @@ export const createMarkdown = ({
     md.use(componentPlugin)
   }
 
+  // extract frontmatter and excerpt into env
   if (frontmatter !== false) {
     md.use<FrontmatterPluginOptions>(frontmatterPlugin, {
       ...frontmatter,
