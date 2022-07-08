@@ -81,7 +81,7 @@ export const queryHeadTag = ([
   const attrsSelector = Object.entries(attrs)
     .map(([key, value]) => {
       if (isString(value)) {
-        return `[${key}="${value}"]`
+        return `[${key}=${JSON.stringify(value)}]`
       }
       if (value === true) {
         return `[${key}]`
