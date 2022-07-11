@@ -1,4 +1,4 @@
-import type { MarkdownItEnv } from '@mdit-vue/shared'
+import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { PageFrontmatter, PageHeader } from '@vuepress/shared'
 import type * as MarkdownIt from 'markdown-it'
 import type {
