@@ -1,3 +1,40 @@
+# [2.0.0-beta.49](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.48...v2.0.0-beta.49) (2022-07-11)
+
+
+### Bug Fixes
+
+* **bundler-vite:** handle process.env replacement in dev ([20f8a3f](https://github.com/vuepress/vuepress-next/commit/20f8a3f8d4079cb056188f57162c74b4bc0ced65))
+* **cli:** check dest path correctly (close [#954](https://github.com/vuepress/vuepress-next/issues/954)) ([6a18c91](https://github.com/vuepress/vuepress-next/commit/6a18c91af5bcd756fce7085b6e5dc106a05c4f7a))
+* **theme-default:** fallback select language aria-label correctly ([d450478](https://github.com/vuepress/vuepress-next/commit/d4504788a2223839950d8e0488bdf7b05e20626a))
+* **theme-default:** fix 404 page style regression (close [#963](https://github.com/vuepress/vuepress-next/issues/963)) ([6a26f0b](https://github.com/vuepress/vuepress-next/commit/6a26f0b23c9a3be35ec571590b7d15bb4c965607))
+* **theme-default:** fix minor issues of collapsible sidebar (close [#967](https://github.com/vuepress/vuepress-next/issues/967)) ([022e611](https://github.com/vuepress/vuepress-next/commit/022e61108f2f80b1817a0e9a58c735916d8cc106))
+* **theme-default:** make headings anchor non-selectable ([#973](https://github.com/vuepress/vuepress-next/issues/973)) ([5020fc1](https://github.com/vuepress/vuepress-next/commit/5020fc1d9cb5fbc1adbc9e2581bdf0766adfd1c6))
+
+
+### Code Refactoring
+
+* **markdown:** externalize custom component plugin ([a1909c0](https://github.com/vuepress/vuepress-next/commit/a1909c01a2e9db49b989f7bd64f37d3d9e9d5483))
+* **markdown:** externalize headers and title plugin ([8441569](https://github.com/vuepress/vuepress-next/commit/84415691662b7452f09ed04d2b80d92e4c9a2e8e))
+* **markdown:** externalize sfc plugin ([a23aaa1](https://github.com/vuepress/vuepress-next/commit/a23aaa142d5fc8979adb14e468b7aadc2c062b84))
+
+
+### Features
+
+* **markdown:** support frontmatter options ([6056e37](https://github.com/vuepress/vuepress-next/commit/6056e37342d2851b8320cd9f7e6bd5f04649194f))
+* **theme-default:** try to keep current hash across languages ([a13c1e7](https://github.com/vuepress/vuepress-next/commit/a13c1e792126a89d6a45afc85a49486d1bc069f9))
+* **utils:** add isChildPath util ([698e599](https://github.com/vuepress/vuepress-next/commit/698e5998956f149a00b1dd12706285d264b896ab))
+
+
+### BREAKING CHANGES
+
+* **markdown:** `markdown.extractHeaders` has been renamed to `markdown.headers`
+* **markdown:** `markdown.extractTitle` has been renamed to `markdown.title`
+* **markdown:** `markdown.hoistTags` has been renamed to `markdown.sfc`
+* **markdown:** node-api `page.hoistedTags` has been renamed to `page.sfcBlocks`
+* **markdown:** `markdown.customComponent` has been renamed to `markdown.component`
+
+
+
 # [2.0.0-beta.48](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.47...v2.0.0-beta.48) (2022-06-11)
 
 
