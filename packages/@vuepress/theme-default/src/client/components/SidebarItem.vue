@@ -32,7 +32,10 @@ const itemClass = computed(() => ({
   'collapsible': item.value.collapsible,
 }))
 
-const [isOpen, toggleIsOpen] = useToggle(isActive.value)
+const isOpenDefault = computed(() =>
+  item.value.collapsible ? isActive.value : true
+)
+const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
 const onClick = (e: Event): void => {
   if (item.value.collapsible) {
     e.preventDefault()
@@ -44,7 +47,7 @@ const onClick = (e: Event): void => {
 // reset open status after navigation
 const unregisterRouterHook = router.afterEach((to) => {
   nextTick(() => {
-    isOpen.value = item.value.collapsible ? isActive.value : true
+    isOpen.value = isOpenDefault.value
   })
 })
 onBeforeUnmount(() => {
