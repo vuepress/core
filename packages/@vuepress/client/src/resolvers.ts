@@ -46,7 +46,8 @@ export const resolvers = reactive({
   resolvePageHead: (
     headTitle: PageHeadTitle,
     frontmatter: PageFrontmatter,
-    siteLocale: SiteLocaleData
+    siteLocale: SiteLocaleData,
+    alternate: PageHead
   ): PageHead => {
     const description = isString(frontmatter.description)
       ? frontmatter.description
@@ -56,6 +57,7 @@ export const resolvers = reactive({
       ...siteLocale.head,
       ['title', {}, headTitle],
       ['meta', { name: 'description', content: description }],
+      ...alternate,
     ]
     return dedupeHead(head)
   },
@@ -70,6 +72,45 @@ export const resolvers = reactive({
     siteLocale: SiteLocaleData
   ): PageHeadTitle =>
     `${page.title ? `${page.title} | ` : ``}${siteLocale.title}`,
+
+  /**
+   * Resolve alternate head tags
+   */
+  resolveAlternateHead: (
+    siteData: SiteData,
+    routePath: string,
+    routeLocale: RouteLocale
+  ): PageHead => {
+    const { url, locales } = siteData
+    const alternate = []
+    const localeKeys = Object.keys(locales)
+    if (localeKeys.length <= 1) {
+      return alternate
+    }
+    for (const localeKey in locales) {
+      const localeValue = locales[localeKey]
+      alternate.push([
+        'link',
+        {
+          rel: 'alternate',
+          href: `${url || ''}${routePath.replace(routeLocale, localeKey)}`,
+          hreflang: localeValue.lang,
+        },
+      ])
+    }
+
+    const defaultLocaleKey = localeKeys[0]
+    alternate.push([
+      'link',
+      {
+        rel: 'alternate',
+        href: `${url || ''}${routePath.replace(routeLocale, defaultLocaleKey)}`,
+        hreflang: 'x-default',
+      },
+    ])
+
+    return alternate
+  },
 
   /**
    * Resolve page language from page data

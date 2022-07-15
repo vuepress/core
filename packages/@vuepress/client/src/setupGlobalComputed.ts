@@ -69,11 +69,19 @@ export const setupGlobalComputed = (
   const pageHeadTitle = computed(() =>
     resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value)
   )
+  const alternateHead = computed(() =>
+    resolvers.resolveAlternateHead(
+      siteData.value,
+      router.currentRoute.value.path,
+      routeLocale.value
+    )
+  )
   const pageHead = computed(() =>
     resolvers.resolvePageHead(
       pageHeadTitle.value,
       pageFrontmatter.value,
-      siteLocaleData.value
+      siteLocaleData.value,
+      alternateHead.value
     )
   )
   const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
