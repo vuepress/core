@@ -7,6 +7,7 @@ import type { AppOptions, SiteData } from '../types'
  */
 export const resolveAppSiteData = (options: AppOptions): SiteData => ({
   base: options.base,
+  url: options.url,
   lang: options.lang,
   title: options.title,
   description: options.description,

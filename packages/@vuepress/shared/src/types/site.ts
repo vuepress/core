@@ -15,6 +15,12 @@ export interface SiteData extends SiteLocaleData {
   base: '/' | `/${string}/`
 
   /**
+   * The url of the site, containing the scheme and host
+   * @example https://example.com
+   */
+  url: string
+
+  /**
    * Specify locales for i18n support
    *
    * It will override the root-level site data in different subpath

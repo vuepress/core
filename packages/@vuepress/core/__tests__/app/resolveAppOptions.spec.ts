@@ -13,6 +13,7 @@ describe('core > app > resolveAppOptions', () => {
       })
     ).toEqual({
       base: '/',
+      url: '',
       lang: 'en-US',
       title: '',
       description: '',

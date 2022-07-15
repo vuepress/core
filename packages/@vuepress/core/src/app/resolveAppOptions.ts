@@ -7,6 +7,7 @@ import type { AppConfig, AppOptions } from '../types'
 export const resolveAppOptions = ({
   // site config
   base = '/',
+  url = '',
   lang = 'en-US',
   title = '',
   description = '',
@@ -41,6 +42,7 @@ export const resolveAppOptions = ({
   theme,
 }: AppConfig): AppOptions => ({
   base,
+  url,
   lang,
   title,
   description,
