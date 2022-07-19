@@ -15,10 +15,15 @@
   }
 
   .site-name {
+    display: inline-block;
+    width: calc(100vw - 18rem);
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--c-text);
     position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .navbar-items-wrapper {
@@ -48,10 +53,7 @@
     }
 
     .site-name {
-      width: calc(100vw - 9.4rem);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      width: calc(100vw - 11rem);
     }
   }
 }
