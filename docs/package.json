@@ -20,7 +20,7 @@
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "sass-loader": "^13.0.2",
-    "serve": "^13.0.4",
+    "serve": "^14.0.1",
     "vue": "^3.2.37"
   }
 }

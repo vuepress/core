@@ -45,7 +45,7 @@
     "portfinder": "^1.0.28",
     "postcss": "^8.4.14",
     "postcss-csso": "^6.0.0",
-    "postcss-loader": "^7.0.0",
+    "postcss-loader": "^7.0.1",
     "style-loader": "^3.3.1",
     "vue": "^3.2.37",
     "vue-loader": "^17.0.0",
