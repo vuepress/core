@@ -1,9 +1,10 @@
 {
   "extends": "tsconfig-vuepress/base.json",
   "compilerOptions": {
-    "composite": true,
+    "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ES2020"],
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,

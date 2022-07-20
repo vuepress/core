@@ -1,0 +1,43 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./plugin-active-header-links/tsconfig.build.json"
+    },
+    { "path": "./plugin-back-to-top/tsconfig.build.json" },
+    { "path": "./plugin-container/tsconfig.build.json" },
+    { "path": "./plugin-docsearch/tsconfig.build.json" },
+    {
+      "path": "./plugin-external-link-icon/tsconfig.build.json"
+    },
+    { "path": "./plugin-git/tsconfig.build.json" },
+    {
+      "path": "./plugin-google-analytics/tsconfig.build.json"
+    },
+    { "path": "./plugin-medium-zoom/tsconfig.build.json" },
+    { "path": "./plugin-nprogress/tsconfig.build.json" },
+    {
+      "path": "./plugin-palette/tsconfig.build.json"
+    },
+    {
+      "path": "./plugin-prismjs/tsconfig.build.json"
+    },
+    { "path": "./plugin-pwa/tsconfig.build.json" },
+    { "path": "./plugin-pwa-popup/tsconfig.build.json" },
+    {
+      "path": "./plugin-register-components/tsconfig.build.json"
+    },
+    { "path": "./plugin-search/tsconfig.build.json" },
+    { "path": "./plugin-shiki/tsconfig.build.json" },
+    { "path": "./plugin-theme-data/tsconfig.build.json" },
+    { "path": "./plugin-toc/tsconfig.build.json" },
+    { "path": "./theme-default/tsconfig.build.json" },
+    { "path": "./vuepress/tsconfig.build.json" },
+    { "path": "./vuepress-vite/tsconfig.build.json" },
+    { "path": "./vuepress-webpack/tsconfig.build.json" }
+  ],
+  "files": []
+}

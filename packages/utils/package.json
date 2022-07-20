@@ -1,0 +1,65 @@
+{
+  "name": "@vuepress/utils",
+  "version": "2.0.0-beta.49",
+  "description": "Utils package of VuePress",
+  "keywords": [
+    "vuepress",
+    "utils"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/fs-extra": "^9.0.13",
+    "@types/hash-sum": "^1.0.0",
+    "@vuepress/shared": "workspace:*",
+    "chalk": "^5.0.1",
+    "debug": "^4.3.4",
+    "fs-extra": "^10.1.0",
+    "globby": "^13.1.2",
+    "hash-sum": "^2.0.0",
+    "ora": "^6.1.2",
+    "upath": "^2.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": [
+      "./src/index.ts"
+    ],
+    "entry": [
+      "./src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "./dist",
+    "sourcemap": false,
+    "target": "es2020",
+    "tsconfig": "../tsconfig.dts.json"
+  }
+}

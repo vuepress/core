@@ -1,0 +1,73 @@
+{
+  "name": "@vuepress/markdown",
+  "version": "2.0.0-beta.49",
+  "description": "Markdown package of VuePress",
+  "keywords": [
+    "vuepress",
+    "markdown"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@mdit-vue/plugin-component": "^0.9.0",
+    "@mdit-vue/plugin-frontmatter": "^0.9.1",
+    "@mdit-vue/plugin-headers": "^0.9.1",
+    "@mdit-vue/plugin-sfc": "^0.9.1",
+    "@mdit-vue/plugin-title": "^0.9.1",
+    "@mdit-vue/plugin-toc": "^0.9.1",
+    "@mdit-vue/shared": "^0.9.1",
+    "@mdit-vue/types": "^0.9.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-emoji": "^2.0.2",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "markdown-it": "^13.0.1",
+    "markdown-it-anchor": "^8.6.4",
+    "markdown-it-emoji": "^2.0.2",
+    "mdurl": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/mdurl": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": [
+      "./src/index.ts"
+    ],
+    "entry": [
+      "./src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "./dist",
+    "sourcemap": false,
+    "target": "es2020",
+    "tsconfig": "../tsconfig.dts.json"
+  }
+}

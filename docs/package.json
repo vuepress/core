@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "private": true,
+  "type": "module",
   "scripts": {
     "docs:build": "vuepress-cli build --clean-cache",
     "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",

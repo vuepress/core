@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from '@vuepress/cli'
@@ -6,9 +7,16 @@ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defaultTheme } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
-import { head, navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
+import { getDirname, path } from '@vuepress/utils'
+import {
+  head,
+  navbarEn,
+  navbarZh,
+  sidebarEn,
+  sidebarZh,
+} from './configs/index.js'
 
+const __dirname = getDirname(import.meta.url)
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
@@ -105,10 +113,7 @@ export default defineUserConfig({
   markdown: {
     importCode: {
       handleImportPath: (str) =>
-        str.replace(
-          /^@vuepress/,
-          path.resolve(__dirname, '../../packages/@vuepress')
-        ),
+        str.replace(/^@vuepress/, path.resolve(__dirname, '../../ecosystem')),
     },
   },
 

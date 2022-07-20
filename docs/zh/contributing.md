@@ -6,37 +6,32 @@ sidebar: auto
 
 ## 概览
 
-项目仓库借助于 [pnpm 工作空间](https://pnpm.io/zh/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，在 `packages` 目录下存放了多个互相关联的独立 Package 。
+项目仓库借助于 [pnpm 工作空间](https://pnpm.io/zh/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，存放了多个互相关联的独立 Package 。
 
-- `@vuepress/core`: Core 模块。提供 Node API 来创建 VuePress App ，包括页面逻辑、插件系统、数据准备等功能。
+在 `packages` 目录下：
 
-- `@vuepress/client`: Client 模块。包含客户端页面入口，并提供了客户端开发时可以用到的类型和工具函数。
+- `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
+- `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
+- `cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 VuePress App 、执行对应命令等功能。
+- `client`: Client 模块。包含客户端页面入口，并提供了客户端开发时可以用到的类型和工具函数。
+- `core`: Core 模块。提供 Node API 来创建 VuePress App ，包括页面逻辑、插件系统、数据准备等功能。
+- `markdown`: Markdown 模块。使用 `markdown-it` 作为 Markdown 解析器，并集成了一些 VuePress 中用到的插件。
+- `shared`: 既可以在 Node 端使用、也可以在客户端使用的工具函数模块。
+- `utils`: 仅可以在 Node 端使用的工具函数模块。
 
-- `@vuepress/bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
+在 `ecosystem` 目录下：
 
-- `@vuepress/bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
-
-- `@vuepress/cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 VuePress App 、执行对应命令等功能。
-
-- `@vuepress/theme-default`: 默认主题。
-
-- `@vuepress/plugin-${name}`: 官方插件。
-
-- `@vuepress/shared`: 既可以在 Node 端使用、也可以在客户端使用的工具函数模块。
-
-- `@vuepress/utils`: 仅可以在 Node 端使用的工具函数模块。
-
+- `plugin-${name}`: 官方插件。
+- `theme-default`: 默认主题。
 - `vuepress`: 是 `vuepress-vite` 的封装。
-
 - `vuepress-vite`: 是 `@vuepress/cli` + `@vuepress/bundler-vite` + `@vuepress/theme-default` 的封装。如果用户想使用 默认主题 + Vite ，仅安装这个 Package 就可以了。
-
 - `vuepress-webpack`: 是 `@vuepress/cli` + `@vuepress/bundler-webpack` + `@vuepress/theme-default` 的封装。如果用户想使用 默认主题 + Webpack ，仅安装这个 Package 就可以了。
 
 ## 开发配置
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 14+**
+- [Node.js](http://nodejs.org) **version 14.18.0+**
 - [pnpm](https://pnpm.io/zh/) **version 7+**
 
 克隆代码仓库，并安装依赖：
@@ -60,7 +55,7 @@ pnpm docs:dev
 本项目开发使用的一些主要工具：
 
 - [TypeScript](https://www.typescriptlang.org/) 作为开发语言
-- [Jest](https://jestjs.io/) 用于单元测试
+- [Vitest](https://vitest.dev/) 用于单元测试
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) 用于代码检查和格式化
 
 ## 开发脚本
@@ -105,7 +100,7 @@ VuePress 使用它自己来构建自己的文档网站。
 
 ### `pnpm test`
 
-`test` 命令使用 Jest 来运行单元测试。
+`test` 命令使用 Vitest 来运行单元测试。
 
 ## 文档
 

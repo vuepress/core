@@ -79,7 +79,6 @@ To get rid of it, you need to set `ssr.noExternal` option:
 export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
-      // @ts-expect-error: vite does not provide types for ssr options yet
       ssr: {
         noExternal: ['foo-lib'],
       },

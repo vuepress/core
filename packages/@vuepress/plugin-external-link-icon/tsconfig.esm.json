@@ -1,9 +1,0 @@
-{
-  "extends": "../../../tsconfig.base.json",
-  "compilerOptions": {
-    "module": "ES2020",
-    "rootDir": "./src",
-    "outDir": "./lib"
-  },
-  "include": ["./src/client", "./src/shared"]
-}

@@ -79,7 +79,6 @@ Error [ERR_REQUIRE_ESM]: Must use import to load ES Module: /path/to/foo-lib
 export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
-      // @ts-expect-error: vite 还没有给 ssr 配置项提供类型
       ssr: {
         noExternal: ['foo-lib'],
       },
