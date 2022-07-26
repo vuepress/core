@@ -13,7 +13,12 @@ describe('core > page > renderPageContent', () => {
   it('should render page content correctly', async () => {
     const resolved = await renderPageContent({
       app,
-      content: 'foobar',
+      content: `\
+foobar
+<script setup lang="ts">
+const msg = 'msg'
+</script>
+`,
       filePath: app.dir.source('foo.md'),
       filePathRelative: 'foo.md',
       options: {},
@@ -26,7 +31,25 @@ describe('core > page > renderPageContent', () => {
       frontmatter: {},
       headers: [],
       links: [],
-      sfcBlocks: [],
+      sfcBlocks: {
+        template: {
+          type: 'template',
+          content: '<template><p>foobar</p>\n</template>',
+          contentStripped: '<p>foobar</p>\n',
+          tagClose: '</template>',
+          tagOpen: '<template>',
+        },
+        script: null,
+        scriptSetup: {
+          type: 'script',
+          content: `<script setup lang="ts">\nconst msg = 'msg'\n</script>`,
+          contentStripped: `\nconst msg = 'msg'\n`,
+          tagClose: '</script>',
+          tagOpen: '<script setup lang="ts">',
+        },
+        styles: [],
+        customBlocks: [],
+      },
       title: '',
     })
   })

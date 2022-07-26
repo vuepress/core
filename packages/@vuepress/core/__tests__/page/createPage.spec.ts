@@ -50,7 +50,19 @@ describe('core > page > createPage', () => {
     expect(page.contentRendered).toBe('')
     expect(page.date).toBe('0000-00-00')
     expect(page.deps).toEqual([])
-    expect(page.sfcBlocks).toEqual([])
+    expect(page.sfcBlocks).toEqual({
+      template: {
+        type: 'template',
+        content: '<template></template>',
+        contentStripped: '',
+        tagClose: '</template>',
+        tagOpen: '<template>',
+      },
+      script: null,
+      scriptSetup: null,
+      styles: [],
+      customBlocks: [],
+    })
     expect(page.links).toEqual([])
     expect(page.pathInferred).toBeNull()
     expect(page.pathLocale).toBe('/')
