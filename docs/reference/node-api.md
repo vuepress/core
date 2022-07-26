@@ -640,7 +640,7 @@ Therefore, it's not recommended to store large amounts of info into route meta, 
 
 ### sfcBlocks
 
-- Type: `string[]`
+- Type: `MarkdownSfcBlocks`
 
 - Details:
 

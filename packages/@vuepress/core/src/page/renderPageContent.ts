@@ -2,6 +2,7 @@ import type {
   MarkdownEnv,
   MarkdownHeader,
   MarkdownLink,
+  MarkdownSfcBlocks,
 } from '@vuepress/markdown'
 import type { App, PageFrontmatter, PageOptions } from '../types'
 
@@ -27,7 +28,7 @@ export const renderPageContent = async ({
   frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
-  sfcBlocks: string[]
+  sfcBlocks: MarkdownSfcBlocks
   title: string
 }> => {
   const markdownEnv: MarkdownEnv = {
@@ -46,7 +47,13 @@ export const renderPageContent = async ({
     headers = [],
     importedFiles = [],
     links = [],
-    sfcBlocks = [],
+    sfcBlocks = {
+      template: null,
+      script: null,
+      scriptSetup: null,
+      styles: [],
+      customBlocks: [],
+    },
     title = '',
   } = markdownEnv
 

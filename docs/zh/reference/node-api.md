@@ -639,7 +639,7 @@ interface MarkdownLink {
 
 ### sfcBlocks
 
-- 类型： `string[]`
+- 类型： `MarkdownSfcBlocks`
 
 - 详情：
 

@@ -1,4 +1,4 @@
-import type { MarkdownLink } from '@vuepress/markdown'
+import type { MarkdownLink, MarkdownSfcBlocks } from '@vuepress/markdown'
 import type { PageBase, PageData, PageFrontmatter } from '@vuepress/shared'
 
 /**
@@ -77,7 +77,7 @@ export type Page<
     /**
      * Extracted sfc blocks of the page
      */
-    sfcBlocks: string[]
+    sfcBlocks: MarkdownSfcBlocks
 
     /**
      * Slug of the page
