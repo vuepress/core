@@ -55,3 +55,24 @@ export default {
   ],
 }
 ```
+
+### debug
+
+- Type: `boolean`
+
+- Details:
+
+  Set to true to enable sending events to DebugView in development. [More information on DebugView](https://support.google.com/analytics/answer/7201382)
+
+- Example:
+
+```js
+module.exports = {
+  plugins: [
+    googleAnalyticsPlugin({
+      id: 'G-XXXXXXXXXX',
+      debug: true,
+    }),
+  ],
+}
+```
