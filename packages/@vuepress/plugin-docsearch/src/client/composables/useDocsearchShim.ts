@@ -50,7 +50,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(itemUrl)
+        router.push(new URL(itemUrl).pathname)
       },
     },
 
