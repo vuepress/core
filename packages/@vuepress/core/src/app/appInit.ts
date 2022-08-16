@@ -18,6 +18,9 @@ export const appInit = async (app: App): Promise<void> => {
   // hooks in plugins will take effect after `registerHooks()`
   app.pluginApi.registerHooks()
 
+  // plugin hook: beforeInitialize
+  await app.pluginApi.hooks.beforeInitialize.process(app)
+
   // create markdown
   app.markdown = await resolveAppMarkdown(app)
 

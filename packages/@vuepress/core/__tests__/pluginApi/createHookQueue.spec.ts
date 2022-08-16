@@ -14,6 +14,7 @@ app.markdown = createMarkdown()
 describe('core > pluginApi > createHookQueue', () => {
   describe('common', () => {
     const hookNames = [
+      'beforeInitialize',
       'onInitialized',
       'onPrepared',
       'onWatched',

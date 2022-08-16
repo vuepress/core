@@ -47,6 +47,7 @@ export type ReturnObjectHook = Hook<
  * List of hooks
  */
 export interface Hooks {
+  beforeInitialize: LifeCycleHook
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>

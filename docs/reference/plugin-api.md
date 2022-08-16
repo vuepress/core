@@ -323,6 +323,14 @@ export default {
 
 ## Lifecycle Hooks
 
+### beforeInitialize
+
+- Type: `(app: App) => void | Promise<void>`
+
+- Details:
+
+  This hook will be invoked before VuePress app starts initializing, which sets `app.pages` and `app.markdown`.
+
 ### onInitialized
 
 - Type: `(app: App) => void | Promise<void>`

@@ -3,6 +3,7 @@ import { createHookQueue } from './createHookQueue'
 
 export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   // life cycle hooks
+  beforeInitialize: createHookQueue('beforeInitialize'),
   onInitialized: createHookQueue('onInitialized'),
   onPrepared: createHookQueue('onPrepared'),
   onWatched: createHookQueue('onWatched'),
