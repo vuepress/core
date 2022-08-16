@@ -31,7 +31,7 @@ export const createClientConfig = async (
     .test(/\.vue$/)
     .use('vuepress-loader')
     .before('vue-loader')
-    .loader(require.resolve('./ssr/vuepressLoader.cjs'))
+    .loader(require.resolve('#vuepress-loader'))
     .end()
 
   // vuepress client plugin, handle client assets info for ssr

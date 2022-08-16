@@ -49,7 +49,7 @@ export const createServerConfig = async (
     .test(/\.vue$/)
     .use('vuepress-loader')
     .before('vue-loader')
-    .loader(require.resolve('./ssr/vuepressLoader.cjs'))
+    .loader(require.resolve('#vuepress-loader'))
     .end()
 
   return config

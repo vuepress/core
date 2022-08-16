@@ -34,7 +34,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/tests/**/*.ts'],
+      files: ['**/tests/**/*.ts', 'tsup.config.ts'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'import/no-extraneous-dependencies': 'off',

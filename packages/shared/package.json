@@ -40,9 +40,7 @@
   },
   "tsup": {
     "clean": true,
-    "dts": [
-      "./src/index.ts"
-    ],
+    "dts": "./src/index.ts",
     "entry": [
       "./src/index.ts"
     ],
