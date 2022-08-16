@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, ora, withSpinner } from '@vuepress/utils'
+import { chalk, fs, ora, withSpinner, importFile } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
@@ -61,11 +61,9 @@ export const build = async (
 
     // load the compiled server bundle
     const serverEntryPath = app.dir.temp('.server', serverEntryChunk.fileName)
-    const {
-      createVueApp,
-    }: {
+    const { createVueApp } = await importFile<{
       createVueApp: CreateVueAppFunction
-    } = await import(serverEntryPath)
+    }>(serverEntryPath)
 
     // pre-render pages to html files
     const spinner = ora()

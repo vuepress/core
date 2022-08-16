@@ -1,26 +1,21 @@
-import { path } from '@vuepress/utils'
+import { path, importFileDefault } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import { createBaseApp, resolveThemeInfo } from '../../src/index.js'
 
 const fixtures = (...args: string[]) =>
   path.resolve(__dirname, '../__fixtures__/', ...args)
 
-const importDefault = async (themePath) => {
-  const mod = await import(themePath)
-  return mod.default
-}
-
 const createTestApp = async (themePath: string) =>
   createBaseApp({
     source: path.resolve(__dirname, 'fake-source'),
-    theme: await importDefault(themePath),
+    theme: await importFileDefault(themePath),
     bundler: {} as any,
   })
 
 const themeEntryTypes = ['func', 'obj'] as const
 
 const getThemePlugin = async (themePath: string) => {
-  const theme = await importDefault(themePath)
+  const theme = await importFileDefault(themePath)
   return typeof theme === 'function' ? theme() : theme
 }
 
@@ -67,7 +62,7 @@ describe('core > app > resolveThemeInfo', () => {
           const themePath = fixtures(`themes/${item}.js`)
           const app = await createTestApp(themePath)
           expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
-            await importDefault(fixtures('plugins/obj.js')),
+            await importFileDefault(fixtures('plugins/obj.js')),
             await getThemePlugin(themePath),
           ])
         })
@@ -85,9 +80,9 @@ describe('core > app > resolveThemeInfo', () => {
 
           expect(resolveThemeInfo(app, app.options.theme)).toEqual({
             plugins: [
-              await importDefault(fixtures('plugins/obj.js')),
+              await importFileDefault(fixtures('plugins/obj.js')),
               await getThemePlugin(parentThemePath),
-              await importDefault(fixtures('plugins/obj-foo.js')),
+              await importFileDefault(fixtures('plugins/obj-foo.js')),
               await getThemePlugin(themePath),
             ],
             layouts: {
@@ -112,11 +107,11 @@ describe('core > app > resolveThemeInfo', () => {
 
           expect(resolveThemeInfo(app, app.options.theme)).toEqual({
             plugins: [
-              await importDefault(fixtures('plugins/obj.js')),
+              await importFileDefault(fixtures('plugins/obj.js')),
               await getThemePlugin(grandparentThemePath),
-              await importDefault(fixtures('plugins/obj-foo.js')),
+              await importFileDefault(fixtures('plugins/obj-foo.js')),
               await getThemePlugin(parentThemePath),
-              await importDefault(fixtures('plugins/obj-bar.js')),
+              await importFileDefault(fixtures('plugins/obj-bar.js')),
               await getThemePlugin(themePath),
             ],
             layouts: {

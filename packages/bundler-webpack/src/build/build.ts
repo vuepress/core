@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, ora, withSpinner } from '@vuepress/utils'
+import { chalk, fs, ora, withSpinner, importFileDefault } from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -78,11 +78,9 @@ export const build = async (
 
     // load the compiled server bundle
     const serverEntryPath = app.dir.temp('.server/app.cjs')
-    const {
-      createVueApp,
-    }: {
+    const { createVueApp } = await importFileDefault<{
       createVueApp: CreateVueAppFunction
-    } = (await import(serverEntryPath)).default
+    }>(serverEntryPath)
 
     // pre-render pages to html files
     const spinner = ora()

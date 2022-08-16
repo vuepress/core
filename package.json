@@ -47,7 +47,7 @@
     "eslint-config-vuepress-typescript": "^4.0.3",
     "eslint-import-resolver-exports": "1.0.0-beta.2",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^12.5.0",
     "prettier": "^2.7.1",
     "prettier-config-vuepress": "^4.0.0",
     "rimraf": "^3.0.2",

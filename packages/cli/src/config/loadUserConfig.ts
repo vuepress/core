@@ -1,4 +1,4 @@
-import { fs, hash, path } from '@vuepress/utils'
+import { fs, hash, path, importFileDefault } from '@vuepress/utils'
 import { build } from 'esbuild'
 import type { UserConfig } from './types.js'
 
@@ -51,15 +51,15 @@ export const loadUserConfig = async (
   // could be kind of "memory leak" after modifying and reloading config file too many times.
   const { text } = result.outputFiles[0]
   const tempFilePath = `${userConfigPath}.${hash(text)}.mjs`
-  let tempFileModule: { default: UserConfig }
+  let userConfig: UserConfig
   try {
     await fs.writeFile(tempFilePath, text)
-    tempFileModule = await import(tempFilePath)
+    userConfig = await importFileDefault(tempFilePath)
   } finally {
     await fs.rm(tempFilePath)
   }
   return {
-    userConfig: tempFileModule.default,
+    userConfig,
     userConfigDependencies: Object.keys(result.metafile?.inputs ?? {}),
   }
 }
