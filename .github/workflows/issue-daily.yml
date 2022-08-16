@@ -13,11 +13,11 @@ jobs:
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
-          inactive-day: 7
+          inactive-day: 15
           inactive-label: 'stale'
           exclude-labels: 'bug, documentation, enhancement, feature, help wanted, need reproduction, stale'
           body: |
-            This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 3 days.
+            This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 7 days.
 
   issue-close-stale:
     name: close stale issues
@@ -28,7 +28,7 @@ jobs:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: 'stale'
-          inactive-day: 3
+          inactive-day: 7
 
   issue-close-need-reproduction:
     name: close need-reproduction issues
@@ -39,4 +39,4 @@ jobs:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: 'need reproduction'
-          inactive-day: 3
+          inactive-day: 7
