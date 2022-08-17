@@ -38,11 +38,11 @@ npm install -D vuepress-webpack@next
 
 通过 [bundler](../reference/config.md#bundler) 配置项，你可以对打包工具进行进阶配置：
 
-```js
-const { viteBundler } = require('vuepress')
-// const { webpackBundler } = require('vuepress-webpack')
+```ts
+import { viteBundler } from 'vuepress'
+// import { webpackBundler } from 'vuepress-webpack'
 
-module.exports = {
+export default {
   bundler: viteBundler({
     vuePluginOptions: {
       template: {

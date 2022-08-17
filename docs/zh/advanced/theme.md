@@ -8,8 +8,10 @@
 
 VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../reference/theme-api.md) 。和插件一样，主题可以是一个 *主题对象* 或一个 *主题函数* ，并且通常通过一个函数来接收配置项：
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 const fooTheme = (options) => {
   return {

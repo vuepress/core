@@ -12,10 +12,10 @@
 npm i -D @vuepress/plugin-active-header-links@next
 ```
 
-```js
-const { activeHeaderLinksPlugin } = require('@vuepress/plugin-active-header-links')
+```ts
+import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 
-module.exports = {
+export default {
   plugins: [
     activeHeaderLinksPlugin({
       // 配置项

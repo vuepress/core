@@ -8,10 +8,10 @@ Community users have created lots of plugins and published them to [NPM](https:/
 
 In general, you need to include the plugin in the [plugins](../reference/config.md#plugins) option to use it. For example, use the [@vuepress/plugin-google-analytics](../reference/plugin/google-analytics.md) to integrate Google Analytics:
 
-```js
-const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+```ts
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
-module.exports = {
+export default {
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-XXXXXXXXXX'
@@ -34,10 +34,10 @@ It is recommended to use the [Config File](./configuration.md#config-file) direc
 
 But if you have too many things to do in your config file, you can consider to extract them into separate plugins, and use them in your config file:
 
-```js
-const myPlugin = require('./path/to/my-plugin.js')
+```ts
+import myPlugin from './path/to/my-plugin.js'
 
-module.exports = {
+export default  {
   plugins: [
     myPlugin(),
   ],

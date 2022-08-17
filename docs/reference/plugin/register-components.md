@@ -10,10 +10,10 @@ Register Vue components from component files or directory automatically.
 npm i -D @vuepress/plugin-register-components@next
 ```
 
-```js
-const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
+```ts
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 
-module.exports = {
+export default {
   plugins: [
     registerComponentsPlugin({
       // options
@@ -40,10 +40,12 @@ module.exports = {
 
 - Example:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   plugins: [
     registerComponentsPlugin({
       components: {
@@ -68,10 +70,12 @@ module.exports = {
 
 - Example:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   plugins: [
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
@@ -90,7 +94,7 @@ components
 
 Components will be registered like this:
 
-```js
+```ts
 import { defineAsyncComponent } from 'vue'
 
 app.component(

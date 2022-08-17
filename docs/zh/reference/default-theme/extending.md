@@ -28,7 +28,9 @@ VuePress 提供了继承主题的基础能力，但不同的主题可能会提�
 import type { Theme } from '@vuepress/core'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export const localTheme = (options: DefaultThemeOptions): Theme => {
   return {
@@ -95,7 +97,9 @@ export default defineUserConfig({
 import type { Theme } from '@vuepress/core'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export const localTheme = (options: DefaultThemeOptions): Theme => {
   return {
@@ -111,8 +115,10 @@ export const localTheme = (options: DefaultThemeOptions): Theme => {
 实际上，你不需要继承默认主题就可以进行组件替换。上面提到的 [alias](../plugin-api.md#alias) 配置项是 [插件 API](../plugin-api.md) 的一部分，因此你只需要在你的配置文件中设置别名就可以替换组件了：
 
 ```ts
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
 import { defaultTheme, defineUserConfig } from 'vuepress'
+
+const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({
   theme: defaultTheme(),

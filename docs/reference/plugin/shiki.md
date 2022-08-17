@@ -16,10 +16,10 @@ You could consider disabling this plugin in `dev` mode to get better development
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```js
-const { shikiPlugin } = require('@vuepress/plugin-shiki')
+```ts
+import { shikiPlugin } from '@vuepress/plugin-shiki'
 
-module.exports = {
+export default {
   plugins: [
     shikiPlugin({
       // options

@@ -16,10 +16,10 @@
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```js
-const { shikiPlugin } = require('@vuepress/plugin-shiki')
+```ts
+import { shikiPlugin } from '@vuepress/plugin-shiki'
 
-module.exports = {
+export default {
   plugins: [
     shikiPlugin({
       // 配置项

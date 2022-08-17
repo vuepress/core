@@ -14,10 +14,10 @@
 npm i -D @vuepress/plugin-git@next
 ```
 
-```js
-const { gitPlugin } = require('@vuepress/plugin-git')
+```ts
+import { gitPlugin } from '@vuepress/plugin-git'
 
-module.exports = {
+export default {
   plugins: [
     gitPlugin({
       // 配置项

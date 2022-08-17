@@ -45,11 +45,13 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 
 - Example:
 
-```js
-const { defaultTheme } = require('@vuepress/theme-default')
-const { path } = require('@vuepress/utils')
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   // inherit the default theme
   extends: defaultTheme(),
 
@@ -87,20 +89,24 @@ layouts
 
 Using the absolute path of layout directory:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   layouts: path.resolve(__dirname, 'path/to/layouts'),
 }
 ```
 
 Using a plain object is equivalent:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
     404: path.resolve(__dirname, 'path/to/layouts/404.vue'),

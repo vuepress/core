@@ -12,10 +12,10 @@ This plugin will import [gtag.js](https://developers.google.com/analytics/devgui
 npm i -D @vuepress/plugin-google-analytics@next
 ```
 
-```js
-const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+```ts
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
-module.exports = {
+export default {
   plugins: [
     googleAnalyticsPlugin({
       // options
@@ -46,8 +46,8 @@ After using this plugin, the global `gtag()` function is available on the `windo
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-XXXXXXXXXX',

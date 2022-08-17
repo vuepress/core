@@ -10,10 +10,10 @@ If you don't specify the theme to use, the default theme will be used automatica
 
 To configure the default theme, you need to import and use it in your config file via the [theme](../reference/config.md#theme) option:
 
-```js
-const { defaultTheme } = require('vuepress')
+```ts
+import { defaultTheme } from 'vuepress'
 
-module.exports = {
+export default  {
   theme: defaultTheme({
     // default theme config
     navbar: [

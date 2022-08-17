@@ -12,10 +12,10 @@
 npm i -D @vuepress/plugin-google-analytics@next
 ```
 
-```js
-const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+```ts
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
-module.exports = {
+export default {
   plugins: [
     googleAnalyticsPlugin({
       // 配置项
@@ -46,8 +46,8 @@ Google Analytics 会 [自动收集部分事件](https://support.google.com/analy
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-XXXXXXXXXX',

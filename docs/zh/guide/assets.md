@@ -92,8 +92,12 @@ npm install -D package-name
 
 在配置文件中设置的路径别名也同样支持：
 
-```js
-module.exports = {
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
+export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/some/dir'),
   },

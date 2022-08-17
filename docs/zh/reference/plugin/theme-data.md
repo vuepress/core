@@ -14,10 +14,10 @@
 npm i -D @vuepress/plugin-theme-data@next
 ```
 
-```js
-const { themeDataPlugin } = require('@vuepress/plugin-theme-data')
+```ts
+import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
-module.exports = {
+export default {
   plugins: [
     themeDataPlugin({
       // 配置项
@@ -42,8 +42,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     themeDataPlugin({
       themeData: {

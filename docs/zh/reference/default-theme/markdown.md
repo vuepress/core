@@ -73,7 +73,7 @@
 :::
 
 ::: details 点击查看代码
-```js
+```ts
 console.log('你好，VuePress！')
 ```
 :::
@@ -86,7 +86,7 @@ console.log('你好，VuePress！')
 :::
 
 ::: details 点击查看代码
-```js
+```ts
 console.log('你好，VuePress！')
 ```
 :::
@@ -98,12 +98,12 @@ console.log('你好，VuePress！')
 ````md
 :::: code-group
 ::: code-group-item FOO
-```js
+```ts
 const foo = 'foo'
 ```
 :::
 ::: code-group-item BAR
-```js
+```ts
 const bar = 'bar'
 ```
 :::
@@ -114,12 +114,12 @@ const bar = 'bar'
 
 :::: code-group
 ::: code-group-item FOO
-```js
+```ts
 const foo = 'foo'
 ```
 :::
 ::: code-group-item BAR
-```js
+```ts
 const bar = 'bar'
 ```
 :::

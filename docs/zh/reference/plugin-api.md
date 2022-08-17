@@ -85,7 +85,11 @@
 
 - 示例：
 
-```js
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
 export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/alias'),
@@ -105,8 +109,10 @@ export default {
 
 - 示例：
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export default {
   clientConfigFile: path.resolve(
@@ -134,7 +140,7 @@ export default {
 
 - 示例：
 
-```js
+```ts
 export default {
   define: {
     __GLOBAL_BOOLEAN__: true,
@@ -162,7 +168,7 @@ export default {
 
 添加默认的 [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) 配置：
 
-```js
+```ts
 export default {
   extendsBundlerOptions: (bundlerOptions, app) => {
     // 修改 @vuepress/bundler-vite 的配置项
@@ -211,7 +217,7 @@ export default {
 
 修改默认提取的子标题层级：
 
-```js
+```ts
 export default {
   extendsMarkdownOptions: (markdownOptions, app) => {
     if (markdownOptions.headers === false) return
@@ -239,7 +245,7 @@ export default {
 
 - 示例：
 
-```js
+```ts
 export default {
   extendsMarkdown: (md) => {
     md.use(plugin1)
@@ -264,7 +270,7 @@ export default {
 
 为 `_posts` 目录下的页面设置永久链接 Pattern ：
 
-```js
+```ts
 export default {
   extendsPageOptions: (pageOptions, app) => {
     if (pageOptions.filePath?.startsWith(app.dir.source('_posts/'))) {
@@ -294,7 +300,7 @@ export default {
 
 - 示例：
 
-```js
+```ts
 export default {
   extendsPage: (page) => {
     page.foo = 'foo'
@@ -305,7 +311,7 @@ export default {
 
 在客户端组件中：
 
-```js
+```ts
 import { usePageData } from '@vuepress/client'
 
 export default {

@@ -246,8 +246,8 @@ writeTemp(file: string, content: string): Promise<string>
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default  {
   // write temp file in onPrepared hook
   async onPrepared() {
     await app.writeTemp('foo.js', 'export const foo = \'bar\'')
@@ -350,9 +350,9 @@ const createPage: (app: App, options: PageOptions) => Promise<Page>
 - Example:
 
 ```ts
-const { createPage } = require('@vuepress/core')
+import { createPage } from '@vuepress/core'
 
-module.exports = {
+export default  {
   // create an extra page in onInitialized hook
   async onInitialized(app) {
     app.pages.push(

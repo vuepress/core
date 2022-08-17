@@ -14,10 +14,10 @@
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```js
-const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+```ts
+import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
-module.exports = {
+export default {
   plugins: [
     prismjsPlugin({
       // 配置项

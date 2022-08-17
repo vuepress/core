@@ -12,10 +12,10 @@
 npm i -D @vuepress/plugin-external-link-icon@next
 ```
 
-```js
-const { externalLinkIconPlugin } = require('@vuepress/plugin-external-link-icon')
+```ts
+import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 
-module.exports = {
+export default {
   plugins: [
     externalLinkIconPlugin({
       // 配置项
@@ -38,8 +38,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     externalLinkIconPlugin({
       locales: {

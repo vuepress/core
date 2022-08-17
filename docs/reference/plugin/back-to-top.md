@@ -12,10 +12,10 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-back-to-top@next
 ```
 
-```js
-const { backToTopPlugin } = require('@vuepress/plugin-back-to-top')
+```ts
+import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 
-module.exports = {
+export default {
   plugins: [
     backToTopPlugin(),
   ],

@@ -12,10 +12,10 @@ This plugin uses [workbox-build](https://developers.google.com/web/tools/workbox
 npm i -D @vuepress/plugin-pwa@next
 ```
 
-```js
-const { pwaPlugin } = require('@vuepress/plugin-pwa')
+```ts
+import { pwaPlugin } from '@vuepress/plugin-pwa'
 
-module.exports = {
+export default {
   plugins: [
     pwaPlugin({
       // options
@@ -75,8 +75,8 @@ Some tools can help to do that. For example, [Favicon Generator](https://realfav
 
 You also need to set some tags via [head](../config.md#head) option to [deploy the manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest#deploying_a_manifest_with_the_link_tag):
 
-```js
-module.exports = {
+```ts
+export default {
   head: [
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
@@ -91,8 +91,8 @@ This plugin accepts all parameters of workbox-build's [generateSW method](https:
 
 For example, you can set `skipWaiting: true` to auto activate the new service worker once it is ready:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     pwaPlugin({
       skipWaiting: true,

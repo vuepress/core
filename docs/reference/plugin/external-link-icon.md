@@ -12,10 +12,10 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-external-link-icon@next
 ```
 
-```js
-const { externalLinkIconPlugin } = require('@vuepress/plugin-external-link-icon')
+```ts
+import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 
-module.exports = {
+export default {
   plugins: [
     externalLinkIconPlugin({
       // options
@@ -38,8 +38,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     externalLinkIconPlugin({
       locales: {

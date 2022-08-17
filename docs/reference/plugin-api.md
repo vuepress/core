@@ -85,7 +85,11 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-```js
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
 export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/alias'),
@@ -105,8 +109,10 @@ export default {
 
 - Example:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export default {
   clientConfigFile: path.resolve(
@@ -134,7 +140,7 @@ export default {
 
 - Example:
 
-```js
+```ts
 export default {
   define: {
     __GLOBAL_BOOLEAN__: true,
@@ -162,7 +168,7 @@ export default {
 
 Adding default [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) option:
 
-```js
+```ts
 export default {
   extendsBundlerOptions: (bundlerOptions, app) => {
     // extends options of @vuepress/bundler-vite
@@ -211,7 +217,7 @@ export default {
 
 Modifying the default header levels that going to be extracted:
 
-```js
+```ts
 export default {
   extendsMarkdownOptions: (markdownOptions, app) => {
     if (markdownOptions.headers === false) return
@@ -239,7 +245,7 @@ export default {
 
 - Example:
 
-```js
+```ts
 export default {
   extendsMarkdown: (md) => {
     md.use(plugin1)
@@ -264,7 +270,7 @@ export default {
 
 Set permalink pattern for pages in `_posts` directory:
 
-```js
+```ts
 export default {
   extendsPageOptions: (pageOptions, app) => {
     if (pageOptions.filePath?.startsWith(app.dir.source('_posts/'))) {
@@ -294,7 +300,7 @@ export default {
 
 - Example:
 
-```js
+```ts
 export default {
   extendsPage: (page) => {
     page.foo = 'foo'
@@ -305,7 +311,7 @@ export default {
 
 In client component:
 
-```js
+```ts
 import { usePageData } from '@vuepress/client'
 
 export default {

@@ -8,7 +8,7 @@
 
 插件是一个符合 [插件 API](../reference/plugin-api.md) 的普通 JavaScript 对象，称之为 *插件对象* ：
 
-```js
+```ts
 const fooPlugin = {
   name: 'vuepress-plugin-foo',
   // ...
@@ -17,7 +17,7 @@ const fooPlugin = {
 
 插件还可以是一个接收 [App 实例](../reference/node-api.md#app) 作为参数，且返回值为 *插件对象* 的函数，称之为 *插件函数* ：
 
-```js
+```ts
 const barPlugin = (app) => {
   return {
     name: 'vuepress-plugin-bar',
@@ -28,7 +28,7 @@ const barPlugin = (app) => {
 
 插件通常需要允许用户传入配置，因此我们一般都会提供给用户一个函数来接收配置，然后将 *插件对象* 或者 *插件函数* 作为返回值。于是，你的插件应该转换成这样的形式：
 
-```js
+```ts
 const fooPlugin = (options) => {
   return {
     name: 'vuepress-plugin-foo',

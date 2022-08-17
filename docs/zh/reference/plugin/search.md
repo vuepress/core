@@ -16,10 +16,10 @@
 npm i -D @vuepress/plugin-search@next
 ```
 
-```js
-const { searchPlugin } = require('@vuepress/plugin-search')
+```ts
+import { searchPlugin } from '@vuepress/plugin-search'
 
-module.exports = {
+export default {
   plugins: [
     searchPlugin({
       // 配置项
@@ -48,8 +48,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       locales: {
@@ -109,8 +109,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       // 排除首页
@@ -134,8 +134,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       // 允许搜索 Frontmatter 中的 `tags`

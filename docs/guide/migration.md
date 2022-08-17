@@ -32,8 +32,8 @@ Using a theme via string is not supported. Import the theme directly.
 -   },
 - }
 
-+ const { defaultTheme } = require('@vuepress/theme-default')
-+ module.exports = {
++ import { defaultTheme } from '@vuepress/theme-default'
++ export default {
 +   theme: defaultTheme({
 +     // default theme config
 +   })
@@ -60,8 +60,8 @@ Using a plugin via string is not supported. Import the plugin directly.
 -   ],
 - }
 
-+ const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
-+ module.exports = {
++ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
++ export default {
 +   plugins: [
 +     googleAnalyticsPlugin({
 +         id: 'G-XXXXXXXXXX',
@@ -138,8 +138,8 @@ All webpack related configs are moved to options of `@vuepress/bundler-webpack`,
 -   sass: { /* ... */ },
 - }
 
-+ const { webpackBundler } = require('@vuepress/bundler-webpack')
-+ module.exports = {
++ import { webpackBundler } from '@vuepress/bundler-webpack'
++ export default {
 +   bundler: webpackBundler({
 +     sass: { /* ... */ },
 +   }),
@@ -171,9 +171,9 @@ head:
 
 Has the same structure with:
 
-```js
-// .vuepress/config.js
-module.exports = {
+```ts
+// .vuepress/config.ts
+export default {
   // ...
   head: [
     ['meta', { name: 'foo', content: 'bar' }],

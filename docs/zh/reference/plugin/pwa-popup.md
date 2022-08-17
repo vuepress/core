@@ -14,11 +14,11 @@
 npm i -D @vuepress/plugin-pwa-popup@next
 ```
 
-```js
-const { pwaPlugin } = require('@vuepress/plugin-pwa')
-const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
+```ts
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 
-module.exports = {
+export default {
   plugins: [
     pwaPlugin(),
     pwaPopupPlugin({
@@ -42,8 +42,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     pwaPlugin(),
     pwaPopupPlugin({

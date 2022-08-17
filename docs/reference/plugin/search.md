@@ -16,10 +16,10 @@ This plugin may not be used directly in other themes, so you'd better refer to t
 npm i -D @vuepress/plugin-search@next
 ```
 
-```js
-const { searchPlugin } = require('@vuepress/plugin-search')
+```ts
+import { searchPlugin } from '@vuepress/plugin-search'
 
-module.exports = {
+export default {
   plugins: [
     searchPlugin({
       // options
@@ -48,8 +48,8 @@ However, when your site has a large number of pages, the size of search index fi
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       locales: {
@@ -109,8 +109,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       // exclude the homepage
@@ -134,8 +134,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     searchPlugin({
       // allow searching the `tags` frontmatter

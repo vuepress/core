@@ -2,10 +2,10 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-```js
-const { defaultTheme } = require('@vuepress/theme-default')
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
 
-module.exports = {
+export default {
   theme: defaultTheme({
     // set config here
   }),
@@ -101,8 +101,8 @@ Config of this section can be used as normal config, and can also be used in the
 
 - Example 1:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     navbar: [
       // NavbarItem
@@ -124,8 +124,8 @@ module.exports = {
 
 - Example 2:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     navbar: [
       // nested group - max depth is 2
@@ -176,8 +176,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // public file path
     logo: '/hero.png',
@@ -216,8 +216,8 @@ module.exports = {
 
   This will be used as the link of the _repository link_, which will be displayed as the last item of the navbar.
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // If you set it in the form of `organization/repository`
     // we will take it as a GitHub repo
@@ -272,8 +272,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   locales: {
     '/': {
       lang: 'en-US',
@@ -323,8 +323,8 @@ module.exports = {
 
 - Example 1:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // sidebar array
     // all pages will use the same sidebar
@@ -353,8 +353,8 @@ module.exports = {
 
 - Example 2:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // sidebar object
     // pages under different sub paths will use different sidebar
@@ -378,8 +378,8 @@ module.exports = {
 
 - Example 3:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // collapsible sidebar
     sidebar: {
@@ -465,8 +465,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',

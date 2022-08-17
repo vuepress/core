@@ -12,10 +12,10 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-medium-zoom@next
 ```
 
-```js
-const { mediumZoomPlugin } = require('@vuepress/plugin-medium-zoom')
+```ts
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
-module.exports = {
+export default {
   plugins: [
     mediumZoomPlugin({
       // options

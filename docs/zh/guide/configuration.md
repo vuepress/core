@@ -34,21 +34,6 @@ vuepress dev docs --config my-config.js
 
 一个基础的配置文件是这样的：
 
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-module.exports = {
-  lang: 'zh-CN',
-  title: '你好， VuePress ！',
-  description: '这是我的第一个 VuePress 站点',
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
-
 ```ts
 import { defineUserConfig } from 'vuepress'
 

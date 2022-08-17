@@ -8,8 +8,10 @@ Before reading this guide, you'd better learn the guide of [Writing a Plugin](./
 
 A VuePress theme is a special plugin, which should satisfy the [Theme API](../reference/theme-api.md). Like plugins, a theme should also be a *Theme Object* or a *Theme Function*, and could be wrapped with a function to receive options:
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 const fooTheme = (options) => {
   return {

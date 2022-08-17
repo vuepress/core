@@ -16,10 +16,10 @@ This plugin may not be used directly in other themes, so you'd better refer to t
 npm i -D @vuepress/plugin-docsearch@next
 ```
 
-```js
-const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+```ts
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
-module.exports = {
+export default {
   plugins: [
     docsearchPlugin({
       // options
@@ -284,8 +284,8 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     docsearchPlugin({
       apiKey: '<API_KEY>',

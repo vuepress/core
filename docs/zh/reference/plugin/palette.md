@@ -14,10 +14,10 @@
 npm i -D @vuepress/plugin-palette@next
 ```
 
-```js
-const { palettePlugin } = require('@vuepress/plugin-palette')
+```ts
+import { palettePlugin } from '@vuepress/plugin-palette'
 
-module.exports = {
+export default {
   plugins: [
     palettePlugin({
       // 配置项
@@ -39,7 +39,7 @@ module.exports = {
 在你的主题中使用该插件，假设你使用 SASS 作为 CSS 预处理器：
 
 ```ts
-module.exports = {
+export default {
   // ...
   plugins: [
     palettePlugin({ preset: 'sass' }),

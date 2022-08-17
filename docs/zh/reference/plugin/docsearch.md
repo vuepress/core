@@ -16,10 +16,10 @@
 npm i -D @vuepress/plugin-docsearch@next
 ```
 
-```js
-const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+```ts
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
-module.exports = {
+export default {
   plugins: [
     docsearchPlugin({
       // 配置项
@@ -283,8 +283,8 @@ new Crawler({
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     docsearchPlugin({
       apiKey: '<API_KEY>',

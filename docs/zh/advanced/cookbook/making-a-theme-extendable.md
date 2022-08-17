@@ -30,6 +30,9 @@
 
 ```ts
 import type { Theme } from '@vuepress/core'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export const fooTheme = (options): Theme => {
   return {

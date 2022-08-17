@@ -10,10 +10,10 @@ This plugin will provide a table-of-contents (TOC) component.
 npm i -D @vuepress/plugin-toc@next
 ```
 
-```js
-const { tocPlugin } = require('@vuepress/plugin-toc')
+```ts
+import { tocPlugin } from '@vuepress/plugin-toc'
 
-module.exports = {
+export default {
   plugins: [
     tocPlugin({
       // options

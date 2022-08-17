@@ -12,24 +12,6 @@ npm i -D @vuepress/bundler-vite@next
 
 Reference of vite bundler options:
 
-<CodeGroup>
-  <CodeGroupItem title="JS" active>
-
-```js
-const { viteBundler } = require('@vuepress/bundler-vite')
-
-module.exports = {
-  bundler: viteBundler({
-    viteOptions: {},
-    vuePluginOptions: {},
-  }),
-}
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="TS">
-
 ```ts
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from '@vuepress/cli'
@@ -41,9 +23,6 @@ export default defineUserConfig({
   }),
 })
 ```
-
-  </CodeGroupItem>
-</CodeGroup>
 
 ### viteOptions
 

@@ -10,10 +10,10 @@ VuePress 有一个开箱即用的默认主题，正使用在你当前正在浏�
 
 为了配置默认主题，你需要在你的配置文件中通过 [theme](../reference/config.md#theme) 配置项来使用它：
 
-```js
-const { defaultTheme } = require('vuepress')
+```ts
+import { defaultTheme } from 'vuepress'
 
-module.exports = {
+export default {
   theme: defaultTheme({
     // 默认主题配置
     navbar: [

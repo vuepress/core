@@ -32,8 +32,8 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 -   },
 - }
 
-+ const { defaultTheme } = require('@vuepress/theme-default')
-+ module.exports = {
++ import { defaultTheme } from '@vuepress/theme-default'
++ export default {
 +   theme: defaultTheme({
 +     // 默认主题配置
 +   })
@@ -60,8 +60,8 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 -   ],
 - }
 
-+ const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
-+ module.exports = {
++ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
++ export default {
 +   plugins: [
 +     googleAnalyticsPlugin({
 +         id: 'G-XXXXXXXXXX',
@@ -138,8 +138,8 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 -   sass: { /* ... */ },
 - }
 
-+ const { webpackBundler } = require('@vuepress/bundler-webpack')
-+ module.exports = {
++ import { webpackBundler } from '@vuepress/bundler-webpack'
++ export default {
 +   bundler: webpackBundler({
 +     sass: { /* ... */ },
 +   }),
@@ -171,9 +171,9 @@ head:
 
 和以下结构相同：
 
-```js
-// .vuepress/config.js
-module.exports = {
+```ts
+// .vuepress/config.ts
+export default {
   // ...
   head: [
     ['meta', { name: 'foo', content: 'bar' }],

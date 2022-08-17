@@ -20,10 +20,10 @@ title: nprogress
 npm i -D @vuepress/plugin-nprogress@next
 ```
 
-```js
-const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
+```ts
+import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 
-module.exports = {
+export default {
   plugins: [
     nprogressPlugin(),
   ],

@@ -246,8 +246,8 @@ writeTemp(file: string, content: string): Promise<string>
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   // 在 onPrepared hook 中写入临时文件
   async onPrepared() {
     await app.writeTemp('foo.js', 'export const foo = \'bar\'')
@@ -348,9 +348,9 @@ const createPage: (app: App, options: PageOptions) => Promise<Page>
 - 示例：
 
 ```ts
-const { createPage } = require('@vuepress/core')
+import { createPage } from '@vuepress/core'
 
-module.exports = {
+export default {
   // 在 onInitialized hook 中创建一个额外页面
   async onInitialized(app) {
     app.pages.push(

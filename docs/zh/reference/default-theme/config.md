@@ -2,10 +2,10 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-```js
-const { defaultTheme } = require('@vuepress/theme-default')
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
 
-module.exports = {
+export default {
   theme: defaultTheme({
     // 在这里进行配置
   }),
@@ -101,8 +101,8 @@ module.exports = {
 
 - 示例 1：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     navbar: [
       // NavbarItem
@@ -124,8 +124,8 @@ module.exports = {
 
 - 示例 2：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     navbar: [
       // 嵌套 Group - 最大深度为 2
@@ -176,8 +176,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // Public 文件路径
     logo: '/images/hero.png',
@@ -216,8 +216,8 @@ module.exports = {
 
   它将被用作 _仓库链接_ 的链接。_仓库链接_ 将会显示为导航栏的最后一个元素。
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
@@ -272,8 +272,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   locales: {
     '/': {
       lang: 'en-US',
@@ -323,8 +323,8 @@ module.exports = {
 
 - 示例 1：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // 侧边栏数组
     // 所有页面会使用相同的侧边栏
@@ -353,8 +353,8 @@ module.exports = {
 
 - 示例 2：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // 侧边栏对象
     // 不同子路径下的页面会使用不同的侧边栏
@@ -378,8 +378,8 @@ module.exports = {
 
 - 示例 3：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     // 可折叠的侧边栏
     sidebar: {
@@ -465,8 +465,8 @@ module.exports = {
 
 - 示例：
 
-```js
-module.exports = {
+```ts
+export default {
   theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',

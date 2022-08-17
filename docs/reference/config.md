@@ -94,8 +94,8 @@
 
   To add a custom favicon:
 
-```js
-module.exports = {
+```ts
+export default  {
   head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```

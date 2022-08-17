@@ -28,7 +28,9 @@ Firstly, create your local theme `.vuepress/theme/index.ts`:
 import type { Theme } from '@vuepress/core'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export const localTheme = (options: DefaultThemeOptions): Theme => {
   return {
@@ -95,7 +97,9 @@ Then, if you want to replace the `HomeFooter.vue` component, just override the a
 import type { Theme } from '@vuepress/core'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export const localTheme = (options: DefaultThemeOptions): Theme => {
   return {
@@ -111,8 +115,10 @@ export const localTheme = (options: DefaultThemeOptions): Theme => {
 In fact, you can even use components replacement without extending default theme. The [alias](../plugin-api.md#alias) option is part of [Plugin API](../plugin-api.md), so you only need to set the aliases in your config file to replace components.
 
 ```ts
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
 import { defaultTheme, defineUserConfig } from 'vuepress'
+
+const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({
   theme: defaultTheme(),

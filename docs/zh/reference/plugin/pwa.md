@@ -12,10 +12,10 @@
 npm i -D @vuepress/plugin-pwa@next
 ```
 
-```js
-const { pwaPlugin } = require('@vuepress/plugin-pwa')
+```ts
+import { pwaPlugin } from '@vuepress/plugin-pwa'
 
-module.exports = {
+export default {
   plugins: [
     pwaPlugin({
       // 配置项
@@ -75,8 +75,8 @@ module.exports = {
 
 你还需要通过 [head](../config.md#head) 配置项来设置一些标签，用来 [部署你的 Manifest 文件](https://developer.mozilla.org/en-US/docs/Web/Manifest#deploying_a_manifest_with_the_link_tag) 。
 
-```js
-module.exports = {
+```ts
+export default {
   head: [
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
@@ -91,8 +91,8 @@ module.exports = {
 
 比如，你可以设置 `skipWaiting: true` ，这将在新的 Service Worker 就绪之后立即激活它：
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     pwaPlugin({
       skipWaiting: true,

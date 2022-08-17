@@ -8,8 +8,8 @@
 
 首先，通过 `define` Hook 定义一些常量：
 
-```js
-module.exports = (options) => ({
+```ts
+export default (options) => ({
   define: {
     __FOO__: options.foo || 'str',
     __OBJ__: {
@@ -22,7 +22,7 @@ module.exports = (options) => ({
 然后，在客户端代码中直接使用它们：
 
 
-```js
+```ts
 const foo = __FOO__
 const obj = __OBJ__
 ```
@@ -40,8 +40,8 @@ declare const __OBJ__: { bar: number }
 
 首先，写入一个名为 `foo.js` 的临时文件，它将会生成在 [temp](../../reference/config.md#temp) 目录中：
 
-```js
-module.exports = (options) => ({
+```ts
+export default (options) => ({
   async onPrepared(app) {
     // 写入临时文件
     await app.writeTemp('foo.js', `export const foo = ${JSON.stringify(options.foo)}`)
@@ -51,7 +51,7 @@ module.exports = (options) => ({
 
 然后，在客户端代码中通过 `@temp` 别名来加载临时文件：
 
-```js
+```ts
 import { foo } from '@temp/foo'
 ```
 

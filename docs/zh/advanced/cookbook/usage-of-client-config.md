@@ -4,6 +4,9 @@
 
 ```ts
 import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 const pluginOrTheme = {
   clientConfigFile: path.resolve(__dirname, './path/to/clientConfig.ts'),

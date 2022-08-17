@@ -8,8 +8,8 @@ Plugin API provides a [define](../../reference/plugin-api.md#define) hook to def
 
 First, define some constants in `define` hook:
 
-```js
-module.exports = (options) => ({
+```ts
+export default (options) => ({
   define: {
     __FOO__: options.foo || 'str',
     __OBJ__: {
@@ -21,7 +21,7 @@ module.exports = (options) => ({
 
 Then use them in client code directly:
 
-```js
+```ts
 const foo = __FOO__
 const obj = __OBJ__
 ```
@@ -39,8 +39,8 @@ If you need to achieve some more complex features, you can write temp files and 
 
 First, write a temp file `foo.js`, which will be generated in the [temp](../../reference/config.md#temp) directory:
 
-```js
-module.exports = (options) => ({
+```ts
+export default (options) => ({
   async onPrepared(app) {
     // write temp file
     await app.writeTemp('foo.js', `export const foo = ${JSON.stringify(options.foo)}`)
@@ -50,7 +50,7 @@ module.exports = (options) => ({
 
 Then, load the temp file via `@temp` alias in client code:
 
-```js
+```ts
 import { foo } from '@temp/foo'
 ```
 

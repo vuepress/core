@@ -14,10 +14,10 @@ Notice that this plugin would only tokenize the code fence without adding styles
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```js
-const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+```ts
+import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
-module.exports = {
+export default {
   plugins: [
     prismjsPlugin({
       // options

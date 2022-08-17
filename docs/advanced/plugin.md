@@ -8,7 +8,7 @@ Before reading this guide, you'd better learn the VuePress [architecture](./arch
 
 A plugin should be a plain JavaScript object that satisfies the [Plugin API](../reference/plugin-api.md), which is called a *Plugin Object*:
 
-```js
+```ts
 const fooPlugin = {
   name: 'vuepress-plugin-foo',
   // ...
@@ -17,7 +17,7 @@ const fooPlugin = {
 
 A plugin could also be a function that receives the [app instace](../reference/node-api.md#app) as the param and returns a *Plugin Object*, which is called a *Plugin Function*:
 
-```js
+```ts
 const barPlugin = (app) => {
   return {
     name: 'vuepress-plugin-bar',
@@ -28,7 +28,7 @@ const barPlugin = (app) => {
 
 A plugin usually needs to allow user options, so we typically provide users with a function to receive options, and returns a *Plugin Object* or a *Plugin Function*. Then your plugin should be converted like this:
 
-```js
+```ts
 const fooPlugin = (options) => {
   return {
     name: 'vuepress-plugin-foo',

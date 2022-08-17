@@ -8,10 +8,10 @@
 
 一般而言，你需要将插件放入到 [plugins](../reference/config.md#plugins) 配置项中来使用它。举例来说，你可以使用 [@vuepress/plugin-google-analytics](../reference/plugin/google-analytics.md) 来使用 Google Analytics ：
 
-```js
-const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+```ts
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
-module.exports = {
+export default {
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-XXXXXXXXXX'
@@ -34,10 +34,10 @@ module.exports = {
 
 但是如果你在配置文件中要做的事情太多了，你可以考虑将它们提取到单独的插件中，然后在你的配置文件中使用它们：
 
-```js
-const myPlugin = require('./path/to/my-plugin.js')
+```ts
+import myPlugin from './path/to/my-plugin.js'
 
-module.exports = {
+export default {
   plugins: [
     myPlugin(),
   ],

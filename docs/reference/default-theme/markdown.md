@@ -73,7 +73,7 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
-```js
+```ts
 console.log('Hello, VuePress!')
 ```
 :::
@@ -86,7 +86,7 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
-```js
+```ts
 console.log('Hello, VuePress!')
 ```
 :::
@@ -98,12 +98,12 @@ console.log('Hello, VuePress!')
 ````md
 :::: code-group
 ::: code-group-item FOO
-```js
+```ts
 const foo = 'foo'
 ```
 :::
 ::: code-group-item BAR
-```js
+```ts
 const bar = 'bar'
 ```
 :::
@@ -114,12 +114,12 @@ const bar = 'bar'
 
 :::: code-group
 ::: code-group-item FOO
-```js
+```ts
 const foo = 'foo'
 ```
 :::
 ::: code-group-item BAR
-```js
+```ts
 const bar = 'bar'
 ```
 :::

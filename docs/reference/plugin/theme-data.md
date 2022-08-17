@@ -14,10 +14,10 @@ For theme authors, this plugin will help you to use the same i18n mechanism as V
 npm i -D @vuepress/plugin-theme-data@next
 ```
 
-```js
-const { themeDataPlugin } = require('@vuepress/plugin-theme-data')
+```ts
+import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
-module.exports = {
+export default {
   plugins: [
     themeDataPlugin({
       // options
@@ -42,8 +42,8 @@ module.exports = {
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     themeDataPlugin({
       themeData: {

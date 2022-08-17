@@ -14,10 +14,10 @@ This plugin is mainly used to develop themes. You won't need to use it directly 
 npm i -D @vuepress/plugin-git@next
 ```
 
-```js
-const { gitPlugin } = require('@vuepress/plugin-git')
+```ts
+import { gitPlugin } from '@vuepress/plugin-git'
 
-module.exports = {
+export default {
   plugins: [
     gitPlugin({
       // options

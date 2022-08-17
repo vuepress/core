@@ -93,8 +93,8 @@
 
   增加一个自定义的 favicon ：
 
-```js
-module.exports = {
+```ts
+export default {
   head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```

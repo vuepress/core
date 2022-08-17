@@ -38,11 +38,11 @@ Generally, you could use a bundler without extra configuration, because we have 
 
 You can configure bundler for advanced usage via the [bundler](../reference/config.md#bundler) option:
 
-```js
-const { viteBundler } = require('vuepress')
-// const { webpackBundler } = require('vuepress-webpack')
+```ts
+import { viteBundler } from 'vuepress'
+// import { webpackBundler } from 'vuepress-webpack'
 
-module.exports = {
+export default {
   bundler: viteBundler({
     vuePluginOptions: {
       template: {

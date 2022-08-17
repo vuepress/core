@@ -92,8 +92,12 @@ npm install -D package-name
 
 The path aliases that set in config file are also supported:
 
-```js
-module.exports = {
+```ts
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
+export default {
   alias: {
     '@alias': path.resolve(__dirname, './path/to/some/dir'),
   },

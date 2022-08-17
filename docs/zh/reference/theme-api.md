@@ -45,11 +45,13 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
 - 示例：
 
-```js
-const { defaultTheme } = require('@vuepress/theme-default')
-const { path } = require('@vuepress/utils')
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   // 继承默认主题
   extends: defaultTheme(),
 
@@ -87,20 +89,24 @@ layouts
 
 使用布局目录的绝对路径：
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   layouts: path.resolve(__dirname, 'path/to/layouts'),
 }
 ```
 
 使用普通对象是等效的：
 
-```js
-const { path } = require('@vuepress/utils')
+```ts
+import { getDirname, path } from '@vuepress/utils'
 
-module.exports = {
+const __dirname = getDirname(import.meta.url)
+
+export default {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
     404: path.resolve(__dirname, 'path/to/layouts/404.vue'),

@@ -12,10 +12,10 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 npm i -D @vuepress/plugin-active-header-links@next
 ```
 
-```js
-const { activeHeaderLinksPlugin } = require('@vuepress/plugin-active-header-links')
+```ts
+import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 
-module.exports = {
+export default {
   plugins: [
     activeHeaderLinksPlugin({
       // options

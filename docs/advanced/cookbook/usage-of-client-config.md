@@ -3,7 +3,9 @@
 You can make use of the [client config file](../../guide/configuration.md#client-config-file) directly in your project, or specify the file path in your plugin or theme via [clientConfigFile](../../reference/plugin-api.md#clientconfigfile) hook:
 
 ```ts
-import { path } from '@vuepress/utils'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 const pluginOrTheme = {
   clientConfigFile: path.resolve(__dirname, './path/to/clientConfig.ts'),

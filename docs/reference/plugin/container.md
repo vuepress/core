@@ -14,10 +14,10 @@ The [Custom Containers](../default-theme/markdown.md#custom-containers) of defau
 npm i -D @vuepress/plugin-container@next
 ```
 
-```js
-const { containerPlugin } = require('@vuepress/plugin-container')
+```ts
+import { containerPlugin } from '@vuepress/plugin-container'
 
-module.exports = {
+export default {
   plugins: [
     containerPlugin({
       // options
@@ -66,8 +66,8 @@ This plugin can be used multiple times to support different types of containers.
 
 - Example:
 
-```js
-module.exports = {
+```ts
+export default {
   plugins: [
     containerPlugin({
       type: 'tip',
