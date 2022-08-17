@@ -44,9 +44,6 @@ export default defineUserConfig({
 })
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
-
 ::: tip
 前往 [配置参考](../reference/config.md) 查看所有 VuePress 配置。
 :::
