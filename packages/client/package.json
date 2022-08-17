@@ -28,9 +28,9 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "./dist",
-    "./templates",
-    "./types.d.ts"
+    "dist",
+    "templates",
+    "types.d.ts"
   ],
   "scripts": {
     "build": "tsup",

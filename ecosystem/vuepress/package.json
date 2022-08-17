@@ -30,8 +30,8 @@
     "vuepress": "./bin/vuepress.js"
   },
   "files": [
-    "./bin",
-    "./lib"
+    "bin",
+    "lib"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",

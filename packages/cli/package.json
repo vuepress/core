@@ -28,8 +28,8 @@
     "vuepress-cli": "./bin/vuepress.js"
   },
   "files": [
-    "./bin",
-    "./dist"
+    "bin",
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
