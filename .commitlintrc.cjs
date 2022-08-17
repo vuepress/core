@@ -1,8 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 
-const corePackages = fs.readdirSync(path.resolve(__dirname, 'packages'))
-const ecosystemPackages = fs.readdirSync(path.resolve(__dirname, 'ecosystem'))
+const getSubDirectories = (dir) => fs.readdirSync(dir).filter(item => fs.statSync(path.join(dir, item)).isDirectory())
+const corePackages = getSubDirectories(path.resolve(__dirname, 'packages'))
+const ecosystemPackages = getSubDirectories(path.resolve(__dirname, 'ecosystem'))
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
