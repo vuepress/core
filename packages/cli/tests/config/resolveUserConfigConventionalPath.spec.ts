@@ -7,9 +7,11 @@ const resolveFixtures = (str: string): string =>
 
 const testCases: [string, string][] = [
   [resolveFixtures('case1'), 'vuepress.config.ts'],
-  [resolveFixtures('case2'), 'vuepress.config.js'],
-  [resolveFixtures('case3'), '.vuepress/config.ts'],
+  [resolveFixtures('case2'), '.vuepress/config.ts'],
+  [resolveFixtures('case3'), 'vuepress.config.js'],
   [resolveFixtures('case4'), '.vuepress/config.js'],
+  [resolveFixtures('case5'), 'vuepress.config.mjs'],
+  [resolveFixtures('case6'), '.vuepress/config.mjs'],
 ]
 
 describe('cli > config > resolveUserConfigConventionalPath', () => {
