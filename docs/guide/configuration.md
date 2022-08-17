@@ -73,7 +73,7 @@ Similarly, we also have a convention for client config file paths (in order of p
   - `.vuepress/client.js`
   - `.vuepress/client.mjs`
 
-Notice that the client config file should be in ESM format:
+A basic client config file looks like this:
 
 ```ts
 import { defineClientConfig } from '@vuepress/client'

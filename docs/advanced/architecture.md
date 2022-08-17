@@ -11,8 +11,8 @@ The above figure shows a brief overview of the VuePress architecture:
 
 As a developer, you must be aware of that VuePress has two main parts: **Node App** and **Client App**, which is important when developing plugins and themes:
 
-- The entry file of a plugin or a theme will be loaded in Node App. So you need to use CommonJS format for them.
-- Client files will be loaded in Client App, which will be handled by bundler. For example, layouts, components, app setup files, app enhance files, etc. You'd better use ESM format for them.
+- The entry file of a plugin or a theme will be loaded in Node App.
+- Client files will be loaded in Client App, which will be handled by bundler. For example, layouts, components, app setup files, app enhance files, etc.
 
 ## Core Process and Hooks
 

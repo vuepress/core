@@ -76,7 +76,7 @@ export default defineUserConfig({
   - `.vuepress/client.js`
   - `.vuepress/client.mjs`
 
-需要注意的是，客户端配置文件需要使用 ESM 格式：
+一个基础的客户端配置文件是这样的：
 
 ```ts
 import { defineClientConfig } from '@vuepress/client'

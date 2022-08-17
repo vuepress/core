@@ -15,7 +15,7 @@ const fooPlugin = {
 }
 ```
 
-A plugin could also be a function that receives the [app instace](../reference/node-api.md#app) as the param and returns a *Plugin Object*, which is called a *Plugin Function*:
+A plugin could also be a function that receives the [app instance](../reference/node-api.md#app) as the param and returns a *Plugin Object*, which is called a *Plugin Function*:
 
 ```ts
 const barPlugin = (app) => {
