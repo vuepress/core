@@ -9,11 +9,6 @@ module.exports = {
     __VUE_OPTIONS_API__: 'readonly',
     __VUE_PROD_DEVTOOLS__: 'readonly',
   },
-  settings: {
-    'import/resolver': {
-      exports: {},
-    },
-  },
   overrides: [
     {
       files: ['*.ts', '*.vue', '*.cts'],

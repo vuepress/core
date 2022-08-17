@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, ora, withSpinner, importFileDefault } from '@vuepress/utils'
+import { chalk, fs, importFileDefault, ora, withSpinner } from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'

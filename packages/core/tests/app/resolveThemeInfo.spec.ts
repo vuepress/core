@@ -1,4 +1,4 @@
-import { path, importFileDefault } from '@vuepress/utils'
+import { importFileDefault, path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import { createBaseApp, resolveThemeInfo } from '../../src/index.js'
 

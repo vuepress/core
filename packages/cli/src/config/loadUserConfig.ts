@@ -1,4 +1,4 @@
-import { fs, hash, path, importFileDefault } from '@vuepress/utils'
+import { fs, hash, importFileDefault, path } from '@vuepress/utils'
 import { build } from 'esbuild'
 import type { UserConfig } from './types.js'
 

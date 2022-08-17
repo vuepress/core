@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, ora, withSpinner, importFile } from '@vuepress/utils'
+import { chalk, fs, importFile, ora, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
