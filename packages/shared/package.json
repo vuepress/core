@@ -1,0 +1,55 @@
+{
+  "name": "@vuepress/shared",
+  "version": "2.0.0-beta.49",
+  "description": "Utils that shared between VuePress node and client",
+  "keywords": [
+    "vuepress",
+    "shared",
+    "utils"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@vue/shared": "^3.2.37"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": "./src/index.ts",
+    "entry": [
+      "./src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "./dist",
+    "sourcemap": false,
+    "target": "es2020",
+    "tsconfig": "../tsconfig.dts.json"
+  }
+}

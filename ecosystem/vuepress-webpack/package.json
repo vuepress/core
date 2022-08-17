@@ -1,0 +1,51 @@
+{
+  "name": "vuepress-webpack",
+  "version": "2.0.0-beta.49",
+  "description": "Vue-powered Static Site Generator",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bin": "./bin/vuepress.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "vuepress": "./bin/vuepress.js",
+    "vuepress-webpack": "./bin/vuepress.js"
+  },
+  "files": [
+    "./bin",
+    "./lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/bundler-webpack": "workspace:*",
+    "@vuepress/cli": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/theme-default": "workspace:*",
+    "sass-loader": "^13.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.36"
+  }
+}

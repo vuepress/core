@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "paths": {
+      "@internal/themeData": ["./src/client/themeData.d.ts"]
+    },
+    "types": ["@vuepress/client/types", "vite/client", "webpack-env"]
+  },
+  "include": ["./src"]
+}

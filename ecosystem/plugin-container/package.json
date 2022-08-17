@@ -1,0 +1,48 @@
+{
+  "name": "@vuepress/plugin-container",
+  "version": "2.0.0-beta.49",
+  "description": "VuePress plugin - markdown container",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "container"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "./lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/markdown": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "markdown-it": "^13.0.1",
+    "markdown-it-container": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "vuepress",
+  "version": "2.0.0-beta.49",
+  "description": "Vue-powered Static Site Generator",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bin": "./bin/vuepress.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "vuepress": "./bin/vuepress.js"
+  },
+  "files": [
+    "./bin",
+    "./lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "vuepress-vite": "workspace:*"
+  }
+}

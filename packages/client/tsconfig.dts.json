@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.dts.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@internal/*": ["./src/types/internal/*.d.ts"]
+    },
+    "types": ["./types", "webpack-env", "vite/client"]
+  }
+}

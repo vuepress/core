@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "types": ["@vuepress/client/types"]
+  },
+  "include": ["./src"],
+  "references": [
+    { "path": "../plugin-pwa/tsconfig.build.json" }
+  ]
+}
