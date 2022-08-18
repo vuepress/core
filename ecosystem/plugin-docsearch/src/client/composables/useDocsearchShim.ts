@@ -1,8 +1,13 @@
 import type { DocSearchProps } from '@docsearch/react'
+import type { InternalDocSearchHit } from '@docsearch/react/dist/esm/types/index.js'
 import { useSiteData } from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
+
+interface TransformedDocSearchHit extends InternalDocSearchHit {
+  routePath: string
+}
 
 const isSpecialClick = (event: MouseEvent): boolean =>
   event.button === 1 ||
@@ -19,13 +24,18 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
   const site = useSiteData()
 
   return {
-    // render the hit component with custom `onClick` handler
-    hitComponent: ({ hit, children }) => {
-      // the `hit.url` is full url with protocol and hostname
-      // so we have to transform it to vue-router path
-      const routePath = resolveRoutePathFromUrl(hit.url, site.value.base)
+    // transform full url to route path
+    transformItems: (items) =>
+      items.map((item) => ({
+        ...item,
+        // the `item.url` is full url with protocol and hostname
+        // so we have to transform it to vue-router path
+        routePath: resolveRoutePathFromUrl(item.url, site.value.base),
+      })),
 
-      return {
+    // render the hit component with custom `onClick` handler
+    hitComponent: ({ hit, children }) =>
+      ({
         type: 'a',
         ref: undefined,
         constructor: undefined,
@@ -38,19 +48,18 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(routePath)
+            router.push((hit as TransformedDocSearchHit).routePath)
           },
           children,
         },
         __v: null,
-      } as unknown
-    },
+      } as unknown),
 
     // navigation behavior triggered by `onKeyDown` internally
     navigator: {
       // when pressing Enter without metaKey
-      navigate: ({ itemUrl }) => {
-        router.push(itemUrl)
+      navigate: ({ item }) => {
+        router.push((item as TransformedDocSearchHit).routePath)
       },
     },
 
