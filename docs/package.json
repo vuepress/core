@@ -6,7 +6,7 @@
     "docs:build": "vuepress-cli build --clean-cache",
     "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
     "docs:dev": "vuepress-cli dev --clean-cache",
-    "docs:serve": "serve .vuepress/dist"
+    "docs:serve": "anywhere -s -h localhost -d .vuepress/dist"
   },
   "dependencies": {
     "@vuepress/bundler-vite": "workspace:*",
@@ -20,8 +20,8 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/utils": "workspace:*",
+    "anywhere": "^1.6.0",
     "sass-loader": "^13.0.2",
-    "serve": "^14.0.1",
     "vue": "^3.2.37"
   }
 }
