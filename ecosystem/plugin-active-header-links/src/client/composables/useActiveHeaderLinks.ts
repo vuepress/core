@@ -1,6 +1,5 @@
-import { usePageData } from '@vuepress/client'
 import { debounce } from 'ts-debounce'
-import { onBeforeUnmount, onMounted, watch } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Router } from 'vue-router'
 
@@ -18,7 +17,6 @@ export const useActiveHeaderLinks = ({
   offset = 5,
 }: UseActiveHeaderLinksOptions): void => {
   const router = useRouter()
-  const page = usePageData()
 
   const setActiveRouteHash = (): void => {
     // get current scrollTop
@@ -29,12 +27,10 @@ export const useActiveHeaderLinks = ({
     )
     // check if we are at page top
     const isAtPageTop = Math.abs(scrollTop - 0) < offset
+
+    // replace current route hash with empty string when scrolling back to the top
     if (isAtPageTop) {
-      // replace current route hash with empty string
-      replaceWithoutScrollBehavior(router, {
-        hash: '',
-        force: true,
-      })
+      updateHash(router, '')
       return
     }
 
@@ -101,10 +97,7 @@ export const useActiveHeaderLinks = ({
       }
 
       // replace current route hash with the active anchor hash
-      replaceWithoutScrollBehavior(router, {
-        hash: anchorHash,
-        force: true,
-      })
+      updateHash(router, anchorHash)
       return
     }
   }
@@ -112,27 +105,26 @@ export const useActiveHeaderLinks = ({
   const onScroll: () => Promise<void> = debounce(setActiveRouteHash, delay)
 
   onMounted(() => {
-    onScroll()
     window.addEventListener('scroll', onScroll)
   })
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', onScroll)
   })
-  watch(() => page.value.path, onScroll)
 }
 
 /**
- * Call `router.replace()` and do not trigger `scrollBehavior`
+ * Update current hash and do not trigger `scrollBehavior`
  */
-export const replaceWithoutScrollBehavior = async (
-  router: Router,
-  ...args: Parameters<Router['replace']>
-): Promise<void> => {
+const updateHash = async (router: Router, hash: string): Promise<void> => {
   // temporarily disable `scrollBehavior`
   // restore it after navigation
   const { scrollBehavior } = router.options
   router.options.scrollBehavior = undefined
   await router
-    .replace(...args)
+    .replace({
+      query: router.currentRoute.value.query,
+      hash,
+      force: true,
+    })
     .finally(() => (router.options.scrollBehavior = scrollBehavior))
 }
