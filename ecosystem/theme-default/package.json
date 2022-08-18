@@ -22,6 +22,8 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
+    "./components/*": "./lib/client/components/*",
+    "./layouts/*": "./lib/client/layouts/*",
     "./templates/*": "./templates/*",
     "./package.json": "./package.json"
   },
