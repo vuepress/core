@@ -131,7 +131,7 @@ But if you omit `skipWaiting` or set it to `false`, you have to activate the new
 - Example:
 
 ```ts
-import { usePwaEvent } from '@vuepress/plugin-pwa/lib/client'
+import { usePwaEvent } from '@vuepress/plugin-pwa/client'
 
 export default {
   setup() {
@@ -161,7 +161,7 @@ export default {
 import {
   usePwaEvent,
   useSkipWaiting,
-} from '@vuepress/plugin-pwa/lib/client'
+} from '@vuepress/plugin-pwa/client'
 
 export default {
   setup() {

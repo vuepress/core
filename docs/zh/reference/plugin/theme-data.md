@@ -76,8 +76,8 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/lib/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data'
+import { useThemeData } from '@vuepress/plugin-theme-data/client'
+import type { ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
@@ -102,8 +102,8 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/lib/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/lib/client'
+import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
+import type { ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string

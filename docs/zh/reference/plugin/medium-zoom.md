@@ -83,7 +83,7 @@ export default {
 
 ```ts
 import { nextTick } from 'vue'
-import { useMediumZoom } from '@vuepress/plugin-medium-zoom/lib/client'
+import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
 
 export default {
   setup() {

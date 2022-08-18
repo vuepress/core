@@ -76,8 +76,8 @@ The theme data object will be processed by `JSON.stringify()` before forwarding 
 - Example:
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/lib/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/lib/client'
+import { useThemeData } from '@vuepress/plugin-theme-data/client'
+import type { ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
@@ -102,8 +102,8 @@ export default {
 - Example:
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/lib/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/lib/client'
+import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
+import type { ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
