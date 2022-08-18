@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           inactive-day: 15
           inactive-label: 'stale'
-          exclude-labels: 'bug, documentation, enhancement, feature, help wanted, need reproduction, stale'
+          exclude-labels: 'bug, documentation, enhancement, feature, help wanted, need reproduction, need review, stale'
           body: |
             This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 7 days.
 
