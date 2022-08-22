@@ -14,9 +14,24 @@ export { sfcPlugin, type SfcPluginOptions } from '@mdit-vue/plugin-sfc'
 export { titlePlugin } from '@mdit-vue/plugin-title'
 export { tocPlugin, type TocPluginOptions } from '@mdit-vue/plugin-toc'
 
-export * from './plugins/anchorPlugin.js'
-export * from './plugins/assetsPlugin.js'
-export * from './plugins/codePlugin.js'
-export * from './plugins/emojiPlugin.js'
-export * from './plugins/importCodePlugin.js'
-export * from './plugins/linksPlugin.js'
+export {
+  anchorPlugin,
+  type AnchorPluginOptions,
+} from './plugins/anchorPlugin.js'
+export {
+  assetsPlugin,
+  type AssetsPluginOptions,
+} from './plugins/assetsPlugin/assetsPlugin.js'
+export {
+  codePlugin,
+  type CodePluginOptions,
+} from './plugins/codePlugin/codePlugin.js'
+export { emojiPlugin, type EmojiPluginOptions } from './plugins/emojiPlugin.js'
+export {
+  importCodePlugin,
+  type ImportCodePluginOptions,
+} from './plugins/importCodePlugin/importCodePlugin.js'
+export {
+  linksPlugin,
+  type LinksPluginOptions,
+} from './plugins/linksPlugin/linksPlugin.js'

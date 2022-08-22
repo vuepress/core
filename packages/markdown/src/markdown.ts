@@ -65,11 +65,9 @@ export const createMarkdown = ({
 
   // add anchor to headers
   if (anchor !== false) {
-    // @ts-expect-error: types error with markdown-it-anchor
     md.use<AnchorPluginOptions>(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
-      // @ts-expect-error: types error with markdown-it-anchor
       permalink: anchorPlugin.permalink.ariaHidden({
         class: 'header-anchor',
         symbol: '#',
