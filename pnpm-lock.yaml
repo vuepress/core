@@ -89,14 +89,14 @@ importers:
       '@vuepress/utils': workspace:*
       ts-debounce: ^4.0.0
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vuepress/client': link:../../packages/client
       '@vuepress/core': link:../../packages/core
       '@vuepress/utils': link:../../packages/utils
       ts-debounce: 4.0.0
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/plugin-back-to-top:
     specifiers:
@@ -141,7 +141,7 @@ importers:
       '@vuepress/utils': workspace:*
       ts-debounce: ^4.0.0
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@docsearch/css': 3.2.1
       '@docsearch/js': 3.2.1
@@ -152,7 +152,7 @@ importers:
       '@vuepress/utils': link:../../packages/utils
       ts-debounce: 4.0.0
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/plugin-external-link-icon:
     specifiers:
@@ -210,13 +210,13 @@ importers:
       '@vuepress/core': workspace:*
       '@vuepress/utils': workspace:*
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vuepress/client': link:../../packages/client
       '@vuepress/core': link:../../packages/core
       '@vuepress/utils': link:../../packages/utils
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/plugin-palette:
     specifiers:
@@ -291,7 +291,7 @@ importers:
       '@vuepress/utils': workspace:*
       chokidar: ^3.5.3
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vuepress/client': link:../../packages/client
       '@vuepress/core': link:../../packages/core
@@ -299,7 +299,7 @@ importers:
       '@vuepress/utils': link:../../packages/utils
       chokidar: 3.5.3
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/plugin-shiki:
     specifiers:
@@ -331,13 +331,13 @@ importers:
       '@vuepress/core': workspace:*
       '@vuepress/utils': workspace:*
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vuepress/client': link:../../packages/client
       '@vuepress/core': link:../../packages/core
       '@vuepress/utils': link:../../packages/utils
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/theme-default:
     specifiers:
@@ -358,7 +358,7 @@ importers:
       '@vueuse/core': ^9.1.0
       sass: ^1.54.5
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vuepress/client': link:../../packages/client
       '@vuepress/core': link:../../packages/core
@@ -377,7 +377,7 @@ importers:
       '@vueuse/core': 9.1.0_vue@3.2.37
       sass: 1.54.5
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   ecosystem/vuepress:
     specifiers:
@@ -424,7 +424,7 @@ importers:
       rollup: ^2.78.1
       vite: ~3.0.9
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vitejs/plugin-vue': 3.0.3_vite@3.0.9+vue@3.2.37
       '@vuepress/client': link:../client
@@ -437,7 +437,7 @@ importers:
       rollup: 2.78.1
       vite: 3.0.9
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   packages/bundler-webpack:
     specifiers:
@@ -461,7 +461,7 @@ importers:
       style-loader: ^3.3.1
       vue: ^3.2.37
       vue-loader: ^17.0.0
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
       webpack: ^5.74.0
       webpack-chain: ^6.5.1
       webpack-dev-server: ^4.10.0
@@ -487,7 +487,7 @@ importers:
       style-loader: 3.3.1_webpack@5.74.0
       vue: 3.2.37
       vue-loader: 17.0.0_webpack@5.74.0
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
       webpack: 5.74.0
       webpack-chain: 6.5.1
       webpack-dev-server: 4.10.0_webpack@5.74.0
@@ -519,12 +519,12 @@ importers:
       '@vue/devtools-api': ^6.2.1
       '@vuepress/shared': workspace:*
       vue: ^3.2.37
-      vue-router: ^4.1.3
+      vue-router: ^4.1.4
     dependencies:
       '@vue/devtools-api': 6.2.1
       '@vuepress/shared': link:../shared
       vue: 3.2.37
-      vue-router: 4.1.3_vue@3.2.37
+      vue-router: 4.1.4_vue@3.2.37
 
   packages/core:
     specifiers:
@@ -9674,8 +9674,8 @@ packages:
       webpack: 5.74.0
     dev: false
 
-  /vue-router/4.1.3_vue@3.2.37:
-    resolution: {integrity: sha512-XvK81bcYglKiayT7/vYAg/f36ExPC4t90R/HIpzrZ5x+17BOWptXLCrEPufGgZeuq68ww4ekSIMBZY1qdUdfjA==}
+  /vue-router/4.1.4_vue@3.2.37:
+    resolution: {integrity: sha512-UgYen33gOtwT3cOG1+yRen+Brk9py8CSlC9LEa3UjvKZ4EAoSo8NjZPDeDnmNerfazorHIJG1NC7qdi1SuQJnQ==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

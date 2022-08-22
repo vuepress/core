@@ -153,13 +153,7 @@ const resolveAlias = async ({
       replacement: alias[item],
     })),
     ...(isServer
-      ? [
-          // TODO: vue-router does not configured 'exports' field correctly
-          {
-            find: /^vue-router$/,
-            replacement: 'vue-router/dist/vue-router.node.mjs',
-          },
-        ]
+      ? []
       : [
           {
             find: /^vue$/,
