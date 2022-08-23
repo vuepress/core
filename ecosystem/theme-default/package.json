@@ -59,7 +59,7 @@
     "vue-router": "^4.1.4"
   },
   "peerDependencies": {
-    "sass-loader": "^13.0.0"
+    "sass-loader": "^13.0.2"
   },
   "peerDependenciesMeta": {
     "sass-loader": {
