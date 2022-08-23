@@ -1,3 +1,35 @@
+# [2.0.0-beta.50](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.49...v2.0.0-beta.50) (2022-08-23)
+
+
+### Bug Fixes
+
+* **cli:** handle config file __dirname correctly ([8171f4d](https://github.com/vuepress/vuepress-next/commit/8171f4d58406d95bfe3d415107f6e0b88521e082))
+* **plugin-active-header-links:** keep query when updating hash (close [#991](https://github.com/vuepress/vuepress-next/issues/991)) ([0fdb021](https://github.com/vuepress/vuepress-next/commit/0fdb021c678d22f435fe8e94375c92f0bee8b125))
+* **plugin-docsearch:** handle navigation url correctly (close [#1024](https://github.com/vuepress/vuepress-next/issues/1024)) ([b6ded16](https://github.com/vuepress/vuepress-next/commit/b6ded16f607f5db5a27967260e7e6b7b69a26c2b))
+* **theme-default:** fix initial open state of sidebar item ([392297f](https://github.com/vuepress/vuepress-next/commit/392297fa856fd5869de40e4999c5bc4d126a3941))
+* workaround for vite hash issue (close [#1008](https://github.com/vuepress/vuepress-next/issues/1008)) ([f8cdc9e](https://github.com/vuepress/vuepress-next/commit/f8cdc9e7adad9ec64986761084ea0656064867a4))
+
+
+### Code Refactoring
+
+* **markdown:** bump sfc plugin to v0.9 ([b0fc856](https://github.com/vuepress/vuepress-next/commit/b0fc8566db65cbb8443d9520daaed573a1387f22))
+
+
+### Features
+
+* **client:** add devtools custom inspector ([5568abe](https://github.com/vuepress/vuepress-next/commit/5568abe9d4fde1e0830810ebb449670d85e18dbb))
+* **core:** pass isServer flag to alias and define hooks ([7862813](https://github.com/vuepress/vuepress-next/commit/7862813cce58160bf6511d50b44c5071602aa404))
+* migrate to pure ESM ([#1030](https://github.com/vuepress/vuepress-next/issues/1030)) ([d283ffe](https://github.com/vuepress/vuepress-next/commit/d283ffe3ef0668bfea54e6d973066695f46f13c0))
+
+
+### BREAKING CHANGES
+
+* VuePress is now published as pure ESM packages
+* CommonJS config file is not supported anymore
+* **markdown:** type of node-api `page.sfcBlocks` has been changed
+
+
+
 # [2.0.0-beta.49](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.48...v2.0.0-beta.49) (2022-07-11)
 
 
