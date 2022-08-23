@@ -1,3 +1,4 @@
+import type { MarkdownItHeader } from '@mdit-vue/types'
 import type { HeadConfig } from './head.js'
 
 /**
@@ -84,9 +85,4 @@ export type PageFrontmatter<
 /**
  * Vuepress page header
  */
-export interface PageHeader {
-  level: number
-  title: string
-  slug: string
-  children: PageHeader[]
-}
+export type PageHeader = MarkdownItHeader

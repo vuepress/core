@@ -89,7 +89,7 @@ export const headerToSidebarItem = (
   sidebarDepth: number
 ): ResolvedSidebarItem => ({
   text: header.title,
-  link: `#${header.slug}`,
+  link: header.link,
   children: headersToSidebarItemChildren(header.children, sidebarDepth),
 })
 
