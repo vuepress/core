@@ -75,7 +75,7 @@ import '@vuepress/client/app'
         cssCodeSplit: false,
         rollupOptions: {
           input: app.dir.client(
-            fs.readJSONSync(app.dir.client('package.json')).exports['./app']
+            fs.readJsonSync(app.dir.client('package.json')).exports['./app']
           ),
           output: {
             // also add hash to ssr entry file, so that users could build multiple sites in a single process

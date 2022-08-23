@@ -66,7 +66,7 @@ export const build = async (
 
     // load the client manifest file
     const clientManifestPath = app.dir.temp(clientManifestFilename)
-    const clientManifest: ClientManifest = await fs.readJSON(clientManifestPath)
+    const clientManifest: ClientManifest = await fs.readJson(clientManifestPath)
 
     // resolve client files meta
     const {

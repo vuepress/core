@@ -24,8 +24,9 @@ export const dev = async (
   const server = await createServer(viteConfig)
   await server.listen()
 
-  const viteVersion = (await fs.readJSON(require.resolve('vite/package.json')))
-    .version
+  const viteVersion = fs.readJsonSync(
+    require.resolve('vite/package.json')
+  ).version
   server.config.logger.info(
     chalk.cyan(`\n  vite v${viteVersion}`) +
       chalk.green(` dev server running at:\n`),
