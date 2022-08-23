@@ -58,11 +58,6 @@ export const createMarkdown = ({
   // following plugins push rules to the end of chain, so
   // the order to use them is important
 
-  // parse emoji
-  if (emoji !== false) {
-    md.use<EmojiPluginOptions>(emojiPlugin, emoji)
-  }
-
   // add anchor to headers
   if (anchor !== false) {
     md.use<AnchorPluginOptions>(anchorPlugin, {
@@ -78,37 +73,28 @@ export const createMarkdown = ({
     })
   }
 
-  // allow toc syntax
-  if (toc !== false) {
-    md.use<TocPluginOptions>(tocPlugin, {
-      level: [2, 3],
-      slugify,
-      linkTag: 'router-link',
-      ...toc,
-    })
-  }
-
-  // extract headers into env
-  if (headers !== false) {
-    md.use<HeadersPluginOptions>(headersPlugin, {
-      level: [2, 3],
-      slugify,
-      ...headers,
-    })
-  }
-
-  // extract title into env
-  if (title !== false) {
-    md.use(titlePlugin)
-  }
-
   // =====================================================
   // following plugins modify or replace the rule in place
   // and have no conflicts, so the order is not important
 
+  // replace relative link of assets with absolute link
+  if (assets !== false) {
+    md.use<AssetsPluginOptions>(assetsPlugin, assets)
+  }
+
+  // process code fence
+  if (code !== false) {
+    md.use<CodePluginOptions>(codePlugin, code)
+  }
+
   // treat unknown html tags as components
   if (component !== false) {
     md.use(componentPlugin)
+  }
+
+  // parse emoji
+  if (emoji !== false) {
+    md.use<EmojiPluginOptions>(emojiPlugin, emoji)
   }
 
   // extract frontmatter and excerpt into env
@@ -123,14 +109,18 @@ export const createMarkdown = ({
     })
   }
 
-  // replace relative link of assets with absolute link
-  if (assets !== false) {
-    md.use<AssetsPluginOptions>(assetsPlugin, assets)
+  // extract headers into env
+  if (headers !== false) {
+    md.use<HeadersPluginOptions>(headersPlugin, {
+      level: [2, 3],
+      slugify,
+      ...headers,
+    })
   }
 
-  // extract vue SFC blocks into env
-  if (sfc !== false) {
-    md.use<SfcPluginOptions>(sfcPlugin, sfc)
+  // handle import_code syntax
+  if (importCode !== false) {
+    md.use<ImportCodePluginOptions>(importCodePlugin, importCode)
   }
 
   // process external and internal links
@@ -138,14 +128,24 @@ export const createMarkdown = ({
     md.use<LinksPluginOptions>(linksPlugin, links)
   }
 
-  // process code fence
-  if (code !== false) {
-    md.use<CodePluginOptions>(codePlugin, code)
+  // extract vue SFC blocks into env
+  if (sfc !== false) {
+    md.use<SfcPluginOptions>(sfcPlugin, sfc)
   }
 
-  // handle import_code syntax
-  if (importCode !== false) {
-    md.use<ImportCodePluginOptions>(importCodePlugin, importCode)
+  // allow toc syntax
+  if (toc !== false) {
+    md.use<TocPluginOptions>(tocPlugin, {
+      level: [2, 3],
+      slugify,
+      linkTag: 'router-link',
+      ...toc,
+    })
+  }
+
+  // extract title into env
+  if (title !== false) {
+    md.use(titlePlugin)
   }
 
   return md
