@@ -9,6 +9,7 @@ VuePress v2 的一些主要改动和优化：
 - VuePress v2 现在使用 Vue 3 ，因此你要保证你的组件和其他客户端文件是适用于 Vue 3 的。
 - VuePress v2 是使用 TypeScript 开发的，因此它现在提供了更好的类型支持。我们强烈推荐你使用 TypeScript 来开发插件和主题。 VuePress 配置文件也同样支持 TypeScript ，你可以直接使用 `.vuepress/config.ts` 。
 - VuePress v2 支持使用 Webpack 和 Vite 作为打包工具。现在默认的打包工具是 Vite ，但你仍然可以选择使用 Webpack 。你甚至可以在开发模式使用 Vite 来获取更好的开发体验，而在构建模式使用 Webpack 来获取更好的浏览器兼容性。
+- VuePress v2 现在是纯 ESM 包， CommonJS 格式的配置文件不再被支持。
 
 VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了重新设计，更加标准化。因此在将现有的 v1 项目迁移至 v2 时，你很可能会遇到一些 Breaking Changes 。本指南将帮助你将 v1 的站点 / 插件 / 主题迁移至 v2 。
 
@@ -19,6 +20,20 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 ## 给用户
 
 ### 用户配置变更
+
+配置文件应该使用 ESM 格式， CommonJS 格式的配置文件已不再支持。
+
+```diff
+// .vuepress/config.js
+
+- module.exports = {
+-   // 用户配置
+- }
+
++ export default {
++   // 用户配置
++ }
+```
 
 #### theme
 

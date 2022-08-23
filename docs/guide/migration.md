@@ -9,6 +9,7 @@ Some major changes and enhancements of VuePress v2:
 - VuePress v2 is now using Vue 3, so make sure your components and other client files are compatible with Vue 3.
 - VuePress v2 is developed with TypeScript, so it provides better TS support now. It's highly recommended to use TypeScript to develop plugins and themes. VuePress config file also supports TypeScript, and you can use `.vuepress/config.ts` directly.
 - VuePress v2 supports both Webpack and Vite as bundler. Now Vite is the default bundler, while you can still choose to use Webpack. You can even use Vite in dev mode to get better development experience, and use Webpack in build mode to get better browser compatibility.
+- VuePress v2 is now released as pure ESM packages, and CommonJS config files are no longer supported.
 
 Core ideas and processes of VuePress v2 are the same with v1, while v2 API has been re-designed and becomes more normalized. So you might encounter breaking changes when migrating an existing v1 project to v2. This guide is here to help you migrating v1 sites / plugins / themes to v2.
 
@@ -19,6 +20,20 @@ Core ideas and processes of VuePress v2 are the same with v1, while v2 API has b
 ## For Users
 
 ### User Config Change
+
+Config file should be in ESM format, and CommonJS format config file is no longer supported.
+
+```diff
+// .vuepress/config.js
+
+- module.exports = {
+-   // user config
+- }
+
++ export default {
++   // user config
++ }
+```
 
 #### theme
 
