@@ -50,6 +50,14 @@ export const activeHeaderLinksPlugin = ({
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
+  alias: {
+    // workaround for https://github.com/vitejs/vite/issues/7621
+    '@vuepress/plugin-active-header-links/client': path.resolve(
+      __dirname,
+      '../client/index.js'
+    ),
+  },
+
   define: {
     __AHL_HEADER_LINK_SELECTOR__: headerLinkSelector,
     __AHL_HEADER_ANCHOR_SELECTOR__: headerAnchorSelector,

@@ -39,6 +39,14 @@ export const pwaPlugin =
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
+      alias: {
+        // workaround for https://github.com/vitejs/vite/issues/7621
+        '@vuepress/plugin-pwa/client': path.resolve(
+          __dirname,
+          '../client/index.js'
+        ),
+      },
+
       define: {
         __PWA_SW_FILENAME__: serviceWorkerFilename,
       },

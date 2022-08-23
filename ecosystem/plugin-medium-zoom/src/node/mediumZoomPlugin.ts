@@ -39,6 +39,14 @@ export const mediumZoomPlugin = ({
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
+  alias: {
+    // workaround for https://github.com/vitejs/vite/issues/7621
+    '@vuepress/plugin-medium-zoom/client': path.resolve(
+      __dirname,
+      '../client/index.js'
+    ),
+  },
+
   define: {
     __MZ_SELECTOR__: selector,
     __MZ_ZOOM_OPTIONS__: zoomOptions,

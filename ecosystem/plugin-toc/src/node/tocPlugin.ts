@@ -29,6 +29,14 @@ export const tocPlugin = ({
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
+  alias: {
+    // workaround for https://github.com/vitejs/vite/issues/7621
+    '@vuepress/plugin-toc/client': path.resolve(
+      __dirname,
+      '../client/index.js'
+    ),
+  },
+
   define: {
     __TOC_COMPONENT_NAME__: componentName,
     __TOC_DEFAULT_PROPS_OPTIONS__: defaultPropsOptions,
