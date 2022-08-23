@@ -79,7 +79,7 @@ import '@vuepress/client/app'
           ),
           output: {
             // also add hash to ssr entry file, so that users could build multiple sites in a single process
-            entryFileNames: `[name].[hash].js`,
+            entryFileNames: `[name].[hash].mjs`,
           },
           preserveEntrySignatures: 'allow-extension',
         },
@@ -90,6 +90,7 @@ import '@vuepress/client/app'
       },
       ssr: {
         format: 'esm',
+        noExternal: clientPackages,
       },
     }
   },
