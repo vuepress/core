@@ -38,7 +38,7 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
     use: (plugin: Plugin) => appUse(app, plugin),
     init: () => appInit(app),
     prepare: () => appPrepare(app),
-  } as unknown as App
+  } as App
 
   // setup theme and plugins
   // notice that we setup theme before plugins,
