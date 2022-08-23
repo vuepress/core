@@ -140,7 +140,7 @@ const resolveAlias = async ({
   }
 
   // plugin hook: alias
-  const aliasResult = await app.pluginApi.hooks.alias.process(app)
+  const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
   aliasResult.forEach((aliasObject) =>
     Object.entries(aliasObject).forEach(([key, value]) => {
@@ -196,7 +196,7 @@ const resolveDefine = async ({
   }
 
   // plugin hook: define
-  const defineResult = await app.pluginApi.hooks.define.process(app)
+  const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
 
   defineResult.forEach((defineObject) =>
     Object.entries(defineObject).forEach(([key, value]) => {

@@ -37,10 +37,11 @@ export type ClientConfigFileHook = Hook<
   (app: App) => Promise<string>
 >
 
-// hook that returns an object
-export type ReturnObjectHook = Hook<
-  Record<string, any> | ((app: App) => PromiseOrNot<Record<string, any>>),
-  (app: App) => Promise<Record<string, any>>
+// alias and define hook
+export type AliasDefineHook = Hook<
+  | Record<string, any>
+  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, any>>),
+  (app: App, isServer: boolean) => Promise<Record<string, any>>
 >
 
 /**
@@ -57,8 +58,8 @@ export interface Hooks {
   extendsPage: ExtendsHook<Page>
   extendsBundlerOptions: ExtendsHook<any>
   clientConfigFile: ClientConfigFileHook
-  alias: ReturnObjectHook
-  define: ReturnObjectHook
+  alias: AliasDefineHook
+  define: AliasDefineHook
 }
 
 /**

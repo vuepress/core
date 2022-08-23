@@ -75,7 +75,7 @@
 
 ### alias
 
-- 类型： `Record<string, any> | ((app: App) => Record<string, any>)`
+- 类型： `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
 - 详情：
 
@@ -128,7 +128,7 @@ export default {
 
 ### define
 
-- 类型： `Record<string, any> | ((app: App) => Record<string, any>)`
+- 类型： `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
 - 详情：
 

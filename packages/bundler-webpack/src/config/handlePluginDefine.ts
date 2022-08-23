@@ -30,7 +30,7 @@ export const handlePluginDefine = async ({
   ])
 
   // plugin hook: define
-  const defineResult = await app.pluginApi.hooks.define.process(app)
+  const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
 
   // tap the arguments of DefinePlugin
   config.plugin('define').tap(([options]) => {

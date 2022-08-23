@@ -75,7 +75,7 @@ The following hooks will be processed in dev / build:
 
 ### alias
 
-- Type: `Record<string, any> | ((app: App) => Record<string, any>)`
+- Type: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
 - Details:
 
@@ -128,7 +128,7 @@ export default {
 
 ### define
 
-- Type: `Record<string, any> | ((app: App) => Record<string, any>)`
+- Type: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
 - Details:
 

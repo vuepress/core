@@ -7,9 +7,11 @@ import type Config from 'webpack-chain'
 export const handleResolve = async ({
   app,
   config,
+  isServer,
 }: {
   app: App
   config: Config
+  isServer: boolean
 }): Promise<void> => {
   // aliases
   config.resolve.alias
@@ -28,7 +30,7 @@ export const handleResolve = async ({
   ])
 
   // plugin hook: alias
-  const aliasResult = await app.pluginApi.hooks.alias.process(app)
+  const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
   // set aliases
   aliasResult.forEach((aliasObject) =>

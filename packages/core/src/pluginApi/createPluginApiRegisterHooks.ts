@@ -1,6 +1,6 @@
 import type { HooksName, PluginApi } from '../types/index.js'
+import { normalizeAliasDefineHook } from './normalizeAliasDefineHook.js'
 import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook.js'
-import { normalizeReturnObjectHook } from './normalizeReturnObjectHook.js'
 
 export const createPluginApiRegisterHooks =
   (
@@ -24,14 +24,14 @@ export const createPluginApiRegisterHooks =
         if (alias) {
           hooks.alias.add({
             pluginName,
-            hook: normalizeReturnObjectHook(alias),
+            hook: normalizeAliasDefineHook(alias),
           })
         }
 
         if (define) {
           hooks.define.add({
             pluginName,
-            hook: normalizeReturnObjectHook(define),
+            hook: normalizeAliasDefineHook(define),
           })
         }
 

@@ -47,7 +47,7 @@ export const createBaseConfig = async ({
   /**
    * resolve
    */
-  await handleResolve({ app, config })
+  await handleResolve({ app, config, isServer })
 
   /**
    * module
