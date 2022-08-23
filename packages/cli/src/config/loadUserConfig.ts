@@ -1,3 +1,4 @@
+import { pathToFileURL } from 'node:url'
 import { fs, hash, importFileDefault, path } from '@vuepress/utils'
 import { build } from 'esbuild'
 import type { UserConfig } from './types.js'
@@ -17,6 +18,11 @@ export const loadUserConfig = async (
       userConfigDependencies: [],
     }
   }
+  // following code is forked and modified from vite
+  // TODO: we can migrate to something like `bundler-require`, but its `__dirname` support is not as good as vite
+  const dirnameVarName = '__vite_injected_original_dirname'
+  const filenameVarName = '__vite_injected_original_filename'
+  const importMetaUrlVarName = '__vite_injected_original_import_meta_url'
   const result = await build({
     absWorkingDir: process.cwd(),
     entryPoints: [userConfigPath],
@@ -28,6 +34,11 @@ export const loadUserConfig = async (
     format: 'esm',
     sourcemap: 'inline',
     metafile: true,
+    define: {
+      '__dirname': dirnameVarName,
+      '__filename': filenameVarName,
+      'import.meta.url': importMetaUrlVarName,
+    },
     plugins: [
       {
         name: 'externalize-deps',
@@ -40,6 +51,27 @@ export const loadUserConfig = async (
               }
             }
             return null
+          })
+        },
+      },
+      {
+        name: 'inject-file-scope-variables',
+        setup(build) {
+          build.onLoad({ filter: /\.[cm]?[jt]s$/ }, async (args) => {
+            const contents = await fs.readFile(args.path, 'utf8')
+            const injectValues =
+              `const ${dirnameVarName} = ${JSON.stringify(
+                path.dirname(args.path)
+              )};` +
+              `const ${filenameVarName} = ${JSON.stringify(args.path)};` +
+              `const ${importMetaUrlVarName} = ${JSON.stringify(
+                pathToFileURL(args.path).href
+              )};`
+
+            return {
+              loader: args.path.endsWith('ts') ? 'ts' : 'js',
+              contents: injectValues + contents,
+            }
           })
         },
       },
