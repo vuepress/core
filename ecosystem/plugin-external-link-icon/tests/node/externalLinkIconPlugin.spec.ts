@@ -10,7 +10,7 @@ const getTestApp = async (markdown?: MarkdownOptions) => {
     theme: { name: 'test' },
     bundler: {} as any,
     markdown,
-  }).use(externalLinkIconPlugin)
+  }).use(externalLinkIconPlugin())
   await app.init()
   return app
 }
