@@ -78,8 +78,12 @@ import '@vuepress/client/app'
             fs.readJsonSync(app.dir.client('package.json')).exports['./app']
           ),
           output: {
-            // also add hash to ssr entry file, so that users could build multiple sites in a single process
-            entryFileNames: `[name].[hash].mjs`,
+            ...(isServer
+              ? {
+                  // also add hash to ssr entry file, so that users could build multiple sites in a single process
+                  entryFileNames: `[name].[hash].mjs`,
+                }
+              : {}),
           },
           preserveEntrySignatures: 'allow-extension',
         },
