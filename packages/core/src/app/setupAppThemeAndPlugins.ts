@@ -7,8 +7,7 @@ import { resolveThemeInfo } from './resolveThemeInfo.js'
 export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
   // recursively resolve theme info
   const themeInfo = resolveThemeInfo(app, app.options.theme)
-  // set up app layouts and templates
-  app.layouts = themeInfo.layouts
+  // set up app templates
   app.options.templateDev =
     config.templateDev ?? themeInfo.templateDev ?? app.options.templateDev
   app.options.templateBuild =
