@@ -39,8 +39,6 @@ export const defaultTheme = ({
   return {
     name: '@vuepress/theme-default',
 
-    layouts: path.resolve(__dirname, '../client/layouts'),
-
     templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 
     alias: {
