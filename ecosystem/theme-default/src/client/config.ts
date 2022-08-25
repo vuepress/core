@@ -1,5 +1,5 @@
 import { defineClientConfig } from '@vuepress/client'
-import { h } from 'vue'
+import { defineAsyncComponent, h } from 'vue'
 import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import {
   setupDarkMode,
@@ -45,5 +45,10 @@ export default defineClientConfig({
   setup() {
     setupDarkMode()
     setupSidebarItems()
+  },
+
+  layouts: {
+    Layout: defineAsyncComponent(() => import('./layouts/Layout.vue')),
+    404: defineAsyncComponent(() => import('./layouts/404.vue')),
   },
 })

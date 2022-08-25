@@ -1,7 +1,16 @@
-import { layoutComponents } from '@internal/layoutComponents'
+import { clientConfigs } from '@internal/clientConfigs'
 import { isString } from '@vuepress/shared'
-import { computed, defineComponent, h, resolveComponent } from 'vue'
+import type { Component } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { usePageData } from '../composables/index.js'
+
+const layouts = clientConfigs.reduce(
+  (prev, item) => ({
+    ...prev,
+    ...item.layouts,
+  }),
+  {} as Record<string, Component>
+)
 
 /**
  * Global Layout
@@ -34,9 +43,7 @@ export const Vuepress = defineComponent({
         // use 404 layout
         layoutName = '404'
       }
-
-      // use theme layout or fallback to custom layout
-      return layoutComponents[layoutName] || resolveComponent(layoutName, false)
+      return layouts[layoutName]
     })
 
     return () => h(layoutComponent.value)

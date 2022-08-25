@@ -31,11 +31,6 @@ export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
   extends?: Theme
 
   /**
-   * Specify the layouts directory or components map
-   */
-  layouts?: string | Record<string, string>
-
-  /**
    * Allow using plugins in theme
    */
   plugins?: PluginConfig
@@ -55,11 +50,6 @@ export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
  * Resolved theme info
  */
 export interface ThemeInfo {
-  /**
-   * Layout components
-   */
-  layouts: Record<string, string>
-
   /**
    * Plugins, including theme itself and plugins used by theme
    */
