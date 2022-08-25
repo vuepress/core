@@ -11,16 +11,19 @@
         "./ecosystem/plugin-theme-data/src/client/themeData.d.ts"
       ],
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
-      "@theme/*": [
-        "./ecosystem/theme-default/src/client/components/*"
-      ],
+      "@theme/*": ["./ecosystem/theme-default/src/client/components/*"],
       "@vuepress/*": ["./packages/*/src"],
       "vuepress": ["./ecosystem/vuepress/src"],
       "vuepress-vite": ["./ecosystem/vuepress-vite/src"],
       "vuepress-webpack": ["./ecosystem/vuepress-webpack/src"]
     },
-    "types": ["webpack-env", "vite/client", "@types/jest"]
+    "types": ["webpack-env", "vite/client"]
   },
-  "include": ["**/.vuepress/**/*", "ecosystem/**/*", "packages/**/*", "vitest.config.ts"],
+  "include": [
+    "**/.vuepress/**/*",
+    "ecosystem/**/*",
+    "packages/**/*",
+    "vitest.config.ts"
+  ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]
 }
