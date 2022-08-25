@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-theme-data" />
 
-为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](../../guide/i18n.md) 。
+为你的主题提供配置数据，包含 VuePress 的 [多语言支持](../../guide/i18n.md) 。
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 
@@ -19,51 +19,41 @@ import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
 export default {
   plugins: [
-    themeDataPlugin({
-      // 配置项
-    }),
+    themeDataPlugin(),
   ],
 }
 ```
 
-## 配置项
+## 客户端 API
 
-### themeData
-
-- 类型： `ThemeData`
-
-- 默认值： `{}`
+### defineThemeData
 
 - 详情：
 
-  你希望在 Client 端中使用的主题数据对象。
-
-  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#useThemeData) 和 [useThemeLocaleData](#useThemeLocaleData) 来使用主题数据。
+  在你的 [客户端配置文件](../../guide/configuration.md#客户端配置文件) 中设置主题数据。
 
 - 示例：
 
 ```ts
-export default {
-  plugins: [
-    themeDataPlugin({
-      themeData: {
-        foo: 'foo',
-        locales: {
-          '/zh/': {
-            foo: 'zh-foo',
-          },
-        },
-      },
-    }),
-  ],
-}
+// .vuepress/client.ts
+import { defineClientConfig } from '@vuepress/client'
+import { defineThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
+
+type MyThemeData = ThemeData<{
+  foo: string
+}>
+
+defineThemeData<MyThemeData>({
+  foo: 'foo',
+  locales: {
+    '/zh/': {
+      foo: 'zh-foo',
+    },
+  },
+})
+
+export default defineClientConfig()
 ```
-
-::: warning
-主题数据对象在传递到客户端之前，会使用 `JSON.stringify()` 进行处理，因此你需要保证你提供的是一个可以被 JSON 序列化的对象。
-:::
-
-## Composition API
 
 ### useThemeData
 
@@ -71,13 +61,12 @@ export default {
 
   返回主题数据的 Ref 对象。
   
-  数据是通过 [themeData](#themeData) 配置项提供的。
+  通常情况下，用户在客户端配置中通过 [defineThemeData](#defineThemeData) 方法来设置主题数据，然后你可以在主题中通过 `useThemeData` 来使用主题数据。
 
 - 示例：
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
@@ -102,8 +91,7 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string

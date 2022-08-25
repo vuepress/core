@@ -10,32 +10,68 @@ import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import { fs, getDirname, path } from '@vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-  DefaultThemePluginsOptions,
-} from '../shared/index.js'
-import {
-  assignDefaultLocaleOptions,
-  resolveContainerPluginOptions,
-} from './utils/index.js'
+import type { DefaultThemePageData } from '../shared/index.js'
 
 const __dirname = getDirname(import.meta.url)
 
-export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
+export interface DefaultThemeOptions {
   /**
    * To avoid confusion with the root `plugins` option,
    * we use `themePlugins`
    */
-  themePlugins?: DefaultThemePluginsOptions
+  themePlugins?: {
+    /**
+     * Enable @vuepress/plugin-active-header-links or not
+     */
+    activeHeaderLinks?: boolean
+
+    /**
+     * Enable @vuepress/plugin-back-to-top or not
+     */
+    backToTop?: boolean
+
+    /**
+     * Enable @vuepress/plugin-container or not
+     */
+    container?: {
+      tip?: boolean
+      warning?: boolean
+      danger?: boolean
+      details?: boolean
+      codeGroup?: boolean
+      codeGroupItem?: boolean
+    }
+
+    /**
+     * Enable @vuepress/plugin-external-link-icon or not
+     */
+    externalLinkIcon?: boolean
+
+    /**
+     * Enable @vuepress/plugin-git or not
+     */
+    git?: boolean
+
+    /**
+     * Enable @vuepress/plugin-medium-zoom or not
+     */
+    mediumZoom?: boolean
+
+    /**
+     * Enable @vuepress/plugin-nprogress or not
+     */
+    nprogress?: boolean
+
+    /**
+     * Enable @vuepress/plugin-prismjs or not
+     */
+    prismjs?: boolean
+  }
 }
 
 export const defaultTheme = ({
   themePlugins = {},
-  ...localeOptions
 }: DefaultThemeOptions = {}): Theme => {
-  assignDefaultLocaleOptions(localeOptions)
-
   return {
     name: '@vuepress/theme-default',
 
@@ -79,17 +115,34 @@ export const defaultTheme = ({
 
       // @vuepress/plugin-container
       themePlugins.container?.tip !== false
-        ? containerPlugin(resolveContainerPluginOptions(localeOptions, 'tip'))
+        ? containerPlugin({
+            type: 'tip',
+            locales: {
+              '/': {
+                defaultInfo: '{{ $themeLocale.tip }}',
+              },
+            },
+          })
         : [],
       themePlugins.container?.warning !== false
-        ? containerPlugin(
-            resolveContainerPluginOptions(localeOptions, 'warning')
-          )
+        ? containerPlugin({
+            type: 'warning',
+            locales: {
+              '/': {
+                defaultInfo: '{{ $themeLocale.warning }}',
+              },
+            },
+          })
         : [],
       themePlugins.container?.danger !== false
-        ? containerPlugin(
-            resolveContainerPluginOptions(localeOptions, 'danger')
-          )
+        ? containerPlugin({
+            type: 'danger',
+            locales: {
+              '/': {
+                defaultInfo: '{{ $themeLocale.danger }}',
+              },
+            },
+          })
         : [],
       themePlugins.container?.details !== false
         ? containerPlugin({
@@ -119,16 +172,11 @@ export const defaultTheme = ({
       // @vuepress/plugin-external-link-icon
       themePlugins.externalLinkIcon !== false
         ? externalLinkIconPlugin({
-            locales: Object.entries(localeOptions.locales || {}).reduce(
-              (result, [key, value]) => {
-                result[key] = {
-                  openInNewWindow:
-                    value.openInNewWindow ?? localeOptions.openInNewWindow,
-                }
-                return result
+            locales: {
+              '/': {
+                openInNewWindow: '{{ $themeLocale.openInNewWindow }}',
               },
-              {}
-            ),
+            },
           })
         : [],
 
@@ -136,8 +184,8 @@ export const defaultTheme = ({
       themePlugins.git !== false
         ? gitPlugin({
             createdTime: false,
-            updatedTime: localeOptions.lastUpdated !== false,
-            contributors: localeOptions.contributors !== false,
+            updatedTime: true,
+            contributors: true,
           })
         : [],
 
@@ -162,7 +210,7 @@ export const defaultTheme = ({
       themePlugins.prismjs !== false ? prismjsPlugin() : [],
 
       // @vuepress/plugin-theme-data
-      themeDataPlugin({ themeData: localeOptions }),
+      themeDataPlugin(),
     ],
   }
 }

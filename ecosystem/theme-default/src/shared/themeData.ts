@@ -1,57 +1,6 @@
-import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { ThemeData } from '@vuepress/plugin-theme-data/client'
 import type { LocaleData } from '@vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav.js'
-
-export interface DefaultThemePluginsOptions {
-  /**
-   * Enable @vuepress/plugin-active-header-links or not
-   */
-  activeHeaderLinks?: boolean
-
-  /**
-   * Enable @vuepress/plugin-back-to-top or not
-   */
-  backToTop?: boolean
-
-  /**
-   * Enable @vuepress/plugin-container or not
-   */
-  container?: {
-    tip?: boolean
-    warning?: boolean
-    danger?: boolean
-    details?: boolean
-    codeGroup?: boolean
-    codeGroupItem?: boolean
-  }
-
-  /**
-   * Enable @vuepress/plugin-external-link-icon or not
-   */
-  externalLinkIcon?: boolean
-
-  /**
-   * Enable @vuepress/plugin-git or not
-   */
-  git?: boolean
-
-  /**
-   * Enable @vuepress/plugin-medium-zoom or not
-   */
-  mediumZoom?: boolean
-
-  /**
-   * Enable @vuepress/plugin-nprogress or not
-   */
-  nprogress?: boolean
-
-  /**
-   * Enable @vuepress/plugin-prismjs or not
-   */
-  prismjs?: boolean
-}
-
-export type DefaultThemeLocaleOptions = DefaultThemeData
 
 export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 

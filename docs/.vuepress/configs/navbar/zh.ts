@@ -1,5 +1,4 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
-import { version } from '../meta.js'
 
 export const navbarZh: NavbarConfig = [
   {
@@ -118,7 +117,7 @@ export const navbarZh: NavbarConfig = [
     ],
   },
   {
-    text: `v${version}`,
+    text: `v${__VUEPRESS_VERSION__}`,
     children: [
       {
         text: '更新日志',

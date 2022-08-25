@@ -7,9 +7,6 @@
       "@internal/searchIndex": [
         "./ecosystem/plugin-search/src/client/searchIndex.d.ts"
       ],
-      "@internal/themeData": [
-        "./ecosystem/plugin-theme-data/src/client/themeData.d.ts"
-      ],
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
       "@theme/*": ["./ecosystem/theme-default/src/client/components/*"],
       "@vuepress/*": ["./packages/*/src"],

@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-theme-data" />
 
-Provide client data for your theme, with VuePress [i18n](../../guide/i18n.md) support.
+Provide config data for your theme, with VuePress [i18n](../../guide/i18n.md) support.
 
 This plugin is mainly used to develop themes, and has been integrated into the default theme. You won't need to use it directly in most cases.
 
@@ -19,65 +19,54 @@ import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
 export default {
   plugins: [
-    themeDataPlugin({
-      // options
-    }),
+    themeDataPlugin(),
   ],
 }
 ```
 
-## Options
+## Client API
 
-### themeData
-
-- Type: `ThemeData`
-
-- Default: `{}`
+### defineThemeData
 
 - Details:
 
-  The theme data object that you want to use in client side.
-
-  You can provide theme data in Node side via this option, and use it in client side via [useThemeData](#useThemeData) and [useThemeLocaleData](#useThemeLocaleData).
+  Set theme data in your [client config file](../../guide/configuration.md#client-config-file).
 
 - Example:
 
 ```ts
-export default {
-  plugins: [
-    themeDataPlugin({
-      themeData: {
-        foo: 'foo',
-        locales: {
-          '/zh/': {
-            foo: 'zh-foo',
-          },
-        },
-      },
-    }),
-  ],
-}
+// .vuepress/client.ts
+import { defineClientConfig } from '@vuepress/client'
+import { defineThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
+
+type MyThemeData = ThemeData<{
+  foo: string
+}>
+
+defineThemeData<MyThemeData>({
+  foo: 'foo',
+  locales: {
+    '/zh/': {
+      foo: 'zh-foo',
+    },
+  },
+})
+
+export default defineClientConfig()
 ```
-
-::: warning
-The theme data object will be processed by `JSON.stringify()` before forwarding to client side, so you should ensure that you are providing a JSON-friendly object.
-:::
-
-## Composition API
 
 ### useThemeData
 
 - Details:
 
   Returns the theme data ref object.
-  
-  The value is provided by [themeData](#themeData) option.
+
+  Typically, users will set theme data via [defineThemeData](#defineThemeData) method in their client config, and you can use theme data via `useThemeData` in your theme.
 
 - Example:
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
@@ -102,8 +91,7 @@ export default {
 - Example:
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
-import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeData, type ThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
