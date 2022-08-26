@@ -172,16 +172,6 @@ const dev = async () => {
 
   它仅在 [onInitialized](./plugin-api.md#oninitialized) 以及之后的 Hooks 中才可用。
 
-### layouts
-
-- 类型： `Record<string, string>`
-
-- 详情：
-
-  布局组件 Map ，其键为布局名称，对应值为布局组件的绝对文件路径。
-
-  它仅在 [onInitialized](./plugin-api.md#oninitialized) 以及之后的 Hooks 中才可用。
-
 ### pages
 
 - 类型： `Page[]`

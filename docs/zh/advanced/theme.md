@@ -14,31 +14,54 @@ import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 
 const fooTheme = (options) => {
+  // 返回一个主题对象
   return {
     name: 'vuepress-theme-foo',
-    layouts: {
-      Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-      404: path.resolve(__dirname, 'layouts/404.vue'),
-    },
-    // ...
+
+    // 主题的客户端配置文件的路径
+    clientConfigFile: path.resolve(__dirname, 'client.js'),
+
+    // 设置自定义 dev / build 模板
+    // 如果没有指定模板，将会使用 `@vuepress/client` 提供的默认模板
+    templateBuild: path.resolve(__dirname, 'templates/build.html'),
+    templateDev: path.resolve(__dirname, 'templates/dev.html'),
+
+    // 使用插件
+    plugins: [
+      // ...
+    ],
+
+    // 其他的插件 API 也都可用
   }
 }
 
 const barTheme = (options) => {
+  // 返回一个主题函数
   return (app) => {
     return {
       name: 'vuepress-theme-bar',
-      layouts: {
-        Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-        404: path.resolve(__dirname, 'layouts/404.vue'),
-      },
       // ...
     }
   }
 }
 ```
 
-`layouts` 字段声明了你的主题提供的布局。一个主题必须提供至少两个布局：`Layout` 和 `404` 。前者用于提供一般页面的默认布局，后者用于提供 404 页面的布局。
+然后，创建主题的客户端配置文件 `client.js` :
+
+```ts
+import { defineClientConfig } from '@vuepress/client'
+import Layout from './layouts/Layout.vue'
+import NotFound from './layouts/NotFound.vue'
+
+export default defineClientConfig({
+  layouts: {
+    Layout,
+    NotFound,
+  },
+})
+```
+
+`layouts` 字段声明了你的主题提供的布局。一个主题必须提供至少两个布局：`Layout` 和 `NotFound` 。前者用于提供一般页面的默认布局，后者用于提供 404 页面的布局。
 
 `Layout` 布局应该包含 [Content](../reference/components.md#content) 组件来展示 Markdown 内容：
 
@@ -50,7 +73,7 @@ const barTheme = (options) => {
 </template>
 ```
 
-`404` 布局会被用于 `404.html` 页面：
+`NotFound` 布局会被用于 `404.html` 页面：
 
 ```vue
 <template>

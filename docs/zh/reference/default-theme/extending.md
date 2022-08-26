@@ -22,30 +22,20 @@ VuePress 提供了继承主题的基础能力，但不同的主题可能会提�
 
 在它们的帮助下，你可以很容易地添加或替换内容。下面通过一个示例来介绍一下如何使用布局插槽来继承默认主题。
 
-首先，创建你的本地主题 `.vuepress/theme/index.ts` ：
+首先，创建一个客户端配置文件 `.vuepress/client.ts` ：
 
 ```ts
-import type { Theme } from '@vuepress/core'
-import { defaultTheme } from '@vuepress/theme-default'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { getDirname, path } from '@vuepress/utils'
+import { defineClientConfig } from '@vuepress/client'
+import Layout from './layouts/Layout.vue'
 
-const __dirname = getDirname(import.meta.url)
-
-export const localTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-local',
-    extends: defaultTheme(options),
-    layouts: {
-      Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-    },
-  }
-}
+export default defineClientConfig({
+  layouts: {
+    Layout,
+  },
+})
 ```
 
-这样你的本地主题将会继承默认主题，并且覆盖 `Layout` 布局。
-
-接下来，创建 `.vuepress/theme/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 布局提供的插槽：
+接下来，创建 `.vuepress/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 布局提供的插槽：
 
 ```vue
 <script setup>
@@ -67,21 +57,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 </style>
 ```
 
-最后，记得在配置文件中使用你的本地主题：
-
-```ts
-import { path } from '@vuepress/utils'
-import { defineUserConfig } from 'vuepress'
-import { localTheme } from './theme'
-
-export default defineUserConfig({
-  theme: localTheme({
-    // 默认主题配置项
-  }),
-})
-```
-
-你将会在除了首页外的所有页面添加一个自定义的页脚：
+此时默认的 `Layout` 布局已经被你的本地布局覆盖，将会在除了首页外的所有页面添加一个自定义的页脚：
 
 ![extending-a-theme](/images/cookbook/extending-a-theme-01.png)
 
@@ -91,28 +67,7 @@ export default defineUserConfig({
 
 默认主题将所有 [非全局的组件](https://github.com/vuepress/vuepress-next/tree/main/packages/%40vuepress/theme-default/src/client/components) 都注册了一个带 `@theme` 前缀的 [alias](../plugin-api.md#alias) 。例如，`HomeFooter.vue` 的别名是 `@theme/HomeFooter.vue` 。
 
-接下来，如果你想要替换 `HomeFooter.vue` 组件，只需要覆盖这个别名即可：
-
-```ts
-import type { Theme } from '@vuepress/core'
-import { defaultTheme } from '@vuepress/theme-default'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { getDirname, path } from '@vuepress/utils'
-
-const __dirname = getDirname(import.meta.url)
-
-export const localTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-local',
-    extends: defaultTheme(options),
-    alias: {
-      '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
-    },
-  }
-}
-```
-
-实际上，你不需要继承默认主题就可以进行组件替换。上面提到的 [alias](../plugin-api.md#alias) 配置项是 [插件 API](../plugin-api.md) 的一部分，因此你只需要在你的配置文件中设置别名就可以替换组件了：
+接下来，如果你想要替换 `HomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
 
 ```ts
 import { getDirname, path } from '@vuepress/utils'
@@ -126,4 +81,31 @@ export default defineUserConfig({
     '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
   },
 })
+```
+
+## 开发一个子主题
+
+除了在 `.vuepress/config.ts` 和 `.vuepress/client.ts` 中直接扩展默认主题以外，你可以通过继承默认主题来开发一个你自己的主题：
+
+```ts
+import type { Theme } from '@vuepress/core'
+import { defaultTheme, type DefaultThemeOptions } from '@vuepress/theme-default'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
+export const childTheme = (options: DefaultThemeOptions): Theme => {
+  return {
+    name: 'vuepress-theme-child',
+    extends: defaultTheme(options),
+
+    // 在子主题的客户端配置文件中覆盖布局
+    clientConfigFile: path.resolve(__dirname, './client.js'),
+
+    // 覆盖组件别名
+    alias: {
+      '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    },
+  }
+}
 ```

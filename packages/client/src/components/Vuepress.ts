@@ -40,8 +40,8 @@ export const Vuepress = defineComponent({
         }
       } else {
         // if current page does not exist
-        // use 404 layout
-        layoutName = '404'
+        // use NotFound layout
+        layoutName = 'NotFound'
       }
       return layouts[layoutName]
     })

@@ -37,7 +37,6 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
   父主题的所有主题 API 都会被继承，但是子主题不会直接覆盖父主题。主题特定的配置项会根据以下规则进行覆盖：
 
-  - [layouts](#layouts)： 当在子主题和父主题中注册了具有相同名称的布局时，则子主题的布局将具有更高的优先级。
   - [plugins](#plugins)： 当同一个插件在子主题和父主题中都被使用时，如果该插件不支持被多次使用，那么只有在子主题中使用的插件会生效。
   - [templateBuild](#templatebuild) / [templateDev](#templatedev)： 子主题的模板会覆盖父主题的模板。
 
@@ -54,64 +53,6 @@ const __dirname = getDirname(import.meta.url)
 export default {
   // 继承默认主题
   extends: defaultTheme(),
-
-  // 覆盖 `404` 布局
-  layouts: {
-    404: path.resolve(__dirname, 'path/to/404.vue'),
-  },
-}
-```
-
-### layouts
-
-- 类型： `string | Record<string, string>`
-
-- 详情：
-
-  指定主题的布局组件。
-
-  它可以接收布局目录的绝对路径。该目录下的所有 `.vue,.ts,.js` 文件都会被注册为布局组件。
-
-  它还可以接收一个普通对象，其键是布局名称，值是布局文件的绝对路径。
-
-  一个主题必须至少有两个布局： `Layout` 和 `404` 。
-
-- 示例：
-
-布局目录：
-
-```bash
-layouts
-├─ Layout.vue
-├─ 404.vue
-└─ FooBar.vue
-```
-
-使用布局目录的绝对路径：
-
-```ts
-import { getDirname, path } from '@vuepress/utils'
-
-const __dirname = getDirname(import.meta.url)
-
-export default {
-  layouts: path.resolve(__dirname, 'path/to/layouts'),
-}
-```
-
-使用普通对象是等效的：
-
-```ts
-import { getDirname, path } from '@vuepress/utils'
-
-const __dirname = getDirname(import.meta.url)
-
-export default {
-  layouts: {
-    Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
-    404: path.resolve(__dirname, 'path/to/layouts/404.vue'),
-    FooBar: path.resolve(__dirname, 'path/to/layouts/FooBar.vue'),
-  },
 }
 ```
 

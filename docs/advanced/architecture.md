@@ -6,13 +6,13 @@
 
 The above figure shows a brief overview of the VuePress architecture:
 
-- Node App will generate temp files, including the layouts, pages, routes, etc.
+- Node App will generate temp files, including the pages, routes, etc.
 - Bundler will handle Client App together with the temp files, just like a common Vue SPA.
 
 As a developer, you must be aware of that VuePress has two main parts: **Node App** and **Client App**, which is important when developing plugins and themes:
 
 - The entry file of a plugin or a theme will be loaded in Node App.
-- Client files will be loaded in Client App, which will be handled by bundler. For example, layouts, components, app setup files, app enhance files, etc.
+- Client files will be loaded in Client App, which will be handled by bundler. For example, components, client config files, etc.
 
 ## Core Process and Hooks
 

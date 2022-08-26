@@ -143,6 +143,21 @@ export default defineClientConfig({
 })
 ```
 
+## layouts
+
+`layouts` 配置项用于设置布局组件。你在此处注册布局后，用户就可以通过 [layout](../../reference/frontmatter.md#layout) frontmatter 来使用它们。
+
+```ts
+import { defineClientConfig } from '@vuepress/client'
+import MyLayout from './layouts/MyLayout.vue'
+
+export default defineClientConfig({
+  layouts: {
+    MyLayout,
+  },
+})
+```
+
 ## rootComponents
 
 `rootComponents` 是一个组件数组，它们将会直接被放置在客户端 Vue 应用的根节点下。

@@ -1,11 +1,13 @@
 import { defineClientConfig } from '@vuepress/client'
-import { defineAsyncComponent, h } from 'vue'
+import { h } from 'vue'
 import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import {
   setupDarkMode,
   setupSidebarItems,
   useScrollPromise,
 } from './composables/index.js'
+import Layout from './layouts/Layout.vue'
+import NotFound from './layouts/NotFound.vue'
 
 import './styles/index.scss'
 
@@ -48,7 +50,7 @@ export default defineClientConfig({
   },
 
   layouts: {
-    Layout: defineAsyncComponent(() => import('./layouts/Layout.vue')),
-    404: defineAsyncComponent(() => import('./layouts/404.vue')),
+    Layout,
+    NotFound,
   },
 })
