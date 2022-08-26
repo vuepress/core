@@ -4,6 +4,9 @@ import type { Component } from 'vue'
 import { computed, defineComponent, h } from 'vue'
 import { usePageData } from '../composables/index.js'
 
+const LAYOUT_NAME_DEFAULT = 'Layout'
+const LAYOUT_NAME_NOT_FOUND = 'NotFound'
+
 const layouts = clientConfigs.reduce(
   (prev, item) => ({
     ...prev,
@@ -36,12 +39,12 @@ export const Vuepress = defineComponent({
           layoutName = frontmatterLayout
         } else {
           // fallback to default layout
-          layoutName = 'Layout'
+          layoutName = LAYOUT_NAME_DEFAULT
         }
       } else {
         // if current page does not exist
         // use NotFound layout
-        layoutName = 'NotFound'
+        layoutName = LAYOUT_NAME_NOT_FOUND
       }
       return layouts[layoutName]
     })
