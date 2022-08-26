@@ -20,6 +20,17 @@ export const handleResolve = async ({
     .set('@internal', app.dir.temp('internal'))
 
   // extensions
+  config.merge({
+    resolve: {
+      extensionAlias: {
+        '.js': ['.ts', '.js'],
+        '.mjs': ['.mts', '.mjs'],
+      },
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'],
+    },
+  })
+
+  // extensions
   config.resolve.extensions.merge([
     '.js',
     '.jsx',
