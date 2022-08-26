@@ -326,7 +326,7 @@ Some major breaking changes:
 - There is no **conventional theme directory structure** anymore.
   - The file `theme/enhanceApp.js` will not be used as client app enhance file implicitly. You need to specify it explicitly in `clientConfigFile` hook.
   - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to use [@vuepress/plugin-register-components](../reference/plugin/register-components.md), or register components manually in `clientConfigFile`.
-  - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option.
+  - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option in `clientConfigFile`.
   - Files in `theme/templates/` directory will not be used as dev / ssr template automatically. You need to specify theme explicitly in `templateBuild` and `templateDev` option.
   - Always provide a valid js entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry anymore.
 - `themeConfig` is removed from user config and site data. To access the `themeConfig` as you would via `this.$site.themeConfig` in v1, we now recommend using the [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) plugin and its `useThemeData` composition API.
@@ -340,9 +340,11 @@ For more detailed guide about how to write a theme in v2, see [Advanced > Writin
 
 #### layouts
 
-Now you need to specify the layouts directory or layout components manually.
+Removed.
 
-See [Theme API > layouts](../reference/theme-api.md#layouts).
+Now you need to specify layout component in the client config file of your theme.
+
+See [Advanced > Writing a theme](../advanced/theme.md).
 
 #### extend
 

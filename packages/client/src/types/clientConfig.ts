@@ -22,6 +22,11 @@ export interface ClientConfig {
   setup?: () => void
 
   /**
+   * Layout components
+   */
+  layouts?: Record<string, Component>
+
+  /**
    * Components to be placed directly into the root node of vue app
    */
   rootComponents?: Component[]

@@ -20,29 +20,6 @@ const getThemePlugin = async (themePath: string) => {
 }
 
 describe('core > app > resolveThemeInfo', () => {
-  describe('layouts', () => {
-    describe('should resolve theme info without layouts correctly', () => {
-      themeEntryTypes.forEach((item) =>
-        it(item, async () => {
-          const app = await createTestApp(fixtures(`themes/${item}-empty.js`))
-          expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({})
-        })
-      )
-    })
-
-    describe('should resolve theme info with layouts correctly', () => {
-      themeEntryTypes.forEach((item) =>
-        it(item, async () => {
-          const app = await createTestApp(fixtures(`themes/${item}.js`))
-          expect(resolveThemeInfo(app, app.options.theme).layouts).toEqual({
-            Layout: fixtures('layouts/Layout.vue'),
-            404: fixtures('layouts/404.vue'),
-          })
-        })
-      )
-    })
-  })
-
   describe('plugins', () => {
     describe('should resolve theme info without plugins correctly', () => {
       themeEntryTypes.forEach((item) =>
@@ -85,11 +62,6 @@ describe('core > app > resolveThemeInfo', () => {
               await importFileDefault(fixtures('plugins/obj-foo.js')),
               await getThemePlugin(themePath),
             ],
-            layouts: {
-              Layout: fixtures('layouts/Layout.vue'),
-              Foo: fixtures('layouts/Foo.vue'),
-              404: fixtures('layouts/Foo.vue'),
-            },
             templateBuild: `theme-${item}-extends-parent-template-build`,
             templateDev: `theme-${item}-template-dev`,
           })
@@ -114,12 +86,6 @@ describe('core > app > resolveThemeInfo', () => {
               await importFileDefault(fixtures('plugins/obj-bar.js')),
               await getThemePlugin(themePath),
             ],
-            layouts: {
-              Layout: fixtures('layouts/Layout.vue'),
-              Foo: fixtures('layouts/Foo.vue'),
-              Bar: fixtures('layouts/Bar.vue'),
-              404: fixtures('layouts/Bar.vue'),
-            },
             templateBuild: `theme-${item}-extends-parent-template-build`,
             templateDev: `theme-${item}-extends-grandparent-template-dev`,
           })

@@ -142,6 +142,21 @@ export default defineClientConfig({
 })
 ```
 
+## layouts
+
+The `layouts` options is to set layout components. After layout components are registered here, users can use it via [layout](../../reference/frontmatter.md#layout) frontmatter.
+
+```ts
+import { defineClientConfig } from '@vuepress/client'
+import MyLayout from './layouts/MyLayout.vue'
+
+export default defineClientConfig({
+  layouts: {
+    MyLayout,
+  },
+})
+```
+
 ## rootComponents
 
 The `rootComponents` is a components array to be placed directly into the root node of the client vue app.

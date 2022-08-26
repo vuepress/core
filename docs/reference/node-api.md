@@ -172,16 +172,6 @@ const dev = async () => {
 
   It is only available in and after [onInitialized](./plugin-api.md#oninitialized) hook.
 
-### layouts
-
-- Type: `Record<string, string>`
-
-- Details:
-
-  The layout components map, of which the key is the layout name, the value is the absolute file path of the layout component.
-
-  It is only available in and after [onInitialized](./plugin-api.md#oninitialized) hook.
-
 ### pages
 
 - Type: `Page[]`

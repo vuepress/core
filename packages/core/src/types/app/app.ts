@@ -67,13 +67,6 @@ export interface App {
   prepare: () => Promise<void>
 
   /**
-   * Layout components.
-   *
-   * Only available after initialization
-   */
-  layouts: Record<string, string>
-
-  /**
    * Markdown-it instance.
    *
    * Only available after initialization

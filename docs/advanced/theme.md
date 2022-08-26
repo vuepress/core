@@ -14,31 +14,54 @@ import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 
 const fooTheme = (options) => {
+  // returns a theme object
   return {
     name: 'vuepress-theme-foo',
-    layouts: {
-      Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-      404: path.resolve(__dirname, 'layouts/404.vue'),
-    },
-    // ...
+
+    // path to the client config of your theme
+    clientConfigFile: path.resolve(__dirname, 'client.js'),
+
+    // set custom dev / build template
+    // if the template is not specified, the default template from `@vuepress/client` will be used
+    templateBuild: path.resolve(__dirname, 'templates/build.html'),
+    templateDev: path.resolve(__dirname, 'templates/dev.html'),
+
+    // use plugins
+    plugins: [
+      // ...
+    ],
+
+    // other plugin APIs are also available
   }
 }
 
 const barTheme = (options) => {
+  // returns a theme function
   return (app) => {
     return {
       name: 'vuepress-theme-bar',
-      layouts: {
-        Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-        404: path.resolve(__dirname, 'layouts/404.vue'),
-      },
       // ...
     }
   }
 }
 ```
 
-The `layouts` field declares the layouts provided by your theme. A theme must provide at least two layouts: `Layout` and `404`. The former is to provide default layout for common pages, while the latter is to provide layout for 404 page.
+Then, create theme's client config file `client.js` :
+
+```ts
+import { defineClientConfig } from '@vuepress/client'
+import Layout from './layouts/Layout.vue'
+import NotFound from './layouts/NotFound.vue'
+
+export default defineClientConfig({
+  layouts: {
+    Layout,
+    NotFound,
+  },
+})
+```
+
+The `layouts` field declares the layouts provided by your theme. A theme must provide at least two layouts: `Layout` and `NotFound`. The former is to provide default layout for common pages, while the latter is to provide layout for 404-not-found page.
 
 The `Layout` layout should contain the [Content](../reference/components.md#content) component to display the markdown content:
 
@@ -50,7 +73,7 @@ The `Layout` layout should contain the [Content](../reference/components.md#cont
 </template>
 ```
 
-The `404` layout will be used for the `404.html` page:
+The `NotFound` layout will be used for the `404.html` page:
 
 ```vue
 <template>

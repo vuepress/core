@@ -96,8 +96,8 @@ import { defineClientConfig } from '@vuepress/client'
 import CustomLayout from './CustomLayout.vue'
 
 export default defineClientConfig({
-  enhance({ app }) {
-    app.component('CustomLayout', CustomLayout)
+  layouts: {
+    CustomLayout,
   },
 })
 ```

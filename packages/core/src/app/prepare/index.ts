@@ -1,5 +1,4 @@
 export * from './prepareClientConfigs.js'
-export * from './prepareLayoutComponents.js'
 export * from './preparePageComponent.js'
 export * from './preparePageData.js'
 export * from './preparePagesComponents.js'

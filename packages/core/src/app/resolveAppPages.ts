@@ -27,7 +27,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
       await createPage(app, {
         path: '/404.html',
         frontmatter: {
-          layout: '404',
+          layout: 'NotFound',
         },
       })
     )

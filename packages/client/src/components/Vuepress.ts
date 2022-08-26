@@ -1,7 +1,19 @@
-import { layoutComponents } from '@internal/layoutComponents'
+import { clientConfigs } from '@internal/clientConfigs'
 import { isString } from '@vuepress/shared'
-import { computed, defineComponent, h, resolveComponent } from 'vue'
+import type { Component } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { usePageData } from '../composables/index.js'
+
+const LAYOUT_NAME_DEFAULT = 'Layout'
+const LAYOUT_NAME_NOT_FOUND = 'NotFound'
+
+const layouts = clientConfigs.reduce(
+  (prev, item) => ({
+    ...prev,
+    ...item.layouts,
+  }),
+  {} as Record<string, Component>
+)
 
 /**
  * Global Layout
@@ -27,16 +39,14 @@ export const Vuepress = defineComponent({
           layoutName = frontmatterLayout
         } else {
           // fallback to default layout
-          layoutName = 'Layout'
+          layoutName = LAYOUT_NAME_DEFAULT
         }
       } else {
         // if current page does not exist
-        // use 404 layout
-        layoutName = '404'
+        // use NotFound layout
+        layoutName = LAYOUT_NAME_NOT_FOUND
       }
-
-      // use theme layout or fallback to custom layout
-      return layoutComponents[layoutName] || resolveComponent(layoutName, false)
+      return layouts[layoutName]
     })
 
     return () => h(layoutComponent.value)

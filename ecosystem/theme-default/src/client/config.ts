@@ -6,6 +6,8 @@ import {
   setupSidebarItems,
   useScrollPromise,
 } from './composables/index.js'
+import Layout from './layouts/Layout.vue'
+import NotFound from './layouts/NotFound.vue'
 
 import './styles/index.scss'
 
@@ -45,5 +47,10 @@ export default defineClientConfig({
   setup() {
     setupDarkMode()
     setupSidebarItems()
+  },
+
+  layouts: {
+    Layout,
+    NotFound,
   },
 })

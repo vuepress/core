@@ -22,30 +22,20 @@ Default theme's `Layout` provides some slots:
 
 With the help of them, you can add or replace content easily. Here comes an example to introduce how to extend default theme with layout slots.
 
-Firstly, create your local theme `.vuepress/theme/index.ts`:
+Firstly, create a client config file `.vuepress/client.ts`:
 
 ```ts
-import type { Theme } from '@vuepress/core'
-import { defaultTheme } from '@vuepress/theme-default'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { getDirname, path } from '@vuepress/utils'
+import { defineClientConfig } from '@vuepress/client'
+import Layout from './layouts/Layout.vue'
 
-const __dirname = getDirname(import.meta.url)
-
-export const localTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-local',
-    extends: defaultTheme(options),
-    layouts: {
-      Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
-    },
-  }
-}
+export default defineClientConfig({
+  layouts: {
+    Layout,
+  },
+})
 ```
 
-Then your theme will extend default theme, and override the `Layout` layout.
-
-Next, create the `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
+Next, create the `.vuepress/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
 
 ```vue
 <script setup>
@@ -67,21 +57,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 </style>
 ```
 
-Finally, remember to use your theme in the config file:
-
-```ts
-import { path } from '@vuepress/utils'
-import { defineUserConfig } from 'vuepress'
-import { localTheme } from './theme'
-
-export default defineUserConfig({
-  theme: localTheme({
-    // default theme options
-  }),
-})
-```
-
-You will add a custom footer to every normal pages in default theme (excluding homepage):
+Then the default `Layout` layout has been overridden by your own local layout, which will add a custom footer to every normal pages in default theme (excluding homepage):
 
 ![extending-a-theme](/images/cookbook/extending-a-theme-01.png)
 
@@ -91,28 +67,7 @@ The layout slots are useful, but sometimes you might find it's not flexible enou
 
 Default theme has registered [alias](../plugin-api.md#alias) for every [non-global components](https://github.com/vuepress/vuepress-next/tree/main/packages/%40vuepress/theme-default/src/client/components) with a `@theme` prefix. For example, the alias of `HomeFooter.vue` is `@theme/HomeFooter.vue`.
 
-Then, if you want to replace the `HomeFooter.vue` component, just override the alias:
-
-```ts
-import type { Theme } from '@vuepress/core'
-import { defaultTheme } from '@vuepress/theme-default'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { getDirname, path } from '@vuepress/utils'
-
-const __dirname = getDirname(import.meta.url)
-
-export const localTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-local',
-    extends: defaultTheme(options),
-    alias: {
-      '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
-    },
-  }
-}
-```
-
-In fact, you can even use components replacement without extending default theme. The [alias](../plugin-api.md#alias) option is part of [Plugin API](../plugin-api.md), so you only need to set the aliases in your config file to replace components.
+Then, if you want to replace the `HomeFooter.vue` component, just override the alias in your config file `.vuepress/config.ts`:
 
 ```ts
 import { getDirname, path } from '@vuepress/utils'
@@ -126,4 +81,31 @@ export default defineUserConfig({
     '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
   },
 })
+```
+
+## Developing a Child Theme
+
+Instead of extending the default theme directly in `.vuepress/config.ts` and `.vuepress/client.ts`, you can also develop your own theme extending the default theme:
+
+```ts
+import type { Theme } from '@vuepress/core'
+import { defaultTheme, type DefaultThemeOptions } from '@vuepress/theme-default'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
+export const childTheme = (options: DefaultThemeOptions): Theme => {
+  return {
+    name: 'vuepress-theme-child',
+    extends: defaultTheme(options),
+
+    // override layouts in child theme's client config file
+    clientConfigFile: path.resolve(__dirname, './client.js'),
+
+    // override component alias
+    alias: {
+      '@theme/HomeFooter.vue': path.resolve(__dirname, './components/MyHomeFooter.vue'),
+    },
+  }
+}
 ```

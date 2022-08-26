@@ -26,7 +26,6 @@ export const renderPagePreloadLinks = ({
     new Set([
       outputEntryChunk.fileName,
       ...outputEntryChunk.imports,
-      // TODO: preload layout
       ...pageChunkFiles,
     ])
   )

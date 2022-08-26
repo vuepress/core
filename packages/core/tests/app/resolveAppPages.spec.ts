@@ -21,7 +21,7 @@ describe('core > app > resolveAppPages', () => {
     expect(fooPage?.filePathRelative).toEqual('foo.md')
     expect(barPage?.filePathRelative).toEqual('bar.md')
     expect(notFoundPage?.filePathRelative).toBeNull()
-    expect(notFoundPage?.frontmatter.layout).toEqual('404')
+    expect(notFoundPage?.frontmatter.layout).toEqual('NotFound')
   })
 
   it('should create two pages with custom 404 page', async () => {

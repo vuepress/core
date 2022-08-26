@@ -328,7 +328,7 @@ v1 的主题和插件和 v2 并不兼容。
 - 所谓的 **主题目录结构约定** 不再存在。
   - `theme/enhanceApp.js` 文件不会被隐式作为 Client App Enhance 文件。你需要在 `clientConfigFile` Hook 中显式指定它。
   - `theme/global-components/` 目录下的文件不会被自动注册为 Vue 组件。你需要使用 [@vuepress/plugin-register-components](../reference/plugin/register-components.md) ，或者在 `clientConfigFile` 中手动注册组件。
-  - `theme/layouts/` 目录下的文件不会被自动注册为布局组件。你需要通过 `layouts` 配置项来显式指定。
+  - `theme/layouts/` 目录下的文件不会被自动注册为布局组件。你需要在 `clientConfigFile` 中通过 `layouts` 来显式指定。
   - `theme/templates/` 目录下的文件不会被自动用作 dev / ssr 的模板。你需要通过 `templateBuild` 和 `templateDev` 配置项来显式指定。
   - 你始终需要提供一个合法的 JS 入口文件，不要再使用 `"main": "layouts/Layout.vue"` 作为主题入口。
 - `themeConfig` 已经从用户配置和站点数据中移除。如果你想要像 v1 一样通过 `this.$site.themeConfig` 来访问 `themeConfig` ，我们现在建议使用 [@vuepress/plugin-theme-data](../reference/plugin/theme-data.md) 插件和它提供的 Composition API `useThemeData` 。
@@ -342,9 +342,11 @@ v1 的主题和插件和 v2 并不兼容。
 
 #### layouts
 
-现在你需要手动设置布局目录或布局组件。
+移除。
 
-参考 [主题 API > layouts](../reference/theme-api.md#layouts) 。
+现在你需要在客户端配置文件中设置布局组件。
+
+参考 [深入 > 开发主题](../advanced/theme.md) 。
 
 #### extend
 
