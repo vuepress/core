@@ -1,11 +1,13 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, importFile, ora, withSpinner } from '@vuepress/utils'
+import { chalk, debug, fs, importFile, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
 import { renderPage } from './renderPage.js'
+
+const log = debug('vuepress:bundler-vite/build')
 
 export const build = async (
   options: ViteBundlerOptions,
@@ -15,6 +17,7 @@ export const build = async (
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
 
   // vite compile
+  log('compiling start')
   let clientOutput!: RollupOutput
   let serverOutput!: RollupOutput
   await withSpinner('Compiling with vite')(async () => {
@@ -37,9 +40,10 @@ export const build = async (
       viteBuild(serverConfig) as Promise<RollupOutput>,
     ])
   })
+  log('compiling finish')
 
   // render pages
-  await withSpinner('Rendering pages')(async () => {
+  await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
     // load ssr template file
     const ssrTemplate = (
       await fs.readFile(app.options.templateBuild)
@@ -66,9 +70,10 @@ export const build = async (
     }>(serverEntryPath)
 
     // pre-render pages to html files
-    const spinner = ora()
     for (const page of app.pages) {
-      spinner.start(`Rendering pages ${chalk.magenta(page.path)}`)
+      if (spinner) {
+        spinner.text = `Rendering pages ${chalk.magenta(page.path)}`
+      }
       await renderPage({
         app,
         page,
@@ -79,7 +84,6 @@ export const build = async (
         outputCssAsset: clientCssAsset,
       })
     }
-    spinner.stop()
   })
 
   // keep the server bundle files in debug mode

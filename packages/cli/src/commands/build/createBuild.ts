@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { createBuildApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
-import { debug, fs, logger } from '@vuepress/utils'
+import { debug, formatMs, fs, logger, withSpinner } from '@vuepress/utils'
 import {
   loadUserConfig,
   resolveAppConfig,
@@ -17,6 +17,8 @@ const log = debug('vuepress:cli/build')
 export const createBuild =
   (defaultAppConfig: Partial<AppConfig>): BuildCommand =>
   async (sourceDir = '.', commandOptions = {}): Promise<void> => {
+    const start = Date.now()
+
     log(`commandOptions:`, commandOptions)
 
     if (process.env.NODE_ENV === undefined) {
@@ -51,22 +53,24 @@ export const createBuild =
 
     // clean temp and cache
     if (commandOptions.cleanTemp === true) {
-      logger.info('Cleaning temp...')
-      await fs.remove(app.dir.temp())
+      await withSpinner('Cleaning temp')(() => {
+        return fs.remove(app.dir.temp())
+      })
     }
     if (commandOptions.cleanCache === true) {
-      logger.info('Cleaning cache...')
-      await fs.remove(app.dir.cache())
+      await withSpinner('Cleaning cache')(() => {
+        return fs.remove(app.dir.cache())
+      })
     }
 
     // empty dest directory
     await fs.emptyDir(app.dir.dest())
 
     // initialize and prepare
-    logger.info('Initializing VuePress and preparing data...')
-
-    await app.init()
-    await app.prepare()
+    await withSpinner('Initializing and preparing data')(async () => {
+      await app.init()
+      await app.prepare()
+    })
 
     // build
     await app.build()
@@ -74,5 +78,7 @@ export const createBuild =
     // plugin hook: onGenerated
     await app.pluginApi.hooks.onGenerated.process(app)
 
-    logger.success('VuePress build successfully!')
+    logger.success(
+      `VuePress build completed in ${formatMs(Date.now() - start)}!`
+    )
   }

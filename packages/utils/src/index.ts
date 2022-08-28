@@ -10,6 +10,7 @@ export { debug, chalk, fs, globby, hash, ora, path }
 
 export * from './getDirname.js'
 export * from './importFile.js'
+export * from './formatMs.js'
 export * from './isChildPath.js'
 export * from './logger.js'
 export * from './renderHead.js'
