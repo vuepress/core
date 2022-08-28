@@ -24,7 +24,9 @@
     "./client": "./lib/client/index.js",
     "./components/*": "./lib/client/components/*",
     "./layouts/*": "./lib/client/layouts/*",
+    "./styles/*": "./lib/client/styles/*",
     "./templates/*": "./templates/*",
+    "./lib/*": "./lib/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
