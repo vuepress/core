@@ -59,10 +59,18 @@
 
 ````md
 <CodeGroup>
+  <CodeGroupItem title="PNPM">
+
+```bash:no-line-numbers
+pnpm install
+```
+
+  </CodeGroupItem>
+
   <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn
+yarn install
 ```
 
   </CodeGroupItem>
@@ -80,10 +88,18 @@ npm install
 **Output**
 
 <CodeGroup>
+  <CodeGroupItem title="PNPM">
+
+```bash:no-line-numbers
+pnpm install
+```
+
+  </CodeGroupItem>
+
   <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn
+yarn install
 ```
 
   </CodeGroupItem>

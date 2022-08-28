@@ -28,7 +28,25 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ### 像数 1, 2, 3 一样容易
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+# install in your project
+pnpm add -D vue @vuepress/client@next vuepress@next
+
+# create a markdown file
+echo '# Hello VuePress' > README.md
+
+# start writing
+pnpm vuepress dev
+
+# build to static files
+pnpm vuepress build
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 # 在你的项目中安装
