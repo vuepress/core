@@ -68,16 +68,19 @@ export const build = async (
     const { createVueApp } = await importFile<{
       createVueApp: CreateVueAppFunction
     }>(serverEntryPath)
+    // create vue ssr app
+    const { app: vueApp, router: vueRouter } = await createVueApp()
+    const { renderToString } = await import('vue/server-renderer')
 
     // pre-render pages to html files
     for (const page of app.pages) {
-      if (spinner) {
-        spinner.text = `Rendering pages ${chalk.magenta(page.path)}`
-      }
+      if (spinner) spinner.text = `Rendering pages ${chalk.magenta(page.path)}`
       await renderPage({
         app,
         page,
-        createVueApp,
+        vueApp,
+        vueRouter,
+        renderToString,
         ssrTemplate,
         output: clientOutput.output,
         outputEntryChunk: clientEntryChunk,

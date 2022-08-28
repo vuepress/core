@@ -91,6 +91,9 @@ export const build = async (
     const { createVueApp } = await importFileDefault<{
       createVueApp: CreateVueAppFunction
     }>(serverEntryPath)
+    // create vue ssr app
+    const { app: vueApp, router: vueRouter } = await createVueApp()
+    const { renderToString } = await import('vue/server-renderer')
 
     // pre-render pages to html files
     for (const page of app.pages) {
@@ -100,7 +103,9 @@ export const build = async (
       await renderPage({
         app,
         page,
-        createVueApp,
+        vueApp,
+        vueRouter,
+        renderToString,
         ssrTemplate,
         allFilesMeta,
         initialFilesMeta,
