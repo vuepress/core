@@ -1,3 +1,32 @@
+# [2.0.0-beta.51](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.50...v2.0.0-beta.51) (2022-08-28)
+
+
+### Bug Fixes
+
+* **bundler-vite:** do not change output entry of client bundle (close [#1043](https://github.com/vuepress/vuepress-next/issues/1043)) ([b3565cb](https://github.com/vuepress/vuepress-next/commit/b3565cba73d0e87540b563d86792bbd2bd219de0))
+* **bundler-webpack:** add extensionAlias config ([697e7ae](https://github.com/vuepress/vuepress-next/commit/697e7aef4b27e4b4743895c84860d09681ad0e29))
+* **core:** resolve app version correctly ([2a93513](https://github.com/vuepress/vuepress-next/commit/2a935136fca8980cf89146e6d6f1b0a42a50b700))
+
+
+### Features
+
+* **client:** make args of defineClientConfig optional ([e418e02](https://github.com/vuepress/vuepress-next/commit/e418e02b8c6bb179fd2aae2ce1abb9341038e2d0))
+* support layouts option in client config ([#1053](https://github.com/vuepress/vuepress-next/issues/1053)) ([a67a0bf](https://github.com/vuepress/vuepress-next/commit/a67a0bfd806bda548532836ebf8ec1704b7bcb8a))
+
+
+### Performance Improvements
+
+* reduce memory usage during rendering ([ea0a2b2](https://github.com/vuepress/vuepress-next/commit/ea0a2b213a107c7972da63dededc163c716185d6))
+
+
+### BREAKING CHANGES
+
+* theme API `layouts` has been removed, layouts should be set in client config instead of theme entry
+* `404` layout should be renamed to `NotFound` layout
+* node API `app.layouts` has been removed
+
+
+
 # [2.0.0-beta.50](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.49...v2.0.0-beta.50) (2022-08-23)
 
 
