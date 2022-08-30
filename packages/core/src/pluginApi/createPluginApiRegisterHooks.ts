@@ -1,4 +1,4 @@
-import type { HooksName, PluginApi } from '../types/index.js'
+import type { PluginApi } from '../types/index.js'
 import { normalizeAliasDefineHook } from './normalizeAliasDefineHook.js'
 import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook.js'
 
@@ -11,6 +11,7 @@ export const createPluginApiRegisterHooks =
     plugins.forEach(
       ({
         name: pluginName,
+        multiple,
 
         alias,
         define,
@@ -45,11 +46,11 @@ export const createPluginApiRegisterHooks =
         /**
          * common hooks
          */
-        Object.entries(commonHooks).forEach(([key, hook]) => {
-          if (hooks[key as HooksName] && hook) {
-            hooks[key as HooksName].add({
+        Object.keys(commonHooks).forEach((key) => {
+          if (hooks[key] && commonHooks[key]) {
+            hooks[key].add({
               pluginName,
-              hook,
+              hook: commonHooks[key],
             })
           }
         })

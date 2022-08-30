@@ -51,6 +51,7 @@ export const renderPageContent = async ({
       template: null,
       script: null,
       scriptSetup: null,
+      scripts: [],
       styles: [],
       customBlocks: [],
     },
