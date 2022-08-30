@@ -6,7 +6,7 @@
 
 社区用户创建了很多插件，并将它们发布到了 [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin) 上。 VuePress 团队也在 [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) Scope 下维护了一些官方插件。查看插件本身的文档可以获取更详细的指引。
 
-一般而言，你需要将插件放入到 [plugins](../reference/config.md#plugins) 配置项中来使用它。举例来说，你可以使用 [@vuepress/plugin-google-analytics](../reference/plugin/google-analytics.md) 来使用 Google Analytics ：
+一般而言，你需要导入插件并在通过配置文件的 [plugins](../reference/config.md#plugins) 配置项中来使用它。举例来说，你可以使用 [@vuepress/plugin-google-analytics](../reference/plugin/google-analytics.md) 来使用 Google Analytics ：
 
 ```ts
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
