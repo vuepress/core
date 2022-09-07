@@ -27,11 +27,11 @@ export const Content = defineComponent({
         ? // use page component
           h(pageComponent.value)
         : // fallback content
-          h(
-            'div',
-            { class: 'contentNotFound', 
-              innerHTML: __VUEPRESS_DEV__ ? "Page does not exist. This is a fallback content." : "404 Not Found"
-            }
-          )
+          h('div', {
+            class: 'contentNotFound',
+            innerHTML: __VUEPRESS_DEV__
+              ? 'Page does not exist. This is a fallback content.'
+              : '404 Not Found',
+          })
   },
 })
