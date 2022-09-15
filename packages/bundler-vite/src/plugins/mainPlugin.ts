@@ -2,6 +2,8 @@ import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
+import type { AcceptedPlugin } from 'postcss'
+import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
 /**
@@ -45,6 +47,14 @@ import '@vuepress/client/app'
       ...app.pluginApi.plugins.map(({ name }) => name),
     ]
 
+    let postcssPlugins: AcceptedPlugin[]
+    try {
+      const postcssConfigResult = await postcssrc()
+      postcssPlugins = postcssConfigResult.plugins
+    } catch (error) {
+      postcssPlugins = [autoprefixer]
+    }
+
     return {
       root: app.dir.temp('vite-root'),
       base: app.options.base,
@@ -57,7 +67,7 @@ import '@vuepress/client/app'
       },
       css: {
         postcss: {
-          plugins: isServer ? [] : [autoprefixer],
+          plugins: isServer ? [] : postcssPlugins,
         },
         preprocessorOptions: {
           scss: { charset: false },
