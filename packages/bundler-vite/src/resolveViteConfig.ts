@@ -15,8 +15,9 @@ export const resolveViteConfig = async ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): Promise<InlineConfig> =>
-  mergeConfig(
+}): Promise<InlineConfig> => {
+  const viteOptions = options.viteOptions ?? {}
+  return mergeConfig(
     {
       clearScreen: false,
       configFile: false,
@@ -26,8 +27,9 @@ export const resolveViteConfig = async ({
       },
       plugins: [
         vuePlugin(options.vuePluginOptions),
-        vuepressPlugin({ app, isBuild, isServer }),
+        vuepressPlugin({ app, isBuild, isServer, viteOptions }),
       ],
     },
-    options.viteOptions ?? {}
+    viteOptions
   )
+}

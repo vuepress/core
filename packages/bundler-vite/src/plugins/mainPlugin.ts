@@ -4,7 +4,14 @@ import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
-import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
+import type {
+  AliasOptions,
+  BuildOptions,
+  Connect,
+  InlineConfig,
+  Plugin,
+  UserConfig,
+} from 'vite'
 
 /**
  * The main plugin to compat vuepress with vite
@@ -13,10 +20,12 @@ export const mainPlugin = ({
   app,
   isBuild,
   isServer,
+  viteOptions,
 }: {
   app: App
   isBuild: boolean
   isServer: boolean
+  viteOptions: InlineConfig
 }): Plugin => ({
   name: 'vuepress:main',
 
@@ -56,6 +65,13 @@ import '@vuepress/client/app'
       postcssPlugins = postcssConfigResult.plugins
     } catch (error) {
       postcssPlugins = [autoprefixer]
+    }
+
+    let minify: BuildOptions['minify']
+    if (isServer || app.env.isDebug) {
+      minify = false
+    } else {
+      minify = viteOptions.build?.minify ?? true
     }
 
     return {
@@ -100,7 +116,7 @@ import '@vuepress/client/app'
           },
           preserveEntrySignatures: 'allow-extension',
         },
-        minify: isServer ? false : !app.env.isDebug,
+        minify,
       },
       optimizeDeps: {
         exclude: clientPackages,
