@@ -18,6 +18,8 @@ export const renderPageStyles = ({
   [...initialFilesMeta, ...pageClientFilesMeta]
     .filter(({ type }) => type === 'style')
     .map(
-      ({ file }) => `<link rel="stylesheet" href="${app.options.base}${file}">`
+      ({ file }) => `
+      <link rel="preload" href="${app.options.base}${file}" as="style" />
+      <link rel="stylesheet" href="${app.options.base}${file}" />`
     )
     .join('')
