@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { colors, debug, fs, importFile, withSpinner } from '@vuepress/utils'
+import { debug, fs, importFile, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
@@ -73,20 +73,21 @@ export const build = async (
     const { renderToString } = await import('vue/server-renderer')
 
     // pre-render pages to html files
-    for (const page of app.pages) {
-      if (spinner) spinner.text = `Rendering pages ${colors.magenta(page.path)}`
-      await renderPage({
-        app,
-        page,
-        vueApp,
-        vueRouter,
-        renderToString,
-        ssrTemplate,
-        output: clientOutput.output,
-        outputEntryChunk: clientEntryChunk,
-        outputCssAsset: clientCssAsset,
-      })
-    }
+    await Promise.all(
+      app.pages.map((page) =>
+        renderPage({
+          app,
+          page,
+          vueApp,
+          vueRouter,
+          renderToString,
+          ssrTemplate,
+          output: clientOutput.output,
+          outputEntryChunk: clientEntryChunk,
+          outputCssAsset: clientCssAsset,
+        })
+      )
+    )
   })
 
   // keep the server bundle files in debug mode
