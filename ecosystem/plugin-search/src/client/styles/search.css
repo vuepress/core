@@ -5,6 +5,8 @@
 }
 
 .search-box input {
+  -webkit-appearance: none;
+  appearance: none;
   cursor: text;
   width: var(--search-input-width);
   height: 2rem;
