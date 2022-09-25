@@ -8,6 +8,12 @@ You can reference any assets using relative URLs in your Markdown content:
 ![An image](./image.png)
 ```
 
+or
+
+```md
+![An image](image.png)
+```
+
 This is generally the suggested way to import images, as users usually place images near the Markdown file that references them.
 
 ## Public Files
@@ -86,8 +92,10 @@ Although it is not a common usage, you can reference images from dependent packa
 npm install -D package-name
 ```
 
+Since markdown image syntax regards image links as relative paths by default, you need to use `<img>` tag:
+
 ```md
-![Image from dependency](package-name/image.png)
+<img src="package-name/image.png" alt="Image from dependency">
 ```
 
 The path aliases that set in config file are also supported:
@@ -105,7 +113,7 @@ export default {
 ```
 
 ```md
-![Image from path alias](@alias/image.png)
+<img src="@alias/image.png" alt="Image from path alias">
 ```
 
 ::: tip
