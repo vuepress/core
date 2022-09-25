@@ -6,6 +6,44 @@ import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
+const cache = new Map<string, boolean>()
+
+const staticImportedByEntry = (
+  id: string,
+  getModuleInfo: any,
+  cache: Map<string, boolean>,
+  importStack: string[] = []
+): boolean => {
+  if (cache.has(id)) {
+    return !!cache.get(id)
+  }
+  if (importStack.includes(id)) {
+    // circular deps!
+    cache.set(id, false)
+    return false
+  }
+  const mod = getModuleInfo(id)
+  if (!mod) {
+    cache.set(id, false)
+    return false
+  }
+
+  if (mod.isEntry) {
+    cache.set(id, true)
+    return true
+  }
+  const someImporterIs = mod.importers.some((importer: string) =>
+    staticImportedByEntry(
+      importer,
+      getModuleInfo,
+      cache,
+      importStack.concat(id)
+    )
+  )
+  cache.set(id, someImporterIs)
+  return someImporterIs
+}
+
 /**
  * The main plugin to compat vuepress with vite
  */
@@ -96,7 +134,30 @@ import '@vuepress/client/app'
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
                   entryFileNames: `[name].[hash].mjs`,
                 }
-              : {}),
+              : {
+                  manualChunks(id, ctx) {
+                    // move known framework code into a stable chunk so that
+                    // custom theme changes do not invalidate hash for all pages
+                    if (
+                      id.includes('plugin-vue:export-helper') ||
+                      /@vue\/(runtime|shared|reactivity)/.test(id) ||
+                      /@vuepress\/(client|shared)/.test(id)
+                    ) {
+                      return 'framework'
+                    }
+
+                    // Check if a module is statically imported by at least one entry.
+                    if (
+                      id.includes('node_modules') &&
+                      !/\.css($|\\?)/.test(id) &&
+                      staticImportedByEntry(id, ctx.getModuleInfo, cache)
+                    ) {
+                      return 'vendor'
+                    }
+
+                    return undefined
+                  },
+                }),
           },
           preserveEntrySignatures: 'allow-extension',
         },
