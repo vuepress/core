@@ -3,7 +3,7 @@ import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import type {
@@ -143,6 +143,7 @@ const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
   return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
 }
 
+const isMobile = ref(false)
 const navbarConfig = useNavbarConfig()
 const navbarSelectLanguage = useNavbarSelectLanguage()
 const navbarRepo = useNavbarRepo()
@@ -151,12 +152,34 @@ const navbarLinks = computed(() => [
   ...navbarSelectLanguage.value,
   ...navbarRepo.value,
 ])
+
+// avoid overlapping of long title and long navbar links
+onMounted(() => {
+  // TODO: migrate to css var
+  // refer to _variables.scss
+  const MOBILE_DESKTOP_BREAKPOINT = 719
+
+  const handleMobile = (): void => {
+    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
+      isMobile.value = true
+    } else {
+      isMobile.value = false
+    }
+  }
+  handleMobile()
+  window.addEventListener('resize', handleMobile, false)
+  window.addEventListener('orientationchange', handleMobile, false)
+})
 </script>
 
 <template>
   <nav v-if="navbarLinks.length" class="navbar-items">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
-      <NavbarDropdown v-if="item.children" :item="item" />
+      <NavbarDropdown
+        v-if="item.children"
+        :item="item"
+        :class="isMobile ? 'mobile' : ''"
+      />
       <AutoLink v-else :item="item" />
     </div>
   </nav>
