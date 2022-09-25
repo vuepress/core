@@ -20,6 +20,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./styles/*": "./styles/*",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
