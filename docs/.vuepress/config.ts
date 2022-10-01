@@ -11,8 +11,10 @@ import { getDirname, path } from '@vuepress/utils'
 import {
   head,
   navbarEn,
+  navbarRu,
   navbarZh,
   sidebarEn,
+  sidebarRu,
   sidebarZh,
 } from './configs/index.js'
 
@@ -32,6 +34,11 @@ export default defineUserConfig({
       lang: 'en-US',
       title: 'VuePress',
       description: 'Vue-powered Static Site Generator',
+    },
+    '/ru/': {
+      lang: 'ru-RU',
+      title: 'VuePress',
+      description: 'Генератор статических сайтов на Vue',
     },
     '/zh/': {
       lang: 'zh-CN',
@@ -65,6 +72,39 @@ export default defineUserConfig({
         sidebar: sidebarEn,
         // page meta
         editLinkText: 'Edit this page on GitHub',
+      },
+
+      /**
+       * Russian locale config
+       */
+      '/ru/': {
+        // navbar
+        navbar: navbarRu,
+        selectLanguageName: 'Русский',
+        selectLanguageText: 'Русский',
+        selectLanguageAriaLabel: 'Русский',
+        // sidebar
+        sidebar: sidebarRu,
+        // page meta
+        editLinkText: 'Отредактировать эту страницу на GitHub',
+        lastUpdatedText: 'Последнее обновление',
+        contributorsText: 'Автор',
+        // custom containers
+        tip: 'Подсказка',
+        warning: 'Предупреждение',
+        danger: 'Опасность',
+        // 404 page
+        notFound: [
+          'Ничего не найдено',
+          'Как вы тут оказались?',
+          'Это страница 404',
+          'Похоже, вы ввели неверную ссылку',
+        ],
+        backToHome: 'Вернуться на главную',
+        // a11y
+        openInNewWindow: 'Открыть в новом окне',
+        toggleColorMode: 'Изменить цветовую схему',
+        toggleSidebar: 'Переключить боковую панель',
       },
 
       /**
@@ -127,6 +167,48 @@ export default defineUserConfig({
         facetFilters: ['tags:v2'],
       },
       locales: {
+        '/ru/': {
+          placeholder: 'Поиск',
+          translations: {
+            button: {
+              buttonText: 'Поиск',
+              buttonAriaLabel: 'Поиск',
+            },
+            modal: {
+              searchBox: {
+                resetButtonTitle: 'Очистить',
+                resetButtonAriaLabel: 'Очистить',
+                cancelButtonText: 'Отмена',
+                cancelButtonAriaLabel: 'Отмена',
+              },
+              startScreen: {
+                recentSearchesTitle: 'История поиска',
+                noRecentSearchesText: 'Нет истории поиска',
+                saveRecentSearchButtonTitle: 'Сохранить в историю поиска',
+                removeRecentSearchButtonTitle: 'Удалить из истории поиска',
+                favoriteSearchesTitle: 'Избранное',
+                removeFavoriteSearchButtonTitle: 'Удалить из избранного',
+              },
+              errorScreen: {
+                titleText: 'Не удаётся получить результаты',
+                helpText: 'Проверьте подключение к интернету',
+              },
+              footer: {
+                selectText: 'Выбрать',
+                navigateText: 'Переключить',
+                closeText: 'Закрыть',
+                searchByText: 'Искать по тексту',
+              },
+              noResultsScreen: {
+                noResultsText: 'Соответствующие результаты не найдены',
+                suggestedQueryText: 'Схожие запросы',
+                reportMissingResultsText:
+                  'Этот запрос должен иметь результаты?',
+                reportMissingResultsLinkText: 'Нажмите, чтобы оставить отзыв',
+              },
+            },
+          },
+        },
         '/zh/': {
           placeholder: '搜索文档',
           translations: {
