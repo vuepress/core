@@ -69,7 +69,7 @@ export default {
 
 ### templateBuild
 
-- 类型： `string`
+- 类型： `string | SSRTemplateRenderer`
 
 - 详情：
 
@@ -82,7 +82,7 @@ export default {
 
 ### templateDev
 
-- 类型： `string`
+- 类型： `string | ((app: App) => string)`
 
 - 详情：
 

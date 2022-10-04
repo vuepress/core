@@ -69,7 +69,7 @@ export default {
 
 ### templateBuild
 
-- Type: `string`
+- Type: `string | SSRTemplateRenderer`
 
 - Details:
 
@@ -82,7 +82,7 @@ export default {
 
 ### templateDev
 
-- Type: `string`
+- Type: `string | ((app: App) => string)`
 
 - Details:
 

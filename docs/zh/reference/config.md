@@ -289,7 +289,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 ### templateDev
 
-- 类型： `string`
+- 类型： `string | ((app: App) => string)`
 
 - 默认值： `'@vuepress/client/templates/dev.html'`
 
@@ -325,7 +325,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 ### templateBuild
 
-- 类型： `string`
+- 类型： `string | SSRTemplateRenderer`
 
 - 默认值： `'@vuepress/client/templates/build.html'`
 

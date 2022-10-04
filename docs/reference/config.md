@@ -290,7 +290,7 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 
 ### templateDev
 
-- Type: `string`
+- Type: `string | ((app: App) => string)`
 
 - Default: `'@vuepress/client/templates/dev.html'`
 
@@ -326,7 +326,7 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 
 ### templateBuild
 
-- Type: `string`
+- Type: `string | SSRTemplateRenderer`
 
 - Default: `'@vuepress/client/templates/build.html'`
 
