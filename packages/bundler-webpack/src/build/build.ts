@@ -1,5 +1,5 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
-import type { App, Bundler } from '@vuepress/core'
+import type { App, Bundler, SSRTemplateRenderer } from '@vuepress/core'
 import {
   chalk,
   debug,
@@ -69,10 +69,45 @@ export const build = async (
 
   // render pages
   await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
-    // load ssr template file
-    const ssrTemplate = (
-      await fs.readFile(app.options.templateBuild)
-    ).toString()
+    let ssrTemplateRenderer: SSRTemplateRenderer
+
+    if (typeof app.options.templateBuild === 'string') {
+      // load ssr template file
+      const content = await fs.readFile(app.options.templateBuild).toString()
+
+      ssrTemplateRenderer = (
+        app: App,
+        lang: string,
+        head: string,
+        preload: string,
+        prefetch: string,
+        scripts: string,
+        styles: string,
+        pageContent: string
+      ) =>
+        content
+          // vuepress version
+          .replace('{{ version }}', app.version)
+          // page lang
+          .replace('{{ lang }}', lang)
+          // page head
+          .replace('<!--vuepress-ssr-head-->', head)
+          // page preload links
+          .replace('<!--vuepress-ssr-preload-->', preload)
+          // page prefetch links
+          .replace('<!--vuepress-ssr-prefetch-->', prefetch)
+          // page styles
+          .replace('<!--vuepress-ssr-styles-->', styles)
+          // page content
+          // notice that some special chars in string like `$&` would be recognized by `replace()`,
+          // and they won't be html-escaped and will be kept as is when they are inside a code block,
+          // so we use a replace function as the second param to avoid those potential issues
+          .replace('<!--vuepress-ssr-app-->', () => pageContent)
+          // page scripts
+          .replace('<!--vuepress-ssr-scripts-->', scripts)
+    } else {
+      ssrTemplateRenderer = app.options.templateBuild
+    }
 
     // load the client manifest file
     const clientManifestPath = app.dir.temp(clientManifestFilename)
@@ -106,7 +141,7 @@ export const build = async (
         vueApp,
         vueRouter,
         renderToString,
-        ssrTemplate,
+        ssrTemplateRenderer,
         allFilesMeta,
         initialFilesMeta,
         asyncFilesMeta,

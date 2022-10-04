@@ -16,9 +16,11 @@ export const createDevConfig = async (
   })
 
   config.plugin('html').use(HtmlPlugin, [
-    {
-      template: app.options.templateDev,
-    },
+    typeof app.options.templateDev === 'function'
+      ? { templateContent: app.options.templateDev(app) }
+      : {
+          template: app.options.templateDev,
+        },
   ])
 
   config.plugin('hmr').use(webpack.HotModuleReplacementPlugin)

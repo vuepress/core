@@ -3,6 +3,7 @@ import type { SiteData } from '@vuepress/shared'
 import type { Bundler } from '../bundler.js'
 import type { PluginConfig } from '../plugin.js'
 import type { Theme } from '../theme.js'
+import type { App } from './app.js'
 
 /**
  * Vuepress app common config that shared between dev and build
@@ -49,12 +50,23 @@ export interface AppConfigDev {
   open?: boolean
 
   /**
-   * Specify the path of the HTML template to be used for dev
+   * Specify the path of the HTML template or a function returning HTML template to be used for dev
    *
    * @default '@vuepress/client/templates/dev.html'
    */
-  templateDev?: string
+  templateDev?: string | ((app: App) => string)
 }
+
+export type SSRTemplateRenderer = (
+  app: App,
+  lang: string,
+  head: string,
+  preload: string,
+  prefetch: string,
+  scripts: string,
+  styles: string,
+  pageContent: string
+) => string
 
 /**
  * Vuepress app config for build
@@ -77,11 +89,11 @@ export interface AppConfigBuild {
   shouldPrefetch?: ((file: string, type: string) => boolean) | boolean
 
   /**
-   * Specify the path of the HTML template to be used for build
+   * Specify the path of the HTML template or a function returning HTML template to be used for build
    *
    * @default '@vuepress/client/templates/build.html'
    */
-  templateBuild?: string
+  templateBuild?: string | SSRTemplateRenderer
 }
 
 /**

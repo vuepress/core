@@ -1,3 +1,4 @@
+import type { App, SSRTemplateRenderer } from './app/index.js'
 import type {
   Plugin,
   PluginConfig,
@@ -38,12 +39,12 @@ export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
   /**
    * Allow overriding default templateBuild
    */
-  templateBuild?: string
+  templateBuild?: string | SSRTemplateRenderer
 
   /**
    * Allow overriding default templateDev
    */
-  templateDev?: string
+  templateDev?: string | ((app: App) => string)
 }
 
 /**
@@ -58,10 +59,10 @@ export interface ThemeInfo {
   /**
    * Default build template
    */
-  templateBuild?: string
+  templateBuild?: string | SSRTemplateRenderer
 
   /**
    * Default dev template
    */
-  templateDev?: string
+  templateDev?: string | ((app: App) => string)
 }

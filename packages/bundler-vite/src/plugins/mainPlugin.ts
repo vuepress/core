@@ -23,17 +23,17 @@ export const mainPlugin = ({
     if (!isBuild) {
       await app.writeTemp(
         'vite-root/index.html',
-        fs
-          .readFileSync(app.options.templateDev)
-          .toString()
-          .replace(
-            /<\/body>/,
-            `\
+        (typeof app.options.templateDev === 'function'
+          ? app.options.templateDev(app)
+          : fs.readFileSync(app.options.templateDev).toString()
+        ).replace(
+          /<\/body>/,
+          `\
 <script type="module">
 import '@vuepress/client/app'
 </script>
 </body>`
-          )
+        )
       )
     }
 
