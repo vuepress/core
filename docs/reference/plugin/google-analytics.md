@@ -67,7 +67,7 @@ export default {
 - Example:
 
 ```js
-module.exports = {
+export default {
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-XXXXXXXXXX',
