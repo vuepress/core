@@ -9,7 +9,7 @@ export type ShikiPluginOptions = Pick<HighlighterOptions, 'theme' | 'langs'>
 
 export const shikiPlugin = ({
   theme = 'nord',
-  langs = [],
+  langs,
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
 
