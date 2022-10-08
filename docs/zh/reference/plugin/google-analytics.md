@@ -64,7 +64,7 @@ export default {
 
   设置为 `true` 可以向 DebugView 发送事件。[了解更多关于 DebugView 的信息](https://support.google.com/analytics/answer/7201382) 。
 
-- Example:
+- 示例：
 
 ```ts
 export default {
