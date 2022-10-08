@@ -14,11 +14,10 @@ export const googleAnalyticsPlugin =
       return plugin
     }
 
+    // returns an empty plugin in dev mode when debug mode is not enabled
     if (app.env.isDev && !options.debug) {
       return plugin
     }
-
-    options.debug = options.debug && app.env.isDev
 
     return {
       ...plugin,

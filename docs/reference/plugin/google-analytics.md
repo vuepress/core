@@ -62,7 +62,7 @@ export default {
 
 - Details:
 
-  Set to true to enable sending events to DebugView in development. [More information on DebugView](https://support.google.com/analytics/answer/7201382)
+  Set to `true` to enable sending events to DebugView. [See more information on DebugView](https://support.google.com/analytics/answer/7201382).
 
 - Example:
 
