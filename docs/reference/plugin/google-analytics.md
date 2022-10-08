@@ -66,7 +66,7 @@ export default {
 
 - Example:
 
-```js
+```ts
 export default {
   plugins: [
     googleAnalyticsPlugin({
