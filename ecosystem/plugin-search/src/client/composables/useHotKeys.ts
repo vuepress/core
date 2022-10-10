@@ -2,6 +2,7 @@ import { onBeforeUnmount, onMounted } from 'vue'
 import type { Ref } from 'vue'
 import type { HotKeyOptions } from '../../shared/index.js'
 import { isKeyMatched } from '../utils/index.js'
+import { isFocusingTextControl } from '../utils/isFocusingTextControl.js'
 
 export const useHotKeys = ({
   input,
@@ -18,7 +19,8 @@ export const useHotKeys = ({
       // key matches
       isKeyMatched(event, hotKeys.value) &&
       // event does not come from search box
-      !input.value.contains(event.target as Node)
+      !input.value.contains(event.target as Node) &&
+      !isFocusingTextControl(event.target as EventTarget)
     ) {
       event.preventDefault()
       input.value.focus()
