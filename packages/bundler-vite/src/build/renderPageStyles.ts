@@ -12,7 +12,8 @@ export const renderPageStyles = ({
   outputCssAsset: OutputAsset | undefined
 }): string =>
   outputCssAsset
-    ? `
-    <link rel="preload" href="${app.options.base}${outputCssAsset.fileName}" as="style" />
-    <link rel="stylesheet" href="${app.options.base}${outputCssAsset.fileName}" />`
+    ? [
+        `<link rel="preload" href="${app.options.base}${outputCssAsset.fileName}" as="style" />`,
+        `<link rel="stylesheet" href="${app.options.base}${outputCssAsset.fileName}" />`,
+      ].join('')
     : ''
