@@ -125,6 +125,20 @@ pageClass: custom-page-class
 
   如果不设置，则默认使用 [heroText](#heroText) 。
 
+### heroHeight
+
+- 类型： `number`
+
+- 默认值： `280`
+
+- 详情：
+
+  首页图片 `<img>` 标签的 `height` 属性。
+
+  当你的首页图片高度小于默认值时，你可能需要减小该属性。
+
+  需要注意的是，首页图片的高度同样受到了 CSS 的约束。设置这个属性主要是为了减少由加载首页图片引起的 [累积布局偏移 (CLS)](https://web.dev/cls/) 。
+
 ### heroText
 
 - 类型： `string | null`
