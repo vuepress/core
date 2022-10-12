@@ -8,7 +8,7 @@ export function isFocusingTextControl(target: EventTarget): boolean {
       (['TEXTAREA', 'SELECT', 'INPUT'].includes(target.tagName) ||
         target.hasAttribute('contenteditable'))
     )
-  } else {
-    return false
   }
+
+  return false
 }
