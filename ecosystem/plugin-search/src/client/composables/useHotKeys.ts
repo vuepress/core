@@ -1,8 +1,7 @@
 import { onBeforeUnmount, onMounted } from 'vue'
 import type { Ref } from 'vue'
 import type { HotKeyOptions } from '../../shared/index.js'
-import { isKeyMatched } from '../utils/index.js'
-import { isFocusingTextControl } from '../utils/isFocusingTextControl.js'
+import { isFocusingTextControl, isKeyMatched } from '../utils/index.js'
 
 export const useHotKeys = ({
   input,
