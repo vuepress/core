@@ -32,7 +32,7 @@ onMounted(() => {
     getCssValue(navbar.value, 'paddingLeft') +
     getCssValue(navbar.value, 'paddingRight')
   const handleLinksWrapWidth = (): void => {
-    if (window.innerWidth <= MOBILE_DESKTOP_BREAKPOINT) {
+    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
       linksWrapperMaxWidth.value = 0
     } else {
       linksWrapperMaxWidth.value =
