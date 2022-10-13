@@ -17,8 +17,8 @@ export const useHotKeys = ({
     if (
       // key matches
       isKeyMatched(event, hotKeys.value) &&
-      // event does not come from search box
-      !input.value.contains(event.target as Node) &&
+      // event does not come from the search box itself or
+      // user isn't focusing (and thus perhaps typing in) a text control
       !isFocusingTextControl(event.target as EventTarget)
     ) {
       event.preventDefault()
