@@ -133,7 +133,7 @@ pre[class*='language-'] {
     code {
       color: #fff;
       padding: 0;
-      background-color: transparent;
+      background-color: transparent !important;
       border-radius: 0;
       overflow-wrap: unset;
       -webkit-font-smoothing: auto;
@@ -261,6 +261,16 @@ div[class*='language-'] {
     div[class*='language-'] {
       margin: 0.85rem -1.5rem;
       border-radius: 0;
+    }
+  }
+}
+
+// ===============================
+
+tr {
+  &:nth-child(2n) {
+    code {
+      background-color: var(--c-bg-dark);
     }
   }
 }
