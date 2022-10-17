@@ -128,9 +128,9 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       result = `${result}<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
     }
 
-    result = `<div class="${languageClass} ext-${language.ext}${
+    result = `<div class="${languageClass}${
       useLineNumbers ? ' line-numbers-mode' : ''
-    }">${result}</div>`
+    }" data-ext="${language.ext}">${result}</div>`
 
     return result
   }
