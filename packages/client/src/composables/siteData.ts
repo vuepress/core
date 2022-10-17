@@ -20,7 +20,7 @@ export const siteData: SiteDataRef = ref(siteDataRaw)
  */
 export const useSiteData = (): SiteDataRef => siteData
 
-if (import.meta.webpackHot || import.meta.hot) {
+if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   // reuse vue HMR runtime
   __VUE_HMR_RUNTIME__.updateSiteData = (data: SiteData) => {
     siteData.value = data
