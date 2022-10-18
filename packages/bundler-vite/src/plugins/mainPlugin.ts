@@ -43,6 +43,7 @@ import '@vuepress/client/app'
     const clientPackages = [
       '@vuepress/client',
       ...app.pluginApi.plugins
+        // the 'user-config' plugin is created by cli internally
         .filter(({ name }) => name !== 'user-config')
         .map(({ name }) => name),
     ]
