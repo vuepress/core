@@ -42,7 +42,10 @@ import '@vuepress/client/app'
     // externalized in build ssr mode
     const clientPackages = [
       '@vuepress/client',
-      ...app.pluginApi.plugins.map(({ name }) => name),
+      ...app.pluginApi.plugins
+        // the 'user-config' plugin is created by cli internally
+        .filter(({ name }) => name !== 'user-config')
+        .map(({ name }) => name),
     ]
 
     return {
