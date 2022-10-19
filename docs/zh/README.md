@@ -2,6 +2,7 @@
 home: true
 title: 首页
 heroImage: /images/hero.png
+heroImageLink: 'https://v2.vuepress.vuejs.org'
 actions:
   - text: 快速上手
     link: /zh/guide/getting-started.html

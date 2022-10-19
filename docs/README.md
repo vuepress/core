@@ -2,6 +2,7 @@
 home: true
 title: Home
 heroImage: /images/hero.png
+heroImageLink: 'https://v2.vuepress.vuejs.org'
 actions:
   - text: Get Started
     link: /guide/getting-started.html
