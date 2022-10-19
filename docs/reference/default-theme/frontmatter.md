@@ -115,6 +115,22 @@ heroImage: https://vuejs.org/images/logo.png
   - [Default Theme > Frontmatter > heroImage](#heroimage)
   - [Default Theme > Config > colorMode](./config.md#colormode)
 
+### heroImageLink
+
+- Type: `string`
+
+- Details:
+
+  Specify where the hero image should link to.
+
+- Example:
+
+```md
+---
+heroImageLink: https://v2.vuepress.vuejs.org
+---
+```
+
 ### heroAlt
 
 - Type: `string`

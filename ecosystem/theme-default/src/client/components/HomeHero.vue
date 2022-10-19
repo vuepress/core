@@ -59,11 +59,14 @@ const actions = computed(() => {
 
 const HomeHeroImage: FunctionalComponent = () => {
   if (!heroImage.value) return null
-  const img = h('img', {
+  let img = h('img', {
     src: withBase(heroImage.value),
     alt: heroAlt.value,
     height: heroHeight.value,
   })
+  if (frontmatter.value.heroImageLink !== undefined) {
+    img = h('a', { href: frontmatter.value.heroImageLink }, [img])
+  }
   if (frontmatter.value.heroImageDark === undefined) {
     return img
   }
