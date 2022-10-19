@@ -56,7 +56,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # 选择要使用的 pnpm 版本
-          version: 7
+          version: 8
           # 使用 pnpm 安装依赖
           run_install: true
 
