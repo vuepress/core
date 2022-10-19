@@ -56,7 +56,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # choose pnpm version to use
-          version: 7
+          version: 8
           # install deps with pnpm
           run_install: true
 
