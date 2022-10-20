@@ -1,48 +1,48 @@
-# Theme API
+# API темы
 
 <NpmBadge package="@vuepress/core" />
 
-VuePress theme also works as a plugin, so Theme API can accept all the options of [Plugin API](./plugin-api.md) with following differences.
+Тема VuePress также работает как плагин, поэтому API темы может принимать все параметры [API плагинов](./plugin-api.md) со следующими отличиями.
 
-## Basic Options
+## Основные параметры
 
 ### name
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Name of the theme.
+  Название темы.
 
-  It should follow the naming convention, and ensure consistency with the package name when publishing to NPM:
+  Оно должно следовать соглашению об именовании и обеспечивать согласованность с именем пакета при публикации в NPM:
 
   - Non-scoped: `vuepress-theme-foo`
   - Scoped: `@org/vuepress-theme-foo`
 
 ### multiple
 
-- Details:
+- Подробности:
 
-  A theme should never be used multiple times, so this option is not supported in theme API.
+  Тема никогда не должна использоваться несколько раз, поэтому этот параметр не поддерживается в API тем.
 
-## Theme Specific Options
+## Специальные параметры темы
 
 ### extends
 
-- Type: `Theme`
+- Тип: `Theme`
 
-- Details:
+- Подробности:
 
-  The theme to inherit.
+  Тема по наследству.
 
-  All of the Theme API of the parent theme will be inherited, but the child theme will not override the parent theme directly. Theme specific options will override according to following rules:
+  Все API темы родительской темы будут унаследованы, но дочерняя тема не будет напрямую переопределять родительскую тему. Параметры, специфичные для темы, переопределяются в соответствии со следующими правилами:
 
-  - [plugins](#plugins): When a same plugin is used in both child and parent theme, if the plugin does not support to be used multiple times, only the one used in the child theme will take effect.
-  - [templateBuild](#templatebuild) / [templateDev](#templatedev): Child theme templates will override parent theme templates.
+  - [плагины](#плагины): когда один и тот же плагин используется как в дочерней, так и в родительской теме, если плагин не поддерживает многократное использование, вступит в силу только тот, который используется в дочерней теме.
+  - [templateBuild](#templatebuild) / [templateDev](#templatedev): шаблоны дочерних тем переопределяют шаблоны родительских тем.
 
-  Multi-level inheritance is supported, i.e. theme B could be extended from theme A, and then theme C could be extended from theme B. In other words, a theme could have a parent theme, a grandparent theme and so on.
+  Поддерживается многоуровневое наследование, т. е. тема B может быть расширена из темы A, а затем тема C может быть расширена из темы B. Другими словами, тема может иметь родительскую тему, родительскую тему и так далее.
 
-- Example:
+- Пример:
 
 ```ts
 import { defaultTheme } from '@vuepress/theme-default'
@@ -51,44 +51,44 @@ import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 
 export default {
-  // inherit the default theme
+  // наследовать тему по умолчанию
   extends: defaultTheme(),
 }
 ```
 
 ### plugins
 
-- Type: `(Plugin | Plugin[])[]`
+- Тип: `(Plugin | Plugin[])[]`
 
-- Details:
+- Подробности:
 
-  Plugins to use in the theme.
+  Плагины, которые использует тема.
 
-- Also see:
+- См. также:
   - [Config > plugins](./config.md#plugins)
 
 ### templateBuild
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Specify the HTML template for build.
+  Укажите HTML-шаблон для сборки.
 
-  It would override the default value of [templateBuild](./config.md#templatebuild), but could be overridden by user config.
+  Это переопределит значение по умолчанию [templateBuild](./config.md#templatebuild), но может быть переопределено пользовательской конфигурацией.
 
-- Also see:
-  - [Config > templateBuild](./config.md#templatebuild)
+- См. также:
+  - [Конфигурация > templateBuild](./config.md#templatebuild)
 
 ### templateDev
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Specify the HTML template for dev.
+  Укажите шаблон HTML для dev режима.
 
-  It would override the default value of [templateDev](./config.md#templatedev), but could be overridden by user config.
+  Это переопределит значение по умолчанию [templateDev](./config.md#templatedev), но может быть переопределено пользовательской конфигурацией.
 
-- Also see:
-  - [Config > templateDev](./config.md#templatedev)
+- См. также:
+  - [Конфигурация > templateDev](./config.md#templatedev)

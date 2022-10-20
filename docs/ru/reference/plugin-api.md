@@ -1,17 +1,17 @@
-# Plugin API
+# API плагинов
 
 <NpmBadge package="@vuepress/core" />
 
-Plugin API is supported by [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) package. You could check out [Node API](./node-api.md) for how to use the VuePress app instance in plugin hooks.
+API плагинов поддерживается пакетом [@vuepress/core](https://www.npmjs.com/package/@vuepress/core). Вы можете проверить [Node API](./node-api.md), чтобы узнать, как использовать экземпляр приложения VuePress в хуках плагинов.
 
-## Overview
+## Обзор
 
-Plugins should be used before initialization. The basic options will be handled once the plugin is used:
+Плагины следует использовать перед инициализацией. Основные параметры будут обработаны после использования плагина:
 
 - [name](#name)
 - [multiple](#multiple)
 
-The following hooks will be processed when initializing app:
+При инициализации приложения будут обрабатываться следующие хуки:
 
 - [extendsMarkdownOptions](#extendsmarkdownoptions)
 - [extendsMarkdown](#extendsmarkdown)
@@ -19,12 +19,12 @@ The following hooks will be processed when initializing app:
 - [extendsPage](#extendspage)
 - [onInitialized](#oninitialized)
 
-The following hooks will be processed when preparing files:
+При подготовке файлов будут обрабатываться следующие хуки:
 
 - [clientConfigFile](#clientconfigfile)
 - [onPrepared](#onprepared)
 
-The following hooks will be processed in dev / build:
+В dev / build будут обрабатываться следующие хуки:
 
 - [extendsBundlerOptions](#extendsbundleroptions)
 - [alias](#alias)
@@ -32,58 +32,58 @@ The following hooks will be processed in dev / build:
 - [onWatched](#onwatched)
 - [onGenerated](#ongenerated)
 
-> Check out [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks) to understand the process better.
+> Ознакомьтесь с [Дополнительно > Архитектура > Основной процесс и хуки](../advanced/architecture.md#core-process-and-hooks) чтобы лучше понять процесс.
 
-## Basic Options
+## Основные параметры
 
 ### name
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Name of the plugin.
+  Название плагина.
 
-  It will be used for identifying plugins to avoid using a same plugin multiple times, so make sure to use a unique plugin name.
+  Оно будет использоваться для идентификации плагинов, чтобы избежать многократного использования одного и того же плагина, поэтому обязательно используйте уникальное имя плагина.
 
-  It should follow the naming convention:
+  Оно должен следовать соглашению об именах:
 
   - Non-scoped: `vuepress-plugin-foo`
   - Scoped: `@org/vuepress-plugin-foo`
 
-- Also see:
+- См. также:
   - [Plugin API > multiple](#multiple)
 
 ### multiple
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `false`
+- Значение по умолчанию: `false`
 
-- Details:
+- Подробности:
 
-  Declare whether the plugin can be used multiple times.
+  Укажите, можно ли использовать плагин несколько раз.
 
-  If set to `false`, when using plugins with the same name, the one used previously will be replaced by the one used later.
+  Если установлено значение `false`, при использовании плагинов с тем же именем тот, который использовался ранее, будет заменен тем, который будет использоваться позже.
 
-  If set to `true`, plugins with the same name could be used multiple times and won't be replaced.
+  Если установлено значение `true`, плагины с одним и тем же именем могут использоваться несколько раз и не будут заменены.
 
-- Also see:
+- См. также:
   - [Plugin API > name](#name)
 
 ## Development Hooks
 
 ### alias
 
-- Type: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
+- Тип: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
-- Details:
+- Подробности:
 
-  Path aliases definition.
+  Определение псевдонимов путей.
 
-  This hook accepts an object or a function that returns an object.
+  Этот хук принимает объект или функцию, которая возвращает объект.
 
-- Example:
+- Пример:
 
 ```ts
 import { getDirname, path } from '@vuepress/utils'
@@ -99,15 +99,15 @@ export default {
 
 ### clientConfigFile
 
-- Type: `string | ((app: App) => string | Promise<string>)`
+- Тип: `string | ((app: App) => string | Promise<string>)`
 
-- Details:
+- Подробности:
 
-  Path of client config file.
+  Путь к файлу конфигурации клиента.
 
-  This hook accepts an absolute file path, or a function that returns the path.
+  Этот хук принимает абсолютный путь к файлу или функцию, которая возвращает путь.
 
-- Example:
+- Пример:
 
 ```ts
 import { getDirname, path } from '@vuepress/utils'
@@ -115,30 +115,27 @@ import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 
 export default {
-  clientConfigFile: path.resolve(
-    __dirname,
-    './path/to/clientConfig.js'
-  ),
+  clientConfigFile: path.resolve(__dirname, './path/to/clientConfig.js'),
 }
 ```
 
-- Also see:
-  - [Client API > defineClientConfig](./client-api.md#defineclientconfig)
-  - [Advanced > Cookbook > Usage of Client Config](../advanced/cookbook/usage-of-client-config.md)
+- См. также:
+  - [API клиента > defineClientConfig](./client-api.md#defineclientconfig)
+  - [Дополнительно > Рецепты > Использование конфигурации клиента](../advanced/cookbook/usage-of-client-config.md)
 
 ### define
 
-- Type: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
+- Тип: `Record<string, any> | ((app: App, isServer: boolean) => Record<string, any>)`
 
-- Details:
+- Подробности:
 
-  Define global constants replacements.
+  Определить замену глобальных констант.
 
-  This hook accepts an object or a function that returns an object.
+  Этот хук принимает объект или функцию, которая возвращает объект.
 
-  This can be useful for passing variables to client files. Note that the values will be automatically processed by `JSON.stringify()`.
+  Это может быть полезно для передачи переменных в клиентские файлы. Обратите внимание, что значения будут автоматически обработаны `JSON.stringify()`.
 
-- Example:
+- Пример:
 
 ```ts
 export default {
@@ -152,38 +149,40 @@ export default {
 
 ### extendsBundlerOptions
 
-- Type: `(options: BundlerOptions, app: App) => void | Promise<void>`
+- Тип: `(options: BundlerOptions, app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  Bundler options extension.
+  Расширение настроек сборщика.
 
-  This hook accepts a function that will receive the bundler options.
+  Этот хук принимает функцию, которая получит параметры сборщика.
 
-  This hook can be used for modifying bundler options.
+  Этот хук можно использовать для изменения настроек сборщика.
 
-  You could determine which bundler the user is using by `app.options.bundler.name`.
+  Вы можете определить, какой сборщик использует пользователь, с помощью `app.options.bundler.name`.
 
-- Example:
+- Пример:
 
-Adding default [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) option:
+Добавление настроек по умолчанию [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions):
 
 ```ts
 export default {
   extendsBundlerOptions: (bundlerOptions, app) => {
-    // extends options of @vuepress/bundler-vite
+    // расширяет настройки @vuepress/bundler-vite
     if (app.options.bundler.name === '@vuepress/bundler-vite') {
       bundlerOptions.vuePluginOptions ??= {}
       bundlerOptions.vuePluginOptions.template ??= {}
       bundlerOptions.vuePluginOptions.template.compilerOptions ??= {}
-      const isCustomElement = bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
-      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement = (tag) => {
-        if (isCustomElement?.(tag)) return true
-        if (tag === 'my-custom-element') return true
-      }
+      const isCustomElement =
+        bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
+      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement =
+        (tag) => {
+          if (isCustomElement?.(tag)) return true
+          if (tag === 'my-custom-element') return true
+        }
     }
 
-    // extends options of @vuepress/bundler-webpack
+    // расширяет настройки @vuepress/bundler-webpack
     if (app.options.bundler.name === '@vuepress/bundler-webpack') {
       bundlerOptions.vue ??= {}
       bundlerOptions.vue.compilerOptions ??= {}
@@ -197,25 +196,25 @@ export default {
 }
 ```
 
-- Also see:
-  - [Bundlers > Vite](./bundler/vite.md)
-  - [Bundlers > Webpack](./bundler/webpack.md)
+- См. также:
+  - [Сборщики > Vite](./bundler/vite.md)
+  - [Сборщики > Webpack](./bundler/webpack.md)
 
 ### extendsMarkdownOptions
 
-- Type: `(options: MarkdownOptions, app: App) => void | Promise<void>`
+- Тип: `(options: MarkdownOptions, app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  Markdown options extension.
+  Расширение настроек Markdown.
 
-  This hook accepts a function that will receive the markdown options.
+  Этот хук принимает функцию, которая получит параметры Markdown.
 
-  This hook can be used for modifying markdown options.
+  Этот хук можно использовать для изменения параметров Markdown.
 
-- Example:
+- Пример:
 
-Modifying the default header levels that going to be extracted:
+Изменение уровней заголовков по умолчанию, которые будут извлечены:
 
 ```ts
 export default {
@@ -228,22 +227,22 @@ export default {
 }
 ```
 
-- Also see:
+- См. также:
   - [Config > markdown](./config.md#markdown)
 
 ### extendsMarkdown
 
-- Type: `(md: Markdown, app: App) => void | Promise<void>`
+- Тип: `(md: Markdown, app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  Markdown enhancement.
+  Улучшения Markdown.
 
-  This hook accepts a function that will receive an instance of `Markdown` powered by [markdown-it](https://github.com/markdown-it/markdown-it) in its arguments.
+  Этот хук принимает функцию, которая получит экземпляр Markdown на основе [markdown-it](https://github.com/markdown-it/markdown-it) в своих аргументах.
 
-  This hook can be used for using extra markdown-it plugins and implementing customizations.
+  Этот хук можно использовать для добавления дополнительных плагинов markdown-it и кастомизации.
 
-- Example:
+- Пример:
 
 ```ts
 export default {
@@ -256,19 +255,19 @@ export default {
 
 ### extendsPageOptions
 
-- Type: `(options: PageOptions, app: App) => void | Promise<void>`
+- Тип: `(options: PageOptions, app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  Page options extension.
+  Расширение параметров страницы.
 
-  This hook accepts a function that will receive the options of `createPage`.
-  
-  This hook can be used for modifying page options
+  Этот хук принимает функцию, которая получит параметры `createPage`.
 
-- Example:
+  Этот хук можно использовать для изменения параметров страницы.
 
-Set permalink pattern for pages in `_posts` directory:
+- Пример:
+
+Установите шаблон постоянной ссылки для страниц в директории `_posts`:
 
 ```ts
 export default {
@@ -281,24 +280,24 @@ export default {
 }
 ```
 
-- Also see:
-  - [Node API > Page > createPage](./node-api.md#createpage)
+- См. также:
+  - [Node API > Страница > createPage](./node-api.md#createpage)
 
 ### extendsPage
 
-- Type: `(page: Page, app: App) => void | Promise<void>`
+- Тип: `(page: Page, app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  Page extension.
+  Расширение страницы.
 
-  This hook accepts a function that will receive a `Page` instance.
+  Этот хук принимает функцию, которая получит экземпляр `Page`.
 
-  This hook can be used for adding extra properties or modifying current properties on `Page` object.
+  Этот хук можно использовать для добавления дополнительных свойств или изменения текущих свойств объекта `Page`.
 
-  Notice that changes to `page.data` and `page.routeMeta` can be used in client side code.
+  Обратите внимание, что изменения в `page.data` и `page.routeMeta` можно использовать в коде на стороне клиента.
 
-- Example:
+- Пример:
 
 ```ts
 export default {
@@ -309,7 +308,7 @@ export default {
 }
 ```
 
-In client component:
+В клиентском компоненте:
 
 ```ts
 import { usePageData } from '@vuepress/client'
@@ -322,45 +321,45 @@ export default {
 }
 ```
 
-- Also see:
-  - [Client API > usePageData](./client-api.md#usepagedata)
-  - [Node API > Page Properties > data](./node-api.md#data)
-  - [Node API > Page Properties > routeMeta](./node-api.md#routemeta)
+- См. также:
+  - [API клиента > usePageData](./client-api.md#usepagedata)
+  - [Node API > Свойства страницы > data](./node-api.md#data)
+  - [Node API > Свойства страницы > routeMeta](./node-api.md#routemeta)
 
 ## Lifecycle Hooks
 
 ### onInitialized
 
-- Type: `(app: App) => void | Promise<void>`
+- Тип: `(app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  This hook will be invoked once VuePress app has been initialized.
+  Этот хук будет вызываться после инициализации приложения VuePress.
 
 ### onPrepared
 
-- Type: `(app: App) => void | Promise<void>`
+- Тип: `(app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  This hook will be invoked once VuePress app has finished preparation.
+  Этот хук будет вызываться после завершения подготовки приложения VuePress.
 
 ### onWatched
 
-- Type: `(app: App, watchers: Closable[], restart: () => Promise<void>) => void | Promise<void>`
+- Тип: `(app: App, watchers: Closable[], restart: () => Promise<void>) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  This hook will be invoked once VuePress app has started dev-server and watched files change.
+  Этот хук будет вызываться после того, как приложение VuePress запустит сервер разработки и проследит за изменением файлов.
 
-  The `watchers` is an array of file watchers. When changing config file, the dev command will be restarted and those watchers will be closed. If you are adding new watchers in this hook, you should push your watchers to the `watchers` array, so that they can be closed correctly when restarting.
+  `watchers` — это массив наблюдателей за файлами. При изменении файла конфигурации команда dev будет перезапущена, и эти наблюдатели будут закрыты. Если вы добавляете новых наблюдателей в этот хук, вы должны поместить своих наблюдателей в массив `watchers`, чтобы их можно было корректно закрыть при перезапуске.
 
-  The `restart` is a method to restart the dev command. When calling this method, the `watchers` array will be closed automatically.
+  `restart` — это метод перезапуска команды dev. При вызове этого метода массив `watchers` будет закрыт автоматически.
 
 ### onGenerated
 
-- Type: `(app: App) => void | Promise<void>`
+- Тип: `(app: App) => void | Promise<void>`
 
-- Details:
+- Подробности:
 
-  This hook will be invoked once VuePress app has generated static files.
+  Этот хук будет вызываться после того, как приложение VuePress сгенерирует статические файлы.

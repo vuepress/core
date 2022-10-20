@@ -5,39 +5,39 @@
 
 ## date
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Created date for the page.
+  Дата создания страницы.
 
-  You should specify the date in the form of `yyyy-MM-dd`, or follow the [YAML Timestamp Type](https://yaml.org/type/timestamp.html).
+  Вы должны указать дату в формате `yyyy-MM-dd` или использовать [таймстамп тип YAML](https://yaml.org/type/timestamp.html).
 
-- Also see:
-  - [Node API > Page Properties > date](./node-api.md#date)
+- См. также:
+  - [Node API > Свойства страницы > date](./node-api.md#date)
 
 ## description
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Description for the page.
+  Описание для страницы.
 
-  This will override the `description` option in your site config.
+  Это переопределит параметр `description` в конфигурации вашего сайта.
 
-- Also see:
-  - [Config > description](./config.md#description)
+- См. также:
+  - [Руководство > description](./config.md#description)
 
 ## head
 
-- Type: `HeadConfig[]`
+- Тип: `HeadConfig[]`
 
-- Details:
+- Подробности:
 
-  Extra tags in `<head>` tag for the page.
+  Дополнительные теги в теге `<head>` для страницы.
 
-- Example:
+- Пример:
 
 ```md
 ---
@@ -45,11 +45,11 @@ head:
   - - meta
     - name: foo
       content: yaml array syntax
-  - [meta, { name: bar , content: square brackets syntax }]
+  - [meta, { name: bar, content: square brackets syntax }]
 ---
 ```
 
-  Rendered as:
+Будет отрендерено как:
 
 ```html
 <head>
@@ -58,38 +58,38 @@ head:
 </head>
 ```
 
-- Also see:
-  - [Config > head](./config.md#head)
+- См. также:
+  - [Конфигурация > head](./config.md#head)
 
 ## lang
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Language for the page.
+  Язык страницы.
 
-  This will override the `lang` option in your site config.
+  Это переопределит параметр `lang` в конфигурации вашего сайта.
 
-- Also see:
-  - [Config > lang](./config.md#lang)
-  - [Node API > Page Properties > lang](./node-api.md#lang)
+- См. также:
+  - [Конфигурация > lang](./config.md#lang)
+  - [Node API > Свойства страницы > lang](./node-api.md#lang)
 
 ## layout
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Layout for the page.
+  Макет для страницы.
 
-  Layouts are provided by theme. If you don't specify this frontmatter, the default layout will be used. You should refer to the theme's own documentation to find what layouts it provides.
+  Макеты предоставляются по темам. Если вы не укажете эту часть во frontmatter, будет использоваться макет по умолчанию. Вы должны обратиться к документации темы, чтобы узнать, какие макеты она предоставляет.
 
-  If the theme layouts cannot meet your needs, you can use a custom layout component.
+  Если макеты темы не соответствуют вашим потребностям, вы можете использовать настраиваемый компонент макета.
 
-- Example:
+- Пример:
 
-Register a layout component in `.vuepress/client.ts` file:
+Зарегистрируйте компонент макета в файле `.vuepress/client.ts`:
 
 ```ts
 import { defineClientConfig } from '@vuepress/client'
@@ -102,7 +102,7 @@ export default defineClientConfig({
 })
 ```
 
-Set custom layout in frontmatter:
+Установите пользовательский макет во frontmatter:
 
 ```md
 ---
@@ -112,53 +112,53 @@ layout: CustomLayout
 
 ## permalink
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Permalink for the page.
+  Постоянная ссылка для страницы.
 
-  This will override the default route path that determined by the file path of the page.
+  Это переопределит стандартный путь роутера, который определяется исходя из путя к файлу страницы.
 
-- Also see:
+- См. также:
   - [Frontmatter > permalinkPattern](#permalinkpattern)
-  - [Guide > Page > Routing](../guide/page.md#routing)
-  - [Node API > Page Properties > permalink](./node-api.md#permalink)
+  - [Руководство > Страница > Роутинг](../guide/page.md#роутинг)
+  - [Node API > Свойства страницы > permalink](./node-api.md#permalink)
 
 ## permalinkPattern
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Details:
+- Подробности:
 
-  Pattern to generate permalink for the page.
+  Шаблон для создания постоянной ссылки для страницы.
 
-  This will override the `permalinkPattern` option in your site config.
+  Это переопределит параметр `permalinkPattern` в конфигурации вашего сайта.
 
-  This won't take effect if the `permalink` frontmatter has been set.
+  Это не вступит в силу, если установлена во frontmatter установлено свойство `permalink`.
 
-- Usage:
+- Использование:
 
-  |  Pattern  |         Description         |
-  |-----------|-----------------------------|
-  | `:year`   | Year part of created date   |
-  | `:month`  | Month part of created date  |
-  | `:day`    | Day part of created date    |
-  | `:slug`   | Slug of page filename       |
-  | `:raw`    | Raw route path              |
+  | Паттер   | Описание                      |
+  | -------- | ----------------------------- |
+  | `:year`  | Год даты создания             |
+  | `:month` | Месяц даты создания           |
+  | `:day`   | День даты создания            |
+  | `:slug`  | Фрагмент имени файла страницы |
+  | `:raw`   | Необработанный путь роутера   |
 
-  The `:year`, `:month` and `:day` patterns are resolved according to the following priority:
+  Шаблоны `:year`, `:month` и `:day` разрешаются в соответствии со следующим приоритетом:
 
-  - The `date` frontmatter.
-  - The filename that matches the date pattern `yyyy-MM-dd-foobar.md` or `yyyy-MM-foobar.md`.
-  - The dirname that matches the date pattern `yyyy/MM/dd/foobar.md` or `yyyy/MM/foobar.md`.
-  - Fallback to `0000-00-00`.
+  - Поле `date` во frontmatter.
+  - Имя файла, которое соответствует шаблону даты `yyyy-MM-dd-foobar.md` или `yyyy-MM-foobar.md`.
+  - Имя директории, соответствующее шаблону даты `yyyy/MM/dd/foobar.md` или `yyyy/MM/foobar.md`.
+  - Возврат к `0000-00-00`.
 
-- Example 1:
+- Пример 1:
 
-  The page filename is `foo-bar.md`.
+  Имя файла страницы — `foo-bar.md`.
 
-  The page frontmatter is:
+  Frontmatter страницы:
 
 ```md
 ---
@@ -167,13 +167,13 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-  Then the permalink of the page would be `2021/01/03/foo-bar.html`.
+В таком случае постоянная ссылка страницы будет `2021/01/03/foo-bar.html`.
 
-- Example 2:
+- Пример 2:
 
-  The page filename is `2021-01-03-bar-baz.md`.
+  Имя файла страницы `2021-01-03-bar-baz.md`.
 
-  The page frontmatter is:
+  Frontmatter страницы:
 
 ```md
 ---
@@ -181,34 +181,34 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-  Then the permalink of the page would be `2021/01/03/bar-baz.html`.
+Тогда постоянная ссылка страницы будет `2021/01/03/bar-baz.html`.
 
-- Also see:
-  - [Config > permalinkPattern](./config.md#permalinkpattern)
+- См. также:
+  - [Конфигурация > permalinkPattern](./config.md#permalinkpattern)
   - [Frontmatter > date](#date)
   - [Frontmatter > permalink](#permalink)
-  - [Node API > Page Properties > permalink](./node-api.md#permalink)
+  - [Node API > Свойства страницы > permalink](./node-api.md#permalink)
 
 ## routeMeta
 
-- Type: `Record<string, unknown>`
+- Тип: `Record<string, unknown>`
 
-- Details:
+- Подробности:
 
-  Custom data to be attached to the page route.
+  Пользовательские данные, которые будут прикреплены к роуту страницы.
 
-- Also see:
+- См. также:
   - [Node API > Page Properties > routeMeta](./node-api.md#routeMeta)
 
 ## title
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Title for the page.
+  Заголовок для страницы.
 
-  If you don't specify `title` in frontmatter, content of the first level-one header (i.e. `# title`) will be used as the title.
+  Если вы не укажете `title` во frontmatter, в качестве заголовка будет использоваться содержимое заголовка первого уровня (т. е. `# title`).
 
-- Also see:
-  - [Node API > Page Properties > title](./node-api.md#title)
+- См. также:
+  - [Node API > Свойства страницы > title](./node-api.md#title)

@@ -1,10 +1,10 @@
-# Built-in Components
+# Встроенные компоненты
 
 <NpmBadge package="@vuepress/client" />
 
 ## ClientOnly
 
-- Usage:
+- Испольование:
 
 ```md
 <ClientOnly>
@@ -12,35 +12,36 @@
 </ClientOnly>
 ```
 
-- Details:
+- Подробности:
 
-  This component and its children will only be rendered in client-side. That means, it will not be rendered to HTML during build (SSR).
+  Этот компонент и его дочерние элементы будут отрендерены только на стороне клиента. Это означает, что он не будет отображаться в HTML во время сборки (SSR).
 
-  If a component is trying to access Browser / DOM APIs directly in `setup()`, an error will occur during build because those APIs are unavailable in Node.js environment. In such case, you could do either:
+  Если компонент пытается получить доступ к API-интерфейсам браузера/DOM непосредственно в `setup()`, во время сборки возникнет ошибка, поскольку эти API недоступны в среде Node.js. В таком случае вы можете сделать одно из двух:
 
-  - Modify the component to only access Browser / DOM APIs in `onBeforeMount()` or `onMounted()` hook.
-  - Wrap the component with `<ClientOnly>`.
+  - Измените компонент, чтобы получить доступ к API-интерфейсам браузера / DOM только в хуке `onBeforeMount()` или `onMounted()`.
+  - Оберните компонент с помощью `<ClientOnly>`.
 
 ## Content
 
-- Props:
-  - pageKey
-    - Type: `string`
-    - Required: `false`
+- Свойства:
 
-- Usage:
+  - pageKey
+    - Тип: `string`
+    - Обязателен: `false`
+
+- Использование:
 
 ```md
 <Content page-key="v-xxxxxx" />
 ```
 
-- Details:
+- Подробности:
 
-  This component will render the Markdown content of a page.
+  Этот компонент будет отображать содержимое страницы в формате Markdown.
 
-  The page key is the [name](https://router.vuejs.org/api/#name-2) of the page route. If the `pageKey` prop is not provided, it will render the page of current route.
+  Ключ страницы — это [имя](https://router.vuejs.org/api/#name-2) роута страницы. Если свойство `pageKey` не указано, будет отображаться страница текущего роута.
 
-  This component is mainly for developing themes. You won't need it in most cases.
+  Этот компонент предназначен в основном для разработки тем. В большинстве случаев он вам не понадобится.
 
-- Also see:
-  - [Node API > Page Properties > key](./node-api.md#key)
+- См. также:
+  - [Node API > Свойства страницы > key](./node-api.md#key)

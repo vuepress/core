@@ -1,100 +1,100 @@
-# Client API
+# API клиента
 
 <NpmBadge package="@vuepress/client" />
 
-Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuepress/client) package, which is used for developing client files.
+Клиентский API предоставляется пакетом [@vuepress/client](https://www.npmjs.com/package/@vuepress/client), который используется для разработки клиентских файлов.
 
 ## Composition API
 
 ### usePageData
 
-- Details:
+- Подробности:
 
-  Returns the page data ref object of current page.
+  Возвращает объект Ref с данными текущей страницы.
 
-- Also see:
-  - [Node API > Page Properties > data](./node-api.md#data)
-  - [Plugin API > extendsPage](./plugin-api.md#extendspage)
+- См. также:
+  - [Node API > Свойства страницы > data](./node-api.md#data)
+  - [API плагинов > extendsPage](./plugin-api.md#extendspage)
 
 ### usePageFrontmatter
 
-- Details:
+- Подробности:
 
-  Returns the frontmatter ref object of current page.
+  Возвращает объект Ref с frontmatter данными текущей страницы.
 
-  The value is the `frontmatter` property of the page data.
+  Значением является свойство frontmatter из данных страницы.
 
 ### usePageHead
 
-- Details:
+- Подробности:
 
-  Returns the head config ref object of current page.
+  Возвращает объект Ref текущей конфигурации заголовка страницы.
 
-  The value is obtained by merging and deduplicating [head](./frontmatter.md#head) frontmatter and [head](./config.md#head) config.
+  Значение получается путем слияния и дедупликации [head](./frontmatter.md#head) frontmatter и конфигурации [head](./config.md#head).
 
 ### usePageHeadTitle
 
-- Details:
+- Подробности:
 
-  Returns the head title ref object of current page.
+  Возвращает объект Ref заголовка текущей страницы.
 
-  The value is obtained by joining the page title and site title.
+  Значение получается путём объединения заголовка страницы и заголовка сайта.
 
 ### usePageLang
 
-- Details:
+- Подробности:
 
-  Returns the language ref object of current page.
+  Возвращает объект Ref с языком текущей страницы.
 
-  The value is the `lang` property of the page data.
+  Значением является свойство `lang` данных страницы.
 
 ### useRouteLocale
 
-- Details:
+- Подробности:
 
-  Returns the locale path ref object of current route.
+  Возвращает объект Ref ссылки пути локали текущего роута.
 
-  The value is one of the keys of the [locales](./config.md#locales) config.
+  Значение является одним из ключей конфигурации [locales](./config.md#locales).
 
 ### useSiteData
 
-- Details:
+- Подробности:
 
-  Returns the site data ref object.
+  Возвращает объект Ref с данными сайта.
 
 ### useSiteLocaleData
 
-- Details:
+- Подробности:
 
-  Returns the site data ref object of current locale.
+  Возвращает Ref объект на данные сайта для текущей локали.
 
-  The properties of current locale have been merged into the root-level properties.
+  Свойства текущей локали были объединены со свойствами корневого уровня.
 
-## Helpers
+## Вспомогательные функции
 
 ### defineClientConfig
 
-- Details:
+- Подробности:
 
-  Helper for creating [clientConfigFile](./plugin-api.md#clientconfigfile).
+  Вспомогательная функция для создания [clientConfigFile](./plugin-api.md#clientconfigfile).
 
-- Also see:
-  - [Advanced > Cookbook > Usage of Client Config](../advanced/cookbook/usage-of-client-config.md)
+- См. также:
+  - [Дополнительно > Рецепты > Использование клиентской конфигурации](../advanced/cookbook/usage-of-client-config.md)
 
 ### withBase
 
-- Details:
+- Подробности:
 
-  Prefix URL with site [base](./config.md#base).
+  URL-префикс сайта из [base](./config.md#base).
 
-- Also see:
-  - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
+- См. также:
+  - [Руководство > Ассеты > Базовый хелпер](../guide/assets.md#базовый-хелпер)
 
-## Constants
+## Константы
 
-There are some constants that available in the client side code.
+Есть некоторые константы, доступные в клиентском коде.
 
-To shim the types of these constants in client side code, add `@vuepress/client/types` to your `tsconfig.json`:
+Чтобы использовать типы этих констант в коде на стороне клиента, добавьте `@vuepress/client/types` в ваш `tsconfig.json`:
 
 ```json
 {
@@ -106,41 +106,41 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
 ### `__VUEPRESS_VERSION__`
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Version of VuePress core package.
+  Версия основного пакета VuePress.
 
 ### `__VUEPRESS_DEV__`
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Details:
+- Подробности:
 
-  An environment flag indicating whether it is currently running in `dev` mode.
+  Флаг среды, указывающий, работает ли он в данный момент в режиме `dev`.
 
 ### `__VUEPRESS_SSR__`
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Details:
+- Подробности:
 
-  An environment flag indicating whether it is currently running in server-side-rendering (SSR) build.
+  Флаг среды, указывающий, работает ли он в настоящее время в режиме server-side-rendering (SSR).
 
-## Advanced
+## Дополнительно
 
 ### resolvers <Badge text="experimental" />
 
-- Type: `Record<string, Function>`
+- Тип: `Record<string, Function>`
 
-- Details:
+- Подробности:
 
-  An reactive object, methods of which determining how to resolve global computed.
+  Реактивный объект, методы которого определяют, как разрешить глобальные вычисления.
 
-- Example:
+- Пример:
 
-Customizing the format of `<title>` in client config file:
+Настройка формата `<title>` в файле конфигурации клиента:
 
 ```ts
 import { defineClientConfig, resolvers } from '@vuepress/client'
@@ -154,5 +154,5 @@ export default defineClientConfig({
 ```
 
 ::: danger
-`resolvers` will affect the basic functionality of VuePress. Please make sure you have fully understood its purpose before modifying it.
+`resolvers` повлияют на базовую функциональность VuePress. Прежде чем изменять его, убедитесь, что вы полностью поняли его назначение.
 :::

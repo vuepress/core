@@ -2,348 +2,349 @@
 
 <NpmBadge package="@vuepress/core" />
 
-Node API is provided by [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) package. It is a dependency of the [vuepress](https://www.npmjs.com/package/vuepress) package, and you can also install it separately:
+Node API предоставляется пакетом [@vuepress/core](https://www.npmjs.com/package/@vuepress/core). Это зависимость от пакета [vuepress](https://www.npmjs.com/package/vuepress), и вы также можете установить его отдельно:
 
 ```bash
 npm i -D @vuepress/core@next
 ```
 
-## App
+## Приложение
 
-The app instance is available in all hooks of [Plugin API](./plugin-api.md).
+Экземпляр приложения доступен во всех хуках [API плагинов](./plugin-api.md).
 
-The `BuildApp` and `DevApp` share almost the same properties and methods, except [build](#build) and [dev](#dev) method.
+`BuildApp` и `DevApp` имеют почти одинаковые свойства и методы, за исключением методов [build](#build) и [dev](#dev).
 
 ### createBuildApp
 
-- Signature:
+- Сигнатура:
 
 ```ts
 const createBuildApp: (config: AppConfig) => BuildApp
 ```
 
-- Parameters:
+- Параметры:
 
-| Parameter | Type        | Description                      |
-|-----------|-------------|----------------------------------|
-| config    | `AppConfig` | Config to create a VuePress app. |
+| Параметр | Тип         | Описание                                       |
+| -------- | ----------- | ---------------------------------------------- |
+| config   | `AppConfig` | Конфигурация для создания приложения VuePress. |
 
-- Details:
+- Подробности:
 
-  Create a build mode app instance, which is used for building static files.
+  Создайте экземпляр приложения в режиме сборки, который используется для создания статических файлов.
 
-- Example:
+- Пример:
 
 ```ts
 const build = async () => {
   const app = createBuildApp({
-    // ...options
+    // ...настройки
   })
 
-  // initialize and prepare
+  // инициализировать и подготовить
   await app.init()
   await app.prepare()
 
-  // build
+  // собрать
   await app.build()
 
-  // process onGenerated hook
+  // обработать хук onGenerated
   await app.pluginApi.hooks.onGenerated.process(app)
 }
 ```
 
-- Also see:
-  - [Node API > App Methods > build](#build)
+- См. также:
+  - [Node API > Методы приложения > build](#build)
 
 ### createDevApp
 
-- Signature:
+- Сигнатура:
 
 ```ts
 const createDevApp: (config: AppConfig) => DevApp
 ```
 
-- Parameters:
+- Параметры:
 
-| Parameter | Type        | Description                      |
-|-----------|-------------|----------------------------------|
-| config    | `AppConfig` | Config to create a VuePress app. |
+| Параметр | Тип         | Описание                                       |
+| -------- | ----------- | ---------------------------------------------- |
+| config   | `AppConfig` | Конфигурация для создания приложения VuePress. |
 
-- Details:
+- Подробности:
 
-  Create a dev mode app instance, which is used for starting a dev server.
+  Создайте экземпляр приложения режима разработки, который используется для запуска сервера разработки.
 
-- Example:
+- Пример:
 
 ```ts
 const dev = async () => {
   const app = createDevApp({
-    // ...options
+    // ...настройки
   })
 
-  // initialize and prepare
+  // инициализировать и подготовить
   await app.init()
   await app.prepare()
 
-  // start dev server
+  // запустить сервер разработки
   const closeDevServer = await app.dev()
 
-  // set up file watchers
+  // настроить наблюдателей за файлами
   const watchers = []
 
-  // restart dev server
+  // перезагрузить сервер разработки
   const restart = async () => {
     await Promise.all([
-      // close all watchers
+      // закрыть всех наблюдателей
       ...watchers.map((item) => item.close()),
-      // close current dev server
+      // закрыть текущий сервер разработки
       closeDevServer(),
     ])
     await dev()
   }
 
-  // process onWatched hook
+  // обработать хук onWatched
   await app.pluginApi.hooks.onWatched.process(app, watchers, restart)
 }
 ```
 
-- Also see:
-  - [Node API > App Methods > dev](#dev)
+- См. также:
+  - [Node API > Методы приложения > dev](#dev)
 
-## App Properties
+## Свойства приложения
 
 ### options
 
-- Type: `AppOptions`
+- Тип: `AppOptions`
 
-- Details:
+- Подробности:
 
-  Options of VuePress app.
+  Параметры приложения VuePress.
 
-  The options come from the `config` argument in [createBuildApp](#createbuildapp) / [createDevApp](#createdevapp), while all optional fields will be filled with a default value.
+  Параметры берутся из аргумента `config` в [createBuildApp](#createbuildapp) / [createDevApp](#createdevapp), а все необязательные поля будут заполнены значениями по умолчанию.
 
 ### siteData
 
-- Type: `SiteData`
+- Тип: `SiteData`
 
-- Details:
+- Подробности:
 
-  Site data that set by user, including all the [site config](./config.md#site-config), which will be used in client side.
+  Данные сайта, установленные пользователем, включая всю [конфигурацию сайта](./config.md#site-config), которые будут использоваться на стороне клиента.
 
 ### version
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Version of VuePress app, i.e. version of `@vuepress/core` package.
+  Версия приложения VuePress, то есть версия пакета `@vuepress/core`.
 
 ### env.isBuild
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Details:
+- Подробности:
 
-  Environment flag used to identify whether the app is running in build mode, i.e. whether a [BuildApp](#createbuildapp) instance.
+  Флаг среды окружения, используемый для определения того, работает ли приложение в режиме сборки, т. е. является ли экземпляром [BuildApp](#createbuildapp).
 
 ### env.isDev
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Details:
+- Подробности:
 
-  Environment flag used to identify whether the app is running in dev mode, i.e. whether a [DevApp](#createdevapp) instance.
+  Флаг среды окружения, используемый для определения того, работает ли приложение в режиме разработки, т. е. является ли экземпляром [DevApp](#createdevapp).
 
 ### env.isDebug
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Details:
+- Подробности:
 
-  Environment flag used to identify whether the debug mode is enabled.
+  Флаг среды окружения, используемый для определения того, включён ли режим отладки.
 
 ### markdown
 
-- Type: `MarkdownIt`
+- Тип: `MarkdownIt`
 
-- Details:
+- Подробности:
 
-  The [markdown-it](https://github.com/markdown-it/markdown-it) instance used for parsing markdown content.
+  Экземпляр [markdown-it](https://github.com/markdown-it/markdown-it), используемый для парсинга markdown контента.
 
-  It is only available in and after [onInitialized](./plugin-api.md#oninitialized) hook.
+  Он доступен только в хуке [onInitialized](./plugin-api.md#oninitialized) и после него.
 
 ### pages
 
-- Type: `Page[]`
+- Тип: `Page[]`
 
-- Details:
+- Подробности:
 
-  The [Page](#page) object array.
+  Массив объектов [Page](#page).
 
-  It is only available in and after [onInitialized](./plugin-api.md#oninitialized) hook.
+  Он доступен только в хуке [onInitialized](./plugin-api.md#oninitialized) и после него.
 
-## App Methods
+## Методы приложения
 
 ### dir
 
-- Utils:
-  - `dir.cache()`: resolve to cache directory
-  - `dir.temp()`: resolve to temp directory
-  - `dir.source()`: resolve to source directory
-  - `dir.dest()`: resolve to dest directory
-  - `dir.client()`: resolve to `@vuepress/client` directory
-  - `dir.public()`: resolve to public directory
+- Утилиты:
 
-- Signature:
+  - `dir.cache()`: получить директорию с кэшем
+  - `dir.temp()`: получить директорию с временными файлами
+  - `dir.source()`: получить директорию с исходными файлами
+  - `dir.dest()`: получить директорию билда
+  - `dir.client()`: получить директорию `@vuepress/client`
+  - `dir.public()`: получить public директорию
+
+- Сигнатура:
 
 ```ts
 type AppDirFunction = (...args: string[]) => string
 ```
 
-- Details:
+- Подробности:
 
-  Utils to resolve the absolute file path in corresponding directory.
+  Утилиты для разрешения абсолютного пути к файлу в соответствующем каталоге.
 
-  If you don't provide any arguments, it will return the absolute path of the directory.
+  Если вы не предоставите никаких аргументов, он вернет абсолютный путь к каталогу.
 
-- Example:
+- Пример:
 
 ```ts
-// resolve the absolute file path of the `${sourceDir}/README.md`
+// получить абсолютный путь файла `${sourceDir}/README.md`
 const homeSourceFile = app.dir.source('README.md')
 ```
 
 ### writeTemp
 
-- Signature:
+- Сигнатура:
 
 ```ts
 writeTemp(file: string, content: string): Promise<string>
 ```
 
-- Parameters:
+- Параметры:
 
-| Parameter | Type     | Description                                                                   |
-|-----------|----------|-------------------------------------------------------------------------------|
-| file      | `string` | Filepath of the temp file that going to be wrote. Relative to temp directory. |
-| content   | `string` | Content of the temp file that going to be wrote.                              |
+| Параметр | Тип      | Описание                                                                          |
+| -------- | -------- | --------------------------------------------------------------------------------- |
+| file     | `string` | Путь к временному файлу, который будет записан. Относительно временного каталога. |
+| content  | `string` | Содержимое временного файла, который будет записано.                              |
 
-- Details:
+- Подробности:
 
-  A method to write temp file.
+  Способ записи временного файла.
 
-  The written file could be imported via `@temp` alias in client files.
+  Записанный файл может быть импортирован через алиас `@temp` в клиентских файлах.
 
-- Example:
+- Пример:
 
 ```ts
-export default  {
-  // write temp file in onPrepared hook
+export default {
+  // записать временный файл в хукe onPrepared
   async onPrepared() {
-    await app.writeTemp('foo.js', 'export const foo = \'bar\'')
-  }
+    await app.writeTemp('foo.js', "export const foo = 'bar'")
+  },
 }
 ```
 
 ```ts
-// import temp file in client code
+// импортировать временный файл в код клиента
 import { foo } from '@temp/foo'
 ```
 
 ### init
 
-- Signature:
+- Сигнатура:
 
 ```ts
 init(): Promise<void>
 ```
 
-- Details:
+- Подробности:
 
-  Initialize VuePress app.
+  Инициализирует приложение VuePress.
 
-- Also see:
-  - [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks)
+- См. также:
+  - [Дополнительно > Архитектура > Основные процессы и хуки](../advanced/architecture.md#core-process-and-hooks)
 
 ### prepare
 
-- Signature:
+- Сигнатура:
 
 ```ts
 prepare(): Promise<void>
 ```
 
-- Details:
+- Подробности:
 
-  Prepare client temp files.
+  Готовит временные файлы клиента.
 
-- Also see:
-  - [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks)
+- См. также:
+  - [Дополнительно > Архитектура > Основные процессы и хуки](../advanced/architecture.md#core-process-and-hooks)
 
 ### build
 
-- Signature:
+- Сигнатура:
 
 ```ts
 build(): Promise<void>
 ```
 
-- Details:
+- Подробности:
 
-  Generate static site files.
+  Генерирует статические файлы сайта.
 
-  This method is only available in `BuildApp`.
+  Этот метод доступен только в `BuildApp`.
 
-- Also see:
-  - [Node API > App > createBuildApp](#createbuildapp)
-  - [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks)
+- См. также:
+  - [Node API > Приложение > createBuildApp](#createbuildapp)
+  - [Дополнительно > Архитектура > Основные процессы и хуки](../advanced/architecture.md#core-process-and-hooks)
 
 ### dev
 
-- Signature:
+- Сигнатура:
 
 ```ts
 dev(): Promise<() => Promise<void>>
 ```
 
-- Details:
+- Подробности:
 
-  Start dev server.
+  Запускает сервер разработки.
 
-  This method is only available in `DevApp`.
+  Этот метод доступен только в `DevApp`.
 
-- Also see:
-  - [Node API > App > createDevApp](#createdevapp)
-  - [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks)
+- См. также:
+  - [Node API > Приложение > createDevApp](#createdevapp)
+  - [Дополнительно > Архитектура > Основные процессы и хуки](../advanced/architecture.md#core-process-and-hooks)
 
-## Page
+## Страница
 
 ### createPage
 
-- Signature:
+- Сигнатура:
 
 ```ts
 const createPage: (app: App, options: PageOptions) => Promise<Page>
 ```
 
-- Parameters:
+- Параметры:
 
-| Parameter | Type          | Description                       |
-|-----------|---------------|-----------------------------------|
-| app       | `App`         | The VuePress app instance.        |
-| options   | `PageOptions` | Options to create VuePress page.  |
+| Параметр | Тип           | Описание                                  |
+| -------- | ------------- | ----------------------------------------- |
+| app      | `App`         | Экземпляр приложения VuePress.            |
+| options  | `PageOptions` | Параметры для создания страницы VuePress. |
 
-- Details:
+- Подробности:
 
-  Create a VuePress page object.
+  Создаёт объект страницы VuePress.
 
-- Example:
+- Пример:
 
 ```ts
 import { createPage } from '@vuepress/core'
 
-export default  {
-  // create an extra page in onInitialized hook
+export default {
+  // создать дополнительную страницу в хуке onInitialized
   async onInitialized(app) {
     app.pages.push(
       await createPage(app, {
@@ -362,101 +363,102 @@ Hello, world.
 }
 ```
 
-- Also see:
-  - [Node API > App Properties > pages](#pages)
-  - [Cookbook > Adding Extra Pages](../advanced/cookbook/adding-extra-pages.md)
+- См. также:
+  - [Node API > Свойства приложения > pages](#pages)
+  - [Рецепты > Создание дополнительных страниц](../advanced/cookbook/adding-extra-pages.md)
 
 ## Page Properties
 
 ### key
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Identifier of the page.
+  Идентификатор страницы.
 
-  The page key would be used as the [name](https://router.vuejs.org/api/#name-2) of the page route.
+  Ключ страницы будет использоваться как [name](https://router.vuejs.org/api/#name-2) роута страницы.
 
-- Also see:
+- См. также:
   - [Built-in Components > Content](./components.md#content)
 
 ### path
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Route path of the page.
+  Путь страницы.
 
-- Also see:
-  - [Guide > Page > Routing](../guide/page.md#routing)
-  - [Node API > Page Properties > pathInferred](#pathinferred)
+- См. также:
+  - [Руководство > Страница > Роутинг](../guide/page.md#роутинг)
+  - [Node API > Свойства страницы > pathInferred](#pathinferred)
 
 ### title
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Title of the page.
+  Заголовок страницы.
 
-- Also see:
+- См. также:
   - [Frontmatter > title](./frontmatter.md#title)
 
 ### lang
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Language of the page.
+  Язык страницы.
 
-- Example:
+- Пример:
+
   - `'en-US'`
-  - `'zh-CN'`
+  - `'ru-RU'`
 
-- Also see:
+- См. также:
   - [Frontmatter > lang](./frontmatter.md#title)
 
 ### frontmatter
 
-- Type: `PageFrontmatter`
+- Тип: `PageFrontmatter`
 
-- Details:
+- Подробности:
 
-  Frontmatter of the page.
+  Frontmatter страницы.
 
-- Also see:
+- См. также:
   - [Frontmatter](./frontmatter.md)
 
 ### excerpt
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Excerpt of the page.
+  Отрывок страницы.
 
-  If a Markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and rendered as excerpt.
+  Если файл Markdown содержит комментарий `<!-- more -->`, любое содержимое над комментарием будет извлечено и отображено как отрывок.
 
-  If you are building a custom theme for blogging, it would be helpful to generate a post list with excerpts.
+  Если вы создаёте собственную тему для ведения блога, было бы полезно создать список сообщений с выдержками.
 
-- Example:
+- Пример:
 
 ```md
-Lines above `<!-- more -->` comment would be used as excerpt.
+Строки выше комментария `<!-- more -->` будут использоваться как выдержка.
 
-It's recommended to wrap the comment with empty lines to avoid rendering issue.
+Рекомендуется заключать комментарий в пустые строки, чтобы избежать проблем с отображением.
 
 <!-- more -->
 
-Lines below `<!-- more -->` comment would not be used as excerpt.
+Строки после комментария `<!-- more -->` не будут использоваться в качестве отрывка.
 ```
 
 ### headers
 
-- Type: `PageHeader[]`
+- Тип: `PageHeader[]`
 
 ```ts
 interface PageHeader {
@@ -467,16 +469,16 @@ interface PageHeader {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Headers of the page.
+  Заголовки страницы.
 
-- Also see:
+- См. также:
   - [Config > markdown.headers](./config.md#markdown-headers)
 
 ### data
 
-- Type: `PageData`
+- Тип: `PageData`
 
 ```ts
 interface PageData {
@@ -490,63 +492,64 @@ interface PageData {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Data of the page.
+  Данные страницы.
 
-  Page data would be available in client side.
+  Данные страницы будут доступны на стороне клиента.
 
-- Also see:
-  - [Client API > usePageData](./client-api.md#usepagedata)
-  - [Plugin API > extendsPage](./plugin-api.md#extendspage)
+- См. также:
+  - [API клиента > usePageData](./client-api.md#usepagedata)
+  - [API плагинов > extendsPage](./plugin-api.md#extendspage)
 
 ### content
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Raw content of the page.
+  Необработанное содержимое страницы.
 
 ### contentRendered
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Rendered content of the page.
+  Отображенное содержимое страницы.
 
 ### date
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Date of the page, in 'yyyy-MM-dd' format.
+  Дата страницы в формате 'yyyy-MM-dd'.
 
-- Example:
+- Пример:
+
   - `'0000-00-00'`
   - `'2021-08-16`'
 
-- Also see:
+- См. также:
   - [Frontmatter > date](./frontmatter.md#date)
 
 ### deps
 
-- Type: `string[]`
+- Тип: `string[]`
 
-- Details:
+- Подробности:
 
-  Dependencies of the page.
+  Зависимости страницы.
 
-  For example, if users import code snippet in the page, the absolute file path of the imported file would be added to `deps`.
+  Например, если пользователи импортируют фрагмент кода на страницу, абсолютный путь к импортированному файлу будет добавлен к `deps`.
 
-- Also see:
+- См. также:
   - [Config > markdown.importCode](./config.md#markdown-importcode)
 
 ### links
 
-- Type: `MarkdownLink[]`
+- Тип: `MarkdownLink[]`
 
 ```ts
 interface MarkdownLink {
@@ -556,115 +559,117 @@ interface MarkdownLink {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Links of the page.
+  Ссылки страницы..
 
 ### pathInferred
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Details:
+- Подробности:
 
-  Route path of the page that inferred from file path.
+  Роут страницы, полученный из пути к файлу.
 
-  By default, the route path is inferred from the relative file path of the Markdown source file. However, users may explicitly set the route path, e.g. [permalink](#permalink), which would be used as the final route path of the page. So we keep the inferred path as a page property in case you may need it.
+  По умолчанию роут выводится из относительного пути исходного файла Markdown. Однако пользователи могут явно указать роут, например, [постоянная ссылка](#permalink), которая будет использоваться в качестве конечного урла страницы. Поэтому мы сохраняем предполагаемый путь как свойство страницы на случай, если он вам понадобится.
 
-  It would be `null` if the page does not come from a Markdown source file.
+  Значение по умолчанию `null`, если страница не исходит из исходного файла Markdown.
 
-- Example:
+- Пример:
+
   - `'/'`
   - `'/foo.html'`
 
-- Also see:
-  - [Guide > Page > Routing](../guide/page.md#routing)
-  - [Node API > Page Properties > path](#path)
+- См. также:
+  - [Руководство > Страница > Роутинг](../guide/page.md#routing)
+  - [Node API > Свойства страницы > path](#path)
 
 ### pathLocale
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Locale prefix of the page route path.
+  Префикс локали роута страницы.
 
-  It is inferred from the relative file path of the Markdown source file and the key of `locales` option in user config.
+  Получается из относительного пути к исходному файлу Markdown и ключа опции `locales` в конфигурации пользователя.
 
-- Example:
+- Пример:
+
   - `'/'`
   - `'/en/'`
   - `'/zh/'`
 
-- Also see:
-  - [Config > locales](./config.md#locales)
+- См. также:
+  - [Конфигурация > locales](./config.md#locales)
 
 ### permalink
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Details:
+- Подробности:
 
-  Permalink of the page.
+  Постоянная ссылка страницы.
 
-- Also see:
+- См. также:
   - [Frontmatter > permalink](./frontmatter.md#permalink)
   - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
 
 ### routeMeta
 
-- Type: `Record<string, unknown>`
+- Тип: `Record<string, unknown>`
 
-- Details:
+- Подробности:
 
-  Custom data to be attached to the route record of vue-router.
+  Пользовательские данные, которые будут добавлены к записи роута во vue-router.
 
-- Also see:
+- См. также:
   - [Frontmatter > routeMeta](./frontmatter.md#routemeta)
   - [vue-router > API Reference > RouteRecordRaw > meta](https://router.vuejs.org/api/#meta)
 
-::: tip What's the difference between route meta and page data?
-Both [route meta](#routemeta) and [page data](#data) is available in client side. However, route meta is attached to the route record, so the route meta of all pages would be loaded at once when users enter your site. In the contrast, page data is saved in separated files, which would be loaded only when users enter the corresponding page.
+::: tip В чем разница между метаданными роута и данными страницы?
+На стороне клиента доступны как [метаданные маршрута](#routemeta), так и [данные страницы](#data). Однако метаданные маршрута добавляются к записи маршрута, поэтому метаданные маршрута всех страниц будут загружаться одновременно, когда пользователи заходят на ваш сайт. Напротив, данные страницы сохраняются в отдельных файлах, которые будут загружаться только тогда, когда пользователи переходят на соответствующую страницу.
 
-Therefore, it's not recommended to store large amounts of info into route meta, otherwise the initial loading speed will be affected a lot when your site has a large number of pages.
+Поэтому не рекомендуется хранить большие объемы информации в метаданных маршрута, иначе начальная скорость загрузки сильно пострадает, если на вашем сайте будет большое количество страниц.
 :::
 
 ### sfcBlocks
 
-- Type: `MarkdownSfcBlocks`
+- Тип: `MarkdownSfcBlocks`
 
-- Details:
+- Подробности:
 
-  Extracted vue SFC blocks of the page.
+  Извлеченные блоки vue SFC страницы.
 
-- Also see:
+- См. также:
   - [Config > markdown.sfc](./config.md#markdown-sfc)
 
 ### slug
 
-- Type: `string`
+- Тип: `string`
 
-- Details:
+- Подробности:
 
-  Slug of the page.
+  Slug для текущей страницы.
 
-  It is inferred from the filename of the Markdown source file.
+  Выводится из имени файла исходного файла Markdown страницы.
 
 ### filePath
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Details:
+- Подробности:
 
-  Absolute path of the Markdown source file of the page.
+  Абсолютный путь к исходному файлу Markdown страницы.
 
-  It would be `null` if the page does not come from a Markdown source file.
+  Будет иметь значение `null`, если страница не исходит из исходного файла Markdown.
 
 ### filePathRelative
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Details:
+- Подробности:
 
-  Relative path of the Markdown source file of the page.
+  Относительный путь к исходному файлу страницы в формате Markdown.
 
-  It would be `null` if the page does not come from a Markdown source file.
+  Будет иметь значение `null`, если страница не исходит из исходного файла Markdown.

@@ -1,106 +1,106 @@
-# Config
+# Конфигурация
 
 <NpmBadge package="@vuepress/cli" />
 <NpmBadge package="@vuepress/core" />
 
-## Site Config
+## Конфигурация сайта
 
 ### base
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `/`
+- Значение по умолчанию: `/`
 
-- Details:
+- Подробности:
 
-  The base URL the site will be deployed at.
+  Базовый URL-адрес, по которому будет развёрнут сайт.
 
-  You will need to set this if you plan to deploy your site under a sub path. It should always start and end with a slash. For example, if you plan to deploy your site to GitHub pages at `https://foo.github.io/bar/`, then you should set `base` to `"/bar/"`.
+  Вам нужно будет установить значение, если вы планируете развернуть свой сайт по дополнительному пути. Он всегда должен начинаться и заканчиваться косой чертой. Например, если вы планируете развернуть свой сайт на страницах GitHub по адресу `https://foo.github.io/bar/`, вам следует установить `base` в значении `"/bar/"`.
 
-  The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
+  `base` автоматически добавляется ко всем URL-адресам, начинающимся с `/` в других параметрах, поэтому вам нужно указать его только один раз.
 
-- Also see:
-  - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
-  - [Guide > Deployment](../guide/deployment.md)
+- См. также:
+  - [Руководство > Ассеты > Базовый хелпер](../guide/assets.md#базовыи-хелпер)
+  - [Руководство > Деплой](../guide/deployment.md)
 
 ### lang
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `en-US`
+- Значение по умолчанию: `en-US`
 
-- Details:
+- Подробности:
 
-  Language for the site.
+  Язык сайта.
 
-  This will be the `lang` attribute of the `<html>` tag in the rendered HTML.
+  Используется как атрибут `lang` в теге `<html>` в отреднедренном HTML.
 
-  This can be specified in different locales.
+  Может быть использовано разное значение в разных локалях.
 
-- Also see:
-  - [Config > locales](#locales)
+- См. также:
+  - [Конфигурация > locales](#locales)
   - [Frontmatter > lang](./frontmatter.md#lang)
 
 ### title
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `''`
+- Значение по умолчанию: `''`
 
-- Details:
+- Подробности:
 
-  Title for the site.
+  Название сайта.
 
-  This will be the suffix for all page titles, and displayed in the navbar in the default theme.
+  Добавляется в конце тайтлов всех страниц, также оно будет отображаться на панели навигации в теме по умолчанию.
 
-  This can be specified in different locales.
+  Может быть использовано разное значение в разных локалях.
 
-- Also see:
-  - [Config > locales](#locales)
+- См. также:
+  - [Конфиг > locales](#locales)
 
 ### description
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `''`
+- Значение по умолчанию: `''`
 
-- Details:
+- Подробности:
 
-  Description for the site.
+  Описание для сайта.
 
-  This will be the `content` attribute of `<meta name="description" />` tag in the rendered HTML, which will be overrode by the `description` field of page frontmatter.
+  Будет использовано в атрибуте `content` тега `<meta name="description" />` в отреднедренном HTML-коде, который может быть переопределен полем `description` во frontmatter.
 
-  This can be specified in different locales.
+  Может быть использовано разное значение в разных локалях.
 
-- Also see:
-  - [Config > locales](#locales)
+- См. также:
+  - [Конфиг > locales](#locales)
   - [Frontmatter > description](./frontmatter.md#description)
 
 ### head
 
-- Type: `HeadConfig[]`
+- Тип: `HeadConfig[]`
 
-- Default: `[]`
+- Значение по умолчанию: `[]`
 
-- Details:
+- Подробности:
 
-  Extra tags to inject into the `<head>` tag in the rendered HTML.
+  Дополнительные теги для вставки в тег `<head>` в отредеренном HTML.
 
-  You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
+  Вы можете указать каждый тег в форме `[tagName, { attrName: attrValue }, innerHTML?]`.
 
-  This can be specified in different locales.
+  Может быть использовано разное значение в разных локалях.
 
-- Example:
+- Пример:
 
-  To add a custom favicon:
+  Чтобы добавить пользовательскую иконку:
 
 ```ts
-export default  {
+export default {
   head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```
 
-Rendered as：
+Будет отрендерено как：
 
 ```html
 <head>
@@ -108,253 +108,253 @@ Rendered as：
 </head>
 ```
 
-- Also see:
-  - [Config > locales](#locales)
+- См. также:
+  - [Конфиг > locales](#locales)
   - [Frontmatter > head](./frontmatter.md#head)
 
 ### locales
 
-- Type: `{ [path: string]: Partial<SiteLocaleData> }`
+- Тип: `{ [path: string]: Partial<SiteLocaleData> }`
 
-- Default: `{}`
+- Значение по умолчанию: `{}`
 
-- Details:
+- Подробности:
 
-  Specify locales for i18n support.
+  Укажите локали для поддержки i18n.
 
-  Acceptable fields:
+  Допустимые поля:
 
   - [lang](#lang)
   - [title](#title)
   - [description](#description)
   - [head](#head)
 
-- Also see:
-  - [Guide > I18n](../guide/i18n.md)
+- См. также:
+  - [Руководство > I18n](../guide/i18n.md)
 
-## Theme Config
+## Конфигурация темы
 
 ### theme
 
-- Type: `Theme`
+- Тип: `Theme`
 
-- Details:
+- Подробности:
 
-  Set the theme of your site.
+  Установите тему вашего сайта.
 
-  If this option is not set, the default theme will be used.
+  Если этот параметр не установлен, будет использоваться стандартная тема.
 
-- Also see:
-  - [Guide > Theme](../guide/theme.md)
-  - [Default Theme > Config](./default-theme/config.md)
+- См. также:
+  - [Руководство > Тема](../guide/theme.md)
+  - [Стандартная тема > Конфигурация](./default-theme/config.md)
 
-## Bundler Config
+## Конфигурация сборщика
 
 ### bundler
 
-- Type: `Bundler`
+- Тип: `Bundler`
 
-- Details:
+- Подробности:
 
-  Set the bundler of your site.
+  Установите сборщик вашего сайта.
 
-  If this option is not set, the default bundler will be used:
+  Если этот параметр не установлен, будет использоваться сборщик по умолчанию:
 
-  - With `vuepress` or `vuepress-vite`, the default bundler is vite.
-  - With `vuepress-webpack`, the default bundler is webpack.
+  - С `vuepress` или `vuepress-vite` сборщиком по умолчанию является vite.
+  - С `vuepress-webpack` сборщиком по умолчанию является webpack.
 
-- Also see:
-  - [Guide > Bundler](../guide/bundler.md)
-  - [Bundlers > Vite](./bundler/vite.md)
-  - [Bundlers > Webpack](./bundler/webpack.md)
+- См. также:
+  - [Руководство > Сборщик](../guide/bundler.md)
+  - [Сборщики > Vite](./bundler/vite.md)
+  - [Сборщики > Webpack](./bundler/webpack.md)
 
-## Common Config
+## Общая конфигурация
 
 ### dest
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `` `${sourceDir}/.vuepress/dist` ``
+- Значение по умолчанию: `` `${sourceDir}/.vuepress/dist` ``
 
-- Details:
+- Подробности:
 
-  Specify the output directory for `vuepress build` command.
+  Укажите директорию, где будет размещён код, который будет скомпилирован командой `vuepress build`.
 
 ### temp
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `` `${sourceDir}/.vuepress/.temp` ``
+- Значение по умолчанию: `` `${sourceDir}/.vuepress/.temp` ``
 
-- Details:
+- Подробности:
 
-  Specify the directory for temporary files.
+  Укажите директорию, где будут храниться временные файлы.
 
 ::: warning
-Since VuePress will load temp files during dev and build, the temp directory should be inside project root to resolve dependencies correctly.
+Поскольку VuePress будет загружать временные файлы во время разработки и сборки, временный каталог должен находиться внутри корня проекта для правильного разрешения зависимостей.
 :::
 
 ### cache
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `` `${sourceDir}/.vuepress/.cache` ``
+- Значение по умолчанию: `` `${sourceDir}/.vuepress/.cache` ``
 
-- Details:
+- Подробности:
 
-  Specify the directory for cache files.
+  Укажите директорию, где будет храниться файлы кэша.
 
 ### public
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `` `${sourceDir}/.vuepress/public` ``
+- Значение по умолчанию: `` `${sourceDir}/.vuepress/public` ``
 
-- Details:
+- Подробности:
 
-  Specify the directory for public files.
+  Укажите директорию для общедоступных файлов.
 
-- Also see:
-  - [Guide > Assets > Public Files](../guide/assets.md#public-files)
+- См. также
+  - [Руководство > Ассеты > Public файлы](../guide/assets.md#public-файлы)
 
 ### debug
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `false`
+- Значение по умолчанию: `false`
 
-- Details:
+- Подробности:
 
-  Enable debug mode or not.
+  Включить режим отладки или нет.
 
-  This would be helpful for developers. Also, we are using [debug](https://github.com/visionmedia/debug) package for debug logging, which can be enabled via `DEBUG=vuepress*` environment variable.
+  Это может быть полезно для разработчиков. Кроме того, мы используем пакет [debug](https://github.com/visionmedia/debug) для ведения журнала отладки, который можно включить с помощью переменной окружения `DEBUG=vuepress*`.
 
 ### pagePatterns
 
-- Type: `string[]`
+- Тип: `string[]`
 
-- Default: `['**/*.md', '!.vuepress', '!node_modules']`
+- Значение по умолчанию: `['**/*.md', '!.vuepress', '!node_modules']`
 
-- Details:
+- Подробности:
 
-  Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
+  Укажите шаблоны файлов, которые вы хотите разрезолвить как страницы вашего сайта. Паттерны относятся к коду в директории исходных файлов.
 
 ### permalinkPattern
 
-- Type: `string | null`
+- Тип: `string | null`
 
-- Default: `null`
+- Значение по умолчанию: `null`
 
-- Details:
+- Подробности:
 
-  Specify the pattern to generate permalink.
+  Укажите шаблон для генерации постоянной ссылки.
 
-  This will be overrode by the `permalinkPattern` field of page frontmatter.
+  Это значение может быть переопределено полем `permalinkPattern` во frontmatter.
 
-- Also see:
+- См. также:
   - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
 
-## Dev Config
+## Конфигурация разработки
 
 ### host
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `'0.0.0.0'`
+- Значение по умолчанию: `'0.0.0.0'`
 
-- Details:
+- Подробности:
 
-  Specify the host to use for the dev server.
+  Укажите хост, который будет использоваться для сервера разработки.
 
 ### port
 
-- Type: `number`
+- Тип: `number`
 
-- Default: `8080`
+- Значение по умолчанию: `8080`
 
-- Details:
+- Подробности:
 
-  Specify the port to use for the dev server.
+  Укажите порт, который будет использоваться для сервера разработки.
 
 ### open
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `false`
+- Значение по умолчанию: `false`
 
-- Details:
+- Подробности:
 
-  Whether to open the browser after dev-server had been started.
+  Открывать ли браузер после старта dev-сервера.
 
 ### templateDev
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `'@vuepress/client/templates/dev.html'`
+- Значение по умолчанию: `'@vuepress/client/templates/dev.html'`
 
-- Details:
+- Подробности:
 
-  Specify the path of the HTML template to be used for dev.
+  Укажите путь к HTML-шаблону, который будет использоваться для разработки.
 
-## Build Config
+## Конфигурация сборки
 
 ### shouldPreload
 
-- Type: `((file: string, type: string) => boolean)) | boolean`
+- Тип: `((file: string, type: string) => boolean)) | boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  A function to control what files should have `<link rel="preload">` resource hints generated. Set to `true` or `false` to enable or disable totally.
+  Функция для управления списком файлов, для которых должен создаваться `<link rel="preload">`. Установите значение `true` или `false`, чтобы полностью включить или отключить прелоадинг файлов.
 
-  By default, only those files that are required by current page will be preloaded. So you can keep it `true` in most cases.
+  По умолчанию будут предварительно загружены только те файлы, которые требуются для текущей страницы. Таким образом, в большинстве случаев вы можете оставить значение `true`.
 
 ### shouldPrefetch
 
-- Type: `((file: string, type: string) => boolean)) | boolean`
+- Тип: `((file: string, type: string) => boolean)) | boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
+  Функция для управления списком файлов, для которых должен создаваться `<link rel="prefetch">`. Установите значение `true` или `false`, чтобы полностью включить или отключить прелоадинг файлов.
 
-  If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
+  Если вы установите значение `true`, все файлы, которые требуются для других страниц, будут загружаться заранее. Это хорошо для небольших сайтов, что ускорит навигацию, но может быть не очень хорошей идеей, если на вашем сайте много страниц.
 
 ### templateBuild
 
-- Type: `string`
+- Тип: `string`
 
-- Default: `'@vuepress/client/templates/build.html'`
+- начение по умолчанию: `'@vuepress/client/templates/build.html'`
 
-- Details:
+- Подробности:
 
-  Specify the path of the HTML template to be used for build.
+  Укажите путь к HTML-шаблону, который будет использоваться для сборки.
 
-## Markdown Config
+## Конфигурация Markdown
 
 ### markdown
 
-- Type: `MarkdownOptions`
+- Тип: `MarkdownOptions`
 
-- Default: `{}`
+- Значение по умолчанию: `{}`
 
-- Details:
+- Подробности:
 
-  Configure VuePress built-in Markdown syntax extensions.
+  Настройте встроенные во VuePress расширения синтаксиса Markdown.
 
-  It accepts all options of [markdown-it](https://github.com/markdown-it/markdown-it), and the following additional options.
+  Принимает все параметры [markdown-it](https://github.com/markdown-it/markdown-it) и следующие дополнительные параметры.
 
-- Also see:
-  - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
-  - [Guide > Markdown > Syntax Extensions](../guide/markdown.md#syntax-extensions)
+- См. также:
+  - [markdown-it > Инициализация с пресетами и параметрами](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
+  - [Руководством > Markdown > Расширения синтаксиса](../guide/markdown.md#расширения-синтаксиса)
 
 ### markdown.anchor
 
-- Type: `AnchorPluginOptions | false`
+- Тип: `AnchorPluginOptions | false`
 
-- Default:
+- Значение по умолчанию:
 
 ```ts
 const defaultOptions = {
@@ -368,145 +368,145 @@ const defaultOptions = {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
+  Параметры для [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
+- См. также:
   - [Guide > Markdown > Syntax Extensions > Header Anchors](../guide/markdown.md#header-anchors)
 
 ### markdown.assets
 
-- Type: `AssetsPluginOptions | false`
+- Тип: `AssetsPluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for VuePress built-in markdown-it assets plugin.
+  Параметры для встроенного во VuePress плагина markdown-it assets.
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
 ::: danger
-You should not configure it unless you understand what it is for.
+Вы не должны настраивать его, если не понимаете, для чего он нужен.
 :::
 
 ### markdown.code
 
-- Type: `CodePluginOptions | false`
+- Тип: `CodePluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for VuePress built-in markdown-it code plugin.
+  Параметры для встроенного во VuePress плагина markdown-it code.
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
+- См. также:
   - [Guide > Markdown > Syntax Extensions > Code Blocks](../guide/markdown.md#code-blocks)
 
 #### markdown.code.highlightLines
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  Enable code line highlighting or not.
+  Включить подсветку строки кода или нет.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Highlighting](../guide/markdown.md#line-highlighting)
+- См. также:
+  - [Руководство > Markdown > Расширения синтаксиса > Блоки кода > Подсветка строк](../guide/markdown.md#подсветка-строк)
 
 #### markdown.code.lineNumbers
 
-- Type: `boolean | number`
+- Тип: `boolean | number`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  Configure code line numbers.
+  Настройте номера строк кода.
 
-  - A `boolean` value is to enable line numbers or not.
-  - A `number` value is the minimum number of lines to enable line numbers. For example, if you set it to `4`, line numbers will only be enabled when your code block has at least 4 lines of code.
+  - Значение типа `boolean` должно включать или отключать номера строк.
+  - Значение типа `number` — это минимальное количество строк для включения нумерации строк. Например, если вы установите значение `4`, номера строк будут доступны только в том случае, если ваш блок кода содержит не менее 4 строк кода.
 
-- Also see:
+- См. также:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
 
 #### markdown.code.preWrapper
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  Enable the extra wrapper of the `<pre>` tag or not.
+  Включить дополнительную враппер тега `<pre>` или нет.
 
-  The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
+  Враппер требуется для `highlightLines` и `lineNumbers`. Это означает, что если вы отключите `preWrapper`, подсветка строк и номера строк также будут отключены.
 
 ::: tip
-You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+Вы можете отключить его, если хотите реализовать эту функциональность на стороне клиента. Например, [Подсветка строки Prismjs](https://prismjs.com/plugins/line-highlight/) или [Номера строк Prismjs](https://prismjs.com/plugins/line-numbers/).
 :::
 
 #### markdown.code.vPre.block
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  Add `v-pre` directive to `<pre>` tag of code block or not.
+  Добавлять директиву `v-pre` в тег `<pre>` блока кода или нет.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
+- См. также:
+  - [Руководство > Markdown > Расширения синтаксиса > Блоки кода > Обёртка v-pre](../guide/markdown.md##обёртка-v-pre)
 
 #### markdown.code.vPre.inline
 
-- Type: `boolean`
+- Тип: `boolean`
 
-- Default: `true`
+- Значение по умолчанию: `true`
 
-- Details:
+- Подробности:
 
-  Add `v-pre` directive to `<code>` tag of inline code or not.
+  Добавлять директиву `v-pre` в тег `<code>` инлайн-блока кода или нет.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
+- См. также:
+  - [Руководство > Markdown > Расширения синтаксиса > Блоки кода > Обёртка v-pre](../guide/markdown.md##обёртка-v-pre)
 
 ### markdown.component
 
-- Type: `undefined | false`
+- Тип: `undefined | false`
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-component](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-component).
+  Параметры для [@mdit-vue/plugin-component](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-component).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
 ::: danger
-You should not configure it unless you understand what it is for.
+Вы не должны настраивать его, если не понимаете, для чего он нужен.
 :::
 
 ### markdown.emoji
 
-- Type: `EmojiPluginOptions | false`
+- Тип: `EmojiPluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji).
+  Параметры для [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
+- См. также:
+  - [Руководство > Markdown > Расширения синтаксиса > Эмодзи](../guide/markdown.md#эмодзи)
 
 ### markdown.frontmatter
 
-- Type: `FrontmatterPluginOptions | false`
+- Тип: `FrontmatterPluginOptions | false`
 
-- Default:
+- Значение по умолчанию:
 
 ```ts
 const defaultOptions = {
@@ -517,26 +517,26 @@ const defaultOptions = {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter).
+  Параметры для [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
-  - [Guide > Page > Frontmatter](../guide/page.md#frontmatter)
-  - [Node API > Page Properties > frontmatter](./node-api.md#frontmatter)
-  - [Node API > Page Properties > excerpt](./node-api.md#excerpt)
+- См. также:
+  - [Руководство > Страница > Frontmatter](../guide/page.md#frontmatter)
+  - [Node API > Свойства страницы > frontmatter](./node-api.md#frontmatter)
+  - [Node API > Свойства страницы > excerpt](./node-api.md#excerpt)
 
 ::: danger
-You should not configure it unless you understand what it is for.
+Вы не должны настраивать его, если не понимаете, для чего он нужен.
 :::
 
 ### markdown.headers
 
-- Type: `HeadersPluginOptions | false`
+- Тип: `HeadersPluginOptions | false`
 
-- Default:
+- Значение по умолчанию:
 
 ```ts
 const defaultOptions = {
@@ -544,116 +544,116 @@ const defaultOptions = {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-headers](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-headers).
+  Параметры для [@mdit-vue/plugin-headers](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-headers).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
+- См. также:
   - [Node API > Page Properties > headers](./node-api.md#headers)
 
 ### markdown.importCode
 
-- Type: `ImportCodePluginOptions | false`
+- Тип: `ImportCodePluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for VuePress built-in markdown-it import-code plugin.
+  Параметры для встроенного во VuePress markdown-it плагина import-code.
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Import Code Blocks](../guide/markdown.md#import-code-blocks)
+- См. также:
+  - [Руководство > Markdown > Расширение синтаксиса > Import Code Blocks](../guide/markdown.md#import-code-blocks)
 
 #### markdown.importCode.handleImportPath
 
-- Type: `(str: string) => string`
+- Тип: `(str: string) => string`
 
-- Default: `(str) => str`
+- Значение по умолчанию: `(str) => str`
 
-- Details:
+- Подробности:
 
-  A function to handle the import path of the import code syntax.
+  Функция для обработки путей импорта в синтаксисе кода импорта.
 
 ### markdown.links
 
-- Type: `LinksPluginOptions | false`
+- Тип: `LinksPluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for VuePress built-in markdown-it links plugin.
+  Параметры встроенного во VuePress markdown-it плагина links.
 
-  It will convert internal links to `<RouterLink>`, and add extra attributes and icon to external links.
+  Он преобразует внутренние ссылки в `<RouterLink>` и добавит дополнительные атрибуты и значок ко внешним ссылкам.
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
+- См. также:
   - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
 #### markdown.links.internalTag
 
-- Type: `'a' | 'RouterLink'`
+- Тип: `'a' | 'RouterLink'`
 
-- Default: `'RouterLink'`
+- Значение по умолчанию: `'RouterLink'`
 
-- Details:
+- Подробности:
 
-  Tag for internal links.
+  Тег для внутренних ссылок.
 
-  By default, this plugin will transform internal links to `<RouterLink>`. You can set this option to `'a'` to disable this feature.
+  По умолчанию этот плагин преобразует внутренние ссылки в `<RouterLink>`. Вы можете установить для этой опции значение `'a'`, чтобы отключить эту функцию.
 
 #### markdown.links.externalAttrs
 
-- Type: `Record<string, string>`
+- Тип: `Record<string, string>`
 
-- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+- Значение по умолчанию: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
-- Details:
+- Подробности:
 
-  Additional attributes for external links.
+  Дополнительные атрибуты для внешних ссылок.
 
 ### markdown.sfc
 
-- Type: `SfcPluginOptions | false`
+- Тип: `SfcPluginOptions | false`
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-sfc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-sfc).
+  Параметры для [@mdit-vue/plugin-sfc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-sfc).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
-  - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
-  - [Node API > Page Properties > sfcBlocks](./node-api.md#sfcblocks)
+- См. также:
+  - [Рецепты > Markdown и Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
+  - [Node API > Свойства страницы > sfcBlocks](./node-api.md#sfcblocks)
 
 ### markdown.slugify
 
-- Type: `(str: string) => string`
+- Тип: `(str: string) => string`
 
-- Details:
+- Подробности:
 
-  The default slugify function.
+  Функция slugify по умолчанию.
 
 ### markdown.title
 
-- Type: `undefined | false`
+- Тип: `undefined | false`
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-title](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-title).
+  Параметры для [@mdit-vue/plugin-title](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-title).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
 ::: danger
-You should not configure it unless you understand what it is for.
+Вы не должны настраивать его, если не понимаете, для чего он нужен.
 :::
 
 ### markdown.toc
 
-- Type: `TocPluginOptions | false`
+- Тип: `TocPluginOptions | false`
 
-- Default:
+- Значение по умолчанию:
 
 ```ts
 const defaultOptions = {
@@ -661,32 +661,32 @@ const defaultOptions = {
 }
 ```
 
-- Details:
+- Подробности:
 
-  Options for [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc).
+  Параметры для [@mdit-vue/plugin-toc](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc).
 
-  Set to `false` to disable this plugin.
+  Установите значение `false`, чтобы отключить этот плагин.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
+- См. также:
+  - [Руководство > Markdown > Расширения синтаксиса > Оглавление](../guide/markdown.md#оглавление)
 
-## Plugin Config
+## Конфигурация плагинов
 
 ### plugins
 
-- Type: `(Plugin | Plugin[])[]`
+- Тип: `(Plugin | Plugin[])[]`
 
-- Details:
+- Подробности:
 
-  Plugins to use.
+  Плагины для использования.
 
-  This option accepts an array, each item of which could be a plugin or an array of plugins.
+  Эта опция принимает массив, каждый элемент которого может быть плагином или массивом плагинов.
 
-- Also see:
-  - [Guide > Plugin](../guide/plugin.md)
+- См. также:
+  - [Руководство > Плагин](../guide/plugin.md)
 
-## Plugin API
+## API плагинов
 
-User config file also works as a VuePress plugin, so all of the Plugin APIs are available except the `name` and `multiple` options.
+Файл конфигурации пользователя также работает как плагин VuePress, поэтому доступны все API-интерфейсы плагина, кроме параметров `name` и `multiple`.
 
-Please check out [Plugin API Reference](./plugin-api.md) for a full list of Plugin APIs.
+Пожалуйста, ознакомьтесь со [Справочником API плагинов](./plugin-api.md) для получения полного списка API плагинов.
