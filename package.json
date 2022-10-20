@@ -27,11 +27,6 @@
     "test": "vitest run",
     "test:cov": "vitest run --coverage"
   },
-  "lint-staged": {
-    "*.{cjs,js,ts,vue}": "eslint --fix",
-    "*.{json,yml,css,scss}": "prettier --write",
-    "package.json": "sort-package-json"
-  },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -46,7 +41,7 @@
     "eslint-config-vuepress": "^4.0.3",
     "eslint-config-vuepress-typescript": "^4.0.3",
     "husky": "^8.0.1",
-    "lint-staged": "^12.5.0",
+    "nano-staged": "^0.8.0",
     "prettier": "^2.7.1",
     "prettier-config-vuepress": "^4.0.0",
     "rimraf": "^3.0.2",
@@ -60,6 +55,11 @@
   "packageManager": "pnpm@7.11.0",
   "engines": {
     "node": ">=14.18.0"
+  },
+  "nano-staged": {
+    "*.{cjs,js,ts,vue}": "eslint --fix",
+    "*.{json,yml,css,scss}": "prettier --write",
+    "package.json": "sort-package-json"
   },
   "pnpm": {
     "peerDependencyRules": {
