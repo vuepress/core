@@ -37,9 +37,9 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^6.2.1",
+    "@vue/devtools-api": "^6.4.5",
     "@vuepress/shared": "workspace:*",
-    "vue": "^3.2.39",
+    "vue": "^3.2.41",
     "vue-router": "^4.1.5"
   },
   "publishConfig": {
