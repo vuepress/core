@@ -21,6 +21,9 @@ export const resolveViteConfig = async ({
       clearScreen: false,
       configFile: false,
       logLevel: !isBuild || app.env.isDebug ? 'info' : 'warn',
+      esbuild: {
+        charset: 'utf8',
+      },
       plugins: [
         vuePlugin(options.vuePluginOptions),
         vuepressPlugin({ app, isBuild, isServer }),
