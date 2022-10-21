@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
+import type { GetModuleInfo } from 'rollup'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
 /**
@@ -96,7 +97,30 @@ import '@vuepress/client/app'
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
                   entryFileNames: `[name].[hash].mjs`,
                 }
-              : {}),
+              : {
+                  manualChunks(id, ctx) {
+                    // move known framework code into a stable chunk so that
+                    // custom theme changes do not invalidate hash for all pages
+                    if (
+                      id.includes('plugin-vue:export-helper') ||
+                      /@vue\/(runtime|shared|reactivity)/.test(id) ||
+                      /@vuepress\/(client|shared)/.test(id)
+                    ) {
+                      return 'framework'
+                    }
+
+                    // check if a module is statically imported by at least one entry.
+                    if (
+                      id.includes('node_modules') &&
+                      !/\.css($|\\?)/.test(id) &&
+                      isStaticallyImportedByEntry(id, ctx.getModuleInfo)
+                    ) {
+                      return 'vendor'
+                    }
+
+                    return undefined
+                  },
+                }),
           },
           preserveEntrySignatures: 'allow-extension',
         },
@@ -222,4 +246,34 @@ const resolveDefine = async ({
   )
 
   return define
+}
+
+const cache = new Map<string, boolean>()
+const isStaticallyImportedByEntry = (
+  id: string,
+  getModuleInfo: GetModuleInfo,
+  importStack: string[] = []
+): boolean => {
+  if (cache.has(id)) {
+    return !!cache.get(id)
+  }
+  if (importStack.includes(id)) {
+    // circular deps!
+    cache.set(id, false)
+    return false
+  }
+  const mod = getModuleInfo(id)
+  if (!mod) {
+    cache.set(id, false)
+    return false
+  }
+  if (mod.isEntry) {
+    cache.set(id, true)
+    return true
+  }
+  const someImporterIs = mod.importers.some((item) =>
+    isStaticallyImportedByEntry(item, getModuleInfo, importStack.concat(id))
+  )
+  cache.set(id, someImporterIs)
+  return someImporterIs
 }
