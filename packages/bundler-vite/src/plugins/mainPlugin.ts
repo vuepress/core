@@ -4,45 +4,8 @@ import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
+import type { GetModuleInfo } from 'rollup'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
-
-const cache = new Map<string, boolean>()
-
-const staticImportedByEntry = (
-  id: string,
-  getModuleInfo: any,
-  cache: Map<string, boolean>,
-  importStack: string[] = []
-): boolean => {
-  if (cache.has(id)) {
-    return !!cache.get(id)
-  }
-  if (importStack.includes(id)) {
-    // circular deps!
-    cache.set(id, false)
-    return false
-  }
-  const mod = getModuleInfo(id)
-  if (!mod) {
-    cache.set(id, false)
-    return false
-  }
-
-  if (mod.isEntry) {
-    cache.set(id, true)
-    return true
-  }
-  const someImporterIs = mod.importers.some((importer: string) =>
-    staticImportedByEntry(
-      importer,
-      getModuleInfo,
-      cache,
-      importStack.concat(id)
-    )
-  )
-  cache.set(id, someImporterIs)
-  return someImporterIs
-}
 
 /**
  * The main plugin to compat vuepress with vite
@@ -146,11 +109,11 @@ import '@vuepress/client/app'
                       return 'framework'
                     }
 
-                    // Check if a module is statically imported by at least one entry.
+                    // check if a module is statically imported by at least one entry.
                     if (
                       id.includes('node_modules') &&
                       !/\.css($|\\?)/.test(id) &&
-                      staticImportedByEntry(id, ctx.getModuleInfo, cache)
+                      isStaticallyImportedByEntry(id, ctx.getModuleInfo)
                     ) {
                       return 'vendor'
                     }
@@ -283,4 +246,34 @@ const resolveDefine = async ({
   )
 
   return define
+}
+
+const cache = new Map<string, boolean>()
+const isStaticallyImportedByEntry = (
+  id: string,
+  getModuleInfo: GetModuleInfo,
+  importStack: string[] = []
+): boolean => {
+  if (cache.has(id)) {
+    return !!cache.get(id)
+  }
+  if (importStack.includes(id)) {
+    // circular deps!
+    cache.set(id, false)
+    return false
+  }
+  const mod = getModuleInfo(id)
+  if (!mod) {
+    cache.set(id, false)
+    return false
+  }
+  if (mod.isEntry) {
+    cache.set(id, true)
+    return true
+  }
+  const someImporterIs = mod.importers.some((item) =>
+    isStaticallyImportedByEntry(item, getModuleInfo, importStack.concat(id))
+  )
+  cache.set(id, someImporterIs)
+  return someImporterIs
 }
