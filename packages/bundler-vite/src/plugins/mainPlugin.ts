@@ -104,7 +104,8 @@ import '@vuepress/client/app'
                     if (
                       id.includes('plugin-vue:export-helper') ||
                       /@vue\/(runtime|shared|reactivity)/.test(id) ||
-                      /@vuepress\/(client|shared)/.test(id)
+                      /@vuepress\/(client|shared)/.test(id) ||
+                      (/node_modules/.test(id) && /vue/.test(id))
                     ) {
                       return 'framework'
                     }
