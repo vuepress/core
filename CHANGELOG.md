@@ -1,3 +1,17 @@
+# [2.0.0-beta.53](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.52...v2.0.0-beta.53) (2022-10-24)
+
+
+### Features
+
+* **cli:** print help messages if no matching command ([bcc2208](https://github.com/vuepress/vuepress-next/commit/bcc22089c4302e1c3ec40d99ca27035b58494921))
+
+
+### Reverts
+
+* feat(bundler-vite): improve chunk splitting ([#1101](https://github.com/vuepress/vuepress-next/issues/1101)) (close [#1140](https://github.com/vuepress/vuepress-next/issues/1140)) ([01975a1](https://github.com/vuepress/vuepress-next/commit/01975a164df49d395351d3481ac85bda80adadac))
+
+
+
 # [2.0.0-beta.52](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.51...v2.0.0-beta.52) (2022-10-21)
 
 
