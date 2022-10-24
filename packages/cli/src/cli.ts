@@ -69,5 +69,10 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .command('info', 'Display environment information')
     .action(wrapCommand(info))
 
+  // use 'help' as default command
+  program.command('', '').action(() => {
+    program.outputHelp()
+  })
+
   program.parse(process.argv)
 }
