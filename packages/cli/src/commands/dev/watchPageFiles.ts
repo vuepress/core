@@ -1,5 +1,5 @@
 import type { App, Page } from '@vuepress/core'
-import { chalk, logger } from '@vuepress/utils'
+import { logger, picocolors } from '@vuepress/utils'
 import chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
 import { handlePageAdd } from './handlePageAdd.js'
@@ -30,7 +30,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     if (!pagePaths) return
     for (const filePathRelative of pagePaths) {
       logger.info(
-        `dependency of page ${chalk.magenta(filePathRelative)} is modified`
+        `dependency of page ${picocolors.magenta(filePathRelative)} is modified`
       )
       await handlePageChange(app, app.dir.source(filePathRelative))
     }
@@ -46,13 +46,13 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     ignoreInitial: true,
   })
   pagesWatcher.on('add', async (filePathRelative) => {
-    logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
+    logger.info(`page ${picocolors.magenta(filePathRelative)} is created`)
     const page = await handlePageAdd(app, app.dir.source(filePathRelative))
     if (page === null) return
     addDeps(page)
   })
   pagesWatcher.on('change', async (filePathRelative) => {
-    logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
+    logger.info(`page ${picocolors.magenta(filePathRelative)} is modified`)
     const result = await handlePageChange(app, app.dir.source(filePathRelative))
     if (result === null) return
     const [pageOld, pageNew] = result
@@ -60,7 +60,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     addDeps(pageNew)
   })
   pagesWatcher.on('unlink', async (filePathRelative) => {
-    logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
+    logger.info(`page ${picocolors.magenta(filePathRelative)} is removed`)
     const page = await handlePageUnlink(app, app.dir.source(filePathRelative))
     if (page === null) return
     removeDeps(page)

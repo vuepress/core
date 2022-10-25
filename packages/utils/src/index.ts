@@ -1,12 +1,12 @@
-import chalk from 'chalk'
 import debug from 'debug'
 import fs from 'fs-extra'
 import { globby } from 'globby'
 import hash from 'hash-sum'
 import ora from 'ora'
+import picocolors from 'picocolors'
 import path from 'upath'
 
-export { debug, chalk, fs, globby, hash, ora, path }
+export { debug, picocolors, fs, globby, hash, ora, path }
 
 export * from './getDirname.js'
 export * from './importFile.js'

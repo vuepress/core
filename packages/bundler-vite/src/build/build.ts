@@ -1,6 +1,6 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, debug, fs, importFile, withSpinner } from '@vuepress/utils'
+import { debug, fs, importFile, picocolors, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
@@ -74,7 +74,8 @@ export const build = async (
 
     // pre-render pages to html files
     for (const page of app.pages) {
-      if (spinner) spinner.text = `Rendering pages ${chalk.magenta(page.path)}`
+      if (spinner)
+        spinner.text = `Rendering pages ${picocolors.magenta(page.path)}`
       await renderPage({
         app,
         page,

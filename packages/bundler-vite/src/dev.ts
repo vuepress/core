@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs } from '@vuepress/utils'
+import { fs, picocolors } from '@vuepress/utils'
 import { createServer } from 'vite'
 import { resolveViteConfig } from './resolveViteConfig.js'
 import type { ViteBundlerOptions } from './types.js'
@@ -28,8 +28,8 @@ export const dev = async (
     require.resolve('vite/package.json')
   ).version
   server.config.logger.info(
-    chalk.cyan(`\n  vite v${viteVersion}`) +
-      chalk.green(` dev server running at:\n`),
+    picocolors.cyan(`\n  vite v${viteVersion}`) +
+      picocolors.green(` dev server running at:\n`),
     {
       clear: !server.config.logger.hasWarned,
     }

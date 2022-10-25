@@ -1,4 +1,4 @@
-import { chalk, debug, logger } from '@vuepress/utils'
+import { debug, logger, picocolors } from '@vuepress/utils'
 import type {
   HookItem,
   HookQueue,
@@ -27,7 +27,7 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
       // process all hook items
       for (const item of items) {
         log(
-          `process ${chalk.magenta(name)} from ${chalk.magenta(
+          `process ${picocolors.magenta(name)} from ${picocolors.magenta(
             item.pluginName
           )}`
         )
@@ -43,9 +43,9 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
           }
         } catch (e) {
           logger.error(
-            `error in hook ${chalk.magenta(name)} from ${chalk.magenta(
-              item.pluginName
-            )}`
+            `error in hook ${picocolors.magenta(
+              name
+            )} from ${picocolors.magenta(item.pluginName)}`
           )
           throw e
         }
