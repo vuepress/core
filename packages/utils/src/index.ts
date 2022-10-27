@@ -6,7 +6,7 @@ import ora from 'ora'
 import picocolors from 'picocolors'
 import path from 'upath'
 
-export { debug, picocolors, fs, globby, hash, ora, path }
+export { debug, fs, globby, hash, ora, path, picocolors }
 
 export * from './getDirname.js'
 export * from './importFile.js'
