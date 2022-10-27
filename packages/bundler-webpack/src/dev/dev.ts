@@ -1,5 +1,5 @@
 import type { App, Bundler } from '@vuepress/core'
-import { logger, ora, picocolors } from '@vuepress/utils'
+import { colors, logger, ora } from '@vuepress/utils'
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
@@ -63,7 +63,7 @@ export const dev = async (
           serverConfig.host === '0.0.0.0' ? 'localhost' : serverConfig.host
         }:${serverConfig.port}${app.options.base}`
         logger.success(
-          `VuePress webpack dev server is listening at ${picocolors.cyan(url)}`
+          `VuePress webpack dev server is listening at ${colors.cyan(url)}`
         )
 
         // resolve the close function

@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { logger, picocolors } from '@vuepress/utils'
+import { colors, logger } from '@vuepress/utils'
 import chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
 
@@ -19,7 +19,7 @@ export const watchUserConfigFile = ({
     ignoreInitial: true,
   })
   configWatcher.on('change', (configFile) => {
-    logger.info(`config ${picocolors.magenta(configFile)} is modified`)
+    logger.info(`config ${colors.magenta(configFile)} is modified`)
     restart()
   })
 
@@ -28,7 +28,7 @@ export const watchUserConfigFile = ({
     ignoreInitial: true,
   })
   depsWatcher.on('change', (depFile) => {
-    logger.info(`config dependency ${picocolors.magenta(depFile)} is modified`)
+    logger.info(`config dependency ${colors.magenta(depFile)} is modified`)
     restart()
   })
 

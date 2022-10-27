@@ -1,23 +1,23 @@
-import picocolors from 'picocolors'
+import colors from 'picocolors'
 
 export const info = (...args: any[]): void => {
-  console.log(picocolors.cyan('info'), ...args)
+  console.log(colors.cyan('info'), ...args)
 }
 
 export const tip = (...args: any[]): void => {
-  console.log(picocolors.blue('tip'), ...args)
+  console.log(colors.blue('tip'), ...args)
 }
 
 export const success = (...args: any[]): void => {
-  console.log(picocolors.green('success'), ...args)
+  console.log(colors.green('success'), ...args)
 }
 
 export const warn = (...args: any[]): void => {
-  console.warn(picocolors.yellow('warning'), ...args)
+  console.warn(colors.yellow('warning'), ...args)
 }
 
 export const error = (...args: any[]): void => {
-  console.error(picocolors.red('error'), ...args)
+  console.error(colors.red('error'), ...args)
 }
 
 export const createError = (message?: string | undefined): Error => {

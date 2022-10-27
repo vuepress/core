@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
 import type { AppConfig } from '@vuepress/core'
-import { picocolors } from '@vuepress/utils'
+import { colors } from '@vuepress/utils'
 import { cac } from 'cac'
 import { createBuild, createDev, info } from './commands/index.js'
 
@@ -60,7 +60,7 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
   // run command or fallback to help messages
   if (program.matchedCommand) {
     program.runMatchedCommand().catch((err) => {
-      console.error(picocolors.red(err.stack))
+      console.error(colors.red(err.stack))
       process.exit(1)
     })
   } else {

@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { fs, logger, path, picocolors } from '@vuepress/utils'
+import { colors, fs, logger, path } from '@vuepress/utils'
 
 /**
  * Resolve file path of user config
@@ -12,7 +12,7 @@ export const resolveUserConfigPath = (
 
   if (!fs.pathExistsSync(configPath)) {
     throw logger.createError(
-      `config file does not exist: ${picocolors.magenta(config)}`
+      `config file does not exist: ${colors.magenta(config)}`
     )
   }
 
