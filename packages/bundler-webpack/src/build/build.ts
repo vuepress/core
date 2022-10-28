@@ -1,7 +1,7 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
 import {
-  chalk,
+  colors,
   debug,
   fs,
   importFileDefault,
@@ -98,7 +98,7 @@ export const build = async (
     // pre-render pages to html files
     for (const page of app.pages) {
       if (spinner) {
-        spinner.text = `Rendering pages ${chalk.magenta(page.path)}`
+        spinner.text = `Rendering pages ${colors.magenta(page.path)}`
       }
       await renderPage({
         app,
