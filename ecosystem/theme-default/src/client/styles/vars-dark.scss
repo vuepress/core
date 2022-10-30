@@ -46,6 +46,12 @@ html.dark {
   --c-danger-text-quote: #d56b6b;
   --c-details-bg: #323843;
 
+  // badge component colors
+  --c-badge-warning: var(--c-warning);
+  --c-badge-warning-text: #3c2e05;
+  --c-badge-danger: var(--c-danger);
+  --c-badge-danger-text: #401416;
+
   // code blocks vars
   --code-hl-bg-color: #363b46;
 }

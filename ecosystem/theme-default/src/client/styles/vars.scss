@@ -57,8 +57,10 @@
 
   // badge component colors
   --c-badge-tip: var(--c-tip);
-  --c-badge-warning: var(--c-warning);
-  --c-badge-danger: var(--c-danger);
+  --c-badge-warning: #ecc808;
+  --c-badge-warning-text: var(--c-bg);
+  --c-badge-danger: #dc2626;
+  --c-badge-danger-text: var(--c-bg);
 
   // transition vars
   --t-color: 0.3s ease;
