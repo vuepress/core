@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import type { Plugin } from 'vite'
 
-const pageComponentFileRegexp = /\.html\.vue$/
+const pageComponentFileRegexp = /\.html\.vue($|\?)/
 const vueTemplateRegexp = /<template>[\s\S]*<\/template>/
 
 const jsStringBreaker = '\u200b'

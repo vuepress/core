@@ -152,6 +152,7 @@ div[class*='language-'] {
   border-radius: 6px;
 
   &::before {
+    content: attr(data-ext);
     position: absolute;
     z-index: 3;
     top: 0.8em;
@@ -243,14 +244,6 @@ div[class*='language-'] {
       height: 100%;
       border-radius: 6px 0 0 6px;
       border-right: 1px solid var(--code-hl-bg-color);
-    }
-  }
-}
-
-@each $lang in $codeLang {
-  div[class*='language-'].ext-#{$lang} {
-    &:before {
-      content: '' + $lang;
     }
   }
 }

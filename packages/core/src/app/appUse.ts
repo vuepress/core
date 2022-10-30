@@ -1,4 +1,4 @@
-import { chalk, debug, warn } from '@vuepress/utils'
+import { colors, debug, warn } from '@vuepress/utils'
 import type { App, Plugin } from '../types/index.js'
 import { resolvePluginObject } from './resolvePluginObject.js'
 
@@ -13,7 +13,7 @@ export const appUse = (app: App, rawPlugin: Plugin): App => {
     return app
   }
 
-  log(`use plugin ${chalk.magenta(pluginObject.name)}`)
+  log(`use plugin ${colors.magenta(pluginObject.name)}`)
 
   // handle duplicated plugins
   if (pluginObject.multiple !== true) {
@@ -24,7 +24,7 @@ export const appUse = (app: App, rawPlugin: Plugin): App => {
       // remove the previous duplicated plugin
       app.pluginApi.plugins.splice(duplicateIndex, 1)
       warn(
-        `plugin ${chalk.magenta(
+        `plugin ${colors.magenta(
           pluginObject.name
         )} has been used multiple times, only the last one will take effect`
       )

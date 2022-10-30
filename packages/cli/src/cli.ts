@@ -1,23 +1,11 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
 import type { AppConfig } from '@vuepress/core'
-import { chalk } from '@vuepress/utils'
+import { colors } from '@vuepress/utils'
 import { cac } from 'cac'
 import { createBuild, createDev, info } from './commands/index.js'
 
 const require = createRequire(import.meta.url)
-
-/**
- * Wrap raw command to catch errors and exit process
- */
-const wrapCommand = (cmd: (...args: any[]) => Promise<void>): typeof cmd => {
-  const wrappedCommand: typeof cmd = (...args) =>
-    cmd(...args).catch((err) => {
-      console.error(chalk.red(err.stack))
-      process.exit(1)
-    })
-  return wrappedCommand
-}
 
 /**
  * Vuepress cli
@@ -47,7 +35,7 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .option('--open', 'Open browser when ready')
     .option('--debug', 'Enable debug mode')
     .option('--no-watch', 'Disable watching page and config files')
-    .action(wrapCommand(createDev(defaultAppConfig)))
+    .action(createDev(defaultAppConfig))
 
   // register `build` command
   program
@@ -62,12 +50,20 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .option('--clean-temp', 'Clean the temporary files before build')
     .option('--clean-cache', 'Clean the cache files before build')
     .option('--debug', 'Enable debug mode')
-    .action(wrapCommand(createBuild(defaultAppConfig)))
+    .action(createBuild(defaultAppConfig))
 
   // register `info` command
-  program
-    .command('info', 'Display environment information')
-    .action(wrapCommand(info))
+  program.command('info', 'Display environment information').action(info)
 
-  program.parse(process.argv)
+  program.parse(process.argv, { run: false })
+
+  // run command or fallback to help messages
+  if (program.matchedCommand) {
+    program.runMatchedCommand().catch((err) => {
+      console.error(colors.red(err.stack))
+      process.exit(1)
+    })
+  } else {
+    program.outputHelp()
+  }
 }
