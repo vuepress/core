@@ -166,6 +166,9 @@ tr {
   &:nth-child(2n) {
     background-color: var(--c-bg-light);
     transition: background-color var(--t-color);
+    code {
+      background-color: var(--c-bg-dark);
+    }
   }
 }
 
