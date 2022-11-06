@@ -133,7 +133,7 @@ pre[class*='language-'] {
     code {
       color: #fff;
       padding: 0;
-      background-color: transparent;
+      background-color: transparent !important;
       border-radius: 0;
       overflow-wrap: unset;
       -webkit-font-smoothing: auto;
