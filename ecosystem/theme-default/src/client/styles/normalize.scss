@@ -50,7 +50,7 @@ code {
   padding: 0.25rem 0.5rem;
   margin: 0;
   font-size: 0.85em;
-  background-color: var(--c-bg-lighter);
+  background-color: var(--c-bg-light);
   border-radius: 3px;
   overflow-wrap: break-word;
   transition: background-color var(--t-color);
@@ -166,6 +166,10 @@ tr {
   &:nth-child(2n) {
     background-color: var(--c-bg-light);
     transition: background-color var(--t-color);
+
+    code {
+      background-color: var(--c-bg-dark);
+    }
   }
 }
 

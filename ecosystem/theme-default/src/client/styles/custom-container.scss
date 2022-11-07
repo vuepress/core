@@ -30,6 +30,10 @@
     a {
       color: var(--c-tip-text-accent);
     }
+
+    code {
+      background-color: var(--c-bg-dark);
+    }
   }
 
   &.warning {
@@ -43,6 +47,28 @@
 
     a {
       color: var(--c-warning-text-accent);
+    }
+
+    blockquote {
+      border-left-color: var(--c-warning-border-dark);
+      color: var(--c-warning-text-quote);
+    }
+
+    code {
+      color: var(--c-warning-text-light);
+      background-color: var(--c-warning-bg-light);
+    }
+
+    details {
+      background-color: var(--c-warning-details-bg);
+
+      code {
+        background-color: var(--c-warning-bg-lighter);
+      }
+    }
+
+    .external-link-icon {
+      --external-link-icon-color: var(--c-warning-text-quote);
     }
   }
 
@@ -58,6 +84,28 @@
     a {
       color: var(--c-danger-text-accent);
     }
+
+    blockquote {
+      border-left-color: var(--c-danger-border-dark);
+      color: var(--c-danger-text-quote);
+    }
+
+    code {
+      color: var(--c-danger-text-light);
+      background-color: var(--c-danger-bg-light);
+    }
+
+    details {
+      background-color: var(--c-danger-details-bg);
+
+      code {
+        background-color: var(--c-danger-bg-lighter);
+      }
+    }
+
+    .external-link-icon {
+      --external-link-icon-color: var(--c-danger-text-quote);
+    }
   }
 
   &.details {
@@ -67,6 +115,10 @@
     margin: 1.6em 0;
     padding: 1.6em;
     background-color: var(--c-details-bg);
+
+    code {
+      background-color: var(--c-bg-darker);
+    }
 
     h4 {
       margin-top: 0;

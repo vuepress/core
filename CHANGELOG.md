@@ -1,3 +1,55 @@
+# [2.0.0-beta.53](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.52...v2.0.0-beta.53) (2022-10-24)
+
+
+### Features
+
+* **cli:** print help messages if no matching command ([bcc2208](https://github.com/vuepress/vuepress-next/commit/bcc22089c4302e1c3ec40d99ca27035b58494921))
+
+
+### Reverts
+
+* feat(bundler-vite): improve chunk splitting ([#1101](https://github.com/vuepress/vuepress-next/issues/1101)) (close [#1140](https://github.com/vuepress/vuepress-next/issues/1140)) ([01975a1](https://github.com/vuepress/vuepress-next/commit/01975a164df49d395351d3481ac85bda80adadac))
+
+
+
+# [2.0.0-beta.52](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.51...v2.0.0-beta.52) (2022-10-21)
+
+
+### Bug Fixes
+
+* **bundler-vite:** exclude user-config plugin from optimizeDeps ([#1135](https://github.com/vuepress/vuepress-next/issues/1135)) ([4285cf8](https://github.com/vuepress/vuepress-next/commit/4285cf83d4afb7deef863651fdc5be9a58ded68b))
+* **bundler-vite:** test page component files correctly (close [#1056](https://github.com/vuepress/vuepress-next/issues/1056)) ([bcf6033](https://github.com/vuepress/vuepress-next/commit/bcf6033ce2acf2b98dede4a4e580fe4f39222517))
+* **cli:** import envinfo correctly (close [#1059](https://github.com/vuepress/vuepress-next/issues/1059)) ([4476404](https://github.com/vuepress/vuepress-next/commit/44764049b74aac87276e6e902f022abd2ec19a4b))
+* **plugin-search:** avoid triggering hotkey while typing ([#1125](https://github.com/vuepress/vuepress-next/issues/1125)) ([7b2e3fa](https://github.com/vuepress/vuepress-next/commit/7b2e3fabfc9eed65918f9cf3108b86c7de164412))
+* **plugin-search:** fix mutiple search icon on iPad (close [#1004](https://github.com/vuepress/vuepress-next/issues/1004)) ([#1106](https://github.com/vuepress/vuepress-next/issues/1106)) ([b5df79d](https://github.com/vuepress/vuepress-next/commit/b5df79d508ffff071371cd6804da698a4e6117a4))
+* **plugin-search:** unify breakpoint with default theme ([#1091](https://github.com/vuepress/vuepress-next/issues/1091)) ([a1773d9](https://github.com/vuepress/vuepress-next/commit/a1773d96271c35e7a9b5a63d76c495ffc7e91711))
+* **theme-default:** improve responsive layout ([#1102](https://github.com/vuepress/vuepress-next/issues/1102)) ([c63bd4a](https://github.com/vuepress/vuepress-next/commit/c63bd4a75fb61860e969e4bc229c2754b9aac0b6))
+
+
+### Features
+
+* add type attribute for prefetch link tags ([#1095](https://github.com/vuepress/vuepress-next/issues/1095)) ([cd3b569](https://github.com/vuepress/vuepress-next/commit/cd3b56985f63cd5a7e7934dffec5237b495682b9))
+* **bundler-vite:** auto load postcss plugins from postcss config files ([#1088](https://github.com/vuepress/vuepress-next/issues/1088)) ([0f49c47](https://github.com/vuepress/vuepress-next/commit/0f49c4798cf3f8b65fbf54a441bfaf68bbade684))
+* **bundler-vite:** improve chunk splitting ([#1101](https://github.com/vuepress/vuepress-next/issues/1101)) ([00b8366](https://github.com/vuepress/vuepress-next/commit/00b83665182286185593cb03928d5c5b1e5867c5))
+* **bundler-vite:** set esbuild output charset to utf-8 (close [#1129](https://github.com/vuepress/vuepress-next/issues/1129)) ([#1133](https://github.com/vuepress/vuepress-next/issues/1133)) ([10dd348](https://github.com/vuepress/vuepress-next/commit/10dd3484de44d7ecf3855cd94c9d632728ef5d6a))
+* **client:**  improve default page head title resolver ([#1078](https://github.com/vuepress/vuepress-next/issues/1078)) ([2d6343e](https://github.com/vuepress/vuepress-next/commit/2d6343e48cf983883cc2f3f0549e28b59469f28b))
+* **markdown:** set extension of code fences in data-ext attribute ([#1132](https://github.com/vuepress/vuepress-next/issues/1132)) ([f1947f4](https://github.com/vuepress/vuepress-next/commit/f1947f4ab8353264291769fb3f2b660d9cab2e84))
+* **plugin-google-analytics:** add debug option ([#1001](https://github.com/vuepress/vuepress-next/issues/1001)) ([0f46ac7](https://github.com/vuepress/vuepress-next/commit/0f46ac7ca6466f0ead43e06b476d8f756daf2c0e))
+* **plugin-shiki:** bump shiki to 0.11 ([#1111](https://github.com/vuepress/vuepress-next/issues/1111)) ([06e3f55](https://github.com/vuepress/vuepress-next/commit/06e3f55e171e7cea310cee2f840f5b0f6876c2c7))
+* **theme-default:** add heroHeight frontmatter for home page ([81398d5](https://github.com/vuepress/vuepress-next/commit/81398d5e967af92b61aa67329ca374512142bc36))
+
+
+### Performance Improvements
+
+* avoid bundling hmr code to production ([#1134](https://github.com/vuepress/vuepress-next/issues/1134)) ([ed8e9e6](https://github.com/vuepress/vuepress-next/commit/ed8e9e68cc28bfb35a0ec940784f989516143c03))
+
+
+### BREAKING CHANGES
+
+* **markdown:** the `ext-xxx` class name of code fences has been removed
+
+
+
 # [2.0.0-beta.51](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.50...v2.0.0-beta.51) (2022-08-28)
 
 

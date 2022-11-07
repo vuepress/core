@@ -1,8 +1,11 @@
 import { default as vuePlugin } from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
-import { mergeConfig } from 'vite'
 import type { InlineConfig } from 'vite'
-import { vuepressPlugin } from './plugins/index.js'
+import {
+  constantsReplacementPlugin,
+  mainPlugin,
+  userConfigPlugin,
+} from './plugins/index.js'
 import type { ViteBundlerOptions } from './types.js'
 
 export const resolveViteConfig = async ({
@@ -15,16 +18,19 @@ export const resolveViteConfig = async ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): Promise<InlineConfig> =>
-  mergeConfig(
-    {
-      clearScreen: false,
-      configFile: false,
-      logLevel: !isBuild || app.env.isDebug ? 'info' : 'warn',
-      plugins: [
-        vuePlugin(options.vuePluginOptions),
-        vuepressPlugin({ app, isBuild, isServer }),
-      ],
+}): Promise<InlineConfig> => {
+  return {
+    clearScreen: false,
+    configFile: false,
+    logLevel: !isBuild || app.env.isDebug ? 'info' : 'warn',
+    esbuild: {
+      charset: 'utf8',
     },
-    options.viteOptions ?? {}
-  )
+    plugins: [
+      vuePlugin(options.vuePluginOptions),
+      constantsReplacementPlugin(app),
+      mainPlugin({ app, isBuild, isServer }),
+      userConfigPlugin(options),
+    ],
+  }
+}

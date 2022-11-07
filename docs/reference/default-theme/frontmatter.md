@@ -125,6 +125,20 @@ heroImage: https://vuejs.org/images/logo.png
 
   This will fallback to the [heroText](#heroText).
 
+### heroHeight
+
+- Type: `number`
+
+- Default: `280`
+
+- Details:
+
+  Specify the `height` attribute of the hero `<img>` tag.
+
+  You may need to reduce this value if the height of your hero image is less than the default value.
+
+  Notice that the height is also constrained by CSS. This attribute is to reduce [Cumulative Layout Shift (CLS)](https://web.dev/cls/) that caused by the loading of the hero image.
+
 ### heroText
 
 - Type: `string | null`

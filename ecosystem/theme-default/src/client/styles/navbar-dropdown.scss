@@ -108,10 +108,8 @@
       }
     }
   }
-}
 
-@media (max-width: $MQMobile) {
-  .navbar-dropdown-wrapper {
+  &.mobile {
     &.open .navbar-dropdown-title {
       margin-bottom: 0.5rem;
     }
@@ -148,10 +146,8 @@
       }
     }
   }
-}
 
-@media (min-width: ($MQMobile + 1)) {
-  .navbar-dropdown-wrapper {
+  &:not(.mobile) {
     height: 1.8rem;
 
     &:hover .navbar-dropdown,

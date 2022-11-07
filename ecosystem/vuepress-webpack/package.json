@@ -1,6 +1,6 @@
 {
   "name": "vuepress-webpack",
-  "version": "2.0.0-beta.51",
+  "version": "2.0.0-beta.53",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -43,7 +43,7 @@
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass-loader": "^13.0.2"
+    "sass-loader": "^13.1.0"
   },
   "peerDependencies": {
     "vue": "^3.2.37"

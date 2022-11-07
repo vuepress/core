@@ -7,6 +7,8 @@
   --c-bg: #ffffff;
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eeeeee;
+  --c-bg-dark: #ebebec;
+  --c-bg-darker: #e6e6e6;
   --c-bg-navbar: var(--c-bg);
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
@@ -29,22 +31,36 @@
   --c-tip-title: var(--c-text);
   --c-tip-text: var(--c-text);
   --c-tip-text-accent: var(--c-text-accent);
-  --c-warning: #e7c000;
+  --c-warning: #ffc310;
   --c-warning-bg: #fffae3;
-  --c-warning-title: #ad9000;
+  --c-warning-bg-light: #fff3ba;
+  --c-warning-bg-lighter: #fff0b0;
+  --c-warning-border-dark: #f7dc91;
+  --c-warning-details-bg: #fff5ca;
+  --c-warning-title: #f1b300;
   --c-warning-text: #746000;
-  --c-warning-text-accent: var(--c-text);
-  --c-danger: #cc0000;
+  --c-warning-text-accent: #edb100;
+  --c-warning-text-light: #c1971c;
+  --c-warning-text-quote: #ccab49;
+  --c-danger: #f11e37;
   --c-danger-bg: #ffe0e0;
-  --c-danger-title: #990000;
+  --c-danger-bg-light: #ffcfde;
+  --c-danger-bg-lighter: #ffc9c9;
+  --c-danger-border-dark: #f1abab;
+  --c-danger-details-bg: #ffd4d4;
+  --c-danger-title: #ed1e2c;
   --c-danger-text: #660000;
-  --c-danger-text-accent: var(--c-text);
+  --c-danger-text-accent: #bd1a1a;
+  --c-danger-text-light: #b5474d;
+  --c-danger-text-quote: #c15b5b;
   --c-details-bg: #eeeeee;
 
   // badge component colors
   --c-badge-tip: var(--c-tip);
-  --c-badge-warning: var(--c-warning);
-  --c-badge-danger: var(--c-danger);
+  --c-badge-warning: #ecc808;
+  --c-badge-warning-text: var(--c-bg);
+  --c-badge-danger: #dc2626;
+  --c-badge-danger-text: var(--c-bg);
 
   // transition vars
   --t-color: 0.3s ease;

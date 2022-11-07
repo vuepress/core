@@ -2,7 +2,7 @@ import type { Plugin, PluginObject } from '@vuepress/core'
 import type { MarkdownEnv } from '@vuepress/markdown'
 import type { LocaleConfig } from '@vuepress/shared'
 import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
-import { chalk, logger } from '@vuepress/utils'
+import { colors, logger } from '@vuepress/utils'
 import container from 'markdown-it-container'
 import type Renderer from 'markdown-it/lib/renderer.js'
 import type Token from 'markdown-it/lib/token.js'
@@ -102,7 +102,7 @@ export const containerPlugin = ({
 
   // `type` option is required
   if (!type) {
-    logger.warn(`[${plugin.name}] ${chalk.magenta('type')} option is required`)
+    logger.warn(`[${plugin.name}] ${colors.magenta('type')} option is required`)
     return plugin
   }
 

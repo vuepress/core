@@ -69,7 +69,7 @@
   margin-left: 0.25em;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 719px) {
   .search-box input {
     cursor: pointer;
     width: 0;
@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 419px) {
   .search-box input:focus {
     width: 8rem;
   }

@@ -107,16 +107,17 @@
     }
   }
 }
+.theme-container.no-sidebar {
+  .sidebar {
+    display: none;
 
-@media (min-width: ($MQMobile + 1px)) {
-  .theme-container.no-sidebar {
-    .sidebar {
-      display: none;
+    @media (max-width: $MQMobile) {
+      display: block;
     }
+  }
 
-    .page {
-      padding-left: 0;
-    }
+  .page {
+    padding-left: 0;
   }
 }
 
