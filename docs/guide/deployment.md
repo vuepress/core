@@ -64,7 +64,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           # choose node.js version to use
-          node-version: 16
+          node-version: 18
           # cache deps for pnpm
           cache: pnpm
 
