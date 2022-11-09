@@ -83,15 +83,15 @@
       @include dropdown_wrapper;
       margin-bottom: 0.75rem;
     }
+  }
 
-    &.collapsible {
-      cursor: pointer;
+  &.collapsible {
+    cursor: pointer;
 
-      .arrow {
-        position: relative;
-        top: -0.12em;
-        left: 0.5em;
-      }
+    .arrow {
+      position: relative;
+      top: -0.12em;
+      left: 0.5em;
     }
   }
 
