@@ -11,8 +11,8 @@ Assuming this is the directory structure of your markdown files:
 ```
 └─ docs
    ├─ guide
-   │  ├─ getting-started.md
-   │  └─ page.md
+   │  ├─ page.md
+   │  └─ README.md
    ├─ contributing.md
    └─ README.md
 ```
