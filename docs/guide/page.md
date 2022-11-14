@@ -12,7 +12,7 @@ Assuming this is the directory structure of your markdown files:
 └─ docs
    ├─ guide
    │  ├─ getting-started.md
-   │  └─ README.md
+   │  └─ page.md
    ├─ contributing.md
    └─ README.md
 ```

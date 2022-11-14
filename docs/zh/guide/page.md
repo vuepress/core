@@ -12,7 +12,7 @@ VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件
 └─ docs
    ├─ guide
    │  ├─ getting-started.md
-   │  └─ README.md
+   │  └─ page.md
    ├─ contributing.md
    └─ README.md
 ```
