@@ -7,6 +7,36 @@ import postcssrc from 'postcss-load-config'
 import type { GetModuleInfo } from 'rollup'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
+const isStaticallyImportedByEntry = (
+  cache: Map<string, boolean>,
+  id: string,
+  getModuleInfo: GetModuleInfo,
+  importStack: string[] = []
+): boolean => {
+  if (cache.has(id)) {
+    return !!cache.get(id)
+  }
+  if (importStack.includes(id)) {
+    // circular deps!
+    cache.set(id, false)
+    return false
+  }
+  const mod = getModuleInfo(id)
+  if (!mod) {
+    cache.set(id, false)
+    return false
+  }
+  if (mod.isEntry) {
+    cache.set(id, true)
+    return true
+  }
+  const someImporterIs = mod.importers.some((item) =>
+    isStaticallyImportedByEntry(item, getModuleInfo, importStack.concat(id))
+  )
+  cache.set(id, someImporterIs)
+  return someImporterIs
+}
+
 /**
  * The main plugin to compat vuepress with vite
  */
@@ -22,6 +52,9 @@ export const mainPlugin = ({
   name: 'vuepress:main',
 
   config: async () => {
+  
+    const cache = new Map<string, boolean>()
+  
     // create a temp index.html as dev entry point
     if (!isBuild) {
       await app.writeTemp(
@@ -113,7 +146,7 @@ import '@vuepress/client/app'
                     if (
                       id.includes('node_modules') &&
                       !/\.css($|\\?)/.test(id) &&
-                      isStaticallyImportedByEntry(id, ctx.getModuleInfo)
+                      isStaticallyImportedByEntry(cache, id, ctx.getModuleInfo)
                     ) {
                       return 'vendor'
                     }
@@ -246,34 +279,4 @@ const resolveDefine = async ({
   )
 
   return define
-}
-
-const cache = new Map<string, boolean>()
-const isStaticallyImportedByEntry = (
-  id: string,
-  getModuleInfo: GetModuleInfo,
-  importStack: string[] = []
-): boolean => {
-  if (cache.has(id)) {
-    return !!cache.get(id)
-  }
-  if (importStack.includes(id)) {
-    // circular deps!
-    cache.set(id, false)
-    return false
-  }
-  const mod = getModuleInfo(id)
-  if (!mod) {
-    cache.set(id, false)
-    return false
-  }
-  if (mod.isEntry) {
-    cache.set(id, true)
-    return true
-  }
-  const someImporterIs = mod.importers.some((item) =>
-    isStaticallyImportedByEntry(item, getModuleInfo, importStack.concat(id))
-  )
-  cache.set(id, someImporterIs)
-  return someImporterIs
 }
