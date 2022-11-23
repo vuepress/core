@@ -52,9 +52,8 @@ export const mainPlugin = ({
   name: 'vuepress:main',
 
   config: async () => {
-  
     const cache = new Map<string, boolean>()
-  
+
     // create a temp index.html as dev entry point
     if (!isBuild) {
       await app.writeTemp(
