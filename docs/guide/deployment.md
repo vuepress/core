@@ -216,3 +216,30 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
     - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
    
 2. Hit the deploy button.
+
+## Kinsta
+After setting up you project, install [`serve`](https://www.npmjs.com/package/serve) package and make sure that the `build` and `start` commands looks just like in the example below:
+```json
+{ 
+  "name": "my-app",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "start": "serve ./docs/.vuepress/dist"
+  },
+  "dependencies": {
+    "serve": "^14.0.1"
+  },
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.53"
+  }
+}
+```
+
+### Configuring a new Kinsta application
+1. Register on [Kinsta Application Hosting](https://kinsta.com/signup/?product_type=app-db) or login directly to [My Kinsta](https://my.kinsta.com/) admin panel.
+2. Go to the **Applications** tab.
+3. Connect your GitHub repository.
+4. Press the **Add service** > **Application** button.
+5. Follow the wizard steps.
+6. Your application is deployed.
