@@ -101,11 +101,11 @@ import '@vuepress/client/app'
                     // move known framework code into a stable chunk so that
                     // custom theme changes do not invalidate hash for all pages
                     if (
-                      id.includes("plugin-vue:export-helper") ||
+                      id.includes('plugin-vue:export-helper') ||
                       /node_modules\/@vuepress\/shared\//.test(id) ||
                       /node_modules\/vue(-router)?\//.test(id)
                     ) {
-                      return "framework";
+                      return 'framework';
                     }
 
                     return undefined;
