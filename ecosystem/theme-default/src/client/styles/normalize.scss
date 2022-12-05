@@ -122,21 +122,37 @@ h6 {
   font-size: 1rem;
 }
 
-a.header-anchor {
-  font-size: 0.85em;
-  float: left;
-  margin-left: -0.87em;
-  padding-right: 0.23em;
-  margin-top: 0.125em;
-  opacity: 0;
-  user-select: none;
+a {
+  &.header-anchor {
+    font-size: 0.85em;
+    float: left;
+    margin-left: -0.87em;
+    padding-right: 0.23em;
+    margin-top: 0.125em;
+    opacity: 0;
+    user-select: none;
 
-  &:hover {
-    text-decoration: none;
+    @media print {
+      display: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      opacity: 1;
+    }
   }
 
-  &:focus-visible {
-    opacity: 1;
+  @media print {
+    &[href^="http://"],
+    &[href^="https://"]
+    {
+      &::after {
+        content: ' (' attr(href) ') ';
+      }
+    }
   }
 }
 

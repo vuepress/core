@@ -35,6 +35,10 @@
   .edit-link {
     display: inline-block;
     margin-right: 0.25rem;
+
+    @media print {
+      display: none;
+    }
   }
 
   .last-updated {
