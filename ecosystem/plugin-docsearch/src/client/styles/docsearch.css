@@ -17,3 +17,9 @@
     min-width: 52px;
   }
 }
+
+@media print {
+  #docsearch-container {
+    display: none;
+  }
+}

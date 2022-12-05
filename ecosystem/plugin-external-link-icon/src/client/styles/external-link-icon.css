@@ -6,6 +6,12 @@
   top: -1px;
 }
 
+@media print {
+  .external-link-icon {
+    display: none;
+  }
+}
+
 .external-link-icon-sr-only {
   position: absolute;
   width: 1px;
