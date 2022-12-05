@@ -4,38 +4,7 @@ import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
-import type { GetModuleInfo } from 'rollup'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
-
-const isStaticallyImportedByEntry = (
-  cache: Map<string, boolean>,
-  id: string,
-  getModuleInfo: GetModuleInfo,
-  importStack: string[] = []
-): boolean => {
-  if (cache.has(id)) {
-    return !!cache.get(id)
-  }
-  if (importStack.includes(id)) {
-    // circular deps!
-    cache.set(id, false)
-    return false
-  }
-  const mod = getModuleInfo(id)
-  if (!mod) {
-    cache.set(id, false)
-    return false
-  }
-  if (mod.isEntry) {
-    cache.set(id, true)
-    return true
-  }
-  const someImporterIs = mod.importers.some((item) =>
-    isStaticallyImportedByEntry(item, getModuleInfo, importStack.concat(id))
-  )
-  cache.set(id, someImporterIs)
-  return someImporterIs
-}
 
 /**
  * The main plugin to compat vuepress with vite
@@ -134,23 +103,14 @@ import '@vuepress/client/app'
                     // move known framework code into a stable chunk so that
                     // custom theme changes do not invalidate hash for all pages
                     if (
-                      id.includes('plugin-vue:export-helper') ||
-                      /@vue\/(runtime|shared|reactivity)/.test(id) ||
-                      /@vuepress\/(client|shared)/.test(id)
+                      id.includes("plugin-vue:export-helper") ||
+                      /node_modules\/@vuepress\/shared\//.test(id) ||
+                      /node_modules\/vue(-router)?\//.test(id)
                     ) {
-                      return 'framework'
+                      return "framework";
                     }
 
-                    // check if a module is statically imported by at least one entry.
-                    if (
-                      id.includes('node_modules') &&
-                      !/\.css($|\\?)/.test(id) &&
-                      isStaticallyImportedByEntry(cache, id, ctx.getModuleInfo)
-                    ) {
-                      return 'vendor'
-                    }
-
-                    return undefined
+                    return undefined;
                   },
                 }),
           },
