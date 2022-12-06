@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { fs, sanitizeFileName } from '@vuepress/utils'
 import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
@@ -91,6 +91,7 @@ import '@vuepress/client/app'
             fs.readJsonSync(app.dir.client('package.json')).exports['./app']
           ),
           output: {
+            sanitizeFileName,
             ...(isServer
               ? {
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
