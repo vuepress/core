@@ -4,7 +4,7 @@ The following guides are based on some shared assumptions:
 
 - You are placing your Markdown source files inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
-- You are using [yarn classic](https://classic.yarnpkg.com/en/) as package manager, while npm is also supported;
+- You are using as [pnpm](https://pnpm.io) package manager, while npm and yarn are also supported;
 - VuePress is installed as a local dependency in your project, and you have setup the following script in `package.json`:
 
 ```json
@@ -163,7 +163,7 @@ Please refer to [GitHub Pages official guide](https://pages.github.com/) for mor
 ::: details Click to expand sample config
 ```yaml
 # choose a docker image to use
-image: node:14-buster
+image: node:18-buster
 
 pages:
   # trigger deployment on every push to main branch
@@ -172,13 +172,21 @@ pages:
 
   # cache node_modules
   cache:
+    key:
+      files:
+        - pnpm-lock.yaml
     paths:
-      - node_modules/
+      - .pnpm-store
+
+  # Install pnpm
+  before_script:
+    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - pnpm config set store-dir .pnpm-store
 
   # install dependencies and run build script
   script:
-    - yarn --frozen-lockfile
-    - yarn docs:build --dest public
+    - pnpm i --frozen-lockfile
+    - pnpm docs:build --dest public
 
   artifacts:
     paths:

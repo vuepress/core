@@ -4,7 +4,7 @@
 
 - Markdown 源文件放置在你项目的 `docs` 目录；
 - 使用的是默认的构建输出目录 (`.vuepress/dist`) ；
-- 使用 [Yarn classic](https://classic.yarnpkg.com/zh-Hans/) 作为包管理器，当然也可以使用 NPM 。
+- 使用 [PNPM](https://pnpm.io/zh/) 作为包管理器，当然也可以使用 NPM 和 YARN 。
 - VuePress 作为项目依赖安装，并在 `package.json` 中配置了如下脚本：
 
 ```json
@@ -163,26 +163,34 @@ jobs:
 ::: details 点击展开配置样例
 ```yaml
 # 选择你要使用的 docker 镜像
-image: node:14-buster
+image: node:18-buster
 
 pages:
   # 每当 push 到 main 分支时触发部署
   only:
-  - main
+    - main
 
   # 缓存 node_modules
   cache:
+    key:
+      files:
+        - pnpm-lock.yaml
     paths:
-    - node_modules/
+      - .pnpm-store
+
+  # 安装 pnpm
+  before_script:
+    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - pnpm install --frozen-lockfile
+    - pnpm docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
 :::
 
@@ -255,12 +263,12 @@ heroku login
 
 1. 前往 [Netlify](https://netlify.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `yarn docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. 点击 deploy 按钮。
 
@@ -268,9 +276,9 @@ heroku login
 
 1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **FRAMEWORK PRESET:** `Other`
-    - **BUILD COMMAND:** `yarn docs:build` 
-    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+   - **FRAMEWORK PRESET:** `Other`
+   - **BUILD COMMAND:** `yarn docs:build`
+   - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮。
 
@@ -293,11 +301,11 @@ cloudbase init --without-template
 cloudbase framework:deploy
 ```
 
-  CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
+CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
 
-  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
 ::: tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
