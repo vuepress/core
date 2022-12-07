@@ -69,7 +69,7 @@
 
     &:hover,
     &.router-link-active {
-      color: var(--c-text-accent);
+      color: var(--c-text);
     }
   }
 
@@ -82,6 +82,14 @@
     &:first-child {
       margin-left: 0;
     }
+
+    > a {
+      &:hover,
+      &.router-link-active {
+        margin-bottom: -2px;
+        border-bottom: 2px solid var(--c-text-accent);
+      }
+    }
   }
 }
 
@@ -89,23 +97,21 @@
   .navbar-items {
     .navbar-item {
       margin-left: 0;
-    }
-  }
-}
 
-@media (min-width: $MQMobile) {
-  .navbar-items a {
-    &:hover,
-    &.router-link-active {
-      color: var(--c-text);
+      > a {
+        &:hover,
+        &.router-link-active {
+          margin-bottom: 0;
+          border-bottom: none;
+        }
+      }
     }
-  }
 
-  .navbar-item > a {
-    &:hover,
-    &.router-link-active {
-      margin-bottom: -2px;
-      border-bottom: 2px solid var(--c-text-accent);
+    a {
+      &:hover,
+      &.router-link-active {
+        color: var(--c-text-accent);
+      }
     }
   }
 }

@@ -1,7 +1,9 @@
 import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { fs, sanitizeFileName } from '@vuepress/utils'
 import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
+import type { AcceptedPlugin } from 'postcss'
+import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
 /**
@@ -42,8 +44,19 @@ import '@vuepress/client/app'
     // externalized in build ssr mode
     const clientPackages = [
       '@vuepress/client',
-      ...app.pluginApi.plugins.map(({ name }) => name),
+      ...app.pluginApi.plugins
+        // the 'user-config' plugin is created by cli internally
+        .filter(({ name }) => name !== 'user-config')
+        .map(({ name }) => name),
     ]
+
+    let postcssPlugins: AcceptedPlugin[]
+    try {
+      const postcssConfigResult = await postcssrc()
+      postcssPlugins = postcssConfigResult.plugins
+    } catch (error) {
+      postcssPlugins = [autoprefixer]
+    }
 
     return {
       root: app.dir.temp('vite-root'),
@@ -57,7 +70,7 @@ import '@vuepress/client/app'
       },
       css: {
         postcss: {
-          plugins: isServer ? [] : [autoprefixer],
+          plugins: isServer ? [] : postcssPlugins,
         },
         preprocessorOptions: {
           scss: { charset: false },
@@ -78,6 +91,7 @@ import '@vuepress/client/app'
             fs.readJsonSync(app.dir.client('package.json')).exports['./app']
           ),
           output: {
+            sanitizeFileName,
             ...(isServer
               ? {
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process

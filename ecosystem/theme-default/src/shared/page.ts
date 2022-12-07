@@ -17,6 +17,7 @@ export interface DefaultThemeHomePageFrontmatter
   heroImage?: string
   heroImageDark?: string
   heroAlt?: string
+  heroHeight?: number
   heroText?: string | null
   tagline?: string | null
   actions?: {

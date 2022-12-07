@@ -26,7 +26,7 @@ To be more specific, we have a convention for config file paths (in order of pre
   - `.vuepress/config.js`
   - `.vuepress/config.mjs`
 
-You can also specify the config file via `--config` option of [CLI](./cli.md):
+You can also specify the config file via `--config` option of [CLI](../reference/cli.md):
 
 ```sh
 vuepress dev docs --config my-config.js

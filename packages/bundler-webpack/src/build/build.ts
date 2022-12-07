@@ -1,6 +1,12 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { chalk, fs, importFileDefault, ora, withSpinner } from '@vuepress/utils'
+import {
+  colors,
+  debug,
+  fs,
+  importFileDefault,
+  withSpinner,
+} from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -13,6 +19,8 @@ import { renderPage } from './renderPage.js'
 import { resolveClientManifestMeta } from './resolveClientManifestMeta.js'
 import type { ClientManifest } from './ssr/index.js'
 
+const log = debug('vuepress:bundler-webpack/build')
+
 export const build = async (
   options: WebpackBundlerOptions,
   app: App
@@ -21,6 +29,7 @@ export const build = async (
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
 
   // webpack compile
+  log('compiling start')
   await withSpinner('Compiling with webpack')(async () => {
     // create webpack config
     const clientConfig = resolveWebpackConfig({
@@ -56,9 +65,10 @@ export const build = async (
       })
     })
   })
+  log('compiling finish')
 
   // render pages
-  await withSpinner('Rendering pages')(async () => {
+  await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
     // load ssr template file
     const ssrTemplate = (
       await fs.readFile(app.options.templateBuild)
@@ -81,15 +91,21 @@ export const build = async (
     const { createVueApp } = await importFileDefault<{
       createVueApp: CreateVueAppFunction
     }>(serverEntryPath)
+    // create vue ssr app
+    const { app: vueApp, router: vueRouter } = await createVueApp()
+    const { renderToString } = await import('vue/server-renderer')
 
     // pre-render pages to html files
-    const spinner = ora()
     for (const page of app.pages) {
-      spinner.start(`Rendering pages ${chalk.magenta(page.path)}`)
+      if (spinner) {
+        spinner.text = `Rendering pages ${colors.magenta(page.path)}`
+      }
       await renderPage({
         app,
         page,
-        createVueApp,
+        vueApp,
+        vueRouter,
+        renderToString,
         ssrTemplate,
         allFilesMeta,
         initialFilesMeta,
@@ -97,7 +113,6 @@ export const build = async (
         moduleFilesMetaMap,
       })
     }
-    spinner.stop()
   })
 
   // keep the server bundle files in debug mode

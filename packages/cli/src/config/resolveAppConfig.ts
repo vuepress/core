@@ -1,6 +1,6 @@
 import type { AppConfig } from '@vuepress/core'
 import { ensureEndingSlash, ensureLeadingSlash } from '@vuepress/shared'
-import { chalk, isChildPath, logger } from '@vuepress/utils'
+import { colors, isChildPath, logger } from '@vuepress/utils'
 
 /**
  * Resolve app config according to:
@@ -29,7 +29,7 @@ export const resolveAppConfig = ({
 
   if (appConfig.bundler === undefined || appConfig.theme === undefined) {
     logger.error(
-      `${chalk.magenta('bundler')} and ${chalk.magenta('theme')} are required`
+      `${colors.magenta('bundler')} and ${colors.magenta('theme')} are required`
     )
     return null
   }
@@ -43,15 +43,15 @@ export const resolveAppConfig = ({
       | '/'
       | `/${string}/`
     logger.warn(
-      `${chalk.magenta('base')} should start and end with a slash (/),` +
-        ` so it has been normalized from ${chalk.magenta(rawBase)}` +
-        ` to ${chalk.magenta(appConfig.base)}`
+      `${colors.magenta('base')} should start and end with a slash (/),` +
+        ` so it has been normalized from ${colors.magenta(rawBase)}` +
+        ` to ${colors.magenta(appConfig.base)}`
     )
   }
 
   if (appConfig.dest && isChildPath(appConfig.source, appConfig.dest)) {
     logger.warn(
-      `${chalk.magenta('dest')} directory would be emptied during build,` +
+      `${colors.magenta('dest')} directory would be emptied during build,` +
         ` so we fallback it to the default directory for the safety of your source files`
     )
     delete appConfig.dest

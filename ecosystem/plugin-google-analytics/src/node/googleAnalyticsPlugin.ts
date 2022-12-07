@@ -1,31 +1,23 @@
 import type { Plugin, PluginObject } from '@vuepress/core'
 import { getDirname, logger, path } from '@vuepress/utils'
+import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
 
 const __dirname = getDirname(import.meta.url)
 
-/**
- * Options for @vuepress/plugin-google-analytics
- */
-export interface GoogleAnalyticsPluginOptions {
-  /**
-   * The Measurement ID of Google Analytics 4, which should start with `'G-'`.
-   */
-  id: string
-}
-
 export const googleAnalyticsPlugin =
-  ({ id }: GoogleAnalyticsPluginOptions): Plugin =>
+  (options: GoogleAnalyticsPluginOptions): Plugin =>
   (app) => {
     const plugin: PluginObject = {
       name: '@vuepress/plugin-google-analytics',
     }
 
-    if (!id) {
+    if (!options.id) {
       logger.warn(`[${plugin.name}] 'id' is required`)
       return plugin
     }
 
-    if (app.env.isDev) {
+    // returns an empty plugin in dev mode when debug mode is not enabled
+    if (app.env.isDev && !options.debug) {
       return plugin
     }
 
@@ -34,16 +26,8 @@ export const googleAnalyticsPlugin =
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
-      alias: {
-        // workaround for https://github.com/vitejs/vite/issues/7621
-        '@vuepress/plugin-google-analytics/client': path.resolve(
-          __dirname,
-          '../client/index.js'
-        ),
-      },
-
       define: {
-        __GA_ID__: id,
+        __GA_OPTIONS__: options,
       },
     }
   }

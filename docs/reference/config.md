@@ -19,6 +19,8 @@
 
   The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
 
+  Notice that `base` should be an absolute URL pathname starting and ending with `/` .
+
 - Also see:
   - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
   - [Guide > Deployment](../guide/deployment.md)
@@ -95,7 +97,7 @@
   To add a custom favicon:
 
 ```ts
-export default  {
+export default {
   head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```

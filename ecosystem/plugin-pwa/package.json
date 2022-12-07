@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-beta.50",
+  "version": "2.0.0-beta.53",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -39,7 +39,7 @@
     "@vuepress/utils": "workspace:*",
     "mitt": "^3.0.0",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.2.37",
+    "vue": "^3.2.45",
     "workbox-build": "^6.5.4"
   },
   "publishConfig": {

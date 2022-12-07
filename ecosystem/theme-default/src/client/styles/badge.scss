@@ -1,6 +1,7 @@
 .badge {
   display: inline-block;
   font-size: 14px;
+  font-weight: 600;
   height: 18px;
   line-height: 18px;
   border-radius: 3px;
@@ -15,10 +16,12 @@
 
   &.warning {
     background-color: var(--c-badge-warning);
+    color: var(--c-badge-warning-text);
   }
 
   &.danger {
     background-color: var(--c-badge-danger);
+    color: var(--c-badge-danger-text);
   }
 
   .table-of-contents & {

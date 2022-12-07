@@ -36,7 +36,7 @@ export const usePageData = <
   T extends Record<any, any> = Record<never, never>
 >(): PageDataRef<T> => pageData as PageDataRef<T>
 
-if (import.meta.webpackHot || import.meta.hot) {
+if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   // reuse vue HMR runtime
   __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
     pagesData.value[data.key] = () => Promise.resolve(data)

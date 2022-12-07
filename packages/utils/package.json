@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-beta.50",
+  "version": "2.0.0-beta.53",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",
@@ -35,12 +35,12 @@
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.0",
     "@vuepress/shared": "workspace:*",
-    "chalk": "^5.0.1",
     "debug": "^4.3.4",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.0",
     "globby": "^13.1.2",
     "hash-sum": "^2.0.0",
     "ora": "^6.1.2",
+    "picocolors": "^1.0.0",
     "upath": "^2.0.1"
   },
   "publishConfig": {

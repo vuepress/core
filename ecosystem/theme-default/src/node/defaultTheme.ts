@@ -52,12 +52,6 @@ export const defaultTheme = ({
             path.resolve(__dirname, '../client/components', file),
           ])
       ),
-
-      // workaround for https://github.com/vitejs/vite/issues/7621
-      '@vuepress/theme-default/client': path.resolve(
-        __dirname,
-        '../client/index.js'
-      ),
     },
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),

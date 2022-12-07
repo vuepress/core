@@ -46,6 +46,7 @@ export const Docsearch = defineComponent({
         `lang:${lang.value}`,
         ...(isArray(rawFacetFilters) ? rawFacetFilters : [rawFacetFilters])
       )
+      // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
       docsearch({
         ...docsearchShim,
         ...propsLocale.value,

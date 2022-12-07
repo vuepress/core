@@ -1,7 +1,9 @@
-import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Page } from '@vuepress/core'
 import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
+import { ssrContextKey } from 'vue'
+import type { App as VueApp } from 'vue'
+import type { Router } from 'vue-router'
 import type { SSRContext } from 'vue/server-renderer'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
@@ -25,7 +27,9 @@ interface PageRenderContext extends SSRContext, VuepressSSRContext {
 export const renderPage = async ({
   app,
   page,
-  createVueApp,
+  vueApp,
+  vueRouter,
+  renderToString,
   ssrTemplate,
   allFilesMeta,
   initialFilesMeta,
@@ -34,21 +38,21 @@ export const renderPage = async ({
 }: {
   app: App
   page: Page
-  createVueApp: CreateVueAppFunction
+  vueApp: VueApp
+  vueRouter: Router
+  renderToString: (input: VueApp, context: SSRContext) => Promise<string>
   ssrTemplate: string
   allFilesMeta: FileMeta[]
   initialFilesMeta: FileMeta[]
   asyncFilesMeta: FileMeta[]
   moduleFilesMetaMap: ModuleFilesMetaMap
 }): Promise<void> => {
-  // create vue ssr app
-  const { app: vueApp, router: vueRouter } = await createVueApp()
-
   // switch to current page route
   await vueRouter.push(page.path)
   await vueRouter.isReady()
 
   // create vue ssr context with default values
+  delete vueApp._context.provides[ssrContextKey]
   const ssrContext: PageRenderContext = {
     _registeredComponents: new Set(),
     lang: 'en',
@@ -56,7 +60,6 @@ export const renderPage = async ({
   }
 
   // render current page to string
-  const { renderToString } = await import('vue/server-renderer')
   const pageRendered = await renderToString(vueApp, ssrContext)
 
   // resolve client files that used by this page

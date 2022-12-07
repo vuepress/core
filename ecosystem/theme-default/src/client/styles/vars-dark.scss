@@ -7,6 +7,8 @@ html.dark {
   --c-bg: #22272e;
   --c-bg-light: #2b313a;
   --c-bg-lighter: #262c34;
+  --c-bg-dark: #343b44;
+  --c-bg-darker: #37404c;
 
   // text colors
   --c-text: #adbac7;
@@ -20,15 +22,35 @@ html.dark {
 
   // custom container colors
   --c-tip: #318a62;
-  --c-warning: #ceab00;
-  --c-warning-bg: #7e755b;
-  --c-warning-title: #ceac03;
-  --c-warning-text: #362e00;
-  --c-danger: #940000;
-  --c-danger-bg: #806161;
-  --c-danger-title: #610000;
-  --c-danger-text: #3a0000;
+  --c-warning: #e0ad15;
+  --c-warning-bg: #2d2f2d;
+  --c-warning-bg-light: #423e2a;
+  --c-warning-bg-lighter: #44442f;
+  --c-warning-border-dark: #957c35;
+  --c-warning-details-bg: #39392d;
+  --c-warning-title: #fdca31;
+  --c-warning-text: #d8d96d;
+  --c-warning-text-accent: #ffbf00;
+  --c-warning-text-light: #ddb84b;
+  --c-warning-text-quote: #ccab49;
+  --c-danger: #fc1e38;
+  --c-danger-bg: #39232c;
+  --c-danger-bg-light: #4b2b35;
+  --c-danger-bg-lighter: #553040;
+  --c-danger-border-dark: #a25151;
+  --c-danger-details-bg: #482936;
+  --c-danger-title: #fc2d3b;
+  --c-danger-text: #ea9ca0;
+  --c-danger-text-accent: #fd3636;
+  --c-danger-text-light: #d9777c;
+  --c-danger-text-quote: #d56b6b;
   --c-details-bg: #323843;
+
+  // badge component colors
+  --c-badge-warning: var(--c-warning);
+  --c-badge-warning-text: #3c2e05;
+  --c-badge-danger: var(--c-danger);
+  --c-badge-danger-text: #401416;
 
   // code blocks vars
   --code-hl-bg-color: #363b46;

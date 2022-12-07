@@ -19,6 +19,7 @@ export default defineClientConfig({
     if (__VUEPRESS_SSR__ || !selector) return
 
     // create zoom instance and provide it
+    // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
     const zoom = mediumZoom(zoomOptions)
     zoom.refresh = (sel = selector) => {
       zoom.detach()

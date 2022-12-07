@@ -22,14 +22,6 @@ export const externalLinkIconPlugin = ({
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
-  alias: {
-    // workaround for https://github.com/vitejs/vite/issues/7621
-    '@vuepress/plugin-external-link-icon/client': path.resolve(
-      __dirname,
-      '../client/index.js'
-    ),
-  },
-
   define: {
     __EXTERNAL_LINK_ICON_LOCALES__: locales,
   },

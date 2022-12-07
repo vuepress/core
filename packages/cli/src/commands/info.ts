@@ -1,5 +1,5 @@
 import { ora } from '@vuepress/utils'
-import * as envinfo from 'envinfo'
+import envinfo from 'envinfo'
 
 export const info = async (): Promise<void> => {
   const spinner = ora()

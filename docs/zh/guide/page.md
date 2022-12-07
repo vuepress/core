@@ -19,13 +19,13 @@ VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件
 
 将 `docs` 目录作为你的 [sourceDir](../reference/cli.md) ，例如你在运行 `vuepress dev docs` 命令。此时，你的 Markdown 文件对应的路由路径为：
 
-|      相对路径      |       路由路径        |
-|--------------------|----------------------|
-| `/README.md`       | `/`                  |
-| `/index.md`        | `/`                  |
-| `/contributing.md` | `/contributing.html` |
-| `/guide/README.md` | `/guide/`            |
-| `/guide/page.md`   | `/guide/page.html`   |
+| 相对路径                     | 路由路径                       |
+|-----------------------------|-------------------------------|
+| `/README.md`                | `/`                           |
+| `/index.md`                 | `/`                           |
+| `/contributing.md`          | `/contributing.html`          |
+| `/guide/README.md`          | `/guide/`                     |
+| `/guide/getting-started.md` | `/guide/getting-started.html` |
 
 ::: tip
 默认配置下， `README.md` 和 `index.md` 都会被转换成 `index.html` ，并且其对应的路由路径都是由斜杠结尾的。然而，如果你想同时保留这两个文件，就可能会造成冲突。

@@ -61,6 +61,7 @@ describe('core > page > createPage', () => {
       },
       script: null,
       scriptSetup: null,
+      scripts: [],
       styles: [],
       customBlocks: [],
     })

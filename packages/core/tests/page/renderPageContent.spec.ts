@@ -48,6 +48,15 @@ const msg = 'msg'
           tagClose: '</script>',
           tagOpen: '<script setup lang="ts">',
         },
+        scripts: [
+          {
+            type: 'script',
+            content: `<script setup lang="ts">\nconst msg = 'msg'\n</script>`,
+            contentStripped: `\nconst msg = 'msg'\n`,
+            tagClose: '</script>',
+            tagOpen: '<script setup lang="ts">',
+          },
+        ],
         styles: [],
         customBlocks: [],
       },

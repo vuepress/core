@@ -39,7 +39,7 @@ export const renderPagePrefetchLinks = ({
       if (shouldPrefetch !== true && !shouldPrefetch(item, type)) {
         return ''
       }
-      return `<link rel="prefetch" href="${app.options.base}${item}">`
+      return `<link rel="prefetch" href="${app.options.base}${item}" as="${type}" />`
     })
     .join('')
 }
