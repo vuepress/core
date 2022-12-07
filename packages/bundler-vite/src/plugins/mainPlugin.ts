@@ -105,10 +105,10 @@ import '@vuepress/client/app'
                       /node_modules\/@vuepress\/shared\//.test(id) ||
                       /node_modules\/vue(-router)?\//.test(id)
                     ) {
-                      return 'framework';
+                      return 'framework'
                     }
 
-                    return undefined;
+                    return undefined
                   },
                 }),
           },
