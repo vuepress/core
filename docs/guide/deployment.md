@@ -162,7 +162,7 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 }
 ```
 
-3. After running `pnpm docs:build` `yarn docs:build` or `npm run docs:build`, deploy using the command `firebase deploy`.
+3. After running `pnpm docs:build`, deploy using the command `firebase deploy`.
 
 ::: tip
 Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
@@ -200,7 +200,7 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
 
-   - **Build Command:** `npm i -g pnpm@7 && pnpm docs:build`
+   - **Build Command:** `pnpm docs:build`
    - **Publish directory:** `docs/.vuepress/dist`
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:

@@ -4,7 +4,7 @@
 
 - Markdown 源文件放置在你项目的 `docs` 目录；
 - 使用的是默认的构建输出目录 (`.vuepress/dist`) ；
-- 使用 [PNPM](https://pnpm.io/zh/) 作为包管理器，当然也可以使用 NPM 和 YARN 。
+- 使用 [pnpm](https://pnpm.io/zh/) 作为包管理器，当然也支持使用 npm 或 yarn 。
 - VuePress 作为项目依赖安装，并在 `package.json` 中配置了如下脚本：
 
 ```json
@@ -162,7 +162,7 @@ pages:
 }
 ```
 
-3. 在执行了 `pnpm docs:build`, `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
+3. 在执行了 `pnpm docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
 ::: tip
 请参考 [Firebase CLI 官方指南](https://firebase.google.com/docs/cli) 来获取更多信息。
@@ -200,7 +200,7 @@ heroku login
 
 1. 前往 [Netlify](https://netlify.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-   - **Build Command:** `npm i -g pnpm@7 && pnpm docs:build`
+   - **Build Command:** `pnpm docs:build`
    - **Publish directory:** `docs/.vuepress/dist`
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
@@ -228,7 +228,7 @@ heroku login
 1. 全局安装 CloudBase CLI ：
 
 ```bash
-npm install -g @cloudbase/cli
+pnpm install -g @cloudbase/cli
 ```
 
 2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
