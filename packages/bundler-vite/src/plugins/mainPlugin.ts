@@ -97,7 +97,7 @@ import '@vuepress/client/app'
                   entryFileNames: `[name].[hash].mjs`,
                 }
               : {
-                  manualChunks(id, ctx) {
+                  manualChunks(id) {
                     // move known framework code into a stable chunk so that
                     // custom theme changes do not invalidate hash for all pages
                     if (
