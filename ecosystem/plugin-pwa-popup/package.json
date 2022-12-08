@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa-popup",
-  "version": "2.0.0-beta.53",
+  "version": "2.0.0-beta.54",
   "description": "VuePress plugin - PWA popup",
   "keywords": [
     "vuepress-plugin",
