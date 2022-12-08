@@ -62,7 +62,7 @@ npm init
   <CodeGroupItem title="PNPM" active>
 
 ```bash
-pnpm add -D vue @vuepress/client@next vuepress@next
+pnpm add -D vuepress@next @vuepress/client@next vue
 ```
 
   </CodeGroupItem>

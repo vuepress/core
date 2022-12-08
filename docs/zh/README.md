@@ -31,16 +31,16 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
   <CodeGroupItem title="PNPM" active>
 
 ```bash
-# install in your project
-pnpm add -D vue @vuepress/client@next vuepress@next
+# 在你的项目中安装
+pnpm add -D vuepress@next @vuepress/client@next vue
 
-# create a markdown file
+# 新建一个 markdown 文件
 echo '# Hello VuePress' > README.md
 
-# start writing
+# 开始写作
 pnpm vuepress dev
 
-# build to static files
+# 构建静态文件
 pnpm vuepress build
 ```
 

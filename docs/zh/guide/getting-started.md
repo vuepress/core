@@ -60,10 +60,10 @@ npm init
 - **步骤 3**: 将 VuePress 安装为本地依赖
 
 <CodeGroup>
-  <CodeGroupItem title="pnpm" active>
+  <CodeGroupItem title="PNPM" active>
 
 ```bash
-pnpm add -D vuepress@next vue @vuepress/client@next
+pnpm add -D vuepress@next @vuepress/client@next vue
 ```
 
   </CodeGroupItem>

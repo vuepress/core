@@ -18,7 +18,7 @@ pnpm add -D vuepress-webpack@next
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="YARN">
 
 ```bash
 yarn remove vuepress
