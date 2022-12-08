@@ -11,6 +11,12 @@
   z-index: var(--pwa-popup-z-index);
 }
 
+@media print {
+  .pwa-popup {
+    display: none;
+  }
+}
+
 .pwa-popup > button {
   cursor: pointer;
   margin-top: 0.5em;

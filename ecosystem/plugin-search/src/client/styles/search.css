@@ -4,6 +4,12 @@
   margin-left: 1rem;
 }
 
+@media print {
+  .search-box {
+    display: none;
+  }
+}
+
 .search-box input {
   -webkit-appearance: none;
   appearance: none;
