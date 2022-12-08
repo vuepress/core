@@ -98,8 +98,7 @@ import '@vuepress/client/app'
                 }
               : {
                   manualChunks(id) {
-                    // move known framework code into a stable chunk so that
-                    // custom theme changes do not invalidate hash for all pages
+                    // move known framework code into a stable chunk
                     if (
                       id.includes('plugin-vue:export-helper') ||
                       /node_modules\/@vuepress\/shared\//.test(id) ||
