@@ -20,11 +20,11 @@ const historyCreator = __VUEPRESS_SSR__ ? createMemoryHistory : createWebHistory
 /**
  * Create vue-router instance
  */
-export const createVueRouter = (): Router => {
+export const createVueRouter = async (): Promise<Router> => {
   const router = createRouter({
     // TODO: it might be an issue of vue-router that have to remove the ending slash
     history: historyCreator(removeEndingSlash(siteData.value.base)),
-    routes: createRoutes(),
+    routes: await createRoutes(),
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) return savedPosition
       if (to.hash) return { el: to.hash }

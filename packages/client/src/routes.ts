@@ -1,12 +1,13 @@
 import { pagesRoutes } from '@internal/pagesRoutes'
 import type { RouteRecordRaw } from 'vue-router'
-import { Vuepress } from './components/index.js'
+import { createVuepressComponent } from './components/Vuepress.js'
 
 /**
  * Create routes for vue-router
  */
-export const createRoutes = (): RouteRecordRaw[] =>
-  pagesRoutes.reduce(
+export const createRoutes = async (): Promise<RouteRecordRaw[]> => {
+  const Vuepress = await createVuepressComponent()
+  return pagesRoutes.reduce(
     (result, [name, path, meta, redirects]) => {
       result.push(
         {
@@ -30,3 +31,4 @@ export const createRoutes = (): RouteRecordRaw[] =>
       },
     ] as RouteRecordRaw[]
   )
+}
