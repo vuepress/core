@@ -97,7 +97,20 @@ import '@vuepress/client/app'
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
                   entryFileNames: `[name].[hash].mjs`,
                 }
-              : {}),
+              : {
+                  manualChunks(id) {
+                    // move known framework code into a stable chunk
+                    if (
+                      id.includes('plugin-vue:export-helper') ||
+                      /node_modules\/@vuepress\/shared\//.test(id) ||
+                      /node_modules\/vue(-router)?\//.test(id)
+                    ) {
+                      return 'framework'
+                    }
+
+                    return undefined
+                  },
+                }),
           },
           preserveEntrySignatures: 'allow-extension',
         },
