@@ -4,7 +4,7 @@ The following guides are based on some shared assumptions:
 
 - You are placing your Markdown source files inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
-- You are using [yarn classic](https://classic.yarnpkg.com/en/) as package manager, while npm is also supported;
+- You are using as [pnpm](https://pnpm.io) package manager, while npm and yarn are also supported;
 - VuePress is installed as a local dependency in your project, and you have setup the following script in `package.json`:
 
 ```json
@@ -19,13 +19,13 @@ The following guides are based on some shared assumptions:
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Choose your preferred CI tools. Here we take [GitHub Actions](https://github.com/features/actions) as an example.
 
-    Create `.github/workflows/docs.yml` to set up the workflow.
+   Create `.github/workflows/docs.yml` to set up the workflow.
 
 ::: details Click to expand sample config
 ```yaml
@@ -43,36 +43,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # choose pnpm version to use
+          version: 7
+          # install deps with pnpm
+          run_install: true
+
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           # choose node.js version to use
-          node-version: '14'
-
-      # cache node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # install dependencies if the cache did not hit
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+          node-version: 18
+          # cache deps for pnpm
+          cache: pnpm
 
       # run build script
       - name: Build VuePress site
-        run: yarn docs:build
+        run: pnpm docs:build
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -97,35 +91,43 @@ Please refer to [GitHub Pages official guide](https://pages.github.com/) for mor
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-    If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
 
 ::: details Click to expand sample config
 ```yaml
 # choose a docker image to use
-image: node:14-buster
+image: node:18-buster
 
 pages:
   # trigger deployment on every push to main branch
   only:
-  - main
+    - main
 
   # cache node_modules
   cache:
+    key:
+      files:
+        - pnpm-lock.yaml
     paths:
-    - node_modules/
+      - .pnpm-store
+
+  # Install pnpm
+  before_script:
+    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - pnpm config set store-dir .pnpm-store
 
   # install dependencies and run build script
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - pnpm i --frozen-lockfile
+    - pnpm docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
 :::
 
@@ -160,7 +162,7 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 }
 ```
 
-3. After running `yarn docs:build`, deploy using the command `firebase deploy`.
+3. After running `pnpm docs:build`, deploy using the command `firebase deploy`.
 
 ::: tip
 Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
@@ -198,12 +200,12 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `pnpm docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. Hit the deploy button.
 
@@ -211,8 +213,8 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 1. Go to [Vercel](https://vercel.com), set up a new project from GitHub with the following settings:
 
-    - **FRAMEWORK PRESET:** `Other`
-    - **BUILD COMMAND:** `yarn docs:build` 
-    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
-   
+   - **FRAMEWORK PRESET:** `Other`
+   - **BUILD COMMAND:** `pnpm docs:build`
+   - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+
 2. Hit the deploy button.

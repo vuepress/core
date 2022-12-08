@@ -28,7 +28,16 @@ cd vuepress-starter
 - **Step 2**: Initialize your project
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+git init
+pnpm init
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 git init
@@ -50,7 +59,15 @@ npm init
 - **Step 3**: Install VuePress locally
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+pnpm add -D vuepress@next @vuepress/client@next vue
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 yarn add -D vuepress@next
@@ -96,7 +113,15 @@ echo '# Hello VuePress' > docs/README.md
 - **Step 7**: Serve the documentation site in the local server
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+pnpm docs:dev
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 yarn docs:dev
@@ -113,6 +138,6 @@ npm run docs:dev
   </CodeGroupItem>
 </CodeGroup>
 
-  VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080). When you modify your markdown files, the content in the browser will be auto updated.
+VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080). When you modify your markdown files, the content in the browser will be auto updated.
 
 By now, you should have a basic but functional VuePress documentation site. Next, learn about the basics of [configuration](./configuration.md) in VuePress.

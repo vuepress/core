@@ -9,7 +9,16 @@ When using the [vuepress](https://www.npmjs.com/package/vuepress) package, Vite 
 If you want to use Webpack bundler instead, you can remove it and install the [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) package instead:
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+pnpm remove vuepress
+pnpm add -D vuepress-webpack@next
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 yarn remove vuepress
