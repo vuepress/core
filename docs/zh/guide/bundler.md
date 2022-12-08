@@ -9,6 +9,15 @@ VuePress 一直以来都在使用 [Webpack](https://webpack.js.org/) 作为打�
 如果你想改为使用 Webpack 打包工具，那么你可以移除它，改为安装 [vuepress-webpack](https://www.npmjs.com/package/vuepress-webpack) 包：
 
 <CodeGroup>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+pnpm uninstall vuepress
+pnpm add -D vuepress-webpack@next
+```
+
+  </CodeGroupItem>
+
   <CodeGroupItem title="YARN" active>
 
 ```bash

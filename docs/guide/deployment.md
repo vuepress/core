@@ -28,10 +28,6 @@ The following guides are based on some shared assumptions:
    Create `.github/workflows/docs.yml` to set up the workflow.
 
 ::: details Click to expand sample config
-
-<CodeGroup>
-  <CodeGroupItem title="PNPM" active>
-
 ```yaml
 name: docs
 
@@ -85,65 +81,6 @@ jobs:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="YARN">
-
-```yaml
-name: docs
-
-on:
-  # trigger deployment on every push to main branch
-  push:
-    branches: [main]
-  # trigger deployment manually
-  workflow_dispatch:
-
-jobs:
-  docs:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          # fetch all commits to get last updated time or other git log info
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          # choose node.js version to use
-          node-version: 18
-          # cache deps for yarn
-          cache: yarn
-
-      # install dependencies if the cache did not hit
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
-
-      # run build script
-      - name: Build VuePress site
-        run: yarn docs:build
-
-      # please check out the docs of the workflow for more details
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          # deploy to gh-pages branch
-          target_branch: gh-pages
-          # deploy the default output dir of VuePress
-          build_dir: docs/.vuepress/dist
-        env:
-          # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-  </CodeGroupItem>
-</CodeGroup>
-
 :::
 
 ::: tip
@@ -225,7 +162,7 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 }
 ```
 
-3. After running `yarn docs:build`, deploy using the command `firebase deploy`.
+3. After running `pnpm docs:build` `yarn docs:build` or `npm run docs:build`, deploy using the command `firebase deploy`.
 
 ::: tip
 Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
@@ -263,7 +200,7 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 
 1. On [Netlify](https://netlify.com), set up a new project from GitHub with the following settings:
 
-   - **Build Command:** `yarn docs:build`
+   - **Build Command:** `npm i -g pnpm@7 && pnpm docs:build`
    - **Publish directory:** `docs/.vuepress/dist`
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
@@ -277,7 +214,7 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
 1. Go to [Vercel](https://vercel.com), set up a new project from GitHub with the following settings:
 
    - **FRAMEWORK PRESET:** `Other`
-   - **BUILD COMMAND:** `yarn docs:build`
+   - **BUILD COMMAND:** `pnpm docs:build`
    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
 
 2. Hit the deploy button.
