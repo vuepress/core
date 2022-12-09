@@ -29,8 +29,8 @@ import type {
   SiteLocaleData,
   SiteLocaleDataRef,
 } from './composables/index.js'
+import { withBase } from './helpers/index.js'
 import { resolvers } from './resolvers.js'
-import { withBase } from './withBase.js'
 
 /**
  * Vuepress client global computed
