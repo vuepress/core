@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-beta.56",
+  "version": "2.0.0-beta.57",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "vuepress-plugin",

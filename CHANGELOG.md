@@ -1,3 +1,33 @@
+# [2.0.0-beta.57](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.56...v2.0.0-beta.57) (2022-12-09)
+
+
+### Bug Fixes
+
+* **theme-default:** fix code block misalignment (close [#901](https://github.com/vuepress/vuepress-next/issues/901)) ([#1185](https://github.com/vuepress/vuepress-next/issues/1185)) ([7d156d7](https://github.com/vuepress/vuepress-next/commit/7d156d781f86e29e7c261eb467c5c48589055f6f))
+
+
+### Build System
+
+* bump to vite 4 and rollup 3 ([5fac2e6](https://github.com/vuepress/vuepress-next/commit/5fac2e644202a1d3df8204601bb0a32a5df55d15))
+
+
+### Code Refactoring
+
+* remove page excerpt ([a27bc24](https://github.com/vuepress/vuepress-next/commit/a27bc246602214970a12b0222d8bdbc49339cf03))
+
+
+### Features
+
+* **client:** add __VUEPRESS_BASE__ constant ([fe047fe](https://github.com/vuepress/vuepress-next/commit/fe047fe44fe0c46e7051106bde50829d39482ba0))
+
+
+### BREAKING CHANGES
+
+* bump to vite 4 and rollup 3
+* `excerpt` has been removed from page object and page data
+
+
+
 # [2.0.0-beta.56](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.55...v2.0.0-beta.56) (2022-12-09)
 
 
