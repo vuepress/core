@@ -28,7 +28,6 @@ const msg = 'msg'
     expect(resolved).toEqual({
       contentRendered: '<p>foobar</p>\n',
       deps: [],
-      excerpt: '',
       frontmatter: {},
       headers: [],
       links: [],
@@ -150,44 +149,6 @@ title: title in markdown frontmatter
       expect(resolved.frontmatter).toEqual({
         title: 'title in markdown frontmatter',
       })
-    })
-  })
-
-  describe('page excerpt', () => {
-    it('should render page excerpt correctly', async () => {
-      const resolved = await renderPageContent({
-        app,
-        content: `\
----
-foo: foo
-bar: 1
-baz: true
----
-
-excerpt
-
-<!-- more -->
-
-foobar
-`,
-        filePath: null,
-        filePathRelative: null,
-        options: {},
-      })
-
-      expect(resolved.excerpt).toEqual('<p>excerpt</p>\n')
-    })
-
-    it('should extract empty page excerpt', async () => {
-      const resolved = await renderPageContent({
-        app,
-        content: '',
-        filePath: null,
-        filePathRelative: null,
-        options: {},
-      })
-
-      expect(resolved.excerpt).toEqual('')
     })
   })
 })

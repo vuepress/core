@@ -34,7 +34,6 @@ export const createPage = async (
   const {
     contentRendered,
     deps,
-    excerpt,
     frontmatter,
     headers,
     links,
@@ -107,7 +106,6 @@ export const createPage = async (
       title,
       lang,
       frontmatter,
-      excerpt,
       headers,
     },
 
@@ -117,7 +115,6 @@ export const createPage = async (
     title,
     lang,
     frontmatter,
-    excerpt,
     headers,
 
     // extra fields

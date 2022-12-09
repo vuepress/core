@@ -24,7 +24,6 @@ export const renderPageContent = async ({
 }): Promise<{
   contentRendered: string
   deps: string[]
-  excerpt: string
   frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
@@ -42,7 +41,6 @@ export const renderPageContent = async ({
 
   /* istanbul ignore next */
   const {
-    excerpt = '',
     frontmatter = {},
     headers = [],
     importedFiles = [],
@@ -61,7 +59,6 @@ export const renderPageContent = async ({
   return {
     contentRendered,
     deps: importedFiles,
-    excerpt,
     frontmatter,
     headers,
     links,

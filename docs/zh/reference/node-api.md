@@ -428,30 +428,6 @@ export default {
 - 参考：
   - [Frontmatter](./frontmatter.md)
 
-### excerpt
-
-- 类型： `string`
-
-- 详情：
-
-  该 Page 的摘要。
-
-  如果一个 Markdown 文件中包含一个 `<!-- more -->` 注释，那么该注释上方的内容都会被作为摘要提取并渲染。
-
-  如果你在创建一个用于博客的自定义主题，那么它可以帮助你创建一个包含摘要的文章列表。
-
-- 示例：
-
-```md
-在 `<!-- more -->` 注释上方的内容会被当作摘要。
-
-建议你在该注释前后添加空行，以避免渲染问题。
-
-<!-- more -->
-
-在 `<!-- more -->` 注释下方的内容不会被当作摘要。
-```
-
 ### headers
 
 - 类型： `PageHeader[]`
@@ -483,7 +459,6 @@ interface PageData {
   title: string
   lang: string
   frontmatter: PageFrontmatter
-  excerpt: string
   headers: PageHeader[]
 }
 ```

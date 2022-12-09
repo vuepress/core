@@ -34,7 +34,6 @@ describe('core > page > createPage', () => {
     expect(page.data.lang).toBe('en-US')
     expect(page.data.title).toBe('')
     expect(page.data.frontmatter).toEqual({})
-    expect(page.data.excerpt).toBe('')
     expect(page.data.headers).toEqual([])
 
     // base fields
@@ -43,7 +42,6 @@ describe('core > page > createPage', () => {
     expect(page.lang).toBe('en-US')
     expect(page.title).toBe('')
     expect(page.frontmatter).toEqual({})
-    expect(page.excerpt).toBe('')
     expect(page.headers).toEqual([])
 
     // extra fields
