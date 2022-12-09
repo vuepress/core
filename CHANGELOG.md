@@ -1,3 +1,17 @@
+# [2.0.0-beta.55](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.54...v2.0.0-beta.55) (2022-12-09)
+
+
+### Bug Fixes
+
+* **bundler-vite:** fix regression of vite options merging (close [#1184](https://github.com/vuepress/vuepress-next/issues/1184)) ([998eb94](https://github.com/vuepress/vuepress-next/commit/998eb94c58f11ba1728179310d61f337c3367695))
+
+
+### Performance Improvements
+
+* render pages in parallel ([#1094](https://github.com/vuepress/vuepress-next/issues/1094)) ([78f737c](https://github.com/vuepress/vuepress-next/commit/78f737c537a5de076f88f604a7413e39ac8e42f9))
+
+
+
 # [2.0.0-beta.54](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.53...v2.0.0-beta.54) (2022-12-08)
 
 
