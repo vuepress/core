@@ -18,7 +18,7 @@
 
 ### Features
 
-* **client:** add __VUEPRESS_BASE__ constant ([fe047fe](https://github.com/vuepress/vuepress-next/commit/fe047fe44fe0c46e7051106bde50829d39482ba0))
+* **client:** add `__VUEPRESS_BASE__` constant ([fe047fe](https://github.com/vuepress/vuepress-next/commit/fe047fe44fe0c46e7051106bde50829d39482ba0))
 
 
 ### BREAKING CHANGES
