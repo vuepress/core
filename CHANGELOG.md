@@ -1,3 +1,12 @@
+# [2.0.0-beta.56](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.55...v2.0.0-beta.56) (2022-12-09)
+
+
+### Reverts
+
+* perf: render pages in parallel ([#1094](https://github.com/vuepress/vuepress-next/issues/1094)) ([#1186](https://github.com/vuepress/vuepress-next/issues/1186)) ([1e698f5](https://github.com/vuepress/vuepress-next/commit/1e698f5f6a04c80d7c3c6b56c7af3a7077256233))
+
+
+
 # [2.0.0-beta.55](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.54...v2.0.0-beta.55) (2022-12-09)
 
 
