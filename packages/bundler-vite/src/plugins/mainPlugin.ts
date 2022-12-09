@@ -213,6 +213,7 @@ const resolveDefine = async ({
 }): Promise<UserConfig['define']> => {
   const define: UserConfig['define'] = {
     __VUEPRESS_VERSION__: JSON.stringify(app.version),
+    __VUEPRESS_BASE__: JSON.stringify(app.options.base),
     __VUEPRESS_DEV__: JSON.stringify(!isBuild),
     __VUEPRESS_SSR__: JSON.stringify(isServer),
     // @see http://link.vuejs.org/feature-flags
