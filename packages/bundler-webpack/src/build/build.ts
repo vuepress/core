@@ -79,12 +79,8 @@ export const build = async (
     const clientManifest: ClientManifest = await fs.readJson(clientManifestPath)
 
     // resolve client files meta
-    const {
-      allFilesMeta,
-      initialFilesMeta,
-      asyncFilesMeta,
-      moduleFilesMetaMap,
-    } = resolveClientManifestMeta(clientManifest)
+    const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
+      resolveClientManifestMeta(clientManifest)
 
     // load the compiled server bundle
     const serverEntryPath = app.dir.temp('.server/app.cjs')
@@ -107,7 +103,6 @@ export const build = async (
         vueRouter,
         renderToString,
         ssrTemplate,
-        allFilesMeta,
         initialFilesMeta,
         asyncFilesMeta,
         moduleFilesMetaMap,
