@@ -1,3 +1,4 @@
+import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
 import { RouterView } from 'vue-router'
 import { siteData } from './composables/index.js'
@@ -14,8 +15,6 @@ import type { CreateVueAppFunction } from './types/index.js'
 const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 
 export const createVueApp: CreateVueAppFunction = async () => {
-  const { clientConfigs } = await import('@internal/clientConfigs')
-
   // create vue app
   const app = appCreator({
     name: 'VuepressApp',
@@ -39,11 +38,11 @@ export const createVueApp: CreateVueAppFunction = async () => {
   })
 
   // create vue-router instance
-  const router = await createVueRouter()
+  const router = createVueRouter()
 
   // global components and computed
   setupGlobalComponents(app)
-  const globalComputed = setupGlobalComputed(app, router)
+  const globalComputed = setupGlobalComputed(app, router, clientConfigs)
 
   // setup devtools in dev mode
   if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {
