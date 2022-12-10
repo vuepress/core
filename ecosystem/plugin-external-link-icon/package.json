@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-external-link-icon",
-  "version": "2.0.0-beta.57",
+  "version": "2.0.0-beta.58",
   "description": "VuePress plugin - external link icon",
   "keywords": [
     "vuepress-plugin",

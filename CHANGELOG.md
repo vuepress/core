@@ -1,3 +1,14 @@
+# [2.0.0-beta.58](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.57...v2.0.0-beta.58) (2022-12-10)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** avoid duplicated style preload ([e484a55](https://github.com/vuepress/vuepress-next/commit/e484a55ca3c0b80babab47c227d7321a6bc6ddd7))
+* **bundler-webpack:** fix module identifier matching ([9d8d645](https://github.com/vuepress/vuepress-next/commit/9d8d64573ec37df446f8ca99bb9270c5328a7024))
+* **bundler-webpack:** partially fix ssr dependencies issue ([83e7b6c](https://github.com/vuepress/vuepress-next/commit/83e7b6cb77f6ae6766d7546131d2ae602d74e1f2))
+
+
+
 # [2.0.0-beta.57](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.56...v2.0.0-beta.57) (2022-12-09)
 
 
