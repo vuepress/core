@@ -75,7 +75,7 @@ export const createClientPlugin = (
 
             // remove appended hash of module identifier
             // which is the request string of the module
-            const request = m.identifier.replace(/\s\w+$/, '')
+            const request = m.identifier.replace(/\|\w+$/, '')
 
             // get chunk files index
             const files = [...chunk.files.map(fileToIndex)]
