@@ -23,8 +23,8 @@ export const handleResolve = async ({
   config.merge({
     resolve: {
       extensionAlias: {
-        '.js': ['.ts', '.js'],
-        '.mjs': ['.mts', '.mjs'],
+        '.js': ['.js', '.ts'],
+        '.mjs': ['.mjs', '.mts'],
       },
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'],
     },
