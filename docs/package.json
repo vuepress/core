@@ -4,8 +4,10 @@
   "type": "module",
   "scripts": {
     "docs:build": "vuepress-cli build --clean-cache --clean-temp",
+    "docs:build-webpack": "DOCS_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
     "docs:dev": "vuepress-cli dev --clean-cache --clean-temp",
+    "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "anywhere -s -h localhost -d .vuepress/dist"
   },
   "dependencies": {
