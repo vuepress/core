@@ -389,6 +389,7 @@ importers:
     specifiers:
       '@vuepress/bundler-vite': workspace:*
       '@vuepress/cli': workspace:*
+      '@vuepress/client': workspace:*
       '@vuepress/core': workspace:*
       '@vuepress/theme-default': workspace:*
     dependencies:
@@ -396,6 +397,8 @@ importers:
       '@vuepress/cli': link:../../packages/cli
       '@vuepress/core': link:../../packages/core
       '@vuepress/theme-default': link:../theme-default
+    devDependencies:
+      '@vuepress/client': link:../../packages/client
 
   ecosystem/vuepress-webpack:
     specifiers:

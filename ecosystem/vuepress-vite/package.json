@@ -44,6 +44,9 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*"
   },
+  "devDependencies": {
+    "@vuepress/client": "workspace:*"
+  },
   "peerDependencies": {
     "@vuepress/client": "workspace:*",
     "vue": "^3.2.45"
