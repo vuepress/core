@@ -85,9 +85,7 @@ export const resolvers = reactive({
     page: PageData,
     siteLocale: SiteLocaleData
   ): PageHeadTitle =>
-    `${page.title ? `${page.title}` : ``}${
-      siteLocale.title ? ` | ${siteLocale.title}` : ``
-    }`,
+    [page.title, siteLocale.title].filter((item) => !!item).join(' | '),
 
   /**
    * Resolve page language from page data
