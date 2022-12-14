@@ -1,3 +1,12 @@
+# [2.0.0-beta.59](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.58...v2.0.0-beta.59) (2022-12-14)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** fix order of extensionAlias (close [#1082](https://github.com/vuepress/vuepress-next/issues/1082)) ([28eeb9b](https://github.com/vuepress/vuepress-next/commit/28eeb9ba04704c45ae993a0c5f994da1e87d26df))
+
+
+
 # [2.0.0-beta.58](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.57...v2.0.0-beta.58) (2022-12-10)
 
 
