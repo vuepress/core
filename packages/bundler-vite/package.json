@@ -40,10 +40,10 @@
     "@vuepress/utils": "workspace:*",
     "autoprefixer": "^10.4.13",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.4.19",
+    "postcss": "^8.4.20",
     "postcss-load-config": "^4.0.1",
-    "rollup": "^3.7.0",
-    "vite": "~4.0.0",
+    "rollup": "^3.7.4",
+    "vite": "~4.0.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

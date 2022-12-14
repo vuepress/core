@@ -46,6 +46,6 @@
     "sass-loader": "^13.2.0"
   },
   "peerDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   }
 }
