@@ -31,13 +31,13 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^0.11.1",
+    "@mdit-vue/plugin-component": "^0.11.2",
     "@mdit-vue/plugin-frontmatter": "^0.11.1",
-    "@mdit-vue/plugin-headers": "^0.11.1",
+    "@mdit-vue/plugin-headers": "^0.11.2",
     "@mdit-vue/plugin-sfc": "^0.11.1",
-    "@mdit-vue/plugin-title": "^0.11.1",
-    "@mdit-vue/plugin-toc": "^0.11.1",
-    "@mdit-vue/shared": "^0.11.0",
+    "@mdit-vue/plugin-title": "^0.11.2",
+    "@mdit-vue/plugin-toc": "^0.11.2",
+    "@mdit-vue/shared": "^0.11.2",
     "@mdit-vue/types": "^0.11.0",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-emoji": "^2.0.2",
