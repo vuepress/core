@@ -44,7 +44,7 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "markdown-it": "^13.0.1",
-    "markdown-it-anchor": "^8.6.5",
+    "markdown-it-anchor": "^8.6.6",
     "markdown-it-emoji": "^2.0.2",
     "mdurl": "^1.0.1"
   },

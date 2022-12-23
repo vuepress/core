@@ -55,8 +55,8 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "@vueuse/core": "^9.6.0",
-    "sass": "^1.56.2",
+    "@vueuse/core": "^9.8.2",
+    "sass": "^1.57.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
