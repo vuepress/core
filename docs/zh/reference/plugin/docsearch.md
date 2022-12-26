@@ -271,6 +271,16 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
+### injectStyle
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否注入 DocSearch 的默认样式
+
 ### locales
 
 - 类型： `Record<string, DocsearchPluginOptions>`
@@ -365,6 +375,8 @@ export default {
   --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232), 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 ```
+
+同时你也可以在插件选项中设置 `injectStyle: false` 来使用你自己的样式。
 
 ## 组件
 

@@ -272,6 +272,16 @@ If you are not using default theme, or you meet any problems when using docsearc
 - Also see:
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
+### injectStyle
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether inject the default style of DocSearch.
+
 ### locales
 
 - Type: `Record<string, DocsearchPluginOptions>`
@@ -366,6 +376,8 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
   --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232), 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 ```
+
+Also you can set `injectStyle: false` in plugin options to use your own styles.
 
 ## Components
 
