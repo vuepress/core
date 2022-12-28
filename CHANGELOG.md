@@ -1,3 +1,20 @@
+# [2.0.0-beta.60](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.59...v2.0.0-beta.60) (2022-12-28)
+
+
+### Bug Fixes
+
+* **markdown:** avoid extracting headers in nested blocks by bumping mdit-vue (close [#1201](https://github.com/vuepress/vuepress-next/issues/1201)) ([ecd3716](https://github.com/vuepress/vuepress-next/commit/ecd3716e0fca2e4c4457d514f245ca06e6e9086e))
+* **theme-default:** fix word breaking (close [#1209](https://github.com/vuepress/vuepress-next/issues/1209)) ([#1210](https://github.com/vuepress/vuepress-next/issues/1210)) ([1e7761f](https://github.com/vuepress/vuepress-next/commit/1e7761f269556816e7f8202481234a8d6a471dc2))
+* **theme-default:** preserve url params when switching language ([#1211](https://github.com/vuepress/vuepress-next/issues/1211)) ([941b2fe](https://github.com/vuepress/vuepress-next/commit/941b2fe8a5c45e1065b9a1f0b0541e571b43f26d))
+
+
+### Features
+
+* **client:** improve default head title resolver ([c688270](https://github.com/vuepress/vuepress-next/commit/c68827024584bb46aeb119087f91c8cb6053de27))
+* **plugin-docsearch:** add injectStyles option (close [#948](https://github.com/vuepress/vuepress-next/issues/948)) ([#1208](https://github.com/vuepress/vuepress-next/issues/1208)) ([34fb6c2](https://github.com/vuepress/vuepress-next/commit/34fb6c24e7250f20d1092a70141af528ae2f6b91))
+
+
+
 # [2.0.0-beta.59](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.58...v2.0.0-beta.59) (2022-12-14)
 
 
