@@ -380,8 +380,6 @@ export default {
 }
 ```
 
-同时你也可以在插件选项中设置 `injectStyle: false` 来使用你自己的样式。
-
 ## 组件
 
 ### Docsearch
