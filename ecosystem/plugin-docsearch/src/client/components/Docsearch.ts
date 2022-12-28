@@ -6,8 +6,12 @@ import type { PropType } from 'vue'
 import type { DocsearchOptions } from '../../shared/index.js'
 import { useDocsearchShim } from '../composables/index.js'
 
-import '@docsearch/css'
-import '../styles/docsearch.css'
+declare const __DOCSEARCH_INJECT_STYLES__: boolean
+
+if (__DOCSEARCH_INJECT_STYLES__) {
+  import('@docsearch/css')
+  import('../styles/docsearch.css')
+}
 
 export const Docsearch = defineComponent({
   name: 'Docsearch',
