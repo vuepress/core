@@ -271,16 +271,6 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
-### injectStyle
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否注入 DocSearch 的默认样式
-
 ### locales
 
 - 类型： `Record<string, DocsearchPluginOptions>`
@@ -324,6 +314,20 @@ export default {
 
 - 参考：
   - [指南 > 多语言支持](../../guide/i18n.md)
+
+### injectStyles
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否注入 DocSearch 的默认样式。
+
+  如果你认为 DocSearch 的默认样式和你的站点不兼容，你可以尝试覆盖默认样式，或者将该选项设置为 `false` 来完全移除默认样式。
+
+  当该选项被禁用时，你需要为 DocSearch 引入你自己的样式。同时要注意，你也无法再使用 [样式](#样式) 章节中提到的样式自定义能力。
 
 ## 样式
 

@@ -6,9 +6,9 @@ import type { PropType } from 'vue'
 import type { DocsearchOptions } from '../../shared/index.js'
 import { useDocsearchShim } from '../composables/index.js'
 
-declare const __DOCSEARCH_INJECT_STYLE__: boolean
+declare const __DOCSEARCH_INJECT_STYLES__: boolean
 
-if (__DOCSEARCH_INJECT_STYLE__) {
+if (__DOCSEARCH_INJECT_STYLES__) {
   import('@docsearch/css')
   import('../styles/docsearch.css')
 }
