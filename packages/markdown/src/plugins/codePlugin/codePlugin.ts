@@ -75,10 +75,12 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       options.highlight?.(token.content, language.name, '') ||
       md.utils.escapeHtml(token.content)
 
+    token.attrJoin('class', languageClass)
+
     // wrap highlighted code with `<pre>` and `<code>`
     let result = code.startsWith('<pre')
       ? code
-      : `<pre class="${languageClass}"><code>${code}</code></pre>`
+      : `<pre${slf.renderAttrs(token)}><code>${code}</code></pre>`
 
     // resolve v-pre mark from token info
     const useVPre = resolveVPre(info) ?? vPreBlock
