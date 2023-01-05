@@ -316,6 +316,17 @@ export default {
 - Also see:
   - [Guide > I18n](../../guide/i18n.md)
 
+### indexBase
+
+- Type: `string`
+- Default: `base`
+
+- Details:
+
+  The base path of the index site.
+
+  If you are deploying docs at different places with different base, you need to specific the base value of the index site with this option to get correct link.
+
 ### injectStyles
 
 - Type: `boolean`
@@ -327,7 +338,7 @@ export default {
   Whether to inject the default styles of DocSearch or not.
 
   If you think the default styles of DocSearch is not compatible with your site, you can try to override the default styles, or set this option to `false` to totally exclude the default styles.
-  
+
   When this option is disabled, you need to import your own styles for DocSearch. Also notice that all styles customization in [Styles](#styles) section would be unavailable.
 
 ## Styles

@@ -315,6 +315,18 @@ export default {
 - 参考：
   - [指南 > 多语言支持](../../guide/i18n.md)
 
+### indexBase
+
+- 类型： `string`
+
+- 默认值： `base`
+
+- 详情：
+
+  索引站点的 base URL。
+
+  如果您在不同位置部署多份文档且它们的 base 不同，您需要通过此选项指定索引站点的 base 以获得正确的链接。
+
 ### injectStyles
 
 - 类型： `boolean`
