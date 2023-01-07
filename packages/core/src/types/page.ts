@@ -75,6 +75,11 @@ export type Page<
     routeMeta: Record<string, unknown>
 
     /**
+     * Markdown Environment of the page
+     */
+    markdownEnv: Record<string, unknown>
+
+    /**
      * Extracted sfc blocks of the page
      */
     sfcBlocks: MarkdownSfcBlocks

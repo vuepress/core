@@ -24,6 +24,7 @@ export const renderPageContent = ({
 }): {
   contentRendered: string
   deps: string[]
+  markdownEnv: Record<string, unknown>
   frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
@@ -54,6 +55,19 @@ export const renderPageContent = ({
       customBlocks: [],
     },
     title = '',
+
+    // values dropped from env
+
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    base: _base,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    content: _content,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    filePath: _filePath,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    filePathRelative: _filePathRelative,
+
+    ...otherEnv
   } = markdownEnv
 
   return {
@@ -62,6 +76,7 @@ export const renderPageContent = ({
     frontmatter,
     headers,
     links,
+    markdownEnv: otherEnv,
     sfcBlocks,
     title: frontmatter.title ?? title,
   }
