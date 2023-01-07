@@ -5,6 +5,9 @@
   },
   "references": [
     {
+      "path": "./helper/tsconfig.build.json"
+    },
+    {
       "path": "./plugin-active-header-links/tsconfig.build.json"
     },
     { "path": "./plugin-back-to-top/tsconfig.build.json" },

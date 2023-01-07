@@ -1,0 +1,52 @@
+{
+  "name": "@vuepress/bundler-webpack",
+  "version": "2.0.0-beta.60",
+  "description": "Bundler webpack package of VuePress",
+  "keywords": [
+    "vuepress-bundler",
+    "vuepress",
+    "bundler",
+    "webpack"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Mister-Hope",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@vuepress/core": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "cheerio": "1.0.0-rc.12",
+    "execa": "^6.1.0",
+    "gray-matter": "^4.0.3",
+    "striptags": "3.2.0"
+  },
+  "devDependencies": {
+    "@types/connect": "3.4.35",
+    "@vuepress/bundler-vite": "workspace:*",
+    "@vuepress/bundler-webpack": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
