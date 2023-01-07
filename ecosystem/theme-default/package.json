@@ -43,6 +43,7 @@
   "dependencies": {
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
+    "@vuepress/helper": "workspace:*",
     "@vuepress/plugin-active-header-links": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-container": "workspace:*",

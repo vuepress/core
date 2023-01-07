@@ -37,6 +37,7 @@
   "dependencies": {
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
+    "@vuepress/helper": "workspace:*",
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
