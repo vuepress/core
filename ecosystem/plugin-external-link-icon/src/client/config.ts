@@ -12,7 +12,7 @@ export default defineClientConfig({
   enhance({ app }) {
     // only register when ExternalLinkIcon is not found in global components
     // so that users can provide their own icon component
-    if (hasGlobalComponent('ExternalLinkIcon', app)) {
+    if (!hasGlobalComponent('ExternalLinkIcon', app)) {
       // wrap the `<ExternalLinkIcon />` component with plugin options
       app.component('ExternalLinkIcon', h(ExternalLinkIcon, { locales }))
     }
