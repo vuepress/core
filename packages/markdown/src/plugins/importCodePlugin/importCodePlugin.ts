@@ -40,8 +40,7 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
 
     // extract imported files to env
     if (importFilePath) {
-      const importedFiles = env.importedFiles || (env.importedFiles = [])
-      importedFiles.push(importFilePath)
+      ;(env.importedFiles ??= []).push(importFilePath)
     }
 
     // render the import_code token as a fence token
