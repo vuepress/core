@@ -20,6 +20,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -38,7 +39,9 @@
     "cheerio": "1.0.0-rc.12",
     "execa": "^6.1.0",
     "gray-matter": "^4.0.3",
-    "striptags": "3.2.0"
+    "striptags": "^3.2.0",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/connect": "3.4.35",

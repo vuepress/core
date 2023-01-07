@@ -88,13 +88,14 @@ importers:
       '@vuepress/bundler-vite': workspace:*
       '@vuepress/bundler-webpack': workspace:*
       '@vuepress/core': workspace:*
-      '@vuepress/plugin-git': 2.0.0-beta.60
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
       cheerio: 1.0.0-rc.12
       execa: ^6.1.0
       gray-matter: ^4.0.3
-      striptags: 3.2.0
+      striptags: ^3.2.0
+      vue: ^3.2.45
+      vue-router: ^4.1.6
     dependencies:
       '@vuepress/core': link:../../packages/core
       '@vuepress/shared': link:../../packages/shared
@@ -103,11 +104,12 @@ importers:
       execa: 6.1.0
       gray-matter: 4.0.3
       striptags: 3.2.0
+      vue: 3.2.45
+      vue-router: 4.1.6_vue@3.2.45
     devDependencies:
       '@types/connect': 3.4.35
       '@vuepress/bundler-vite': link:../../packages/bundler-vite
       '@vuepress/bundler-webpack': link:../../packages/bundler-webpack
-      '@vuepress/plugin-git': link:../plugin-git
 
   ecosystem/plugin-active-header-links:
     specifiers:
