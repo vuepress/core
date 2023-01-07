@@ -169,29 +169,57 @@ export default {
 添加默认的 [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) 配置：
 
 ```ts
+// 如果想使用这些方法，你需要安装这个包
+import {
+  addChainWebpack,
+  addCustomElement,
+  addViteOptimizeDepsExclude,
+  addViteOptimizeDepsInclude,
+  addViteSsrExternal,
+  addViteSsrNoExternal,
+  chainWebpack,
+  getBundlerName,
+} from '@vuepress/helper'
+
 export default {
   extendsBundlerOptions: (bundlerOptions, app) => {
+    const bundlerName = getBundlerName(app)
+
+    // 添加自定义元素
+    addCustomElement(bundlerOptions, app, 'my-custom-element')
+
+    // 添加 vite.optimizeDeps.include
+    addViteOptimizeDepsInclude(bundlerOptions, app, 'pkg-name-1')
+
+    // 添加 vite.optimizeDeps.include
+    addViteOptimizeDepsExclude(bundlerOptions, app, 'pkg-name-2')
+
+    // 添加 vite.ssr.external
+    addViteSsrExternal(bundlerOptions, app, 'pkg-name-2')
+
+    // 添加 vite.ssr.noExternal
+    addViteSsrNoExternal(bundlerOptions, app, 'pkg-name-1')
+
+    // 通过 chainWebpack 修改配置，比如添加一个 Webpack 插件
+    addChainWebpack(bundlerOptions, app, (config) => {
+      config.plugin('your-plugin').use(YourPlugin, yourPluginOptions)
+    })
+
+    // 添加 Vite 配置，比如添加一个 Vite 插件
+    addViteConfig(bundlerOptions, app, {
+      plugins: [YourVitePlugin(yourVitePluginOptions)],
+    })
+
+    // 或者你也可以手动进行自定义
+
     // 修改 @vuepress/bundler-vite 的配置项
-    if (app.options.bundler.name === '@vuepress/bundler-vite') {
-      bundlerOptions.vuePluginOptions ??= {}
-      bundlerOptions.vuePluginOptions.template ??= {}
-      bundlerOptions.vuePluginOptions.template.compilerOptions ??= {}
-      const isCustomElement = bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
-      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement = (tag) => {
-        if (isCustomElement?.(tag)) return true
-        if (tag === 'my-custom-element') return true
-      }
+    if (bundlerName === 'vite') {
+      // 在此修改 vite 打包器配置
     }
 
     // 修改 @vuepress/bundler-webpack 的配置项
-    if (app.options.bundler.name === '@vuepress/bundler-webpack') {
-      bundlerOptions.vue ??= {}
-      bundlerOptions.vue.compilerOptions ??= {}
-      const isCustomElement = bundlerOptions.vue.compilerOptions.isCustomElement
-      bundlerOptions.vue.compilerOptions.isCustomElement = (tag) => {
-        if (isCustomElement?.(tag)) return true
-        if (tag === 'my-custom-element') return true
-      }
+    else if (bundlerName === 'webpack') {
+      // 在此修改 webpack 打包器配置
     }
   },
 }

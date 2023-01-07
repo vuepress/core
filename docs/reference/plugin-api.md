@@ -169,29 +169,57 @@ export default {
 Adding default [app.compilerOptions.isCustomElement](https://vuejs.org/api/application.html#app-config-compileroptions) option:
 
 ```ts
+// to use these helpers, you should install this package
+import {
+  addChainWebpack,
+  addCustomElement,
+  addViteOptimizeDepsExclude,
+  addViteOptimizeDepsInclude,
+  addViteSsrExternal,
+  addViteSsrNoExternal,
+  chainWebpack,
+  getBundlerName,
+} from '@vuepress/helper'
+
 export default {
   extendsBundlerOptions: (bundlerOptions, app) => {
-    // extends options of @vuepress/bundler-vite
-    if (app.options.bundler.name === '@vuepress/bundler-vite') {
-      bundlerOptions.vuePluginOptions ??= {}
-      bundlerOptions.vuePluginOptions.template ??= {}
-      bundlerOptions.vuePluginOptions.template.compilerOptions ??= {}
-      const isCustomElement = bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement
-      bundlerOptions.vuePluginOptions.template.compilerOptions.isCustomElement = (tag) => {
-        if (isCustomElement?.(tag)) return true
-        if (tag === 'my-custom-element') return true
-      }
+    const bundlerName = getBundlerName(app)
+
+    // add custom elements
+    addCustomElement(bundlerOptions, app, 'my-custom-element')
+
+    // add vite.optimizeDeps.include
+    addViteOptimizeDepsInclude(bundlerOptions, app, 'pkg-name-1')
+
+    // add vite.optimizeDeps.include
+    addViteOptimizeDepsExclude(bundlerOptions, app, 'pkg-name-2')
+
+    // add vite.ssr.external
+    addViteSsrExternal(bundlerOptions, app, 'pkg-name-2')
+
+    // add vite.ssr.noExternal
+    addViteSsrNoExternal(bundlerOptions, app, 'pkg-name-1')
+
+    // Modify webpack options through chainWebpack, e.g.: add a webpack plugin
+    addChainWebpack(bundlerOptions, app, (config) => {
+      config.plugin('your-plugin').use(YourPlugin, yourPluginOptions)
+    })
+
+    // Modify vite config by merging your options, e.g.: add a vite plugin
+    addViteConfig(bundlerOptions, app, {
+      plugins: [YourVitePlugin(yourVitePluginOptions)],
+    })
+
+    // Or you can customize the bundler options directly
+
+    // modify @vuepress/bundler-vite options
+    if (bundlerName === 'vite') {
+      // modify vite bundlerOptions here
     }
 
-    // extends options of @vuepress/bundler-webpack
-    if (app.options.bundler.name === '@vuepress/bundler-webpack') {
-      bundlerOptions.vue ??= {}
-      bundlerOptions.vue.compilerOptions ??= {}
-      const isCustomElement = bundlerOptions.vue.compilerOptions.isCustomElement
-      bundlerOptions.vue.compilerOptions.isCustomElement = (tag) => {
-        if (isCustomElement?.(tag)) return true
-        if (tag === 'my-custom-element') return true
-      }
+    // modify @vuepress/bundler-webpack options
+    else if (bundlerName === 'webpack') {
+      // modify webpack bundlerOptions here
     }
   },
 }
@@ -263,7 +291,7 @@ export default {
   Page options extension.
 
   This hook accepts a function that will receive the options of `createPage`.
-  
+
   This hook can be used for modifying page options
 
 - Example:

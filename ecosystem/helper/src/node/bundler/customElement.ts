@@ -21,26 +21,16 @@ export const tagHint = (tag: string, isDebug = false): void => {
   }
 }
 
-export interface CustomElementCommonOptions {
-  /**
-   * VuePress Node App
-   */
-  app: App
-  /**
-   * VuePress Bundler config
-   */
-  config: unknown
-}
-
 /**
  * Add tags as customElement
  *
- * @param config VuePress Bundler config
+ * @param bundlerOptions VuePress Bundler config
  * @param app VuePress Node App
  * @param customElements tags recognized as custom element
  */
 export const addCustomElement = (
-  { app, config }: CustomElementCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   customElement: string[] | string | RegExp
 ): void => {
   const customElements = isString(customElement)
@@ -50,7 +40,7 @@ export const addCustomElement = (
 
   // for vite
   if (bundlerName === 'vite') {
-    const viteBundlerConfig = <ViteBundlerOptions>config
+    const viteBundlerConfig = <ViteBundlerOptions>bundlerOptions
 
     if (!viteBundlerConfig.vuePluginOptions)
       viteBundlerConfig.vuePluginOptions = {}
@@ -80,7 +70,7 @@ export const addCustomElement = (
 
   // for webpack
   else if (bundlerName === 'webpack') {
-    const webpackBundlerConfig = <WebpackBundlerOptions>config
+    const webpackBundlerConfig = <WebpackBundlerOptions>bundlerOptions
 
     if (!webpackBundlerConfig.vue) webpackBundlerConfig.vue = {}
     if (!webpackBundlerConfig.vue.compilerOptions)

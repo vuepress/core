@@ -5,22 +5,15 @@ import { detectPackageManager } from '../../utils/index.js'
 import { getBundlerName } from '../getBundler.js'
 import { mergeViteConfig } from './mergeViteConfig.js'
 
-export interface ViteCommonOptions {
-  /**
-   * VuePress Node App
-   */
-  app: App
-  /**
-   * VuePress Bundler config
-   */
-  config: unknown
-}
-
 /**
  * Add modules to Vite `optimizeDeps.include` list
+ *
+ * @param bundlerOptions VuePress Bundler config
+ * @param app VuePress Node App
  */
 export const addViteOptimizeDepsInclude = (
-  { app, config }: ViteCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   module: string | string[]
 ): void => {
   if (
@@ -29,10 +22,10 @@ export const addViteOptimizeDepsInclude = (
       ? Boolean(process.env.OPTIMIZE_DEPS)
       : detectPackageManager() !== 'pnpm')
   ) {
-    const bundlerConfig = <ViteBundlerOptions>config
+    const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
 
-    bundlerConfig.viteOptions = mergeViteConfig(
-      bundlerConfig.viteOptions || {},
+    viteBundlerOptions.viteOptions = mergeViteConfig(
+      viteBundlerOptions.viteOptions || {},
       {
         optimizeDeps: {
           include: isString(module) ? [module] : module,
@@ -40,24 +33,28 @@ export const addViteOptimizeDepsInclude = (
       }
     )
 
-    bundlerConfig.viteOptions.optimizeDeps!.include = Array.from(
-      new Set(bundlerConfig.viteOptions.optimizeDeps!.include)
+    viteBundlerOptions.viteOptions.optimizeDeps!.include = Array.from(
+      new Set(viteBundlerOptions.viteOptions.optimizeDeps!.include)
     )
   }
 }
 
 /**
  * Add modules to Vite `optimizeDeps.exclude` list
+ *
+ * @param bundlerOptions VuePress Bundler config
+ * @param app VuePress Node App
  */
 export const addViteOptimizeDepsExclude = (
-  { app, config }: ViteCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   module: string | string[]
 ): void => {
   if (getBundlerName(app) === 'vite') {
-    const bundlerConfig = <ViteBundlerOptions>config
+    const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
 
-    bundlerConfig.viteOptions = mergeViteConfig(
-      bundlerConfig.viteOptions || {},
+    viteBundlerOptions.viteOptions = mergeViteConfig(
+      viteBundlerOptions.viteOptions || {},
       {
         optimizeDeps: {
           exclude: isString(module) ? [module] : module,
@@ -65,24 +62,28 @@ export const addViteOptimizeDepsExclude = (
       }
     )
 
-    bundlerConfig.viteOptions.optimizeDeps!.exclude = Array.from(
-      new Set(bundlerConfig.viteOptions.optimizeDeps!.exclude)
+    viteBundlerOptions.viteOptions.optimizeDeps!.exclude = Array.from(
+      new Set(viteBundlerOptions.viteOptions.optimizeDeps!.exclude)
     )
   }
 }
 
 /**
  * Add modules to Vite `ssr.external` list
+ *
+ * @param bundlerOptions VuePress Bundler config
+ * @param app VuePress Node App
  */
 export const addViteSsrExternal = (
-  { app, config }: ViteCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   module: string | string[]
 ): void => {
   if (getBundlerName(app) === 'vite') {
-    const bundlerConfig = <ViteBundlerOptions>config
+    const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
 
-    bundlerConfig.viteOptions = mergeViteConfig(
-      bundlerConfig.viteOptions || {},
+    viteBundlerOptions.viteOptions = mergeViteConfig(
+      viteBundlerOptions.viteOptions || {},
       {
         ssr: {
           external: isString(module) ? [module] : module,
@@ -96,19 +97,35 @@ export const addViteSsrExternal = (
  * Add modules to Vite `ssr.noExternal` list
  */
 export const addViteSsrNoExternal = (
-  { app, config }: ViteCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   module: string | string[]
 ): void => {
   if (getBundlerName(app) === 'vite') {
-    const bundlerConfig = <ViteBundlerOptions>config
+    const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
 
-    bundlerConfig.viteOptions = mergeViteConfig(
-      bundlerConfig.viteOptions || {},
+    viteBundlerOptions.viteOptions = mergeViteConfig(
+      viteBundlerOptions.viteOptions || {},
       {
         ssr: {
           noExternal: isString(module) ? [module] : module,
         },
       }
+    )
+  }
+}
+
+export const addViteConfig = (
+  bundlerOptions: unknown,
+  app: App,
+  config: Record<string, any>
+): void => {
+  if (getBundlerName(app) === 'vite') {
+    const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
+
+    viteBundlerOptions.viteOptions = mergeViteConfig(
+      viteBundlerOptions.viteOptions || {},
+      config
     )
   }
 }

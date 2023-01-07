@@ -11,17 +11,6 @@ import type { Plugin } from 'vite'
 import { getBundlerName } from './getBundler.js'
 import { mergeViteConfig } from './vite/index.js'
 
-export interface CustomServerCommonOptions {
-  /**
-   * VuePress Node App
-   */
-  app: App
-  /**
-   * VuePress Bundler config
-   */
-  config: unknown
-}
-
 export interface CustomServerOptions {
   /**
    * Path to be responded
@@ -51,7 +40,8 @@ export interface CustomServerOptions {
  * @param errMsg error msg
  */
 export const useCustomDevServer = (
-  { app, config }: CustomServerCommonOptions,
+  bundlerOptions: unknown,
+  app: App,
   {
     errMsg = 'The server encountered an error',
     response: responseHandler,
@@ -65,7 +55,7 @@ export const useCustomDevServer = (
   if (app.env.isDev) {
     if (bundlerName === 'vite') {
       // for vite
-      const viteBundlerConfig = <ViteBundlerOptions>config
+      const viteBundlerOptions = <ViteBundlerOptions>bundlerOptions
       const handler: HandleFunction = (
         request: IncomingMessage,
         response: ServerResponse
@@ -88,19 +78,19 @@ export const useCustomDevServer = (
         },
       }
 
-      viteBundlerConfig.viteOptions = mergeViteConfig(
-        viteBundlerConfig.viteOptions || {},
+      viteBundlerOptions.viteOptions = mergeViteConfig(
+        viteBundlerOptions.viteOptions || {},
         { plugins: [viteMockRequestPlugin] }
       )
     }
 
     // for webpack
     else if (bundlerName === 'webpack') {
-      const webpackBundlerConfig = <WebpackBundlerOptions>config
+      const webpackBundlerOptions = <WebpackBundlerOptions>bundlerOptions
 
-      const { devServerSetupMiddlewares } = webpackBundlerConfig
+      const { devServerSetupMiddlewares } = webpackBundlerOptions
 
-      webpackBundlerConfig.devServerSetupMiddlewares = (
+      webpackBundlerOptions.devServerSetupMiddlewares = (
         middlewares: WebpackDevServer.Middleware[],
         server: WebpackDevServer
       ): WebpackDevServer.Middleware[] => {
