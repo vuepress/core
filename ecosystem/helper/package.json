@@ -1,12 +1,11 @@
 {
-  "name": "@vuepress/bundler-webpack",
+  "name": "@vuepress/helper",
   "version": "2.0.0-beta.60",
-  "description": "Bundler webpack package of VuePress",
+  "description": "Helper functions facing developers",
   "keywords": [
-    "vuepress-bundler",
+    "vuepress-helper",
     "vuepress",
-    "bundler",
-    "webpack"
+    "helper"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
@@ -23,14 +22,14 @@
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "build": "tsup",
-    "clean": "rimraf dist"
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
     "@vuepress/core": "workspace:*",
