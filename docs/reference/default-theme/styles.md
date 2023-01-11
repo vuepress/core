@@ -4,7 +4,7 @@
 
 The default theme uses [SASS](https://sass-lang.com/) as the CSS pre-processor.
 
-Users can custom style variables via a [palette file](#palette-file),
+Users can customize style variables via a [palette file](#palette-file),
 and add extra styles via a [style file](#style-file).
 
 ## Palette File
