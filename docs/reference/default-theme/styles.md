@@ -2,15 +2,16 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-Default theme uses [SASS](https://sass-lang.com/) as the CSS pre-processor.
+The default theme uses [SASS](https://sass-lang.com/) as the CSS pre-processor.
 
-Users can custom style variables via [palette file](#palette-file), and add extra styles via [style file](#style-file).
+Users can customize style variables via a [palette file](#palette-file),
+and add extra styles via a [style file](#style-file).
 
 ## Palette File
 
-The path of palette file is `.vuepress/styles/palette.scss`.
+The path of the palette file is `.vuepress/styles/palette.scss`.
 
-You can make use of it to override predefined SASS variables of default theme.
+You can make use of it to override predefined SASS variables of the default theme.
 
 ::: details Click to expand SASS variables
 @[code{3-} scss](@vuepress/theme-default/src/client/styles/_variables.scss)
@@ -18,9 +19,9 @@ You can make use of it to override predefined SASS variables of default theme.
 
 ## Style File
 
-The path of style file is `.vuepress/styles/index.scss`.
+The path of the style file is `.vuepress/styles/index.scss`.
 
-You can add extra styles here, or override default styles:
+You can add extra styles here, or override the default styles:
 
 ```scss
 :root {
@@ -28,7 +29,7 @@ You can add extra styles here, or override default styles:
 }
 ```
 
-You can also make use of it to override predefined CSS variables of default theme.
+You can also make use of it to override predefined CSS variables of the default theme.
 
 ::: details Click to expand CSS variables
 @[code scss](@vuepress/theme-default/src/client/styles/vars.scss)
