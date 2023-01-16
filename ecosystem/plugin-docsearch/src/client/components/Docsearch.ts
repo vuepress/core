@@ -7,6 +7,7 @@ import type { DocsearchOptions } from '../../shared/index.js'
 import { useDocsearchShim } from '../composables/index.js'
 
 declare const __DOCSEARCH_INJECT_STYLES__: boolean
+declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
 
 if (__DOCSEARCH_INJECT_STYLES__) {
   import('@docsearch/css')
@@ -24,7 +25,8 @@ export const Docsearch = defineComponent({
     },
     options: {
       type: Object as PropType<DocsearchOptions>,
-      required: true,
+      required: false,
+      default: () => __DOCSEARCH_OPTIONS__,
     },
   },
 
@@ -33,8 +35,8 @@ export const Docsearch = defineComponent({
     const lang = usePageLang()
     const docsearchShim = useDocsearchShim()
 
-    // resolve docsearch props for current locale
-    const propsLocale = computed(() => ({
+    // resolve docsearch options for current locale
+    const optionsLocale = computed(() => ({
       ...props.options,
       ...props.options.locales?.[routeLocale.value],
     }))
@@ -43,7 +45,7 @@ export const Docsearch = defineComponent({
 
     const initialize = (): void => {
       const rawFacetFilters =
-        propsLocale.value.searchParameters?.facetFilters ?? []
+        optionsLocale.value.searchParameters?.facetFilters ?? []
       facetFilters.splice(
         0,
         facetFilters.length,
@@ -53,10 +55,10 @@ export const Docsearch = defineComponent({
       // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
       docsearch({
         ...docsearchShim,
-        ...propsLocale.value,
+        ...optionsLocale.value,
         container: `#${props.containerId}`,
         searchParameters: {
-          ...propsLocale.value.searchParameters,
+          ...optionsLocale.value.searchParameters,
           facetFilters,
         },
       })
@@ -67,7 +69,7 @@ export const Docsearch = defineComponent({
 
       // re-initialize if the options is changed
       watch(
-        [routeLocale, propsLocale],
+        [routeLocale, optionsLocale],
         (
           [curRouteLocale, curPropsLocale],
           [prevRouteLocale, prevPropsLocale]
