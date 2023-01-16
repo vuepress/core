@@ -37,9 +37,9 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.3.1",
-    "@docsearch/js": "^3.3.1",
-    "@docsearch/react": "^3.3.1",
+    "@docsearch/css": "^3.3.2",
+    "@docsearch/js": "^3.3.2",
+    "@docsearch/react": "^3.3.2",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
