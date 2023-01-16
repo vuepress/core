@@ -21,7 +21,7 @@ export interface DocsearchPluginOptions extends DocsearchOptions {
 
 export const docsearchPlugin = ({
   injectStyles = true,
-  indexBase = '',
+  indexBase,
   ...options
 }: DocsearchPluginOptions): Plugin => ({
   name: '@vuepress/plugin-docsearch',
