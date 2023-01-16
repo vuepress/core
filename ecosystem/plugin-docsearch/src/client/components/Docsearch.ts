@@ -8,6 +8,7 @@ import { useDocsearchShim } from '../composables/index.js'
 
 declare const __DOCSEARCH_INJECT_STYLES__: boolean
 declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
+const options = __DOCSEARCH_OPTIONS__
 
 if (__DOCSEARCH_INJECT_STYLES__) {
   import('@docsearch/css')
@@ -26,7 +27,7 @@ export const Docsearch = defineComponent({
     options: {
       type: Object as PropType<DocsearchOptions>,
       required: false,
-      default: () => __DOCSEARCH_OPTIONS__,
+      default: () => options,
     },
   },
 
