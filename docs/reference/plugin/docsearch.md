@@ -288,6 +288,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 export default {
   plugins: [
     docsearchPlugin({
+      appId: '<APP_ID>',
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>',
       locales: {

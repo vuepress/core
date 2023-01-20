@@ -287,6 +287,7 @@ new Crawler({
 export default {
   plugins: [
     docsearchPlugin({
+      appId: '<APP_ID>',
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>',
       locales: {
