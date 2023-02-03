@@ -190,6 +190,10 @@ heroku login
 
 This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
+## Kinsta
+
+See [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/).
+
 ## Layer0
 
 See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress).
@@ -216,6 +220,3 @@ See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/
     - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
    
 2. Hit the deploy button.
-
-## Kinsta
-See [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/).
