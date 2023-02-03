@@ -47,7 +47,7 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 -   },
 - }
 
-+ import { defaultTheme } from '@vuepress/theme-default'
++ import { defaultTheme } from 'vuepress'
 + export default {
 +   theme: defaultTheme({
 +     // 默认主题配置
