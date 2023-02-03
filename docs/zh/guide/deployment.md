@@ -192,6 +192,10 @@ heroku login
 
 这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
 
+## Kinsta
+
+请查看 [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/) 。
+
 ## Layer0
 
 请查看 [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress) 。
