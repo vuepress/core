@@ -1,4 +1,4 @@
-import { type App, computed } from 'vue'
+import { type App, computed, ref, watch } from 'vue'
 import type { Router } from 'vue-router'
 import {
   type LayoutsRef,
@@ -60,11 +60,10 @@ export const setupGlobalComputed = (
 ): GlobalComputed => {
   // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
+  const routePath = ref(router.currentRoute.value.path)
+
   const routeLocale = computed(() =>
-    resolvers.resolveRouteLocale(
-      siteData.value.locales,
-      router.currentRoute.value.path
-    )
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
   )
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
@@ -85,6 +84,16 @@ export const setupGlobalComputed = (
   const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
   const pageLayout = computed(() =>
     resolvers.resolvePageLayout(pageData.value, layouts.value)
+  )
+
+  // router.currentRoute is a ref, so we must watch routePath explicitly
+  watch(
+    () => router.currentRoute.value.path,
+    (newValue) => {
+      if (newValue !== routePath.value) {
+        routePath.value = newValue
+      }
+    }
   )
 
   // provide global computed
