@@ -108,7 +108,25 @@ export const Docsearch = defineComponent({
       }, 16)
     }
 
+    const preconnect = (): void => {
+      const id = 'algolia-preconnect'
+      const rIC = window.requestIdleCallback || setTimeout
+
+      rIC(() => {
+        if (document.head.querySelector(`#${id}`)) return
+
+        const preconnect = document.createElement('link')
+        preconnect.id = id
+        preconnect.rel = 'preconnect'
+        preconnect.href = `https://${options.appId}-dsn.algolia.net`
+        preconnect.crossOrigin = ''
+        document.head.appendChild(preconnect)
+      })
+    }
+
     onMounted(() => {
+      preconnect()
+
       // meta key detect (same logic as in @docsearch/js)
       metaKey.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
         ? `'⌘'`
@@ -126,22 +144,6 @@ export const Docsearch = defineComponent({
       }
       window.addEventListener('keydown', handleSearchHotKey)
       onUnmounted(remove)
-    })
-
-    onMounted(() => {
-      const id = 'algolia-preconnect'
-      const rIC = window.requestIdleCallback || setTimeout
-
-      rIC(() => {
-        if (document.head.querySelector(`#${id}`)) return
-
-        const preconnect = document.createElement('link')
-        preconnect.id = id
-        preconnect.rel = 'preconnect'
-        preconnect.href = `https://${options.appId}-dsn.algolia.net`
-        preconnect.crossOrigin = ''
-        document.head.appendChild(preconnect)
-      })
     })
 
     return () => [
