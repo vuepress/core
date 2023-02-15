@@ -90,9 +90,7 @@ export const setupGlobalComputed = (
   watch(
     () => router.currentRoute.value.path,
     (newValue) => {
-      if (newValue !== routePath.value) {
-        routePath.value = newValue
-      }
+      routePath.value = newValue
     }
   )
 
