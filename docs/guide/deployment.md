@@ -196,9 +196,9 @@ This is the configuration of your site; read more at [heroku-buildpack-static](h
 
 See [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/).
 
-## Layer0
+## Edgio
 
-See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress).
+See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress).
 
 ## Netlify
 
