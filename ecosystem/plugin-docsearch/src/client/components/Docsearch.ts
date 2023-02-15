@@ -12,10 +12,13 @@ import {
 import type { PropType } from 'vue'
 import type { DocsearchOptions } from '../../shared/index.js'
 import { useDocsearchShim } from '../composables/index.js'
+import {
+  options,
+  preconnectAlgolia,
+  searchButtonTemplate,
+} from '../utils/index.js'
 
 declare const __DOCSEARCH_INJECT_STYLES__: boolean
-declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
-const options = __DOCSEARCH_OPTIONS__
 
 if (__DOCSEARCH_INJECT_STYLES__) {
   import('@docsearch/css')
@@ -88,13 +91,6 @@ export const Docsearch = defineComponent({
       loaded.value = true
     }
 
-    const load = (): void => {
-      if (!loading.value) {
-        loading.value = true
-        initialize()
-        setTimeout(poll, 16)
-      }
-    }
     const poll = (): void => {
       // programmatically open the search box after initialize
       const e = new Event('keydown') as any
@@ -108,24 +104,16 @@ export const Docsearch = defineComponent({
       }, 16)
     }
 
-    const preconnect = (): void => {
-      const id = 'algolia-preconnect'
-      const rIC = window.requestIdleCallback || setTimeout
-
-      rIC(() => {
-        if (document.head.querySelector(`#${id}`)) return
-
-        const preconnect = document.createElement('link')
-        preconnect.id = id
-        preconnect.rel = 'preconnect'
-        preconnect.href = `https://${options.appId}-dsn.algolia.net`
-        preconnect.crossOrigin = ''
-        document.head.appendChild(preconnect)
-      })
+    const load = (): void => {
+      if (!loading.value) {
+        loading.value = true
+        initialize()
+        setTimeout(poll, 16)
+      }
     }
 
     onMounted(() => {
-      preconnect()
+      preconnectAlgolia()
 
       // meta key detect (same logic as in @docsearch/js)
       metaKey.value = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
@@ -187,9 +175,7 @@ export const Docsearch = defineComponent({
                 }
               })
             },
-            // search button template (same content as in @docsearch/js)
-            innerHTML:
-              '<button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"><kbd class="DocSearch-Button-Key"><svg width="15" height="15" class="DocSearch-Control-Key-Icon"><path d="M4.505 4.496h2M5.505 5.496v5M8.216 4.496l.055 5.993M10 7.5c.333.333.5.667.5 1v2M12.326 4.5v5.996M8.384 4.496c1.674 0 2.116 0 2.116 1.5s-.442 1.5-2.116 1.5M3.205 9.303c-.09.448-.277 1.21-1.241 1.203C1 10.5.5 9.513.5 8V7c0-1.57.5-2.5 1.464-2.494.964.006 1.134.598 1.24 1.342M12.553 10.5h1.953" stroke-width="1.2" stroke="currentColor" fill="none" stroke-linecap="square"></path></svg></kbd><kbd class="DocSearch-Button-Key">K</kbd></span></button>',
+            innerHTML: searchButtonTemplate,
           }),
     ]
   },
