@@ -45,6 +45,9 @@
 
     .site-name {
       display: block;
+      // 5.5rem for .navbar padding-inline
+      // 4.5rem for ColorModeSwitch and NavbarSearch
+      // 1rem for gap
       width: calc(100vw - 11rem);
       overflow: hidden;
       white-space: nowrap;
