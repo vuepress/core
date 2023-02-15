@@ -196,9 +196,9 @@ heroku login
 
 请查看 [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/) 。
 
-## Layer0
+## Edgio
 
-请查看 [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress) 。
+请查看 [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress) 。
 
 ## Netlify
 
