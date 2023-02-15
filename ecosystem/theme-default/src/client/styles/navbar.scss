@@ -43,15 +43,19 @@
   .navbar {
     padding-left: 4rem;
 
-    .can-hide {
-      display: none;
-    }
-
     .site-name {
-      width: calc(100vw - 9.4rem);
+      display: block;
+      // 5.5rem for .navbar padding-inline
+      // 4.5rem for ColorModeSwitch and NavbarSearch
+      // 1rem for gap
+      width: calc(100vw - 11rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .can-hide {
+      display: none;
     }
   }
 }
