@@ -58,10 +58,14 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[]
 ): GlobalComputed => {
+  const routePath = ref(router.currentRoute.value.path)
+  watch(
+    () => router.currentRoute.value.path,
+    (value) => (routePath.value = value)
+  )
+ 
   // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
-  const routePath = ref(router.currentRoute.value.path)
-
   const routeLocale = computed(() =>
     resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
   )
@@ -84,14 +88,6 @@ export const setupGlobalComputed = (
   const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
   const pageLayout = computed(() =>
     resolvers.resolvePageLayout(pageData.value, layouts.value)
-  )
-
-  // router.currentRoute is a ref, so we must watch routePath explicitly
-  watch(
-    () => router.currentRoute.value.path,
-    (newValue) => {
-      routePath.value = newValue
-    }
   )
 
   // provide global computed
