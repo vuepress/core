@@ -58,6 +58,7 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[]
 ): GlobalComputed => {
+  // create a manual computed route path, so that route hash changes won't trigger all downstream computed
   const routePath = ref(router.currentRoute.value.path)
   watch(
     () => router.currentRoute.value.path,
