@@ -5,8 +5,6 @@ import type { Ref } from 'vue'
 import { preconnectAlgolia } from '../utils/index.js'
 import { useDocsearchShim } from './useDocsearchShim.js'
 
-declare const __DOCSEARCH_INJECT_STYLES__: boolean
-
 export interface Docsearch {
   loaded: Readonly<Ref<boolean>>
   loadDocsearch: () => void
@@ -33,12 +31,7 @@ export const useDocsearch = (props): Docsearch => {
   const facetFilters: string[] = []
 
   const initialize = async (): Promise<void> => {
-    const [{ default: docsearch }] = await Promise.all([
-      import('@docsearch/js'),
-      ...(__DOCSEARCH_INJECT_STYLES__
-        ? [import('@docsearch/css'), import('../styles/docsearch.css')]
-        : []),
-    ])
+    const { default: docsearch } = await import('@docsearch/js')
 
     const rawFacetFilters =
       optionsLocale.value.searchParameters?.facetFilters ?? []
