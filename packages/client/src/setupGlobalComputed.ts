@@ -64,7 +64,7 @@ export const setupGlobalComputed = (
     () => router.currentRoute.value.path,
     (value) => (routePath.value = value)
   )
- 
+
   // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   const routeLocale = computed(() =>
