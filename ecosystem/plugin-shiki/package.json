@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@vuepress/core": "workspace:*",
-    "shiki": "^0.14.0"
+    "shiki": "^0.14.1"
   },
   "publishConfig": {
     "access": "public"

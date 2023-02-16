@@ -36,7 +36,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/express": "^4.17.16",
+    "@types/express": "^4.17.17",
     "@types/webpack-env": "^1.18.0",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
