@@ -74,10 +74,6 @@ pnpm docs:dev
 
 当你想要从最初状态重新构建源代码时，你可以执行该命令。
 
-### `pnpm dev:*`
-
-`dev:` 前缀表明，这些命令是针对开发使用的，将会以监听模式运行对应的脚本。
-
 ### `pnpm docs:*`
 
 #### `pnpm docs:build`, `pnpm docs:dev`, `pnpm docs:clean`
