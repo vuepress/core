@@ -9,7 +9,7 @@ import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 /**
  * Render page content and extract related info
  */
-export const renderPageContent = async ({
+export const renderPageContent = ({
   app,
   content,
   filePath,
@@ -21,7 +21,7 @@ export const renderPageContent = async ({
   filePath: string | null
   filePathRelative: string | null
   options: PageOptions
-}): Promise<{
+}): {
   contentRendered: string
   deps: string[]
   frontmatter: PageFrontmatter
@@ -29,7 +29,7 @@ export const renderPageContent = async ({
   links: MarkdownLink[]
   sfcBlocks: MarkdownSfcBlocks
   title: string
-}> => {
+} => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
     filePath,
