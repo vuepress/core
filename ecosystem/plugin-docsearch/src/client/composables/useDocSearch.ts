@@ -1,7 +1,7 @@
 import { usePageLang, useRouteLocale } from '@vuepress/client'
 import { isArray } from '@vuepress/shared'
 import { computed, onMounted, onUnmounted, readonly, ref, watch } from 'vue'
-import type { Ref } from 'vue'
+import type { Ref, WatchStopHandle } from 'vue'
 import { preconnectAlgolia } from '../utils/index.js'
 import { useDocsearchShim } from './useDocsearchShim.js'
 
@@ -29,6 +29,7 @@ export const useDocsearch = (props): Docsearch => {
   }))
 
   const facetFilters: string[] = []
+  const stopHandle: WatchStopHandle[] = []
 
   const initialize = async (): Promise<void> => {
     const { default: docsearch } = await import('@docsearch/js')
@@ -98,37 +99,43 @@ export const useDocsearch = (props): Docsearch => {
     onUnmounted(remove)
   })
 
+  onUnmounted(() => {
+    stopHandle.forEach((item) => item())
+  })
+
   const loadDocsearch = (): void => {
     load()
 
     // re-initialize if the options is changed
-    watch(
-      [routeLocale, optionsLocale],
-      (
-        [curRouteLocale, curPropsLocale],
-        [prevRouteLocale, prevPropsLocale]
-      ) => {
-        if (curRouteLocale === prevRouteLocale) return
-        if (
-          JSON.stringify(curPropsLocale) !== JSON.stringify(prevPropsLocale)
-        ) {
-          initialize()
+    stopHandle.push(
+      watch(
+        [routeLocale, optionsLocale],
+        (
+          [curRouteLocale, curPropsLocale],
+          [prevRouteLocale, prevPropsLocale]
+        ) => {
+          if (curRouteLocale === prevRouteLocale) return
+          if (
+            JSON.stringify(curPropsLocale) !== JSON.stringify(prevPropsLocale)
+          ) {
+            initialize()
+          }
         }
-      }
-    )
+      ),
 
-    // modify the facetFilters in place to avoid re-initializing docsearch
-    // when page lang is changed
-    watch(lang, (curLang, prevLang) => {
-      if (curLang !== prevLang) {
-        const prevIndex = facetFilters.findIndex(
-          (item) => item === `lang:${prevLang}`
-        )
-        if (prevIndex > -1) {
-          facetFilters.splice(prevIndex, 1, `lang:${curLang}`)
+      // modify the facetFilters in place to avoid re-initializing docsearch
+      // when page lang is changed
+      watch(lang, (curLang, prevLang) => {
+        if (curLang !== prevLang) {
+          const prevIndex = facetFilters.findIndex(
+            (item) => item === `lang:${prevLang}`
+          )
+          if (prevIndex > -1) {
+            facetFilters.splice(prevIndex, 1, `lang:${curLang}`)
+          }
         }
-      }
-    })
+      })
+    )
   }
 
   return {
