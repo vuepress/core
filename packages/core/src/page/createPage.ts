@@ -39,7 +39,7 @@ export const createPage = async (
     links,
     sfcBlocks,
     title,
-  } = await renderPageContent({
+  } = renderPageContent({
     app,
     content,
     filePath,
