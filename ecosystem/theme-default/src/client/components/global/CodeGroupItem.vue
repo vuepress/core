@@ -12,10 +12,7 @@ defineProps({
     type: String,
     required: true,
   },
-  active: {
-    required: false,
-    default: false,
-  },
+  active: Boolean,
 })
 </script>
 
