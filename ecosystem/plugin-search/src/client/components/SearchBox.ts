@@ -21,19 +21,16 @@ export const SearchBox = defineComponent({
   props: {
     locales: {
       type: Object as PropType<SearchBoxLocales>,
-      required: false,
       default: () => ({}),
     },
 
     hotKeys: {
       type: Array as PropType<(string | HotKeyOptions)[]>,
-      required: false,
       default: () => [],
     },
 
     maxSuggestions: {
       type: Number,
-      required: false,
       default: 5,
     },
   },

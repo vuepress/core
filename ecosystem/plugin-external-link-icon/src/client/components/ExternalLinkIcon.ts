@@ -38,7 +38,6 @@ export const ExternalLinkIcon = defineComponent({
   props: {
     locales: {
       type: Object as PropType<ExternalLinkIconLocales>,
-      required: false,
       default: () => ({}),
     },
   },

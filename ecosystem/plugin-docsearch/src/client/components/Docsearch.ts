@@ -21,12 +21,10 @@ export const Docsearch = defineComponent({
   props: {
     containerId: {
       type: String,
-      required: false,
       default: 'docsearch-container',
     },
     options: {
       type: Object as PropType<DocsearchOptions>,
-      required: false,
       default: () => options,
     },
   },

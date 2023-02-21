@@ -12,7 +12,6 @@ export const Content = defineComponent({
   props: {
     pageKey: {
       type: String,
-      required: false,
       default: '',
     },
   },

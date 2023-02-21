@@ -13,7 +13,6 @@ defineProps({
     required: true,
   },
   active: {
-    type: Boolean,
     required: false,
     default: false,
   },

@@ -15,7 +15,6 @@ const props = defineProps({
   },
   depth: {
     type: Number,
-    required: false,
     default: 0,
   },
 })
