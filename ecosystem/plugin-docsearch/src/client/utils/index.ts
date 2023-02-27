@@ -1,3 +1,4 @@
-export * from './options.js'
-export * from './preconnectAlgolia.js'
-export * from './searchButtonTemplate.js'
+export * from './getFacetFilters.js'
+export * from './getSearchButtonTemplate.js'
+export * from './pollToOpenDocsearch.js'
+export * from './preconnectToAlgolia.js'
