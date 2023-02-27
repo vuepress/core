@@ -536,7 +536,22 @@ interface MarkdownLink {
 
 - Details:
 
-  Links of the page.
+  Links included in the page content.
+
+### markdownEnv
+
+- Type: `Record<string, unknown>`
+
+- Details:
+
+  The `env` object when parsing markdown content with markdown-it.
+
+  Some markdown-it plugins may store extra information inside this object, and you can make use of them for advanced customization.
+
+  Notice that some other page properties are also extracted from the original `env` object. Those properties have already been removed from `page.markdownEnv`.
+
+- Also see:
+  - [markdown-it > API Documentation > MarkdownIt > parse](https://markdown-it.github.io/markdown-it/#MarkdownIt.parse)
 
 ### pathInferred
 
