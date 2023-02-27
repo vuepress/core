@@ -4,6 +4,7 @@ import type {
   MarkdownLink,
   MarkdownSfcBlocks,
 } from '@vuepress/markdown'
+import { omit } from '@vuepress/shared'
 import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 
 /**
@@ -24,6 +25,7 @@ export const renderPageContent = ({
 }): {
   contentRendered: string
   deps: string[]
+  markdownEnv: Record<string, unknown>
   frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
@@ -54,6 +56,7 @@ export const renderPageContent = ({
       customBlocks: [],
     },
     title = '',
+    ...extraMarkdownEnv
   } = markdownEnv
 
   return {
@@ -62,6 +65,14 @@ export const renderPageContent = ({
     frontmatter,
     headers,
     links,
+    markdownEnv: omit(
+      extraMarkdownEnv,
+      'base',
+      'content',
+      'filePath',
+      'filePathRelative',
+      'frontmatter'
+    ),
     sfcBlocks,
     title: frontmatter.title ?? title,
   }
