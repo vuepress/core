@@ -139,6 +139,7 @@ importers:
       '@vuepress/core': workspace:*
       '@vuepress/shared': workspace:*
       '@vuepress/utils': workspace:*
+      '@vueuse/core': ^9.13.0
       ts-debounce: ^4.0.0
       vue: ^3.2.47
       vue-router: ^4.1.6
@@ -150,6 +151,7 @@ importers:
       '@vuepress/core': link:../../packages/core
       '@vuepress/shared': link:../../packages/shared
       '@vuepress/utils': link:../../packages/utils
+      '@vueuse/core': 9.13.0_vue@3.2.47
       ts-debounce: 4.0.0
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
@@ -7550,7 +7552,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.10.0
-      semver: 7.3.8
+      semver: 7.3.7
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -8568,6 +8570,14 @@ packages:
     resolution: {integrity: sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==}
     hasBin: true
     dev: false
+
+  /semver/7.3.7:
+    resolution: {integrity: sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: true
 
   /semver/7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
