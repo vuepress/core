@@ -35,11 +35,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "lodash.omit": "^4.5.0",
     "vue": "^3.2.47"
-  },
-  "devDependencies": {
-    "@types/lodash.omit": "^4.5.7"
   },
   "publishConfig": {
     "access": "public"
