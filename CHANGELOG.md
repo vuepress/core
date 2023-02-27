@@ -1,3 +1,22 @@
+# [2.0.0-beta.61](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.60...v2.0.0-beta.61) (2023-02-27)
+
+
+### Bug Fixes
+
+* **client:** avoid updating routeLocale on route hash change ([#1253](https://github.com/vuepress/vuepress-next/issues/1253)) ([5eb9489](https://github.com/vuepress/vuepress-next/commit/5eb948922761e9cc96674a7d43a075ecf59ef5ea))
+* **markdown:** render token attrs in code block ([#1220](https://github.com/vuepress/vuepress-next/issues/1220)) ([b4e313b](https://github.com/vuepress/vuepress-next/commit/b4e313bb757696eb4baa347940dbeb5dac1938f2))
+* **theme-default:** fix site name text overflow style ([#1260](https://github.com/vuepress/vuepress-next/issues/1260)) ([95363a5](https://github.com/vuepress/vuepress-next/commit/95363a50d8977f9beabb94aa7ec4ab9602605ed9))
+
+
+### Features
+
+* **core:** attach markdownEnv to page object ([#1228](https://github.com/vuepress/vuepress-next/issues/1228)) ([8a63e19](https://github.com/vuepress/vuepress-next/commit/8a63e19c52a5db1c3a173239b3c339cd9693e93b))
+* **markdown:** add error log for importCode plugin ([#1273](https://github.com/vuepress/vuepress-next/issues/1273)) ([b722a62](https://github.com/vuepress/vuepress-next/commit/b722a623842f0ecde650027468d967bec79aa2c6))
+* **plugin-docsearch:** load docsearch asynchronously (close [#1247](https://github.com/vuepress/vuepress-next/issues/1247)) ([#1254](https://github.com/vuepress/vuepress-next/issues/1254)) ([f5d5b11](https://github.com/vuepress/vuepress-next/commit/f5d5b11f787abb87225284fb059e3d89e3bcf768))
+* **plugin-docsearch:** support indexBase option (close [#1223](https://github.com/vuepress/vuepress-next/issues/1223)) ([#1224](https://github.com/vuepress/vuepress-next/issues/1224)) ([23a4c68](https://github.com/vuepress/vuepress-next/commit/23a4c681cfd50607f396cb3894ede3cc60698d1b))
+
+
+
 # [2.0.0-beta.60](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.59...v2.0.0-beta.60) (2022-12-28)
 
 
