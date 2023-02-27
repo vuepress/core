@@ -4,6 +4,7 @@ import type {
   MarkdownLink,
   MarkdownSfcBlocks,
 } from '@vuepress/markdown'
+import omit from 'lodash.omit'
 import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 
 /**
@@ -55,19 +56,7 @@ export const renderPageContent = ({
       customBlocks: [],
     },
     title = '',
-
-    // values dropped from env
-
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    base: _base,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    content: _content,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    filePath: _filePath,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    filePathRelative: _filePathRelative,
-
-    ...otherEnv
+    ...extraMarkdownEnv
   } = markdownEnv
 
   return {
@@ -76,7 +65,14 @@ export const renderPageContent = ({
     frontmatter,
     headers,
     links,
-    markdownEnv: otherEnv,
+    markdownEnv: omit(
+      extraMarkdownEnv,
+      'base',
+      'content',
+      'filePath',
+      'filePathRelative',
+      'frontmatter'
+    ),
     sfcBlocks,
     title: frontmatter.title ?? title,
   }

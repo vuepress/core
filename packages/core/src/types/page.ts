@@ -43,6 +43,11 @@ export type Page<
     links: MarkdownLink[]
 
     /**
+     * Markdown env object of the page
+     */
+    markdownEnv: Record<string, unknown>
+
+    /**
      * Path of the page that inferred from file path
      *
      * If the page does not come from a file, it would be `null`
@@ -73,11 +78,6 @@ export type Page<
      * @see https://router.vuejs.org/api/#meta
      */
     routeMeta: Record<string, unknown>
-
-    /**
-     * Markdown Environment of the page
-     */
-    markdownEnv: Record<string, unknown>
 
     /**
      * Extracted sfc blocks of the page
