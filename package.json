@@ -7,7 +7,7 @@
     "build": "pnpm build:all && pnpm build:copy",
     "build:all": "pnpm build:core && pnpm build:eco",
     "build:copy": "pnpm --parallel --stream copy",
-    "build:core": "pnpm --filter=\"./packages/**\" -r --stream build",
+    "build:core": "pnpm --filter=\"./packages/**\" -r --workspace-concurrency=1 --stream build",
     "build:eco": "tsc -b ./ecosystem/tsconfig.build.json",
     "clean": "pnpm --parallel --stream clean",
     "clean:core": "pnpm --filter=\"./packages/**\" --parallel --stream clean",
