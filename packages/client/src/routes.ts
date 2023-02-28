@@ -15,10 +15,22 @@ export const createRoutes = (): RouteRecordRaw[] =>
           component: Vuepress,
           meta,
         },
-        ...redirects.map((item) => ({
-          path: item,
-          redirect: path,
-        }))
+        ...redirects.map((item) =>
+          item === ':s'
+            ? {
+                path: path.replace(/.html$/, ''),
+                redirect: path,
+              }
+            : item === ':d'
+            ? {
+                path: path + 'index.html',
+                redirect: path,
+              }
+            : {
+                path: item,
+                redirect: path,
+              }
+        )
       )
       return result
     },

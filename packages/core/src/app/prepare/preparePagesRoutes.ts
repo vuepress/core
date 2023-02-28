@@ -42,7 +42,18 @@ const resolvePageRouteItem = ({
   // avoid redirect from the page path itself
   redirectsSet.delete(path)
 
-  return [key, path, routeMeta, [...redirectsSet]]
+  return [
+    key,
+    path,
+    routeMeta,
+    [...redirectsSet].map((item) =>
+      item + '.html' === path
+        ? ':s'
+        : item.replace(/index.html$/, '') === path
+        ? ':d'
+        : item
+    ),
+  ]
 }
 
 /**
