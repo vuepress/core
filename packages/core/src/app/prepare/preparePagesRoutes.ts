@@ -51,6 +51,8 @@ const resolvePageRouteItem = ({
         ? ':s'
         : item.replace(/index.html$/, '') === path
         ? ':d'
+        : item.replace(/\.md$/, '.html') === path
+        ? ':f'
         : item
     ),
   ]
