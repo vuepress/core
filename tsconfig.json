@@ -10,6 +10,9 @@
       "@internal/themeData": [
         "./ecosystem/plugin-theme-data/src/client/themeData.d.ts"
       ],
+      "@internal/transform": [
+        "./ecosystem/plugin-docsearch/src/client/transform.d.ts"
+      ],
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
       "@theme/*": ["./ecosystem/theme-default/src/client/components/*"],
       "@vuepress/*": ["./packages/*/src"],

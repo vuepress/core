@@ -3,7 +3,10 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "types": ["@vuepress/client/types"]
+    "types": ["@vuepress/client/types"],
+    "paths": {
+      "@internal/transform": ["./src/client/transform.d.ts"]
+    }
   },
   "include": ["./src"]
 }

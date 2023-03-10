@@ -1,3 +1,4 @@
+import { transformFunc } from '@internal/transform'
 import { usePageLang, useRouteLocale } from '@vuepress/client'
 import {
   computed,
@@ -69,6 +70,7 @@ export const Docsearch = defineComponent({
       docsearch({
         ...docsearchShim,
         ...options.value,
+        transformItems: transformFunc,
         container: `#${props.containerId}`,
         searchParameters: {
           ...options.value.searchParameters,
