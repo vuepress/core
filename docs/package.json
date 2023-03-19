@@ -23,7 +23,7 @@
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "anywhere": "^1.6.0",
-    "sass-loader": "^13.2.0",
+    "sass-loader": "^13.2.1",
     "vue": "^3.2.47"
   }
 }
