@@ -43,7 +43,7 @@
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass-loader": "^13.2.0"
+    "sass-loader": "^13.2.1"
   },
   "peerDependencies": {
     "vue": "^3.2.47"

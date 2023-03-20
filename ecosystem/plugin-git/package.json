@@ -35,7 +35,7 @@
   "dependencies": {
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "execa": "^7.0.0"
+    "execa": "^7.1.1"
   },
   "publishConfig": {
     "access": "public"
