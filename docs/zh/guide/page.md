@@ -31,6 +31,8 @@ VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件
 默认配置下， `README.md` 和 `index.md` 都会被转换成 `index.html` ，并且其对应的路由路径都是由斜杠结尾的。然而，如果你想同时保留这两个文件，就可能会造成冲突。
 
 在这种情况下，你可以设置 [pagePatterns](../reference/config.md#pagepatterns) 来避免某个文件被 VuePress 处理，例如使用 `['**/*.md', '!**/README.md', '!.vuepress', '!node_modules']` 来排除所有的 `README.md` 文件。
+
+此外，一些符号如 `:` 和 `+` 可能对 vue-router 有特殊含义，因此你应该避免使用它们，请参阅 [vue-router 文档](https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html) 了解更多详情。
 :::
 
 ## Frontmatter

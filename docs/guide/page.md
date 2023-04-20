@@ -31,6 +31,8 @@ Take the `docs` directory as your [sourceDir](../reference/cli.md), e.g. you are
 By default, both `README.md` and `index.md` would be converted to `index.html` and generate a slash-ending route path. However, it might cause conflicts if you want to keep both of the two files.
 
 In such case, you can set the [pagePatterns](../reference/config.md#pagepatterns) to avoid one of them being processed by VuePress, e.g. use `['**/*.md', '!**/README.md', '!.vuepress', '!node_modules']` to exclude all `README.md` files.
+
+Also, some symbols like `:` and `+` may have special meanings for vue-router, so you should avoid using them, see [vue-router docs](https://router.vuejs.org/guide/essentials/route-matching-syntax.html) for more details.
 :::
 
 ## Frontmatter
