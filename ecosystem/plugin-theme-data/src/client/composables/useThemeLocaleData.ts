@@ -26,7 +26,11 @@ export const useThemeLocaleData = <
 export const resolveThemeLocaleData = (
   theme: ThemeData,
   routeLocale: RouteLocale
-): ThemeData => ({
-  ...theme,
-  ...theme.locales?.[routeLocale],
-})
+): ThemeData => {
+  const { locales, ...baseOptions } = theme
+
+  return {
+    ...baseOptions,
+    ...locales?.[routeLocale],
+  }
+}
