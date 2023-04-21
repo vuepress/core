@@ -661,8 +661,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
 
       testCases.forEach(({ description, md, env, expected }) =>
         it(description, () => {
+          // double quote
           expect(md.render(source.join('\n\n'), env)).toEqual(
             expected.map((item) => `${item}`).join('\n') + '\n'
+          )
+          // single quote
+          expect(
+            md.render(source.join('\n\n').replace(/"/g, "'"), env)
+          ).toEqual(
+            expected.map((item) => `${item}`.replace(/"/g, "'")).join('\n') +
+              '\n'
           )
         })
       )

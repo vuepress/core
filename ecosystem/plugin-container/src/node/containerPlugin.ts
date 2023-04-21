@@ -3,9 +3,9 @@ import type { MarkdownEnv } from '@vuepress/markdown'
 import type { LocaleConfig } from '@vuepress/shared'
 import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
 import { colors, logger } from '@vuepress/utils'
-import container from 'markdown-it-container'
 import type Renderer from 'markdown-it/lib/renderer.js'
 import type Token from 'markdown-it/lib/token.js'
+import container from 'markdown-it-container'
 
 /**
  * Options for markdown-it-container

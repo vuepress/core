@@ -41,19 +41,19 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<img\b.*?src=")([^"]*)(")/gs,
-          (_, prefix, src, suffix) =>
-            `${prefix}${resolveLink(
+          /(<img\b.*?src=)(['"])([^\2]*?)\2/gs,
+          (_, prefix: string, quote: string, src: string) =>
+            `${prefix}${quote}${resolveLink(
               src.trim(),
               relativePathPrefix,
               env
-            )}${suffix}`
+            )}${quote}`
         )
         // handle srcset
         .replace(
-          /(<img\b.*?srcset=")([^"]*)(")/gs,
-          (_, prefix: string, srcset: string, suffix: string) =>
-            `${prefix}${srcset
+          /(<img\b.*?srcset=)(['"])([^\2]*?)\2/gs,
+          (_, prefix: string, quote: string, srcset: string) =>
+            `${prefix}${quote}${srcset
               .split(',')
               .map((item) =>
                 item
@@ -68,7 +68,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`
                   )
               )
-              .join(', ')}${suffix}`
+              .join(', ')}${quote}`
         )
 
       return rawHtmlRule(tokens, idx, options, env, self)

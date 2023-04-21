@@ -4,7 +4,7 @@
 
 - Markdown 源文件放置在你项目的 `docs` 目录；
 - 使用的是默认的构建输出目录 (`.vuepress/dist`) ；
-- 使用 [Yarn classic](https://classic.yarnpkg.com/zh-Hans/) 作为包管理器，当然也可以使用 NPM 。
+- 使用 [pnpm](https://pnpm.io/zh/) 作为包管理器，当然也支持使用 npm 或 yarn 。
 - VuePress 作为项目依赖安装，并在 `package.json` 中配置了如下脚本：
 
 ```json
@@ -43,36 +43,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # 选择要使用的 pnpm 版本
+          version: 7
+          # 使用 pnpm 安装依赖
+          run_install: true
+
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           # 选择要使用的 node 版本
-          node-version: '14'
-
-      # 缓存 node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # 如果缓存没有命中，安装依赖
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+          node-version: 18
+          # 缓存 pnpm 依赖
+          cache: pnpm
 
       # 运行构建脚本
       - name: Build VuePress site
-        run: yarn docs:build
+        run: pnpm docs:build
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -88,7 +82,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 :::
-
 
 ::: tip
 请参考 [GitHub Pages 官方指南](https://pages.github.com/) 来获取更多信息。
@@ -107,26 +100,34 @@ jobs:
 ::: details 点击展开配置样例
 ```yaml
 # 选择你要使用的 docker 镜像
-image: node:14-buster
+image: node:18-buster
 
 pages:
   # 每当 push 到 main 分支时触发部署
   only:
-  - main
+    - main
 
   # 缓存 node_modules
   cache:
+    key:
+      files:
+        - pnpm-lock.yaml
     paths:
-    - node_modules/
+      - .pnpm-store
+
+  # 安装 pnpm
+  before_script:
+    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
   script:
-  - yarn --frozen-lockfile
-  - yarn docs:build --dest public
+    - pnpm install --frozen-lockfile
+    - pnpm docs:build --dest public
 
   artifacts:
     paths:
-    - public
+      - public
 ```
 :::
 
@@ -161,7 +162,7 @@ pages:
 }
 ```
 
-3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
+3. 在执行了 `pnpm docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
 ::: tip
 请参考 [Firebase CLI 官方指南](https://firebase.google.com/docs/cli) 来获取更多信息。
@@ -191,20 +192,24 @@ heroku login
 
 这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
 
-## Layer0
+## Kinsta
 
-请查看 [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress) 。
+请查看 [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/) 。
+
+## Edgio
+
+请查看 [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress) 。
 
 ## Netlify
 
 1. 前往 [Netlify](https://netlify.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **Build Command:** `yarn docs:build`
-    - **Publish directory:** `docs/.vuepress/dist`
+   - **Build Command:** `pnpm docs:build`
+   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-    - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 14
 
 3. 点击 deploy 按钮。
 
@@ -212,9 +217,9 @@ heroku login
 
 1. 前往 [Vercel](https://vercel.com) ，从 GitHub 创建一个新项目，并进行如下配置：
 
-    - **FRAMEWORK PRESET:** `Other`
-    - **BUILD COMMAND:** `yarn docs:build` 
-    - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+   - **FRAMEWORK PRESET:** `Other`
+   - **BUILD COMMAND:** `pnpm docs:build`
+   - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮。
 
@@ -227,7 +232,7 @@ heroku login
 1. 全局安装 CloudBase CLI ：
 
 ```bash
-npm install -g @cloudbase/cli
+pnpm install -g @cloudbase/cli
 ```
 
 2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
@@ -237,11 +242,11 @@ cloudbase init --without-template
 cloudbase framework:deploy
 ```
 
-  CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
+CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
 
-  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
 ::: tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)

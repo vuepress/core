@@ -1,5 +1,5 @@
 import { ensureEndingSlash } from '@vuepress/shared'
-import { logger } from '@vuepress/utils'
+import { logger, sanitizeFileName } from '@vuepress/utils'
 import type { PageOptions } from '../types/index.js'
 
 /**
@@ -26,5 +26,5 @@ export const resolvePagePath = ({
     pagePath = ensureEndingSlash(pagePath)
   }
 
-  return encodeURI(pagePath)
+  return encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
 }

@@ -42,7 +42,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
   // global components and computed
   setupGlobalComponents(app)
-  const globalComputed = setupGlobalComputed(app, router)
+  const globalComputed = setupGlobalComputed(app, router, clientConfigs)
 
   // setup devtools in dev mode
   if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {

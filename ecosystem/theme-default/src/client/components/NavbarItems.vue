@@ -31,7 +31,6 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     }
     const currentPath = router.currentRoute.value.path
     const currentFullPath = router.currentRoute.value.fullPath
-    const currentHash = router.currentRoute.value.hash
 
     const languageDropdown: ResolvedNavbarItem = {
       text: themeLocale.value.selectLanguageText ?? 'unknown language',
@@ -65,8 +64,8 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           if (
             router.getRoutes().some((item) => item.path === targetLocalePage)
           ) {
-            // try to keep current hash across languages
-            link = `${targetLocalePage}${currentHash}`
+            // try to keep current hash and params across languages
+            link = currentFullPath.replace(currentPath, targetLocalePage)
           } else {
             link = targetThemeLocale.home ?? targetLocalePath
           }

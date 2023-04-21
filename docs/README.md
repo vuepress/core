@@ -19,7 +19,7 @@ features:
   - title: Themes
     details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
   - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site. 
+    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
   - title: Bundlers
     details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
 footer: MIT Licensed | Copyright © 2018-present Evan You
@@ -28,7 +28,25 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ### As Easy as 1, 2, 3
 
 <CodeGroup>
-  <CodeGroupItem title="YARN" active>
+  <CodeGroupItem title="PNPM" active>
+
+```bash
+# install in your project
+pnpm add -D vuepress@next @vuepress/client@next vue
+
+# create a markdown file
+echo '# Hello VuePress' > README.md
+
+# start writing
+pnpm vuepress dev
+
+# build to static files
+pnpm vuepress build
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="YARN">
 
 ```bash
 # install in your project

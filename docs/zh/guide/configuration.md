@@ -26,7 +26,7 @@ VuePress 站点的基本配置文件是 `.vuepress/config.js` ，但也同样支
   - `.vuepress/config.js`
   - `.vuepress/config.mjs`
 
-你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件：
+你也可以通过 [命令行接口](../reference/cli.md) 的 `--config` 选项来指定配置文件：
 
 ```sh
 vuepress dev docs --config my-config.js

@@ -1,3 +1,139 @@
+# [2.0.0-beta.61](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.60...v2.0.0-beta.61) (2023-02-27)
+
+
+### Bug Fixes
+
+* **client:** avoid updating routeLocale on route hash change ([#1253](https://github.com/vuepress/vuepress-next/issues/1253)) ([5eb9489](https://github.com/vuepress/vuepress-next/commit/5eb948922761e9cc96674a7d43a075ecf59ef5ea))
+* **markdown:** render token attrs in code block ([#1220](https://github.com/vuepress/vuepress-next/issues/1220)) ([b4e313b](https://github.com/vuepress/vuepress-next/commit/b4e313bb757696eb4baa347940dbeb5dac1938f2))
+* **theme-default:** fix site name text overflow style ([#1260](https://github.com/vuepress/vuepress-next/issues/1260)) ([95363a5](https://github.com/vuepress/vuepress-next/commit/95363a50d8977f9beabb94aa7ec4ab9602605ed9))
+
+
+### Features
+
+* **core:** attach markdownEnv to page object ([#1228](https://github.com/vuepress/vuepress-next/issues/1228)) ([8a63e19](https://github.com/vuepress/vuepress-next/commit/8a63e19c52a5db1c3a173239b3c339cd9693e93b))
+* **markdown:** add error log for importCode plugin ([#1273](https://github.com/vuepress/vuepress-next/issues/1273)) ([b722a62](https://github.com/vuepress/vuepress-next/commit/b722a623842f0ecde650027468d967bec79aa2c6))
+* **plugin-docsearch:** load docsearch asynchronously (close [#1247](https://github.com/vuepress/vuepress-next/issues/1247)) ([#1254](https://github.com/vuepress/vuepress-next/issues/1254)) ([f5d5b11](https://github.com/vuepress/vuepress-next/commit/f5d5b11f787abb87225284fb059e3d89e3bcf768))
+* **plugin-docsearch:** support indexBase option (close [#1223](https://github.com/vuepress/vuepress-next/issues/1223)) ([#1224](https://github.com/vuepress/vuepress-next/issues/1224)) ([23a4c68](https://github.com/vuepress/vuepress-next/commit/23a4c681cfd50607f396cb3894ede3cc60698d1b))
+
+
+
+# [2.0.0-beta.60](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.59...v2.0.0-beta.60) (2022-12-28)
+
+
+### Bug Fixes
+
+* **markdown:** avoid extracting headers in nested blocks by bumping mdit-vue (close [#1201](https://github.com/vuepress/vuepress-next/issues/1201)) ([ecd3716](https://github.com/vuepress/vuepress-next/commit/ecd3716e0fca2e4c4457d514f245ca06e6e9086e))
+* **theme-default:** fix word breaking (close [#1209](https://github.com/vuepress/vuepress-next/issues/1209)) ([#1210](https://github.com/vuepress/vuepress-next/issues/1210)) ([1e7761f](https://github.com/vuepress/vuepress-next/commit/1e7761f269556816e7f8202481234a8d6a471dc2))
+* **theme-default:** preserve url params when switching language ([#1211](https://github.com/vuepress/vuepress-next/issues/1211)) ([941b2fe](https://github.com/vuepress/vuepress-next/commit/941b2fe8a5c45e1065b9a1f0b0541e571b43f26d))
+
+
+### Features
+
+* **client:** improve default head title resolver ([c688270](https://github.com/vuepress/vuepress-next/commit/c68827024584bb46aeb119087f91c8cb6053de27))
+* **plugin-docsearch:** add injectStyles option (close [#948](https://github.com/vuepress/vuepress-next/issues/948)) ([#1208](https://github.com/vuepress/vuepress-next/issues/1208)) ([34fb6c2](https://github.com/vuepress/vuepress-next/commit/34fb6c24e7250f20d1092a70141af528ae2f6b91))
+
+
+
+# [2.0.0-beta.59](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.58...v2.0.0-beta.59) (2022-12-14)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** fix order of extensionAlias (close [#1082](https://github.com/vuepress/vuepress-next/issues/1082)) ([28eeb9b](https://github.com/vuepress/vuepress-next/commit/28eeb9ba04704c45ae993a0c5f994da1e87d26df))
+
+
+
+# [2.0.0-beta.58](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.57...v2.0.0-beta.58) (2022-12-10)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** avoid duplicated style preload ([e484a55](https://github.com/vuepress/vuepress-next/commit/e484a55ca3c0b80babab47c227d7321a6bc6ddd7))
+* **bundler-webpack:** fix module identifier matching ([9d8d645](https://github.com/vuepress/vuepress-next/commit/9d8d64573ec37df446f8ca99bb9270c5328a7024))
+* **bundler-webpack:** partially fix ssr dependencies issue ([83e7b6c](https://github.com/vuepress/vuepress-next/commit/83e7b6cb77f6ae6766d7546131d2ae602d74e1f2))
+
+
+
+# [2.0.0-beta.57](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.56...v2.0.0-beta.57) (2022-12-09)
+
+
+### Bug Fixes
+
+* **theme-default:** fix code block misalignment (close [#901](https://github.com/vuepress/vuepress-next/issues/901)) ([#1185](https://github.com/vuepress/vuepress-next/issues/1185)) ([7d156d7](https://github.com/vuepress/vuepress-next/commit/7d156d781f86e29e7c261eb467c5c48589055f6f))
+
+
+### Build System
+
+* bump to vite 4 and rollup 3 ([5fac2e6](https://github.com/vuepress/vuepress-next/commit/5fac2e644202a1d3df8204601bb0a32a5df55d15))
+
+
+### Code Refactoring
+
+* remove page excerpt ([a27bc24](https://github.com/vuepress/vuepress-next/commit/a27bc246602214970a12b0222d8bdbc49339cf03))
+
+
+### Features
+
+* **client:** add `__VUEPRESS_BASE__` constant ([fe047fe](https://github.com/vuepress/vuepress-next/commit/fe047fe44fe0c46e7051106bde50829d39482ba0))
+
+
+### BREAKING CHANGES
+
+* bump to vite 4 and rollup 3
+* `excerpt` has been removed from page object and page data
+
+
+
+# [2.0.0-beta.56](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.55...v2.0.0-beta.56) (2022-12-09)
+
+
+### Reverts
+
+* perf: render pages in parallel ([#1094](https://github.com/vuepress/vuepress-next/issues/1094)) ([#1186](https://github.com/vuepress/vuepress-next/issues/1186)) ([1e698f5](https://github.com/vuepress/vuepress-next/commit/1e698f5f6a04c80d7c3c6b56c7af3a7077256233))
+
+
+
+# [2.0.0-beta.55](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.54...v2.0.0-beta.55) (2022-12-09)
+
+
+### Bug Fixes
+
+* **bundler-vite:** fix regression of vite options merging (close [#1184](https://github.com/vuepress/vuepress-next/issues/1184)) ([998eb94](https://github.com/vuepress/vuepress-next/commit/998eb94c58f11ba1728179310d61f337c3367695))
+
+
+### Performance Improvements
+
+* render pages in parallel ([#1094](https://github.com/vuepress/vuepress-next/issues/1094)) ([78f737c](https://github.com/vuepress/vuepress-next/commit/78f737c537a5de076f88f604a7413e39ac8e42f9))
+
+
+
+# [2.0.0-beta.54](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.53...v2.0.0-beta.54) (2022-12-08)
+
+
+### Bug Fixes
+
+* **bundler-vite:** make user config have the highest priority ([#1092](https://github.com/vuepress/vuepress-next/issues/1092)) ([91cc59e](https://github.com/vuepress/vuepress-next/commit/91cc59e437a44d8743edbe8423c3c3be416a5c4a))
+* **client:** allow double quotes in head tag (close [#1174](https://github.com/vuepress/vuepress-next/issues/1174)) ([#1176](https://github.com/vuepress/vuepress-next/issues/1176)) ([69956c0](https://github.com/vuepress/vuepress-next/commit/69956c0952e35561ddd385a41f9337142baf3fba))
+* **client:** async load client configs to avoid circular deps (close [#1154](https://github.com/vuepress/vuepress-next/issues/1154)) ([b0a7a0e](https://github.com/vuepress/vuepress-next/commit/b0a7a0e686b98dd8201dfed8effd6f7616e7d498))
+* **markdown:** support single quotes in img tag (close [#937](https://github.com/vuepress/vuepress-next/issues/937)) ([#1104](https://github.com/vuepress/vuepress-next/issues/1104)) ([7dae33a](https://github.com/vuepress/vuepress-next/commit/7dae33ab2edb95343f6e11b60116cfc32f79a68b))
+
+
+### Features
+
+* **bundler-vite:** improve chunk splitting ([#1170](https://github.com/vuepress/vuepress-next/issues/1170)) ([b4e9ca6](https://github.com/vuepress/vuepress-next/commit/b4e9ca6f97247c568901486116e8924e39c9cb58))
+* improve page path and vite chunk name ([#1100](https://github.com/vuepress/vuepress-next/issues/1100)) ([d93b682](https://github.com/vuepress/vuepress-next/commit/d93b682172f2f26f5eab39d965771621a03e2384))
+* improve print style ([#1181](https://github.com/vuepress/vuepress-next/issues/1181)) ([0800a07](https://github.com/vuepress/vuepress-next/commit/0800a07224e8d2fb3975ad7eda7de674c0686a11))
+* **theme-default:** collapsible nested item in sidebar (close [#883](https://github.com/vuepress/vuepress-next/issues/883)) ([#1158](https://github.com/vuepress/vuepress-next/issues/1158)) ([48ab95c](https://github.com/vuepress/vuepress-next/commit/48ab95c775dc6b21a54451bfe654e2f58fd4d05c))
+* **theme-default:** improve style of custom container ([#1131](https://github.com/vuepress/vuepress-next/issues/1131)) ([4941f95](https://github.com/vuepress/vuepress-next/commit/4941f95da5be5a0060a916a21a62de37dd7c87b9))
+* **utils:** replace chalk with picocolors ([#1145](https://github.com/vuepress/vuepress-next/issues/1145)) ([ee0ea8c](https://github.com/vuepress/vuepress-next/commit/ee0ea8c6adcbb91a79c89d940aa8953a24fc84f0))
+
+
+### BREAKING CHANGES
+
+* **utils:** `@vuepress/utils` no longer exports `chalk`, use `colors` instead
+
+
+
 # [2.0.0-beta.53](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.52...v2.0.0-beta.53) (2022-10-24)
 
 

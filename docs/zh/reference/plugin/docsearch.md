@@ -287,6 +287,7 @@ new Crawler({
 export default {
   plugins: [
     docsearchPlugin({
+      appId: '<APP_ID>',
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>',
       locales: {
@@ -314,6 +315,34 @@ export default {
 
 - 参考：
   - [指南 > 多语言支持](../../guide/i18n.md)
+
+### indexBase
+
+- 类型： `string`
+
+- 默认值： [base](../config.md#base)
+
+- 详情：
+
+  搜索索引基础路径。
+
+  如果你需要把你的站点部署到不同的域名上，你不需要把它们全都提交到 Docsearch 上来分别生成搜索索引。你可以选择其中一个域名作为 _索引域名_ ，并且仅将 _索引域名_ 提交到 DocSearch 上来爬去搜索索引。然后，你就可以在不同的部署域名下复用索引。
+
+  如果你不同部署域名下的 [base](../config.md#base) 是不一样的，你就需要将这个配置设置成 _索引域名_ 的 [base](../config.md#base) ，这样其他的部署域名就可以正确复用索引了。
+
+### injectStyles
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否注入 DocSearch 的默认样式。
+
+  如果你认为 DocSearch 的默认样式和你的站点不兼容，你可以尝试覆盖默认样式，或者将该选项设置为 `false` 来完全移除默认样式。
+
+  当该选项被禁用时，你需要为 DocSearch 引入你自己的样式。同时要注意，你也无法再使用 [样式](#样式) 章节中提到的样式自定义能力。
 
 ## 样式
 

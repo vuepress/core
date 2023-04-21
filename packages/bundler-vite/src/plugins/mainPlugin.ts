@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { fs, sanitizeFileName } from '@vuepress/utils'
 import autoprefixer from 'autoprefixer'
 import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
@@ -91,12 +91,26 @@ import '@vuepress/client/app'
             fs.readJsonSync(app.dir.client('package.json')).exports['./app']
           ),
           output: {
+            sanitizeFileName,
             ...(isServer
               ? {
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
                   entryFileNames: `[name].[hash].mjs`,
                 }
-              : {}),
+              : {
+                  manualChunks(id) {
+                    // move known framework code into a stable chunk
+                    if (
+                      id.includes('plugin-vue:export-helper') ||
+                      /node_modules\/@vuepress\/shared\//.test(id) ||
+                      /node_modules\/vue(-router)?\//.test(id)
+                    ) {
+                      return 'framework'
+                    }
+
+                    return undefined
+                  },
+                }),
           },
           preserveEntrySignatures: 'allow-extension',
         },
@@ -199,6 +213,7 @@ const resolveDefine = async ({
 }): Promise<UserConfig['define']> => {
   const define: UserConfig['define'] = {
     __VUEPRESS_VERSION__: JSON.stringify(app.version),
+    __VUEPRESS_BASE__: JSON.stringify(app.options.base),
     __VUEPRESS_DEV__: JSON.stringify(!isBuild),
     __VUEPRESS_SSR__: JSON.stringify(isServer),
     // @see http://link.vuejs.org/feature-flags

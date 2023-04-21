@@ -4,18 +4,22 @@ import {
   isString,
   resolveLocalePath,
 } from '@vuepress/shared'
+import type { Component } from 'vue'
 import { reactive } from 'vue'
-import { pageDataEmpty, pagesData } from './composables/index.js'
-import type {
-  PageData,
-  PageFrontmatter,
-  PageHead,
-  PageHeadTitle,
-  PageLang,
-  RouteLocale,
-  SiteData,
-  SiteLocaleData,
+import {
+  type PageData,
+  pageDataEmpty,
+  type PageFrontmatter,
+  type PageHead,
+  type PageHeadTitle,
+  type PageLang,
+  pagesData,
+  type RouteLocale,
+  type SiteData,
+  type SiteLocaleData,
 } from './composables/index.js'
+import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
+import type { ClientConfig, Layouts } from './types/index.js'
 
 /**
  * Resolver methods to get global computed
@@ -23,6 +27,18 @@ import type {
  * Users can override corresponding method for advanced customization
  */
 export const resolvers = reactive({
+  /**
+   * Resolve layouts component map
+   */
+  resolveLayouts: (clientConfigs: ClientConfig[]): Layouts =>
+    clientConfigs.reduce(
+      (prev, item) => ({
+        ...prev,
+        ...item.layouts,
+      }),
+      {} as Layouts
+    ),
+
   /**
    * Resolve page data according to page key
    */
@@ -69,16 +85,40 @@ export const resolvers = reactive({
     page: PageData,
     siteLocale: SiteLocaleData
   ): PageHeadTitle =>
-    `${page.title ? `${page.title}` : ``}${
-      siteLocale.title ? ` | ${siteLocale.title}` : ``
-    }`,
+    [page.title, siteLocale.title].filter((item) => !!item).join(' | '),
 
   /**
    * Resolve page language from page data
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (pageData: PageData): PageLang => pageData.lang || 'en',
+  resolvePageLang: (page: PageData): PageLang => page.lang || 'en',
+
+  /**
+   * Resolve layout component of current page
+   */
+  resolvePageLayout: (page: PageData, layouts: Layouts): Component => {
+    let layoutName: string
+
+    // if current page exists
+    if (page.path) {
+      // use layout from frontmatter
+      const frontmatterLayout = page.frontmatter.layout
+
+      if (isString(frontmatterLayout)) {
+        layoutName = frontmatterLayout
+      } else {
+        // fallback to default layout
+        layoutName = LAYOUT_NAME_DEFAULT
+      }
+    }
+    // if current page does not exist
+    else {
+      // use NotFound layout
+      layoutName = LAYOUT_NAME_NOT_FOUND
+    }
+    return layouts[layoutName]
+  },
 
   /**
    * Resolve locale path according to route path and locales config

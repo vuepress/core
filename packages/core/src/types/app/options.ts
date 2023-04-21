@@ -84,7 +84,7 @@ export interface AppConfigBuild {
    * Determine what resource files should be prefetched. Use boolean value to
    * totally enable / disable.
    *
-   * @default false
+   * @default true
    */
   shouldPrefetch?: ((file: string, type: string) => boolean) | boolean
 

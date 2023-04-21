@@ -24,16 +24,14 @@ export const createClientPlugin = (
         'vuepress-client-plugin',
         async (compilation) => {
           // get webpack stats object
-          const stats: StatsToJsonOutput = compilation
-            .getStats()
-            .toJson() as unknown as StatsToJsonOutput
-
           const {
             assets = [],
             modules = [],
             entrypoints = {},
             chunks = [],
-          } = stats
+          }: StatsToJsonOutput = compilation
+            .getStats()
+            .toJson() as unknown as StatsToJsonOutput
 
           // get all files
           const allFiles = assets.map((a) => a.name)
@@ -77,7 +75,7 @@ export const createClientPlugin = (
 
             // remove appended hash of module identifier
             // which is the request string of the module
-            const request = m.identifier.replace(/\s\w+$/, '')
+            const request = m.identifier.replace(/\|\w+$/, '')
 
             // get chunk files index
             const files = [...chunk.files.map(fileToIndex)]

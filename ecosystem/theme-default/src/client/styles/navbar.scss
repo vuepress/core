@@ -39,19 +39,23 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media screen and (max-width: $MQMobile) {
   .navbar {
     padding-left: 4rem;
 
-    .can-hide {
-      display: none;
-    }
-
     .site-name {
-      width: calc(100vw - 9.4rem);
+      display: block;
+      // 5.5rem for .navbar padding-inline
+      // 4.5rem for ColorModeSwitch and NavbarSearch
+      // 1rem for gap
+      width: calc(100vw - 11rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .can-hide {
+      display: none;
     }
   }
 }
@@ -61,6 +65,10 @@
  */
 .navbar-items {
   display: inline-block;
+
+  @media print {
+    display: none;
+  }
 
   a {
     display: inline-block;
@@ -169,9 +177,15 @@
   color: var(--c-text);
   opacity: 0.8;
   cursor: pointer;
+
+  @media print {
+    display: none;
+  }
+
   &:hover {
     opacity: 1;
   }
+
   .icon {
     width: 1.25rem;
     height: 1.25rem;

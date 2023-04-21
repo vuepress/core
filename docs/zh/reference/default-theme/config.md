@@ -313,7 +313,7 @@ export default {
 
   为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
-  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段和一个可选的 `children` 字段。 `children` 字段同样是一个 _侧边栏数组_ 。当 `SidebarItem` 对象处于根节点时，它还有一个额外可选的 `collapsible` 字段来控制它是否可折叠。
+  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段、一个可选的 `children` 字段和一个可选的 `collapsible` 字段。 `children` 字段同样是一个 _侧边栏数组_ 。 `collapsible` 字段来控制它是否可折叠。
   - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面小标题自动生成 `children` 。
 
   如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_ ：
