@@ -192,9 +192,13 @@ heroku login
 
 This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
-## Layer0
+## Kinsta
 
-See [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress).
+See [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/).
+
+## Edgio
+
+See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress).
 
 ## Netlify
 

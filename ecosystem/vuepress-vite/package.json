@@ -1,6 +1,6 @@
 {
   "name": "vuepress-vite",
-  "version": "2.0.0-beta.54",
+  "version": "2.0.0-beta.61",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -44,8 +44,11 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*"
   },
+  "devDependencies": {
+    "@vuepress/client": "workspace:*"
+  },
   "peerDependencies": {
-    "@vuepress/client": "^2.0.0-beta.50",
-    "vue": "^3.2.37"
+    "@vuepress/client": "workspace:*",
+    "vue": "^3.2.47"
   }
 }

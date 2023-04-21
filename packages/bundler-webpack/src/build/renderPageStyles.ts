@@ -17,8 +17,7 @@ export const renderPageStyles = ({
   // notice here we put async CSS files after initial CSS files
   [...initialFilesMeta, ...pageClientFilesMeta]
     .filter(({ type }) => type === 'style')
-    .flatMap(({ file }) => [
-      `<link rel="preload" href="${app.options.base}${file}" as="style" />`,
-      `<link rel="stylesheet" href="${app.options.base}${file}" />`,
-    ])
+    .map(
+      ({ file }) => `<link rel="stylesheet" href="${app.options.base}${file}">`
+    )
     .join('')

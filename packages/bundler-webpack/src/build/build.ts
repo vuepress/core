@@ -1,6 +1,12 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { debug, fs, importFileDefault, withSpinner } from '@vuepress/utils'
+import {
+  colors,
+  debug,
+  fs,
+  importFileDefault,
+  withSpinner,
+} from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -73,12 +79,8 @@ export const build = async (
     const clientManifest: ClientManifest = await fs.readJson(clientManifestPath)
 
     // resolve client files meta
-    const {
-      allFilesMeta,
-      initialFilesMeta,
-      asyncFilesMeta,
-      moduleFilesMetaMap,
-    } = resolveClientManifestMeta(clientManifest)
+    const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
+      resolveClientManifestMeta(clientManifest)
 
     // load the compiled server bundle
     const serverEntryPath = app.dir.temp('.server/app.cjs')
@@ -90,22 +92,22 @@ export const build = async (
     const { renderToString } = await import('vue/server-renderer')
 
     // pre-render pages to html files
-    await Promise.all(
-      app.pages.map((page) =>
-        renderPage({
-          app,
-          page,
-          vueApp,
-          vueRouter,
-          renderToString,
-          ssrTemplate,
-          allFilesMeta,
-          initialFilesMeta,
-          asyncFilesMeta,
-          moduleFilesMetaMap,
-        })
-      )
-    )
+    for (const page of app.pages) {
+      if (spinner) {
+        spinner.text = `Rendering pages ${colors.magenta(page.path)}`
+      }
+      await renderPage({
+        app,
+        page,
+        vueApp,
+        vueRouter,
+        renderToString,
+        ssrTemplate,
+        initialFilesMeta,
+        asyncFilesMeta,
+        moduleFilesMetaMap,
+      })
+    }
   })
 
   // keep the server bundle files in debug mode

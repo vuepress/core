@@ -112,6 +112,14 @@ To shim the types of these constants in client side code, add `@vuepress/client/
 
   Version of VuePress core package.
 
+### `__VUEPRESS_BASE__`
+
+- Type: `string`
+
+- Details:
+
+  The [base](./config.md#base) option from config.
+
 ### `__VUEPRESS_DEV__`
 
 - Type: `boolean`

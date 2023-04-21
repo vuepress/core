@@ -1,5 +1,9 @@
 @import '_variables';
 
+// Safari only support integer pixel value for line-height
+// the original font-size is 16px, 1.375 will make line-height be 22px
+$line-height: 1.375;
+
 // ===============================
 // Forked and modified from prismjs/themes/prism-tomorrow.css
 
@@ -124,7 +128,7 @@ pre[class*='language-'] {
 .theme-default-content {
   pre,
   pre[class*='language-'] {
-    line-height: 1.4;
+    line-height: $line-height;
     padding: 1.3rem 1.5rem;
     margin: 0.85rem 0;
     border-radius: 6px;
@@ -176,7 +180,7 @@ div[class*='language-'] {
     top: 0;
     left: 0;
     width: 100%;
-    line-height: 1.4;
+    line-height: $line-height;
 
     .highlight-line {
       background-color: var(--code-hl-bg-color);
@@ -218,14 +222,14 @@ div[class*='language-'] {
       text-align: center;
       color: var(--code-ln-color);
       padding-top: 1.25rem;
-      line-height: 1.4;
+      line-height: $line-height;
       counter-reset: line-number;
 
       .line-number {
         position: relative;
         z-index: 3;
         user-select: none;
-        height: 1.4em;
+        height: #{$line-height}em;
 
         &::before {
           counter-increment: line-number;

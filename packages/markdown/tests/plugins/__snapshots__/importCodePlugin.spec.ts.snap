@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`@vuepress/markdown > plugins > importCodePlugin > compatibility with codePlugin > should work with syntax supported by codePlugin 1`] = `
 "<div class=\\"language-javascript line-numbers-mode\\" data-ext=\\"js\\"><pre v-pre class=\\"language-javascript\\"><code>const msg = 'hello from js'

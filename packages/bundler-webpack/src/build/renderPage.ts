@@ -3,8 +3,8 @@ import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import { ssrContextKey } from 'vue'
 import type { App as VueApp } from 'vue'
-import type { Router } from 'vue-router'
 import type { SSRContext } from 'vue/server-renderer'
+import type { Router } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
 import { renderPageScripts } from './renderPageScripts.js'
@@ -31,7 +31,6 @@ export const renderPage = async ({
   vueRouter,
   renderToString,
   ssrTemplate,
-  allFilesMeta,
   initialFilesMeta,
   asyncFilesMeta,
   moduleFilesMetaMap,
@@ -42,7 +41,6 @@ export const renderPage = async ({
   vueRouter: Router
   renderToString: (input: VueApp, context: SSRContext) => Promise<string>
   ssrTemplate: string
-  allFilesMeta: FileMeta[]
   initialFilesMeta: FileMeta[]
   asyncFilesMeta: FileMeta[]
   moduleFilesMetaMap: ModuleFilesMetaMap

@@ -1,6 +1,14 @@
 import { fs, path } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
-import { describe, expect, it } from 'vitest'
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from 'vitest'
 import { codePlugin, importCodePlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
 
@@ -10,6 +18,21 @@ const jsFixturePath = path.resolve(__dirname, jsFixturePathRelative)
 const mdFixturePath = path.resolve(__dirname, mdFixturePathRelative)
 const jsFixtureContent = fs.readFileSync(jsFixturePath).toString()
 const mdFixtureContent = fs.readFileSync(mdFixturePath).toString()
+
+const consoleError = console.error
+const mockConsoleError = vi.fn()
+
+beforeAll(() => {
+  console.error = mockConsoleError
+})
+
+afterEach(() => {
+  mockConsoleError.mockClear()
+})
+
+afterAll(() => {
+  console.error = consoleError
+})
 
 describe('@vuepress/markdown > plugins > importCodePlugin', () => {
   it('should not be parsed as import code syntax', () => {
@@ -119,6 +142,7 @@ ${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/foo.js', '/bar.md'])
+      expect(mockConsoleError).toHaveBeenCalledTimes(2)
     })
 
     it('should use file ext as fallback language', () => {
@@ -139,6 +163,7 @@ ${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/foo.js', '/bar.md'])
+      expect(mockConsoleError).toHaveBeenCalledTimes(2)
     })
   })
 
@@ -164,6 +189,7 @@ ${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
         '/foo.js',
         path.resolve(__dirname, './bar.js'),
       ])
+      expect(mockConsoleError).toHaveBeenCalledTimes(2)
     })
 
     it('should not resolve relative path if filePath is not provided', () => {
@@ -184,6 +210,7 @@ ${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/foo.js'])
+      expect(mockConsoleError).toHaveBeenCalledTimes(2)
     })
 
     it('should handle import path correctly', () => {
@@ -229,6 +256,7 @@ foo
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/path/to/foo.js'])
+      expect(mockConsoleError).toHaveBeenCalledTimes(1)
     })
 
     it('should terminate blockquote', () => {
@@ -251,6 +279,7 @@ foo
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/path/to/foo.js'])
+      expect(mockConsoleError).toHaveBeenCalledTimes(1)
     })
   })
 

@@ -44,11 +44,6 @@ export type PageBase<
   frontmatter: PageFrontmatter<ExtraPageFrontmatter>
 
   /**
-   * Excerpt of the page
-   */
-  excerpt: string
-
-  /**
    * Headers of the page
    */
   headers: PageHeader[]

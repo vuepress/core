@@ -1,8 +1,9 @@
 import type { DocSearchProps } from '@docsearch/react'
-import { useSiteData } from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
+
+declare const __DOCSEARCH_INDEX_BASE__: string
 
 const isSpecialClick = (event: MouseEvent): boolean =>
   event.button === 1 ||
@@ -16,7 +17,6 @@ const isSpecialClick = (event: MouseEvent): boolean =>
  */
 export const useDocsearchShim = (): Partial<DocSearchProps> => {
   const router = useRouter()
-  const site = useSiteData()
 
   return {
     // render the hit component with custom `onClick` handler
@@ -34,7 +34,9 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(resolveRoutePathFromUrl(hit.url, site.value.base))
+            router.push(
+              resolveRoutePathFromUrl(hit.url, __DOCSEARCH_INDEX_BASE__)
+            )
           },
           children,
         },
@@ -45,7 +47,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(resolveRoutePathFromUrl(itemUrl, site.value.base))
+        router.push(resolveRoutePathFromUrl(itemUrl, __DOCSEARCH_INDEX_BASE__))
       },
     },
 

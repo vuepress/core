@@ -508,17 +508,6 @@ You should not configure it unless you understand what it is for.
 
 - Type: `FrontmatterPluginOptions | false`
 
-- Default:
-
-```ts
-const defaultOptions = {
-  grayMatterOptions: {
-    excerpt: true,
-    excerpt_separator: '<!-- more -->',
-  },
-}
-```
-
 - Details:
 
   Options for [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter).
@@ -528,7 +517,6 @@ const defaultOptions = {
 - Also see:
   - [Guide > Page > Frontmatter](../guide/page.md#frontmatter)
   - [Node API > Page Properties > frontmatter](./node-api.md#frontmatter)
-  - [Node API > Page Properties > excerpt](./node-api.md#excerpt)
 
 ::: danger
 You should not configure it unless you understand what it is for.

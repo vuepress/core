@@ -507,17 +507,6 @@ const defaultOptions = {
 
 - 类型： `FrontmatterPluginOptions | false`
 
-- 默认值：
-
-```ts
-const defaultOptions = {
-  grayMatterOptions: {
-    excerpt: true,
-    excerpt_separator: '<!-- more -->',
-  },
-}
-```
-
 - 详情：
 
   [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter) 插件的配置项。
@@ -527,7 +516,6 @@ const defaultOptions = {
 - 参考：
   - [指南 > 页面 > Frontmatter](../guide/page.md#frontmatter)
   - [Node API > Page 属性 > frontmatter](./node-api.md#frontmatter)
-  - [Node API > Page 属性 > excerpt](./node-api.md#excerpt)
 
 ::: danger
 除非你了解它的用途，否则你不应该设置该配置项。

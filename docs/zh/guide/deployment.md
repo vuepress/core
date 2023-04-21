@@ -192,9 +192,13 @@ heroku login
 
 这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
 
-## Layer0
+## Kinsta
 
-请查看 [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress) 。
+请查看 [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/) 。
+
+## Edgio
+
+请查看 [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress) 。
 
 ## Netlify
 

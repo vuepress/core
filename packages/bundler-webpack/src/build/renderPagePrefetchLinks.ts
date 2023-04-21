@@ -32,7 +32,7 @@ export const renderPagePrefetchLinks = ({
       if (shouldPrefetch !== true && !shouldPrefetch(file, type)) {
         return ''
       }
-      return `<link rel="prefetch" href="${app.options.base}${file}" as="${type}" />`
+      return `<link rel="prefetch" href="${app.options.base}${file}" as="${type}">`
     })
     .join('')
 }

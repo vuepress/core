@@ -15,6 +15,18 @@
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm docs:build"
+    },
+    {
+      "name": "docs:dev (webpack)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "DOCS_BUNDLER=webpack pnpm docs:dev"
+    },
+    {
+      "name": "docs:build (webpack)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "DOCS_BUNDLER=webpack pnpm docs:build"
     }
   ]
 }

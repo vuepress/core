@@ -432,30 +432,6 @@ Hello, world.
 - Also see:
   - [Frontmatter](./frontmatter.md)
 
-### excerpt
-
-- Type: `string`
-
-- Details:
-
-  Excerpt of the page.
-
-  If a Markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and rendered as excerpt.
-
-  If you are building a custom theme for blogging, it would be helpful to generate a post list with excerpts.
-
-- Example:
-
-```md
-Lines above `<!-- more -->` comment would be used as excerpt.
-
-It's recommended to wrap the comment with empty lines to avoid rendering issue.
-
-<!-- more -->
-
-Lines below `<!-- more -->` comment would not be used as excerpt.
-```
-
 ### headers
 
 - Type: `PageHeader[]`
@@ -487,7 +463,6 @@ interface PageData {
   title: string
   lang: string
   frontmatter: PageFrontmatter
-  excerpt: string
   headers: PageHeader[]
 }
 ```
@@ -561,7 +536,22 @@ interface MarkdownLink {
 
 - Details:
 
-  Links of the page.
+  Links included in the page content.
+
+### markdownEnv
+
+- Type: `Record<string, unknown>`
+
+- Details:
+
+  The `env` object when parsing markdown content with markdown-it.
+
+  Some markdown-it plugins may store extra information inside this object, and you can make use of them for advanced customization.
+
+  Notice that some other page properties are also extracted from the original `env` object. Those properties have already been removed from `page.markdownEnv`.
+
+- Also see:
+  - [markdown-it > API Documentation > MarkdownIt > parse](https://markdown-it.github.io/markdown-it/#MarkdownIt.parse)
 
 ### pathInferred
 

@@ -20,7 +20,6 @@ export const pageDataEmpty = readonly({
   title: '',
   lang: '',
   frontmatter: {},
-  excerpt: '',
   headers: [],
 } as PageData) as PageData
 

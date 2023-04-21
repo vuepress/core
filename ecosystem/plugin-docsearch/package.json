@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-beta.54",
+  "version": "2.0.0-beta.61",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -37,15 +37,16 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.3.0",
-    "@docsearch/js": "^3.3.0",
-    "@docsearch/react": "^3.3.0",
+    "@docsearch/css": "^3.3.3",
+    "@docsearch/js": "^3.3.3",
+    "@docsearch/react": "^3.3.3",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
+    "@vueuse/core": "^9.13.0",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "publishConfig": {

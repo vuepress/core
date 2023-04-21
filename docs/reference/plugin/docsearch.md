@@ -288,6 +288,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 export default {
   plugins: [
     docsearchPlugin({
+      appId: '<APP_ID>',
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>',
       locales: {
@@ -315,6 +316,34 @@ export default {
 
 - Also see:
   - [Guide > I18n](../../guide/i18n.md)
+
+### indexBase
+
+- Type: `string`
+
+- Default: [base](../config.md#base)
+
+- Details:
+
+  The base path of the search index.
+
+  If you are deploying your site to multiple domains, you don't need to submit all of them to DocSearch and generate search index separately. You could choose one of the domains as the _index domain_, and only submit the _index domain_ to Docsearch for crawling search index. Then, you could reuse the search index across all deployments.
+  
+  However, if the [base](../config.md#base) of your deployments are different for different domains, you need to set the option to the [base](../config.md#base) of your _index domain_, so that other deployments could reuse the search index correctly.
+
+### injectStyles
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether to inject the default styles of DocSearch or not.
+
+  If you think the default styles of DocSearch is not compatible with your site, you can try to override the default styles, or set this option to `false` to totally exclude the default styles.
+
+  When this option is disabled, you need to import your own styles for DocSearch. Also notice that all styles customization in [Styles](#styles) section would be unavailable.
 
 ## Styles
 

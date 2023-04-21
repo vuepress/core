@@ -1,6 +1,7 @@
 import type { App, Component } from 'vue'
 import type { Router } from 'vue-router'
 import type { SiteDataRef } from '../composables/index.js'
+import type { Layouts } from './layouts.js'
 
 /**
  * Configure vuepress client
@@ -24,7 +25,7 @@ export interface ClientConfig {
   /**
    * Layout components
    */
-  layouts?: Record<string, Component>
+  layouts?: Layouts
 
   /**
    * Components to be placed directly into the root node of vue app

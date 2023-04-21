@@ -112,6 +112,14 @@
 
   VuePress Core 的版本号。
 
+### `__VUEPRESS_BASE__`
+
+- 类型： `string`
+
+- 详情：
+
+  配置中的 [base](./config.md#base) 字段。
+
 ### `__VUEPRESS_DEV__`
 
 - 类型： `boolean`

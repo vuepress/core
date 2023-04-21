@@ -7,7 +7,7 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import type { Router } from 'vue-router'
-import { pageData, siteData } from './composables/index.js'
+import { pageData } from './composables/index.js'
 import { resolvers } from './resolvers.js'
 import { createRoutes } from './routes.js'
 
@@ -20,11 +20,11 @@ const historyCreator = __VUEPRESS_SSR__ ? createMemoryHistory : createWebHistory
 /**
  * Create vue-router instance
  */
-export const createVueRouter = async (): Promise<Router> => {
+export const createVueRouter = (): Router => {
   const router = createRouter({
-    // TODO: it might be an issue of vue-router that have to remove the ending slash
-    history: historyCreator(removeEndingSlash(siteData.value.base)),
-    routes: await createRoutes(),
+    // it might be an issue of vue-router that have to remove the ending slash
+    history: historyCreator(removeEndingSlash(__VUEPRESS_BASE__)),
+    routes: createRoutes(),
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) return savedPosition
       if (to.hash) return { el: to.hash }

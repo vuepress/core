@@ -4,12 +4,13 @@ import type {
   MarkdownLink,
   MarkdownSfcBlocks,
 } from '@vuepress/markdown'
+import { omit } from '@vuepress/shared'
 import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 
 /**
  * Render page content and extract related info
  */
-export const renderPageContent = async ({
+export const renderPageContent = ({
   app,
   content,
   filePath,
@@ -21,16 +22,16 @@ export const renderPageContent = async ({
   filePath: string | null
   filePathRelative: string | null
   options: PageOptions
-}): Promise<{
+}): {
   contentRendered: string
   deps: string[]
-  excerpt: string
+  markdownEnv: Record<string, unknown>
   frontmatter: PageFrontmatter
   headers: MarkdownHeader[]
   links: MarkdownLink[]
   sfcBlocks: MarkdownSfcBlocks
   title: string
-}> => {
+} => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
     filePath,
@@ -42,7 +43,6 @@ export const renderPageContent = async ({
 
   /* istanbul ignore next */
   const {
-    excerpt = '',
     frontmatter = {},
     headers = [],
     importedFiles = [],
@@ -56,15 +56,23 @@ export const renderPageContent = async ({
       customBlocks: [],
     },
     title = '',
+    ...extraMarkdownEnv
   } = markdownEnv
 
   return {
     contentRendered,
     deps: importedFiles,
-    excerpt,
     frontmatter,
     headers,
     links,
+    markdownEnv: omit(
+      extraMarkdownEnv,
+      'base',
+      'content',
+      'filePath',
+      'filePathRelative',
+      'frontmatter'
+    ),
     sfcBlocks,
     title: frontmatter.title ?? title,
   }

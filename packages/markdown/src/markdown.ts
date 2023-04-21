@@ -97,13 +97,12 @@ export const createMarkdown = ({
     md.use<EmojiPluginOptions>(emojiPlugin, emoji)
   }
 
-  // extract frontmatter and excerpt into env
+  // extract frontmatter into env
   if (frontmatter !== false) {
     md.use<FrontmatterPluginOptions>(frontmatterPlugin, {
       ...frontmatter,
       grayMatterOptions: {
-        excerpt: true,
-        excerpt_separator: '<!-- more -->',
+        excerpt: false,
         ...frontmatter?.grayMatterOptions,
       },
     })
