@@ -39,5 +39,8 @@
   },
   "dependencies": {
     "vuepress-vite": "workspace:*"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
