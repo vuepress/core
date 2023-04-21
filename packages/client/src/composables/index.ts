@@ -1,3 +1,4 @@
+export * from './clientData.js'
 export * from './layouts.js'
 export * from './pageData.js'
 export * from './pageFrontmatter.js'

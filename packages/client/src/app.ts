@@ -2,6 +2,7 @@ import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
 import { RouterView } from 'vue-router'
 import { siteData } from './composables/index.js'
+import { clientDataMap } from './helpers/index.js'
 import { createVueRouter } from './router.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
 import { setupGlobalComputed } from './setupGlobalComputed.js'
@@ -48,6 +49,11 @@ export const createVueApp: CreateVueAppFunction = async () => {
   if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {
     const { setupDevtools } = await import('./setupDevtools.js')
     setupDevtools(app, globalComputed)
+  }
+
+  // provide client data
+  for (const [key, value] of clientDataMap) {
+    app.provide(key, value)
   }
 
   // invoke all client enhance
