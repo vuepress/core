@@ -7,7 +7,8 @@ export const clientDataMap = new Map<InjectionKey<unknown>, unknown>()
  */
 export const defineClientData = <T = unknown>(
   key: InjectionKey<T>,
-  data: T
+  data: T,
+  overrideExisting = true
 ): void => {
-  clientDataMap.set(key, data)
+  if (overrideExisting || !clientDataMap.has(key)) clientDataMap.set(key, data)
 }
