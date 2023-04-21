@@ -31,7 +31,6 @@ export const renderPage = async ({
   vueRouter,
   renderToString,
   ssrTemplateRenderer,
-  allFilesMeta,
   initialFilesMeta,
   asyncFilesMeta,
   moduleFilesMetaMap,
@@ -42,7 +41,6 @@ export const renderPage = async ({
   vueRouter: Router
   renderToString: (input: VueApp, context: SSRContext) => Promise<string>
   ssrTemplateRenderer: SSRTemplateRenderer
-  allFilesMeta: FileMeta[]
   initialFilesMeta: FileMeta[]
   asyncFilesMeta: FileMeta[]
   moduleFilesMetaMap: ModuleFilesMetaMap
