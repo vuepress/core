@@ -14,7 +14,7 @@ const DeviceTypeMap = {
  */
 export const updateDeviceStatus = (
   deviceType: DeviceType,
-  callback: (w: number) => void
+  callback: (width: number) => void
 ): void => {
   const width = DeviceTypeMap[deviceType]
   if (!width) return
