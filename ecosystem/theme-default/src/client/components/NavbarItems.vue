@@ -15,7 +15,7 @@ import { useNavLink, useThemeLocaleData } from '../composables/index.js'
 import {
   DeviceType,
   resolveRepoType,
-  updateDeviceType,
+  updateDeviceStatus,
 } from '../utils/index.js'
 
 /**
@@ -164,7 +164,7 @@ const handleMobile = (mobileDesktopBreakpoint: number): void => {
     isMobile.value = false
   }
 }
-updateDeviceType(DeviceType.MOBILE, handleMobile)
+updateDeviceStatus(DeviceType.MOBILE, handleMobile)
 </script>
 
 <template>
