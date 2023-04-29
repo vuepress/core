@@ -1,5 +1,5 @@
 import { onMounted } from 'vue'
-import cssVars from '../styles/_variables.module.scss'
+import cssVars from '../styles/_variables.module.scss?module'
 
 export enum DeviceType {
   MOBILE = 'mobile',

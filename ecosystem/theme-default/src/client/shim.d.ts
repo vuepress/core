@@ -4,7 +4,7 @@ declare module '*.vue' {
   export default comp
 }
 
-declare module '*.module.scss' {
+declare module '*.module.scss?module' {
   type Variables = {
     [className: string]: string
   }
