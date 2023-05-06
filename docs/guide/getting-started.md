@@ -70,7 +70,7 @@ pnpm add -D vuepress@next @vuepress/client@next vue
   <CodeGroupItem title="YARN">
 
 ```bash
-yarn add -D vuepress@next
+yarn add -D vuepress@next @vuepress/client@next vue
 ```
 
   </CodeGroupItem>
@@ -78,7 +78,7 @@ yarn add -D vuepress@next
   <CodeGroupItem title="NPM">
 
 ```bash
-npm install -D vuepress@next
+npm install -D vuepress@next @vuepress/client@next vue
 ```
 
   </CodeGroupItem>
