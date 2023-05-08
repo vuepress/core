@@ -53,7 +53,6 @@ export const handleModuleJs = ({
     .loader(require.resolve('esbuild-loader'))
     .options({
       target: 'es2015',
-      loader: 'jsx',
       ...resolveEsbuildJsxOptions(),
     })
     .end()
