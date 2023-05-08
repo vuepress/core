@@ -39,6 +39,8 @@ import '@vuepress/client/app'
       )
     }
 
+    const internalDir = app.dir.temp('internal')
+
     // vuepress related packages that include pure esm client code,
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
@@ -98,14 +100,39 @@ import '@vuepress/client/app'
                   entryFileNames: `[name].[hash].mjs`,
                 }
               : {
-                  manualChunks(id) {
+                  chunkFileNames: (chunk) => {
+                    return ['content', 'framework', 'runtime'].includes(chunk)
+                      ? 'assets/chunks/[name].[hash].js'
+                      : 'assets/[name].[hash].js'
+                  },
+                  manualChunks: (id) => {
+                    // move content related code into
+                    if (id.includes(internalDir)) {
+                      return 'content'
+                    }
+
                     // move known framework code into a stable chunk
                     if (
                       id.includes('plugin-vue:export-helper') ||
                       /node_modules\/@vuepress\/shared\//.test(id) ||
-                      /node_modules\/vue(-router)?\//.test(id)
+                      /node_modules\/vue(-router)?\//.test(id) ||
+                      // FIXME: A workaround for local usage
+                      id.includes('/vuepress-next/packages/shared/')
                     ) {
                       return 'framework'
+                    }
+
+                    // move vuepress runtime code into a stable chunk
+                    if (
+                      /node_modules\/@vuepress\/(plugin|theme)-.+\//.test(id) ||
+                      /node_modules\/vuepress-(plugin|theme)-.+\//.test(id) ||
+                      /node_modules\/@[^/]+\/vuepress-(plugin|theme)-.+\//.test(
+                        id
+                      ) ||
+                      // FIXME: A workaround for local usage
+                      id.includes('/vuepress-next/ecosystem/')
+                    ) {
+                      return 'runtime'
                     }
 
                     return undefined
