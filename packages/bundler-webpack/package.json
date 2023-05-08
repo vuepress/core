@@ -52,14 +52,14 @@
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.23",
     "postcss-csso": "^6.0.1",
-    "postcss-loader": "^7.2.4",
+    "postcss-loader": "^7.3.0",
     "style-loader": "^3.3.2",
     "vue": "^3.2.47",
-    "vue-loader": "^17.0.1",
+    "vue-loader": "^17.1.0",
     "vue-router": "^4.1.6",
-    "webpack": "^5.80.0",
+    "webpack": "^5.82.0",
     "webpack-chain": "^6.5.1",
-    "webpack-dev-server": "^4.13.3",
+    "webpack-dev-server": "^4.15.0",
     "webpack-merge": "^5.8.0"
   },
   "publishConfig": {
