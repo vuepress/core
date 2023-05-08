@@ -5,10 +5,15 @@ import { useEventListener } from '@vueuse/core'
  */
 export const useDocsearchHotkeyListener = (callback: () => void): void => {
   const remove = useEventListener('keydown', (event) => {
-    if (event.key === 'k' && (event.ctrlKey || event.metaKey)) {
-      event.preventDefault()
-      callback()
-      remove()
+    const isHotKeyBind = event.key === 'k' && (event.ctrlKey || event.metaKey)
+    const isSlashKey = event.key === '/'
+
+    if (!isSlashKey && !isHotKeyBind) {
+      return
     }
+
+    event.preventDefault()
+    callback()
+    remove()
   })
 }
