@@ -2,4 +2,4 @@
  * Ensure a url string to have ending slash /
  */
 export const ensureEndingSlash = (str: string): string =>
-  /(\.html|\/)$/.test(str) ? str : str + '/'
+  str[str.length - 1] === '/' || str.endsWith('.html') ? str : `${str}/`
