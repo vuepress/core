@@ -6,7 +6,7 @@ export enum DeviceType {
 }
 
 const DeviceTypeMap = {
-  [DeviceType.MOBILE]: Number(cssVars.mobile?.replace('px', '')),
+  [DeviceType.MOBILE]: Number.parseInt(cssVars.mobile?.replace('px', ''), 10),
 }
 
 /**
@@ -17,7 +17,10 @@ export const updateDeviceStatus = (
   callback: (width: number) => void
 ): void => {
   const width = DeviceTypeMap[deviceType]
-  if (!width) return
+  if (!Number.isInteger(width)) {
+    if (__VUEPRESS_DEV__) throw new Error('device width must be a number type')
+    return
+  }
 
   onMounted(() => {
     callback(width)

@@ -5,9 +5,6 @@ declare module '*.vue' {
 }
 
 declare module '*.module.scss?module' {
-  type Variables = {
-    [className: string]: string
-  }
-  const cssVar: Variables
-  export default cssVar
+  const cssVars: Record<string, string>
+  export default cssVars
 }
