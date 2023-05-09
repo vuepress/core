@@ -12,13 +12,13 @@ const DeviceTypeMap = {
 /**
  * add listener to detect screen though device type
  */
-export const updateDeviceStatus = (
+export const useUpdateDeviceStatus = (
   deviceType: DeviceType,
   callback: (width: number) => void
 ): void => {
   const width = DeviceTypeMap[deviceType]
   if (!Number.isInteger(width)) {
-    if (__VUEPRESS_DEV__) throw new Error('device width must be a number type')
+    if (__VUEPRESS_DEV__) throw new Error('device width must be a integer')
     return
   }
 

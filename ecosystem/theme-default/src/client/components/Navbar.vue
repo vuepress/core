@@ -4,8 +4,11 @@ import NavbarItems from '@theme/NavbarItems.vue'
 import ToggleColorModeButton from '@theme/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
 import { computed, ref } from 'vue'
-import { useThemeLocaleData } from '../composables/index.js'
-import { DeviceType, updateDeviceStatus } from '../utils/index.js'
+import {
+  DeviceType,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../composables/index.js'
 
 defineEmits(['toggle-sidebar'])
 
@@ -24,21 +27,23 @@ const linksWrapperStyle = computed(() => {
   }
 })
 
-// avoid overlapping of long title and long navbar links
-const handleLinksWrapWidth = (mobileDesktopBreakpoint: number): void => {
-  const navbarHorizontalPadding =
-    getCssValue(navbar.value, 'paddingLeft') +
-    getCssValue(navbar.value, 'paddingRight')
-  if (window.innerWidth < mobileDesktopBreakpoint) {
-    linksWrapperMaxWidth.value = 0
-  } else {
-    linksWrapperMaxWidth.value =
-      navbar.value!.offsetWidth -
-      navbarHorizontalPadding -
-      (navbarBrand.value?.offsetWidth || 0)
+useUpdateDeviceStatus(
+  DeviceType.MOBILE,
+  (mobileDesktopBreakpoint: number): void => {
+    // avoid overlapping of long title and long navbar links
+    const navbarHorizontalPadding =
+      getCssValue(navbar.value, 'paddingLeft') +
+      getCssValue(navbar.value, 'paddingRight')
+    if (window.innerWidth < mobileDesktopBreakpoint) {
+      linksWrapperMaxWidth.value = 0
+    } else {
+      linksWrapperMaxWidth.value =
+        navbar.value!.offsetWidth -
+        navbarHorizontalPadding -
+        (navbarBrand.value?.offsetWidth || 0)
+    }
   }
-}
-updateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
+)
 
 function getCssValue(el: HTMLElement | null, property: string): number {
   // NOTE: Known bug, will return 'auto' if style value is 'auto'
