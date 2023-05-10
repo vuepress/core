@@ -6,7 +6,7 @@ VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的
 
 ## 依赖环境
 
-- [Node.js v14.18.0+](https://nodejs.org/)
+- [Node.js v16.19.0+](https://nodejs.org/)
 - [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/) （可选）
 
 ::: tip

@@ -41,6 +41,6 @@
     "vuepress-vite": "workspace:*"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.19.0"
   }
 }
