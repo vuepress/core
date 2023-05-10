@@ -38,7 +38,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "@types/node": "^20.1.0",
+    "@types/node": "^20.1.2",
     "@types/webpack-env": "^1.18.0",
     "@vitest/coverage-istanbul": "^0.31.0",
     "bumpp": "^9.1.0",
@@ -59,7 +59,7 @@
     "vite": "~4.3.5",
     "vitest": "^0.31.0"
   },
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.5.0",
   "engines": {
     "node": ">=16.0.0"
   },
