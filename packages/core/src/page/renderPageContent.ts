@@ -74,6 +74,6 @@ export const renderPageContent = ({
       'frontmatter'
     ),
     sfcBlocks,
-    title: frontmatter.title ?? title,
+    title: frontmatter.title ? `${frontmatter.title}` : title,
   }
 }
