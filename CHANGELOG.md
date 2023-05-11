@@ -1,3 +1,38 @@
+# [2.0.0-beta.62](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.61...v2.0.0-beta.62) (2023-05-11)
+
+
+### Bug Fixes
+
+* **core:** ensure page.title isString (close [#1306](https://github.com/vuepress/vuepress-next/issues/1306)) ([#1308](https://github.com/vuepress/vuepress-next/issues/1308)) ([644b406](https://github.com/vuepress/vuepress-next/commit/644b406e3516a44edd063a13f7fbfb27952ada85))
+* **plugin-docsearch:** allow using slash key to init docsearch ([#1323](https://github.com/vuepress/vuepress-next/issues/1323)) ([3382bb1](https://github.com/vuepress/vuepress-next/commit/3382bb1763eec68f3f0380a9ec887f0b0a3b0e95))
+* **plugin-theme-data:** remove locales field in themeLocaleData (close [#1287](https://github.com/vuepress/vuepress-next/issues/1287)) ([#1313](https://github.com/vuepress/vuepress-next/issues/1313)) ([d91996f](https://github.com/vuepress/vuepress-next/commit/d91996fd0864abd5029e4c4cff319db48be06b47))
+
+
+### Build System
+
+* bump dependencies, drop node 14 ([#1311](https://github.com/vuepress/vuepress-next/issues/1311)) ([a8c30ee](https://github.com/vuepress/vuepress-next/commit/a8c30ee8f6a91efd8860575754766d4c186460c2))
+
+
+### Features
+
+* bump vue to 3.3 ([#1327](https://github.com/vuepress/vuepress-next/issues/1327)) ([bebadea](https://github.com/vuepress/vuepress-next/commit/bebadeaf8c25104c2f9e9cf53685766c3844db1a))
+* **bundler-vite:** bump vite to 4.3 and temporarily remove manualChunks ([#1328](https://github.com/vuepress/vuepress-next/issues/1328)) ([031563e](https://github.com/vuepress/vuepress-next/commit/031563e5aa2e0eb99e3ba3702f0a1c6978bbbfc3))
+* **markdown:** support relative image links without `./` ([#1103](https://github.com/vuepress/vuepress-next/issues/1103)) ([b7d71be](https://github.com/vuepress/vuepress-next/commit/b7d71be8760a025694a9a522b0e354217c1c4111))
+* **theme-default:** improve css variable acquisition ([#1322](https://github.com/vuepress/vuepress-next/issues/1322)) ([eb0d0ea](https://github.com/vuepress/vuepress-next/commit/eb0d0eaa4a57843838c6e564a8ced164b34d7677))
+
+
+### Performance Improvements
+
+* **shared:** reduce regexp match usage ([#1315](https://github.com/vuepress/vuepress-next/issues/1315)) ([23bdec6](https://github.com/vuepress/vuepress-next/commit/23bdec6969b9666b800e0ebeb9e9b3a6ed05ef98))
+
+
+### BREAKING CHANGES
+
+* **markdown:** for markdown image syntax `![alt](path)`, paths without `./` or `/` or protocol will be treated as relative links
+* drop support for node 14
+
+
+
 # [2.0.0-beta.61](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.60...v2.0.0-beta.61) (2023-02-27)
 
 
