@@ -1,8 +1,12 @@
 import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
-import type { Component, VNode } from 'vue'
+import type { Component, SlotsType, VNode } from 'vue'
 
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',
+
+  slots: Object as SlotsType<{
+    default: () => VNode[]
+  }>,
 
   setup(_, { slots }) {
     // index of current active item

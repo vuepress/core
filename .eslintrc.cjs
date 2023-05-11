@@ -2,6 +2,8 @@ module.exports = {
   root: true,
   extends: 'vuepress',
   globals: {
+    // workaround for vue3.3 slots
+    defineSlots: 'readonly',
     __VUEPRESS_VERSION__: 'readonly',
     __VUEPRESS_BASE__: 'readonly',
     __VUEPRESS_DEV__: 'readonly',

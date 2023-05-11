@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import PageMeta from '@theme/PageMeta.vue'
 import PageNav from '@theme/PageNav.vue'
+
+defineSlots<{
+  'top'?: (props: Record<never, never>) => any
+  'bottom'?: (props: Record<never, never>) => any
+  'content-top'?: (props: Record<never, never>) => any
+  'content-bottom'?: (props: Record<never, never>) => any
+}>()
 </script>
 
 <template>
