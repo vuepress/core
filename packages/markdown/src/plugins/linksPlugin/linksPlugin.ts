@@ -130,8 +130,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     hrefAttr[1] = `${normalizedPath}${rawHash}`
 
     // extract internal links for file / page existence check
-    const links = env.links || (env.links = [])
-    links.push({
+    ;(env.links ??= []).push({
       raw: hrefLink,
       relative: relativePath,
       absolute: absolutePath,

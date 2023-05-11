@@ -224,7 +224,7 @@ const css = (function () {
 
   function getStyleProp(name: string): string {
     name = camelCase(name)
-    return cssProps[name] || (cssProps[name] = getVendorProp(name))
+    return (cssProps[name] ??= getVendorProp(name))
   }
 
   function applyCss(element: HTMLElement, prop: string, value: string): void {
