@@ -42,14 +42,15 @@
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
-    "@vuepress/theme-default": "workspace:*"
+    "@vuepress/theme-default": "workspace:*",
+    "vue": "^3.3.1"
   },
   "devDependencies": {
     "@vuepress/client": "workspace:*"
   },
   "peerDependencies": {
     "@vuepress/client": "workspace:*",
-    "vue": "^3.2.47"
+    "vue": "^3.3.1"
   },
   "engines": {
     "node": ">=16.19.0"

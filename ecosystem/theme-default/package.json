@@ -57,8 +57,9 @@
     "@vuepress/utils": "workspace:*",
     "@vueuse/core": "^10.1.2",
     "sass": "^1.62.1",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "sass-loader": "^13.2.2",
+    "vue": "^3.3.1",
+    "vue-router": "^4.2.0"
   },
   "peerDependencies": {
     "sass-loader": "^13.2.1"

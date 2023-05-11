@@ -23,6 +23,11 @@ const props = defineProps({
   },
 })
 
+defineSlots<{
+  before?: (props: Record<never, never>) => any
+  after?: (props: Record<never, never>) => any
+}>()
+
 const route = useRoute()
 const site = useSiteData()
 const { item } = toRefs(props)

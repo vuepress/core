@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineSlots<{
+  default?: (props: Record<never, never>) => any
+}>()
+
 const setHeight = (items): void => {
   // explicitly set height so that it can be transitioned
   items.style.height = items.scrollHeight + 'px'

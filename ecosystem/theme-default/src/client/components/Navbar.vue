@@ -10,7 +10,14 @@ import {
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 
-defineEmits(['toggle-sidebar'])
+defineEmits<{
+  (e: 'toggle-sidebar'): void
+}>()
+
+defineSlots<{
+  before?: (props: Record<never, never>) => any
+  after?: (props: Record<never, never>) => any
+}>()
 
 const themeLocale = useThemeLocaleData()
 
