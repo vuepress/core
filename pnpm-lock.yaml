@@ -563,7 +563,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^4.2.1
-        version: 4.2.1(vite@4.2.2)(vue@3.2.47)
+        version: 4.2.1(vite@4.3.5)(vue@3.2.47)
       '@vuepress/client':
         specifier: workspace:*
         version: link:../client
@@ -592,8 +592,8 @@ importers:
         specifier: ^3.21.6
         version: 3.21.6
       vite:
-        specifier: ~4.2.2
-        version: 4.2.2(@types/node@20.1.2)
+        specifier: ~4.3.5
+        version: 4.3.5(@types/node@20.1.2)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -3154,14 +3154,14 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@vitejs/plugin-vue@4.2.1(vite@4.2.2)(vue@3.2.47):
+  /@vitejs/plugin-vue@4.2.1(vite@4.3.5)(vue@3.2.47):
     resolution: {integrity: sha512-ZTZjzo7bmxTRTkb8GSTwkPOYDIP7pwuyV+RV53c9PYUouwcbkIZIvWvNWlX2b1dYZqtOv7D6iUAnJLVNGcLrSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.2.2(@types/node@20.1.2)
+      vite: 4.3.5(@types/node@20.1.2)
       vue: 3.2.47
     dev: false
 
@@ -9799,7 +9799,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.2.2(@types/node@20.1.2)
+      vite: 4.3.5(@types/node@20.1.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -9809,39 +9809,6 @@ packages:
       - supports-color
       - terser
     dev: true
-
-  /vite@4.2.2(@types/node@20.1.2):
-    resolution: {integrity: sha512-PcNtT5HeDxb3QaSqFYkEum8f5sCVe0R3WK20qxgIvNBZPXU/Obxs/+ubBMeE7nLWeCo2LDzv+8hRYSlcaSehig==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 20.1.2
-      esbuild: 0.17.18
-      postcss: 8.4.23
-      resolve: 1.22.2
-      rollup: 3.21.6
-    optionalDependencies:
-      fsevents: 2.3.2
 
   /vite@4.3.5(@types/node@20.1.2):
     resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
@@ -9871,10 +9838,9 @@ packages:
       '@types/node': 20.1.2
       esbuild: 0.17.18
       postcss: 8.4.23
-      rollup: 3.21.5
+      rollup: 3.21.6
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vitest@0.31.0:
     resolution: {integrity: sha512-JwWJS9p3GU9GxkG7eBSmr4Q4x4bvVBSswaCFf1PBNHiPx00obfhHRJfgHcnI0ffn+NMlIh9QGvG75FlaIBdKGA==}
