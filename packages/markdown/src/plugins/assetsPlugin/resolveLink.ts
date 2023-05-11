@@ -11,16 +11,16 @@ export const resolveLink = (
   // decode link to ensure bundler can find the file correctly
   let resolvedLink = decode(link)
 
+  // check if the link is relative path
+  const isRelativePath = strict
+    ? // in strict mode, only link that starts with `./` or `../` is considered as relative path
+      /^\.{1,2}\//.test(link)
+    : // in non-strict mode, link that does not start with `/` and does not have protocol is considered as relative path
+      !link.startsWith('/') && !/[A-z]+:\/\//.test(link)
+
   // if the link is relative path, and the `env.filePathRelative` exists
   // add `@source` alias to the link
-  if (
-    (strict
-      ? // only link starts with `./` or `../`
-        /^\.{1,2}\//.test(link)
-      : // link without protocol and not absolute links
-        !link.startsWith('/') && !/[A-z]+:\/\//.test(link)) &&
-    env.filePathRelative
-  ) {
+  if (isRelativePath && env.filePathRelative) {
     resolvedLink = `${relativePathPrefix}/${path.join(
       path.dirname(env.filePathRelative),
       resolvedLink

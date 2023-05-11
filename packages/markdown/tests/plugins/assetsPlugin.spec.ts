@@ -21,6 +21,12 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       // no-prefix paths
       '![no-prefix](no-prefix.png)',
       '![no-prefix-foo](foo/no-prefix.png)',
+      '![alias](@alias/foo.png)',
+      '![汉字](@alias/汉字.png)',
+      '![100%](@alias/100%.png)',
+      '![~alias](~@alias/foo.png)',
+      '![~汉字](~@alias/汉字.png)',
+      '![~100%](~@alias/100%.png)',
       // keep as is
       '![url](http://foobar.com/icon.png)',
       '![empty]()',
@@ -58,6 +64,12 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           // no-prefix paths
           '<img src="@source/sub/no-prefix.png" alt="no-prefix">',
           '<img src="@source/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/@alias/foo.png" alt="alias">',
+          '<img src="@source/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@source/sub/@alias/100%.png" alt="100%">',
+          '<img src="@source/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@source/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@source/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
@@ -91,6 +103,12 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           // no-prefix paths
           '<img src="@foo/sub/no-prefix.png" alt="no-prefix">',
           '<img src="@foo/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@foo/sub/@alias/foo.png" alt="alias">',
+          '<img src="@foo/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@foo/sub/@alias/100%.png" alt="100%">',
+          '<img src="@foo/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@foo/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@foo/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
@@ -121,6 +139,12 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
           '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@alias/foo.png" alt="alias">',
+          '<img src="@alias/汉字.png" alt="汉字">',
+          '<img src="@alias/100%.png" alt="100%">',
+          '<img src="~@alias/foo.png" alt="~alias">',
+          '<img src="~@alias/汉字.png" alt="~汉字">',
+          '<img src="~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
