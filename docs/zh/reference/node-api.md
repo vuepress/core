@@ -531,7 +531,23 @@ interface MarkdownLink {
 
 - 详情：
 
-  该 Page 中的链接。
+  该 Page 内容中包含的链接。
+
+
+### markdownEnv
+
+- 类型： `Record<string, unknown>`
+
+- 详情：
+
+  在使用 markdown-it 解析 Markdown 内容时的 `env` 对象。
+
+  一些 markdown-it 插件可能会在这个对象中存储一些额外的信息，你可以使用它们来进行高级定制化。
+
+  需要注意的是，其他的一些 Page 属性其实也是从 `env` 对象中获取到的，但是我们已经把这些属性从 `page.markdownEnv` 中移除掉了。
+
+- 参考：
+  - [markdown-it > API Documentation > MarkdownIt > parse](https://markdown-it.github.io/markdown-it/#MarkdownIt.parse)
 
 ### pathInferred
 

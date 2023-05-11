@@ -1,6 +1,6 @@
 {
   "name": "vuepress-vite",
-  "version": "2.0.0-beta.60",
+  "version": "2.0.0-beta.61",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -49,6 +49,9 @@
   },
   "peerDependencies": {
     "@vuepress/client": "workspace:*",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
+  },
+  "engines": {
+    "node": ">=16.19.0"
   }
 }

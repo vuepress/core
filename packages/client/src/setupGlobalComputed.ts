@@ -1,4 +1,4 @@
-import { type App, computed } from 'vue'
+import { type App, computed, ref, watch } from 'vue'
 import type { Router } from 'vue-router'
 import {
   type LayoutsRef,
@@ -58,13 +58,17 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[]
 ): GlobalComputed => {
+  // create a manual computed route path, so that route hash changes won't trigger all downstream computed
+  const routePath = ref(router.currentRoute.value.path)
+  watch(
+    () => router.currentRoute.value.path,
+    (value) => (routePath.value = value)
+  )
+
   // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   const routeLocale = computed(() =>
-    resolvers.resolveRouteLocale(
-      siteData.value.locales,
-      router.currentRoute.value.path
-    )
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
   )
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)

@@ -31,8 +31,8 @@ sidebar: auto
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 14.18.0+**
-- [pnpm](https://pnpm.io/zh/) **version 7+**
+- [Node.js](http://nodejs.org) **version 18.16.0+**
+- [pnpm](https://pnpm.io/zh/) **version 8+**
 
 克隆代码仓库，并安装依赖：
 
@@ -73,10 +73,6 @@ pnpm docs:dev
 `clean` 命令会执行所有子 Package 中的 `clean` 命令，清除所有的输出文件目录和缓存文件。换言之，它将移除所有通过 `build` 和 `copy` 命令生成的文件。
 
 当你想要从最初状态重新构建源代码时，你可以执行该命令。
-
-### `pnpm dev:*`
-
-`dev:` 前缀表明，这些命令是针对开发使用的，将会以监听模式运行对应的脚本。
 
 ### `pnpm docs:*`
 

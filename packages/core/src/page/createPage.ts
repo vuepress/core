@@ -37,9 +37,10 @@ export const createPage = async (
     frontmatter,
     headers,
     links,
+    markdownEnv,
     sfcBlocks,
     title,
-  } = await renderPageContent({
+  } = renderPageContent({
     app,
     content,
     filePath,
@@ -123,6 +124,7 @@ export const createPage = async (
     date,
     deps,
     links,
+    markdownEnv,
     pathInferred,
     pathLocale,
     permalink,

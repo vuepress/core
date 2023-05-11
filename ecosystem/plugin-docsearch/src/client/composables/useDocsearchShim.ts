@@ -3,6 +3,8 @@ import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
 
+declare const __DOCSEARCH_INDEX_BASE__: string
+
 const isSpecialClick = (event: MouseEvent): boolean =>
   event.button === 1 ||
   event.altKey ||
@@ -32,7 +34,9 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(resolveRoutePathFromUrl(hit.url, __VUEPRESS_BASE__))
+            router.push(
+              resolveRoutePathFromUrl(hit.url, __DOCSEARCH_INDEX_BASE__)
+            )
           },
           children,
         },
@@ -43,7 +47,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(resolveRoutePathFromUrl(itemUrl, __VUEPRESS_BASE__))
+        router.push(resolveRoutePathFromUrl(itemUrl, __DOCSEARCH_INDEX_BASE__))
       },
     },
 

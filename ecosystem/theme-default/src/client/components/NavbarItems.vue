@@ -3,7 +3,7 @@ import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import type {
@@ -11,7 +11,12 @@ import type {
   NavbarItem,
   ResolvedNavbarItem,
 } from '../../shared/index.js'
-import { useNavLink, useThemeLocaleData } from '../composables/index.js'
+import {
+  DeviceType,
+  useNavLink,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../composables/index.js'
 import { resolveRepoType } from '../utils/index.js'
 
 /**
@@ -152,23 +157,17 @@ const navbarLinks = computed(() => [
   ...navbarRepo.value,
 ])
 
-// avoid overlapping of long title and long navbar links
-onMounted(() => {
-  // TODO: migrate to css var
-  // refer to _variables.scss
-  const MOBILE_DESKTOP_BREAKPOINT = 719
-
-  const handleMobile = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
+useUpdateDeviceStatus(
+  DeviceType.MOBILE,
+  (mobileDesktopBreakpoint: number): void => {
+    // avoid overlapping of long title and long navbar links
+    if (window.innerWidth < mobileDesktopBreakpoint) {
       isMobile.value = true
     } else {
       isMobile.value = false
     }
   }
-  handleMobile()
-  window.addEventListener('resize', handleMobile, false)
-  window.addEventListener('orientationchange', handleMobile, false)
-})
+)
 </script>
 
 <template>

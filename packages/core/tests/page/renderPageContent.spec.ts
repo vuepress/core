@@ -11,8 +11,8 @@ const app = createBaseApp({
 app.markdown = createMarkdown()
 
 describe('core > page > renderPageContent', () => {
-  it('should render page content correctly', async () => {
-    const resolved = await renderPageContent({
+  it('should render page content correctly', () => {
+    const resolved = renderPageContent({
       app,
       content: `\
 foobar
@@ -31,6 +31,7 @@ const msg = 'msg'
       frontmatter: {},
       headers: [],
       links: [],
+      markdownEnv: { excerpt: '' },
       sfcBlocks: {
         template: {
           type: 'template',
@@ -64,8 +65,8 @@ const msg = 'msg'
   })
 
   describe('page title', () => {
-    it('should use title in frontmatter', async () => {
-      const resolved = await renderPageContent({
+    it('should use title in frontmatter', () => {
+      const resolved = renderPageContent({
         app,
         content: '# title in header',
         filePath: null,
@@ -80,8 +81,8 @@ const msg = 'msg'
       expect(resolved.title).toEqual('title in frontmatter')
     })
 
-    it('should use title in the first h1 header', async () => {
-      const resolved = await renderPageContent({
+    it('should use title in the first h1 header', () => {
+      const resolved = renderPageContent({
         app,
         content: '# title in header',
         filePath: null,
@@ -92,8 +93,8 @@ const msg = 'msg'
       expect(resolved.title).toEqual('title in header')
     })
 
-    it('should use empty title', async () => {
-      const resolved = await renderPageContent({
+    it('should use empty title', () => {
+      const resolved = renderPageContent({
         app,
         content: '',
         filePath: null,
@@ -106,8 +107,8 @@ const msg = 'msg'
   })
 
   describe('page frontmatter', () => {
-    it('should merge markdown frontmatter and options frontmatter', async () => {
-      const resolved = await renderPageContent({
+    it('should merge markdown frontmatter and options frontmatter', () => {
+      const resolved = renderPageContent({
         app,
         content: `\
 ---
@@ -129,8 +130,8 @@ title: title in markdown frontmatter
       })
     })
 
-    it('should use fields from markdown frontmatter first', async () => {
-      const resolved = await renderPageContent({
+    it('should use fields from markdown frontmatter first', () => {
+      const resolved = renderPageContent({
         app,
         content: `\
 ---

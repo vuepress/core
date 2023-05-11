@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-beta.60",
+  "version": "2.0.0-beta.61",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
@@ -35,7 +35,7 @@
   "dependencies": {
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "execa": "^6.1.0"
+    "execa": "^7.1.1"
   },
   "publishConfig": {
     "access": "public"
