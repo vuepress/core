@@ -8,6 +8,8 @@ import { Vuepress } from './components/Vuepress.js'
 export const createRoutes = (): RouteRecordRaw[] =>
   pagesRoutes.reduce(
     (result, [name, path, meta, redirects]) => {
+      const { length } = path
+
       result.push(
         {
           name,
@@ -15,15 +17,14 @@ export const createRoutes = (): RouteRecordRaw[] =>
           component: Vuepress,
           meta,
         },
+        {
+          path: path.endsWith('/')
+            ? path + 'index.html'
+            : path.substring(0, length - 5),
+          redirect: path,
+        },
         ...redirects.map((item) => ({
-          path:
-            item === ':s'
-              ? path.replace(/.html$/, '')
-              : item === ':d'
-              ? path + 'index.html'
-              : item === ':f'
-              ? path.replace(/.html$/, '.md')
-              : item,
+          path: item === ':ext' ? path.substring(0, length - 5) + '.md' : item,
           redirect: path,
         }))
       )
