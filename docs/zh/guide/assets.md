@@ -8,6 +8,12 @@
 ![图片](./image.png)
 ```
 
+或
+
+```md
+![图片](image.png)
+```
+
 一般情况下，我们推荐你使用这种方式来引用图片，因为人们通常会把图片放在引用它的 Markdown 文件附近。
 
 ## Public 文件
@@ -86,8 +92,10 @@ const logoPath = ref('/images/hero.png')
 npm install -D package-name
 ```
 
+由于 Markdown 会默认将图片链接视为相对链接，你需要使用 `<img>` 标签:
+
 ```md
-![来自依赖包的图片](package-name/image.png)
+<img src="package-name/image.png" alt="来自依赖包的图片">
 ```
 
 在配置文件中设置的路径别名也同样支持：
@@ -105,7 +113,7 @@ export default {
 ```
 
 ```md
-![来自路径别名的图片](@alias/image.png)
+<img src="@alias/image.png" alt="来自路径别名的图片">
 ```
 
 ::: tip

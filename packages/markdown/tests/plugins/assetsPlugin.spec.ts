@@ -15,20 +15,18 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![out](../../out.png)',
       '![汉字](./汉字.png)',
       '![100%](./100%.png)',
-      // aliases
-      '![alias](@alias/foo.png)',
-      '![汉字](@alias/汉字.png)',
-      '![100%](@alias/100%.png)',
-      // webpack legacy aliases
-      '![~alias](~@alias/foo.png)',
-      '![~汉字](~@alias/汉字.png)',
-      '![~100%](~@alias/100%.png)',
       // absolute paths
       '![absolute](/absolute.png)',
       '![absolute-foo](/foo/absolute.png)',
       // no-prefix paths
       '![no-prefix](no-prefix.png)',
       '![no-prefix-foo](foo/no-prefix.png)',
+      '![alias](@alias/foo.png)',
+      '![汉字](@alias/汉字.png)',
+      '![100%](@alias/100%.png)',
+      '![~alias](~@alias/foo.png)',
+      '![~汉字](~@alias/汉字.png)',
+      '![~100%](~@alias/100%.png)',
       // keep as is
       '![url](http://foobar.com/icon.png)',
       '![empty]()',
@@ -60,27 +58,25 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@source/../out.png" alt="out">',
           '<img src="@source/sub/汉字.png" alt="汉字">',
           '<img src="@source/sub/100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
-          '<img src="no-prefix.png" alt="no-prefix">',
-          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/no-prefix.png" alt="no-prefix">',
+          '<img src="@source/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/@alias/foo.png" alt="alias">',
+          '<img src="@source/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@source/sub/@alias/100%.png" alt="100%">',
+          '<img src="@source/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@source/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@source/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
-          '<img src=".../invalid.png" alt="invalid">',
-          '<img src=".../汉字.png" alt="汉字">',
-          '<img src=".../100%.png" alt="100%">',
+          '<img src="@source/sub/.../invalid.png" alt="invalid">',
+          '<img src="@source/sub/.../汉字.png" alt="汉字">',
+          '<img src="@source/sub/.../100%.png" alt="100%">',
         ],
       },
       {
@@ -101,27 +97,25 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@foo/../out.png" alt="out">',
           '<img src="@foo/sub/汉字.png" alt="汉字">',
           '<img src="@foo/sub/100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
-          '<img src="no-prefix.png" alt="no-prefix">',
-          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@foo/sub/no-prefix.png" alt="no-prefix">',
+          '<img src="@foo/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@foo/sub/@alias/foo.png" alt="alias">',
+          '<img src="@foo/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@foo/sub/@alias/100%.png" alt="100%">',
+          '<img src="@foo/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@foo/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@foo/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
-          '<img src=".../invalid.png" alt="invalid">',
-          '<img src=".../汉字.png" alt="汉字">',
-          '<img src=".../100%.png" alt="100%">',
+          '<img src="@foo/sub/.../invalid.png" alt="invalid">',
+          '<img src="@foo/sub/.../汉字.png" alt="汉字">',
+          '<img src="@foo/sub/.../100%.png" alt="100%">',
         ],
       },
       {
@@ -139,20 +133,18 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="../../out.png" alt="out">',
           '<img src="./汉字.png" alt="汉字">',
           '<img src="./100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
           '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@alias/foo.png" alt="alias">',
+          '<img src="@alias/汉字.png" alt="汉字">',
+          '<img src="@alias/100%.png" alt="100%">',
+          '<img src="~@alias/foo.png" alt="~alias">',
+          '<img src="~@alias/汉字.png" alt="~汉字">',
+          '<img src="~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
