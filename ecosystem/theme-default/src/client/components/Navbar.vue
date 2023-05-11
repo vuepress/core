@@ -13,6 +13,7 @@ import {
 defineEmits<{
   (e: 'toggle-sidebar'): void
 }>()
+
 defineSlots<{
   before?: (props: Record<never, never>) => any
   after?: (props: Record<never, never>) => any
