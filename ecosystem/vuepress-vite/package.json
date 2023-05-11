@@ -50,5 +50,8 @@
   "peerDependencies": {
     "@vuepress/client": "workspace:*",
     "vue": "^3.2.47"
+  },
+  "engines": {
+    "node": ">=16.19.0"
   }
 }
