@@ -52,7 +52,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # 选择要使用的 pnpm 版本
-          version: 7
+          version: 8
           # 使用 pnpm 安装依赖
           run_install: true
 
@@ -117,7 +117,7 @@ pages:
 
   # 安装 pnpm
   before_script:
-    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
     - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
@@ -209,7 +209,7 @@ heroku login
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-   - `NODE_VERSION`: 16
+   - `NODE_VERSION`: 18
 
 3. 点击 deploy 按钮。
 

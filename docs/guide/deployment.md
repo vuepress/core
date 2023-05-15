@@ -52,7 +52,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # choose pnpm version to use
-          version: 7
+          version: 8
           # install deps with pnpm
           run_install: true
 
@@ -117,7 +117,7 @@ pages:
 
   # Install pnpm
   before_script:
-    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
     - pnpm config set store-dir .pnpm-store
 
   # install dependencies and run build script
@@ -209,7 +209,7 @@ See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guid
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-   - `NODE_VERSION`: 16
+   - `NODE_VERSION`: 18
 
 3. Hit the deploy button.
 
