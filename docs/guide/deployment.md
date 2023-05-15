@@ -209,7 +209,7 @@ See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guid
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-   - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 16
 
 3. Hit the deploy button.
 
