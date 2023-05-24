@@ -13,10 +13,10 @@ export const mediumZoomSymbol: InjectionKey<Zoom> = Symbol('mediumZoom')
 /**
  * Inject medium zoom instance
  */
-export const useMediumZoom = (): Zoom => {
+export const useMediumZoom = (): Zoom | null => {
   const zoom = inject(mediumZoomSymbol)
-  if (!zoom) {
+  if (!zoom && !__VUEPRESS_SSR__) {
     throw new Error('useMediumZoom() is called without provider.')
   }
-  return zoom
+  return zoom ?? null
 }
