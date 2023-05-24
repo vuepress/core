@@ -79,6 +79,10 @@ You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while
 
   This plugin adds an extra `refresh` method on the `Zoom` instance, which will call `zoom.detach()` then `zoom.attach()` with the [selector](#selector) as the default parameter. It will help you to refresh the zoomable images for current page.
 
+  Note: The `Zoom` instance is only available in client mode, so you need to wrap your component with *ClientOnly*
+  
+
+
 - Example:
 
 ```ts
