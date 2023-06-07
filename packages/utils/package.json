@@ -31,7 +31,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/debug": "^4.1.7",
+    "@types/debug": "^4.1.8",
     "@types/fs-extra": "^11.0.1",
     "@types/hash-sum": "^1.0.0",
     "@vuepress/shared": "workspace:*",
@@ -39,7 +39,7 @@
     "fs-extra": "^11.1.1",
     "globby": "^13.1.4",
     "hash-sum": "^2.0.0",
-    "ora": "^6.3.0",
+    "ora": "^6.3.1",
     "picocolors": "^1.0.0",
     "upath": "^2.0.1"
   },

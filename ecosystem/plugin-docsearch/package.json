@@ -37,17 +37,17 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.3.4",
-    "@docsearch/js": "^3.3.4",
-    "@docsearch/react": "^3.3.4",
+    "@docsearch/css": "^3.4.0",
+    "@docsearch/js": "^3.4.0",
+    "@docsearch/react": "^3.4.0",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "@vueuse/core": "^10.1.2",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.3.1",
-    "vue-router": "^4.2.0"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.2"
   },
   "publishConfig": {
     "access": "public"

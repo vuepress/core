@@ -39,8 +39,8 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.3.1",
-    "vue-router": "^4.2.0"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.2"
   },
   "publishConfig": {
     "access": "public"

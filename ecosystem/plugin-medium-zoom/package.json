@@ -41,7 +41,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "medium-zoom": "^1.0.8",
-    "vue": "^3.3.1"
+    "vue": "^3.3.4"
   },
   "publishConfig": {
     "access": "public"
