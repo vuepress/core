@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
-import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import {
+  useRouteLocale,
+  useSiteData,
+  useSiteLocaleData,
+} from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
@@ -14,6 +18,7 @@ import type {
 import {
   DeviceType,
   useNavLink,
+  useThemeData,
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
@@ -25,11 +30,13 @@ import { resolveRepoType } from '../utils/index.js'
 const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
   const router = useRouter()
   const routeLocale = useRouteLocale()
+  const site = useSiteData()
   const siteLocale = useSiteLocaleData()
+  const theme = useThemeData()
   const themeLocale = useThemeLocaleData()
 
   return computed<ResolvedNavbarItem[]>(() => {
-    const localePaths = Object.keys(siteLocale.value.locales)
+    const localePaths = Object.keys(site.value.locales)
     // do not display language selection dropdown if there is only one language
     if (localePaths.length < 2) {
       return []
@@ -38,17 +45,15 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     const currentFullPath = router.currentRoute.value.fullPath
 
     const languageDropdown: ResolvedNavbarItem = {
-      text: themeLocale.value.selectLanguageText ?? 'unknown language',
-      ariaLabel:
+      text: `${themeLocale.value.selectLanguageText}`,
+      ariaLabel: `${
         themeLocale.value.selectLanguageAriaLabel ??
-        themeLocale.value.selectLanguageText ??
-        'unknown language',
+        themeLocale.value.selectLanguageText
+      }`,
       children: localePaths.map((targetLocalePath) => {
         // target locale config of this language link
-        const targetSiteLocale =
-          siteLocale.value.locales?.[targetLocalePath] ?? {}
-        const targetThemeLocale =
-          themeLocale.value.locales?.[targetLocalePath] ?? {}
+        const targetSiteLocale = site.value.locales?.[targetLocalePath] ?? {}
+        const targetThemeLocale = theme.value.locales?.[targetLocalePath] ?? {}
         const targetLang = `${targetSiteLocale.lang}`
 
         const text = targetThemeLocale.selectLanguageName ?? targetLang
