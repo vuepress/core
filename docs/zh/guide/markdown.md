@@ -63,11 +63,11 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 ```vue
 <template>
-  <RouterLink to="/zh/">首页</RouterLink>
-  <RouterLink to="/zh/reference/config.html">配置参考</RouterLink>
-  <RouterLink to="/zh/guide/getting-started.html">快速上手</RouterLink>
-  <RouterLink to="/zh/guide/">指南</RouterLink>
-  <RouterLink to="/zh/reference/config.html#links">配置参考 &gt; markdown.links</RouterLink>
+  <VPLink to="/zh/">首页</VPLink>
+  <VPLink to="/zh/reference/config.html">配置参考</VPLink>
+  <VPLink to="/zh/guide/getting-started.html">快速上手</VPLink>
+  <VPLink to="/zh/guide/">指南</VPLink>
+  <VPLink to="/zh/reference/config.html#links">配置参考 &gt; markdown.links</VPLink>
   <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
 </template>
 ```
@@ -83,7 +83,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 **解释**
 
-- 内部链接会被转换为 `<RouterLink>` 以便进行 SPA 导航。
+- 内部链接会被转换为和 `<RouterLink>` 类似的 `<VPLink>` 以便进行 SPA 导航。
 - 指向 `.md` 文件的内部链接会被转换为目标页面的 [路由路径](./page.md#路由)，并且支持绝对路径和相对路径。
 - 外部链接会被添加 `target="_blank" rel="noopener noreferrer"` 属性。
 
