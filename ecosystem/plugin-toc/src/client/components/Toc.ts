@@ -1,4 +1,4 @@
-import { RouterLink, usePageData } from '@vuepress/client'
+import { RouterLink, usePageData, VPLink } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import { computed, defineComponent, h, toRefs } from 'vue'
 import type { PropType, VNode } from 'vue'
@@ -37,6 +37,18 @@ const renderLink = (
   if (options.linkTag === 'RouterLink') {
     return h(
       RouterLink,
+      {
+        to: hash,
+        class: linkClass,
+        ariaLabel: header.title,
+      },
+      () => header.title
+    )
+  }
+
+  if (options.linkTag === 'VPLink') {
+    return h(
+      VPLink,
       {
         to: hash,
         class: linkClass,
@@ -123,7 +135,7 @@ export const Toc = defineComponent({
       containerClass: 'vuepress-toc',
       listClass: 'vuepress-toc-list',
       itemClass: 'vuepress-toc-item',
-      linkTag: 'RouterLink',
+      linkTag: 'VPLink',
       linkClass: 'vuepress-toc-link',
       linkActiveClass: 'active',
       linkChildrenActiveClass: 'active',

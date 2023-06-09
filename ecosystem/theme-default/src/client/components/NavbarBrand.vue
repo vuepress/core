@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
   ClientOnly,
-  RouterLink,
   useRouteLocale,
   useSiteLocaleData,
+  VPLink,
   withBase,
 } from '@vuepress/client'
 import { computed, h } from 'vue'
@@ -42,7 +42,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 </script>
 
 <template>
-  <RouterLink :to="navbarBrandLink">
+  <VPLink :to="navbarBrandLink">
     <NavbarBrandLogo />
 
     <span
@@ -52,5 +52,5 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     >
       {{ navbarBrandTitle }}
     </span>
-  </RouterLink>
+  </VPLink>
 </template>

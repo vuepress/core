@@ -43,7 +43,7 @@
       .navbar-dropdown-wrapper
         .navbar-dropdown
         .navbar-dropdown-item
-        a.router-link-active::after {
+        a.vp-active::after {
         top: calc(1rem - 2px);
       }
     }

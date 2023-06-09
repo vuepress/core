@@ -54,7 +54,7 @@
 
         & > a {
           font-weight: inherit;
-          &.router-link-active {
+          &.vp-active {
             &::after {
               display: none;
             }
@@ -84,7 +84,7 @@
           color: var(--c-text-accent);
         }
 
-        &.router-link-active {
+        &.vp-active {
           color: var(--c-text-accent);
 
           &::after {

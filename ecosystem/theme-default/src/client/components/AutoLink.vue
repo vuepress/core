@@ -9,7 +9,7 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { RouterLink, useSiteData } from '@vuepress/client'
+import { useSiteData, VPLink } from '@vuepress/client'
 import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
@@ -47,8 +47,8 @@ const linkTarget = computed(() => {
 })
 // if the `target` attr is '_blank'
 const isBlankTarget = computed(() => linkTarget.value === '_blank')
-// is `<RouterLink>` or not
-const isRouterLink = computed(
+// is `<VPLink>` or not
+const isVPLink = computed(
   () =>
     !hasHttpProtocol.value && !hasNonHttpProtocol.value && !isBlankTarget.value
 )
@@ -80,7 +80,7 @@ const isActiveInSubpath = computed(() => {
 
 // if this link is active
 const isActive = computed(() => {
-  if (!isRouterLink.value) {
+  if (!isVPLink.value) {
     return false
   }
   if (item.value.activeMatch) {
@@ -91,9 +91,9 @@ const isActive = computed(() => {
 </script>
 
 <template>
-  <RouterLink
-    v-if="isRouterLink"
-    :class="{ 'router-link-active': isActive }"
+  <VPLink
+    v-if="isVPLink"
+    :class="{ 'vp-active': isActive }"
     :to="item.link"
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
@@ -101,7 +101,7 @@ const isActive = computed(() => {
     <slot name="before" />
     {{ item.text }}
     <slot name="after" />
-  </RouterLink>
+  </VPLink>
   <a
     v-else
     class="external-link"
