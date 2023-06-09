@@ -9,7 +9,7 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { useSiteData } from '@vuepress/client'
+import { RouterLink, useSiteData } from '@vuepress/client'
 import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   ClientOnly,
+  RouterLink,
   useRouteLocale,
   useSiteLocaleData,
   withBase,

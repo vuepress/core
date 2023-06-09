@@ -39,7 +39,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<a href="//github.com" target="_blank" rel="noopener noreferrer">github<ExternalLinkIcon/></a>',
         '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com<ExternalLinkIcon/></a>',
         '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com<ExternalLinkIcon/></a>',
-        '<RouterLink to="foo.html">foo</RouterLink>',
+        '<VPLink to="foo.html">foo</VPLink>',
       ]
         .map((a) => `<p>${a}</p>`)
         .join('\n') + '\n'
@@ -66,7 +66,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<a href="//github.com" target="_self" rel="noopener noreferrer">github</a>',
         '<a href="https://github.com" target="_self" rel="noopener noreferrer">https://github.com</a>',
         '<a href="http://github.com" target="_self" rel="noopener noreferrer">http://github.com</a>',
-        '<RouterLink to="foo.html">foo</RouterLink>',
+        '<VPLink to="foo.html">foo</VPLink>',
       ]
         .map((a) => `<p>${a}</p>`)
         .join('\n') + '\n'
@@ -87,7 +87,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<a href="//github.com" target="_blank" rel="noopener noreferrer">github</a>',
         '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>',
         '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com</a>',
-        '<RouterLink to="foo.html">foo</RouterLink>',
+        '<VPLink to="foo.html">foo</VPLink>',
       ]
         .map((a) => `<p>${a}</p>`)
         .join('\n') + '\n'

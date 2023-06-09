@@ -8,9 +8,9 @@ export interface LinksPluginOptions {
   /**
    * Tag for internal links
    *
-   * @default 'RouterLink'
+   * @default 'VPLink'
    */
-  internalTag?: 'a' | 'RouterLink'
+  internalTag?: 'a' | 'VPLink' | 'RouterLink'
 
   /**
    * Additional attributes for external links
@@ -29,7 +29,7 @@ export interface LinksPluginOptions {
 /**
  * Process links in markdown file
  *
- * - internal links: convert them into `<RouterLink>`
+ * - internal links: convert them into `<VPLink>`
  * - external links: add extra attrs and external icon
  */
 export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
@@ -37,7 +37,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   options: LinksPluginOptions = {}
 ): void => {
   // tag of internal links
-  const internalTag = options.internalTag || 'RouterLink'
+  const internalTag = options.internalTag || 'VPLink'
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -93,7 +93,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // convert
     // <a href="hrefLink">
     // to
-    // <RouterLink to="toProp">
+    // <VPLink to="toProp">
 
     // notice that the path and hash are encoded by markdown-it
     const rawPath = internalLinkMatch[1]
@@ -109,7 +109,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // normalize markdown file path to route path
     //
     // we are removing the `base` from absolute path because it should not be
-    // passed to `<RouterLink>`
+    // passed to `<VPLink>`
     //
     // '/foo/index.md' => '/foo/'
     // '/foo/bar.md' => '/foo/bar.html'
@@ -118,8 +118,8 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       .replace(/(^|\/)(README|index).md$/i, '$1')
       .replace(/\.md$/, '.html')
 
-    if (internalTag === 'RouterLink') {
-      // convert starting tag of internal link to `<RouterLink>`
+    if (['RouterLink', 'VPLink'].includes(internalTag)) {
+      // convert starting tag of internal link to `internalTag`
       token.tag = internalTag
       // replace the original `href` attr with `to` attr
       hrefAttr[0] = 'to'
