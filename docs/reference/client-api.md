@@ -70,6 +70,12 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
   The properties of current locale have been merged into the root-level properties.
 
+### useResolveRoute
+
+- Details:
+
+  Returns the exact route object with given info by handling redirects.
+
 ## Helpers
 
 ### defineClientConfig

@@ -1,4 +1,4 @@
-import { useResolveRouteWithRedirect } from '@vuepress/client'
+import { useResolveRoute } from '@vuepress/client'
 import { inferRoutePath } from '@vuepress/shared'
 import type { NavLink } from '../../shared/index.js'
 
@@ -16,7 +16,7 @@ declare module 'vue-router' {
  * - Output: { text: 'Home', link: '/' }
  */
 export const useNavLink = (item: string): NavLink => {
-  const resolved = useResolveRouteWithRedirect(
+  const resolved = useResolveRoute(
     inferRoutePath(
       // the route path of vue-router is url-encoded, and we expect users are using
       // non-url-encoded string in theme config, so we need to url-encode it first to

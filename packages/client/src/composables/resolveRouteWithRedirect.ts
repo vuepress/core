@@ -5,7 +5,7 @@ import type { Router } from 'vue-router'
 /**
  * Resolve a route with redirection
  */
-export const useResolveRouteWithRedirect = (
+export const useResolveRoute = (
   ...args: Parameters<Router['resolve']>
 ): ReturnType<Router['resolve']> => {
   const router = useRouter()
@@ -19,7 +19,7 @@ export const useResolveRouteWithRedirect = (
   const resolvedRedirectObj = isString(resolvedRedirect)
     ? { path: resolvedRedirect }
     : resolvedRedirect
-  return useResolveRouteWithRedirect({
+  return useResolveRoute({
     hash: route.hash,
     query: route.query,
     params: route.params,

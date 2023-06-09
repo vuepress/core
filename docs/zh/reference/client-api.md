@@ -70,6 +70,14 @@
 
   当前 locale 中的配置已经合并到顶层配置中。
 
+### useResolveRoute
+
+- 详情：
+
+  返回对应信息的准确的 Route 对象。
+
+  路由重定向已处理。
+
 ## 工具函数
 
 ### defineClientConfig
