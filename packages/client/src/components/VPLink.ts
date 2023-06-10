@@ -1,3 +1,4 @@
+import { inferRoutePath } from '@vuepress/shared'
 import { type FunctionalComponent, h, type VNode } from 'vue'
 import { type NavigationFailure, useRouter } from 'vue-router'
 import { withBase } from '../helpers/index.js'
@@ -24,7 +25,7 @@ export const VPLink: FunctionalComponent<
     'a',
     {
       class: 'md-link',
-      href: withBase(to),
+      href: withBase(inferRoutePath(to)),
       onClick: navigate,
     },
     slots.default?.()
