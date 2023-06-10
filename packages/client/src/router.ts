@@ -1,4 +1,5 @@
 import { pagesComponents } from '@internal/pagesComponents'
+import type { PageData } from '@vuepress/shared'
 import { removeEndingSlash } from '@vuepress/shared'
 import {
   createMemoryHistory,
@@ -32,13 +33,23 @@ export const createVueRouter = (): Router => {
     },
   })
 
+  let pendingData: PageData
+  let pendingLocation: string
+
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
       // ensure page data and page component have been loaded
-      ;[pageData.value] = await Promise.all([
+      ;[pendingData] = await Promise.all([
         resolvers.resolvePageData(to.name as string),
         pagesComponents[to.name as string]?.__asyncLoader(),
       ])
+      pendingLocation = to.path
+    }
+  })
+
+  router.afterEach((to, from) => {
+    if (to.path !== from.path && to.path === pendingLocation) {
+      pageData.value = pendingData
     }
   })
 
