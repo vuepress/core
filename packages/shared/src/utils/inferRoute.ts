@@ -8,3 +8,11 @@ export const inferRoutePath = (path: string): string => {
 
   return path
 }
+
+export const inferRouteLink = (link: string): string => {
+  const [path, hash = ''] = link.split('#')
+
+  if (!path) return link
+
+  return `${inferRoutePath(path)}${hash ? `#${hash}` : ''}`
+}
