@@ -23,4 +23,17 @@ export const getContributors = async (
       email,
       commits: Number.parseInt(commits, 10),
     }))
+    .filter((item, index, self) => {
+      // If one of the contributors is a "noreply" email address, *and* there's
+      // already a contributor *with the same name*, it is very likely a duplicate,
+      // so it can be removed.
+      if (
+        item.email.includes('@') &&
+        (item.email.split('@')[1].includes('noreply') ||
+          item.email.split('@')[1].includes('no-reply'))
+      ) {
+        return index === self.findIndex((t) => t.name === item.name)
+      }
+      return true
+    })
 }
