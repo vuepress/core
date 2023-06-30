@@ -8,6 +8,7 @@
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "target": "ES2020"
+    "verbatimModuleSyntax": true,
+    "target": "ES2021"
   }
 }
