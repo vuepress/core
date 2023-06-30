@@ -124,7 +124,6 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
     .replace({
       query: router.currentRoute.value.query,
       hash,
-      force: true,
     })
     .finally(() => (router.options.scrollBehavior = scrollBehavior))
 }
