@@ -19,14 +19,14 @@ export const createRoutes = (): RouteRecordRaw[] =>
           path: path.endsWith('/')
             ? // redirect from `/index.html` to `/`
               path + 'index.html'
-            : // redirect from `/foo.html` to `/foo`
+            : // redirect from `/foo` to `/foo.html`
               path.substring(0, path.length - 5),
           redirect: path,
         },
         ...redirects.map((item) => ({
           path:
             item === ':md'
-              ? // redirect from `/foo.md` to `/foo`
+              ? // redirect from `/foo.md` to `/foo.html`
                 path.substring(0, path.length - 5) + '.md'
               : item,
           redirect: path,
