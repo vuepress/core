@@ -17,12 +17,18 @@ export const createRoutes = (): RouteRecordRaw[] =>
         },
         {
           path: path.endsWith('/')
-            ? path + 'index.html'
-            : path.substring(0, path.length - 5),
+            ? // redirect from `/index.html` to `/`
+              path + 'index.html'
+            : // redirect from `/foo.html` to `/foo`
+              path.substring(0, path.length - 5),
           redirect: path,
         },
         ...redirects.map((item) => ({
-          path: item === ':ext' ? path.substring(0, path.length - 5) + '.md' : item,
+          path:
+            item === ':md'
+              ? // redirect from `/foo.md` to `/foo`
+                path.substring(0, path.length - 5) + '.md'
+              : item,
           redirect: path,
         }))
       )
