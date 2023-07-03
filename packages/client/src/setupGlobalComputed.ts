@@ -59,13 +59,12 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[]
 ): GlobalComputed => {
-  // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
+  // create eager computed for route path and locale, so that route changes
+  // won't make all downstream computed re-evaluate
+  const routePath = computedEager(() => router.currentRoute.value.path)
   const routeLocale = computedEager(() =>
-    resolvers.resolveRouteLocale(
-      siteData.value.locales,
-      router.currentRoute.value.path
-    )
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
   )
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
