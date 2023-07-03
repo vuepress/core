@@ -719,6 +719,9 @@ importers:
       '@vuepress/shared':
         specifier: workspace:*
         version: link:../shared
+      '@vueuse/core':
+        specifier: ^10.2.1
+        version: 10.2.1(vue@3.3.4)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
