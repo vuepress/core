@@ -1,3 +1,19 @@
+# [2.0.0-beta.64](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.63...v2.0.0-beta.64) (2023-07-03)
+
+
+### Bug Fixes
+
+* **plugin-active-header-links:** remove force replace when updating hash ([#1360](https://github.com/vuepress/vuepress-next/issues/1360)) ([fa6b9ea](https://github.com/vuepress/vuepress-next/commit/fa6b9eab1ace5b06a02d95bb63d16df7b59adeea))
+
+
+### Performance Improvements
+
+* **client:** use eager computed for routeLocale ([9d85d4f](https://github.com/vuepress/vuepress-next/commit/9d85d4f5b4fe0bc4bca392b466e168240d156dd3))
+* **client:** use eager computed for routePath to avoid extra route locale resolving ([aacff56](https://github.com/vuepress/vuepress-next/commit/aacff56bc60559763c246eab8a6697f9e4418ad3))
+* **core:** reduce pageRoutes size ([#1274](https://github.com/vuepress/vuepress-next/issues/1274)) ([08cf419](https://github.com/vuepress/vuepress-next/commit/08cf419119fae22abd1d8c4178a7ecddb7564e78))
+
+
+
 # [2.0.0-beta.63](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.62...v2.0.0-beta.63) (2023-06-08)
 
 
