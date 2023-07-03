@@ -18,14 +18,6 @@ const resolvePageRouteItem = ({
   // redirect from decoded path
   redirectsSet.add(decodeURI(path))
 
-  if (path.endsWith('/')) {
-    // redirect from index path
-    redirectsSet.add(path + 'index.html')
-  } else {
-    // redirect from the path that does not end with `.html`
-    redirectsSet.add(path.replace(/.html$/, ''))
-  }
-
   // redirect from inferred path
   if (pathInferred !== null) {
     redirectsSet.add(pathInferred)
@@ -42,7 +34,14 @@ const resolvePageRouteItem = ({
   // avoid redirect from the page path itself
   redirectsSet.delete(path)
 
-  return [key, path, routeMeta, [...redirectsSet]]
+  return [
+    key,
+    path,
+    routeMeta,
+    [...redirectsSet].map((item) =>
+      item.replace(/\.md$/, '.html') === path ? ':md' : item
+    ),
+  ]
 }
 
 /**

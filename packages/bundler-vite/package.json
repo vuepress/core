@@ -42,7 +42,7 @@
     "connect-history-api-fallback": "^2.0.0",
     "postcss": "^8.4.24",
     "postcss-load-config": "^4.0.1",
-    "rollup": "^3.24.0",
+    "rollup": "^3.26.0",
     "vite": "~4.3.9",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2"
