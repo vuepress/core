@@ -8,6 +8,6 @@
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "target": "ES2020"
+    "target": "ES2021"
   }
 }

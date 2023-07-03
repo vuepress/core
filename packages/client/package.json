@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-beta.63",
+  "version": "2.0.0-beta.64",
   "description": "Client package of VuePress",
   "keywords": [
     "vuepress",
@@ -39,6 +39,7 @@
   "dependencies": {
     "@vue/devtools-api": "^6.5.0",
     "@vuepress/shared": "workspace:*",
+    "@vueuse/core": "^10.2.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2"
   },

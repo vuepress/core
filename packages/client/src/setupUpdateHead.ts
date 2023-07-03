@@ -61,10 +61,7 @@ export const setupUpdateHead = (): void => {
   onMounted(() => {
     loadHead()
     updateHead()
-    watch(
-      () => head.value,
-      () => updateHead()
-    )
+    watch(() => head.value, updateHead)
   })
 }
 
