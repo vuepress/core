@@ -9,6 +9,10 @@
 
 ## Status: Beta
 
+> VuePress is now maintained by the community.
+> The core team has moved on to its successor, [VitePress](https://vitepress.dev/).
+> Consider [migrating](https://vitepress.dev/guide/migration-from-vuepress).
+
 For users from VuePress v1, please check out the [migration guide](https://v2.vuepress.vuejs.org/guide/migration.html).
 
 For users who want to follow our progress or contribute to this project, please check out the [roadmap](https://github.com/vuepress/vuepress-next/discussions/68).
