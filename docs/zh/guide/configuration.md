@@ -34,6 +34,8 @@ vuepress dev docs --config my-config.js
 
 一个基础的配置文件是这样的：
 
+:::: code-group
+::: code-group-item 对象模式
 ```ts
 import { defineUserConfig } from 'vuepress'
 
@@ -43,6 +45,19 @@ export default defineUserConfig({
   description: '这是我的第一个 VuePress 站点',
 })
 ```
+:::
+::: code-group-item 异步函数模式
+```ts
+import { defineUserConfig } from 'vuepress'
+
+export default async () => defineUserConfig({
+  lang: 'zh-CN',
+  title: '你好， VuePress ！',
+  description: '这是我的第一个 VuePress 站点',
+})
+```
+:::
+::::
 
 ::: tip
 前往 [配置参考](../reference/config.md) 查看所有 VuePress 配置。

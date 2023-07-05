@@ -34,6 +34,8 @@ vuepress dev docs --config my-config.js
 
 A basic config file looks like this:
 
+:::: code-group
+::: code-group-item Object
 ```ts
 import { defineUserConfig } from 'vuepress'
 
@@ -43,6 +45,19 @@ export default defineUserConfig({
   description: 'Just playing around',
 })
 ```
+:::
+::: code-group-item Async Function
+```ts
+import { defineUserConfig } from 'vuepress'
+
+export default async () => defineUserConfig({
+  lang: 'en-US',
+  title: 'Hello VuePress',
+  description: 'Just playing around',
+})
+```
+:::
+::::
 
 ::: tip
 Check out the [Config Reference](../reference/config.md) for a full list of VuePress config.
