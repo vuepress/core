@@ -1,4 +1,5 @@
 import { pathToFileURL } from 'node:url'
+import { isFunction } from '@vuepress/shared'
 import { fs, hash, importFileDefault, path } from '@vuepress/utils'
 import { build } from 'esbuild'
 import type { UserConfig } from './types.js'
@@ -86,7 +87,10 @@ export const loadUserConfig = async (
   let userConfig: UserConfig
   try {
     await fs.writeFile(tempFilePath, text)
-    userConfig = await importFileDefault(tempFilePath)
+    const config = await importFileDefault<
+      UserConfig | (() => Promise<UserConfig>)
+    >(tempFilePath)
+    userConfig = isFunction(config) ? await config() : config
   } finally {
     await fs.rm(tempFilePath)
   }
