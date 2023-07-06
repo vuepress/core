@@ -27,7 +27,7 @@ export const getContributors = async (
       // If one of the contributors is a "noreply" email address, *and* there's
       // already a contributor *with the same name*, it is very likely a duplicate,
       // so it can be removed.
-      if (item.email.split('@')[1]?.match(/no-?reply/')) {
+      if (item.email.split('@')[1]?.match(/no-?reply/)) {
         return index === self.findIndex((t) => t.name === item.name)
       }
       return true
