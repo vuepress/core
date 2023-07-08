@@ -28,7 +28,13 @@ export const getContributors = async (
       // already a contributor *with the same name*, it is very likely a duplicate,
       // so it can be removed.
       if (item.email.split('@')[1]?.match(/no-?reply/)) {
-        return index === self.findIndex((t) => t.name === item.name)
+        const realIndex = self.findIndex((t) => t.name === item.name)
+        if (realIndex !== index) {
+          // Before filtering, update the "real" contributor to also include the noreply's commits
+          self[realIndex].commits += item.commits
+          return false
+        }
+        return true
       }
       return true
     })
