@@ -82,7 +82,7 @@ export const setupGlobalComputed = (
       siteLocaleData.value
     )
   )
-  const pageLang = computed(() => 
+  const pageLang = computed(() =>
     resolvers.resolvePageLang(pageData.value, siteLocaleData.value)
   )
   const pageLayout = computed(() =>
