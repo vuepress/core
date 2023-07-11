@@ -92,7 +92,8 @@ export const resolvers = reactive({
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (page: PageData): PageLang => page.lang || 'en',
+  resolvePageLang: (page: PageData, siteLocale: SiteLocaleData): PageLang =>
+    page.lang || siteLocale.lang || 'en-US',
 
   /**
    * Resolve layout component of current page
