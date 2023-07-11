@@ -18,7 +18,7 @@ describe('utils > logger', () => {
       logger[method]('foo')
       expect(console[innerMethod]).toHaveBeenCalledWith(
         expect.any(String),
-        'foo'
+        'foo',
       )
 
       console[innerMethod] = stored

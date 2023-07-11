@@ -49,7 +49,7 @@ useUpdateDeviceStatus(
         navbarHorizontalPadding -
         (navbarBrand.value?.offsetWidth || 0)
     }
-  }
+  },
 )
 
 function getCssValue(el: HTMLElement | null, property: string): number {

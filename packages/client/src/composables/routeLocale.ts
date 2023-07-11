@@ -15,7 +15,7 @@ export type RouteLocaleRef = Readonly<Ref<RouteLocale>>
  * Injection key for page route locale path
  */
 export const routeLocaleSymbol: InjectionKey<RouteLocaleRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'routeLocale' : ''
+  __VUEPRESS_DEV__ ? 'routeLocale' : '',
 )
 
 /**

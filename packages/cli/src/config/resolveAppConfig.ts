@@ -29,7 +29,9 @@ export const resolveAppConfig = ({
 
   if (appConfig.bundler === undefined || appConfig.theme === undefined) {
     logger.error(
-      `${colors.magenta('bundler')} and ${colors.magenta('theme')} are required`
+      `${colors.magenta('bundler')} and ${colors.magenta(
+        'theme',
+      )} are required`,
     )
     return null
   }
@@ -45,14 +47,14 @@ export const resolveAppConfig = ({
     logger.warn(
       `${colors.magenta('base')} should start and end with a slash (/),` +
         ` so it has been normalized from ${colors.magenta(rawBase)}` +
-        ` to ${colors.magenta(appConfig.base)}`
+        ` to ${colors.magenta(appConfig.base)}`,
     )
   }
 
   if (appConfig.dest && isChildPath(appConfig.source, appConfig.dest)) {
     logger.warn(
       `${colors.magenta('dest')} directory would be emptied during build,` +
-        ` so we fallback it to the default directory for the safety of your source files`
+        ` so we fallback it to the default directory for the safety of your source files`,
     )
     delete appConfig.dest
   }

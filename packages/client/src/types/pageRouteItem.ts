@@ -4,5 +4,5 @@ export type PageRouteItem = [
   name: string,
   path: string,
   meta: RouteMeta,
-  redirects: string[]
+  redirects: string[],
 ]

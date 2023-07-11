@@ -11,7 +11,7 @@ const log = debug('vuepress:bundler-vite/build')
 
 export const build = async (
   options: ViteBundlerOptions,
-  app: App
+  app: App,
 ): ReturnType<Bundler['build']> => {
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
@@ -51,16 +51,16 @@ export const build = async (
 
     // get client bundle entry chunk and css asset
     const clientEntryChunk = clientOutput.output.find(
-      (item) => item.type === 'chunk' && item.isEntry
+      (item) => item.type === 'chunk' && item.isEntry,
     ) as OutputChunk
     const clientCssAsset = clientOutput.output.find(
       (item): item is OutputAsset =>
-        item.type === 'asset' && item.fileName.endsWith('.css')
+        item.type === 'asset' && item.fileName.endsWith('.css'),
     )
 
     // get server bundle entry chunk
     const serverEntryChunk = serverOutput.output.find(
-      (item) => item.type === 'chunk' && item.isEntry
+      (item) => item.type === 'chunk' && item.isEntry,
     ) as OutputChunk
 
     // load the compiled server bundle

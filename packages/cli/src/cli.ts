@@ -43,7 +43,7 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .option('-c, --config <config>', 'Set path to config file')
     .option(
       '-d, --dest <dest>',
-      'Set the directory build output (default: .vuepress/dist)'
+      'Set the directory build output (default: .vuepress/dist)',
     )
     .option('-t, --temp <temp>', 'Set the directory of the temporary files')
     .option('--cache <cache>', 'Set the directory of the cache files')

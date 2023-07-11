@@ -17,6 +17,6 @@ export const renderPageScripts = ({
   [...pageClientFilesMeta, ...initialFilesMeta]
     .filter(({ type }) => type === 'script')
     .map(
-      ({ file }) => `<script src="${app.options.base}${file}" defer></script>`
+      ({ file }) => `<script src="${app.options.base}${file}" defer></script>`,
     )
     .join('')

@@ -15,7 +15,7 @@ export const normalizeClientConfigFileHook =
     const isExisted = await fs.pathExists(clientConfigFileResult)
     if (!isExisted) {
       throw logger.createError(
-        `client config file does not exist: ${clientConfigFileResult}`
+        `client config file does not exist: ${clientConfigFileResult}`,
       )
     }
 

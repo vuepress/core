@@ -16,7 +16,7 @@ export interface ClientManifest {
  * Collecting webpack bundled files info for SSR
  */
 export const createClientPlugin = (
-  outputFile: string
+  outputFile: string,
 ): WebpackPluginInstance => {
   const clientPlugin: WebpackPluginInstance = {
     apply(compiler) {
@@ -46,13 +46,13 @@ export const createClientPlugin = (
           // i.e. script and style files that are not included in the initial entry files
           const asyncFiles = allFiles.filter(
             (file) =>
-              (isJS(file) || isCSS(file)) && !initialFiles.includes(file)
+              (isJS(file) || isCSS(file)) && !initialFiles.includes(file),
           )
 
           // get asset modules
           const assetModules = modules.filter(
             (m): m is FnModules & Required<Pick<FnModules, 'assets'>> =>
-              !!(m.assets && m.assets.length)
+              !!(m.assets && m.assets.length),
           )
 
           // get modules for client manifest
@@ -103,7 +103,7 @@ export const createClientPlugin = (
           const clientManifestJson = JSON.stringify(clientManifest, null, 2)
 
           await fs.outputFile(outputFile, clientManifestJson)
-        }
+        },
       )
     },
   }

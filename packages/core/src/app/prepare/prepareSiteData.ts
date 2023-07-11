@@ -21,7 +21,7 @@ if (import.meta.hot) {
 export const prepareSiteData = async (app: App): Promise<void> => {
   let content = `\
 export const siteData = JSON.parse(${JSON.stringify(
-    JSON.stringify(app.siteData)
+    JSON.stringify(app.siteData),
   )})
 `
 

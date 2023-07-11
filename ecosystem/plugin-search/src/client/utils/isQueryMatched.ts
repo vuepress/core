@@ -32,7 +32,7 @@ export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
         return `(?=.*\\b${escapeRegExp(word)}\\b)`
       })
       .join('') + '.+',
-    'gi'
+    'gi',
   )
   return searchRegex.test(toMatchStr)
 }

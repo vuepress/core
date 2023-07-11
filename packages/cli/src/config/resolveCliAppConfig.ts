@@ -11,7 +11,7 @@ const OPTIONS_DIRECTORY = ['cache', 'dest', 'temp'] as const
 export const resolveCliAppConfig = (
   sourceDir: string,
   commandOptions: Partial<AppConfig>,
-  cwd = process.cwd()
+  cwd = process.cwd(),
 ): Partial<AppConfig> & Pick<AppConfig, 'source'> => {
   // resolve the source directory
   const source = path.resolve(cwd, sourceDir)

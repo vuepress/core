@@ -27,7 +27,7 @@ export const constantsReplacementPlugin = (app: App): Plugin => {
   const replaceConstants = (code: string, breaker: string): string =>
     code.replace(
       constantsRegexp,
-      (constant) => `${constant[0]}${breaker}${constant.slice(1)}`
+      (constant) => `${constant[0]}${breaker}${constant.slice(1)}`,
     )
 
   return {
@@ -51,7 +51,7 @@ export const constantsReplacementPlugin = (app: App): Plugin => {
         `\\b(${constants
           .map((item) => item.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&'))
           .join('|')})`,
-        'g'
+        'g',
       )
     },
 

@@ -57,36 +57,36 @@ export interface GlobalComputed {
 export const setupGlobalComputed = (
   app: App,
   router: Router,
-  clientConfigs: ClientConfig[]
+  clientConfigs: ClientConfig[],
 ): GlobalComputed => {
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   // create eager computed for route path and locale, so that route changes
   // won't make all downstream computed re-evaluate
   const routePath = computedEager(() => router.currentRoute.value.path)
   const routeLocale = computedEager(() =>
-    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
   const siteLocaleData = computed(() =>
-    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
+    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
   const pageFrontmatter = computed(() =>
-    resolvers.resolvePageFrontmatter(pageData.value)
+    resolvers.resolvePageFrontmatter(pageData.value),
   )
   const pageHeadTitle = computed(() =>
-    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),
   )
   const pageHead = computed(() =>
     resolvers.resolvePageHead(
       pageHeadTitle.value,
       pageFrontmatter.value,
-      siteLocaleData.value
-    )
+      siteLocaleData.value,
+    ),
   )
   const pageLang = computed(() =>
-    resolvers.resolvePageLang(pageData.value, siteLocaleData.value)
+    resolvers.resolvePageLang(pageData.value, siteLocaleData.value),
   )
   const pageLayout = computed(() =>
-    resolvers.resolvePageLayout(pageData.value, layouts.value)
+    resolvers.resolvePageLayout(pageData.value, layouts.value),
   )
 
   // provide global computed

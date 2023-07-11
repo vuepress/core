@@ -35,7 +35,7 @@ export const externalLinkIconPlugin = ({
       idx,
       options,
       env: MarkdownEnv,
-      self
+      self,
     ) => {
       const result = rawLinkOpenRule(tokens, idx, options, env, self)
       if (

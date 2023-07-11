@@ -23,7 +23,7 @@ const heroImage = computed(() => {
   return frontmatter.value.heroImage
 })
 const heroAlt = computed(
-  () => frontmatter.value.heroAlt || heroText.value || 'hero'
+  () => frontmatter.value.heroAlt || heroText.value || 'hero',
 )
 const heroHeight = computed(() => frontmatter.value.heroHeight || 280)
 

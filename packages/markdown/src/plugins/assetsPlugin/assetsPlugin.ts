@@ -15,7 +15,7 @@ export interface AssetsPluginOptions {
  */
 export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md,
-  { relativePathPrefix = '@source' }: AssetsPluginOptions = {}
+  { relativePathPrefix = '@source' }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
   const rawImageRule = md.renderer.rules.image!
@@ -47,8 +47,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
               src.trim(),
               relativePathPrefix,
               env,
-              true
-            )}${quote}`
+              true,
+            )}${quote}`,
         )
         // handle srcset
         .replace(
@@ -66,11 +66,11 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                         url.trim(),
                         relativePathPrefix,
                         env,
-                        true
-                      )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`
-                  )
+                        true,
+                      )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
+                  ),
               )
-              .join(', ')}${quote}`
+              .join(', ')}${quote}`,
         )
 
       return rawHtmlRule(tokens, idx, options, env, self)

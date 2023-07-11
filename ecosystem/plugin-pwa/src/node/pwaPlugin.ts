@@ -45,7 +45,7 @@ export const pwaPlugin =
 
       onGenerated: (app) =>
         withSpinner('Generating service worker')(() =>
-          generateServiceWorker(app, serviceWorkerFilename, generateSWConfig)
+          generateServiceWorker(app, serviceWorkerFilename, generateSWConfig),
         ),
     }
   }

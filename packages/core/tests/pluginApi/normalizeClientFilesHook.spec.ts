@@ -13,18 +13,18 @@ const app = createBaseApp({
 })
 const clientConfigFile = path.resolve(
   __dirname,
-  '../__fixtures__/clientConfigs/clientConfig.ts'
+  '../__fixtures__/clientConfigs/clientConfig.ts',
 )
 const clientConfigFileNonExistent = path.resolve(
   __dirname,
-  '../__fixtures__/clientConfigs/non-existent.ts'
+  '../__fixtures__/clientConfigs/non-existent.ts',
 )
 
 describe('core > pluginApi > normalizeClientConfigFileHook', () => {
   describe('should keep function as is', () => {
     it('return value is string', async () => {
       const rawHook: ClientConfigFileHook['exposed'] = vi.fn(
-        () => clientConfigFile
+        () => clientConfigFile,
       )
       const normalizedHook = normalizeClientConfigFileHook(rawHook)
       expect(await normalizedHook(app)).toEqual(clientConfigFile)

@@ -14,10 +14,10 @@ ${app.pages
     ({ key, path, componentFilePath, componentFileChunkName }) => `
   // path: ${path}
   ${JSON.stringify(key)}: defineAsyncComponent(() => import(${
-      componentFileChunkName
-        ? `/* webpackChunkName: "${componentFileChunkName}" */`
-        : ''
-    }${JSON.stringify(componentFilePath)})),`
+    componentFileChunkName
+      ? `/* webpackChunkName: "${componentFileChunkName}" */`
+      : ''
+  }${JSON.stringify(componentFilePath)})),`,
   )
   .join('')}
 }

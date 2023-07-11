@@ -8,7 +8,7 @@ const normalizePath = (path: string): string =>
 
 const isActiveLink = (
   link: string,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
 ): boolean => {
   if (route.hash === link) {
     return true
@@ -20,7 +20,7 @@ const isActiveLink = (
 
 export const isActiveSidebarItem = (
   item: ResolvedSidebarItem,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
 ): boolean => {
   if (item.link && isActiveLink(item.link, route)) {
     return true

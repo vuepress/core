@@ -30,7 +30,7 @@ export const createRoutes = (): RouteRecordRaw[] =>
                 path.substring(0, path.length - 5) + '.md'
               : item,
           redirect: path,
-        }))
+        })),
       )
       return result
     },
@@ -40,5 +40,5 @@ export const createRoutes = (): RouteRecordRaw[] =>
         path: '/:catchAll(.*)',
         component: Vuepress,
       },
-    ] as RouteRecordRaw[]
+    ] as RouteRecordRaw[],
   )

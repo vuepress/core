@@ -10,7 +10,7 @@ export type UpdateHead = () => void
  * Injection key for `updateHead` util
  */
 export const updateHeadSymbol: InjectionKey<UpdateHead> = Symbol(
-  __VUEPRESS_DEV__ ? 'updateHead' : ''
+  __VUEPRESS_DEV__ ? 'updateHead' : '',
 )
 
 /**

@@ -29,7 +29,7 @@ const svg = h(
       points:
         '45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9',
     }),
-  ]
+  ],
 )
 
 export const ExternalLinkIcon = defineComponent({
@@ -49,7 +49,7 @@ export const ExternalLinkIcon = defineComponent({
       () =>
         props.locales[routeLocale.value] ?? {
           openInNewWindow: 'open in new window',
-        }
+        },
     )
     return () =>
       h('span', [
@@ -59,7 +59,7 @@ export const ExternalLinkIcon = defineComponent({
           {
             class: 'external-link-icon-sr-only',
           },
-          locale.value.openInNewWindow
+          locale.value.openInNewWindow,
         ),
       ])
   },

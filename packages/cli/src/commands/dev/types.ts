@@ -3,7 +3,7 @@
  */
 export type DevCommand = (
   sourceDir?: string,
-  commandOptions?: DevCommandOptions
+  commandOptions?: DevCommandOptions,
 ) => Promise<void>
 
 /**

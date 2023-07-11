@@ -36,7 +36,7 @@ export const resolvers = reactive({
         ...prev,
         ...item.layouts,
       }),
-      {} as Layouts
+      {} as Layouts,
     ),
 
   /**
@@ -62,7 +62,7 @@ export const resolvers = reactive({
   resolvePageHead: (
     headTitle: PageHeadTitle,
     frontmatter: PageFrontmatter,
-    siteLocale: SiteLocaleData
+    siteLocale: SiteLocaleData,
   ): PageHead => {
     const description = isString(frontmatter.description)
       ? frontmatter.description
@@ -83,7 +83,7 @@ export const resolvers = reactive({
    */
   resolvePageHeadTitle: (
     page: PageData,
-    siteLocale: SiteLocaleData
+    siteLocale: SiteLocaleData,
   ): PageHeadTitle =>
     [page.title, siteLocale.title].filter((item) => !!item).join(' | '),
 
@@ -126,7 +126,7 @@ export const resolvers = reactive({
    */
   resolveRouteLocale: (
     locales: SiteData['locales'],
-    routePath: string
+    routePath: string,
   ): RouteLocale => resolveLocalePath(locales, routePath),
 
   /**
@@ -136,7 +136,7 @@ export const resolvers = reactive({
    */
   resolveSiteLocaleData: (
     site: SiteData,
-    routeLocale: RouteLocale
+    routeLocale: RouteLocale,
   ): SiteLocaleData => ({
     ...site,
     ...site.locales[routeLocale],

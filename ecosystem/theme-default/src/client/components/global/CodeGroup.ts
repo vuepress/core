@@ -82,7 +82,7 @@ export const CodeGroup = defineComponent({
 
         // find the index of the code-group-item with `active` props
         activeIndex.value = items.findIndex(
-          (vnode) => vnode.props.active === '' || vnode.props.active === true
+          (vnode) => vnode.props.active === '' || vnode.props.active === true,
         )
 
         // if there is no `active` props on code-group-item, set the first item active
@@ -126,11 +126,11 @@ export const CodeGroup = defineComponent({
                     onClick: () => (activeIndex.value = i),
                     onKeydown: (e) => keyboardHandler(e, i),
                   },
-                  vnode.props.title
-                )
+                  vnode.props.title,
+                ),
               )
-            })
-          )
+            }),
+          ),
         ),
         items,
       ])

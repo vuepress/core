@@ -12,7 +12,7 @@ import type { App, Page } from '@vuepress/core'
  */
 export const handlePageUnlink = async (
   app: App,
-  filePath: string
+  filePath: string,
 ): Promise<Page | null> => {
   // check if the unlinked page is existed
   const pageIndex = app.pages.findIndex((page) => page.filePath === filePath)

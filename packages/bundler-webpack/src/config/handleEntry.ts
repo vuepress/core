@@ -17,7 +17,7 @@ export const handleEntry = ({
     .entry('app')
     .add(
       app.dir.client(
-        fs.readJsonSync(app.dir.client('package.json')).exports['./app']
-      )
+        fs.readJsonSync(app.dir.client('package.json')).exports['./app'],
+      ),
     )
 }

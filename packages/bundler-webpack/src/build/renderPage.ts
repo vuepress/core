@@ -75,7 +75,7 @@ export const renderPage = async ({
     // page head
     .replace(
       '<!--vuepress-ssr-head-->',
-      ssrContext.head.map(renderHead).join('')
+      ssrContext.head.map(renderHead).join(''),
     )
     // page preload & prefetch links
     .replace(
@@ -88,12 +88,12 @@ export const renderPage = async ({
         app,
         asyncFilesMeta,
         pageClientFilesMeta,
-      })}`
+      })}`,
     )
     // page styles
     .replace(
       '<!--vuepress-ssr-styles-->',
-      renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta })
+      renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta }),
     )
     // page content
     // notice that some special chars in string like `$&` would be recognized by `replace()`,
@@ -103,7 +103,7 @@ export const renderPage = async ({
     // page scripts
     .replace(
       '<!--vuepress-ssr-scripts-->',
-      renderPageScripts({ app, initialFilesMeta, pageClientFilesMeta })
+      renderPageScripts({ app, initialFilesMeta, pageClientFilesMeta }),
     )
 
   // write html file

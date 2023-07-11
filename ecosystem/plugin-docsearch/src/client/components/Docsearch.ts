@@ -73,7 +73,7 @@ export const Docsearch = defineComponent({
           ...options.value.searchParameters,
           facetFilters: getFacetFilters(
             options.value.searchParameters?.facetFilters,
-            lang.value
+            lang.value,
           ),
         },
       })
@@ -111,7 +111,7 @@ export const Docsearch = defineComponent({
         : h('div', {
             onClick: trigger,
             innerHTML: getSearchButtonTemplate(
-              options.value.translations?.button
+              options.value.translations?.button,
             ),
           }),
     ]

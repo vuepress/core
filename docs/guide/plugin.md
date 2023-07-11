@@ -37,7 +37,7 @@ But if you have too many things to do in your config file, you can consider to e
 ```ts
 import myPlugin from './path/to/my-plugin.js'
 
-export default  {
+export default {
   plugins: [
     myPlugin(),
   ],

@@ -39,7 +39,7 @@ const resolvePageRouteItem = ({
     path,
     routeMeta,
     [...redirectsSet].map((item) =>
-      item.replace(/\.md$/, '.html') === path ? ':md' : item
+      item.replace(/\.md$/, '.html') === path ? ':md' : item,
     ),
   ]
 }

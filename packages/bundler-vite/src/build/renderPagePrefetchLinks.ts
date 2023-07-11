@@ -23,7 +23,7 @@ export const renderPagePrefetchLinks = ({
 
   // dynamic imports excluding current page chunks
   const prefetchFiles = outputEntryChunk.dynamicImports.filter(
-    (item) => !pageChunkFiles.some((file) => file === item)
+    (item) => !pageChunkFiles.some((file) => file === item),
   )
 
   return prefetchFiles

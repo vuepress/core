@@ -10,7 +10,7 @@ export type LayoutsRef = ComputedRef<Layouts>
  * Injection key for layouts
  */
 export const layoutsSymbol: InjectionKey<LayoutsRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'layouts' : ''
+  __VUEPRESS_DEV__ ? 'layouts' : '',
 )
 
 /**

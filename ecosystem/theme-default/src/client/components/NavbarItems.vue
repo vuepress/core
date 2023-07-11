@@ -69,7 +69,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           // or fallback to homepage
           const targetLocalePage = currentPath.replace(
             routeLocale.value,
-            targetLocalePath
+            targetLocalePath,
           )
           if (
             router.getRoutes().some((item) => item.path === targetLocalePage)
@@ -100,7 +100,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 
   const repo = computed(() => themeLocale.value.repo)
   const repoType = computed(() =>
-    repo.value ? resolveRepoType(repo.value) : null
+    repo.value ? resolveRepoType(repo.value) : null,
   )
 
   const repoLink = computed(() => {
@@ -133,7 +133,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 }
 
 const resolveNavbarItem = (
-  item: NavbarItem | NavbarGroup | string
+  item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
     return useNavLink(item)
@@ -171,7 +171,7 @@ useUpdateDeviceStatus(
     } else {
       isMobile.value = false
     }
-  }
+  },
 )
 </script>
 

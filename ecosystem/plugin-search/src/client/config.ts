@@ -23,7 +23,7 @@ export default defineClientConfig({
         hotKeys,
         maxSuggestions,
         ...props,
-      })
+      }),
     )
   },
 })

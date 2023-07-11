@@ -9,7 +9,7 @@ type FacetFilters =
  */
 export const getFacetFilters = (
   rawFacetFilters: FacetFilters = [],
-  lang: string
+  lang: string,
 ): FacetFilters => [
   `lang:${lang}`,
   ...((isArray(rawFacetFilters)

@@ -35,6 +35,6 @@ export const resolveViteConfig = async ({
       ],
     },
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin
-    options.viteOptions ?? {}
+    options.viteOptions ?? {},
   )
 }

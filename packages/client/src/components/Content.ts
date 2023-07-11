@@ -20,7 +20,7 @@ export const Content = defineComponent({
   setup(props) {
     const page = usePageData()
     const pageComponent = computed(
-      () => pagesComponents[props.pageKey || page.value.key]
+      () => pagesComponents[props.pageKey || page.value.key],
     )
     return () =>
       pageComponent.value
@@ -31,7 +31,7 @@ export const Content = defineComponent({
             'div',
             __VUEPRESS_DEV__
               ? 'Page does not exist. This is a fallback content.'
-              : '404 Not Found'
+              : '404 Not Found',
           )
   },
 })

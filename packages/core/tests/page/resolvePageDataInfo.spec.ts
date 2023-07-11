@@ -18,7 +18,7 @@ describe('core > page > resolvePageDataInfo', () => {
         app,
         key,
         htmlFilePathRelative,
-      })
+      }),
     ).toEqual({
       dataFilePath: expectedFilePath,
       dataFilePathRelative: path.relative(app.dir.temp(), expectedFilePath),

@@ -18,7 +18,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
 
   // create pages from files
   const pages = await Promise.all(
-    pageFilePaths.map((filePath) => createPage(app, { filePath }))
+    pageFilePaths.map((filePath) => createPage(app, { filePath })),
   )
 
   // if there is no 404 page, add one
@@ -29,7 +29,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
         frontmatter: {
           layout: 'NotFound',
         },
-      })
+      }),
     )
   }
 

@@ -40,7 +40,7 @@ export const resolvePagePermalink = ({
       .replace(/:month/, month!)
       .replace(/:day/, day!)
       .replace(/:slug/, slug)
-      .replace(/:raw/, pathInferred?.replace(/^\//, '') ?? '')
+      .replace(/:raw/, pathInferred?.replace(/^\//, '') ?? ''),
   )
 
   return ensureLeadingSlash(link)

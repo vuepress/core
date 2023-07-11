@@ -14,7 +14,7 @@ export type Hook<
     ? U extends Promise<infer V>
       ? V
       : U
-    : void
+    : void,
 > = {
   exposed: Exposed
   normalized: Normalized

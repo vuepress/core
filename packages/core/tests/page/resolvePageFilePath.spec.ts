@@ -46,7 +46,7 @@ describe('core > page > resolvePageFilePath', () => {
         options: {
           filePath: relativeFilePath,
         },
-      })
+      }),
     ).toThrow()
 
     expect(console.error).toHaveBeenCalled()

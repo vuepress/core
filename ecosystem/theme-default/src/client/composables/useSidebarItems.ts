@@ -43,7 +43,7 @@ export const setupSidebarItems = (): void => {
   const themeLocale = useThemeLocaleData()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const sidebarItems = computed(() =>
-    resolveSidebarItems(frontmatter.value, themeLocale.value)
+    resolveSidebarItems(frontmatter.value, themeLocale.value),
   )
   provide(sidebarItemsSymbol, sidebarItems)
 }
@@ -55,7 +55,7 @@ export const setupSidebarItems = (): void => {
  */
 export const resolveSidebarItems = (
   frontmatter: DefaultThemeNormalPageFrontmatter,
-  themeLocale: DefaultThemeData
+  themeLocale: DefaultThemeData,
 ): ResolvedSidebarItem[] => {
   // get sidebar config from frontmatter > theme data
   const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'
@@ -86,7 +86,7 @@ export const resolveSidebarItems = (
  */
 export const headerToSidebarItem = (
   header: PageHeader,
-  sidebarDepth: number
+  sidebarDepth: number,
 ): ResolvedSidebarItem => ({
   text: header.title,
   link: header.link,
@@ -95,7 +95,7 @@ export const headerToSidebarItem = (
 
 export const headersToSidebarItemChildren = (
   headers: PageHeader[],
-  sidebarDepth: number
+  sidebarDepth: number,
 ): ResolvedSidebarItem[] =>
   sidebarDepth > 0
     ? headers.map((header) => headerToSidebarItem(header, sidebarDepth - 1))
@@ -105,7 +105,7 @@ export const headersToSidebarItemChildren = (
  * Resolve sidebar items if the config is `auto`
  */
 export const resolveAutoSidebarItems = (
-  sidebarDepth: number
+  sidebarDepth: number,
 ): ResolvedSidebarItem[] => {
   const page = usePageData()
 
@@ -122,13 +122,13 @@ export const resolveAutoSidebarItems = (
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarConfigArray,
-  sidebarDepth: number
+  sidebarDepth: number,
 ): ResolvedSidebarItem[] => {
   const route = useRoute()
   const page = usePageData()
 
   const handleChildItem = (
-    item: ResolvedSidebarItem | SidebarItem | string
+    item: ResolvedSidebarItem | SidebarItem | string,
   ): ResolvedSidebarItem => {
     let childItem: ResolvedSidebarItem
     if (isString(item)) {
@@ -169,7 +169,7 @@ export const resolveArraySidebarItems = (
  */
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarConfigObject,
-  sidebarDepth: number
+  sidebarDepth: number,
 ): ResolvedSidebarItem[] => {
   const route = useRoute()
   const sidebarPath = resolveLocalePath(sidebarConfig, route.path)

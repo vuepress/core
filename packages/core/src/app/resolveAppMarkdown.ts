@@ -9,7 +9,7 @@ export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
   // plugin hook: extendsMarkdownOptions
   await app.pluginApi.hooks.extendsMarkdownOptions.process(
     app.options.markdown,
-    app
+    app,
   )
 
   const markdown = createMarkdown(app.options.markdown)

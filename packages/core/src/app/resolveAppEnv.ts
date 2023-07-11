@@ -5,7 +5,7 @@ import type { AppEnv, AppOptions } from '../types/index.js'
  */
 export const resolveAppEnv = (
   options: AppOptions,
-  isBuild: boolean
+  isBuild: boolean,
 ): AppEnv => ({
   isBuild,
   isDev: !isBuild,

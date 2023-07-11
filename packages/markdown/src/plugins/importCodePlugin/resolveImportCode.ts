@@ -4,7 +4,7 @@ import type { ImportCodeTokenMeta } from './types.js'
 
 export const resolveImportCode = (
   { importPath, lineStart, lineEnd }: ImportCodeTokenMeta,
-  { filePath }: MarkdownEnv
+  { filePath }: MarkdownEnv,
 ): {
   importFilePath: string | null
   importCode: string
@@ -16,7 +16,7 @@ export const resolveImportCode = (
     // according to the markdown filePath
     if (!filePath) {
       logger.error(
-        `Import file ${colors.magenta(importPath)} can not be resolved`
+        `Import file ${colors.magenta(importPath)} can not be resolved`,
       )
       return {
         importFilePath: null,

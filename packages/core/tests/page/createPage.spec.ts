@@ -75,17 +75,17 @@ describe('core > page > createPage', () => {
     expect(page.htmlFilePath).toBe(app.dir.dest(`index.html`))
     expect(page.htmlFilePathRelative).toBe(`index.html`)
     expect(page.componentFilePath).toBe(
-      app.dir.temp(`pages/${page.htmlFilePathRelative}.vue`)
+      app.dir.temp(`pages/${page.htmlFilePathRelative}.vue`),
     )
     expect(page.componentFilePathRelative).toBe(
-      `pages/${page.htmlFilePathRelative}.vue`
+      `pages/${page.htmlFilePathRelative}.vue`,
     )
     expect(page.componentFileChunkName).toBe(page.key)
     expect(page.dataFilePath).toBe(
-      app.dir.temp(`pages/${page.htmlFilePathRelative}.js`)
+      app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
     )
     expect(page.dataFilePathRelative).toBe(
-      `pages/${page.htmlFilePathRelative}.js`
+      `pages/${page.htmlFilePathRelative}.js`,
     )
     expect(page.dataFileChunkName).toBe(page.key)
   })

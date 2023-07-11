@@ -24,7 +24,7 @@ export const resolveWebpackConfig = ({
   const configureWebpackResult = options.configureWebpack?.(
     webpackConfig,
     isServer,
-    isBuild
+    isBuild,
   )
 
   // if `configureWebpack` returns a configuration object,

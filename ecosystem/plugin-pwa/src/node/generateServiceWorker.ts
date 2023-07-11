@@ -29,7 +29,7 @@ export type GenerateSWConfig = Omit<
 export const generateServiceWorker = async (
   app: App,
   serviceWorkerFilename: string,
-  generateSWConfig: GenerateSWConfig
+  generateSWConfig: GenerateSWConfig,
 ): Promise<void> => {
   // lazy-load workbox-build
   const { generateSW } = await import('workbox-build')
@@ -39,7 +39,7 @@ export const generateServiceWorker = async (
 
   const { warnings } = await generateSW({
     dontCacheBustURLsMatching: new RegExp(
-      `\\.[0-9a-f]{8}\\.(${assetsExtensions.join('|')})$`
+      `\\.[0-9a-f]{8}\\.(${assetsExtensions.join('|')})$`,
     ),
     globPatterns: [`**/*.{${assetsExtensions.join(',')}}`],
     mode: app.env.isDebug ? 'development' : 'production',

@@ -18,8 +18,8 @@ Inside the client config file, `@vuepress/client` package provides a helper func
 import { defineClientConfig } from '@vuepress/client'
 
 export default defineClientConfig({
-  enhance({ app, router, siteData }){},
-  setup(){},
+  enhance({ app, router, siteData }) {},
+  setup() {},
   layouts: {},
   rootComponents: [],
 })

@@ -34,7 +34,7 @@ export interface LinksPluginOptions {
  */
 export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   md,
-  options: LinksPluginOptions = {}
+  options: LinksPluginOptions = {},
 ): void => {
   // tag of internal links
   const internalTag = options.internalTag || 'RouterLink'
@@ -51,7 +51,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   const handleLinkOpen = (
     tokens: Token[],
     idx: number,
-    env: MarkdownEnv
+    env: MarkdownEnv,
   ): void => {
     // get current token
     const token = tokens[idx]
@@ -76,14 +76,14 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     if (isLinkExternal(hrefLink, base)) {
       // set `externalAttrs` to current token
       Object.entries(externalAttrs).forEach(([key, val]) =>
-        token.attrSet(key, val)
+        token.attrSet(key, val),
       )
       return
     }
 
     // check if a link is an internal link
     const internalLinkMatch = hrefLink.match(
-      /^((?:.*)(?:\/|\.md|\.html))(#.*)?$/
+      /^((?:.*)(?:\/|\.md|\.html))(#.*)?$/,
     )
 
     if (!internalLinkMatch) {
@@ -103,7 +103,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const { relativePath, absolutePath } = resolvePaths(
       rawPath,
       base,
-      filePathRelative
+      filePathRelative,
     )
 
     // normalize markdown file path to route path

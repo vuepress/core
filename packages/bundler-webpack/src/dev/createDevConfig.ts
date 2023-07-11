@@ -7,7 +7,7 @@ import type { WebpackBundlerOptions } from '../types.js'
 
 export const createDevConfig = async (
   app: App,
-  options: WebpackBundlerOptions
+  options: WebpackBundlerOptions,
 ): Promise<Config> => {
   const config = await createClientBaseConfig({
     app,

@@ -5,14 +5,14 @@ import { execa } from 'execa'
  */
 export const getCreatedTime = async (
   filePaths: string[],
-  cwd: string
+  cwd: string,
 ): Promise<number> => {
   const { stdout } = await execa(
     'git',
     ['--no-pager', 'log', '--diff-filter=A', '--format=%at', ...filePaths],
     {
       cwd,
-    }
+    },
   )
 
   return (

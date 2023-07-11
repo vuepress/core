@@ -7,7 +7,7 @@ import type { UserConfig } from './types.js'
  * Load user config file
  */
 export const loadUserConfig = async (
-  userConfigPath?: string
+  userConfigPath?: string,
 ): Promise<{
   userConfig: UserConfig
   userConfigDependencies: string[]
@@ -61,11 +61,11 @@ export const loadUserConfig = async (
             const contents = await fs.readFile(args.path, 'utf8')
             const injectValues =
               `const ${dirnameVarName} = ${JSON.stringify(
-                path.dirname(args.path)
+                path.dirname(args.path),
               )};` +
               `const ${filenameVarName} = ${JSON.stringify(args.path)};` +
               `const ${importMetaUrlVarName} = ${JSON.stringify(
-                pathToFileURL(args.path).href
+                pathToFileURL(args.path).href,
               )};`
 
             return {

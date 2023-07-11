@@ -32,7 +32,7 @@ export const pageData: PageDataRef = ref(pageDataEmpty)
  * Returns the ref of the data of current page
  */
 export const usePageData = <
-  T extends Record<any, any> = Record<never, never>
+  T extends Record<any, any> = Record<never, never>,
 >(): PageDataRef<T> => pageData as PageDataRef<T>
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {

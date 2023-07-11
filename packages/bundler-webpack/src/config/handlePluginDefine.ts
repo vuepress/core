@@ -38,7 +38,7 @@ export const handlePluginDefine = async ({
     defineResult.forEach((defineObject) =>
       Object.entries(defineObject).forEach(([key, value]) => {
         options[key] = JSON.stringify(value)
-      })
+      }),
     )
 
     return [options]

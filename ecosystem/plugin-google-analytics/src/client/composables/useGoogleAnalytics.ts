@@ -23,7 +23,7 @@ declare global {
  * @see https://support.google.com/analytics/answer/9216061
  */
 export const useGoogleAnalytics = (
-  options: GoogleAnalyticsPluginOptions
+  options: GoogleAnalyticsPluginOptions,
 ): void => {
   // avoid duplicated import
   if (window.dataLayer && window.gtag) {
