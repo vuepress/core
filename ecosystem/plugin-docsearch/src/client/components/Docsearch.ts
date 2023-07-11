@@ -65,7 +65,6 @@ export const Docsearch = defineComponent({
      */
     const initialize = async (): Promise<void> => {
       const { default: docsearch } = await import('@docsearch/js')
-      // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
       docsearch({
         ...docsearchShim,
         ...options.value,

@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ES2020"],
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
