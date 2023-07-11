@@ -1,5 +1,4 @@
 import { pagesComponents } from '@internal/pagesComponents'
-import type { PageData } from '@vuepress/shared'
 import { removeEndingSlash } from '@vuepress/shared'
 import {
   createMemoryHistory,
@@ -33,23 +32,13 @@ export const createVueRouter = (): Router => {
     },
   })
 
-  // ensure page data and page component have been loaded in beforeResolve hook,
-  // but do not assign page data immediately to avoid mismatching between page data and route path.
-  let pendingPageData: PageData
-  let pendingToPath: string
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
-      ;[pendingPageData] = await Promise.all([
+      // ensure page data and page component have been loaded
+      ;[pageData.value] = await Promise.all([
         resolvers.resolvePageData(to.name as string),
         pagesComponents[to.name as string]?.__asyncLoader(),
       ])
-      pendingToPath = to.path
-    }
-  })
-  // instead, assign page data in afterEach hook
-  router.afterEach((to, from) => {
-    if (to.path !== from.path && to.path === pendingToPath) {
-      pageData.value = pendingPageData
     }
   })
 
