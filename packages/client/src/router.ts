@@ -33,23 +33,23 @@ export const createVueRouter = (): Router => {
     },
   })
 
-  let pendingData: PageData
-  let pendingLocation: string
-
+  // ensure page data and page component have been loaded in beforeResolve hook,
+  // but do not assign page data immediately to avoid mismatching between page data and route path.
+  let pendingPageData: PageData
+  let pendingToPath: string
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
-      // ensure page data and page component have been loaded
-      ;[pendingData] = await Promise.all([
+      ;[pendingPageData] = await Promise.all([
         resolvers.resolvePageData(to.name as string),
         pagesComponents[to.name as string]?.__asyncLoader(),
       ])
-      pendingLocation = to.path
+      pendingToPath = to.path
     }
   })
-
+  // instead, assign page data in afterEach hook
   router.afterEach((to, from) => {
-    if (to.path !== from.path && to.path === pendingLocation) {
-      pageData.value = pendingData
+    if (to.path !== from.path && to.path === pendingToPath) {
+      pageData.value = pendingPageData
     }
   })
 
