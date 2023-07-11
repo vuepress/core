@@ -1,3 +1,12 @@
+# [2.0.0-beta.66](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.65...v2.0.0-beta.66) (2023-07-11)
+
+
+### Reverts
+
+* fix(client): avoid mismatching between route path and page data (close [#1249](https://github.com/vuepress/vuepress-next/issues/1249)) ([#1361](https://github.com/vuepress/vuepress-next/issues/1361)) ([73e55f0](https://github.com/vuepress/vuepress-next/commit/73e55f0d795eb42600602d5024d27a2ecd6b66f4))
+
+
+
 # [2.0.0-beta.65](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.64...v2.0.0-beta.65) (2023-07-11)
 
 
