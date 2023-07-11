@@ -1,3 +1,18 @@
+# [2.0.0-beta.65](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.64...v2.0.0-beta.65) (2023-07-11)
+
+
+### Bug Fixes
+
+* **client:** avoid mismatching between route path and page data (close [#1249](https://github.com/vuepress/vuepress-next/issues/1249)) ([#1361](https://github.com/vuepress/vuepress-next/issues/1361)) ([9b0ad9e](https://github.com/vuepress/vuepress-next/commit/9b0ad9e7935f5b8b5b23c2d2cacff5f71514068a))
+* **client:** fallback page lang to site lang (close [#1365](https://github.com/vuepress/vuepress-next/issues/1365)) ([#1380](https://github.com/vuepress/vuepress-next/issues/1380)) ([debd65d](https://github.com/vuepress/vuepress-next/commit/debd65d68d895e32641f6c171fd4ca0516d621cc))
+
+
+### Features
+
+* **plugin-git:** remove duplicate no-reply contributors ([#1364](https://github.com/vuepress/vuepress-next/issues/1364)) ([3ff1b06](https://github.com/vuepress/vuepress-next/commit/3ff1b0638b14d1b636fdc531283aeee4b10b7122))
+
+
+
 # [2.0.0-beta.64](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.63...v2.0.0-beta.64) (2023-07-03)
 
 

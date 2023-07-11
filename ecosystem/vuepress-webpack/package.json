@@ -1,6 +1,6 @@
 {
   "name": "vuepress-webpack",
-  "version": "2.0.0-beta.64",
+  "version": "2.0.0-beta.65",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
