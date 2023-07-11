@@ -3,7 +3,7 @@ import type { HotKeyOptions } from '../../shared/index.js'
 
 export const isKeyMatched = (
   event: KeyboardEvent,
-  hotKeys: (string | HotKeyOptions)[]
+  hotKeys: (string | HotKeyOptions)[],
 ): boolean =>
   hotKeys.some((item) => {
     if (isString(item)) {

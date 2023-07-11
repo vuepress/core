@@ -28,8 +28,8 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
       for (const item of items) {
         log(
           `process ${colors.magenta(name)} from ${colors.magenta(
-            item.pluginName
-          )}`
+            item.pluginName,
+          )}`,
         )
 
         try {
@@ -44,8 +44,8 @@ export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
         } catch (e) {
           logger.error(
             `error in hook ${colors.magenta(name)} from ${colors.magenta(
-              item.pluginName
-            )}`
+              item.pluginName,
+            )}`,
           )
           throw e
         }

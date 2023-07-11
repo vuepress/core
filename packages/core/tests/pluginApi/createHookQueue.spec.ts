@@ -95,7 +95,7 @@ describe('core > pluginApi > createHookQueue', () => {
         expect(func1).toHaveBeenCalledWith(app)
         expect(func2).toHaveBeenCalledTimes(1)
         expect(func2).toHaveBeenCalledWith(app)
-      })
+      }),
     )
   })
 
@@ -252,11 +252,11 @@ describe('core > pluginApi > createHookQueue', () => {
     const hookNames = ['clientConfigFile'] as const
     const file1 = path.resolve(
       __dirname,
-      '../__fixtures__/clientConfigs/clientConfig.ts'
+      '../__fixtures__/clientConfigs/clientConfig.ts',
     )
     const file2 = path.resolve(
       __dirname,
-      '../__fixtures__/clientConfigs/clientConfig2.ts'
+      '../__fixtures__/clientConfigs/clientConfig2.ts',
     )
 
     hookNames.forEach((hookName) =>
@@ -279,7 +279,7 @@ describe('core > pluginApi > createHookQueue', () => {
         expect(func2).toHaveBeenCalledTimes(1)
         expect(func2).toHaveBeenCalledWith(app)
         expect(result).toEqual([file1, file2])
-      })
+      }),
     )
   })
 
@@ -306,7 +306,7 @@ describe('core > pluginApi > createHookQueue', () => {
         expect(func2).toHaveBeenCalledTimes(1)
         expect(func2).toHaveBeenCalledWith(app)
         expect(result).toEqual([{ foo: 'foo' }, { bar: 'bar' }])
-      })
+      }),
     )
   })
 })

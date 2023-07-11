@@ -25,7 +25,7 @@ describe('core > page > resolvePageHtmlInfo', () => {
           resolvePageHtmlInfo({
             app,
             path: source,
-          })
+          }),
         ).toEqual({
           htmlFilePath: app.dir.dest(expected),
           htmlFilePathRelative: expected,

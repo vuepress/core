@@ -5,7 +5,7 @@ import { execa } from 'execa'
  */
 export const getUpdatedTime = async (
   filePaths: string[],
-  cwd: string
+  cwd: string,
 ): Promise<number> => {
   const { stdout } = await execa(
     'git',
@@ -19,7 +19,7 @@ export const getUpdatedTime = async (
     ],
     {
       cwd,
-    }
+    },
   )
 
   return (

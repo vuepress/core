@@ -4,7 +4,7 @@ export type HighlightLinesRange = [number, number]
  * Resolve highlight-lines ranges from token info
  */
 export const resolveHighlightLines = (
-  info: string
+  info: string,
 ): HighlightLinesRange[] | null => {
   // try to match highlight-lines mark
   const match = info.match(/{([\d,-]+)}/)
@@ -29,6 +29,6 @@ export const resolveHighlightLines = (
  */
 export const isHighlightLine = (
   lineNumber: number,
-  ranges: HighlightLinesRange[]
+  ranges: HighlightLinesRange[],
 ): boolean =>
   ranges.some(([start, end]) => lineNumber >= start && lineNumber <= end)

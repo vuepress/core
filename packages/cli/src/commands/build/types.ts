@@ -3,7 +3,7 @@
  */
 export type BuildCommand = (
   sourceDir?: string,
-  commandOptions?: BuildCommandOptions
+  commandOptions?: BuildCommandOptions,
 ) => Promise<void>
 
 /**

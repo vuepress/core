@@ -1,4 +1,5 @@
-import { type App, computed, ref, watch } from 'vue'
+import { computedEager } from '@vueuse/core'
+import { type App, computed } from 'vue'
 import type { Router } from 'vue-router'
 import {
   type LayoutsRef,
@@ -56,39 +57,36 @@ export interface GlobalComputed {
 export const setupGlobalComputed = (
   app: App,
   router: Router,
-  clientConfigs: ClientConfig[]
+  clientConfigs: ClientConfig[],
 ): GlobalComputed => {
-  // create a manual computed route path, so that route hash changes won't trigger all downstream computed
-  const routePath = ref(router.currentRoute.value.path)
-  watch(
-    () => router.currentRoute.value.path,
-    (value) => (routePath.value = value)
-  )
-
-  // create global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
-  const routeLocale = computed(() =>
-    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
+  // create eager computed for route path and locale, so that route changes
+  // won't make all downstream computed re-evaluate
+  const routePath = computedEager(() => router.currentRoute.value.path)
+  const routeLocale = computedEager(() =>
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
   const siteLocaleData = computed(() =>
-    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
+    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
   const pageFrontmatter = computed(() =>
-    resolvers.resolvePageFrontmatter(pageData.value)
+    resolvers.resolvePageFrontmatter(pageData.value),
   )
   const pageHeadTitle = computed(() =>
-    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),
   )
   const pageHead = computed(() =>
     resolvers.resolvePageHead(
       pageHeadTitle.value,
       pageFrontmatter.value,
-      siteLocaleData.value
-    )
+      siteLocaleData.value,
+    ),
   )
-  const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
+  const pageLang = computed(() =>
+    resolvers.resolvePageLang(pageData.value, siteLocaleData.value),
+  )
   const pageLayout = computed(() =>
-    resolvers.resolvePageLayout(pageData.value, layouts.value)
+    resolvers.resolvePageLayout(pageData.value, layouts.value),
   )
 
   // provide global computed

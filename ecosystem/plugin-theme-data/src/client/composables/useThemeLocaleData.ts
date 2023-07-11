@@ -6,11 +6,11 @@ import type { ThemeData } from '../../shared/index.js'
 export type ThemeLocaleDataRef<T extends ThemeData = ThemeData> = ComputedRef<T>
 
 export const themeLocaleDataSymbol: InjectionKey<ThemeLocaleDataRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'themeLocaleData' : ''
+  __VUEPRESS_DEV__ ? 'themeLocaleData' : '',
 )
 
 export const useThemeLocaleData = <
-  T extends ThemeData = ThemeData
+  T extends ThemeData = ThemeData,
 >(): ThemeLocaleDataRef<T> => {
   const themeLocaleData = inject(themeLocaleDataSymbol)
   if (!themeLocaleData) {
@@ -25,7 +25,7 @@ export const useThemeLocaleData = <
  */
 export const resolveThemeLocaleData = (
   theme: ThemeData,
-  routeLocale: RouteLocale
+  routeLocale: RouteLocale,
 ): ThemeData => {
   const { locales, ...baseOptions } = theme
 

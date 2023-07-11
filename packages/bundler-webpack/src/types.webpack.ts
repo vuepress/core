@@ -246,8 +246,8 @@ export interface LoaderContext {
       err: Error | null,
       source: string,
       sourceMap: RawSourceMap,
-      module: ModuleOptions
-    ) => void
+      module: ModuleOptions,
+    ) => void,
   ): any
 
   /**
@@ -256,7 +256,7 @@ export interface LoaderContext {
   resolve(
     context: string,
     request: string,
-    callback: (err: Error, result: string) => void
+    callback: (err: Error, result: string) => void,
   ): any
 
   /**
@@ -375,7 +375,7 @@ export interface LoaderContext {
 export type LoaderCallback = (
   err: Error | undefined | null,
   content?: string | Buffer,
-  sourceMap?: RawSourceMap
+  sourceMap?: RawSourceMap,
 ) => void
 
 export interface StartOfSourceMap {

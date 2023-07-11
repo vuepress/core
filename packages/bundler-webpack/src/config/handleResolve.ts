@@ -47,6 +47,6 @@ export const handleResolve = async ({
   aliasResult.forEach((aliasObject) =>
     Object.entries(aliasObject).forEach(([key, value]) => {
       config.resolve.alias.set(key, value)
-    })
+    }),
   )
 }

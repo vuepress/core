@@ -14,7 +14,7 @@ const INSPECTOR_GLOBAL_COMPUTED_LABEL = 'Global Computed'
 
 export const setupDevtools = (
   app: App,
-  globalComputed: GlobalComputed
+  globalComputed: GlobalComputed,
 ): void => {
   setupDevtoolsPlugin(
     {
@@ -40,7 +40,7 @@ export const setupDevtools = (
             editable: false,
             key: name,
             value: item.value,
-          }))
+          })),
         )
       })
 
@@ -71,7 +71,7 @@ export const setupDevtools = (
               ([name, item]) => ({
                 key: name,
                 value: item.value,
-              })
+              }),
             ),
           }
         }
@@ -92,6 +92,6 @@ export const setupDevtools = (
         api.notifyComponentUpdate()
         api.sendInspectorState(INSPECTOR_ID)
       })
-    }
+    },
   )
 }

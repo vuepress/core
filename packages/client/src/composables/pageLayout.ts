@@ -14,7 +14,7 @@ export type PageLayoutRef = ComputedRef<Component>
  * Injection key for page layout
  */
 export const pageLayoutSymbol: InjectionKey<PageLayoutRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'pageLayout' : ''
+  __VUEPRESS_DEV__ ? 'pageLayout' : '',
 )
 
 /**

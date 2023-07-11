@@ -5,7 +5,7 @@ import type { LocaleConfig } from '../types/index.js'
  */
 export const resolveLocalePath = (
   locales: LocaleConfig,
-  routePath: string
+  routePath: string,
 ): string => {
   const localePaths = Object.keys(locales).sort((a, b) => {
     const levelDelta = b.split('/').length - a.split('/').length

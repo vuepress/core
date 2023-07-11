@@ -3,7 +3,7 @@ import { resolveRoutePathFromUrl } from '../src/index.js'
 
 const testCases: [
   Parameters<typeof resolveRoutePathFromUrl>,
-  ReturnType<typeof resolveRoutePathFromUrl>
+  ReturnType<typeof resolveRoutePathFromUrl>,
 ][] = [
   // with default base `/`
   [['https://vuepress.vuejs.org/base/foo'], '/base/foo'],

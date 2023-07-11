@@ -27,7 +27,7 @@ export const renderPagePreloadLinks = ({
       outputEntryChunk.fileName,
       ...outputEntryChunk.imports,
       ...pageChunkFiles,
-    ])
+    ]),
   )
 
   return preloadFiles

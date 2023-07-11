@@ -10,7 +10,7 @@ export type ThemeDataRef<T extends ThemeData = ThemeData> = Ref<T>
 export const themeData: ThemeDataRef = ref(themeDataRaw)
 
 export const useThemeData = <
-  T extends ThemeData = ThemeData
+  T extends ThemeData = ThemeData,
 >(): ThemeDataRef<T> => themeData as ThemeDataRef<T>
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {

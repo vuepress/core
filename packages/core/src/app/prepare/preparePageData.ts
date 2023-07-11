@@ -21,7 +21,7 @@ if (import.meta.hot) {
 export const preparePageData = async (app: App, page: Page): Promise<void> => {
   // page data file content
   let content = `export const data = JSON.parse(${JSON.stringify(
-    JSON.stringify(page.data)
+    JSON.stringify(page.data),
   )})
 `
 

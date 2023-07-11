@@ -7,7 +7,7 @@ import type { PageBase, PageData, PageFrontmatter } from '@vuepress/shared'
 export type Page<
   ExtraPageData extends Record<any, any> = Record<never, never>,
   ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-  ExtraPageFields extends Record<any, any> = Record<never, never>
+  ExtraPageFields extends Record<any, any> = Record<never, never>,
 > = PageBase<ExtraPageFrontmatter> &
   ExtraPageFields & {
     /**

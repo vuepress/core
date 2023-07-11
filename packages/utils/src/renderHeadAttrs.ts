@@ -7,6 +7,6 @@ export const renderHeadAttrs = (attrs: HeadAttrsConfig): string =>
   Object.entries(attrs)
     .filter((item): item is [string, string | true] => item[1] !== false)
     .map(([key, value]) =>
-      value === true ? ` ${key}` : ` ${key}="${attrs[key]}"`
+      value === true ? ` ${key}` : ` ${key}="${attrs[key]}"`,
     )
     .join('')

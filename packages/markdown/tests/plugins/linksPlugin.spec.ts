@@ -40,7 +40,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toBeUndefined()
@@ -70,7 +70,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="noopener noreferrer" foo="bar">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
         expect(env.links).toBeUndefined()
       })
@@ -99,7 +99,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="http://github.com/foo/bar/blob/main/README.md" target="_blank" rel="foobar">http://github.com/foo/bar/blob/main/README.md</a>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
         expect(env.links).toBeUndefined()
       })
@@ -127,7 +127,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="/path/to/index.png" target="_blank" rel="noopener noreferrer">png</a>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toBeUndefined()
@@ -188,7 +188,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="../foo/bar/">readme3</a>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([
@@ -313,7 +313,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouterLink to="../foo/bar/">readme3</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([
@@ -440,7 +440,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouterLink to="/path/foo/bar/">readme3</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([
@@ -569,7 +569,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             `<RouterLink to="/${encoded中}/foo/bar/">readme3</RouterLink>`,
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([
@@ -697,7 +697,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouterLink to="/path/foo/bar/">readme3</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([
@@ -817,7 +817,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouterLink to="/path/to/index.html">html</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
-            .join('\n') + '\n'
+            .join('\n') + '\n',
         )
 
         expect(env.links).toEqual([

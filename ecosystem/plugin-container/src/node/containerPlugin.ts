@@ -37,7 +37,7 @@ export type MarkdownItContainerRenderFunction = (
   index: number,
   options: any,
   env: MarkdownEnv,
-  self: Renderer
+  self: Renderer,
 ) => string
 
 export type RenderPlaceFunction = (info: string) => string

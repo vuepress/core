@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url)
 
 export const createServerConfig = async (
   app: App,
-  options: WebpackBundlerOptions
+  options: WebpackBundlerOptions,
 ): Promise<Config> => {
   const isBuild = true
   const isServer = true

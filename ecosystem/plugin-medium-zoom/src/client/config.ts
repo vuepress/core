@@ -1,5 +1,5 @@
 import { defineClientConfig } from '@vuepress/client'
-import { default as mediumZoom } from 'medium-zoom'
+import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
 import { mediumZoomSymbol } from './composables/index.js'
 
@@ -19,7 +19,6 @@ export default defineClientConfig({
     if (__VUEPRESS_SSR__ || !selector) return
 
     // create zoom instance and provide it
-    // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
     const zoom = mediumZoom(zoomOptions)
     zoom.refresh = (sel = selector) => {
       zoom.detach()

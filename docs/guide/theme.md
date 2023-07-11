@@ -13,7 +13,7 @@ To configure the default theme, you need to import and use it in your config fil
 ```ts
 import { defaultTheme } from 'vuepress'
 
-export default  {
+export default {
   theme: defaultTheme({
     // default theme config
     navbar: [

@@ -7,7 +7,7 @@ import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 
 export const createDevServerConfig = async (
   app: App,
-  options: WebpackBundlerOptions
+  options: WebpackBundlerOptions,
 ): Promise<WebpackDevServer.Configuration> => ({
   allowedHosts: 'all',
   compress: true,

@@ -15,7 +15,7 @@ export type PageLangRef = ComputedRef<PageLang>
  * Injection key for page language
  */
 export const pageLangSymbol: InjectionKey<PageLangRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'pageLang' : ''
+  __VUEPRESS_DEV__ ? 'pageLang' : '',
 )
 
 /**

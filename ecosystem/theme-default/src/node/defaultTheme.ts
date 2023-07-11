@@ -50,7 +50,7 @@ export const defaultTheme = ({
           .map((file) => [
             `@theme/${file}`,
             path.resolve(__dirname, '../client/components', file),
-          ])
+          ]),
       ),
     },
 
@@ -83,12 +83,12 @@ export const defaultTheme = ({
         : [],
       themePlugins.container?.warning !== false
         ? containerPlugin(
-            resolveContainerPluginOptions(localeOptions, 'warning')
+            resolveContainerPluginOptions(localeOptions, 'warning'),
           )
         : [],
       themePlugins.container?.danger !== false
         ? containerPlugin(
-            resolveContainerPluginOptions(localeOptions, 'danger')
+            resolveContainerPluginOptions(localeOptions, 'danger'),
           )
         : [],
       themePlugins.container?.details !== false
@@ -127,7 +127,7 @@ export const defaultTheme = ({
                 }
                 return result
               },
-              {}
+              {},
             ),
           })
         : [],

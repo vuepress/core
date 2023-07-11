@@ -29,7 +29,7 @@ describe('core > app > resolveThemeInfo', () => {
           expect(resolveThemeInfo(app, app.options.theme).plugins).toEqual([
             await getThemePlugin(themePath),
           ])
-        })
+        }),
       )
     })
 
@@ -42,7 +42,7 @@ describe('core > app > resolveThemeInfo', () => {
             await importFileDefault(fixtures('plugins/obj.js')),
             await getThemePlugin(themePath),
           ])
-        })
+        }),
       )
     })
   })
@@ -65,7 +65,7 @@ describe('core > app > resolveThemeInfo', () => {
             templateBuild: `theme-${item}-extends-parent-template-build`,
             templateDev: `theme-${item}-template-dev`,
           })
-        })
+        }),
       )
     })
 
@@ -89,7 +89,7 @@ describe('core > app > resolveThemeInfo', () => {
             templateBuild: `theme-${item}-extends-parent-template-build`,
             templateDev: `theme-${item}-extends-grandparent-template-dev`,
           })
-        })
+        }),
       )
     })
   })

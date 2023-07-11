@@ -33,7 +33,8 @@ const themeLocale = useThemeLocaleData()
 
 // navbar
 const shouldShowNavbar = computed(
-  () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
+  () =>
+    frontmatter.value.navbar !== false && themeLocale.value.navbar !== false,
 )
 
 // sidebar

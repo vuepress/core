@@ -61,7 +61,7 @@ export const SearchBox = defineComponent({
     useHotKeys({ input, hotKeys })
 
     const showSuggestions = computed(
-      () => isActive.value && !!suggestions.value.length
+      () => isActive.value && !!suggestions.value.length,
     )
     const onArrowUp = (): void => {
       if (!showSuggestions.value) {
@@ -159,16 +159,16 @@ export const SearchBox = defineComponent({
                         {
                           class: 'page-title',
                         },
-                        title
+                        title,
                       ),
                       header &&
                         h('span', { class: 'page-header' }, `> ${header}`),
-                    ]
-                  )
-                )
-              )
+                    ],
+                  ),
+                ),
+              ),
             ),
-        ]
+        ],
       )
   },
 })

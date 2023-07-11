@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-webpack",
-  "version": "2.0.0-beta.63",
+  "version": "2.0.0-beta.64",
   "description": "Bundler webpack package of VuePress",
   "keywords": [
     "vuepress-bundler",
@@ -48,18 +48,18 @@
     "css-loader": "^6.8.1",
     "esbuild-loader": "~3.0.1",
     "express": "^4.18.2",
-    "html-webpack-plugin": "^5.5.1",
+    "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.25",
     "postcss-csso": "^6.0.1",
-    "postcss-loader": "^7.3.2",
+    "postcss-loader": "^7.3.3",
     "style-loader": "^3.3.3",
     "vue": "^3.3.4",
     "vue-loader": "^17.2.2",
-    "vue-router": "^4.2.2",
-    "webpack": "^5.86.0",
+    "vue-router": "^4.2.4",
+    "webpack": "^5.88.1",
     "webpack-chain": "^6.5.1",
-    "webpack-dev-server": "^4.15.0",
+    "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.9.0"
   },
   "publishConfig": {

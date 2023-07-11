@@ -5,7 +5,7 @@ import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin
 export const prepareClientConfigFile = async (
   app: App,
   options: Required<RegisterComponentsPluginOptions>,
-  identifier: string
+  identifier: string,
 ): Promise<string> => {
   // get components from directory
   const componentsFromDir = await getComponentsFromDir(options)
@@ -26,8 +26,8 @@ export default {
     ${Object.entries(componentsMap).map(
       ([name, filepath]) => `
       app.component(${JSON.stringify(
-        name
-      )}, defineAsyncComponent(() => import(${JSON.stringify(filepath)})))`
+        name,
+      )}, defineAsyncComponent(() => import(${JSON.stringify(filepath)})))`,
     )}
   },
 }
@@ -36,6 +36,6 @@ export default {
   // write temp file and return the file path
   return app.writeTemp(
     `register-components/clientConfig.${identifier}.js`,
-    content
+    content,
   )
 }

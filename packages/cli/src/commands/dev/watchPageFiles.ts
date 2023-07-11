@@ -30,7 +30,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     if (!pagePaths) return
     for (const filePathRelative of pagePaths) {
       logger.info(
-        `dependency of page ${colors.magenta(filePathRelative)} is modified`
+        `dependency of page ${colors.magenta(filePathRelative)} is modified`,
       )
       await handlePageChange(app, app.dir.source(filePathRelative))
     }

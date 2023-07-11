@@ -26,7 +26,7 @@ export const handleModule = ({
 }): void => {
   // noParse
   config.module.noParse(
-    /(^(vue|vue-router|vuex|vuex-router-sync)$)|(^@vue\/[^/]*$)/
+    /(^(vue|vue-router|vuex|vuex-router-sync)$)|(^@vue\/[^/]*$)/,
   )
 
   // vue files

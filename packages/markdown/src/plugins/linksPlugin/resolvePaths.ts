@@ -7,7 +7,7 @@ import { path } from '@vuepress/utils'
 export const resolvePaths = (
   rawPath: string,
   base: string,
-  filePathRelative: string | null
+  filePathRelative: string | null,
 ): {
   absolutePath: string
   relativePath: string
@@ -40,7 +40,7 @@ export const resolvePaths = (
       relativePath = path.join(
         // file path may contain non-ASCII characters
         path.dirname(encodeURI(filePathRelative)),
-        rawPath
+        rawPath,
       )
       // resolve absolute path according to `base`
       absolutePath = path.join(base, relativePath)

@@ -4,7 +4,7 @@ The following guides are based on some shared assumptions:
 
 - You are placing your Markdown source files inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
-- You are using as [pnpm](https://pnpm.io) package manager, while npm and yarn are also supported;
+- You are using [pnpm](https://pnpm.io) as package manager, while npm and yarn are also supported;
 - VuePress is installed as a local dependency in your project, and you have setup the following script in `package.json`:
 
 ```json

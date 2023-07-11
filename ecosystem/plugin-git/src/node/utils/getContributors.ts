@@ -3,7 +3,7 @@ import type { GitContributor } from '../types.js'
 
 export const getContributors = async (
   filePaths: string[],
-  cwd: string
+  cwd: string,
 ): Promise<GitContributor[]> => {
   const { stdout } = await execa(
     'git',
@@ -11,7 +11,7 @@ export const getContributors = async (
     {
       cwd,
       stdin: 'inherit',
-    }
+    },
   )
 
   return stdout

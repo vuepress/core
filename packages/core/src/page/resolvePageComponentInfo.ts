@@ -20,7 +20,7 @@ export const resolvePageComponentInfo = async ({
   // resolve component file path
   const componentFilePathRelative = path.join(
     'pages',
-    `${htmlFilePathRelative}.vue`
+    `${htmlFilePathRelative}.vue`,
   )
   const componentFilePath = app.dir.temp(componentFilePathRelative)
   const componentFileChunkName = key

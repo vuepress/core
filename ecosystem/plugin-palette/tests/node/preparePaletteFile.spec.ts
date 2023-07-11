@@ -37,7 +37,7 @@ describe('plugin-palette > node > preparePaletteFile', () => {
           __dirname,
           '../__fixtures__',
           name,
-          `palette.${ext}`
+          `palette.${ext}`,
         )
         const { tempPaletteFile, importCode } = presetOptions[name]
         const tempFile = await preparePaletteFile(app, {
@@ -47,7 +47,7 @@ describe('plugin-palette > node > preparePaletteFile', () => {
         })
         const result = (await fs.readFile(tempFile)).toString()
         expect(result).toEqual(importCode(userPaletteFile))
-      })
+      }),
     )
   })
 
@@ -55,7 +55,7 @@ describe('plugin-palette > node > preparePaletteFile', () => {
     const userPaletteFile = path.resolve(
       __dirname,
       '../__fixtures__',
-      'non-existent.css'
+      'non-existent.css',
     )
     const tempFile = await preparePaletteFile(app, {
       userPaletteFile,

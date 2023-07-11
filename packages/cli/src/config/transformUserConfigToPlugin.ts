@@ -9,7 +9,7 @@ import type { UserConfig } from './types.js'
 export const transformUserConfigToPlugin = (
   userConfig: UserConfig,
   source: string,
-  cwd = process.cwd()
+  cwd = process.cwd(),
 ): PluginObject => {
   const userConfigPlugin: PluginObject = {
     name: 'user-config',

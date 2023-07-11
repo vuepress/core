@@ -37,7 +37,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
           __dirname,
           '../__fixtures__',
           name,
-          `index.${ext}`
+          `index.${ext}`,
         )
         const { tempStyleFile, importCode } = presetOptions[name]
         const tempFile = await prepareStyleFile(app, {
@@ -47,7 +47,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
         })
         const result = (await fs.readFile(tempFile)).toString()
         expect(result).toEqual(importCode(userStyleFile))
-      })
+      }),
     )
   })
 
@@ -55,7 +55,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
     const userStyleFile = path.resolve(
       __dirname,
       '../__fixtures__',
-      'non-existent.css'
+      'non-existent.css',
     )
     const tempFile = await prepareStyleFile(app, {
       userStyleFile,

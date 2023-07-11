@@ -51,7 +51,7 @@ export const info = async (): Promise<void> => {
       showNotFound: true,
       duplicates: true,
       fullTree: true,
-    }
+    },
   )
   spinner.stop()
 

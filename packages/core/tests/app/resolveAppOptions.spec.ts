@@ -11,7 +11,7 @@ describe('core > app > resolveAppOptions', () => {
         source,
         theme: { name: 'theme' } as any,
         bundler: { name: 'bundler' } as any,
-      })
+      }),
     ).toEqual({
       base: '/',
       lang: 'en-US',
@@ -33,10 +33,10 @@ describe('core > app > resolveAppOptions', () => {
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
       permalinkPattern: null,
       templateDev: path.normalize(
-        require.resolve('@vuepress/client/templates/dev.html')
+        require.resolve('@vuepress/client/templates/dev.html'),
       ),
       templateBuild: path.normalize(
-        require.resolve('@vuepress/client/templates/build.html')
+        require.resolve('@vuepress/client/templates/build.html'),
       ),
       shouldPreload: true,
       shouldPrefetch: true,

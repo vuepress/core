@@ -23,7 +23,7 @@ const log = debug('vuepress:bundler-webpack/build')
 
 export const build = async (
   options: WebpackBundlerOptions,
-  app: App
+  app: App,
 ): ReturnType<Bundler['build']> => {
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)

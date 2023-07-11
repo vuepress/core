@@ -24,7 +24,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replace(/\/|\\/g, '-')),
       },
-      `${identifier++}`
+      `${identifier++}`,
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).not.toMatch(/app.component/)
@@ -40,7 +40,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replace(/\/|\\/g, '-')),
       },
-      `${identifier++}`
+      `${identifier++}`,
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",/)
@@ -54,7 +54,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         components: {
           FooBar: path.resolve(
             __dirname,
-            './__fixtures__/components/FooBaz.ts'
+            './__fixtures__/components/FooBaz.ts',
           ),
         },
         componentsDir: path.resolve(__dirname, './__fixtures__/components'),
@@ -62,7 +62,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replace(/\/|\\/g, '-')),
       },
-      `${identifier++}`
+      `${identifier++}`,
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",.*FooBaz.ts"/)

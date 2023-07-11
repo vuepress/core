@@ -26,13 +26,13 @@ export const resolveAppOptions = ({
   port = 8080,
   open = false,
   templateDev = path.normalize(
-    require.resolve('@vuepress/client/templates/dev.html')
+    require.resolve('@vuepress/client/templates/dev.html'),
   ),
   // build config
   shouldPreload = true,
   shouldPrefetch = true,
   templateBuild = path.normalize(
-    require.resolve('@vuepress/client/templates/build.html')
+    require.resolve('@vuepress/client/templates/build.html'),
   ),
   // common config
   bundler,

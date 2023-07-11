@@ -5,7 +5,7 @@ import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook.j
 export const createPluginApiRegisterHooks =
   (
     plugins: PluginApi['plugins'],
-    hooks: PluginApi['hooks']
+    hooks: PluginApi['hooks'],
   ): PluginApi['registerHooks'] =>
   () => {
     plugins.forEach(
@@ -54,6 +54,6 @@ export const createPluginApiRegisterHooks =
             })
           }
         })
-      }
+      },
     )
   }

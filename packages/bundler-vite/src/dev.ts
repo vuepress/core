@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url)
 
 export const dev = async (
   options: ViteBundlerOptions,
-  app: App
+  app: App,
 ): ReturnType<Bundler['dev']> => {
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
@@ -25,14 +25,14 @@ export const dev = async (
   await server.listen()
 
   const viteVersion = fs.readJsonSync(
-    require.resolve('vite/package.json')
+    require.resolve('vite/package.json'),
   ).version
   server.config.logger.info(
     colors.cyan(`\n  vite v${viteVersion}`) +
       colors.green(` dev server running at:\n`),
     {
       clear: !server.config.logger.hasWarned,
-    }
+    },
   )
   server.printUrls()
   return server.close.bind(server)

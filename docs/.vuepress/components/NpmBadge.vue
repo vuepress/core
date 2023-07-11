@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const badgeLink = computed(
-  () => `https://www.npmjs.com/package/${props.package}`
+  () => `https://www.npmjs.com/package/${props.package}`,
 )
 const badgeLabel = computed(() => {
   if (props.distTag) {
@@ -26,7 +26,7 @@ const badgeImg = computed(
   () =>
     `https://badgen.net/npm/v/${props.package}/${
       props.distTag
-    }?label=${encodeURIComponent(badgeLabel.value)}`
+    }?label=${encodeURIComponent(badgeLabel.value)}`,
 )
 </script>
 

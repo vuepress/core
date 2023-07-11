@@ -14,7 +14,7 @@ const DeviceTypeMap = {
  */
 export const useUpdateDeviceStatus = (
   deviceType: DeviceType,
-  callback: (width: number) => void
+  callback: (width: number) => void,
 ): void => {
   const width = DeviceTypeMap[deviceType]
   if (!Number.isInteger(width)) {

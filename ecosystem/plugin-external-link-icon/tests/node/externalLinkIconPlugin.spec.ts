@@ -42,7 +42,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<RouterLink to="foo.html">foo</RouterLink>',
       ]
         .map((a) => `<p>${a}</p>`)
-        .join('\n') + '\n'
+        .join('\n') + '\n',
     )
   })
 
@@ -69,7 +69,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<RouterLink to="foo.html">foo</RouterLink>',
       ]
         .map((a) => `<p>${a}</p>`)
-        .join('\n') + '\n'
+        .join('\n') + '\n',
     )
   })
 
@@ -90,7 +90,7 @@ describe('@vuepress/plugin-external-link-icon > node > externalLinkIconPlugin', 
         '<RouterLink to="foo.html">foo</RouterLink>',
       ]
         .map((a) => `<p>${a}</p>`)
-        .join('\n') + '\n'
+        .join('\n') + '\n',
     )
   })
 })

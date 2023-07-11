@@ -15,7 +15,7 @@ export type PageHeadTitleRef = ComputedRef<PageHeadTitle>
  * Injection key for page head title
  */
 export const pageHeadTitleSymbol: InjectionKey<PageHeadTitleRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'pageHeadTitle' : ''
+  __VUEPRESS_DEV__ ? 'pageHeadTitle' : '',
 )
 
 /**

@@ -6,5 +6,5 @@ import type { App, Plugin, PluginObject } from '../types/index.js'
  */
 export const resolvePluginObject = <T extends PluginObject = PluginObject>(
   app: App,
-  plugin: Plugin<T>
+  plugin: Plugin<T>,
 ): T => (isFunction(plugin) ? plugin(app) : plugin)

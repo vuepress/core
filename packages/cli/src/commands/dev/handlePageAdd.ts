@@ -15,7 +15,7 @@ import type { App, Page } from '@vuepress/core'
  */
 export const handlePageAdd = async (
   app: App,
-  filePath: string
+  filePath: string,
 ): Promise<Page | null> => {
   // check if the added page is duplicated
   const pageIndex = app.pages.findIndex((page) => page.filePath === filePath)

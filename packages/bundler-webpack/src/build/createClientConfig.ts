@@ -17,7 +17,7 @@ export const clientManifestFilename = '.server/client-manifest.json'
 
 export const createClientConfig = async (
   app: App,
-  options: WebpackBundlerOptions
+  options: WebpackBundlerOptions,
 ): Promise<Config> => {
   const config = await createClientBaseConfig({
     app,

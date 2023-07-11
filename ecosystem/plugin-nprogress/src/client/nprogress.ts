@@ -54,7 +54,7 @@ export const nprogress: NProgress = {
     nprogress.status = n === 1 ? null : n
     const progress = nprogress.render(!started)
     const bar = progress.querySelector<HTMLElement>(
-      nprogress.settings.barSelector
+      nprogress.settings.barSelector,
     )!
     const speed = nprogress.settings.speed
     const ease = nprogress.settings.easing
@@ -145,11 +145,11 @@ export const nprogress: NProgress = {
     progress.innerHTML = nprogress.settings.template
 
     const bar = progress.querySelector<HTMLElement>(
-      nprogress.settings.barSelector
+      nprogress.settings.barSelector,
     )!
     const perc = fromStart ? '-100' : toBarPerc(nprogress.status || 0)
     const parent = document.querySelector<HTMLElement>(
-      nprogress.settings.parent
+      nprogress.settings.parent,
     )!
 
     css(bar, {
@@ -169,7 +169,7 @@ export const nprogress: NProgress = {
     removeClass(document.documentElement, 'nprogress-busy')
     removeClass(
       document.querySelector(nprogress.settings.parent)!,
-      'nprogress-custom-parent'
+      'nprogress-custom-parent',
     )
     const progress = document.getElementById('nprogress')
     progress && removeElement(progress)

@@ -6,7 +6,7 @@ import { useThemeLocaleData } from './useThemeData.js'
 export type DarkModeRef = WritableComputedRef<boolean>
 
 export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'darkMode' : ''
+  __VUEPRESS_DEV__ ? 'darkMode' : '',
 )
 
 /**
@@ -28,7 +28,7 @@ export const setupDarkMode = (): void => {
   const isDarkPreferred = usePreferredDark()
   const darkStorage = useStorage(
     'vuepress-color-scheme',
-    themeLocale.value.colorMode
+    themeLocale.value.colorMode,
   )
 
   const isDarkMode = computed<boolean>({

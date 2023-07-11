@@ -35,13 +35,13 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
             }
             event.preventDefault()
             router.push(
-              resolveRoutePathFromUrl(hit.url, __DOCSEARCH_INDEX_BASE__)
+              resolveRoutePathFromUrl(hit.url, __DOCSEARCH_INDEX_BASE__),
             )
           },
           children,
         },
         __v: null,
-      } as unknown),
+      }) as unknown,
 
     // navigation behavior triggered by `onKeyDown` internally
     navigator: {

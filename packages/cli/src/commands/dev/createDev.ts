@@ -20,7 +20,7 @@ const log = debug('vuepress:cli/dev')
 export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
   const dev: DevCommand = async (
     sourceDir = '.',
-    commandOptions = {}
+    commandOptions = {},
   ): Promise<void> => {
     log(`commandOptions:`, commandOptions)
 
@@ -37,7 +37,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
       : resolveUserConfigConventionalPath(cliAppConfig.source)
     log(`userConfigPath:`, userConfigPath)
     const { userConfig, userConfigDependencies } = await loadUserConfig(
-      userConfigPath
+      userConfigPath,
     )
 
     // resolve the final app config to use
@@ -113,7 +113,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
           userConfigPath,
           userConfigDependencies,
           restart,
-        })
+        }),
       )
     }
 

@@ -11,7 +11,7 @@ export const prepareStyleFile = async (
   }: Pick<
     Required<PalettePluginOptions>,
     'userStyleFile' | 'tempStyleFile' | 'importCode'
-  >
+  >,
 ): Promise<string> => {
   const userStyle = app.dir.source(userStyleFile)
 

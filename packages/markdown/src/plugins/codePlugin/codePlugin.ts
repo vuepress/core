@@ -57,7 +57,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     lineNumbers = true,
     preWrapper = true,
     vPre: { block: vPreBlock = true, inline: vPreInline = true } = {},
-  }: CodePluginOptions = {}
+  }: CodePluginOptions = {},
 ): void => {
   // override default fence renderer
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {

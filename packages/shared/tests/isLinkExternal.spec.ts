@@ -3,7 +3,7 @@ import { isLinkExternal } from '../src/index.js'
 
 const testCases: [
   Parameters<typeof isLinkExternal>,
-  ReturnType<typeof isLinkExternal>
+  ReturnType<typeof isLinkExternal>,
 ][] = [
   // http & ftp links
   [['https://foobar.com'], true],

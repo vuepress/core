@@ -3,7 +3,7 @@ import { resolvePageDate } from '../../src/index.js'
 
 const testCases: [
   Parameters<typeof resolvePageDate>,
-  ReturnType<typeof resolvePageDate>
+  ReturnType<typeof resolvePageDate>,
 ][] = [
   // `frontmatter.data` is an instance of `Date`
   [
