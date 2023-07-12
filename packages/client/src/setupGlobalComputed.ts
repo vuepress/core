@@ -1,12 +1,12 @@
-import { computedEager } from '@vueuse/core'
+import { computedEager, computedWithControl } from '@vueuse/core'
 import { type App, computed } from 'vue'
 import type { Router } from 'vue-router'
 import {
   type LayoutsRef,
   layoutsSymbol,
   type PageData,
-  pageData,
   type PageDataRef,
+  pageDataSymbol,
   type PageFrontmatter,
   type PageFrontmatterRef,
   pageFrontmatterSymbol,
@@ -21,6 +21,7 @@ import {
   pageLangSymbol,
   type PageLayoutRef,
   pageLayoutSymbol,
+  pagesData,
   type RouteLocale,
   type RouteLocaleRef,
   routeLocaleSymbol,
@@ -59,13 +60,31 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[],
 ): GlobalComputed => {
-  const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   // create eager computed for route path and locale, so that route changes
   // won't make all downstream computed re-evaluate
   const routePath = computedEager(() => router.currentRoute.value.path)
   const routeLocale = computedEager(() =>
     resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
+
+  // load page data from route meta
+  const pageData = computedWithControl(
+    routePath,
+    () => router.currentRoute.value.meta._data,
+  )
+  // handle page data HMR
+  if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
+    __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
+      pagesData.value[data.key] = () => Promise.resolve(data)
+      if (data.key === router.currentRoute.value.meta._data.key) {
+        router.currentRoute.value.meta._data = data
+        pageData.trigger()
+      }
+    }
+  }
+
+  // create other global computed
+  const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
@@ -91,6 +110,7 @@ export const setupGlobalComputed = (
 
   // provide global computed
   app.provide(layoutsSymbol, layouts)
+  app.provide(pageDataSymbol, pageData)
   app.provide(pageFrontmatterSymbol, pageFrontmatter)
   app.provide(pageHeadTitleSymbol, pageHeadTitle)
   app.provide(pageHeadSymbol, pageHead)
