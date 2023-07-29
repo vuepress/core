@@ -37,15 +37,15 @@
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
-    "@types/node": "^20.4.1",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@types/node": "^20.4.5",
     "@types/webpack-env": "^1.18.1",
     "@vitest/coverage-istanbul": "^0.33.0",
     "bumpp": "^9.1.1",
     "conventional-changelog-cli": "^3.0.0",
     "cpx2": "^5.0.0",
-    "eslint": "^8.44.0",
+    "eslint": "^8.46.0",
     "eslint-config-vuepress": "^4.3.0",
     "eslint-config-vuepress-typescript": "^4.4.0",
     "husky": "^8.0.3",
@@ -57,10 +57,10 @@
     "tsconfig-vuepress": "^4.2.0",
     "tsup": "^7.1.0",
     "typescript": "^5.1.6",
-    "vite": "~4.4.2",
+    "vite": "~4.4.7",
     "vitest": "^0.33.0"
   },
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@8.6.10",
   "engines": {
     "node": ">=18.16.0"
   }
