@@ -34,7 +34,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it": "^13.0.0",
     "@vuepress/core": "workspace:*",
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
