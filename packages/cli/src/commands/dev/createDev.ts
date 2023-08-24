@@ -36,9 +36,8 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
       ? resolveUserConfigPath(commandOptions.config)
       : resolveUserConfigConventionalPath(cliAppConfig.source)
     log(`userConfigPath:`, userConfigPath)
-    const { userConfig, userConfigDependencies } = await loadUserConfig(
-      userConfigPath,
-    )
+    const { userConfig, userConfigDependencies } =
+      await loadUserConfig(userConfigPath)
 
     // resolve the final app config to use
     const appConfig = resolveAppConfig({

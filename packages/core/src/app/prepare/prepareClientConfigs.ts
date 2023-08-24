@@ -5,9 +5,8 @@ import type { App } from '../../types/index.js'
  */
 export const prepareClientConfigs = async (app: App): Promise<void> => {
   // plugin hook: clientConfigFile
-  const clientConfigFiles = await app.pluginApi.hooks.clientConfigFile.process(
-    app,
-  )
+  const clientConfigFiles =
+    await app.pluginApi.hooks.clientConfigFile.process(app)
 
   // generate client config files entry
   const content = `\
