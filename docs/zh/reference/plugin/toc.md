@@ -20,6 +20,7 @@ export default {
     }),
   ],
 }
+```
 
 ## 与 Markdown 目录语法的区别
 
