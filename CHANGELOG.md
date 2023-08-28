@@ -1,3 +1,13 @@
+# [2.0.0-beta.67](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.66...v2.0.0-beta.67) (2023-08-28)
+
+
+### Bug Fixes
+
+* **client:** avoid mismatching between route path and page data (close [#1249](https://github.com/vuepress/vuepress-next/issues/1249)) ([#1381](https://github.com/vuepress/vuepress-next/issues/1381)) ([acbdc7f](https://github.com/vuepress/vuepress-next/commit/acbdc7f5c03030fb7fdc32beef898a879fbf8e48))
+* **markdown:** handle data uri correctly (close [#1393](https://github.com/vuepress/vuepress-next/issues/1393)) ([#1403](https://github.com/vuepress/vuepress-next/issues/1403)) ([bd8aa0a](https://github.com/vuepress/vuepress-next/commit/bd8aa0a18956b538f1476e902809d6ed9c6831a0))
+
+
+
 # [2.0.0-beta.66](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.65...v2.0.0-beta.66) (2023-07-11)
 
 
