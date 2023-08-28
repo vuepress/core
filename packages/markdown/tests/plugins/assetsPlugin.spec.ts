@@ -34,6 +34,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![invalid](.../invalid.png)',
       '![汉字](.../汉字.png)',
       '![100%](.../100%.png)',
+      // data uri
+      '![data-uri](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==)',
     ]
 
     const testCases: {
@@ -77,6 +79,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@source/sub/.../invalid.png" alt="invalid">',
           '<img src="@source/sub/.../汉字.png" alt="汉字">',
           '<img src="@source/sub/.../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
       {
@@ -116,6 +120,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@foo/sub/.../invalid.png" alt="invalid">',
           '<img src="@foo/sub/.../汉字.png" alt="汉字">',
           '<img src="@foo/sub/.../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
       {
@@ -152,6 +158,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src=".../invalid.png" alt="invalid">',
           '<img src=".../汉字.png" alt="汉字">',
           '<img src=".../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
     ]
@@ -236,6 +244,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
         // keep as is
         '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+        /* data uri */
+        '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
       ]
 
       const testCases: {
@@ -319,6 +330,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
         {
@@ -398,6 +412,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
         {
@@ -474,6 +491,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
       ]

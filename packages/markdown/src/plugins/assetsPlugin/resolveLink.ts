@@ -8,6 +8,9 @@ export const resolveLink = (
   env: MarkdownEnv,
   strict = false,
 ): string => {
+  // do not resolve data uri
+  if (link.startsWith('data:')) return link
+
   // decode link to ensure bundler can find the file correctly
   let resolvedLink = decode(link)
 
