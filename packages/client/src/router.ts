@@ -4,10 +4,10 @@ import {
   createMemoryHistory,
   createRouter,
   createWebHistory,
+  type Router,
   START_LOCATION,
 } from 'vue-router'
-import type { Router } from 'vue-router'
-import { pageData } from './composables/index.js'
+import type { PageData } from './composables/index.js'
 import { resolvers } from './resolvers.js'
 import { createRoutes } from './routes.js'
 
@@ -32,10 +32,11 @@ export const createVueRouter = (): Router => {
     },
   })
 
+  // ensure page data and page component have been loaded before resolving the route,
+  // and save page data to route meta
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
-      // ensure page data and page component have been loaded
-      ;[pageData.value] = await Promise.all([
+      ;[to.meta._data] = await Promise.all([
         resolvers.resolvePageData(to.name as string),
         pagesComponents[to.name as string]?.__asyncLoader(),
       ])
@@ -43,4 +44,15 @@ export const createVueRouter = (): Router => {
   })
 
   return router
+}
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    /**
+     * Store page data to route meta
+     *
+     * @internal only for internal use
+     */
+    _data: PageData
+  }
 }
