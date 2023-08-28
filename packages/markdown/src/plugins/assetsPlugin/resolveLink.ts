@@ -6,7 +6,7 @@ export const resolveLink = (
   link: string,
   relativePathPrefix: string,
   env: MarkdownEnv,
-  strict = false
+  strict = false,
 ): string => {
   // do not resolve data uri
   if (link.startsWith('data:')) return link
@@ -26,7 +26,7 @@ export const resolveLink = (
   if (isRelativePath && env.filePathRelative) {
     resolvedLink = `${relativePathPrefix}/${path.join(
       path.dirname(env.filePathRelative),
-      resolvedLink
+      resolvedLink,
     )}`
   }
 

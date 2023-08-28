@@ -167,9 +167,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
     testCases.forEach(({ description, md, env, expected }) =>
       it(description, () => {
         expect(md.render(source.join('\n\n'), env)).toEqual(
-          expected.map((item) => `<p>${item}</p>`).join('\n') + '\n'
+          expected.map((item) => `<p>${item}</p>`).join('\n') + '\n',
         )
-      })
+      }),
     )
   })
 
@@ -502,43 +502,43 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         it(description, () => {
           // block
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n')
+            expected.map((item) => `${item}`).join('\n'),
           )
 
           // block with leading white space
           expect(
-            md.render(source.map((item) => `   ${item}`).join('\n\n'), env)
+            md.render(source.map((item) => `   ${item}`).join('\n\n'), env),
           ).toEqual(expected.map((item) => `   ${item}`).join('\n'))
 
           // inline with prefix
           expect(
-            md.render(source.map((item) => `foo${item}`).join('\n\n'), env)
+            md.render(source.map((item) => `foo${item}`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n'
+            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n',
           )
 
           // inline with suffix
           expect(
-            md.render(source.map((item) => `${item}foo`).join('\n\n'), env)
+            md.render(source.map((item) => `${item}foo`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n'
+            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n',
           )
 
           // inline with line break
           expect(
             md.render(
               source.map((item) => item.replace('<img', '<img\n')).join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n') + '\n'
+              .join('\n') + '\n',
           )
 
           // wrapped item
           expect(
-            md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env)
+            md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env),
           ).toEqual(expected.map((item) => `<p>${item}</p>`).join('\n'))
 
           // wrapped item with line break
@@ -547,20 +547,20 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               source
                 .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
                 .join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n')
+              .join('\n'),
           )
 
           // wrapped multiple items
           expect(
             md.render(
               source.map((item) => `<p>${item}${item}</p>`).join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(expected.map((item) => `<p>${item}${item}</p>`).join('\n'))
 
           // deeply wrapped multiple items
@@ -569,14 +569,14 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               source
                 .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
                 .join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
-              .join('\n')
+              .join('\n'),
           )
-        })
+        }),
       )
     })
 
@@ -675,16 +675,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         it(description, () => {
           // double quote
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n') + '\n'
+            expected.map((item) => `${item}`).join('\n') + '\n',
           )
           // single quote
           expect(
-            md.render(source.join('\n\n').replace(/"/g, "'"), env)
+            md.render(source.join('\n\n').replace(/"/g, "'"), env),
           ).toEqual(
             expected.map((item) => `${item}`.replace(/"/g, "'")).join('\n') +
-              '\n'
+              '\n',
           )
-        })
+        }),
       )
     })
   })
