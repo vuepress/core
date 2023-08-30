@@ -1,10 +1,10 @@
 import { pagesComponents } from '@internal/pagesComponents'
 import { removeEndingSlash } from '@vuepress/shared'
+import type { Router } from 'vue-router'
 import {
   createMemoryHistory,
   createRouter,
   createWebHistory,
-  type Router,
   START_LOCATION,
 } from 'vue-router'
 import type { PageData } from './composables/index.js'

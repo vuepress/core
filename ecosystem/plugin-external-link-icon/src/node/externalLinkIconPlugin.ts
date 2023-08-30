@@ -8,7 +8,7 @@ const __dirname = getDirname(import.meta.url)
 /**
  * Options for @vuepress/plugin-external-link-icon
  */
-export type ExternalLinkIconPluginOptions = {
+export interface ExternalLinkIconPluginOptions {
   /**
    * Locales config for external link icon
    */

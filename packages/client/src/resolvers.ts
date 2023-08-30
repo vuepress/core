@@ -6,18 +6,17 @@ import {
 } from '@vuepress/shared'
 import type { Component } from 'vue'
 import { reactive } from 'vue'
-import {
-  type PageData,
-  pageDataEmpty,
-  type PageFrontmatter,
-  type PageHead,
-  type PageHeadTitle,
-  type PageLang,
-  pagesData,
-  type RouteLocale,
-  type SiteData,
-  type SiteLocaleData,
+import type {
+  PageData,
+  PageFrontmatter,
+  PageHead,
+  PageHeadTitle,
+  PageLang,
+  RouteLocale,
+  SiteData,
+  SiteLocaleData,
 } from './composables/index.js'
+import { pageDataEmpty, pagesData } from './composables/index.js'
 import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
 import type { ClientConfig, Layouts } from './types/index.js'
 

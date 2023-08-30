@@ -1,5 +1,6 @@
 import type { PageData } from '@vuepress/shared'
-import { inject, type InjectionKey, readonly, type Ref } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
+import { inject, readonly } from 'vue'
 
 export type { PageData }
 

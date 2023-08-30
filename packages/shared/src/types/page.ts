@@ -4,9 +4,9 @@ import type { HeadConfig } from './head.js'
 /**
  * Base type of vuepress page
  */
-export type PageBase<
+export interface PageBase<
   ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-> = {
+> {
   /**
    * Identifier of the page
    *

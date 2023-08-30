@@ -10,9 +10,7 @@ import {
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 
-defineEmits<{
-  (e: 'toggle-sidebar'): void
-}>()
+defineEmits<(e: 'toggle-sidebar') => void>()
 
 defineSlots<{
   before?: (props: Record<never, never>) => any

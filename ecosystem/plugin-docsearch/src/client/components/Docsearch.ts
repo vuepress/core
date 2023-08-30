@@ -1,13 +1,6 @@
 import { usePageLang, useRouteLocale } from '@vuepress/client'
-import {
-  computed,
-  defineComponent,
-  h,
-  onMounted,
-  type PropType,
-  ref,
-  watch,
-} from 'vue'
+import type { PropType } from 'vue'
+import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import type { DocsearchOptions } from '../../shared/index.js'
 import {
   useDocsearchHotkeyListener,

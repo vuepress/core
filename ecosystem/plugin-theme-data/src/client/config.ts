@@ -1,9 +1,6 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
-import {
-  defineClientConfig,
-  type RouteLocaleRef,
-  routeLocaleSymbol,
-} from '@vuepress/client'
+import type { RouteLocaleRef } from '@vuepress/client'
+import { defineClientConfig, routeLocaleSymbol } from '@vuepress/client'
 import { computed } from 'vue'
 import {
   resolveThemeLocaleData,

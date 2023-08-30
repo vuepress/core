@@ -1,4 +1,5 @@
-import { type ComputedRef, inject, type InjectionKey } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
+import { inject } from 'vue'
 import type { Layouts } from '../types/index.js'
 
 /**

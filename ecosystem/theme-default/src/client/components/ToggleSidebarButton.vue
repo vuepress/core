@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '../composables/index.js'
 
-defineEmits<{
-  (e: 'toggle'): void
-}>()
+defineEmits<(e: 'toggle') => void>()
 
 const themeLocale = useThemeLocaleData()
 </script>

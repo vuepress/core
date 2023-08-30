@@ -1,9 +1,5 @@
-import {
-  type Component,
-  type ComputedRef,
-  inject,
-  type InjectionKey,
-} from 'vue'
+import type { Component, ComputedRef, InjectionKey } from 'vue'
+import { inject } from 'vue'
 
 /**
  * Ref wrapper of `PageLayout`

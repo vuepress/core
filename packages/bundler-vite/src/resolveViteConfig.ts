@@ -1,6 +1,7 @@
 import { default as vuePlugin } from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
-import { type InlineConfig, mergeConfig } from 'vite'
+import type { InlineConfig } from 'vite'
+import { mergeConfig } from 'vite'
 import {
   constantsReplacementPlugin,
   mainPlugin,

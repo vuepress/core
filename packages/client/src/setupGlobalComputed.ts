@@ -1,35 +1,38 @@
 import { computedEager, computedWithControl } from '@vueuse/core'
-import { type App, computed } from 'vue'
+import type { App } from 'vue'
+import { computed } from 'vue'
 import type { Router } from 'vue-router'
+import type {
+  LayoutsRef,
+  PageData,
+  PageDataRef,
+  PageFrontmatter,
+  PageFrontmatterRef,
+  PageHead,
+  PageHeadRef,
+  PageHeadTitle,
+  PageHeadTitleRef,
+  PageLang,
+  PageLangRef,
+  PageLayoutRef,
+  RouteLocale,
+  RouteLocaleRef,
+  SiteData,
+  SiteDataRef,
+  SiteLocaleData,
+  SiteLocaleDataRef,
+} from './composables/index.js'
 import {
-  type LayoutsRef,
   layoutsSymbol,
-  type PageData,
-  type PageDataRef,
   pageDataSymbol,
-  type PageFrontmatter,
-  type PageFrontmatterRef,
   pageFrontmatterSymbol,
-  type PageHead,
-  type PageHeadRef,
   pageHeadSymbol,
-  type PageHeadTitle,
-  type PageHeadTitleRef,
   pageHeadTitleSymbol,
-  type PageLang,
-  type PageLangRef,
   pageLangSymbol,
-  type PageLayoutRef,
   pageLayoutSymbol,
   pagesData,
-  type RouteLocale,
-  type RouteLocaleRef,
   routeLocaleSymbol,
-  type SiteData,
   siteData,
-  type SiteDataRef,
-  type SiteLocaleData,
-  type SiteLocaleDataRef,
   siteLocaleDataSymbol,
 } from './composables/index.js'
 import { withBase } from './helpers/index.js'
