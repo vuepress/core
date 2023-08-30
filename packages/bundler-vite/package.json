@@ -33,14 +33,14 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.3.3",
+    "@vitejs/plugin-vue": "^4.3.4",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "autoprefixer": "^10.4.15",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.4.28",
+    "postcss": "^8.4.29",
     "postcss-load-config": "^4.0.1",
     "rollup": "^3.28.1",
     "vite": "~4.4.9",
