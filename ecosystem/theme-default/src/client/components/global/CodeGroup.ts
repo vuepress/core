@@ -1,5 +1,14 @@
-import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
+import { useStorage } from '@vueuse/core'
 import type { Component, SlotsType, VNode } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  onBeforeUpdate,
+  onMounted,
+  ref,
+  watch,
+} from 'vue'
 
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',
@@ -9,19 +18,44 @@ export const CodeGroup = defineComponent({
   }>,
 
   setup(_, { slots }) {
-    // index of current active item
-    const activeIndex = ref(-1)
-
     // refs of the tab buttons
     const tabRefs = ref<HTMLButtonElement[]>([])
 
     if (__VUEPRESS_DEV__) {
-      // after removing a code-group-item, we need to clear the ref
-      // of the removed item to avoid issues caused by HMR
+      // in dev mode, we need to clear the tabs ref to avoid HMR issues
+      // after removing a code-group-item
       onBeforeUpdate(() => {
         tabRefs.value = []
       })
     }
+
+    // index of current active item
+    const activeIndex = ref(-1)
+    const codeGroupStorage = useStorage<Record<string, number | undefined>>(
+      'vuepress-code-group',
+      {},
+    )
+    const codeGroupKey = computed(() =>
+      tabRefs.value.map((tab) => tab.innerText).join(','),
+    )
+    onMounted(() => {
+      watch(
+        () => codeGroupStorage.value[codeGroupKey.value],
+        (val = -1) => {
+          if (activeIndex.value !== val) {
+            console.log('codeGroupStorage -> activeIndex')
+            activeIndex.value = val
+          }
+        },
+        { immediate: true },
+      )
+      watch(activeIndex, (val) => {
+        if (codeGroupStorage.value[codeGroupKey.value] !== val) {
+          console.log('activeIndex -> codeGroupStorage')
+          codeGroupStorage.value[codeGroupKey.value] = val
+        }
+      })
+    })
 
     // activate next tab
     const activateNext = (i = activeIndex.value): void => {
@@ -58,11 +92,7 @@ export const CodeGroup = defineComponent({
     }
 
     return () => {
-      // NOTICE: here we put the `slots.default()` inside the render function to make
-      // the slots reactive, otherwise the slot content won't be changed once the
-      // `setup()` function of current component is called
-
-      // get children code-group-item
+      // get children code-group-item from default slots
       const items = (slots.default?.() || [])
         .filter((vnode) => (vnode.type as Component).name === 'CodeGroupItem')
         .map((vnode) => {
@@ -77,9 +107,8 @@ export const CodeGroup = defineComponent({
         return null
       }
 
+      // if activeIndex is invalid
       if (activeIndex.value < 0 || activeIndex.value > items.length - 1) {
-        // if `activeIndex` is invalid
-
         // find the index of the code-group-item with `active` props
         activeIndex.value = items.findIndex(
           (vnode) => vnode.props.active === '' || vnode.props.active === true,
@@ -89,7 +118,9 @@ export const CodeGroup = defineComponent({
         if (activeIndex.value === -1) {
           activeIndex.value = 0
         }
-      } else {
+      }
+      // if activeIndex is valid
+      else {
         // set the active item
         items.forEach((vnode, i) => {
           vnode.props.active = i === activeIndex.value
