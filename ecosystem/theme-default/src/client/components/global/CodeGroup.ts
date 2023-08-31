@@ -43,7 +43,6 @@ export const CodeGroup = defineComponent({
         () => codeGroupStorage.value[codeGroupKey.value],
         (val = -1) => {
           if (activeIndex.value !== val) {
-            console.log('codeGroupStorage -> activeIndex')
             activeIndex.value = val
           }
         },
@@ -51,7 +50,6 @@ export const CodeGroup = defineComponent({
       )
       watch(activeIndex, (val) => {
         if (codeGroupStorage.value[codeGroupKey.value] !== val) {
-          console.log('activeIndex -> codeGroupStorage')
           codeGroupStorage.value[codeGroupKey.value] = val
         }
       })
