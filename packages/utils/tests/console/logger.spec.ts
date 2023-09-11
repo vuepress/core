@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { logger } from '../src/index.js'
+import { logger } from '../../src/index.js'
 
 const methods = [
   ['info', 'log'],

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isChildPath } from '../src/index.js'
+import { isChildPath } from '../../src/index.js'
 
 const testCases: [[string, string], boolean][] = [
   [['/foo', '/foo'], true],
