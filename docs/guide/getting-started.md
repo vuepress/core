@@ -6,7 +6,7 @@ VuePress v2 is currently in `beta` stage. It's ready to be used for building you
 
 ## Prerequisites
 
-- [Node.js v16.19.0+](https://nodejs.org/)
+- [Node.js v18.16.0+](https://nodejs.org/)
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
 ::: tip
