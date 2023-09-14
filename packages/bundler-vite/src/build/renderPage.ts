@@ -1,5 +1,5 @@
 import type { App, Page } from '@vuepress/core'
-import { fs, renderHead, templateRenderer } from '@vuepress/utils'
+import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { ssrContextKey } from 'vue'
 import type { App as VueApp } from 'vue'
@@ -50,7 +50,7 @@ export const renderPage = async ({
   const pageChunkFiles = resolvePageChunkFiles({ page, output })
 
   // generate html string
-  const html = await templateRenderer(ssrTemplate, {
+  const html = await app.options.templateBuildRenderer(ssrTemplate, {
     content: pageRendered,
     head: ssrContext.head.map(renderHead).join(''),
     lang: ssrContext.lang,

@@ -73,12 +73,25 @@ export default {
 
 - 详情：
 
-  指定构建时使用的 HTML 模板。
+  指定构建时使用的 HTML 模板路径。
 
-  它会覆盖 [templateBuild](./config.md#templatebuild) 的默认值，但是也会被用户配置覆盖。
+  它会覆盖 [templateBuild](./config.md#templatebuild) 的默认值，同时也会被用户配置覆盖。
 
 - 参考：
   - [配置 > templateBuild](./config.md#templatebuild)
+
+### templateBuildRenderer
+
+- 类型： `TemplateRenderer` from `@vuepress/utils`
+
+- 详情：
+
+  指定构建时使用的 HTML 模板渲染函数。
+
+  它会覆盖 [templateBuildRenderer](./config.md#templatebuildrenderer) 的默认值，同时也会被用户配置覆盖。
+
+- 参考：
+  - [配置 > templateBuildRenderer](./config.md#templatebuildrenderer)
 
 ### templateDev
 

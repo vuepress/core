@@ -1,5 +1,5 @@
 import { createRequire } from 'node:module'
-import { path } from '@vuepress/utils'
+import { path, templateRenderer } from '@vuepress/utils'
 import type { AppConfig, AppOptions } from '../types/index.js'
 
 const require = createRequire(import.meta.url)
@@ -61,6 +61,7 @@ export const resolveAppOptions = ({
   shouldPreload,
   shouldPrefetch,
   templateBuild,
+  templateBuildRenderer: templateRenderer,
   bundler,
   debug,
   markdown,

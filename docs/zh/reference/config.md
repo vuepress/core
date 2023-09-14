@@ -331,7 +331,17 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 详情：
 
-  指定构建时使用的 HTML 模板。
+  指定构建时使用的 HTML 模板路径。
+
+### templateBuildRenderer
+
+- 类型： `TemplateRenderer`
+
+- 默认值： `templateRenderer`
+
+- 详情：
+
+  指定构建时使用的 HTML 模板渲染函数。
 
 ## Markdown 配置
 

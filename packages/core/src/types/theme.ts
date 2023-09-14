@@ -1,3 +1,4 @@
+import type { TemplateRenderer } from '@vuepress/utils'
 import type {
   Plugin,
   PluginConfig,
@@ -41,6 +42,11 @@ export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
   templateBuild?: string
 
   /**
+   * Allow specifying custom template renderer
+   */
+  templateBuildRenderer?: TemplateRenderer
+
+  /**
    * Allow overriding default templateDev
    */
   templateDev?: string
@@ -59,6 +65,11 @@ export interface ThemeInfo {
    * Default build template
    */
   templateBuild?: string
+
+  /**
+   * Default build template renderer
+   */
+  templateBuildRenderer?: TemplateRenderer
 
   /**
    * Default dev template

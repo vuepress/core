@@ -1,4 +1,4 @@
-import { path } from '@vuepress/utils'
+import { path, templateRenderer } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import { resolveAppOptions } from '../../src/index.js'
 
@@ -38,6 +38,7 @@ describe('core > app > resolveAppOptions', () => {
       templateBuild: path.normalize(
         require.resolve('@vuepress/client/templates/build.html'),
       ),
+      templateBuildRenderer: templateRenderer,
       shouldPreload: true,
       shouldPrefetch: true,
       markdown: {},

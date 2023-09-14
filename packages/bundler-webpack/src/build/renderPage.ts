@@ -1,6 +1,6 @@
 import type { App, Page } from '@vuepress/core'
 import type { VuepressSSRContext } from '@vuepress/shared'
-import { fs, renderHead, templateRenderer } from '@vuepress/utils'
+import { fs, renderHead } from '@vuepress/utils'
 import { ssrContextKey } from 'vue'
 import type { App as VueApp } from 'vue'
 import type { SSRContext } from 'vue/server-renderer'
@@ -67,7 +67,7 @@ export const renderPage = async ({
   })
 
   // generate html string
-  const html = await templateRenderer(ssrTemplate, {
+  const html = await app.options.templateBuildRenderer(ssrTemplate, {
     content: pageRendered,
     head: ssrContext.head.map(renderHead).join(''),
     lang: ssrContext.lang,

@@ -334,6 +334,16 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 
   Specify the path of the HTML template to be used for build.
 
+### templateBuildRenderer
+
+- Type: `TemplateRenderer`
+
+- Default: `templateRenderer`
+
+- Details:
+
+  Specify the HTML template renderer to be used for build.
+
 ## Markdown Config
 
 ### markdown
