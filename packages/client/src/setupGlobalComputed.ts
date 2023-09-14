@@ -73,13 +73,13 @@ export const setupGlobalComputed = (
   // load page data from route meta
   const pageData = computedWithControl(
     routePath,
-    () => router.currentRoute.value.meta._data,
+    () => router.currentRoute.value.meta._data!,
   )
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
       pagesData.value[data.key] = () => Promise.resolve(data)
-      if (data.key === router.currentRoute.value.meta._data.key) {
+      if (data.key === router.currentRoute.value.meta._data?.key) {
         router.currentRoute.value.meta._data = data
         pageData.trigger()
       }

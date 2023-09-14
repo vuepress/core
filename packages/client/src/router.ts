@@ -53,6 +53,6 @@ declare module 'vue-router' {
      *
      * @internal only for internal use
      */
-    _data: PageData
+    _data?: PageData
   }
 }
