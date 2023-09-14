@@ -69,11 +69,6 @@ export const build = async (
 
   // render pages
   await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
-    // load ssr template file
-    const ssrTemplate = (
-      await fs.readFile(app.options.templateBuild)
-    ).toString()
-
     // load the client manifest file
     const clientManifestPath = app.dir.temp(clientManifestFilename)
     const clientManifest: ClientManifest = await fs.readJson(clientManifestPath)
@@ -90,6 +85,11 @@ export const build = async (
     // create vue ssr app
     const { app: vueApp, router: vueRouter } = await createVueApp()
     const { renderToString } = await import('vue/server-renderer')
+
+    // load ssr template file
+    const ssrTemplate = await fs.readFile(app.options.templateBuild, {
+      encoding: 'utf8',
+    })
 
     // pre-render pages to html files
     for (const page of app.pages) {
