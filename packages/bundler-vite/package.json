@@ -38,14 +38,14 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.4.29",
+    "postcss": "^8.4.31",
     "postcss-load-config": "^4.0.1",
-    "rollup": "^3.28.1",
+    "rollup": "^3.29.4",
     "vite": "~4.4.9",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.5"
   },
   "publishConfig": {
     "access": "public"

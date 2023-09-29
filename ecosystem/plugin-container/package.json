@@ -34,12 +34,12 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@types/markdown-it": "^13.0.1",
+    "@types/markdown-it": "^13.0.2",
     "@vuepress/core": "workspace:*",
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "markdown-it-container": "^3.0.0"
   },
   "publishConfig": {

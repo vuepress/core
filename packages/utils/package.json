@@ -31,8 +31,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/debug": "^4.1.8",
-    "@types/fs-extra": "^11.0.1",
+    "@types/debug": "^4.1.9",
+    "@types/fs-extra": "^11.0.2",
     "@types/hash-sum": "^1.0.0",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.3.4",
