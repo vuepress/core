@@ -275,34 +275,32 @@ Default theme config has been changed a lot. You'd better check the config refer
 
 See [Default Theme > Config](../reference/default-theme/config.md).
 
-##### Some theme notable changes:
+Here we list some notable changes:
 
-Sidebar children no longer support arrays in arrays.
+##### Sidebar Config
 
-  Old V1
-  ```js
-   {
-       title: 'Configuring Atlantis',
-       path: '/your/path'
-       collapsible: true,
-       children: [
-           ['configuring-atlantis', 'Overview'],
-  ```
-  New V2 format
-  ```js
-   {
-       text: 'Configuring Atlantis',
-       link: '/your/path'
-       collapsible: true,
-       children: [
-           {
-               text: 'Overview',
-               link: 'configuring-atlantis',
-           },
-  ```
+```diff
+- sidebar: {
+-   title: 'Foo Bar',
+-   path: '/foo/bar.html',
+-   collapsable: true,
+-   children: [
+-     ['/baz', 'Baz'],
+-   ],
+- }
 
-> Note the change in some of the keys used also:  `title -> text` and `path -> link`
-
++ sidebar: {
++   text: 'Foo Bar',
++   link: '/foo/bar.html',
++   collapsible: true,
++   children: [
++     {
++       text: 'Baz',
++       link: '/baz',
++     }
++   ],
++ }
+```
 
 ### Official Plugins Change
 
