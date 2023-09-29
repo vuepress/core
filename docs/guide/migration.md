@@ -275,6 +275,33 @@ Default theme config has been changed a lot. You'd better check the config refer
 
 See [Default Theme > Config](../reference/default-theme/config.md).
 
+Here we list some notable changes:
+
+##### Sidebar Config
+
+```diff
+- sidebar: {
+-   title: 'Foo Bar',
+-   path: '/foo/bar.html',
+-   collapsable: true,
+-   children: [
+-     ['/baz', 'Baz'],
+-   ],
+- }
+
++ sidebar: {
++   text: 'Foo Bar',
++   link: '/foo/bar.html',
++   collapsible: true,
++   children: [
++     {
++       text: 'Baz',
++       link: '/baz',
++     }
++   ],
++ }
+```
+
 ### Official Plugins Change
 
 Check the v2 docs of official plugins.

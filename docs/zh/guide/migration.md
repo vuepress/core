@@ -275,6 +275,33 @@ Markdown 插槽不再被支持。
 
 参考 [默认主题 > 配置](../reference/default-theme/config.md) 。
 
+这里仅列出部分要注意的变更：
+
+##### 侧边栏配置
+
+```diff
+- sidebar: {
+-   title: 'Foo Bar',
+-   path: '/foo/bar.html',
+-   collapsable: true,
+-   children: [
+-     ['/baz', 'Baz'],
+-   ],
+- }
+
++ sidebar: {
++   text: 'Foo Bar',
++   link: '/foo/bar.html',
++   collapsible: true,
++   children: [
++     {
++       text: 'Baz',
++       link: '/baz',
++     }
++   ],
++ }
+```
+
 ### 官方插件变更
 
 查看 v2 版本的官方插件文档。
