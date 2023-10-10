@@ -92,6 +92,8 @@
 
   This can be specified in different locales.
 
+  Note: The `attrValue` will be kept as-is, so make sure to append base manually on pathname if needed.
+
 - Example:
 
   To add a custom favicon:

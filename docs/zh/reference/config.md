@@ -73,6 +73,8 @@
 
   它可以设置在不同语言的 locales 中。
 
+  注意：`attrValue` 会被原样保留，所以如必要请在路径上手动添加 `base`。
+
 - 参考：
   - [配置 > locales](#locales)
   - [Frontmatter > description](./frontmatter.md#description)
