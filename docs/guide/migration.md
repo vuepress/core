@@ -239,9 +239,13 @@ This directory will not be used as local theme implicitly if it is existed.
 
 You need to import and set your local theme via [theme](../reference/config.md#theme) option.
 
-### Markdown slot Change
+### Markdown Change
 
-Markdown slot is no longer supported.
+- Markdown slot is no longer supported.
+
+- Links behavior in Markdown image syntax are aligned with standard Markdown, this means they no longer support alias.
+
+  For `<img>` tags, only links starting with `.` are treated as relative links, which is the same as V1 behavior. You should use `<img>` tags instead if you want to use alias.
 
 ### CLI Change
 

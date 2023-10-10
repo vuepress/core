@@ -239,9 +239,12 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 你需要在 [theme](../reference/config.md#theme) 配置项中显式引入并使用本地主题。
 
-### Markdown 插槽变更
+### Markdown 变更
 
-Markdown 插槽不再被支持。
+- Markdown 插槽不再被支持。
+- Markdown 图片中的链接行为已与标准 Markdown 对齐，这意味着它们不在支持别名。
+
+  对于 `<img>` 标签，只有以 `.` 开头的链接才会被识别成相对路径，这与 V1 行为一致。如果你使用别名，你应该转用 `<img>` 标签。
 
 ### CLI 变更
 
