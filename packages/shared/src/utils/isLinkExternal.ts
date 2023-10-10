@@ -1,4 +1,3 @@
-import { isLinkFtp } from './isLinkFtp.js'
 import { isLinkHttp } from './isLinkHttp.js'
 
 const markdownLinkRegexp = /.md((\?|#).*)?$/
@@ -7,8 +6,7 @@ const markdownLinkRegexp = /.md((\?|#).*)?$/
  * Determine a link is external or not
  */
 export const isLinkExternal = (link: string, base = '/'): boolean => {
-  // http link or ftp link
-  if (isLinkHttp(link) || isLinkFtp(link)) {
+  if (isLinkHttp(link)) {
     return true
   }
 
