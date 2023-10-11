@@ -17,7 +17,7 @@
 
   如果你想让你的网站部署到一个子路径下，你将需要设置它。它的值应当总是以斜杠开始，并以斜杠结束。举例来说，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`。
 
-  `base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
+  `base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中（[head](#head) 中的属性除外），所以你只需要指定一次。
 
   需要注意的是， `base` 应该是一个以 `/` 开始和结束的绝对路径名。
 
@@ -73,8 +73,6 @@
 
   它可以设置在不同语言的 locales 中。
 
-  注意：`attrValue` 会被原样保留，所以如必要请在路径上手动添加 `base`。
-
 - 参考：
   - [配置 > locales](#locales)
   - [Frontmatter > description](./frontmatter.md#description)
@@ -92,6 +90,8 @@
   你可以通过 `[tagName, { attrName: attrValue }, innerHTML?]` 的格式来添加标签。
 
   它可以设置在不同语言的 locales 中。
+
+  注意：`attrValue` 会被原样保留，所以你可能需要在路径前手动添加 [base](#base) 前缀。
 
 - 示例：
 
