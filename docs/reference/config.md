@@ -92,7 +92,7 @@
 
   This can be specified in different locales.
 
-  Note: the `attrValue` will be kept as-is, so make sure to append [base](#base) manually on pathname if needed.
+  Notice that if the `attrValue` is a pathname, it will be kept as-is without prepending [base](#base) automatically, so remember to prepend it manually if needed.
 
 - Example:
 
