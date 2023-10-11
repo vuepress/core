@@ -242,9 +242,15 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 ### Markdown 变更
 
 - Markdown 插槽不再被支持。
-- Markdown 图片中的链接行为已与标准 Markdown 对齐，这意味着它们不在支持别名。
+- Markdown 图片语法不再支持 Webpack 别名。不以 `./` 开头的链接也会被识别为相对路径，这与原生 Markdown 图片语法的行为一致。如果你想要使用 Webpack 别名，或者使用来自外部包的图片，你应该使用 `<img>` 标签。
 
-  对于 `<img>` 标签，只有以 `.` 开头的链接才会被识别成相对路径，这与 V1 行为一致。如果你使用别名，你应该转用 `<img>` 标签。
+```diff
+- ![](@alias/foo.png)
+- ![](package-name/bar.png)
+
++ <img src="@alias/foo.png">
++ <img src="package-name/bar.png">
+```
 
 ### CLI 变更
 

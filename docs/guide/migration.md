@@ -242,10 +242,15 @@ You need to import and set your local theme via [theme](../reference/config.md#t
 ### Markdown Change
 
 - Markdown slot is no longer supported.
+- Markdown image syntax does not support webpack aliases anymore. Links without `./` prefix are also treated as relative links, which is aligned with the behavior of the native markdown image syntax. If you want to use aliases in image paths, or use images from external packages, you should use `<img>` tag instead.
 
-- Links behavior in Markdown image syntax are aligned with standard Markdown, this means they no longer support alias.
+```diff
+- ![](@alias/foo.png)
+- ![](package-name/bar.png)
 
-  For `<img>` tags, only links starting with `.` are treated as relative links, which is the same as V1 behavior. You should use `<img>` tags instead if you want to use alias.
++ <img src="@alias/foo.png">
++ <img src="package-name/bar.png">
+```
 
 ### CLI Change
 
