@@ -123,7 +123,7 @@ pageClass: custom-page-class
 
   首页图片的 `alt` 属性。
 
-  如果不设置，则默认使用 [heroText](#heroText) 。
+  如果不设置，则默认使用 [heroText](#herotext) 。
 
 ### heroHeight
 
