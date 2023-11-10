@@ -1,3 +1,25 @@
+# [2.0.0-beta.68](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.67...v2.0.0-beta.68) (2023-11-10)
+
+
+### Build System
+
+* drop support for node 16 ([10b0aa9](https://github.com/vuepress/vuepress-next/commit/10b0aa9b186710de1d15495e968b63ccdbbd778b))
+
+
+### Features
+
+* **core:** support templateBuildRenderer in app options and theme api (close [#1120](https://github.com/vuepress/vuepress-next/issues/1120)) ([0b0108d](https://github.com/vuepress/vuepress-next/commit/0b0108d5ad14dddf77723edddeca4e5ae4f4c7fa))
+* **theme-default:** sync code group status (close [#541](https://github.com/vuepress/vuepress-next/issues/541)) ([7078dd5](https://github.com/vuepress/vuepress-next/commit/7078dd532e699d3e3cfc1eefd4d4b317471a388e))
+* **utils:** add templateRenderer utils ([fe8ea2a](https://github.com/vuepress/vuepress-next/commit/fe8ea2ac4d5ba2163896112ebe4e8fd6ef16878d))
+
+
+### BREAKING CHANGES
+
+* **utils:** the outlets of templateBuild has been updated, see `TEMPLATE_RENDERER_OUTLETS` in `@vuepress/utils` package
+* drop support for node 16
+
+
+
 # [2.0.0-beta.67](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.66...v2.0.0-beta.67) (2023-08-28)
 
 
