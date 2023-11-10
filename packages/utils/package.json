@@ -31,13 +31,13 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/debug": "^4.1.9",
-    "@types/fs-extra": "^11.0.2",
-    "@types/hash-sum": "^1.0.0",
+    "@types/debug": "^4.1.12",
+    "@types/fs-extra": "^11.0.4",
+    "@types/hash-sum": "^1.0.2",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.3.4",
     "fs-extra": "^11.1.1",
-    "globby": "^13.2.2",
+    "globby": "^14.0.0",
     "hash-sum": "^2.0.0",
     "ora": "^7.0.1",
     "picocolors": "^1.0.0",

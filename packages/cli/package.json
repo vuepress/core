@@ -41,11 +41,11 @@
     "@vuepress/utils": "workspace:*",
     "cac": "^6.7.14",
     "chokidar": "^3.5.3",
-    "envinfo": "^7.10.0",
+    "envinfo": "^7.11.0",
     "esbuild": "~0.18.20"
   },
   "devDependencies": {
-    "@types/envinfo": "^7.8.1"
+    "@types/envinfo": "^7.8.3"
   },
   "publishConfig": {
     "access": "public"

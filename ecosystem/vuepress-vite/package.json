@@ -43,7 +43,7 @@
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "vue": "^3.3.4"
+    "vue": "^3.3.8"
   },
   "devDependencies": {
     "@vuepress/client": "workspace:*"

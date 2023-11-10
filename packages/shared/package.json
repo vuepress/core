@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@mdit-vue/types": "^1.0.0",
-    "@vue/shared": "^3.3.4"
+    "@vue/shared": "^3.3.8"
   },
   "publishConfig": {
     "access": "public"

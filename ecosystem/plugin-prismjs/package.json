@@ -38,7 +38,7 @@
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.1"
+    "@types/prismjs": "^1.26.3"
   },
   "publishConfig": {
     "access": "public"

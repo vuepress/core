@@ -55,10 +55,10 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "@vueuse/core": "^10.5.0",
-    "sass": "^1.69.2",
+    "@vueuse/core": "^10.6.0",
+    "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
-    "vue": "^3.3.4",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
   "peerDependencies": {
