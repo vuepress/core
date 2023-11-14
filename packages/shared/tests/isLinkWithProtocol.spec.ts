@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { hasProtocol } from '../src/index.js'
+import { isLinkWithProtocol } from '../src/index.js'
 
-const testCases: [string, ReturnType<typeof hasProtocol>][] = [
+const testCases: [string, ReturnType<typeof isLinkWithProtocol>][] = [
   ['ftp://foobar.com', true],
   ['ms-windows-store://home', true],
   ['mailto:foobar', true],
@@ -14,11 +14,11 @@ const testCases: [string, ReturnType<typeof hasProtocol>][] = [
   ['//foobar.com', false],
 ]
 
-describe('shared > hasProtocol', () => {
+describe('shared > isLinkWithProtocol', () => {
   describe('should determine link with protocol correctly', () => {
     testCases.forEach(([source, expected]) => {
       it(`link: ${source}`, () => {
-        expect(hasProtocol(source)).toBe(expected)
+        expect(isLinkWithProtocol(source)).toBe(expected)
       })
     })
   })
