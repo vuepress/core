@@ -44,7 +44,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "@vueuse/core": "^10.6.0",
+    "@vueuse/core": "^10.6.1",
     "ts-debounce": "^4.0.0",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"

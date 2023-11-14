@@ -38,7 +38,7 @@
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^18.4.0",
+    "@commitlint/cli": "^18.4.1",
     "@commitlint/config-conventional": "^18.4.0",
     "@types/node": "^20.9.0",
     "@types/webpack-env": "^1.18.4",
@@ -50,8 +50,8 @@
     "eslint-config-vuepress": "^4.5.0",
     "eslint-config-vuepress-typescript": "^4.6.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "prettier": "^3.0.3",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
     "sort-package-json": "^2.6.0",
@@ -61,7 +61,7 @@
     "vite": "~4.5.0",
     "vitest": "^0.34.6"
   },
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@8.10.5",
   "engines": {
     "node": ">=18.16.0"
   }
