@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-toc",
-  "version": "2.0.0-beta.67",
+  "version": "2.0.0-beta.68",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",
@@ -37,7 +37,7 @@
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.3.4",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

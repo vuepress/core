@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-beta.67",
+  "version": "2.0.0-beta.68",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "vuepress-plugin",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@vuepress/core": "workspace:*",
-    "shiki": "^0.14.4"
+    "shiki": "^0.14.5"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "2.0.0-beta.67",
+  "version": "2.0.0-beta.68",
   "description": "Markdown package of VuePress",
   "keywords": [
     "vuepress",
@@ -39,8 +39,8 @@
     "@mdit-vue/plugin-toc": "^1.0.0",
     "@mdit-vue/shared": "^1.0.0",
     "@mdit-vue/types": "^1.0.0",
-    "@types/markdown-it": "^13.0.2",
-    "@types/markdown-it-emoji": "^2.0.2",
+    "@types/markdown-it": "^13.0.6",
+    "@types/markdown-it-emoji": "^2.0.4",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "markdown-it": "^13.0.2",
@@ -49,7 +49,7 @@
     "mdurl": "^1.0.1"
   },
   "devDependencies": {
-    "@types/mdurl": "^1.0.3"
+    "@types/mdurl": "^1.0.5"
   },
   "publishConfig": {
     "access": "public"

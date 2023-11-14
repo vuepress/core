@@ -123,7 +123,7 @@ heroImage: https://vuejs.org/images/logo.png
 
   Specify the `alt` attribute of the hero image.
 
-  This will fallback to the [heroText](#heroText).
+  This will fallback to the [heroText](#herotext).
 
 ### heroHeight
 

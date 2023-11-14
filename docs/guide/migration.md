@@ -239,9 +239,18 @@ This directory will not be used as local theme implicitly if it is existed.
 
 You need to import and set your local theme via [theme](../reference/config.md#theme) option.
 
-### Markdown slot Change
+### Markdown Change
 
-Markdown slot is no longer supported.
+- Markdown slot is no longer supported.
+- Markdown image syntax does not support webpack aliases anymore. Links without `./` prefix are also treated as relative links, which is aligned with the behavior of the native markdown image syntax. If you want to use aliases in image paths, or use images from external packages, you should use `<img>` tag instead.
+
+```diff
+- ![](@alias/foo.png)
+- ![](package-name/bar.png)
+
++ <img src="@alias/foo.png">
++ <img src="package-name/bar.png">
+```
 
 ### CLI Change
 

@@ -7,13 +7,14 @@ VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的
 ## 依赖环境
 
 - [Node.js v18.16.0+](https://nodejs.org/)
-- [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/) （可选）
+- 包管理器，如 [pnpm](https://pnpm.io/zh/)、[yarn](https://classic.yarnpkg.com/en/)、[npm](https://www.npmjs.com/) 等。
 
 ::: tip
 
-- 使用 [pnpm](https://pnpm.io/zh/) 时，你可能需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies ，即 `pnpm add -D vue @vuepress/client@next` 。
-- 使用 [yarn 2](https://yarnpkg.com/) 时，你需要在 [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) 文件中设置 `nodeLinker: 'node-modules'` 。
-  :::
+- 使用 [pnpm](https://pnpm.io/zh/) 时，你需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies 。
+- 使用 [yarn 2+](https://yarnpkg.com/) 时，你需要在 [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) 文件中设置 `nodeLinker: 'node-modules'` 。
+
+:::
 
 ## 手动安装
 
