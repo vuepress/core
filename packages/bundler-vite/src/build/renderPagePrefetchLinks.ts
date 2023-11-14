@@ -32,8 +32,8 @@ export const renderPagePrefetchLinks = ({
       const type = item.endsWith('.js')
         ? 'script'
         : item.endsWith('.css')
-        ? 'style'
-        : ''
+          ? 'style'
+          : ''
 
       // user wants to explicitly control what to prefetch
       if (shouldPrefetch !== true && !shouldPrefetch(item, type)) {

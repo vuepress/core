@@ -36,8 +36,8 @@ export const renderPagePreloadLinks = ({
       const type = item.endsWith('.js')
         ? 'script'
         : item.endsWith('.css')
-        ? 'style'
-        : ''
+          ? 'style'
+          : ''
 
       // by default, we only preload js and css
       if (shouldPreload === true && type !== 'script' && type !== 'style') {
