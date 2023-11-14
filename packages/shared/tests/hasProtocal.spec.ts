@@ -3,6 +3,7 @@ import { hasProtocol } from '../src/index.js'
 
 const testCases: [string, ReturnType<typeof hasProtocol>][] = [
   ['ftp://foobar.com', true],
+  ['ms-windows-store://home', true],
   ['mailto:foobar', true],
   ['tel:foobar', true],
   ['https://foobar.com', true],

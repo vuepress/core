@@ -26,6 +26,7 @@ const testCases: [
   [['ftp://foobar.com', '/base/'], false],
   [['ftp://foobar.com/base/README.md'], false],
   [['ftp://foobar.com/base/README.md', '/base/'], false],
+  [['ms-windows-store://home', '/base/'], false],
 
   // absolute links
   [['/foo/bar'], false],
