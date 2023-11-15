@@ -5,27 +5,28 @@ const testCases: [
   Parameters<typeof isLinkExternal>,
   ReturnType<typeof isLinkExternal>,
 ][] = [
-  // http & ftp links
+  // http links
   [['https://foobar.com'], true],
   [['https://foobar.com', '/base/'], true],
   [['http://foobar.com'], true],
   [['http://foobar.com', '/base/'], true],
   [['//foobar.com'], true],
   [['//foobar.com', '/base/'], true],
-  [['ftp://foobar.com'], true],
-  [['ftp://foobar.com', '/base/'], true],
   [['https://foobar.com/base/README.md'], true],
   [['https://foobar.com/base/README.md', '/base/'], true],
   [['http://foobar.com/base/README.md'], true],
   [['http://foobar.com/base/README.md', '/base/'], true],
   [['//foobar.com/base/README.md'], true],
   [['//foobar.com/base/README.md', '/base/'], true],
-  [['ftp://foobar.com/base/README.md'], true],
-  [['ftp://foobar.com/base/README.md', '/base/'], true],
 
   // links with other protocols
   [['mailto:foobar', '/base/'], false],
   [['tel:foobar', '/base/'], false],
+  [['ftp://foobar.com'], false],
+  [['ftp://foobar.com', '/base/'], false],
+  [['ftp://foobar.com/base/README.md'], false],
+  [['ftp://foobar.com/base/README.md', '/base/'], false],
+  [['ms-windows-store://home', '/base/'], false],
 
   // absolute links
   [['/foo/bar'], false],
