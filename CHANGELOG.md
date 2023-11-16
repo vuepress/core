@@ -1,3 +1,17 @@
+# [2.0.0-rc.0](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.68...v2.0.0-rc.0) (2023-11-16)
+
+
+### Bug Fixes
+
+* support links with custom protocol (close [#1404](https://github.com/vuepress/vuepress-next/issues/1404)) ([#1421](https://github.com/vuepress/vuepress-next/issues/1421)) ([518fd7d](https://github.com/vuepress/vuepress-next/commit/518fd7d5db3220b92893a94438d9f9422093e403))
+
+
+### Features
+
+* upgrade to vite 5 and esbuild 0.19 ([e1e9ec3](https://github.com/vuepress/vuepress-next/commit/e1e9ec3fc615f8e11bb2400a0aeb4179413125f9))
+
+
+
 # [2.0.0-beta.68](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.67...v2.0.0-beta.68) (2023-11-10)
 
 
