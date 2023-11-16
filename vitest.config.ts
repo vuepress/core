@@ -29,6 +29,7 @@ export default defineConfig({
   },
   test: {
     coverage: {
+      all: false,
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },
