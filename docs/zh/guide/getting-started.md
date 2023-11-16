@@ -1,7 +1,7 @@
 # 快速上手
 
 ::: warning
-VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，很可能会在 Minor 版本中发生 Breaking Changes 。因此，在每次更新 beta 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
+VuePress v2 目前仍处于 RC (Release Candidate) 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，有可能会发生一些微小的 Breaking Changes 。因此，在每次更新 RC 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
 :::
 
 ## 依赖环境
