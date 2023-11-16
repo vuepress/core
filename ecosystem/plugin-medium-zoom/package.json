@@ -40,7 +40,7 @@
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "medium-zoom": "^1.0.8",
+    "medium-zoom": "^1.1.0",
     "vue": "^3.3.8"
   },
   "publishConfig": {

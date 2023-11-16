@@ -38,8 +38,8 @@
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^18.4.1",
-    "@commitlint/config-conventional": "^18.4.0",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
     "@types/node": "^20.9.0",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "^0.34.6",
@@ -58,7 +58,7 @@
     "tsconfig-vuepress": "^4.5.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vite": "~4.5.0",
+    "vite": "~5.0.0",
     "vitest": "^0.34.6"
   },
   "packageManager": "pnpm@8.10.5",
