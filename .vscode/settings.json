@@ -40,5 +40,6 @@
     "vuepress",
     "vueuse",
     "zoomable"
-  ]
+  ],
+  "markdown.extension.toc.updateOnSave": false
 }

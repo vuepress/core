@@ -189,7 +189,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page Properties > permalink](./node-api.md#permalink)
 
-## routeMeta
+## meta
 
 - Type: `Record<string, unknown>`
 
@@ -198,7 +198,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   Custom data to be attached to the page route.
 
 - Also see:
-  - [Node API > Page Properties > routeMeta](./node-api.md#routeMeta)
+  - [Node API > Page Properties > meta](./node-api.md#meta)
 
 ## title
 

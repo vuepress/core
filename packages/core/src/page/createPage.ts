@@ -9,9 +9,9 @@ import { resolvePageFilePath } from './resolvePageFilePath.js'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
 import { resolvePageKey } from './resolvePageKey.js'
 import { resolvePageLang } from './resolvePageLang.js'
+import { resolvePageMeta } from './resolvePageMeta.js'
 import { resolvePagePath } from './resolvePagePath.js'
 import { resolvePagePermalink } from './resolvePagePermalink.js'
-import { resolvePageRouteMeta } from './resolvePageRouteMeta.js'
 import { resolvePageSlug } from './resolvePageSlug.js'
 
 export const createPage = async (
@@ -49,7 +49,7 @@ export const createPage = async (
   })
 
   // resolve route meta from frontmatter
-  const routeMeta = resolvePageRouteMeta({ frontmatter })
+  const meta = resolvePageMeta({ frontmatter })
 
   // resolve slug from file path
   const slug = resolvePageSlug({ filePathRelative })
@@ -128,7 +128,7 @@ export const createPage = async (
     pathInferred,
     pathLocale,
     permalink,
-    routeMeta,
+    meta,
     sfcBlocks,
     slug,
 
@@ -143,6 +143,17 @@ export const createPage = async (
     dataFileChunkName,
     htmlFilePath,
     htmlFilePathRelative,
+
+    // TODO: Added for backwards compatibility, remove in next major version
+    // @ts-expect-error use meta instead
+    routeMeta: new Proxy(meta, {
+      set: (obj, prop, value) => {
+        console.error('RouteMeta is deprecated, use meta instead.')
+
+        obj[prop as string] = value
+        return true
+      },
+    }),
   }
 
   // plugin hook: extendsPage

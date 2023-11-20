@@ -189,7 +189,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   - [Frontmatter > permalink](#permalink)
   - [Node API > Page 属性 > permalink](./node-api.md#permalink)
 
-## routeMeta
+## meta
 
 - 类型： `Record<string, unknown>`
 
@@ -198,7 +198,7 @@ permalinkPattern: :year/:month/:day/:slug.html
   附加到页面路由的自定义数据。
 
 - 参考：
-  - [Node API > Page 属性 > routeMeta](./node-api.md#routeMeta)
+  - [Node API > Page 属性 > meta](./node-api.md#meta)
 
 ## title
 

@@ -296,7 +296,7 @@ export default {
 
   该 Hook 可以用来在 Page 对象上添加额外的属性，或修改现有的属性等。
 
-  值得一提的是，针对 `page.data` 和 `page.routeMeta` 的改动可以在客户端代码中使用。
+  值得一提的是，针对 `page.data` 和 `page.meta` 的改动可以在客户端代码中使用。
 
 - 示例：
 
@@ -325,7 +325,7 @@ export default {
 - 参考：
   - [客户端 API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page 属性 > data](./node-api.md#data)
-  - [Node API > Page 属性 > routeMeta](./node-api.md#routemeta)
+  - [Node API > Page 属性 > meta](./node-api.md#meta)
 
 ## 生命周期 Hooks
 

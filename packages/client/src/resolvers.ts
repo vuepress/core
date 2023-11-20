@@ -1,7 +1,9 @@
+import type { PageInfo, PagesMap } from '@internal/pagesMap'
 import {
   dedupeHead,
   isArray,
   isString,
+  normalizePath,
   resolveLocalePath,
 } from '@vuepress/shared'
 import type { Component } from 'vue'
@@ -16,7 +18,7 @@ import type {
   SiteData,
   SiteLocaleData,
 } from './composables/index.js'
-import { pageDataEmpty, pagesData } from './composables/index.js'
+import { pageDataEmpty } from './composables/index.js'
 import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
 import type { ClientConfig, Layouts } from './types/index.js'
 
@@ -39,11 +41,34 @@ export const resolvers = reactive({
     ),
 
   /**
-   * Resolve page data according to page key
+   * Resolve page info according to page path
    */
-  resolvePageData: async (pageKey: string): Promise<PageData> => {
-    const pageDataResolver = pagesData.value[pageKey]
-    const pageData = await pageDataResolver?.()
+  resolvePagePath: <PageMeta>(
+    pagesMap: PagesMap<PageMeta>,
+    path: string,
+  ): string => {
+    path = normalizePath(path)
+
+    // original path
+    if (pagesMap.has(path)) return path
+
+    // encoded path
+    const encodedPath = encodeURI(path)
+    if (pagesMap.has(encodedPath)) return encodedPath
+
+    // if no match at this point, then we should leave the path as is
+    return path
+  },
+
+  /**
+   * Resolve page data according to page path and page info
+   */
+  resolvePageData: async (
+    pageInfo: PageInfo,
+    _path: string,
+  ): Promise<PageData> => {
+    const pageData = await pageInfo?.data?.()
+
     return pageData ?? pageDataEmpty
   },
 

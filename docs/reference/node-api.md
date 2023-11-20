@@ -605,7 +605,7 @@ interface MarkdownLink {
   - [Frontmatter > permalink](./frontmatter.md#permalink)
   - [Frontmatter > permalinkPattern](./frontmatter.md#permalinkpattern)
 
-### routeMeta
+### meta
 
 - Type: `Record<string, unknown>`
 
@@ -614,11 +614,11 @@ interface MarkdownLink {
   Custom data to be attached to the route record of vue-router.
 
 - Also see:
-  - [Frontmatter > routeMeta](./frontmatter.md#routemeta)
+  - [Frontmatter > meta](./frontmatter.md#meta)
   - [vue-router > API Reference > RouteRecordRaw > meta](https://router.vuejs.org/api/#meta)
 
 ::: tip What's the difference between route meta and page data?
-Both [route meta](#routemeta) and [page data](#data) is available in client side. However, route meta is attached to the route record, so the route meta of all pages would be loaded at once when users enter your site. In the contrast, page data is saved in separated files, which would be loaded only when users enter the corresponding page.
+Both [route meta](#meta) and [page data](#data) is available in client side. However, route meta is attached to the route record, so the route meta of all pages would be loaded at once when users enter your site. In the contrast, page data is saved in separated files, which would be loaded only when users enter the corresponding page.
 
 Therefore, it's not recommended to store large amounts of info into route meta, otherwise the initial loading speed will be affected a lot when your site has a large number of pages.
 :::

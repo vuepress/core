@@ -1,8 +1,4 @@
-import {
-  preparePagesComponents,
-  preparePagesData,
-  preparePagesRoutes,
-} from '@vuepress/core'
+import { preparePagesMap } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
 
 /**
@@ -26,9 +22,7 @@ export const handlePageUnlink = async (
   app.pages.splice(pageIndex, 1)
 
   // re-prepare page files
-  await preparePagesComponents(app)
-  await preparePagesData(app)
-  await preparePagesRoutes(app)
+  await preparePagesMap(app)
 
   return page
 }

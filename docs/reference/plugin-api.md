@@ -296,7 +296,7 @@ export default {
 
   This hook can be used for adding extra properties or modifying current properties on `Page` object.
 
-  Notice that changes to `page.data` and `page.routeMeta` can be used in client side code.
+  Notice that changes to `page.data` and `page.meta` can be used in client side code.
 
 - Example:
 
@@ -325,7 +325,7 @@ export default {
 - Also see:
   - [Client API > usePageData](./client-api.md#usepagedata)
   - [Node API > Page Properties > data](./node-api.md#data)
-  - [Node API > Page Properties > routeMeta](./node-api.md#routemeta)
+  - [Node API > Page Properties > meta](./node-api.md#meta)
 
 ## Lifecycle Hooks
 

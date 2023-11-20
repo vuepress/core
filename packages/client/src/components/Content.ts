@@ -1,4 +1,4 @@
-import { pagesComponents } from '@internal/pagesComponents'
+import { pagesMap } from '@internal/pagesMap'
 import { computed, defineComponent, h } from 'vue'
 import { usePageData } from '../composables/index.js'
 
@@ -10,7 +10,7 @@ export const Content = defineComponent({
   name: 'Content',
 
   props: {
-    pageKey: {
+    url: {
       type: String,
       required: false,
       default: '',
@@ -20,7 +20,7 @@ export const Content = defineComponent({
   setup(props) {
     const page = usePageData()
     const pageComponent = computed(
-      () => pagesComponents[props.pageKey || page.value.key],
+      () => pagesMap.get(props.url || page.value.path)?.comp,
     )
     return () =>
       pageComponent.value
