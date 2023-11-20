@@ -3,7 +3,7 @@ import type { InjectionKey } from 'vue'
 
 export const useClientData = <T = unknown, U extends boolean = false>(
   key: InjectionKey<T>,
-  required?: U
+  required?: U,
 ): U extends true ? T : T | undefined => {
   const result = inject(key)
 
@@ -11,5 +11,5 @@ export const useClientData = <T = unknown, U extends boolean = false>(
     throw new Error(`Can not found ${key} in clientData()`)
   }
 
-  return <U extends true ? T : T | undefined>result
+  return result as U extends true ? T : T | undefined
 }
