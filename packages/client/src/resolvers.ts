@@ -6,18 +6,17 @@ import {
 } from '@vuepress/shared'
 import type { Component } from 'vue'
 import { reactive } from 'vue'
-import {
-  type PageData,
-  pageDataEmpty,
-  type PageFrontmatter,
-  type PageHead,
-  type PageHeadTitle,
-  type PageLang,
-  pagesData,
-  type RouteLocale,
-  type SiteData,
-  type SiteLocaleData,
+import type {
+  PageData,
+  PageFrontmatter,
+  PageHead,
+  PageHeadTitle,
+  PageLang,
+  RouteLocale,
+  SiteData,
+  SiteLocaleData,
 } from './composables/index.js'
+import { pageDataEmpty, pagesData } from './composables/index.js'
 import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
 import type { ClientConfig, Layouts } from './types/index.js'
 
@@ -36,7 +35,7 @@ export const resolvers = reactive({
         ...prev,
         ...item.layouts,
       }),
-      {} as Layouts
+      {} as Layouts,
     ),
 
   /**
@@ -62,7 +61,7 @@ export const resolvers = reactive({
   resolvePageHead: (
     headTitle: PageHeadTitle,
     frontmatter: PageFrontmatter,
-    siteLocale: SiteLocaleData
+    siteLocale: SiteLocaleData,
   ): PageHead => {
     const description = isString(frontmatter.description)
       ? frontmatter.description
@@ -83,7 +82,7 @@ export const resolvers = reactive({
    */
   resolvePageHeadTitle: (
     page: PageData,
-    siteLocale: SiteLocaleData
+    siteLocale: SiteLocaleData,
   ): PageHeadTitle =>
     [page.title, siteLocale.title].filter((item) => !!item).join(' | '),
 
@@ -92,7 +91,8 @@ export const resolvers = reactive({
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (page: PageData): PageLang => page.lang || 'en',
+  resolvePageLang: (page: PageData, siteLocale: SiteLocaleData): PageLang =>
+    page.lang || siteLocale.lang || 'en-US',
 
   /**
    * Resolve layout component of current page
@@ -125,7 +125,7 @@ export const resolvers = reactive({
    */
   resolveRouteLocale: (
     locales: SiteData['locales'],
-    routePath: string
+    routePath: string,
   ): RouteLocale => resolveLocalePath(locales, routePath),
 
   /**
@@ -135,7 +135,7 @@ export const resolvers = reactive({
    */
   resolveSiteLocaleData: (
     site: SiteData,
-    routeLocale: RouteLocale
+    routeLocale: RouteLocale,
   ): SiteLocaleData => ({
     ...site,
     ...site.locales[routeLocale],

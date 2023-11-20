@@ -4,18 +4,20 @@ import type { Page, PageOptions } from '../page.js'
 
 // util type
 type PromiseOrNot<T> = Promise<T> | T
-type Closable = { close(): void }
+interface Closable {
+  close(): void
+}
 
 // base hook type
-export type Hook<
+export interface Hook<
   Exposed,
   Normalized = Exposed,
   Result = Normalized extends (...args: any) => infer U
     ? U extends Promise<infer V>
       ? V
       : U
-    : void
-> = {
+    : void,
+> {
   exposed: Exposed
   normalized: Normalized
   result: Result

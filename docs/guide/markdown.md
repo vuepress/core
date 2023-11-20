@@ -2,13 +2,13 @@
 
 Make sure you already know Markdown well before reading this section. If not, please learn some [Markdown tutorials](https://commonmark.org/help/) first.
 
-## Syntax Extensions
-
 The Markdown content in VuePress will be parsed by [markdown-it](https://github.com/markdown-it/markdown-it), which supports [syntax extensions](https://github.com/markdown-it/markdown-it#syntax-extensions) via markdown-it plugins.
 
-This section will introduce built-in Markdown syntax extensions of VuePress.
-
 You can also configure those built-in extensions, load more markdown-it plugins and implement your own extensions via [markdown](../reference/config.md#markdown) option and [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) option.
+
+## Syntax Extensions
+
+This section will introduce built-in Markdown syntax extensions of VuePress.
 
 ### Embedded
 
@@ -413,6 +413,10 @@ Check out the [Built-in Components](../reference/components.md) for a full list 
 
 Check out the [Default Theme > Built-in Components](../reference/default-theme/components.md) for a full list of default theme built-in components.
 :::
+
+## Custom Markdown Plugins
+
+Sometimes #940
 
 ## Cautions
 

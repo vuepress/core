@@ -15,20 +15,18 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![out](../../out.png)',
       '![汉字](./汉字.png)',
       '![100%](./100%.png)',
-      // aliases
-      '![alias](@alias/foo.png)',
-      '![汉字](@alias/汉字.png)',
-      '![100%](@alias/100%.png)',
-      // webpack legacy aliases
-      '![~alias](~@alias/foo.png)',
-      '![~汉字](~@alias/汉字.png)',
-      '![~100%](~@alias/100%.png)',
       // absolute paths
       '![absolute](/absolute.png)',
       '![absolute-foo](/foo/absolute.png)',
       // no-prefix paths
       '![no-prefix](no-prefix.png)',
       '![no-prefix-foo](foo/no-prefix.png)',
+      '![alias](@alias/foo.png)',
+      '![汉字](@alias/汉字.png)',
+      '![100%](@alias/100%.png)',
+      '![~alias](~@alias/foo.png)',
+      '![~汉字](~@alias/汉字.png)',
+      '![~100%](~@alias/100%.png)',
       // keep as is
       '![url](http://foobar.com/icon.png)',
       '![empty]()',
@@ -36,6 +34,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![invalid](.../invalid.png)',
       '![汉字](.../汉字.png)',
       '![100%](.../100%.png)',
+      // data uri
+      '![data-uri](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==)',
     ]
 
     const testCases: {
@@ -60,27 +60,27 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@source/../out.png" alt="out">',
           '<img src="@source/sub/汉字.png" alt="汉字">',
           '<img src="@source/sub/100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
-          '<img src="no-prefix.png" alt="no-prefix">',
-          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/no-prefix.png" alt="no-prefix">',
+          '<img src="@source/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/@alias/foo.png" alt="alias">',
+          '<img src="@source/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@source/sub/@alias/100%.png" alt="100%">',
+          '<img src="@source/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@source/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@source/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
-          '<img src=".../invalid.png" alt="invalid">',
-          '<img src=".../汉字.png" alt="汉字">',
-          '<img src=".../100%.png" alt="100%">',
+          '<img src="@source/sub/.../invalid.png" alt="invalid">',
+          '<img src="@source/sub/.../汉字.png" alt="汉字">',
+          '<img src="@source/sub/.../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
       {
@@ -101,27 +101,27 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="@foo/../out.png" alt="out">',
           '<img src="@foo/sub/汉字.png" alt="汉字">',
           '<img src="@foo/sub/100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
-          '<img src="no-prefix.png" alt="no-prefix">',
-          '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@foo/sub/no-prefix.png" alt="no-prefix">',
+          '<img src="@foo/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@foo/sub/@alias/foo.png" alt="alias">',
+          '<img src="@foo/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@foo/sub/@alias/100%.png" alt="100%">',
+          '<img src="@foo/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@foo/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@foo/sub/~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
           // invalid paths
-          '<img src=".../invalid.png" alt="invalid">',
-          '<img src=".../汉字.png" alt="汉字">',
-          '<img src=".../100%.png" alt="100%">',
+          '<img src="@foo/sub/.../invalid.png" alt="invalid">',
+          '<img src="@foo/sub/.../汉字.png" alt="汉字">',
+          '<img src="@foo/sub/.../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
       {
@@ -139,20 +139,18 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src="../../out.png" alt="out">',
           '<img src="./汉字.png" alt="汉字">',
           '<img src="./100%.png" alt="100%">',
-          // aliases
-          '<img src="@alias/foo.png" alt="alias">',
-          '<img src="@alias/汉字.png" alt="汉字">',
-          '<img src="@alias/100%.png" alt="100%">',
-          // webpack legacy aliases
-          '<img src="~@alias/foo.png" alt="~alias">',
-          '<img src="~@alias/汉字.png" alt="~汉字">',
-          '<img src="~@alias/100%.png" alt="~100%">',
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
           '<img src="no-prefix.png" alt="no-prefix">',
           '<img src="foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@alias/foo.png" alt="alias">',
+          '<img src="@alias/汉字.png" alt="汉字">',
+          '<img src="@alias/100%.png" alt="100%">',
+          '<img src="~@alias/foo.png" alt="~alias">',
+          '<img src="~@alias/汉字.png" alt="~汉字">',
+          '<img src="~@alias/100%.png" alt="~100%">',
           // keep as is
           '<img src="http://foobar.com/icon.png" alt="url">',
           '<img src="" alt="empty">',
@@ -160,6 +158,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           '<img src=".../invalid.png" alt="invalid">',
           '<img src=".../汉字.png" alt="汉字">',
           '<img src=".../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
         ],
       },
     ]
@@ -167,9 +167,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
     testCases.forEach(({ description, md, env, expected }) =>
       it(description, () => {
         expect(md.render(source.join('\n\n'), env)).toEqual(
-          expected.map((item) => `<p>${item}</p>`).join('\n') + '\n'
+          expected.map((item) => `<p>${item}</p>`).join('\n') + '\n',
         )
-      })
+      }),
     )
   })
 
@@ -244,6 +244,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
         // keep as is
         '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+        /* data uri */
+        '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
       ]
 
       const testCases: {
@@ -327,6 +330,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
         {
@@ -406,6 +412,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
         {
@@ -482,6 +491,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
             '<img srcset="~@alias/foo.png 1x, ~@alias/汉字.png 2x, ~@alias/100%.png 3x" alt="attrs" src="~@alias/attrs.png" width="100px">',
             // keep as is
             '<img alt="attrs" src="" width="100px" srcset="/absolute.png 1x, no-prefix.png 2x, http://foobar.com/icon.png">',
+
+            /* data uri */
+            '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
           ],
         },
       ]
@@ -490,43 +502,43 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         it(description, () => {
           // block
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n')
+            expected.map((item) => `${item}`).join('\n'),
           )
 
           // block with leading white space
           expect(
-            md.render(source.map((item) => `   ${item}`).join('\n\n'), env)
+            md.render(source.map((item) => `   ${item}`).join('\n\n'), env),
           ).toEqual(expected.map((item) => `   ${item}`).join('\n'))
 
           // inline with prefix
           expect(
-            md.render(source.map((item) => `foo${item}`).join('\n\n'), env)
+            md.render(source.map((item) => `foo${item}`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n'
+            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n',
           )
 
           // inline with suffix
           expect(
-            md.render(source.map((item) => `${item}foo`).join('\n\n'), env)
+            md.render(source.map((item) => `${item}foo`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n'
+            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n',
           )
 
           // inline with line break
           expect(
             md.render(
               source.map((item) => item.replace('<img', '<img\n')).join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n') + '\n'
+              .join('\n') + '\n',
           )
 
           // wrapped item
           expect(
-            md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env)
+            md.render(source.map((item) => `<p>${item}</p>`).join('\n\n'), env),
           ).toEqual(expected.map((item) => `<p>${item}</p>`).join('\n'))
 
           // wrapped item with line break
@@ -535,20 +547,20 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               source
                 .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
                 .join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n')
+              .join('\n'),
           )
 
           // wrapped multiple items
           expect(
             md.render(
               source.map((item) => `<p>${item}${item}</p>`).join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(expected.map((item) => `<p>${item}${item}</p>`).join('\n'))
 
           // deeply wrapped multiple items
@@ -557,14 +569,14 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               source
                 .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
                 .join('\n\n'),
-              env
-            )
+              env,
+            ),
           ).toEqual(
             expected
               .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
-              .join('\n')
+              .join('\n'),
           )
-        })
+        }),
       )
     })
 
@@ -663,16 +675,16 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         it(description, () => {
           // double quote
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n') + '\n'
+            expected.map((item) => `${item}`).join('\n') + '\n',
           )
           // single quote
           expect(
-            md.render(source.join('\n\n').replace(/"/g, "'"), env)
+            md.render(source.join('\n\n').replace(/"/g, "'"), env),
           ).toEqual(
             expected.map((item) => `${item}`.replace(/"/g, "'")).join('\n') +
-              '\n'
+              '\n',
           )
-        })
+        }),
       )
     })
   })

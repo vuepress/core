@@ -34,10 +34,10 @@ export const resolveClientManifestMeta = ({
           .map((fileIndex) => allFilesMeta[fileIndex])
           .filter(
             ({ file, type }) =>
-              async.includes(file) || (type !== 'style' && type !== 'script')
+              async.includes(file) || (type !== 'style' && type !== 'script'),
           ),
       ]
-    })
+    }),
   )
 
   return {

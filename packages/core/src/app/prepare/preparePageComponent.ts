@@ -5,7 +5,7 @@ import type { App, Page } from '../../types/index.js'
  */
 export const preparePageComponent = async (
   app: App,
-  page: Page
+  page: Page,
 ): Promise<void> => {
   await app.writeTemp(
     page.componentFilePathRelative,
@@ -17,6 +17,6 @@ export const preparePageComponent = async (
       page.sfcBlocks.scriptSetup?.content,
       ...page.sfcBlocks.styles.map((item) => item.content),
       ...page.sfcBlocks.customBlocks.map((item) => item.content),
-    ].join('\n')
+    ].join('\n'),
   )
 }

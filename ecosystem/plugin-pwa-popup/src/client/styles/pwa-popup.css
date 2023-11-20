@@ -32,7 +32,9 @@
 
 .pwa-popup-enter-active,
 .pwa-popup-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .pwa-popup-enter-from,

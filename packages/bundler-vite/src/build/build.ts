@@ -11,7 +11,7 @@ const log = debug('vuepress:bundler-vite/build')
 
 export const build = async (
   options: ViteBundlerOptions,
-  app: App
+  app: App,
 ): ReturnType<Bundler['build']> => {
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
@@ -44,23 +44,18 @@ export const build = async (
 
   // render pages
   await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
-    // load ssr template file
-    const ssrTemplate = (
-      await fs.readFile(app.options.templateBuild)
-    ).toString()
-
     // get client bundle entry chunk and css asset
     const clientEntryChunk = clientOutput.output.find(
-      (item) => item.type === 'chunk' && item.isEntry
+      (item) => item.type === 'chunk' && item.isEntry,
     ) as OutputChunk
     const clientCssAsset = clientOutput.output.find(
       (item): item is OutputAsset =>
-        item.type === 'asset' && item.fileName.endsWith('.css')
+        item.type === 'asset' && item.fileName.endsWith('.css'),
     )
 
     // get server bundle entry chunk
     const serverEntryChunk = serverOutput.output.find(
-      (item) => item.type === 'chunk' && item.isEntry
+      (item) => item.type === 'chunk' && item.isEntry,
     ) as OutputChunk
 
     // load the compiled server bundle
@@ -71,6 +66,11 @@ export const build = async (
     // create vue ssr app
     const { app: vueApp, router: vueRouter } = await createVueApp()
     const { renderToString } = await import('vue/server-renderer')
+
+    // load ssr template file
+    const ssrTemplate = await fs.readFile(app.options.templateBuild, {
+      encoding: 'utf8',
+    })
 
     // pre-render pages to html files
     for (const page of app.pages) {

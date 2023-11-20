@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
@@ -52,12 +52,12 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # 选择要使用的 pnpm 版本
-          version: 7
+          version: 8
           # 使用 pnpm 安装依赖
           run_install: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # 选择要使用的 node 版本
           node-version: 18
@@ -71,7 +71,7 @@ jobs:
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
@@ -117,7 +117,7 @@ pages:
 
   # 安装 pnpm
   before_script:
-    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
     - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
@@ -209,7 +209,7 @@ heroku login
 
 2. 设置 [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) 来选择 Node 版本：
 
-   - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 18
 
 3. 点击 deploy 按钮。
 

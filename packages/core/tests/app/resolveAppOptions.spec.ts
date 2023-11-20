@@ -1,4 +1,4 @@
-import { path } from '@vuepress/utils'
+import { path, templateRenderer } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import { resolveAppOptions } from '../../src/index.js'
 
@@ -11,7 +11,7 @@ describe('core > app > resolveAppOptions', () => {
         source,
         theme: { name: 'theme' } as any,
         bundler: { name: 'bundler' } as any,
-      })
+      }),
     ).toEqual({
       base: '/',
       lang: 'en-US',
@@ -33,11 +33,12 @@ describe('core > app > resolveAppOptions', () => {
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
       permalinkPattern: null,
       templateDev: path.normalize(
-        require.resolve('@vuepress/client/templates/dev.html')
+        require.resolve('@vuepress/client/templates/dev.html'),
       ),
       templateBuild: path.normalize(
-        require.resolve('@vuepress/client/templates/build.html')
+        require.resolve('@vuepress/client/templates/build.html'),
       ),
+      templateBuildRenderer: templateRenderer,
       shouldPreload: true,
       shouldPrefetch: true,
       markdown: {},

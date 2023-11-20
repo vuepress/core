@@ -12,8 +12,8 @@ ${app.pages
     ({ key, path, dataFilePath, dataFileChunkName }) => `
   // path: ${path}
   ${JSON.stringify(key)}: () => import(${
-      dataFileChunkName ? `/* webpackChunkName: "${dataFileChunkName}" */` : ''
-    }${JSON.stringify(dataFilePath)}).then(({ data }) => data),`
+    dataFileChunkName ? `/* webpackChunkName: "${dataFileChunkName}" */` : ''
+  }${JSON.stringify(dataFilePath)}).then(({ data }) => data),`,
   )
   .join('')}
 }

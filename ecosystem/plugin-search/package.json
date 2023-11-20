@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-beta.61",
+  "version": "2.0.0-rc.0",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
@@ -40,8 +40,8 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "chokidar": "^3.5.3",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   },
   "publishConfig": {
     "access": "public"

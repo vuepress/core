@@ -2,12 +2,12 @@
   "extends": "tsconfig-vuepress/base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "lib": ["DOM", "ES2020"],
+    "lib": ["DOM", "ES2022"],
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "target": "ES2020"
+    "target": "ES2022"
   }
 }

@@ -23,7 +23,7 @@ export const useActiveHeaderLinks = ({
     const scrollTop = Math.max(
       window.scrollY,
       document.documentElement.scrollTop,
-      document.body.scrollTop
+      document.body.scrollTop,
     )
     // check if we are at page top
     const isAtPageTop = Math.abs(scrollTop - 0) < offset
@@ -39,7 +39,7 @@ export const useActiveHeaderLinks = ({
     // get the total scroll length of current page
     const scrollHeight = Math.max(
       document.documentElement.scrollHeight,
-      document.body.scrollHeight
+      document.body.scrollHeight,
     )
     // check if we have reached page bottom
     // notice the `scrollBottom` might not be exactly equal to `scrollHeight`, so we add offset here
@@ -47,15 +47,15 @@ export const useActiveHeaderLinks = ({
 
     // get all header links
     const headerLinks: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerLinkSelector)
+      document.querySelectorAll(headerLinkSelector),
     )
     // get all header anchors
     const headerAnchors: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerAnchorSelector)
+      document.querySelectorAll(headerAnchorSelector),
     )
     // filter anchors that do not have corresponding links
     const existedHeaderAnchors = headerAnchors.filter((anchor) =>
-      headerLinks.some((link) => link.hash === anchor.hash)
+      headerLinks.some((link) => link.hash === anchor.hash),
     )
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
@@ -124,7 +124,6 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
     .replace({
       query: router.currentRoute.value.query,
       hash,
-      force: true,
     })
     .finally(() => (router.options.scrollBehavior = scrollBehavior))
 }

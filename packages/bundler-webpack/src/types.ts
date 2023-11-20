@@ -21,7 +21,7 @@ export interface WebpackBundlerOptions {
   configureWebpack?: (
     config: WebpackConfiguration,
     isServer: boolean,
-    isBuild: boolean
+    isBuild: boolean,
   ) => WebpackConfiguration | void
 
   /**
@@ -30,7 +30,7 @@ export interface WebpackBundlerOptions {
   chainWebpack?: (
     config: WebpackChainConfig,
     isServer: boolean,
-    isBuild: boolean
+    isBuild: boolean,
   ) => void
 
   /**
@@ -89,7 +89,7 @@ export interface LoaderOptions {
  * Common type for style pre-processor options
  */
 export type StylePreprocessorOptions<
-  T extends Record<string, any> = Record<string, any>
+  T extends Record<string, any> = Record<string, any>,
 > = T | ((loaderContext: LoaderContext) => TextDecodeOptions)
 
 /**

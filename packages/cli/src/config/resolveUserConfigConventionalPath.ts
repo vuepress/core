@@ -6,7 +6,7 @@ import { fs, path } from '@vuepress/utils'
  */
 export const resolveUserConfigConventionalPath = (
   source: string,
-  cwd = process.cwd()
+  cwd = process.cwd(),
 ): string | undefined =>
   [
     path.resolve(cwd, 'vuepress.config.ts'),

@@ -20,7 +20,7 @@ export type Plugin<T extends PluginObject = PluginObject> =
  * It accepts plugin options and vuepress app, returns plugin object
  */
 export type PluginFunction<T extends PluginObject = PluginObject> = (
-  app: App
+  app: App,
 ) => T
 
 /**

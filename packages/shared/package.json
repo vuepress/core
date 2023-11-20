@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared",
-  "version": "2.0.0-beta.61",
+  "version": "2.0.0-rc.0",
   "description": "Utils that shared between VuePress node and client",
   "keywords": [
     "vuepress",
@@ -33,8 +33,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/types": "^0.12.0",
-    "@vue/shared": "^3.2.47"
+    "@mdit-vue/types": "^1.0.0",
+    "@vue/shared": "^3.3.8"
   },
   "publishConfig": {
     "access": "public"
@@ -50,7 +50,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2020",
+    "target": "es2022",
     "tsconfig": "../tsconfig.dts.json"
   }
 }

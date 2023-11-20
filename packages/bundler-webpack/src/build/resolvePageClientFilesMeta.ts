@@ -10,7 +10,7 @@ export const resolvePageClientFilesMeta = ({
   moduleRequests: string[]
   moduleFilesMetaMap: ModuleFilesMetaMap
 }): FileMeta[] => {
-  const files: Set<FileMeta> = new Set()
+  const files = new Set<FileMeta>()
   moduleRequests.forEach((request) => {
     moduleFilesMetaMap[request]?.forEach((file) => files.add(file))
   })

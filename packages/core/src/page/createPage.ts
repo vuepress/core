@@ -16,7 +16,7 @@ import { resolvePageSlug } from './resolvePageSlug.js'
 
 export const createPage = async (
   app: App,
-  options: PageOptions
+  options: PageOptions,
 ): Promise<Page> => {
   // plugin hook: extendsPageOptions
   await app.pluginApi.hooks.extendsPageOptions.process(options, app)

@@ -29,7 +29,7 @@ export const BackToTop = defineComponent({
         {
           name: 'back-to-top',
         },
-        () => (show.value ? backToTopEl : null)
+        () => (show.value ? backToTopEl : null),
       )
   },
 })

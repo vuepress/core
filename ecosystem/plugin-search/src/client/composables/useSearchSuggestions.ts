@@ -23,7 +23,7 @@ export const useSearchSuggestions = ({
 }): ComputedRef<SearchSuggestion[]> => {
   // filter search index of current locale
   const localeSearchIndex = computed(() =>
-    searchIndex.value.filter((item) => item.pathLocale === routeLocale.value)
+    searchIndex.value.filter((item) => item.pathLocale === routeLocale.value),
   )
 
   return computed(() => {
@@ -34,7 +34,7 @@ export const useSearchSuggestions = ({
 
     const matchPageHeader = (
       searchIndexItem: SearchIndexItem,
-      header: PageHeader
+      header: PageHeader,
     ): void => {
       if (isQueryMatched(searchStr, [header.title])) {
         suggestions.push({

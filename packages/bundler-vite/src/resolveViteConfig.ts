@@ -1,11 +1,8 @@
 import { default as vuePlugin } from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
-import { type InlineConfig, mergeConfig } from 'vite'
-import {
-  constantsReplacementPlugin,
-  mainPlugin,
-  userConfigPlugin,
-} from './plugins/index.js'
+import type { InlineConfig } from 'vite'
+import { mergeConfig } from 'vite'
+import { mainPlugin, userConfigPlugin } from './plugins/index.js'
 import type { ViteBundlerOptions } from './types.js'
 
 export const resolveViteConfig = async ({
@@ -29,12 +26,11 @@ export const resolveViteConfig = async ({
       },
       plugins: [
         vuePlugin(options.vuePluginOptions),
-        constantsReplacementPlugin(app),
         mainPlugin({ app, isBuild, isServer }),
         userConfigPlugin(options),
       ],
     },
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin
-    options.viteOptions ?? {}
+    options.viteOptions ?? {},
   )
 }

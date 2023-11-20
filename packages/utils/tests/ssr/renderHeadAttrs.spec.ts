@@ -1,6 +1,6 @@
 import type { HeadAttrsConfig } from '@vuepress/shared'
 import { describe, expect, it } from 'vitest'
-import { renderHeadAttrs } from '../src/index.js'
+import { renderHeadAttrs } from '../../src/index.js'
 
 const testCases: [HeadAttrsConfig, string][] = [
   [

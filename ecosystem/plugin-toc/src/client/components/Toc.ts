@@ -16,7 +16,7 @@ export interface TocProps {
 const renderLink = (
   header: PageHeader,
   options: TocPropsOptions,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
 ): VNode => {
   const hash = `#${header.slug}`
   const linkClass = [options.linkClass]
@@ -42,7 +42,7 @@ const renderLink = (
         class: linkClass,
         ariaLabel: header.title,
       },
-      () => header.title
+      () => header.title,
     )
   }
 
@@ -53,14 +53,14 @@ const renderLink = (
       class: linkClass,
       ariaLabel: header.title,
     },
-    header.title
+    header.title,
   )
 }
 
 const renderHeaders = (
   headers: PageHeader[],
   options: TocPropsOptions,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
 ): VNode[] => {
   if (headers.length === 0) {
     return []
@@ -81,9 +81,9 @@ const renderHeaders = (
           [
             renderLink(header, options, route),
             renderHeaders(header.children, options, route),
-          ]
-        )
-      )
+          ],
+        ),
+      ),
     ),
   ]
 }
@@ -139,7 +139,7 @@ export const Toc = defineComponent({
           {
             class: options.value.containerClass,
           },
-          renderedHeaders
+          renderedHeaders,
         )
       }
 

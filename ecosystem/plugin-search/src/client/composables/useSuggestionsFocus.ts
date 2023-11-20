@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 
 export const useSuggestionsFocus = (
-  suggestions: Ref<unknown[]>
+  suggestions: Ref<unknown[]>,
 ): {
   focusIndex: Ref<number>
   focusNext: () => void

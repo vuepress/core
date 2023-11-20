@@ -1,7 +1,6 @@
 import type { PageData } from '@vuepress/shared'
-import { readonly, ref } from 'vue'
-import type { Ref } from 'vue'
-import { pagesData } from './pagesData.js'
+import type { InjectionKey, Ref } from 'vue'
+import { inject, readonly } from 'vue'
 
 export type { PageData }
 
@@ -10,6 +9,13 @@ export type { PageData }
  */
 export type PageDataRef<T extends Record<any, any> = Record<never, never>> =
   Ref<PageData<T>>
+
+/**
+ * Injection key for page data
+ */
+export const pageDataSymbol: InjectionKey<PageDataRef> = Symbol(
+  __VUEPRESS_DEV__ ? 'pageData' : '',
+)
 
 /**
  * Empty page data to be used as the fallback value
@@ -24,23 +30,14 @@ export const pageDataEmpty = readonly({
 } as PageData) as PageData
 
 /**
- * Global page data ref
- */
-export const pageData: PageDataRef = ref(pageDataEmpty)
-
-/**
  * Returns the ref of the data of current page
  */
 export const usePageData = <
-  T extends Record<any, any> = Record<never, never>
->(): PageDataRef<T> => pageData as PageDataRef<T>
-
-if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  // reuse vue HMR runtime
-  __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
-    pagesData.value[data.key] = () => Promise.resolve(data)
-    if (data.key === pageData.value.key) {
-      pageData.value = data
-    }
+  T extends Record<any, any> = Record<never, never>,
+>(): PageDataRef<T> => {
+  const pageData = inject(pageDataSymbol)
+  if (!pageData) {
+    throw new Error('pageData() is called without provider.')
   }
+  return pageData as PageDataRef<T>
 }

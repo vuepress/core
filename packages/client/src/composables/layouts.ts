@@ -1,4 +1,5 @@
-import { type ComputedRef, inject, type InjectionKey } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
+import { inject } from 'vue'
 import type { Layouts } from '../types/index.js'
 
 /**
@@ -10,7 +11,7 @@ export type LayoutsRef = ComputedRef<Layouts>
  * Injection key for layouts
  */
 export const layoutsSymbol: InjectionKey<LayoutsRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'layouts' : ''
+  __VUEPRESS_DEV__ ? 'layouts' : '',
 )
 
 /**

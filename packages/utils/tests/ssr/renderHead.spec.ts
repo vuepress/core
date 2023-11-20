@@ -1,6 +1,6 @@
 import type { HeadConfig } from '@vuepress/shared'
 import { describe, expect, it } from 'vitest'
-import { renderHead } from '../src/index.js'
+import { renderHead } from '../../src/index.js'
 
 const testCases: [HeadConfig, string][] = [
   [['title', {}, 'vuepress site title'], `<title>vuepress site title</title>`],

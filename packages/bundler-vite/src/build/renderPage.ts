@@ -50,44 +50,24 @@ export const renderPage = async ({
   const pageChunkFiles = resolvePageChunkFiles({ page, output })
 
   // generate html string
-  const html = ssrTemplate
-    // vuepress version
-    .replace('{{ version }}', app.version)
-    // page lang
-    .replace('{{ lang }}', ssrContext.lang)
-    // page head
-    .replace(
-      '<!--vuepress-ssr-head-->',
-      ssrContext.head.map(renderHead).join('')
-    )
-    // page preload & prefetch links
-    .replace(
-      '<!--vuepress-ssr-resources-->',
-      `${renderPagePreloadLinks({
-        app,
-        outputEntryChunk,
-        pageChunkFiles,
-      })}${renderPagePrefetchLinks({
-        app,
-        outputEntryChunk,
-        pageChunkFiles,
-      })}`
-    )
-    // page styles
-    .replace(
-      '<!--vuepress-ssr-styles-->',
-      renderPageStyles({ app, outputCssAsset })
-    )
-    // page content
-    // notice that some special chars in string like `$&` would be recognized by `replace()`,
-    // and they won't be html-escaped and will be kept as is when they are inside a code block,
-    // so we use a replace function as the second param to avoid those potential issues
-    .replace('<!--vuepress-ssr-app-->', () => pageRendered)
-    // page scripts
-    .replace(
-      '<!--vuepress-ssr-scripts-->',
-      renderPageScripts({ app, outputEntryChunk })
-    )
+  const html = await app.options.templateBuildRenderer(ssrTemplate, {
+    content: pageRendered,
+    head: ssrContext.head.map(renderHead).join(''),
+    lang: ssrContext.lang,
+    prefetch: renderPagePrefetchLinks({
+      app,
+      outputEntryChunk,
+      pageChunkFiles,
+    }),
+    preload: renderPagePreloadLinks({
+      app,
+      outputEntryChunk,
+      pageChunkFiles,
+    }),
+    scripts: renderPageScripts({ app, outputEntryChunk }),
+    styles: renderPageStyles({ app, outputCssAsset }),
+    version: app.version,
+  })
 
   // write html file
   await fs.outputFile(page.htmlFilePath, html)

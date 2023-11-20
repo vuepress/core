@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { logger } from '../src/index.js'
+import { logger } from '../../src/index.js'
 
 const methods = [
   ['info', 'log'],
@@ -18,7 +18,7 @@ describe('utils > logger', () => {
       logger[method]('foo')
       expect(console[innerMethod]).toHaveBeenCalledWith(
         expect.any(String),
-        'foo'
+        'foo',
       )
 
       console[innerMethod] = stored

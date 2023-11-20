@@ -124,7 +124,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
       })
 
       expect(mdWithHighlightLines.render(source)).toBe(
-        mdWithoutHighlightLine.render(source)
+        mdWithoutHighlightLine.render(source),
       )
     })
 
@@ -139,7 +139,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
       })
 
       expect(mdWithLineNumbers.render(source)).toBe(
-        mdWithoutLineNumbers.render(source)
+        mdWithoutLineNumbers.render(source),
       )
     })
   })
@@ -351,7 +351,7 @@ ${codeFence}
     it('should work if highlighted code is wrapped with `<pre>`', () => {
       const highlight = vi.fn(
         (code, lang) =>
-          `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`
+          `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
       )
       const md = MarkdownIt({ highlight }).use(codePlugin)
 
@@ -361,7 +361,7 @@ ${codeFence}
 
     it('should work if highlighted code is not wrapped with `<pre>`', () => {
       const highlight = vi.fn(
-        (code, lang) => `highlighted code: ${code}, lang: ${lang}`
+        (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
       )
       const md = MarkdownIt({ highlight }).use(codePlugin)
 

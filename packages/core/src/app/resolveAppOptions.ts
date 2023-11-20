@@ -1,5 +1,5 @@
 import { createRequire } from 'node:module'
-import { path } from '@vuepress/utils'
+import { path, templateRenderer } from '@vuepress/utils'
 import type { AppConfig, AppOptions } from '../types/index.js'
 
 const require = createRequire(import.meta.url)
@@ -26,13 +26,13 @@ export const resolveAppOptions = ({
   port = 8080,
   open = false,
   templateDev = path.normalize(
-    require.resolve('@vuepress/client/templates/dev.html')
+    require.resolve('@vuepress/client/templates/dev.html'),
   ),
   // build config
   shouldPreload = true,
   shouldPrefetch = true,
   templateBuild = path.normalize(
-    require.resolve('@vuepress/client/templates/build.html')
+    require.resolve('@vuepress/client/templates/build.html'),
   ),
   // common config
   bundler,
@@ -61,6 +61,7 @@ export const resolveAppOptions = ({
   shouldPreload,
   shouldPrefetch,
   templateBuild,
+  templateBuildRenderer: templateRenderer,
   bundler,
   debug,
   markdown,

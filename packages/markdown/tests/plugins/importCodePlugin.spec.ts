@@ -52,7 +52,7 @@ describe('@vuepress/markdown > plugins > importCodePlugin', () => {
     const rendered = md.render(source.join('\n\n'), env)
 
     expect(rendered).toEqual(
-      source.map((item) => `<p>${item}</p>`).join('\n') + '\n'
+      source.map((item) => `<p>${item}</p>`).join('\n') + '\n',
     )
     expect(env.importedFiles).toBeUndefined()
   })

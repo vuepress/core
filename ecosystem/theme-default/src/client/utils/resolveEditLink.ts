@@ -54,11 +54,11 @@ export const resolveEditLink = ({
   return pattern
     .replace(
       /:repo/,
-      isLinkHttp(docsRepo) ? docsRepo : `https://github.com/${docsRepo}`
+      isLinkHttp(docsRepo) ? docsRepo : `https://github.com/${docsRepo}`,
     )
     .replace(/:branch/, docsBranch)
     .replace(
       /:path/,
-      removeLeadingSlash(`${removeEndingSlash(docsDir)}/${filePathRelative}`)
+      removeLeadingSlash(`${removeEndingSlash(docsDir)}/${filePathRelative}`),
     )
 }

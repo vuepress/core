@@ -11,7 +11,7 @@ const root = path.dirname(fileURLToPath(import.meta.url))
 const nonScopedPackages = ['vuepress', 'vuepress-vite', 'vuepress-webpack']
 const corePackages = getSubDirectories(path.resolve(root, 'packages'))
 const ecosystemPackages = getSubDirectories(
-  path.resolve(root, 'ecosystem')
+  path.resolve(root, 'ecosystem'),
 ).filter((item) => !nonScopedPackages.includes(item))
 
 export default defineConfig({
@@ -29,6 +29,7 @@ export default defineConfig({
   },
   test: {
     coverage: {
+      all: false,
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },

@@ -12,7 +12,7 @@ import { createDevServerConfig } from './createDevServerConfig.js'
  */
 export const dev = async (
   options: WebpackBundlerOptions,
-  app: App
+  app: App,
 ): ReturnType<Bundler['dev']> => {
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
@@ -63,7 +63,7 @@ export const dev = async (
           serverConfig.host === '0.0.0.0' ? 'localhost' : serverConfig.host
         }:${serverConfig.port}${app.options.base}`
         logger.success(
-          `VuePress webpack dev server is listening at ${colors.cyan(url)}`
+          `VuePress webpack dev server is listening at ${colors.cyan(url)}`,
         )
 
         // resolve the close function

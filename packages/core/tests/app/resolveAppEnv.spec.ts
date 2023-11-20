@@ -5,7 +5,7 @@ const source = '/foo'
 
 const testCases: [
   Parameters<typeof resolveAppEnv>,
-  ReturnType<typeof resolveAppEnv>
+  ReturnType<typeof resolveAppEnv>,
 ][] = [
   [
     [

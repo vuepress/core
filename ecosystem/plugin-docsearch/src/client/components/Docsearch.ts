@@ -1,13 +1,6 @@
 import { usePageLang, useRouteLocale } from '@vuepress/client'
-import {
-  computed,
-  defineComponent,
-  h,
-  onMounted,
-  type PropType,
-  ref,
-  watch,
-} from 'vue'
+import type { PropType } from 'vue'
+import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import type { DocsearchOptions } from '../../shared/index.js'
 import {
   useDocsearchHotkeyListener,
@@ -65,7 +58,6 @@ export const Docsearch = defineComponent({
      */
     const initialize = async (): Promise<void> => {
       const { default: docsearch } = await import('@docsearch/js')
-      // @ts-expect-error: https://github.com/microsoft/TypeScript/issues/50690
       docsearch({
         ...docsearchShim,
         ...options.value,
@@ -74,7 +66,7 @@ export const Docsearch = defineComponent({
           ...options.value.searchParameters,
           facetFilters: getFacetFilters(
             options.value.searchParameters?.facetFilters,
-            lang.value
+            lang.value,
           ),
         },
       })
@@ -112,7 +104,7 @@ export const Docsearch = defineComponent({
         : h('div', {
             onClick: trigger,
             innerHTML: getSearchButtonTemplate(
-              options.value.translations?.button
+              options.value.translations?.button,
             ),
           }),
     ]

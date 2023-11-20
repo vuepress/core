@@ -73,12 +73,25 @@ export default {
 
 - Details:
 
-  Specify the HTML template for build.
+  Specify the path of the HTML template for build.
 
-  It would override the default value of [templateBuild](./config.md#templatebuild), but could be overridden by user config.
+  It would override the default value of [templateBuild](./config.md#templatebuild), and could be overridden by user config.
 
 - Also see:
   - [Config > templateBuild](./config.md#templatebuild)
+
+### templateBuildRenderer
+
+- Type: `TemplateRenderer`
+
+- Details:
+
+  Specify the HTML template renderer to be used for build.
+
+  It would override the default value of [templateBuildRenderer](./config.md#templatebuildrenderer), and could be overridden by user config.
+
+- Also see:
+  - [Config > templateBuildRenderer](./config.md#templatebuildrenderer)
 
 ### templateDev
 

@@ -79,6 +79,6 @@ export const createBuild =
     await app.pluginApi.hooks.onGenerated.process(app)
 
     logger.success(
-      `VuePress build completed in ${formatMs(Date.now() - start)}!`
+      `VuePress build completed in ${formatMs(Date.now() - start)}!`,
     )
   }

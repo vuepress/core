@@ -5,7 +5,5 @@
     "outDir": "./lib"
   },
   "include": ["./src"],
-  "references": [
-    { "path": "../theme-default/tsconfig.build.json" }
-  ]
+  "references": [{ "path": "../theme-default/tsconfig.build.json" }]
 }

@@ -71,9 +71,9 @@ export const renderPageContent = ({
       'content',
       'filePath',
       'filePathRelative',
-      'frontmatter'
+      'frontmatter',
     ),
     sfcBlocks,
-    title: frontmatter.title ?? title,
+    title: frontmatter.title ? `${frontmatter.title}` : title,
   }
 }

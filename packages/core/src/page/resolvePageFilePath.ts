@@ -24,7 +24,7 @@ export const resolvePageFilePath = ({
 
   if (!path.isAbsolute(options.filePath)) {
     throw logger.createError(
-      `filePath is not absolute file path: ${options.filePath}}`
+      `filePath is not absolute file path: ${options.filePath}}`,
     )
   }
 

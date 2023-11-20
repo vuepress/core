@@ -1,33 +1,38 @@
-import { type App, computed, ref, watch } from 'vue'
+import { computedEager, computedWithControl } from '@vueuse/core'
+import type { App } from 'vue'
+import { computed } from 'vue'
 import type { Router } from 'vue-router'
+import type {
+  LayoutsRef,
+  PageData,
+  PageDataRef,
+  PageFrontmatter,
+  PageFrontmatterRef,
+  PageHead,
+  PageHeadRef,
+  PageHeadTitle,
+  PageHeadTitleRef,
+  PageLang,
+  PageLangRef,
+  PageLayoutRef,
+  RouteLocale,
+  RouteLocaleRef,
+  SiteData,
+  SiteDataRef,
+  SiteLocaleData,
+  SiteLocaleDataRef,
+} from './composables/index.js'
 import {
-  type LayoutsRef,
   layoutsSymbol,
-  type PageData,
-  pageData,
-  type PageDataRef,
-  type PageFrontmatter,
-  type PageFrontmatterRef,
+  pageDataSymbol,
   pageFrontmatterSymbol,
-  type PageHead,
-  type PageHeadRef,
   pageHeadSymbol,
-  type PageHeadTitle,
-  type PageHeadTitleRef,
   pageHeadTitleSymbol,
-  type PageLang,
-  type PageLangRef,
   pageLangSymbol,
-  type PageLayoutRef,
   pageLayoutSymbol,
-  type RouteLocale,
-  type RouteLocaleRef,
+  pagesData,
   routeLocaleSymbol,
-  type SiteData,
   siteData,
-  type SiteDataRef,
-  type SiteLocaleData,
-  type SiteLocaleDataRef,
   siteLocaleDataSymbol,
 } from './composables/index.js'
 import { withBase } from './helpers/index.js'
@@ -56,43 +61,59 @@ export interface GlobalComputed {
 export const setupGlobalComputed = (
   app: App,
   router: Router,
-  clientConfigs: ClientConfig[]
+  clientConfigs: ClientConfig[],
 ): GlobalComputed => {
-  // create a manual computed route path, so that route hash changes won't trigger all downstream computed
-  const routePath = ref(router.currentRoute.value.path)
-  watch(
-    () => router.currentRoute.value.path,
-    (value) => (routePath.value = value)
+  // create eager computed for route path and locale, so that route changes
+  // won't make all downstream computed re-evaluate
+  const routePath = computedEager(() => router.currentRoute.value.path)
+  const routeLocale = computedEager(() =>
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
 
-  // create global computed
-  const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
-  const routeLocale = computed(() =>
-    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value)
+  // load page data from route meta
+  const pageData = computedWithControl(
+    routePath,
+    () => router.currentRoute.value.meta._data!,
   )
+  // handle page data HMR
+  if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
+    __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
+      pagesData.value[data.key] = () => Promise.resolve(data)
+      if (data.key === router.currentRoute.value.meta._data?.key) {
+        router.currentRoute.value.meta._data = data
+        pageData.trigger()
+      }
+    }
+  }
+
+  // create other global computed
+  const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
   const siteLocaleData = computed(() =>
-    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value)
+    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
   const pageFrontmatter = computed(() =>
-    resolvers.resolvePageFrontmatter(pageData.value)
+    resolvers.resolvePageFrontmatter(pageData.value),
   )
   const pageHeadTitle = computed(() =>
-    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),
   )
   const pageHead = computed(() =>
     resolvers.resolvePageHead(
       pageHeadTitle.value,
       pageFrontmatter.value,
-      siteLocaleData.value
-    )
+      siteLocaleData.value,
+    ),
   )
-  const pageLang = computed(() => resolvers.resolvePageLang(pageData.value))
+  const pageLang = computed(() =>
+    resolvers.resolvePageLang(pageData.value, siteLocaleData.value),
+  )
   const pageLayout = computed(() =>
-    resolvers.resolvePageLayout(pageData.value, layouts.value)
+    resolvers.resolvePageLayout(pageData.value, layouts.value),
   )
 
   // provide global computed
   app.provide(layoutsSymbol, layouts)
+  app.provide(pageDataSymbol, pageData)
   app.provide(pageFrontmatterSymbol, pageFrontmatter)
   app.provide(pageHeadTitleSymbol, pageHeadTitle)
   app.provide(pageHeadSymbol, pageHead)

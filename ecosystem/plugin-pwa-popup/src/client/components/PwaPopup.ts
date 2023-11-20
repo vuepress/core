@@ -32,7 +32,7 @@ export const PwaPopup = defineComponent({
         props.locales[routeLocale.value] ?? {
           message: 'New content is available.',
           buttonText: 'Refresh',
-        }
+        },
     )
 
     const show = ref(false)
@@ -74,11 +74,11 @@ export const PwaPopup = defineComponent({
                     {
                       onClick,
                     },
-                    locale.value.buttonText
+                    locale.value.buttonText,
                   ),
-                ]
+                ],
               )
-            : null
+            : null,
       )
   },
 })

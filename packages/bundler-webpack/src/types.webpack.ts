@@ -6,18 +6,18 @@ import type { Compiler, ModuleOptions } from 'webpack'
 export interface StatsToJsonOutput {
   _showErrors: boolean
   _showWarnings: boolean
-  assets?: Array<{
-    chunks: Array<number | string>
+  assets?: {
+    chunks: (number | string)[]
     chunkNames: string[]
     emitted: boolean
     isOverSizeLimit?: boolean
     name: string
     size: number
-  }>
+  }[]
   assetsByChunkName?: Record<string, string | string[]>
   builtAt?: number
-  children?: Array<StatsToJsonOutput & { name?: string }>
-  chunks?: Array<{
+  children?: (StatsToJsonOutput & { name?: string })[]
+  chunks?: {
     children: number[]
     childrenByOrder: Record<string, number[]>
     entry: boolean
@@ -28,7 +28,7 @@ export interface StatsToJsonOutput {
     initial: boolean
     modules?: FnModules[]
     names: string[]
-    origins?: Array<{
+    origins?: {
       moduleId?: string | number
       module: string
       moduleIdentifier: string
@@ -36,14 +36,14 @@ export interface StatsToJsonOutput {
       loc: string
       request: string
       reasons: string[]
-    }>
+    }[]
     parents: number[]
     reason?: string
     recorded?: boolean
     rendered: boolean
     size: number
     siblings: number[]
-  }>
+  }[]
   entrypoints?: Record<string, ChunkGroup>
   errors: string[]
   env?: Record<string, any>
@@ -64,7 +64,7 @@ export interface FnModules {
   assets?: string[]
   built: boolean
   cacheable: boolean
-  chunks: Array<number | string>
+  chunks: (number | string)[]
   depth?: number
   errors: number
   failed: boolean
@@ -76,12 +76,12 @@ export interface FnModules {
   issuer: string | undefined
   issuerId: number | string | undefined
   issuerName: string | undefined
-  issuerPath: Array<{
+  issuerPath: {
     id: number | string
     identifier: string
     name: string
     profile: any // TODO
-  }>
+  }[]
   modules: FnModules[]
   name: string
   optimizationBailout?: string
@@ -98,12 +98,12 @@ export interface FnModules {
 
 export interface ChunkGroup {
   assets: { name: string }[]
-  chunks: Array<number | string>
+  chunks: (number | string)[]
   children: Record<
     string,
     {
       assets: string[]
-      chunks: Array<number | string>
+      chunks: (number | string)[]
       name: string
     }
   >
@@ -246,8 +246,8 @@ export interface LoaderContext {
       err: Error | null,
       source: string,
       sourceMap: RawSourceMap,
-      module: ModuleOptions
-    ) => void
+      module: ModuleOptions,
+    ) => void,
   ): any
 
   /**
@@ -256,7 +256,7 @@ export interface LoaderContext {
   resolve(
     context: string,
     request: string,
-    callback: (err: Error, result: string) => void
+    callback: (err: Error, result: string) => void,
   ): any
 
   /**
@@ -375,7 +375,7 @@ export interface LoaderContext {
 export type LoaderCallback = (
   err: Error | undefined | null,
   content?: string | Buffer,
-  sourceMap?: RawSourceMap
+  sourceMap?: RawSourceMap,
 ) => void
 
 export interface StartOfSourceMap {

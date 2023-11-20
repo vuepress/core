@@ -10,6 +10,7 @@ export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
   const themeInfo: ThemeInfo = {
     plugins: [...(themeObject.plugins ?? []), themeObject],
     templateBuild: themeObject.templateBuild,
+    templateBuildRenderer: themeObject.templateBuildRenderer,
     templateDev: themeObject.templateDev,
   }
 
@@ -23,6 +24,9 @@ export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
   return {
     plugins: [...parentThemeInfo.plugins, ...themeInfo.plugins],
     templateBuild: themeObject.templateBuild ?? parentThemeInfo.templateBuild,
+    templateBuildRenderer:
+      themeObject.templateBuildRenderer ??
+      parentThemeInfo.templateBuildRenderer,
     templateDev: themeObject.templateDev ?? parentThemeInfo.templateDev,
   }
 }

@@ -3,10 +3,19 @@ import NavbarBrand from '@theme/NavbarBrand.vue'
 import NavbarItems from '@theme/NavbarItems.vue'
 import ToggleColorModeButton from '@theme/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
-import { computed, onMounted, ref } from 'vue'
-import { useThemeLocaleData } from '../composables/index.js'
+import { computed, ref } from 'vue'
+import {
+  DeviceType,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../composables/index.js'
 
-defineEmits(['toggle-sidebar'])
+defineEmits<(e: 'toggle-sidebar') => void>()
+
+defineSlots<{
+  before?: (props: Record<never, never>) => any
+  after?: (props: Record<never, never>) => any
+}>()
 
 const themeLocale = useThemeLocaleData()
 
@@ -23,16 +32,14 @@ const linksWrapperStyle = computed(() => {
   }
 })
 
-// avoid overlapping of long title and long navbar links
-onMounted(() => {
-  // TODO: migrate to css var
-  // refer to _variables.scss
-  const MOBILE_DESKTOP_BREAKPOINT = 719
-  const navbarHorizontalPadding =
-    getCssValue(navbar.value, 'paddingLeft') +
-    getCssValue(navbar.value, 'paddingRight')
-  const handleLinksWrapWidth = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
+useUpdateDeviceStatus(
+  DeviceType.MOBILE,
+  (mobileDesktopBreakpoint: number): void => {
+    // avoid overlapping of long title and long navbar links
+    const navbarHorizontalPadding =
+      getCssValue(navbar.value, 'paddingLeft') +
+      getCssValue(navbar.value, 'paddingRight')
+    if (window.innerWidth < mobileDesktopBreakpoint) {
       linksWrapperMaxWidth.value = 0
     } else {
       linksWrapperMaxWidth.value =
@@ -40,11 +47,8 @@ onMounted(() => {
         navbarHorizontalPadding -
         (navbarBrand.value?.offsetWidth || 0)
     }
-  }
-  handleLinksWrapWidth()
-  window.addEventListener('resize', handleLinksWrapWidth, false)
-  window.addEventListener('orientationchange', handleLinksWrapWidth, false)
-})
+  },
+)
 
 function getCssValue(el: HTMLElement | null, property: string): number {
   // NOTE: Known bug, will return 'auto' if style value is 'auto'

@@ -26,7 +26,7 @@ export const resolvePageDate = ({
         frontmatter.date.getUTCMonth() + 1,
         frontmatter.date.getUTCDate(),
       ].join('-'),
-      DEFAULT_DATE
+      DEFAULT_DATE,
     )
   }
 
@@ -45,7 +45,7 @@ export const resolvePageDate = ({
     if (matches) {
       return formatDateString(
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
-        DEFAULT_DATE
+        DEFAULT_DATE,
       )
     }
   }
@@ -57,7 +57,7 @@ export const resolvePageDate = ({
     if (matches) {
       return formatDateString(
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
-        DEFAULT_DATE
+        DEFAULT_DATE,
       )
     }
   }

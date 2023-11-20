@@ -32,7 +32,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
       return () => [
         h(RouterView),
         ...clientConfigs.flatMap(({ rootComponents = [] }) =>
-          rootComponents.map((component) => h(component))
+          rootComponents.map((component) => h(component)),
         ),
       ]
     },

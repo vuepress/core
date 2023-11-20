@@ -17,7 +17,7 @@
 
   You will need to set this if you plan to deploy your site under a sub path. It should always start and end with a slash. For example, if you plan to deploy your site to GitHub pages at `https://foo.github.io/bar/`, then you should set `base` to `"/bar/"`.
 
-  The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
+  The `base` is automatically prepended to the URLs that start with `/` in other options, so you only need to specify it once. (Except for attrs of [head](#head))
 
   Notice that `base` should be an absolute URL pathname starting and ending with `/` .
 
@@ -91,6 +91,8 @@
   You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
   This can be specified in different locales.
+
+  Notice that if the `attrValue` is a pathname, it will be kept as-is without prepending [base](#base) automatically, so remember to prepend it manually if needed.
 
 - Example:
 
@@ -333,6 +335,16 @@ Since VuePress will load temp files during dev and build, the temp directory sho
 - Details:
 
   Specify the path of the HTML template to be used for build.
+
+### templateBuildRenderer
+
+- Type: `TemplateRenderer`
+
+- Default: `templateRenderer`
+
+- Details:
+
+  Specify the HTML template renderer to be used for build.
 
 ## Markdown Config
 

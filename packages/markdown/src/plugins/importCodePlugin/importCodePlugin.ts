@@ -12,7 +12,7 @@ export interface ImportCodePluginOptions {
 
 export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
   md,
-  options = {}
+  options = {},
 ): void => {
   // add import_code block rule
   md.block.ruler.before(
@@ -21,7 +21,7 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
     createImportCodeBlockRule(options),
     {
       alt: ['paragraph', 'reference', 'blockquote', 'list'],
-    }
+    },
   )
 
   // add import_code renderer rule
@@ -30,7 +30,7 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
     idx,
     options,
     env: MarkdownEnv,
-    slf
+    slf,
   ) => {
     const token = tokens[idx]
 
@@ -40,8 +40,7 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
 
     // extract imported files to env
     if (importFilePath) {
-      const importedFiles = env.importedFiles || (env.importedFiles = [])
-      importedFiles.push(importFilePath)
+      ;(env.importedFiles ??= []).push(importFilePath)
     }
 
     // render the import_code token as a fence token

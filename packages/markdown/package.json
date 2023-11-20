@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "2.0.0-beta.61",
+  "version": "2.0.0-rc.0",
   "description": "Markdown package of VuePress",
   "keywords": [
     "vuepress",
@@ -31,25 +31,25 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^0.12.0",
-    "@mdit-vue/plugin-frontmatter": "^0.12.0",
-    "@mdit-vue/plugin-headers": "^0.12.0",
-    "@mdit-vue/plugin-sfc": "^0.12.0",
-    "@mdit-vue/plugin-title": "^0.12.0",
-    "@mdit-vue/plugin-toc": "^0.12.0",
-    "@mdit-vue/shared": "^0.12.0",
-    "@mdit-vue/types": "^0.12.0",
-    "@types/markdown-it": "^12.2.3",
-    "@types/markdown-it-emoji": "^2.0.2",
+    "@mdit-vue/plugin-component": "^1.0.0",
+    "@mdit-vue/plugin-frontmatter": "^1.0.0",
+    "@mdit-vue/plugin-headers": "^1.0.0",
+    "@mdit-vue/plugin-sfc": "^1.0.0",
+    "@mdit-vue/plugin-title": "^1.0.0",
+    "@mdit-vue/plugin-toc": "^1.0.0",
+    "@mdit-vue/shared": "^1.0.0",
+    "@mdit-vue/types": "^1.0.0",
+    "@types/markdown-it": "^13.0.6",
+    "@types/markdown-it-emoji": "^2.0.4",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-emoji": "^2.0.2",
     "mdurl": "^1.0.1"
   },
   "devDependencies": {
-    "@types/mdurl": "^1.0.2"
+    "@types/mdurl": "^1.0.5"
   },
   "publishConfig": {
     "access": "public"
@@ -65,7 +65,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2020",
+    "target": "es2022",
     "tsconfig": "../tsconfig.dts.json"
   }
 }

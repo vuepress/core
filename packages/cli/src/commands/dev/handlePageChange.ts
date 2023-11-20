@@ -15,7 +15,7 @@ import type { App, Page } from '@vuepress/core'
  */
 export const handlePageChange = async (
   app: App,
-  filePath: string
+  filePath: string,
 ): Promise<[Page, Page] | null> => {
   // get page index of the changed file
   const pageIndex = app.pages.findIndex((page) => page.filePath === filePath)

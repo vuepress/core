@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
-import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import {
+  useRouteLocale,
+  useSiteData,
+  useSiteLocaleData,
+} from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import type {
@@ -11,7 +15,13 @@ import type {
   NavbarItem,
   ResolvedNavbarItem,
 } from '../../shared/index.js'
-import { useNavLink, useThemeLocaleData } from '../composables/index.js'
+import {
+  DeviceType,
+  useNavLink,
+  useThemeData,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../composables/index.js'
 import { resolveRepoType } from '../utils/index.js'
 
 /**
@@ -20,11 +30,13 @@ import { resolveRepoType } from '../utils/index.js'
 const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
   const router = useRouter()
   const routeLocale = useRouteLocale()
+  const site = useSiteData()
   const siteLocale = useSiteLocaleData()
+  const theme = useThemeData()
   const themeLocale = useThemeLocaleData()
 
   return computed<ResolvedNavbarItem[]>(() => {
-    const localePaths = Object.keys(siteLocale.value.locales)
+    const localePaths = Object.keys(site.value.locales)
     // do not display language selection dropdown if there is only one language
     if (localePaths.length < 2) {
       return []
@@ -33,17 +45,15 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     const currentFullPath = router.currentRoute.value.fullPath
 
     const languageDropdown: ResolvedNavbarItem = {
-      text: themeLocale.value.selectLanguageText ?? 'unknown language',
-      ariaLabel:
+      text: `${themeLocale.value.selectLanguageText}`,
+      ariaLabel: `${
         themeLocale.value.selectLanguageAriaLabel ??
-        themeLocale.value.selectLanguageText ??
-        'unknown language',
+        themeLocale.value.selectLanguageText
+      }`,
       children: localePaths.map((targetLocalePath) => {
         // target locale config of this language link
-        const targetSiteLocale =
-          siteLocale.value.locales?.[targetLocalePath] ?? {}
-        const targetThemeLocale =
-          themeLocale.value.locales?.[targetLocalePath] ?? {}
+        const targetSiteLocale = site.value.locales?.[targetLocalePath] ?? {}
+        const targetThemeLocale = theme.value.locales?.[targetLocalePath] ?? {}
         const targetLang = `${targetSiteLocale.lang}`
 
         const text = targetThemeLocale.selectLanguageName ?? targetLang
@@ -59,7 +69,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           // or fallback to homepage
           const targetLocalePage = currentPath.replace(
             routeLocale.value,
-            targetLocalePath
+            targetLocalePath,
           )
           if (
             router.getRoutes().some((item) => item.path === targetLocalePage)
@@ -90,7 +100,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 
   const repo = computed(() => themeLocale.value.repo)
   const repoType = computed(() =>
-    repo.value ? resolveRepoType(repo.value) : null
+    repo.value ? resolveRepoType(repo.value) : null,
   )
 
   const repoLink = computed(() => {
@@ -123,7 +133,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 }
 
 const resolveNavbarItem = (
-  item: NavbarItem | NavbarGroup | string
+  item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
     return useNavLink(item)
@@ -152,23 +162,17 @@ const navbarLinks = computed(() => [
   ...navbarRepo.value,
 ])
 
-// avoid overlapping of long title and long navbar links
-onMounted(() => {
-  // TODO: migrate to css var
-  // refer to _variables.scss
-  const MOBILE_DESKTOP_BREAKPOINT = 719
-
-  const handleMobile = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
+useUpdateDeviceStatus(
+  DeviceType.MOBILE,
+  (mobileDesktopBreakpoint: number): void => {
+    // avoid overlapping of long title and long navbar links
+    if (window.innerWidth < mobileDesktopBreakpoint) {
       isMobile.value = true
     } else {
       isMobile.value = false
     }
-  }
-  handleMobile()
-  window.addEventListener('resize', handleMobile, false)
-  window.addEventListener('orientationchange', handleMobile, false)
-})
+  },
+)
 </script>
 
 <template>

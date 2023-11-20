@@ -3,7 +3,7 @@ import { resolvePagePath } from '../../src/index.js'
 
 const testCases: [
   Parameters<typeof resolvePagePath>,
-  ReturnType<typeof resolvePagePath>
+  ReturnType<typeof resolvePagePath>,
 ][] = [
   // use options.path
   [
@@ -114,7 +114,7 @@ describe('core > page > resolvePagePath', () => {
         permalink: null,
         pathInferred: null,
         options: {},
-      })
+      }),
     ).toThrow()
     expect(console.error).toHaveBeenCalled()
 

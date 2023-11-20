@@ -51,7 +51,7 @@ export const DEFAULT_LOCALE_DATA: DefaultThemeLocaleData = {
  * Assign default options
  */
 export const assignDefaultLocaleOptions = (
-  localeOptions: DefaultThemeLocaleOptions
+  localeOptions: DefaultThemeLocaleOptions,
 ): void => {
   if (!localeOptions.locales) {
     localeOptions.locales = {}

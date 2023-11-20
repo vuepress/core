@@ -26,6 +26,6 @@ const ssrRender = (...args) => {
   ssrContext._registeredComponents.add(${JSON.stringify(request)})
   return _ssrRender(...args)
 }
-`
+`,
   )
 }

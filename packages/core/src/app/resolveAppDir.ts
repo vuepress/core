@@ -23,7 +23,7 @@ export const resolveAppDir = (options: AppOptions): AppDir => {
 
   // @vuepress/client
   const client = createAppDirFunction(
-    path.resolve(require.resolve('@vuepress/client/package.json'), '..')
+    path.resolve(require.resolve('@vuepress/client/package.json'), '..'),
   )
 
   return {

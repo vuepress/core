@@ -18,12 +18,12 @@ if (import.meta.hot) {
 
 export const prepareThemeData = async (
   app: App,
-  themeData: ThemeData
+  themeData: ThemeData,
 ): Promise<void> => {
   // theme data file content
   let content = `\
 export const themeData = JSON.parse(${JSON.stringify(
-    JSON.stringify(themeData)
+    JSON.stringify(themeData),
   )})
 `
 

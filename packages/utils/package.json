@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-beta.61",
+  "version": "2.0.0-rc.0",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",
@@ -31,15 +31,15 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/debug": "^4.1.7",
-    "@types/fs-extra": "^11.0.1",
-    "@types/hash-sum": "^1.0.0",
+    "@types/debug": "^4.1.12",
+    "@types/fs-extra": "^11.0.4",
+    "@types/hash-sum": "^1.0.2",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.3.4",
-    "fs-extra": "^11.1.0",
-    "globby": "^13.1.3",
+    "fs-extra": "^11.1.1",
+    "globby": "^14.0.0",
     "hash-sum": "^2.0.0",
-    "ora": "^6.2.0",
+    "ora": "^7.0.1",
     "picocolors": "^1.0.0",
     "upath": "^2.0.1"
   },
@@ -57,7 +57,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2020",
+    "target": "es2022",
     "tsconfig": "../tsconfig.dts.json"
   }
 }

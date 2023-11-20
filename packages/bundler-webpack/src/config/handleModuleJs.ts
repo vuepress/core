@@ -39,7 +39,7 @@ export const handleModuleJs = ({
       // vuepress-*
       if (
         /(@vuepress[/\\][^/\\]*|vuepress-[^/\\]*)[/\\](?!node_modules).*\.js$/.test(
-          filePath
+          filePath,
         )
       ) {
         return false
@@ -53,7 +53,6 @@ export const handleModuleJs = ({
     .loader(require.resolve('esbuild-loader'))
     .options({
       target: 'es2015',
-      loader: 'jsx',
       ...resolveEsbuildJsxOptions(),
     })
     .end()

@@ -100,6 +100,8 @@ export const childTheme = (options: DefaultThemeOptions): Theme => {
     extends: defaultTheme(options),
 
     // override layouts in child theme's client config file
+    // notice that you would build ts to js before publishing to npm,
+    // so this should be the path to the js file
     clientConfigFile: path.resolve(__dirname, './client.js'),
 
     // override component alias

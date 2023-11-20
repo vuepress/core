@@ -239,9 +239,18 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 你需要在 [theme](../reference/config.md#theme) 配置项中显式引入并使用本地主题。
 
-### Markdown 插槽变更
+### Markdown 变更
 
-Markdown 插槽不再被支持。
+- Markdown 插槽不再被支持。
+- Markdown 图片语法不再支持 Webpack 别名。不以 `./` 开头的链接也会被识别为相对路径，这与原生 Markdown 图片语法的行为一致。如果你想要使用 Webpack 别名，或者使用来自外部包的图片，你应该使用 `<img>` 标签。
+
+```diff
+- ![](@alias/foo.png)
+- ![](package-name/bar.png)
+
++ <img src="@alias/foo.png">
++ <img src="package-name/bar.png">
+```
 
 ### CLI 变更
 
@@ -274,6 +283,33 @@ Markdown 插槽不再被支持。
 默认主题的配置有大量变更，建议你阅读 v2 的默认主题配置参考文档来进行迁移。
 
 参考 [默认主题 > 配置](../reference/default-theme/config.md) 。
+
+这里仅列出部分要注意的变更：
+
+##### 侧边栏配置
+
+```diff
+- sidebar: {
+-   title: 'Foo Bar',
+-   path: '/foo/bar.html',
+-   collapsable: true,
+-   children: [
+-     ['/baz', 'Baz'],
+-   ],
+- }
+
++ sidebar: {
++   text: 'Foo Bar',
++   link: '/foo/bar.html',
++   collapsible: true,
++   children: [
++     {
++       text: 'Baz',
++       link: '/baz',
++     }
++   ],
++ }
+```
 
 ### 官方插件变更
 

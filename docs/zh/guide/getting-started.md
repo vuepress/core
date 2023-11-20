@@ -1,19 +1,20 @@
 # 快速上手
 
 ::: warning
-VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，很可能会在 Minor 版本中发生 Breaking Changes 。因此，在每次更新 beta 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
+VuePress v2 目前仍处于 RC (Release Candidate) 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，有可能会发生一些微小的 Breaking Changes 。因此，在每次更新 RC 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
 :::
 
 ## 依赖环境
 
-- [Node.js v14.18.0+](https://nodejs.org/)
-- [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/) （可选）
+- [Node.js v18.16.0+](https://nodejs.org/)
+- 包管理器，如 [pnpm](https://pnpm.io/zh/)、[yarn](https://classic.yarnpkg.com/en/)、[npm](https://www.npmjs.com/) 等。
 
 ::: tip
 
-- 使用 [pnpm](https://pnpm.io/zh/) 时，你可能需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies ，即 `pnpm add -D vue @vuepress/client@next` 。
-- 使用 [yarn 2](https://yarnpkg.com/) 时，你需要在 [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) 文件中设置 `nodeLinker: 'node-modules'` 。
-  :::
+- 使用 [pnpm](https://pnpm.io/zh/) 时，你需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies 。
+- 使用 [yarn 2+](https://yarnpkg.com/) 时，你需要在 [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) 文件中设置 `nodeLinker: 'node-modules'` 。
+
+:::
 
 ## 手动安装
 

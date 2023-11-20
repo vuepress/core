@@ -23,7 +23,7 @@ export const createClientBaseConfig = async ({
   config.output
     .path(app.dir.dest())
     .filename(
-      isBuild ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js'
+      isBuild ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js',
     )
     .publicPath(app.options.base)
 

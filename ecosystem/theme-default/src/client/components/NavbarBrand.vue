@@ -15,7 +15,7 @@ const themeLocale = useThemeLocaleData()
 const isDarkMode = useDarkMode()
 
 const navbarBrandLink = computed(
-  () => themeLocale.value.home || routeLocale.value
+  () => themeLocale.value.home || routeLocale.value,
 )
 const navbarBrandTitle = computed(() => siteLocale.value.title)
 const navbarBrandLogo = computed(() => {

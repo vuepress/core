@@ -22,6 +22,6 @@ export const getComponentsFromDir = async ({
     componentsDirFiles.map((filename) => [
       getComponentName(filename),
       path.resolve(componentsDir, filename),
-    ])
+    ]),
   )
 }

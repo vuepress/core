@@ -1,17 +1,19 @@
 # Getting Started
 
 ::: warning
-VuePress v2 is currently in `beta` stage. It's ready to be used for building your site, but the config and API are not stable enough, which is likely to have breaking changes between minor releases. So make sure to read the [changelog](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md) carefully each time you upgrade a beta version.
+VuePress v2 is currently in RC (Release Candidate) stage. It's ready to be used for building your site, but the config and API are not stable enough, which is possibly to have minor breaking changes. So make sure to read the [changelog](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md) carefully each time you upgrade a RC version.
 :::
 
 ## Prerequisites
 
-- [Node.js v14.18.0+](https://nodejs.org/)
-- [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
+- [Node.js v18.16.0+](https://nodejs.org/)
+- Package manager like [pnpm](https://pnpm.io), [yarn](https://classic.yarnpkg.com/en/), [npm](https://www.npmjs.com), etc.
 
 ::: tip
-- With [pnpm](https://pnpm.io/), you may need to install `vue` and `@vuepress/client` as peer-dependencies, i.e. `pnpm add -D vue @vuepress/client@next`.
-- With [yarn 2](https://yarnpkg.com/), you need to set `nodeLinker: 'node-modules'` in your [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) file.
+
+- When using [pnpm](https://pnpm.io/), you need to install `vue` and `@vuepress/client` as peer-dependencies.
+- When using [yarn 2+](https://yarnpkg.com/), you need to set `nodeLinker: 'node-modules'` in your [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) file.
+
 :::
 
 ## Manual Installation

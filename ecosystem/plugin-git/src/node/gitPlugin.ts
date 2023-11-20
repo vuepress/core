@@ -38,7 +38,7 @@ export const gitPlugin =
       name: '@vuepress/plugin-git',
 
       extendsPage: async (
-        page: Page<GitPluginPageData, GitPluginFrontmatter>
+        page: Page<GitPluginPageData, GitPluginFrontmatter>,
       ) => {
         page.data.git = {}
 
@@ -49,7 +49,7 @@ export const gitPlugin =
         const filePaths = [
           page.filePathRelative,
           ...(page.frontmatter.gitInclude ?? []).map((item) =>
-            path.join(page.filePathRelative, '..', item)
+            path.join(page.filePathRelative, '..', item),
           ),
         ]
 

@@ -31,8 +31,8 @@ In the `ecosystem` directory:
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) **version 14.18.0+**
-- [pnpm](https://pnpm.io/) **version 7+**
+- [Node.js](http://nodejs.org) **version 18.16.0+**
+- [pnpm](https://pnpm.io/) **version 8+**
 
 Clone the repo, and install dependencies:
 

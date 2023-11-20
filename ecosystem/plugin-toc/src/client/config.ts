@@ -18,7 +18,7 @@ export default defineClientConfig({
           ...defaultPropsOptions,
           ...props.options,
         },
-      })
+      }),
     )
   },
 })

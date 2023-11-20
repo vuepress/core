@@ -9,6 +9,8 @@ module.exports = {
     __VUE_HMR_RUNTIME__: 'readonly',
     __VUE_OPTIONS_API__: 'readonly',
     __VUE_PROD_DEVTOOLS__: 'readonly',
+    // workaround for vue3.3 slots, should be removed once eslint-plugin-vue supports this
+    defineSlots: 'readonly',
   },
   overrides: [
     {

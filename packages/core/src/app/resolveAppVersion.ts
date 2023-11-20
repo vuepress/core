@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url)
  */
 export const resolveAppVersion = (): string => {
   const pkgJson = fs.readJsonSync(
-    require.resolve('@vuepress/core/package.json')
+    require.resolve('@vuepress/core/package.json'),
   )
   return pkgJson.version
 }

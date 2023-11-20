@@ -4,7 +4,7 @@ The following guides are based on some shared assumptions:
 
 - You are placing your Markdown source files inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
-- You are using as [pnpm](https://pnpm.io) package manager, while npm and yarn are also supported;
+- You are using [pnpm](https://pnpm.io) as package manager, while npm and yarn are also supported;
 - VuePress is installed as a local dependency in your project, and you have setup the following script in `package.json`:
 
 ```json
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
@@ -52,12 +52,12 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           # choose pnpm version to use
-          version: 7
+          version: 8
           # install deps with pnpm
           run_install: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # choose node.js version to use
           node-version: 18
@@ -71,7 +71,7 @@ jobs:
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           # deploy to gh-pages branch
           target_branch: gh-pages
@@ -117,7 +117,7 @@ pages:
 
   # Install pnpm
   before_script:
-    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
     - pnpm config set store-dir .pnpm-store
 
   # install dependencies and run build script
@@ -209,7 +209,7 @@ See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guid
 
 2. Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
 
-   - `NODE_VERSION`: 14
+   - `NODE_VERSION`: 18
 
 3. Hit the deploy button.
 

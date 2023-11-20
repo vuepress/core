@@ -239,9 +239,18 @@ This directory will not be used as local theme implicitly if it is existed.
 
 You need to import and set your local theme via [theme](../reference/config.md#theme) option.
 
-### Markdown slot Change
+### Markdown Change
 
-Markdown slot is no longer supported.
+- Markdown slot is no longer supported.
+- Markdown image syntax does not support webpack aliases anymore. Links without `./` prefix are also treated as relative links, which is aligned with the behavior of the native markdown image syntax. If you want to use aliases in image paths, or use images from external packages, you should use `<img>` tag instead.
+
+```diff
+- ![](@alias/foo.png)
+- ![](package-name/bar.png)
+
++ <img src="@alias/foo.png">
++ <img src="package-name/bar.png">
+```
 
 ### CLI Change
 
@@ -274,6 +283,33 @@ See [Default Theme > Styles](../reference/default-theme/styles.md).
 Default theme config has been changed a lot. You'd better check the config reference of v2 default theme to migrate it properly.
 
 See [Default Theme > Config](../reference/default-theme/config.md).
+
+Here we list some notable changes:
+
+##### Sidebar Config
+
+```diff
+- sidebar: {
+-   title: 'Foo Bar',
+-   path: '/foo/bar.html',
+-   collapsable: true,
+-   children: [
+-     ['/baz', 'Baz'],
+-   ],
+- }
+
++ sidebar: {
++   text: 'Foo Bar',
++   link: '/foo/bar.html',
++   collapsible: true,
++   children: [
++     {
++       text: 'Baz',
++       link: '/baz',
++     }
++   ],
++ }
+```
 
 ### Official Plugins Change
 

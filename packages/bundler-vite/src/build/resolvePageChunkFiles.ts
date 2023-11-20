@@ -13,7 +13,7 @@ export const resolvePageChunkFiles = ({
       (item): item is OutputChunk =>
         item.type === 'chunk' &&
         (item.facadeModuleId === page.componentFilePath ||
-          item.facadeModuleId === page.dataFilePath)
+          item.facadeModuleId === page.dataFilePath),
     )
     .flatMap(({ fileName, imports, dynamicImports }) => [
       fileName,

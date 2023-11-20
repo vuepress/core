@@ -34,8 +34,8 @@ export const mainPlugin = ({
 <script type="module">
 import '@vuepress/client/app'
 </script>
-</body>`
-          )
+</body>`,
+          ),
       )
     }
 
@@ -88,7 +88,7 @@ import '@vuepress/client/app'
         cssCodeSplit: false,
         rollupOptions: {
           input: app.dir.client(
-            fs.readJsonSync(app.dir.client('package.json')).exports['./app']
+            fs.readJsonSync(app.dir.client('package.json')).exports['./app'],
           ),
           output: {
             sanitizeFileName,
@@ -97,20 +97,7 @@ import '@vuepress/client/app'
                   // also add hash to ssr entry file, so that users could build multiple sites in a single process
                   entryFileNames: `[name].[hash].mjs`,
                 }
-              : {
-                  manualChunks(id) {
-                    // move known framework code into a stable chunk
-                    if (
-                      id.includes('plugin-vue:export-helper') ||
-                      /node_modules\/@vuepress\/shared\//.test(id) ||
-                      /node_modules\/vue(-router)?\//.test(id)
-                    ) {
-                      return 'framework'
-                    }
-
-                    return undefined
-                  },
-                }),
+              : {}),
           },
           preserveEntrySignatures: 'allow-extension',
         },
@@ -148,7 +135,7 @@ import '@vuepress/client/app'
               to: '/index.html',
             },
           ],
-        }) as Connect.NextHandleFunction
+        }) as Connect.NextHandleFunction,
       )
     }
   },
@@ -176,7 +163,7 @@ const resolveAlias = async ({
   aliasResult.forEach((aliasObject) =>
     Object.entries(aliasObject).forEach(([key, value]) => {
       alias[key] = value
-    })
+    }),
   )
 
   return [
@@ -233,7 +220,7 @@ const resolveDefine = async ({
   defineResult.forEach((defineObject) =>
     Object.entries(defineObject).forEach(([key, value]) => {
       define[key] = JSON.stringify(value)
-    })
+    }),
   )
 
   return define

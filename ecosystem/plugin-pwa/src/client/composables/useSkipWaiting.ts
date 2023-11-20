@@ -2,7 +2,7 @@
  * Call `skipWaiting()` inside current waiting worker
  */
 export const useSkipWaiting = (
-  registration: ServiceWorkerRegistration
+  registration: ServiceWorkerRegistration,
 ): void => {
   // get the waiting worker
   const worker = registration.waiting

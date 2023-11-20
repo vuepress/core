@@ -18,15 +18,15 @@ export const appUse = (app: App, rawPlugin: Plugin): App => {
   // handle duplicated plugins
   if (pluginObject.multiple !== true) {
     const duplicateIndex = app.pluginApi.plugins.findIndex(
-      ({ name }) => name === pluginObject.name
+      ({ name }) => name === pluginObject.name,
     )
     if (duplicateIndex !== -1) {
       // remove the previous duplicated plugin
       app.pluginApi.plugins.splice(duplicateIndex, 1)
       warn(
         `plugin ${colors.magenta(
-          pluginObject.name
-        )} has been used multiple times, only the last one will take effect`
+          pluginObject.name,
+        )} has been used multiple times, only the last one will take effect`,
       )
     }
   }

@@ -4,7 +4,7 @@
 export const normalizePackageName = (
   request: string,
   org: string,
-  type: string | null = null
+  type: string | null = null,
 ): string => {
   // org prefix and type prefix
   const orgPrefix = `${org}-`

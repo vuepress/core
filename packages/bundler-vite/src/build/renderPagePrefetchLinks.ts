@@ -23,7 +23,7 @@ export const renderPagePrefetchLinks = ({
 
   // dynamic imports excluding current page chunks
   const prefetchFiles = outputEntryChunk.dynamicImports.filter(
-    (item) => !pageChunkFiles.some((file) => file === item)
+    (item) => !pageChunkFiles.some((file) => file === item),
   )
 
   return prefetchFiles
@@ -32,8 +32,8 @@ export const renderPagePrefetchLinks = ({
       const type = item.endsWith('.js')
         ? 'script'
         : item.endsWith('.css')
-        ? 'style'
-        : ''
+          ? 'style'
+          : ''
 
       // user wants to explicitly control what to prefetch
       if (shouldPrefetch !== true && !shouldPrefetch(item, type)) {

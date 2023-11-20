@@ -50,7 +50,7 @@ describe('core > page > inferPagePath', () => {
           inferPagePath({
             app,
             filePathRelative: source,
-          })
+          }),
         ).toEqual(expected)
       })
     })
@@ -61,7 +61,7 @@ describe('core > page > inferPagePath', () => {
       inferPagePath({
         app: appWithoutLocales,
         filePathRelative: 'en/foo/bar.md',
-      })
+      }),
     ).toEqual({
       pathInferred: '/en/foo/bar.html',
       pathLocale: '/',
@@ -73,7 +73,7 @@ describe('core > page > inferPagePath', () => {
       inferPagePath({
         app,
         filePathRelative: null,
-      })
+      }),
     ).toEqual({
       pathInferred: null,
       pathLocale: '/',

@@ -14,10 +14,10 @@ jobs:
 
     env:
       DOCS_GA_ID: G-CTB8FQ7VMW
-      NODE_VERSION: '16'
+      NODE_VERSION: '18'
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -25,7 +25,7 @@ jobs:
         uses: pnpm/action-setup@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
@@ -37,7 +37,7 @@ jobs:
         run: pnpm docs:release
 
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2.2.0
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           repo: vuepress/vuepress.github.io
           target_branch: main

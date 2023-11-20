@@ -4,7 +4,7 @@ import { dev } from './dev/index.js'
 import type { WebpackBundlerOptions } from './types.js'
 
 export const webpackBundler = (
-  options: WebpackBundlerOptions = {}
+  options: WebpackBundlerOptions = {},
 ): Bundler => ({
   name: '@vuepress/bundler-webpack',
   dev: (app) => dev(options, app),

@@ -6,7 +6,5 @@
     "types": ["@vuepress/client/types"]
   },
   "include": ["./src"],
-  "references": [
-    { "path": "../plugin-pwa/tsconfig.build.json" }
-  ]
+  "references": [{ "path": "../plugin-pwa/tsconfig.build.json" }]
 }

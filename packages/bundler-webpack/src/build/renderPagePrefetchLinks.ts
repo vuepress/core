@@ -23,7 +23,7 @@ export const renderPagePrefetchLinks = ({
 
   // async files excluding files used by current page should be prefetch
   const prefetchFilesMeta = asyncFilesMeta.filter(
-    ({ file }) => !pageClientFilesMeta.some((f) => f.file === file)
+    ({ file }) => !pageClientFilesMeta.some((f) => f.file === file),
   )
 
   return prefetchFilesMeta

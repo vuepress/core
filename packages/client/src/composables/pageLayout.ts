@@ -1,9 +1,5 @@
-import {
-  type Component,
-  type ComputedRef,
-  inject,
-  type InjectionKey,
-} from 'vue'
+import type { Component, ComputedRef, InjectionKey } from 'vue'
+import { inject } from 'vue'
 
 /**
  * Ref wrapper of `PageLayout`
@@ -14,7 +10,7 @@ export type PageLayoutRef = ComputedRef<Component>
  * Injection key for page layout
  */
 export const pageLayoutSymbol: InjectionKey<PageLayoutRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'pageLayout' : ''
+  __VUEPRESS_DEV__ ? 'pageLayout' : '',
 )
 
 /**

@@ -8,7 +8,7 @@ import type { DefaultThemeData } from '../../shared/index.js'
  */
 export const resolveContainerPluginOptions = (
   localeOptions: DefaultThemeData,
-  type: 'tip' | 'warning' | 'danger'
+  type: 'tip' | 'warning' | 'danger',
 ): ContainerPluginOptions => {
   const locales = Object.entries(localeOptions.locales || {}).reduce(
     (result, [key, value]) => {
@@ -17,7 +17,7 @@ export const resolveContainerPluginOptions = (
       }
       return result
     },
-    {}
+    {},
   )
 
   return {

@@ -15,7 +15,7 @@ import { useNavLink, useSidebarItems } from '../composables/index.js'
  * Resolve `prev` or `next` config from frontmatter
  */
 const resolveFromFrontmatterConfig = (
-  conf: unknown
+  conf: unknown,
 ): null | false | NavLink => {
   if (conf === false) {
     return null
@@ -38,7 +38,7 @@ const resolveFromFrontmatterConfig = (
 const resolveFromSidebarItems = (
   sidebarItems: ResolvedSidebarItem[],
   currentPath: string,
-  offset: number
+  offset: number,
 ): null | NavLink => {
   const index = sidebarItems.findIndex((item) => item.link === currentPath)
   if (index !== -1) {
@@ -54,7 +54,7 @@ const resolveFromSidebarItems = (
       const childResult = resolveFromSidebarItems(
         item.children,
         currentPath,
-        offset
+        offset,
       )
       if (childResult) {
         return childResult

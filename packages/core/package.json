@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "2.0.0-beta.61",
+  "version": "2.0.0-rc.0",
   "description": "Core package of VuePress",
   "keywords": [
     "vuepress",
@@ -35,7 +35,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.2.47"
+    "vue": "^3.3.8"
   },
   "publishConfig": {
     "access": "public"
@@ -51,7 +51,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2020",
+    "target": "es2022",
     "tsconfig": "../tsconfig.dts.json"
   }
 }

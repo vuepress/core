@@ -12,6 +12,10 @@ export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
     config.templateDev ?? themeInfo.templateDev ?? app.options.templateDev
   app.options.templateBuild =
     config.templateBuild ?? themeInfo.templateBuild ?? app.options.templateBuild
+  app.options.templateBuildRenderer =
+    config.templateBuildRenderer ??
+    themeInfo.templateBuildRenderer ??
+    app.options.templateBuildRenderer
   // use options plugins after theme plugins, allowing user to override theme plugins
   ;[...themeInfo.plugins, ...app.options.plugins]
     .flat()
