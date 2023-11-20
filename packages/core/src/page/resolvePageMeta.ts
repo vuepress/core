@@ -7,4 +7,10 @@ export const resolvePageMeta = ({
   frontmatter,
 }: {
   frontmatter: PageFrontmatter
-}): Record<string, unknown> => frontmatter.meta ?? {}
+}): Record<string, unknown> => {
+  // TODO: Added for backwards compatibility, should be removed in stable
+  if (frontmatter.routeMeta)
+    frontmatter.meta = { ...frontmatter.routeMeta, ...frontmatter.meta }
+
+  return frontmatter.meta ?? {}
+}
