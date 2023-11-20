@@ -148,7 +148,7 @@ export const createPage = async (
     // @ts-expect-error use meta instead
     routeMeta: new Proxy(meta, {
       set: (obj, prop, value) => {
-        console.error('RouteMeta is deprecated, use meta instead.')
+        console.warn('routeMeta is deprecated, please use meta instead')
 
         obj[prop as string] = value
         return true
