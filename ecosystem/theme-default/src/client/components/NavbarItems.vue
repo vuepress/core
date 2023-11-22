@@ -2,6 +2,7 @@
 import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import {
+  getPagesPath,
   useRouteLocale,
   useSiteData,
   useSiteLocaleData,
@@ -71,9 +72,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
             routeLocale.value,
             targetLocalePath,
           )
-          if (
-            router.getRoutes().some((item) => item.path === targetLocalePage)
-          ) {
+          if (getPagesPath().some((path) => path === targetLocalePage)) {
             // try to keep current hash and params across languages
             link = currentFullPath.replace(currentPath, targetLocalePage)
           } else {
