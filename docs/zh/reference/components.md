@@ -18,15 +18,15 @@
 
   如果一个组件在 `setup()` 中直接使用 浏览器 / DOM API ，它会导致构建过程报错，因为这些 API 在 Node.js 的环境中是无法使用的。在这种情况下，你可以选择一种方式：
 
-  - 修改这个组件，只在  `onBeforeMount()` 或 `onMounted()` Hook 中使用 浏览器 / DOM API 。
+  - 修改这个组件，只在 `onBeforeMount()` 或 `onMounted()` Hook 中使用 浏览器 / DOM API 。
   - 使用 `<ClientOnly>` 包裹这个组件。
 
 ## Content
 
-- Props:
+- 属性:
   - pageKey
     - 类型： `string`
-    - 是否必须： `false`
+    - 必要： 否
 
 - 使用：
 
@@ -44,3 +44,24 @@
 
 - 参考：
   - [Node API > Page 属性 > key](./node-api.md#key)
+
+## VPLink
+
+- 属性:
+  - to
+    - 类型： `string`
+    - 必要： 是
+
+- 使用：
+
+```md
+<VPLink to="/path/to/link" />
+```
+
+- 详情：
+
+  该组件会渲染一个拥有 SPA 导航能力的 `<a>` 链接，点击时会触发 `router.push` 行为。
+
+  它的 `to` 属性是需要导航到的链接。
+
+  该组件主要用于替代初始化开销过大的 `<RouterLink>` ，如果你需要放置内部链接且不关注准确的解析地址以及激活状态，你应该首选使用它。

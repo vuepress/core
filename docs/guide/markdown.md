@@ -62,11 +62,11 @@ Take our documentation source files as an example:
 
 ```vue
 <template>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/reference/config.html">Config Reference</RouterLink>
-  <RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
-  <RouterLink to="/guide/">Guide</RouterLink>
-  <RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
+  <VPLink to="/">Home</VPLink>
+  <VPLink to="/reference/config.html">Config Reference</VPLink>
+  <VPLink to="/guide/getting-started.html">Getting Started</VPLink>
+  <VPLink to="/guide/">Guide</VPLink>
+  <VPLink to="/reference/config.html#links">Config Reference &gt; markdown.links</VPLink>
   <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
 </template>
 ```
@@ -82,7 +82,7 @@ Take our documentation source files as an example:
 
 **Explanation**
 
-- Internal links will be converted to `<RouterLink>` for SPA navigation.
+- Internal links will be converted to `<VPLink>` which is similar to `<RouterLink>` for SPA navigation.
 - Internal links to `.md` files will be converted to the [page route path](./page.md#routing), and both absolute path and relative path are supported.
 - External links will get `target="_blank" rel="noopener noreferrer"` attrs.
 

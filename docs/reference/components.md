@@ -26,7 +26,7 @@
 - Props:
   - pageKey
     - Type: `string`
-    - Required: `false`
+    - Required: No`
 
 - Usage:
 
@@ -44,3 +44,24 @@
 
 - Also see:
   - [Node API > Page Properties > key](./node-api.md#key)
+
+## VPLink
+
+- Props:
+  - to
+    - Type: `string`
+    - Required: Yes
+
+- Usage:
+
+```md
+<VPLink to="/path/to/link" />
+```
+
+- Details:
+
+   This component will render an `<a>` link that has SPA navigation capabilities, and will trigger `router.push` when clicked.
+
+   Its `to` property is the link to navigate to.
+
+   This component is mainly used to replace `<RouterLink>`, which has expensive initialization. If you need to place internal links and don't care about its exact rendering href and activate state, you should use it as first choice.

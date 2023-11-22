@@ -76,7 +76,7 @@
     color: inherit;
 
     &:hover,
-    &.router-link-active {
+    &.vp-active {
       color: var(--c-text);
     }
   }
@@ -93,7 +93,7 @@
 
     > a {
       &:hover,
-      &.router-link-active {
+      &.vp-active {
         margin-bottom: -2px;
         border-bottom: 2px solid var(--c-text-accent);
       }
@@ -108,7 +108,7 @@
 
       > a {
         &:hover,
-        &.router-link-active {
+        &.vp-active {
           margin-bottom: 0;
           border-bottom: none;
         }
@@ -117,7 +117,7 @@
 
     a {
       &:hover,
-      &.router-link-active {
+      &.vp-active {
         color: var(--c-text-accent);
       }
     }
