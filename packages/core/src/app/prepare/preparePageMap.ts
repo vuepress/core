@@ -1,11 +1,26 @@
 import type { App } from '../../types/index.js'
 
+const HMR_CODE = `
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePagesMap) {
+    __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ pagesMap }) => {
+    __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
+  })
+}
+`
+
 /**
  * Generate page map temp file
  */
 export const preparePagesMap = async (app: App): Promise<void> => {
   // generate page component map file
-  const content = `\
+  let content = `\
 import { defineAsyncComponent } from 'vue'
 
 export const pagesMap = new Map([
@@ -34,6 +49,11 @@ export const pagesMap = new Map([
     .join('\n  ')}
 ])
 `
+
+  // inject HMR code
+  if (app.env.isDev) {
+    content += HMR_CODE
+  }
 
   await app.writeTemp('internal/pagesMap.js', content)
 }
