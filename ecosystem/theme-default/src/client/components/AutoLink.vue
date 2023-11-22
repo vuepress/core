@@ -1,13 +1,3 @@
-<script lang="ts">
-/* eslint-disable import/first, import/no-duplicates, import/order */
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  inheritAttrs: false,
-})
-/* eslint-enable import/order */
-</script>
-
 <script setup lang="ts">
 import { useSiteData } from '@vuepress/client'
 import { isLinkHttp, isLinkWithProtocol } from '@vuepress/shared'
@@ -15,6 +5,10 @@ import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import type { NavLink } from '../../shared/index.js'
+
+defineOptions({
+  inheritAttrs: false,
+})
 
 const props = defineProps({
   item: {
