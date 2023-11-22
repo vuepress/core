@@ -90,17 +90,23 @@
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
 
-## hasPage
+## getPagesPath
+
+- 详情：
+
+  返回所有页面路径，替代 `router.getRoutes()`。
+
+## isPageExist
 
 - 详情：
 
   返回对应的路径是否存在相应页面。
 
-## resolve
+## resolvePage
 
 - 详情:
 
-  返回路径对应的路由和相关页面的元数据，类似 `router.resolve()`。
+  返回路径对应的最终路径和相关页面的元数据，替代 `router.resolve()`。
 
 ## 常量
 

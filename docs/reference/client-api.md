@@ -90,18 +90,24 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 - Also see:
   - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
 
-## hasPage
+
+## getPagesPath
 
 - Details:
 
+  Returns all pages path, replacement of `router.getRoutes()`.
+
+## isPageExist
+
+- Details:
 
   Returns whether the corresponding path has a page.
 
-## resolve
+## resolvePage
 
 - Details:
 
-  Returns the route and related page metadata corresponding to the path, similar to `router.resolve()`.
+  Returns the route and related page metadata corresponding to the path, replacement of `router.resolve()`.
 
 ## Constants
 
