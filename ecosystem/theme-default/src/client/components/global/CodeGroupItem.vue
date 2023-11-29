@@ -1,12 +1,8 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
+<script setup lang="ts">
+defineOptions({
   name: 'CodeGroupItem',
 })
-</script>
 
-<script setup lang="ts">
 defineProps({
   title: {
     type: String,
