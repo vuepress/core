@@ -103,7 +103,7 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
   Returns whether the corresponding path has a page.
 
-## resolvePage
+## resolve
 
 - Details:
 
