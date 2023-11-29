@@ -24,6 +24,6 @@
     "@vuepress/utils": "workspace:*",
     "anywhere": "^1.6.0",
     "sass-loader": "^13.3.2",
-    "vue": "^3.3.8"
+    "vue": "^3.3.9"
   }
 }

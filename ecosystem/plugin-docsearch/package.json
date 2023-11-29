@@ -46,7 +46,7 @@
     "@vuepress/utils": "workspace:*",
     "@vueuse/core": "^10.6.1",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.3.8",
+    "vue": "^3.3.9",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

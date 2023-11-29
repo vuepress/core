@@ -39,7 +39,7 @@
     "@mdit-vue/plugin-toc": "^1.0.0",
     "@mdit-vue/shared": "^1.0.0",
     "@mdit-vue/types": "^1.0.0",
-    "@types/markdown-it": "^13.0.6",
+    "@types/markdown-it": "^13.0.7",
     "@types/markdown-it-emoji": "^2.0.4",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
