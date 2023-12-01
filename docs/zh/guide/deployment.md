@@ -219,7 +219,7 @@ heroku login
 
    - **FRAMEWORK PRESET:** `Other`
    - **BUILD COMMAND:** `pnpm docs:build`
-   - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+   - **OUTPUT DIRECTORY:** `src/.vuepress/dist`
 
 2. 点击 deploy 按钮。
 
