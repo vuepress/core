@@ -219,6 +219,6 @@ See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guid
 
    - **FRAMEWORK PRESET:** `Other`
    - **BUILD COMMAND:** `pnpm docs:build`
-   - **OUTPUT DIRECTORY:** `docs/.vuepress/dist`
+   - **OUTPUT DIRECTORY:** `src/.vuepress/dist`
 
 2. Hit the deploy button.
