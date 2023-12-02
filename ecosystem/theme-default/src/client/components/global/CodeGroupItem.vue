@@ -20,7 +20,7 @@ defineProps({
   <div
     class="code-group-item"
     :class="{ 'code-group-item__active': active }"
-    :aria-selected="active"
+    role="tabpanel"
   >
     <slot />
   </div>

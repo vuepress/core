@@ -12,14 +12,7 @@
   padding-top: 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background-color: var(--code-bg-color);
-}
-
-.code-group__ul {
-  margin: auto 0;
-  padding-left: 0;
-  display: inline-flex;
-  list-style: none;
+  background-color: var(--c-code-group-tab-bg);
 }
 
 .code-group__nav-tab {
@@ -29,7 +22,7 @@
   background-color: transparent;
   font-size: 0.85em;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--c-code-group-tab-title);
   font-weight: 600;
 }
 
@@ -38,11 +31,11 @@
 }
 
 .code-group__nav-tab:focus-visible {
-  outline: 1px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid var(--c-code-group-tab-outline);
 }
 
 .code-group__nav-tab-active {
-  border-bottom: var(--c-brand) 1px solid;
+  border-bottom: var(--c-code-group-tab-active-border) 1px solid;
 }
 
 @media (max-width: $MQMobileNarrow) {

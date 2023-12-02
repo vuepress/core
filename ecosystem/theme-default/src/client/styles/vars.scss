@@ -62,6 +62,12 @@
   --c-badge-danger: #dc2626;
   --c-badge-danger-text: var(--c-bg);
 
+  // code group colors
+  --c-code-group-tab-title: rgba(255, 255, 255, 0.9);
+  --c-code-group-tab-bg: var(--code-bg-color);
+  --c-code-group-tab-outline: var(var(--c-code-group-tab-title));
+  --c-code-group-tab-active-border: var(--c-brand);
+
   // transition vars
   --t-color: 0.3s ease;
   --t-transform: 0.3s ease;

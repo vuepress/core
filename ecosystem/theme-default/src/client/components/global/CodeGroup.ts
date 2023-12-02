@@ -128,38 +128,29 @@ export const CodeGroup = defineComponent({
       return h('div', { class: 'code-group' }, [
         h(
           'div',
-          { class: 'code-group__nav' },
-          h(
-            'ul',
-            { class: 'code-group__ul' },
-            items.map((vnode, i) => {
-              const isActive = i === activeIndex.value
-
-              return h(
-                'li',
-                { class: 'code-group__li' },
-                h(
-                  'button',
-                  {
-                    ref: (element) => {
-                      if (element) {
-                        tabRefs.value[i] = element as HTMLButtonElement
-                      }
-                    },
-                    class: {
-                      'code-group__nav-tab': true,
-                      'code-group__nav-tab-active': isActive,
-                    },
-                    ariaPressed: isActive,
-                    ariaExpanded: isActive,
-                    onClick: () => (activeIndex.value = i),
-                    onKeydown: (e) => keyboardHandler(e, i),
-                  },
-                  vnode.props.title,
-                ),
-              )
-            }),
-          ),
+          { class: 'code-group__nav', role: 'tablist' },
+          items.map((vnode, i) => {
+            const isActive = i === activeIndex.value
+            return h(
+              'button',
+              {
+                ref: (element) => {
+                  if (element) {
+                    tabRefs.value[i] = element as HTMLButtonElement
+                  }
+                },
+                class: {
+                  'code-group__nav-tab': true,
+                  'code-group__nav-tab-active': isActive,
+                },
+                role: 'tab',
+                ariaSelected: isActive,
+                onClick: () => (activeIndex.value = i),
+                onKeydown: (e) => keyboardHandler(e, i),
+              },
+              vnode.props.title,
+            )
+          }),
         ),
         items,
       ])
