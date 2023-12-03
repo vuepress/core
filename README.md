@@ -1,7 +1,6 @@
 # vuepress-next
 
-[![github check](https://github.com/vuepress/vuepress-next/workflows/check/badge.svg)](https://github.com/vuepress/vuepress-next/actions?query=workflow%3Acheck)
-[![github docs](https://github.com/vuepress/vuepress-next/workflows/docs/badge.svg)](https://github.com/vuepress/vuepress-next/actions?query=workflow%3Adocs)
+[![check](https://github.com/vuepress/vuepress-next/workflows/check/badge.svg)](https://github.com/vuepress/vuepress-next/actions/workflows/check.yml?query=workflow%3Acheck)
 [![npm](https://badgen.net/npm/v/vuepress/next)](https://www.npmjs.com/package/vuepress)
 [![coverage](https://coveralls.io/repos/github/vuepress/vuepress-next/badge.svg?branch=main)](https://coveralls.io/github/vuepress/vuepress-next?branch=main)
 [![license](https://badgen.net/github/license/vuepress/vuepress-next)](https://github.com/vuepress/vuepress-next/blob/main/LICENSE)
@@ -17,7 +16,9 @@ https://v2.vuepress.vuejs.org
 
 ## Contribution
 
-See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
+See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/CONTRIBUTING.md)
+
+查看 [贡献指南](https://github.com/vuepress/vuepress-next/blob/main/CONTRIBUTING_zh.md)
 
 ## License
 
