@@ -1,11 +1,12 @@
 {
-  "name": "@vuepress/shared",
+  "name": "vuepress",
   "version": "2.0.0-rc.0",
-  "description": "Utils that shared between VuePress node and client",
+  "description": "Vue-powered Static Site Generator",
   "keywords": [
-    "vuepress",
-    "shared",
-    "utils"
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
@@ -19,25 +20,28 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./lib/index.js",
+    "./bin": "./bin/vuepress.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "vuepress": "./bin/vuepress.js"
+  },
   "files": [
-    "dist"
+    "bin",
+    "lib"
   ],
   "scripts": {
     "build": "tsup",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/types": "^1.0.0",
-    "@vue/shared": "^3.3.9"
+    "vuepress-vite": "workspace:*"
   },
-  "publishConfig": {
-    "access": "public"
+  "engines": {
+    "node": ">=18.16.0"
   },
   "tsup": {
     "clean": true,

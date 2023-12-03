@@ -5,15 +5,12 @@ const getSubDirectories = (dir) =>
   fs
     .readdirSync(dir)
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
-const corePackages = getSubDirectories(path.resolve(__dirname, 'packages'))
-const ecosystemPackages = getSubDirectories(
-  path.resolve(__dirname, 'ecosystem'),
-)
+const packages = getSubDirectories(path.resolve(__dirname, 'packages'))
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', [...corePackages, ...ecosystemPackages]],
+    'scope-enum': [2, 'always', packages],
     'footer-max-line-length': [0],
   },
 }

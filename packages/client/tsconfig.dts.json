@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.dts.json",
+  "extends": "../../tsconfig.dts.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

@@ -62,6 +62,6 @@
     "outDir": "./dist",
     "sourcemap": false,
     "target": "es2022",
-    "tsconfig": "../tsconfig.dts.json"
+    "tsconfig": "../../tsconfig.dts.json"
   }
 }
