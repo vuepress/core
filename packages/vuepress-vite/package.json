@@ -20,19 +20,19 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./dist/index.js",
     "./bin": "./bin/vuepress.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "vuepress": "./bin/vuepress.js",
     "vuepress-vite": "./bin/vuepress.js"
   },
   "files": [
     "bin",
-    "lib"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
