@@ -2,9 +2,7 @@ import {
   createPage,
   preparePageComponent,
   preparePageData,
-  preparePagesComponents,
-  preparePagesData,
-  preparePagesRoutes,
+  preparePagesMap,
 } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
 
@@ -39,18 +37,12 @@ export const handlePageChange = async (
   await preparePageData(app, pageNew)
 
   const isPathChanged = pageOld.path !== pageNew.path
-  const isRouteMetaChanged =
-    JSON.stringify(pageOld.routeMeta) !== JSON.stringify(pageNew.routeMeta)
+  const isMetaChanged =
+    JSON.stringify(pageOld.meta) !== JSON.stringify(pageNew.meta)
 
-  // prepare pages entry if the path is changed
-  if (isPathChanged) {
-    await preparePagesComponents(app)
-    await preparePagesData(app)
-  }
-
-  // prepare pages routes if the path or routeMeta is changed
-  if (isPathChanged || isRouteMetaChanged) {
-    await preparePagesRoutes(app)
+  // prepare pages map if the path or meta is changed
+  if (isPathChanged || isMetaChanged) {
+    await preparePagesMap(app)
   }
 
   return [pageOld, pageNew]

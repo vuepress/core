@@ -73,7 +73,7 @@ export type PageFrontmatter<
   layout?: string
   permalink?: string
   permalinkPattern?: string | null
-  routeMeta?: Record<string, unknown>
+  meta?: Record<string, unknown>
   title?: string
 }
 
