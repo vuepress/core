@@ -1,4 +1,4 @@
-import type {PageInfo, PageRedirectsMap, PagesMap} from '@internal/pagesMap';
+import type { PageInfo, PageRedirectsMap, PagesMap } from '@internal/pagesMap'
 import {
   dedupeHead,
   isArray,

@@ -1,4 +1,4 @@
-import type {PagesMap} from '@internal/pagesMap';
+import type { PagesMap } from '@internal/pagesMap'
 import { pagesMap, redirectsMap } from '../composables/index.js'
 import { resolvers } from '../resolvers.js'
 
