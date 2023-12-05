@@ -40,12 +40,6 @@ Build source code:
 pnpm build
 ```
 
-Start developing the documentation site:
-
-```bash
-pnpm docs:dev
-```
-
 Main tools that used in this project:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
