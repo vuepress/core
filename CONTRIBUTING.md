@@ -52,8 +52,6 @@ Main tools that used in this project:
 
 The `build` script uses `tsup` to compile TypeScript source files to JavaScript dist files.
 
-Also, it will copy necessary resources from source directory to dist directory, because some source files (e.g. `.vue`, `.css` files) would not be processed by `tsup`, but should keep the same relative path in the dist directory.
-
 You may need to run this script first after your clone this repository, because the dist files are ignored by `.gitignore`.
 
 ### `pnpm clean`
