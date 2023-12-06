@@ -41,10 +41,10 @@
     "autoprefixer": "^10.4.16",
     "connect-history-api-fallback": "^2.0.0",
     "postcss": "^8.4.32",
-    "postcss-load-config": "^5.0.0",
+    "postcss-load-config": "^5.0.2",
     "rollup": "^4.6.1",
-    "vite": "~5.0.4",
-    "vue": "^3.3.9",
+    "vite": "~5.0.6",
+    "vue": "^3.3.10",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {
