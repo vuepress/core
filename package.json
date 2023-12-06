@@ -29,7 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
-    "@types/node": "^20.10.2",
+    "@types/node": "^20.10.3",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "1.0.0-beta.6",
     "bumpp": "^9.2.0",
@@ -39,7 +39,7 @@
     "eslint-config-vuepress": "^4.7.0",
     "eslint-config-vuepress-typescript": "^4.7.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
@@ -47,7 +47,7 @@
     "tsconfig-vuepress": "^4.5.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2",
-    "vite": "~5.0.4",
+    "vite": "~5.0.6",
     "vitest": "1.0.0-beta.6"
   },
   "packageManager": "pnpm@8.11.0",
