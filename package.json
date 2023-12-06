@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm -r --workspace-concurrency=1 --stream build",
+    "build": "pnpm build:all && pnpm build:copy",
+    "build:all": "pnpm -r --workspace-concurrency=1 --stream build",
+    "build:copy": "pnpm --parallel --stream copy",
     "clean": "pnpm --parallel --stream clean",
     "format": "prettier --write .",
     "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
