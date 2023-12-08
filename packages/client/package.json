@@ -40,7 +40,7 @@
     "@vue/devtools-api": "^6.5.1",
     "@vuepress/shared": "workspace:*",
     "@vueuse/core": "^10.7.0",
-    "vue": "^3.3.10",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

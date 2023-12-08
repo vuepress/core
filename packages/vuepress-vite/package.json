@@ -42,7 +42,7 @@
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/cli": "workspace:*",
     "@vuepress/core": "workspace:*",
-    "vue": "^3.3.10"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vuepress/client": "workspace:*"
