@@ -30,25 +30,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Get pnpm store path
-        shell: bash
-        run: |
-          echo "PNPM_STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/Cypress
-            ${{ env.PNPM_STORE_PATH }}
-          key: e2e-${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            e2e-${{ runner.os }}-node-${{ matrix.node }}-
-            e2e-${{ runner.os }}-
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Get cypress cache path
+        working-directory: ./e2e
+        shell: bash
+        run: |
+          echo "CYPRESS_CACHE_PATH=$(pnpm cypress cache path)" >> $GITHUB_ENV
+
+      - name: Setup cypress cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CYPRESS_CACHE_PATH }}
+          key: cypress-${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-node-${{ matrix.node }}-
+            cypress-${{ runner.os }}-
+
+      - name: Install cypress binary
+        working-directory: ./e2e
+        run: pnpm cypress install
 
       - name: Build source files
         run: pnpm build
