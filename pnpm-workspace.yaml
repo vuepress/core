@@ -1,4 +1,3 @@
 packages:
-  - docs
-  - ecosystem/*
+  - e2e
   - packages/*

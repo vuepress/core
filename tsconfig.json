@@ -4,24 +4,17 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "paths": {
-      "@internal/searchIndex": [
-        "./ecosystem/plugin-search/src/client/searchIndex.d.ts"
-      ],
-      "@internal/themeData": [
-        "./ecosystem/plugin-theme-data/src/client/themeData.d.ts"
-      ],
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
-      "@theme/*": ["./ecosystem/theme-default/src/client/components/*"],
       "@vuepress/*": ["./packages/*/src"],
-      "vuepress": ["./ecosystem/vuepress/src"],
-      "vuepress-vite": ["./ecosystem/vuepress-vite/src"],
-      "vuepress-webpack": ["./ecosystem/vuepress-webpack/src"]
+      "vuepress": ["./packages/vuepress/src"],
+      "vuepress-vite": ["./packages/vuepress-vite/src"],
+      "vuepress-webpack": ["./packages/vuepress-webpack/src"]
     },
     "types": ["webpack-env", "vite/client"]
   },
   "include": [
     "**/.vuepress/**/*",
-    "ecosystem/**/*",
+    "e2e/**/*",
     "packages/**/*",
     "vitest.config.ts"
   ],

@@ -1,0 +1,68 @@
+{
+  "name": "vuepress-webpack",
+  "version": "2.0.0-rc.0",
+  "description": "Vue-powered Static Site Generator",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./bin": "./bin/vuepress.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "vuepress": "./bin/vuepress.js",
+    "vuepress-webpack": "./bin/vuepress.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@vuepress/bundler-webpack": "workspace:*",
+    "@vuepress/cli": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "sass-loader": "^13.3.2",
+    "vue": "^3.3.11"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  },
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "tsup": {
+    "clean": true,
+    "dts": "./src/index.ts",
+    "entry": [
+      "./src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "outDir": "./dist",
+    "sourcemap": false,
+    "target": "es2022",
+    "tsconfig": "../../tsconfig.dts.json"
+  }
+}

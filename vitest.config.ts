@@ -9,21 +9,16 @@ const getSubDirectories = (dir: string): string[] =>
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
 const root = path.dirname(fileURLToPath(import.meta.url))
 const nonScopedPackages = ['vuepress', 'vuepress-vite', 'vuepress-webpack']
-const corePackages = getSubDirectories(path.resolve(root, 'packages'))
-const ecosystemPackages = getSubDirectories(
-  path.resolve(root, 'ecosystem'),
-).filter((item) => !nonScopedPackages.includes(item))
+const packages = getSubDirectories(path.resolve(root, 'packages')).filter(
+  (item) => !nonScopedPackages.includes(item),
+)
 
 export default defineConfig({
   resolve: {
     alias: [
       {
-        find: new RegExp(`^@vuepress/(${corePackages.join('|')})$`),
+        find: new RegExp(`^@vuepress/(${packages.join('|')})$`),
         replacement: path.resolve(root, './packages/$1/src/index.ts'),
-      },
-      {
-        find: new RegExp(`^@vuepress/(${ecosystemPackages.join('|')})$`),
-        replacement: path.resolve(root, './ecosystem/$1/src/index.ts'),
       },
     ],
   },

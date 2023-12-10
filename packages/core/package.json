@@ -35,7 +35,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.3.9"
+    "vue": "^3.3.11"
   },
   "publishConfig": {
     "access": "public"
@@ -52,6 +52,6 @@
     "outDir": "./dist",
     "sourcemap": false,
     "target": "es2022",
-    "tsconfig": "../tsconfig.dts.json"
+    "tsconfig": "../../tsconfig.dts.json"
   }
 }
