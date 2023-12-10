@@ -6,8 +6,8 @@
   "scripts": {
     "e2e:build": "vuepress-cli build docs --clean-cache --clean-temp",
     "e2e:build-webpack": "E2E_BUNDLER=webpack pnpm e2e:build",
-    "e2e:ci:build": "pnpm e2e:build && pnpm e2e:serve & wait-on http-get://localhost:8088 && pnpm e2e:run --config baseUrl=http://localhost:8088",
-    "e2e:ci:dev": "pnpm e2e:dev & wait-on http-get://127.0.0.1:8080 && pnpm e2e:run --config baseUrl=http://localhost:8080",
+    "e2e:ci:build": "pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:8088 'pnpm e2e:run --config baseUrl=http://localhost:8088'",
+    "e2e:ci:dev": "start-server-and-test e2e:dev http-get://127.0.0.1:8080 'pnpm e2e:run --config baseUrl=http://localhost:8080'",
     "e2e:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
     "e2e:dev": "vuepress-cli dev docs --clean-cache --clean-temp",
     "e2e:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
@@ -30,6 +30,6 @@
   "devDependencies": {
     "anywhere": "^1.6.0",
     "cypress": "^13.6.1",
-    "wait-on": "^7.2.0"
+    "start-server-and-test": "^2.0.3"
   }
 }
