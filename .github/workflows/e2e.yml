@@ -40,13 +40,13 @@ jobs:
 
       - name: E2E dev
         working-directory: ./e2e
-        run: pnpm e2e:ci-dev
+        run: pnpm e2e:ci:dev
         env:
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E build
         working-directory: ./e2e
-        run: pnpm e2e:ci-build
+        run: pnpm e2e:ci:build
         env:
           E2E_BUNDLER: ${{ matrix.bundler }}
 
