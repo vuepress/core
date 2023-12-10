@@ -1,4 +1,4 @@
-name: check
+name: e2e
 
 on:
   push:
@@ -10,12 +10,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  e2e:
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['18', '20']
+        bundler: ['vite', 'webpack']
 
     runs-on: ${{ matrix.os }}
 
@@ -34,20 +35,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: Build source files
         run: pnpm build
 
-      - name: Lint
-        run: pnpm lint
+      - name: E2E dev
+        working-directory: ./e2e
+        run: pnpm e2e:ci-dev
+        env:
+          E2E_BUNDLER: ${{ matrix.bundler }}
 
-      - name: Unit test
-        run: pnpm test
+      - name: E2E build
+        working-directory: ./e2e
+        run: pnpm e2e:ci-build
+        env:
+          E2E_BUNDLER: ${{ matrix.bundler }}
 
-  check-result:
+  e2e-result:
     if: ${{ always() }}
-    name: check result
+    name: e2e result
     runs-on: ubuntu-latest
-    needs: [check]
+    needs: [e2e]
     steps:
       - if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
         run: exit 1
