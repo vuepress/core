@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.5.1",
+    "@vitejs/plugin-vue": "^4.5.2",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
@@ -41,10 +41,10 @@
     "autoprefixer": "^10.4.16",
     "connect-history-api-fallback": "^2.0.0",
     "postcss": "^8.4.32",
-    "postcss-load-config": "^5.0.0",
-    "rollup": "^4.6.1",
-    "vite": "~5.0.4",
-    "vue": "^3.3.9",
+    "postcss-load-config": "^5.0.2",
+    "rollup": "^4.7.0",
+    "vite": "~5.0.7",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

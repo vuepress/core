@@ -42,7 +42,7 @@
     "cac": "^6.7.14",
     "chokidar": "^3.5.3",
     "envinfo": "^7.11.0",
-    "esbuild": "~0.19.8"
+    "esbuild": "~0.19.9"
   },
   "devDependencies": {
     "@types/envinfo": "^7.8.3"

@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'docs/**'
+      - e2e/**
       - '**.md'
   pull_request:
     branches:
@@ -37,7 +37,7 @@ jobs:
       - name: Build source code
         run: pnpm build
 
-      - name: Test coverage
+      - name: Unit test coverage
         run: pnpm test:cov
 
       - name: Coveralls

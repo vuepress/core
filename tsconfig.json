@@ -12,6 +12,11 @@
     },
     "types": ["webpack-env", "vite/client"]
   },
-  "include": ["**/.vuepress/**/*", "packages/**/*", "vitest.config.ts"],
+  "include": [
+    "**/.vuepress/**/*",
+    "e2e/**/*",
+    "packages/**/*",
+    "vitest.config.ts"
+  ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]
 }
