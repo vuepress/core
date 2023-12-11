@@ -6,7 +6,6 @@ import {
   usePageHead,
   usePageLang,
 } from './composables/index.js'
-import type { UpdateHead } from './composables/index.js'
 
 /**
  * Auto update head and provide as global util
@@ -25,63 +24,50 @@ export const setupUpdateHead = (): void => {
     return
   }
 
-  let managedHeadElements: HTMLElement[] = []
+  let managedHeadElements: (HTMLElement | null)[] = []
+  let isFirstUpdate = true
 
-  // load current head tags from DOM
-  const loadHead = (): void => {
-    head.value.map(queryHeadElement).forEach((el) => {
-      if (el && managedHeadElements.every((head) => !head.isEqualNode(el))) {
-        managedHeadElements.push(el)
-      }
-    })
-  }
+  const updateHeadTags = (newTags: HeadConfig[]): void => {
+    if (!__VUEPRESS_DEV__ && isFirstUpdate) {
+      // in production, the initial meta tags are already pre-rendered so we
+      // skip the first update.
+      isFirstUpdate = false
+      return
+    }
 
-  // update html lang attribute and head tags to DOM
-  const updateHead: UpdateHead = () => {
     document.documentElement.lang = lang.value
 
-    managedHeadElements.forEach((item) => {
-      if (item.parentNode === document.head) {
-        document.head.removeChild(item)
-      }
-    })
+    const newElements: (HTMLElement | null)[] = newTags.map(createHeadElement)
 
-    const newHeadElements = head.value
-      .map(createHeadElement)
-      .filter(Boolean) as HTMLElement[]
-
-    managedHeadElements.forEach((el, index) => {
-      const matchedIndex = newHeadElements.findIndex(
-        (newEl) => newEl?.isEqualNode(el ?? null),
+    managedHeadElements.forEach((oldEl, oldIndex) => {
+      const matchedIndex = newElements.findIndex(
+        (newEl) => newEl?.isEqualNode(oldEl ?? null),
       )
 
       if (matchedIndex === -1) {
-        el?.remove()
-        delete managedHeadElements[index]
+        oldEl?.remove()
+        delete managedHeadElements[oldIndex]
       } else {
-        delete newHeadElements[matchedIndex]
+        delete newElements[matchedIndex]
       }
     })
 
-    newHeadElements.forEach((el) => {
-      document.head.appendChild(el)
-    })
-    managedHeadElements = [
-      ...managedHeadElements.filter(Boolean),
-      ...newHeadElements,
-    ]
+    newElements.forEach((el) => el && document.head.appendChild(el))
+    managedHeadElements = [...managedHeadElements, ...newElements].filter(
+      Boolean,
+    )
   }
-  provide(updateHeadSymbol, updateHead)
+  provide(updateHeadSymbol, () => {
+    updateHeadTags(head.value)
+  })
 
   onMounted(() => {
-    loadHead()
-    if (__VUEPRESS_DEV__) updateHead()
     watch(
       () => head.value,
       () => {
-        if (__VUEPRESS_DEV__) loadHead()
-        updateHead()
+        updateHeadTags(head.value)
       },
+      { immediate: true },
     )
   })
 }
