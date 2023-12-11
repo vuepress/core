@@ -92,7 +92,7 @@ const pageMapEntries = [${pageMapEntries}];
 
 export const redirectsMap = new Map(
   pageMapEntries
-    .flatMap(([path, , , , redirects]) => redirects.map((redirect) => [redirect, path])),
+    .flatMap(([path, , , , redirects = []]) => redirects.map((redirect) => [redirect, path])),
 );
 
 export const pagesMap = new Map(
