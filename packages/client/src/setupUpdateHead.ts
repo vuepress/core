@@ -25,7 +25,7 @@ export const setupUpdateHead = (): void => {
     return
   }
 
-  const managedHeadElements: HTMLElement[] = []
+  let managedHeadElements: HTMLElement[] = []
 
   // load current head tags from DOM
   const loadHead = (): void => {
@@ -66,7 +66,10 @@ export const setupUpdateHead = (): void => {
     newHeadElements.forEach((el) => {
       document.head.appendChild(el)
     })
-    managedHeadElements.push(...newHeadElements)
+    managedHeadElements = [
+      ...managedHeadElements.filter(Boolean),
+      ...newHeadElements,
+    ]
   }
   provide(updateHeadSymbol, updateHead)
 
