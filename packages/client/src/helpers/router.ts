@@ -7,7 +7,7 @@ import { resolvers } from '../resolvers.js'
  *
  * @returns all paths of pages
  */
-export const getPagesPath = (): string[] => Object.keys(pagesMap.value)
+export const getPagesPath = (): string[] => Array.from(pagesMap.value.keys())
 
 /**
  * Check whether the page exists

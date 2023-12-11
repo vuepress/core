@@ -3,7 +3,7 @@ import {
   redirectsMap as redirectsMapRaw,
 } from '@internal/pagesMap'
 import type { PageRedirectsMap, PagesMap } from '@internal/pagesMap'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import type { Ref } from 'vue'
 
 /**
@@ -19,12 +19,12 @@ export type PageRedirectsRef = Ref<PageRedirectsMap>
 /**
  * Global pages map ref
  */
-export const pagesMap: PagesMapRef = ref(pagesMapRaw)
+export const pagesMap: PagesMapRef = shallowRef(pagesMapRaw)
 
 /**
  * Global pages map ref
  */
-export const redirectsMap: PageRedirectsRef = ref(redirectsMapRaw)
+export const redirectsMap: PageRedirectsRef = shallowRef(redirectsMapRaw)
 
 /**
  * Returns the ref of pages map
