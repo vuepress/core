@@ -63,11 +63,10 @@ export const createMarkdown = ({
     md.use<AnchorPluginOptions>(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
-      permalink: anchorPlugin.permalink.ariaHidden({
+      permalink: anchorPlugin.permalink.headerLink({
         class: 'header-anchor',
-        symbol: '#',
-        space: true,
-        placement: 'before',
+        // Add a span inside the link so Safari shows headings in reader view.
+        safariReaderFix: true,
       }),
       ...anchor,
     })
