@@ -14,7 +14,7 @@ export const resolveHeadIdentifier = ([tag, attrs, content]: HeadConfig):
     return tag
   }
 
-  // avoid tags not allowed
+  // avoid disallowed tags
   if (!TAGS_ALLOWED.includes(tag)) {
     return null
   }
