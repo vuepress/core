@@ -12,7 +12,7 @@ export const dedupeHead = (head: HeadConfig[]): HeadConfig[] => {
 
   head.forEach((item) => {
     const identifier = resolveHeadIdentifier(item)
-    if (!identifierSet.has(identifier)) {
+    if (identifier && !identifierSet.has(identifier)) {
       identifierSet.add(identifier)
       result.push(item)
     }

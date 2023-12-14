@@ -1,6 +1,6 @@
 import { isPlainObject, isString } from '@vuepress/shared'
 import type { HeadConfig, VuepressSSRContext } from '@vuepress/shared'
-import { onMounted, provide, ref, useSSRContext, watch } from 'vue'
+import { onMounted, provide, useSSRContext, watch } from 'vue'
 import {
   updateHeadSymbol,
   usePageHead,
@@ -25,50 +25,86 @@ export const setupUpdateHead = (): void => {
     return
   }
 
-  const headTags = ref<HTMLElement[]>([])
+  let managedHeadElements: HTMLElement[] = []
 
-  // load current head tags from DOM
-  const loadHead = (): void => {
+  /**
+   * Take over the existing head elements
+   */
+  const takeOverHeadElements = (): void => {
     head.value.forEach((item) => {
-      const tag = queryHeadTag(item)
-      if (tag) {
-        headTags.value.push(tag)
+      const headElement = queryHeadElement(item)
+      if (headElement) {
+        managedHeadElements.push(headElement)
       }
     })
   }
 
-  // update html lang attribute and head tags to DOM
+  /**
+   * Generate head elements from current head config
+   */
+  const generateHeadElements = (): HTMLElement[] => {
+    const result: HTMLElement[] = []
+    head.value.forEach((item) => {
+      const headElement = createHeadElement(item)
+      if (headElement) {
+        result.push(headElement)
+      }
+    })
+    return result
+  }
+
+  /**
+   * Update head elements
+   */
   const updateHead: UpdateHead = () => {
+    // set html lang attribute
     document.documentElement.lang = lang.value
 
-    headTags.value.forEach((item) => {
-      if (item.parentNode === document.head) {
-        document.head.removeChild(item)
-      }
-    })
-    headTags.value.splice(0, headTags.value.length)
+    // generate new head elements from current head config
+    const newHeadElements = generateHeadElements()
 
-    head.value.forEach((item) => {
-      const tag = createHeadTag(item)
-      if (tag !== null) {
-        document.head.appendChild(tag)
-        headTags.value.push(tag)
+    // find the intersection of old and new head elements
+    managedHeadElements.forEach((oldEl, oldIndex) => {
+      const matchedIndex = newHeadElements.findIndex((newEl) =>
+        oldEl.isEqualNode(newEl),
+      )
+      // remove the non-intersection from old elements
+      if (matchedIndex === -1) {
+        oldEl.remove()
+        // use delete to make the index consistent
+        delete managedHeadElements[oldIndex]
+      }
+      // keep the intersection in old elements, and remove it from new elements
+      else {
+        // use splice to avoid empty item in next loop
+        newHeadElements.splice(matchedIndex, 1)
       }
     })
+    // append the rest new elements to head
+    newHeadElements.forEach((el) => document.head.appendChild(el))
+    // update managed head elements
+    managedHeadElements = [
+      // filter out empty deleted items
+      ...managedHeadElements.filter((item) => !!item),
+      ...newHeadElements,
+    ]
   }
   provide(updateHeadSymbol, updateHead)
 
   onMounted(() => {
-    loadHead()
-    updateHead()
-    watch(() => head.value, updateHead)
+    // in production, the initial head elements are already pre-rendered,
+    // so we need to skip the first update and take over the existing elements.
+    if (!__VUEPRESS_DEV__) {
+      takeOverHeadElements()
+    }
+    watch(head, updateHead, { immediate: __VUEPRESS_DEV__ })
   })
 }
 
 /**
- * Query the matched head tag of head config
+ * Query the matched head element of head config
  */
-export const queryHeadTag = ([
+export const queryHeadElement = ([
   tagName,
   attrs,
   content = '',
@@ -86,15 +122,19 @@ export const queryHeadTag = ([
     .join('')
 
   const selector = `head > ${tagName}${attrsSelector}`
-  const tags = Array.from(document.querySelectorAll<HTMLElement>(selector))
-  const matchedTag = tags.find((item) => item.innerText === content)
-  return matchedTag || null
+  const headElements = Array.from(
+    document.querySelectorAll<HTMLElement>(selector),
+  )
+  const matchedHeadElement = headElements.find(
+    (item) => item.innerText === content,
+  )
+  return matchedHeadElement || null
 }
 
 /**
- * Create head tag from head config
+ * Create head element from head config
  */
-export const createHeadTag = ([
+export const createHeadElement = ([
   tagName,
   attrs,
   content,
@@ -104,23 +144,23 @@ export const createHeadTag = ([
   }
 
   // create element
-  const tag = document.createElement(tagName)
+  const headElement = document.createElement(tagName)
 
   // set attributes
   if (isPlainObject(attrs)) {
     Object.entries(attrs).forEach(([key, value]) => {
       if (isString(value)) {
-        tag.setAttribute(key, value)
+        headElement.setAttribute(key, value)
       } else if (value === true) {
-        tag.setAttribute(key, '')
+        headElement.setAttribute(key, '')
       }
     })
   }
 
   // set content
   if (isString(content)) {
-    tag.appendChild(document.createTextNode(content))
+    headElement.appendChild(document.createTextNode(content))
   }
 
-  return tag
+  return headElement
 }
