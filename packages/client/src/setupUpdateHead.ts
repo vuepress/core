@@ -25,19 +25,12 @@ export const setupUpdateHead = (): void => {
   }
 
   let managedHeadElements: (HTMLElement | null)[] = []
-  let isFirstUpdate = true
 
-  const updateHeadTags = (newTags: HeadConfig[]): void => {
-    if (!__VUEPRESS_DEV__ && isFirstUpdate) {
-      // in production, the initial meta tags are already pre-rendered so we
-      // skip the first update.
-      isFirstUpdate = false
-      return
-    }
-
+  const updateHeadTags = (): void => {
     document.documentElement.lang = lang.value
 
-    const newElements: (HTMLElement | null)[] = newTags.map(createHeadElement)
+    const newElements: (HTMLElement | null)[] =
+      head.value.map(createHeadElement)
 
     managedHeadElements.forEach((oldEl, oldIndex) => {
       const matchedIndex = newElements.findIndex(
@@ -57,18 +50,16 @@ export const setupUpdateHead = (): void => {
       Boolean,
     )
   }
-  provide(updateHeadSymbol, () => {
-    updateHeadTags(head.value)
-  })
+  provide(updateHeadSymbol, updateHeadTags)
 
   onMounted(() => {
-    watch(
-      () => head.value,
-      () => {
-        updateHeadTags(head.value)
-      },
-      { immediate: true },
-    )
+    // in production, the initial meta tags are already pre-rendered,
+    // so we need to skip the first update and take over the existing tags.
+    if (!__VUEPRESS_DEV__) {
+      managedHeadElements = head.value.map(queryHeadElement).filter(Boolean)
+    }
+
+    watch(head, updateHeadTags, { immediate: __VUEPRESS_DEV__ })
   })
 }
 
