@@ -3,6 +3,18 @@ describe('updateHead', () => {
     // en-US
     cy.visit('/')
 
+    // lang
+    cy.get('html').should('have.attr', 'lang', 'en-US')
+    // title
+    cy.title().should('eq', 'VuePress E2E')
+    cy.get('head title').should('have.text', 'VuePress E2E')
+    // description
+    cy.get('head meta[name="description"]').should(
+      'have.attr',
+      'content',
+      'VuePress E2E Test Site',
+    )
+    // head
     cy.get('head meta[name="foo"]')
       .should('have.length', 1)
       .should('have.attr', 'content', 'foo')
@@ -19,6 +31,18 @@ describe('updateHead', () => {
     // navigate to zh-CN
     cy.get('.e2e-theme-nav a').contains('zh-CN').click()
 
+    // lang
+    cy.get('html').should('have.attr', 'lang', 'zh-CN')
+    // title
+    cy.title().should('eq', 'VuePress E2E')
+    cy.get('head title').should('have.text', 'VuePress E2E')
+    // description
+    cy.get('head meta[name="description"]').should(
+      'have.attr',
+      'content',
+      'VuePress E2E 测试站点',
+    )
+    // head
     cy.get('head meta[name="foo"]')
       .should('have.length', 1)
       .should('have.attr', 'content', 'foo')
