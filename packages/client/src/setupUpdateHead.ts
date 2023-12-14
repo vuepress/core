@@ -32,8 +32,10 @@ export const setupUpdateHead = (): void => {
    */
   const takeOverHeadElements = (): void => {
     head.value.forEach((item) => {
-      const tag = queryHeadElement(item)
-      if (tag) managedHeadElements.push(tag)
+      const headElement = queryHeadElement(item)
+      if (headElement) {
+        managedHeadElements.push(headElement)
+      }
     })
   }
 
@@ -43,8 +45,10 @@ export const setupUpdateHead = (): void => {
   const generateHeadElements = (): HTMLElement[] => {
     const result: HTMLElement[] = []
     head.value.forEach((item) => {
-      const tag = createHeadElement(item)
-      if (tag) result.push(tag)
+      const headElement = createHeadElement(item)
+      if (headElement) {
+        result.push(headElement)
+      }
     })
     return result
   }
@@ -98,7 +102,7 @@ export const setupUpdateHead = (): void => {
 }
 
 /**
- * Query the matched head tag of head config
+ * Query the matched head element of head config
  */
 export const queryHeadElement = ([
   tagName,
@@ -118,13 +122,17 @@ export const queryHeadElement = ([
     .join('')
 
   const selector = `head > ${tagName}${attrsSelector}`
-  const tags = Array.from(document.querySelectorAll<HTMLElement>(selector))
-  const matchedTag = tags.find((item) => item.innerText === content)
-  return matchedTag || null
+  const headElements = Array.from(
+    document.querySelectorAll<HTMLElement>(selector),
+  )
+  const matchedHeadElement = headElements.find(
+    (item) => item.innerText === content,
+  )
+  return matchedHeadElement || null
 }
 
 /**
- * Create head tag from head config
+ * Create head element from head config
  */
 export const createHeadElement = ([
   tagName,
@@ -136,23 +144,23 @@ export const createHeadElement = ([
   }
 
   // create element
-  const tag = document.createElement(tagName)
+  const headElement = document.createElement(tagName)
 
   // set attributes
   if (isPlainObject(attrs)) {
     Object.entries(attrs).forEach(([key, value]) => {
       if (isString(value)) {
-        tag.setAttribute(key, value)
+        headElement.setAttribute(key, value)
       } else if (value === true) {
-        tag.setAttribute(key, '')
+        headElement.setAttribute(key, '')
       }
     })
   }
 
   // set content
   if (isString(content)) {
-    tag.appendChild(document.createTextNode(content))
+    headElement.appendChild(document.createTextNode(content))
   }
 
-  return tag
+  return headElement
 }
