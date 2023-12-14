@@ -169,5 +169,11 @@ export const resolvers = reactive({
   ): SiteLocaleData => ({
     ...site,
     ...site.locales[routeLocale],
+    head: [
+      // when merging head, the locales head should be placed before root head
+      // to get higher priority
+      ...(site.locales[routeLocale]?.head ?? []),
+      ...(site.head ?? []),
+    ],
   }),
 })

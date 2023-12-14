@@ -60,6 +60,54 @@ describe('shared > resolveHeadIdentifier', () => {
     expect(templateFooBaz).not.toBe(templateBarBar)
   })
 
+  it('should resolve same identifiers of same HeadConfig', () => {
+    const style1 = resolveHeadIdentifier([
+      'style',
+      { id: 'foo' },
+      `body { color: red; }`,
+    ])
+    const style2 = resolveHeadIdentifier([
+      'style',
+      { id: 'foo' },
+      `body { color: red; }`,
+    ])
+    const link1 = resolveHeadIdentifier([
+      'link',
+      { href: 'https://example.com', defer: '' },
+    ])
+    const link2 = resolveHeadIdentifier([
+      'link',
+      { href: 'https://example.com', defer: true },
+    ])
+    const link3 = resolveHeadIdentifier([
+      'link',
+      { defer: '', href: 'https://example.com' },
+    ])
+    const link4 = resolveHeadIdentifier([
+      'link',
+      { defer: true, href: 'https://example.com' },
+    ])
+    const link5 = resolveHeadIdentifier([
+      'link',
+      { href: 'https://example.com' },
+    ])
+    const link6 = resolveHeadIdentifier([
+      'link',
+      { href: 'https://example.com', defer: false },
+    ])
+    const link7 = resolveHeadIdentifier([
+      'link',
+      { defer: false, href: 'https://example.com' },
+    ])
+
+    expect(style1).toBe(style2)
+    expect(link1).toBe(link2)
+    expect(link1).toBe(link3)
+    expect(link1).toBe(link4)
+    expect(link5).toBe(link6)
+    expect(link5).toBe(link7)
+  })
+
   it('should resolve identifiers correctly', () => {
     const head: HeadConfig[] = [
       // 1
