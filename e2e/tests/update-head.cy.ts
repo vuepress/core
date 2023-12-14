@@ -7,13 +7,13 @@ describe('updateHead', () => {
     cy.get('html').should('have.attr', 'lang', 'en-US')
     // title
     cy.title().should('eq', 'VuePress E2E')
-    cy.get('head title').should('have.text', 'VuePress E2E')
+    cy.get('head title')
+      .should('have.length', 1)
+      .should('have.text', 'VuePress E2E')
     // description
-    cy.get('head meta[name="description"]').should(
-      'have.attr',
-      'content',
-      'VuePress E2E Test Site',
-    )
+    cy.get('head meta[name="description"]')
+      .should('have.length', 1)
+      .should('have.attr', 'content', 'VuePress E2E Test Site')
     // head
     cy.get('head meta[name="foo"]')
       .should('have.length', 1)
@@ -35,13 +35,13 @@ describe('updateHead', () => {
     cy.get('html').should('have.attr', 'lang', 'zh-CN')
     // title
     cy.title().should('eq', 'VuePress E2E')
-    cy.get('head title').should('have.text', 'VuePress E2E')
+    cy.get('head title')
+      .should('have.length', 1)
+      .should('have.text', 'VuePress E2E')
     // description
-    cy.get('head meta[name="description"]').should(
-      'have.attr',
-      'content',
-      'VuePress E2E 测试站点',
-    )
+    cy.get('head meta[name="description"]')
+      .should('have.length', 1)
+      .should('have.attr', 'content', 'VuePress E2E 测试站点')
     // head
     cy.get('head meta[name="foo"]')
       .should('have.length', 1)
