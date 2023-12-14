@@ -6,6 +6,7 @@ import {
   usePageHead,
   usePageLang,
 } from './composables/index.js'
+import type { UpdateHead } from './composables/index.js'
 
 /**
  * Auto update head and provide as global util
@@ -24,42 +25,75 @@ export const setupUpdateHead = (): void => {
     return
   }
 
-  let managedHeadElements: (HTMLElement | null)[] = []
+  let managedHeadElements: HTMLElement[] = []
 
-  const updateHeadTags = (): void => {
+  /**
+   * Take over the existing head elements
+   */
+  const takeOverHeadElements = (): void => {
+    head.value.forEach((item) => {
+      const tag = queryHeadElement(item)
+      if (tag) managedHeadElements.push(tag)
+    })
+  }
+
+  /**
+   * Generate head elements from current head config
+   */
+  const generateHeadElements = (): HTMLElement[] => {
+    const result: HTMLElement[] = []
+    head.value.forEach((item) => {
+      const tag = createHeadElement(item)
+      if (tag) result.push(tag)
+    })
+    return result
+  }
+
+  /**
+   * Update head elements
+   */
+  const updateHead: UpdateHead = () => {
+    // set html lang attribute
     document.documentElement.lang = lang.value
 
-    const newElements: (HTMLElement | null)[] =
-      head.value.map(createHeadElement)
+    // generate new head elements from current head config
+    const newHeadElements = generateHeadElements()
 
+    // find the intersection of old and new head elements
     managedHeadElements.forEach((oldEl, oldIndex) => {
-      const matchedIndex = newElements.findIndex(
-        (newEl) => newEl?.isEqualNode(oldEl ?? null),
+      const matchedIndex = newHeadElements.findIndex((newEl) =>
+        oldEl.isEqualNode(newEl),
       )
-
+      // remove the non-intersection from old elements
       if (matchedIndex === -1) {
-        oldEl?.remove()
+        oldEl.remove()
+        // use delete to make the index consistent
         delete managedHeadElements[oldIndex]
-      } else {
-        delete newElements[matchedIndex]
+      }
+      // keep the intersection in old elements, and remove it from new elements
+      else {
+        // use splice to avoid empty item in next loop
+        newHeadElements.splice(matchedIndex, 1)
       }
     })
-
-    newElements.forEach((el) => el && document.head.appendChild(el))
-    managedHeadElements = [...managedHeadElements, ...newElements].filter(
-      Boolean,
-    )
+    // append the rest new elements to head
+    newHeadElements.forEach((el) => document.head.appendChild(el))
+    // update managed head elements
+    managedHeadElements = [
+      // filter out empty deleted items
+      ...managedHeadElements.filter((item) => !!item),
+      ...newHeadElements,
+    ]
   }
-  provide(updateHeadSymbol, updateHeadTags)
+  provide(updateHeadSymbol, updateHead)
 
   onMounted(() => {
-    // in production, the initial meta tags are already pre-rendered,
-    // so we need to skip the first update and take over the existing tags.
+    // in production, the initial head elements are already pre-rendered,
+    // so we need to skip the first update and take over the existing elements.
     if (!__VUEPRESS_DEV__) {
-      managedHeadElements = head.value.map(queryHeadElement).filter(Boolean)
+      takeOverHeadElements()
     }
-
-    watch(head, updateHeadTags, { immediate: __VUEPRESS_DEV__ })
+    watch(head, updateHead, { immediate: __VUEPRESS_DEV__ })
   })
 }
 
