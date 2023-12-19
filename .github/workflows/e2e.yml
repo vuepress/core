@@ -16,6 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['18', '20']
+        base: ['/', '/e2e/']
         bundler: ['vite', 'webpack']
 
     runs-on: ${{ matrix.os }}
@@ -61,12 +62,14 @@ jobs:
         working-directory: ./e2e
         run: pnpm e2e:ci:dev
         env:
+          E2E_BASE: ${{ matrix.base }}
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E build
         working-directory: ./e2e
         run: pnpm e2e:ci:build
         env:
+          E2E_BASE: ${{ matrix.base }}
           E2E_BUNDLER: ${{ matrix.bundler }}
 
   e2e-result:

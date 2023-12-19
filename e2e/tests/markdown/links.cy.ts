@@ -1,3 +1,5 @@
+const E2E_BASE = Cypress.env('E2E_BASE')
+
 describe('markdown > links', () => {
   it('should render links and navigate between pages correctly', () => {
     cy.visit('/markdown/links/foo.html')
@@ -9,7 +11,7 @@ describe('markdown > links', () => {
       .click()
 
     cy.location().should((location) => {
-      expect(location.pathname).to.eq('/markdown/links/bar.html')
+      expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/bar.html`)
     })
 
     cy.get('.e2e-theme-content ul li a')
@@ -19,7 +21,7 @@ describe('markdown > links', () => {
       .click()
 
     cy.location().should((location) => {
-      expect(location.pathname).to.eq('/markdown/links/baz.html')
+      expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/baz.html`)
     })
 
     cy.get('.e2e-theme-content ul li a')
@@ -29,7 +31,7 @@ describe('markdown > links', () => {
       .click()
 
     cy.location().should((location) => {
-      expect(location.pathname).to.eq('/markdown/links/foo.html')
+      expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/foo.html`)
     })
   })
 })
