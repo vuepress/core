@@ -2,10 +2,15 @@ import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from '@vuepress/cli'
+import { path } from '@vuepress/utils'
 import { e2eTheme } from './theme/node/e2eTheme.js'
 
+const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
+
 export default defineUserConfig({
-  base: '/',
+  base: E2E_BASE,
+
+  dest: path.join(__dirname, 'dist', E2E_BASE),
 
   head: [
     ['meta', { name: 'foo', content: 'foo' }],

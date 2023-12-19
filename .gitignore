@@ -12,6 +12,9 @@ dist/
 # Test coverage files
 coverage/
 
+# E2E temp files
+e2e/cypress/screenshots/
+
 # Node modules
 node_modules/
 

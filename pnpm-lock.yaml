@@ -117,6 +117,9 @@ importers:
       cypress:
         specifier: ^13.6.1
         version: 13.6.1
+      process:
+        specifier: ^0.11.10
+        version: 0.11.10
       start-server-and-test:
         specifier: ^2.0.3
         version: 2.0.3
