@@ -27,12 +27,12 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.5",
     "@types/webpack-env": "^1.18.4",
-    "@vitest/coverage-istanbul": "^1.0.4",
+    "@vitest/coverage-istanbul": "^1.1.0",
     "bumpp": "^9.2.1",
     "conventional-changelog-cli": "^4.1.0",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-vuepress": "^4.8.0",
     "eslint-config-vuepress-typescript": "^4.8.0",
     "eslint-plugin-cypress": "^2.15.1",
@@ -45,10 +45,10 @@
     "tsconfig-vuepress": "^4.5.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
-    "vite": "~5.0.7",
-    "vitest": "^1.0.4"
+    "vite": "~5.0.10",
+    "vitest": "^1.1.0"
   },
-  "packageManager": "pnpm@8.12.0",
+  "packageManager": "pnpm@8.12.1",
   "engines": {
     "node": ">=18.16.0"
   }
