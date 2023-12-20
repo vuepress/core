@@ -8,7 +8,7 @@
     "e2e:build-webpack": "E2E_BUNDLER=webpack pnpm e2e:build",
     "e2e:ci:build": "pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:9080 e2e:run",
     "e2e:ci:dev": "start-server-and-test e2e:dev http-get://127.0.0.1:9080 e2e:run",
-    "e2e:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist",
+    "e2e:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "e2e:dev": "vuepress-cli dev docs --clean-cache --clean-temp",
     "e2e:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
     "e2e:run": "cypress run",
