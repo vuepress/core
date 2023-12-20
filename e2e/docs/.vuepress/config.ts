@@ -6,6 +6,7 @@ import { path } from '@vuepress/utils'
 import { e2eTheme } from './theme/node/e2eTheme.js'
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
+const E2E_BUNDLER = process.env.E2E_BUNDLER ?? 'vite'
 
 export default defineUserConfig({
   base: E2E_BASE,
@@ -42,8 +43,13 @@ export default defineUserConfig({
     },
   },
 
-  bundler:
-    process.env.E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
+  markdown: {
+    assets: {
+      absolutePathPrependBase: E2E_BUNDLER === 'webpack',
+    },
+  },
+
+  bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: e2eTheme(),
 })

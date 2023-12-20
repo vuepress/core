@@ -5,6 +5,11 @@ import { resolveLink } from './resolveLink.js'
 
 export interface AssetsPluginOptions {
   /**
+   * Whether to prepend base to absolute path
+   */
+  absolutePathPrependBase?: boolean
+
+  /**
    * Prefix to add to relative assets links
    */
   relativePathPrefix?: string
@@ -15,7 +20,10 @@ export interface AssetsPluginOptions {
  */
 export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md,
-  { relativePathPrefix = '@source' }: AssetsPluginOptions = {},
+  {
+    absolutePathPrependBase = false,
+    relativePathPrefix = '@source',
+  }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
   const rawImageRule = md.renderer.rules.image!
@@ -27,7 +35,10 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
     if (link) {
       // replace the original link with resolved link
-      token.attrSet('src', resolveLink(link, relativePathPrefix, env))
+      token.attrSet(
+        'src',
+        resolveLink(link, { env, absolutePathPrependBase, relativePathPrefix }),
+      )
     }
 
     return rawImageRule(tokens, idx, options, env, self)
@@ -43,12 +54,12 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
         .replace(
           /(<img\b.*?src=)(['"])([^\2]*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
-            `${prefix}${quote}${resolveLink(
-              src.trim(),
-              relativePathPrefix,
+            `${prefix}${quote}${resolveLink(src.trim(), {
               env,
-              true,
-            )}${quote}`,
+              absolutePathPrependBase,
+              relativePathPrefix,
+              strict: true,
+            })}${quote}`,
         )
         // handle srcset
         .replace(
@@ -57,18 +68,16 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
             `${prefix}${quote}${srcset
               .split(',')
               .map((item) =>
-                item
-                  .trim()
-                  .replace(
-                    /^([^ ]*?)([ \n].*)?$/,
-                    (_, url, descriptor = '') =>
-                      `${resolveLink(
-                        url.trim(),
-                        relativePathPrefix,
-                        env,
-                        true,
-                      )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
-                  ),
+                item.trim().replace(
+                  /^([^ ]*?)([ \n].*)?$/,
+                  (_, url, descriptor = '') =>
+                    `${resolveLink(url.trim(), {
+                      env,
+                      absolutePathPrependBase,
+                      relativePathPrefix,
+                      strict: true,
+                    })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
+                ),
               )
               .join(', ')}${quote}`,
         )
