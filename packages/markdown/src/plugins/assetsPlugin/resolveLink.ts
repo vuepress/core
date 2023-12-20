@@ -2,11 +2,21 @@ import { path } from '@vuepress/utils'
 import { decode } from 'mdurl'
 import type { MarkdownEnv } from '../../types.js'
 
+interface ResolveLinkOptions {
+  env: MarkdownEnv
+  absolutePathPrependBase?: boolean
+  relativePathPrefix: string
+  strict?: boolean
+}
+
 export const resolveLink = (
   link: string,
-  relativePathPrefix: string,
-  env: MarkdownEnv,
-  strict = false,
+  {
+    env,
+    absolutePathPrependBase = false,
+    relativePathPrefix,
+    strict = false,
+  }: ResolveLinkOptions,
 ): string => {
   // do not resolve data uri
   if (link.startsWith('data:')) return link
@@ -28,6 +38,11 @@ export const resolveLink = (
       path.dirname(env.filePathRelative),
       resolvedLink,
     )}`
+  }
+
+  // prepend base to absolute path if needed
+  if (absolutePathPrependBase && env.base && link.startsWith('/')) {
+    resolvedLink = path.join(env.base, resolvedLink)
   }
 
   return resolvedLink

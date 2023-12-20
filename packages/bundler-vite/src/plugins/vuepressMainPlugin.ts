@@ -9,7 +9,7 @@ import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 /**
  * The main plugin to compat vuepress with vite
  */
-export const mainPlugin = ({
+export const vuepressMainPlugin = ({
   app,
   isBuild,
   isServer,

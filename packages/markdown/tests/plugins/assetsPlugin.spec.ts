@@ -48,6 +48,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         description: 'should handle assets link with default options',
         md: MarkdownIt().use(assetsPlugin),
         env: {
+          base: '/base/',
           filePathRelative: 'sub/foo.md',
         },
         expected: [
@@ -63,6 +64,48 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           // absolute paths
           '<img src="/absolute.png" alt="absolute">',
           '<img src="/foo/absolute.png" alt="absolute-foo">',
+          // no-prefix paths
+          '<img src="@source/sub/no-prefix.png" alt="no-prefix">',
+          '<img src="@source/sub/foo/no-prefix.png" alt="no-prefix-foo">',
+          '<img src="@source/sub/@alias/foo.png" alt="alias">',
+          '<img src="@source/sub/@alias/汉字.png" alt="汉字">',
+          '<img src="@source/sub/@alias/100%.png" alt="100%">',
+          '<img src="@source/sub/~@alias/foo.png" alt="~alias">',
+          '<img src="@source/sub/~@alias/汉字.png" alt="~汉字">',
+          '<img src="@source/sub/~@alias/100%.png" alt="~100%">',
+          // keep as is
+          '<img src="http://foobar.com/icon.png" alt="url">',
+          '<img src="" alt="empty">',
+          // invalid paths
+          '<img src="@source/sub/.../invalid.png" alt="invalid">',
+          '<img src="@source/sub/.../汉字.png" alt="汉字">',
+          '<img src="@source/sub/.../100%.png" alt="100%">',
+          // data uri
+          '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==" alt="data-uri">',
+        ],
+      },
+      {
+        description: 'should respect `absolutePathPrependBase` option',
+        md: MarkdownIt().use(assetsPlugin, {
+          absolutePathPrependBase: true,
+        }),
+        env: {
+          base: '/base/',
+          filePathRelative: 'sub/foo.md',
+        },
+        expected: [
+          // relative paths
+          '<img src="@source/sub/foo.png" alt="foo">',
+          '<img src="@source/sub/foo.png" alt="foo2">',
+          '<img src="@source/sub/foo/bar.png" alt="foo-bar">',
+          '<img src="@source/sub/foo/bar.png" alt="foo-bar2">',
+          '<img src="@source/baz.png" alt="baz">',
+          '<img src="@source/../out.png" alt="out">',
+          '<img src="@source/sub/汉字.png" alt="汉字">',
+          '<img src="@source/sub/100%.png" alt="100%">',
+          // absolute paths
+          '<img src="/base/absolute.png" alt="absolute">',
+          '<img src="/base/foo/absolute.png" alt="absolute-foo">',
           // no-prefix paths
           '<img src="@source/sub/no-prefix.png" alt="no-prefix">',
           '<img src="@source/sub/foo/no-prefix.png" alt="no-prefix-foo">',

@@ -1,2 +1,3 @@
-export * from './mainPlugin.js'
-export * from './userConfigPlugin.js'
+export * from './vuepressMainPlugin.js'
+export * from './vuepressUserConfigPlugin.js'
+export * from './vuepressVuePlugin.js'
