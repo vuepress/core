@@ -12,6 +12,8 @@ export default defineUserConfig({
 
   dest: path.join(__dirname, 'dist', E2E_BASE),
 
+  port: 9080,
+
   head: [
     ['meta', { name: 'foo', content: 'foo' }],
     ['meta', { name: 'bar', content: 'bar' }],
