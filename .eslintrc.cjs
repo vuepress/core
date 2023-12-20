@@ -26,5 +26,11 @@ module.exports = {
         'vue/one-component-per-file': 'off',
       },
     },
+    {
+      files: ['packages/vuepress/bin/vuepress-*.js'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
 }

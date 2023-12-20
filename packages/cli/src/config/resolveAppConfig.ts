@@ -6,8 +6,8 @@ import { colors, isChildPath, logger } from '@vuepress/utils'
  * Resolve app config according to:
  *
  * - default options
- * - cli options
  * - user config file
+ * - cli options
  */
 export const resolveAppConfig = ({
   defaultAppConfig,
@@ -20,10 +20,10 @@ export const resolveAppConfig = ({
 }): AppConfig | null => {
   const appConfig = {
     // allow setting default app config via `cli()`
-    // for example, set different default bundler in `vuepress` and `vuepress-vite` package
     ...defaultAppConfig,
-    // use cli options to override config file
+    // user config from config file
     ...userConfig,
+    // allow cli options to override config file
     ...cliAppConfig,
   } as AppConfig
 

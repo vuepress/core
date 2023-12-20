@@ -110,6 +110,9 @@ importers:
       vue:
         specifier: ^3.3.13
         version: 3.3.13(typescript@5.3.3)
+      vuepress:
+        specifier: workspace:*
+        version: link:../packages/vuepress
     devDependencies:
       anywhere:
         specifier: ^1.6.0
@@ -410,43 +413,30 @@ importers:
 
   packages/vuepress:
     dependencies:
-      vuepress-vite:
-        specifier: workspace:*
-        version: link:../vuepress-vite
-
-  packages/vuepress-vite:
-    dependencies:
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../bundler-vite
-      '@vuepress/cli':
-        specifier: workspace:*
-        version: link:../cli
-      '@vuepress/core':
-        specifier: workspace:*
-        version: link:../core
-      vue:
-        specifier: ^3.3.13
-        version: 3.3.13(typescript@5.3.3)
-    devDependencies:
-      '@vuepress/client':
-        specifier: workspace:*
-        version: link:../client
-
-  packages/vuepress-webpack:
-    dependencies:
       '@vuepress/bundler-webpack':
         specifier: workspace:*
         version: link:../bundler-webpack
       '@vuepress/cli':
         specifier: workspace:*
         version: link:../cli
+      '@vuepress/client':
+        specifier: workspace:*
+        version: link:../client
       '@vuepress/core':
         specifier: workspace:*
         version: link:../core
-      sass-loader:
-        specifier: ^13.3.2
-        version: 13.3.2(sass@1.69.5)(webpack@5.89.0)
+      '@vuepress/markdown':
+        specifier: workspace:*
+        version: link:../markdown
+      '@vuepress/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@vuepress/utils':
+        specifier: workspace:*
+        version: link:../utils
       vue:
         specifier: ^3.3.13
         version: 3.3.13(typescript@5.3.3)
