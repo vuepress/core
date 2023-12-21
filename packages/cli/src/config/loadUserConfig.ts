@@ -28,7 +28,7 @@ export const loadUserConfig = async (
     entryPoints: [userConfigPath],
     outfile: 'out.js',
     write: false,
-    target: ['node14.18', 'node16'],
+    target: ['node18'],
     platform: 'node',
     bundle: true,
     format: 'esm',
