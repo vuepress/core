@@ -5,6 +5,7 @@ import {
 } from './resolveHighlightLines.js'
 import { resolveLanguage } from './resolveLanguage.js'
 import { resolveLineNumbers } from './resolveLineNumbers.js'
+import { resolveTitle } from './resolveTitle.js'
 import { resolveVPre } from './resolveVPre.js'
 
 export interface CodePluginOptions {
@@ -27,7 +28,7 @@ export interface CodePluginOptions {
    *
    * - Required for `highlightLines`
    * - Required for `lineNumbers`
-   * - Required for language display of default theme
+   * - Required for title display of default theme
    */
   preWrapper?: boolean
 
@@ -130,9 +131,12 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       result = `${result}<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
     }
 
+    // resolve title from token info
+    const title = resolveTitle(info) ?? language.ext
+
     result = `<div class="${languageClass}${
       useLineNumbers ? ' line-numbers-mode' : ''
-    }" data-ext="${language.ext}">${result}</div>`
+    }" data-ext="${language.ext}" data-title="${title}">${result}</div>`
 
     return result
   }

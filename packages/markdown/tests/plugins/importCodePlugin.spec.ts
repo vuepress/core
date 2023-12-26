@@ -287,7 +287,7 @@ foo
     it('should work with syntax supported by codePlugin', () => {
       const source = `\
 @[code js{1,3-4}](${jsFixturePathRelative})
-@[code md:no-line-numbers](${mdFixturePathRelative})
+@[code md:no-line-numbers<no-line-numbers.md>](${mdFixturePathRelative})
 `
 
       const md = MarkdownIt().use(importCodePlugin).use(codePlugin)
