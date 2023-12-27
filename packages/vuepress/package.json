@@ -22,12 +22,20 @@
   "exports": {
     ".": "./dist/index.js",
     "./bin": "./bin/vuepress.js",
+    "./cli": "./dist/cli.js",
+    "./client": "./dist/client.js",
+    "./core": "./dist/core.js",
+    "./markdown": "./dist/markdown.js",
+    "./shared": "./dist/shared.js",
+    "./utils": "./dist/utils.js",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "vuepress": "./bin/vuepress.js"
+    "vuepress": "./bin/vuepress.js",
+    "vuepress-vite": "./bin/vuepress-vite.js",
+    "vuepress-webpack": "./bin/vuepress-webpack.js"
   },
   "files": [
     "bin",
@@ -38,16 +46,50 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "vuepress-vite": "workspace:*"
+    "@vuepress/cli": "workspace:*",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/markdown": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "vue": "^3.3.13"
+  },
+  "peerDependencies": {
+    "@vuepress/bundler-vite": "workspace:*",
+    "@vuepress/bundler-webpack": "workspace:*",
+    "@vuepress/client": "workspace:*",
+    "vue": "^3.3.13"
+  },
+  "peerDependenciesMeta": {
+    "@vuepress/bundler-vite": {
+      "optional": true
+    },
+    "@vuepress/bundler-webpack": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=18.16.0"
   },
   "tsup": {
     "clean": true,
-    "dts": "./src/index.ts",
+    "dts": [
+      "./src/index.ts",
+      "./src/cli.ts",
+      "./src/client.ts",
+      "./src/core.ts",
+      "./src/markdown.ts",
+      "./src/shared.ts",
+      "./src/utils.ts"
+    ],
     "entry": [
-      "./src/index.ts"
+      "./src/index.ts",
+      "./src/cli.ts",
+      "./src/client.ts",
+      "./src/core.ts",
+      "./src/markdown.ts",
+      "./src/shared.ts",
+      "./src/utils.ts"
     ],
     "format": [
       "esm"

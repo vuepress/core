@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.0.0",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",

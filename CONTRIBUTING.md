@@ -17,9 +17,7 @@ In the `packages` directory:
 
 Here are some wrapper packages that use the above packages:
 
-- `vuepress`: A wrapper of `vuepress-vite`.
-- `vuepress-vite`: A wrapper of `@vuepress/cli` + `@vuepress/bundler-vite`. If users want to use vite, they can simply install this package.
-- `vuepress-webpack`: A wrapper of `@vuepress/cli` + `@vuepress/bundler-webpack`. If users want to use webpack, they can simply install this package.
+- `vuepress`: A wrapper the above packages, and provides `vuepress` command line tool. Users need to choose and install bundler and theme by themselves.
 
 ## Development Setup
 
