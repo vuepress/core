@@ -24,13 +24,13 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "sass": "^1.69.5",
-    "sass-loader": "^13.3.2",
+    "sass-loader": "^13.3.3",
     "vue": "^3.3.13",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.6.1",
+    "cypress": "^13.6.2",
     "process": "^0.11.10",
     "start-server-and-test": "^2.0.3"
   }
