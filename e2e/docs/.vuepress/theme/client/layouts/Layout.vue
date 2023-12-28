@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content, useSiteData } from '@vuepress/client'
+import { Content, useSiteData } from 'vuepress/client'
 
 const siteData = useSiteData()
 </script>
