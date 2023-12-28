@@ -24,6 +24,7 @@
     "./bin": "./bin/vuepress.js",
     "./cli": "./dist/cli.js",
     "./client": "./dist/client.js",
+    "./client-app": "./dist/client-app.js",
     "./core": "./dist/core.js",
     "./markdown": "./dist/markdown.js",
     "./shared": "./dist/shared.js",
@@ -57,7 +58,6 @@
   "peerDependencies": {
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "@vuepress/client": "workspace:*",
     "vue": "^3.3.13"
   },
   "peerDependenciesMeta": {
@@ -76,6 +76,7 @@
     "dts": [
       "./src/index.ts",
       "./src/cli.ts",
+      "./src/client-app.ts",
       "./src/client.ts",
       "./src/core.ts",
       "./src/markdown.ts",
@@ -85,6 +86,7 @@
     "entry": [
       "./src/index.ts",
       "./src/cli.ts",
+      "./src/client-app.ts",
       "./src/client.ts",
       "./src/core.ts",
       "./src/markdown.ts",
