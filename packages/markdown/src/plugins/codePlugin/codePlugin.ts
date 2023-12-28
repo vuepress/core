@@ -1,11 +1,11 @@
 import type { PluginWithOptions } from 'markdown-it'
+import { resolveAttr } from './resolveAttr.js'
 import {
   isHighlightLine,
   resolveHighlightLines,
 } from './resolveHighlightLines.js'
 import { resolveLanguage } from './resolveLanguage.js'
 import { resolveLineNumbers } from './resolveLineNumbers.js'
-import { resolveTitle } from './resolveTitle.js'
 import { resolveVPre } from './resolveVPre.js'
 
 export interface CodePluginOptions {
@@ -132,7 +132,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }
 
     // resolve title from token info
-    const title = resolveTitle(info) ?? language.ext
+    const title = resolveAttr('title', info) ?? language.ext
 
     result = `<div class="${languageClass}${
       useLineNumbers ? ' line-numbers-mode' : ''

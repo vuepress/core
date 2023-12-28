@@ -27,7 +27,7 @@ function bar () {
 }
 ${codeFence}
 
-${codeFence}ts <config/foo.ts> {1,2-4,5-5}
+${codeFence}ts title="config/foo.ts" {1,2-4,5-5}
 const foo = 'foo'
 
 function bar () {
@@ -198,7 +198,7 @@ function bar () {
 }
 ${codeFence}
 
-${codeFence}ts <config/foo.ts> {1,2}:no-line-numbers
+${codeFence}ts title="config/foo.ts" {1,2}:no-line-numbers
 const foo = 'foo'
 
 function bar () {
