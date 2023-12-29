@@ -1,4 +1,4 @@
-import { computedEager, computedWithControl } from '@vueuse/core'
+import { computedWithControl } from '@vueuse/core'
 import type { App } from 'vue'
 import { computed } from 'vue'
 import type { Router } from 'vue-router'
@@ -63,10 +63,9 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[],
 ): GlobalComputed => {
-  // create eager computed for route path and locale, so that route changes
-  // won't make all downstream computed re-evaluate
-  const routePath = computedEager(() => router.currentRoute.value.path)
-  const routeLocale = computedEager(() =>
+  // route path and locale
+  const routePath = computed(() => router.currentRoute.value.path)
+  const routeLocale = computed(() =>
     resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
 

@@ -54,7 +54,7 @@
     "postcss-csso": "^6.0.1",
     "postcss-loader": "^7.3.3",
     "style-loader": "^3.3.3",
-    "vue": "^3.3.13",
+    "vue": "^3.4.0",
     "vue-loader": "^17.4.0",
     "vue-router": "^4.2.5",
     "webpack": "^5.89.0",
