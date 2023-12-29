@@ -11,6 +11,7 @@
     "e2e:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "e2e:dev": "vuepress dev docs --clean-cache --clean-temp",
     "e2e:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
+    "e2e:open": "cypress open",
     "e2e:run": "cypress run",
     "e2e:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist"
   },

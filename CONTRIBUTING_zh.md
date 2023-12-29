@@ -62,9 +62,57 @@ pnpm build
 
 `lint` 命令使用 ESLint 来检查所有源文件。
 
+### `pnpm format`
+
+`format` 命令使用 Prettier 来格式化所有源文件。
+
 ### `pnpm test`
 
 `test` 命令使用 Vitest 来运行单元测试。
+
+## 端到端测试
+
+所有和端到端 (e2e) 测试相关的代码都在 `e2e` 目录下。
+
+你也可以通过 e2e 站点在开发过程中进行功能测试。 e2e 站点的源代码位于 `e2e/docs` 目录下。
+
+要运行 e2e 测试，你需要先切换到 `e2e` 目录：
+
+```bash
+cd e2e
+```
+
+### 使用 E2E 站点
+
+e2e 站点就是一个正常的 VuePress 项目，你可以在其中运行 `dev` 和 `build` 命令：
+
+```bash
+# 启动开发服务器
+pnpm e2e:dev
+# 构建静态站点并启动预览服务器
+pnpm e2e:build
+pnpm e2e:serve
+```
+
+### 运行 E2E 测试
+
+在启动开发服务器或预览服务器后，你可以在另一个终端中运行 e2e 测试：
+
+```bash
+# 启动 Cypress 图形界面
+pnpm e2e:open
+# 或者，直接在命令行中运行测试
+pnpm e2e:run
+```
+
+如果你不想在两个不同终端内启动服务器和运行测试，你可以使用 CI 命令，用单条命令来完成这两个操作：
+
+```bash
+# 在开发模式下运行 e2e 测试
+pnpm e2e:ci:dev
+# 在构建模式下运行 e2e 测试
+pnpm e2e:ci:build
+```
 
 ## 文档
 

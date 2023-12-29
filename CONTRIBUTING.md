@@ -41,8 +41,9 @@ pnpm build
 Main tools that used in this project:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
-- [Vitest](https://vitest.dev/) for unit testing
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for code linting and formatting
+- [Vitest](https://vitest.dev/) for unit testing
+- [Cypress](https://www.cypress.io/) for end-to-end testing
 
 ## Scripts
 
@@ -58,6 +59,10 @@ The `clean` script runs `clean` script in all packages, cleaning all the dist fi
 
 It's used before you want to re-build source files from a clean / initial state.
 
+### `pnpm format`
+
+The `format` script uses Prettier to format all source files.
+
 ### `pnpm lint`
 
 The `lint` script uses ESLint to check all source files.
@@ -65,6 +70,50 @@ The `lint` script uses ESLint to check all source files.
 ### `pnpm test`
 
 The `test` script uses Vitest to run unit testings.
+
+## End-to-end Testing
+
+All end-to-end (e2e) tests are located in `e2e` directory.
+
+You can also make use of the e2e site to test features during development. The source code of the e2e site is located in `e2e/docs`.
+
+To run e2e tests, you need to change the working directory to `e2e` first:
+
+```bash
+cd e2e
+```
+
+### Using E2E Site
+
+The e2e site is a normal VuePress setup, you can run `dev` and `build` commands in it:
+
+```bash
+# start dev server
+pnpm e2e:dev
+# build and start preview server
+pnpm e2e:build
+pnpm e2e:serve
+```
+
+### Run E2E Tests
+
+After starting a dev server or a preview server, you can run e2e tests in another terminal:
+
+```bash
+# open Cypress GUI
+pnpm e2e:open
+# or, run tests in command line
+pnpm e2e:run
+```
+
+If you don't want to start a server and run tests in two different terminals, you can make use of the CI commands to do both in one command:
+
+```bash
+# run e2e tests in dev mode
+pnpm e2e:ci:dev
+# run e2e tests in build mode
+pnpm e2e:ci:build
+```
 
 ## Documentation
 
