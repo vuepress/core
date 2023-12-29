@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 import { isPlainObject } from '../src/index.js'
 
 const testCases: [unknown, boolean][] = [
@@ -14,10 +14,8 @@ const testCases: [unknown, boolean][] = [
   [Object.create(null), true],
 ]
 
-describe('shared > isPlainObject', () => {
-  it('should determine plain object correctly', () => {
-    testCases.forEach(([source, expected]) => {
-      expect(isPlainObject(source)).toBe(expected)
-    })
+it('should determine plain object correctly', () => {
+  testCases.forEach(([source, expected]) => {
+    expect(isPlainObject(source)).toBe(expected)
   })
 })

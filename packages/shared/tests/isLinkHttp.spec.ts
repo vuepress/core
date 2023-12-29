@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 import { isLinkHttp } from '../src/index.js'
 
 const testCases: [string, ReturnType<typeof isLinkHttp>][] = [
@@ -9,12 +9,8 @@ const testCases: [string, ReturnType<typeof isLinkHttp>][] = [
   ['/foo/bar', false],
 ]
 
-describe('shared > isLinkHttp', () => {
-  describe('should determine http link correctly', () => {
-    testCases.forEach(([source, expected]) => {
-      it(`link: ${source}`, () => {
-        expect(isLinkHttp(source)).toBe(expected)
-      })
-    })
+testCases.forEach(([source, expected]) => {
+  it(`link: ${source}`, () => {
+    expect(isLinkHttp(source)).toBe(expected)
   })
 })
