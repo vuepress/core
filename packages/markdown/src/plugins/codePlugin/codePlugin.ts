@@ -132,7 +132,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }
 
     // resolve title from token info
-    const title = resolveAttr('title', info) ?? language.ext
+    const title = resolveAttr(info, 'title') ?? language.ext
 
     result = `<div class="${languageClass}${
       useLineNumbers ? ' line-numbers-mode' : ''
