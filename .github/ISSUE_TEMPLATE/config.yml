@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Question & Discussion
-    url: https://github.com/vuepress/vuepress-next/discussions
+    url: https://github.com/vuepress/core/discussions
     about: Please ask and answer questions here.
