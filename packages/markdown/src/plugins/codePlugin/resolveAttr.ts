@@ -3,10 +3,10 @@
  */
 export const resolveAttr = (info: string, attr: string): string | null => {
   // try to match specified attr mark
-  const pattern = `\\b${attr}\\s*=\\s*['"](?<title>.+)['"](\\s|$)`
+  const pattern = `\\b${attr}\\s*=\\s*(?<quote>['"])(?<content>.+)\\k<quote>(\\s|$)`
   const regex = new RegExp(pattern, 'i')
   const match = info.match(regex)
 
-  // return title if matched, null if not specified
-  return match?.groups?.title ?? null
+  // return content if matched, null if not specified
+  return match?.groups?.content ?? null
 }
