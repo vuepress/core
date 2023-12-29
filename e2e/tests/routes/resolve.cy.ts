@@ -3,6 +3,8 @@ it('resolve', () => {
   const result = { path: '/page-data/meta.html', meta: { a: 0, b: 2, c: 3 } }
 
   cy.get('.e2e-theme-content ul li').each((el) => {
-    expect(el.text()).to.contain(JSON.stringify(result))
+    expect(JSON.parse(/: (\{.*\})\s*$/.exec(el.text())![1])).to.deep.include(
+      result,
+    )
   })
 })
