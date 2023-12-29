@@ -2,7 +2,7 @@
 
 ### Before submitting the PR, please make sure you do the following <!-- (put an "X" next to an item) -->
 
-- [ ] Read the [Contributing Guidelines](https://github.com/vuepress/vuepress-next/blob/main/CONTRIBUTING.md).
+- [ ] Read the [Contributing Guidelines](https://github.com/vuepress/core/blob/main/CONTRIBUTING.md).
 - [ ] Provide a description in this PR that addresses **what** the PR is solving. If this PR is going to solve an existing issue, please reference the issue (e.g. `close #123`).
 
 ### What is the purpose of this pull request? <!-- (put an "X" next to an item) -->

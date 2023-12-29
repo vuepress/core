@@ -8,11 +8,11 @@
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/vuepress/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/vuepress/core.git"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -39,7 +39,7 @@
     "fs-extra": "^11.2.0",
     "globby": "^14.0.0",
     "hash-sum": "^2.0.0",
-    "ora": "^7.0.1",
+    "ora": "^8.0.1",
     "picocolors": "^1.0.0",
     "upath": "^2.0.1"
   },

@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "e2e:build": "vuepress-cli build docs --clean-cache --clean-temp",
+    "e2e:build": "vuepress build docs --clean-cache --clean-temp",
     "e2e:build-webpack": "E2E_BUNDLER=webpack pnpm e2e:build",
     "e2e:ci:build": "pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:9080 e2e:run",
     "e2e:ci:dev": "start-server-and-test e2e:dev http-get://127.0.0.1:9080 e2e:run",
     "e2e:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
-    "e2e:dev": "vuepress-cli dev docs --clean-cache --clean-temp",
+    "e2e:dev": "vuepress dev docs --clean-cache --clean-temp",
     "e2e:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
     "e2e:run": "cypress run",
     "e2e:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist"
@@ -17,19 +17,14 @@
   "dependencies": {
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "@vuepress/cli": "workspace:*",
-    "@vuepress/client": "workspace:*",
-    "@vuepress/core": "workspace:*",
-    "@vuepress/markdown": "workspace:*",
-    "@vuepress/shared": "workspace:*",
-    "@vuepress/utils": "workspace:*",
     "sass": "^1.69.5",
-    "sass-loader": "^13.3.2",
-    "vue": "^3.3.13"
+    "sass-loader": "^13.3.3",
+    "vue": "^3.4.0",
+    "vuepress": "workspace:*"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.6.1",
+    "cypress": "^13.6.2",
     "process": "^0.11.10",
     "start-server-and-test": "^2.0.3"
   }

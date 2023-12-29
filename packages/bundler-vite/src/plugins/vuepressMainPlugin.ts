@@ -32,7 +32,7 @@ export const vuepressMainPlugin = ({
             /<\/body>/,
             `\
 <script type="module">
-import '@vuepress/client/app'
+import 'vuepress/client-app'
 </script>
 </body>`,
           ),

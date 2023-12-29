@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 import { resolveLocalePath } from '../src/index.js'
 import type { LocaleConfig } from '../src/index.js'
 
@@ -27,12 +27,8 @@ const testCases: [string, string][] = [
   ['/foo-baz/foobar', '/foo-baz/'],
 ]
 
-describe('shared > resolveLocalePath', () => {
-  describe('should resolve locale path correctly', () => {
-    testCases.forEach(([routePath, expected]) => {
-      it(routePath, () => {
-        expect(resolveLocalePath(locales, routePath)).toEqual(expected)
-      })
-    })
+testCases.forEach(([routePath, expected]) => {
+  it(routePath, () => {
+    expect(resolveLocalePath(locales, routePath)).toEqual(expected)
   })
 })

@@ -8,9 +8,8 @@ const getSubDirectories = (dir: string): string[] =>
     .readdirSync(dir)
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
 const root = path.dirname(fileURLToPath(import.meta.url))
-const nonScopedPackages = ['vuepress', 'vuepress-vite', 'vuepress-webpack']
 const packages = getSubDirectories(path.resolve(root, 'packages')).filter(
-  (item) => !nonScopedPackages.includes(item),
+  (item) => item !== 'vuepress',
 )
 
 export default defineConfig({
@@ -24,7 +23,8 @@ export default defineConfig({
   },
   test: {
     coverage: {
-      all: false,
+      all: true,
+      include: ['packages/*/src/**/*.ts'],
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },

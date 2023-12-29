@@ -9,11 +9,11 @@
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/vuepress/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/vuepress/core.git"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@mdit-vue/types": "^2.0.0",
-    "@vue/shared": "^3.3.13"
+    "@vue/shared": "^3.4.0"
   },
   "publishConfig": {
     "access": "public"

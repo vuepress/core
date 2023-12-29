@@ -6,9 +6,7 @@
     "paths": {
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
       "@vuepress/*": ["./packages/*/src"],
-      "vuepress": ["./packages/vuepress/src"],
-      "vuepress-vite": ["./packages/vuepress-vite/src"],
-      "vuepress-webpack": ["./packages/vuepress-webpack/src"]
+      "vuepress": ["./packages/vuepress/src"]
     },
     "types": ["webpack-env", "vite/client"]
   },

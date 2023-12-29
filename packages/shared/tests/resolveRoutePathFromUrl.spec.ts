@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 import { resolveRoutePathFromUrl } from '../src/index.js'
 
 const testCases: [
@@ -23,14 +23,10 @@ const testCases: [
   [['foo/bar', '/base/'], 'foo/bar'],
 ]
 
-describe('shared > resolveRoutePathFromUrl', () => {
-  describe('should resolve route path correctly', () => {
-    testCases.forEach(([source, expected]) => {
-      it(`url: ${source[0]}, base: ${
-        source[1] || '/'
-      } => expected: ${expected}`, () => {
-        expect(resolveRoutePathFromUrl(...source)).toEqual(expected)
-      })
-    })
+testCases.forEach(([source, expected]) => {
+  it(`url: ${source[0]}, base: ${
+    source[1] || '/'
+  } => expected: ${expected}`, () => {
+    expect(resolveRoutePathFromUrl(...source)).toEqual(expected)
   })
 })

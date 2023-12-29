@@ -10,11 +10,11 @@
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/vuepress/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/vuepress/core.git"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.0.0",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
@@ -44,7 +44,7 @@
     "postcss-load-config": "^5.0.2",
     "rollup": "^4.9.1",
     "vite": "~5.0.10",
-    "vue": "^3.3.13",
+    "vue": "^3.4.0",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

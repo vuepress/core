@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 import { isLinkExternal } from '../src/index.js'
 
 const testCases: [
@@ -62,15 +62,11 @@ const testCases: [
   [['./foo/bar/baz.html', '/foo/'], false],
 ]
 
-describe('shared > isLinkExternal', () => {
-  describe('should determine external link correctly', () => {
-    testCases.forEach(([[link, base = '/'], expected]) => {
-      it(`link: ${link}, base: ${base}`, () => {
-        expect(isLinkExternal(link, base)).toBe(expected)
-        expect(isLinkExternal(`${link}#foobar`, base)).toBe(expected)
-        expect(isLinkExternal(`${link}?foo=bar`, base)).toBe(expected)
-        expect(isLinkExternal(`${link}?foo=bar#foobar`, base)).toBe(expected)
-      })
-    })
+testCases.forEach(([[link, base], expected]) => {
+  it(`link: ${link}, base: ${base}`, () => {
+    expect(isLinkExternal(link, base)).toBe(expected)
+    expect(isLinkExternal(`${link}#foobar`, base)).toBe(expected)
+    expect(isLinkExternal(`${link}?foo=bar`, base)).toBe(expected)
+    expect(isLinkExternal(`${link}?foo=bar#foobar`, base)).toBe(expected)
   })
 })

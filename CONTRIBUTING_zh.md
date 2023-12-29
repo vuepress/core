@@ -17,9 +17,7 @@
 
 还有一些对上述 Package 进行封装后的 Package ：
 
-- `vuepress`: 是 `vuepress-vite` 的封装。
-- `vuepress-vite`: 是 `@vuepress/cli` + `@vuepress/bundler-vite` 的封装。如果用户想使用 Vite ，仅安装这个 Package 就可以了。
-- `vuepress-webpack`: 是 `@vuepress/cli` + `@vuepress/bundler-webpack` 的封装。如果用户想使用 Webpack ，仅安装这个 Package 就可以了。
+- `vuepress`: 是上述包的封装，提供了 `vuepress` 命令行工具。用户需要在此包的基础上自行选择并安装打包工具和主题。
 
 ## 开发配置
 

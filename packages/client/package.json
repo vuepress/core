@@ -8,11 +8,11 @@
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/vuepress/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/vuepress/core.git"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -40,7 +40,7 @@
     "@vue/devtools-api": "^6.5.1",
     "@vuepress/shared": "workspace:*",
     "@vueuse/core": "^10.7.0",
-    "vue": "^3.3.13",
+    "vue": "^3.4.0",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {
@@ -48,7 +48,10 @@
   },
   "tsup": {
     "clean": true,
-    "dts": "./src/index.ts",
+    "dts": [
+      "./src/app.ts",
+      "./src/index.ts"
+    ],
     "entry": [
       "./src/app.ts",
       "./src/index.ts"

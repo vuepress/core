@@ -10,11 +10,11 @@
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/vuepress/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/vuepress/core.git"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -54,8 +54,8 @@
     "postcss-csso": "^6.0.1",
     "postcss-loader": "^7.3.3",
     "style-loader": "^3.3.3",
-    "vue": "^3.3.13",
-    "vue-loader": "^17.3.1",
+    "vue": "^3.4.0",
+    "vue-loader": "^17.4.0",
     "vue-router": "^4.2.5",
     "webpack": "^5.89.0",
     "webpack-chain": "^6.5.1",

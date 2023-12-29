@@ -1,4 +1,4 @@
-import { defineClientConfig } from '@vuepress/client'
+import { defineClientConfig } from 'vuepress/client'
 import CustomLayout from './layouts/CustomLayout.vue'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
