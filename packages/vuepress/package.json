@@ -25,6 +25,7 @@
     "./cli": "./dist/cli.js",
     "./client": "./dist/client.js",
     "./client-app": "./dist/client-app.js",
+    "./client-types": "./client-types.d.ts",
     "./core": "./dist/core.js",
     "./markdown": "./dist/markdown.js",
     "./shared": "./dist/shared.js",
@@ -40,7 +41,8 @@
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "client-types.d.ts"
   ],
   "scripts": {
     "build": "tsup",
