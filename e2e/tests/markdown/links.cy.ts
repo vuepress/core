@@ -9,9 +9,7 @@ it('should render links and navigate between pages correctly', () => {
     .should('have.text', 'bar')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/bar.html`)
-  })
+  cy.location('pathname').should('eq', `${E2E_BASE}markdown/links/bar.html`)
 
   cy.get('.e2e-theme-content ul li a')
     .should('have.length', 2)
@@ -19,9 +17,7 @@ it('should render links and navigate between pages correctly', () => {
     .should('have.text', 'baz')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/baz.html`)
-  })
+  cy.location('pathname').should('eq', `${E2E_BASE}markdown/links/baz.html`)
 
   cy.get('.e2e-theme-content ul li a')
     .should('have.length', 2)
@@ -29,7 +25,5 @@ it('should render links and navigate between pages correctly', () => {
     .should('have.text', 'foo')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.pathname).to.eq(`${E2E_BASE}markdown/links/foo.html`)
-  })
+  cy.location('pathname').should('eq', `${E2E_BASE}markdown/links/foo.html`)
 })

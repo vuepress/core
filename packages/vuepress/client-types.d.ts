@@ -1,0 +1,1 @@
+import '@vuepress/client/types'

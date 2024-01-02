@@ -10,15 +10,11 @@ it('should render anchors and navigate correctly', () => {
     .should('have.attr', 'href', '#title')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.hash).to.eq('#title')
-  })
+  cy.hash().should('eq', '#title')
 
   cy.get('#anchor-1-1 > a')
     .should('have.attr', 'class', 'header-anchor')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.hash).to.eq('#anchor-1-1')
-  })
+  cy.hash().should('eq', '#anchor-1-1')
 })
