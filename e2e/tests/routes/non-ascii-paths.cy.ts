@@ -15,11 +15,10 @@ it('should support rendering non-ASCII paths links and navigate to it correctly'
     .should('have.text', '中文路径')
     .click()
 
-  cy.location().should((location) => {
-    expect(location.pathname).to.eq(
-      encodeURI(`${E2E_BASE}routes/non-ascii-paths/中文目录名/中文文件名.html`),
-    )
-  })
+  cy.location('pathname').should(
+    'eq',
+    encodeURI(`${E2E_BASE}routes/non-ascii-paths/中文目录名/中文文件名.html`),
+  )
 
   cy.get('.e2e-theme-content p').should('have.text', '这是一个中文文件')
 })
