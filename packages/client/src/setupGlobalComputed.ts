@@ -63,11 +63,8 @@ export const setupGlobalComputed = (
   router: Router,
   clientConfigs: ClientConfig[],
 ): GlobalComputed => {
-  // route path and locale
+  // route path of current page
   const routePath = computed(() => router.currentRoute.value.path)
-  const routeLocale = computed(() =>
-    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
-  )
 
   // load page data from route meta
   const pageData = computedWithControl(
@@ -87,6 +84,9 @@ export const setupGlobalComputed = (
 
   // create other global computed
   const layouts = computed(() => resolvers.resolveLayouts(clientConfigs))
+  const routeLocale = computed(() =>
+    resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
+  )
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
