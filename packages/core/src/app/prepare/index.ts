@@ -1,5 +1,5 @@
 export * from './prepareClientConfigs.js'
 export * from './preparePageComponent.js'
 export * from './preparePageData.js'
-export * from './preparePageMap.js'
+export * from './preparePagesMap.js'
 export * from './prepareSiteData.js'

@@ -55,7 +55,7 @@ const resolvePageRedirects = ({
  * Generate page map temp file
  */
 export const preparePagesMap = async (app: App): Promise<void> => {
-  const pageMapEntries = app.pages
+  const pagesMapEntries = app.pages
     .map((page) => {
       const {
         meta,
@@ -67,7 +67,7 @@ export const preparePagesMap = async (app: App): Promise<void> => {
       } = page
       const redirects = resolvePageRedirects(page)
 
-      return `
+      return `\
   [${JSON.stringify(path)}, defineAsyncComponent(() => import(${
     componentFileChunkName
       ? `/* webpackChunkName: "${componentFileChunkName}" */`
@@ -82,21 +82,23 @@ export const preparePagesMap = async (app: App): Promise<void> => {
       : ''
   }],`
     })
-    .join('\n  ')
+    .join('\n')
 
   // generate page component map file
   let content = `\
 import { defineAsyncComponent } from 'vue'
 
-const pageMapEntries = [${pageMapEntries}];
+const pagesMapEntries = [
+${pagesMapEntries}
+];
 
 export const redirectsMap = new Map(
-  pageMapEntries
+  pagesMapEntries
     .flatMap(([path, , , , redirects = []]) => redirects.map((redirect) => [redirect, path])),
 );
 
 export const pagesMap = new Map(
-  pageMapEntries.map(([path, comp, data, meta]) => [path, { comp, data, meta }]),
+  pagesMapEntries.map(([path, comp, data, meta]) => [path, { comp, data, meta }]),
 );
 `
 
