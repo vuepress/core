@@ -1,10 +1,30 @@
 import { h } from 'vue'
 import type { FunctionalComponent, VNode } from 'vue'
 import { useRouter } from 'vue-router'
-import { resolve, withBase } from '../helpers/index.js'
-import { guardEvent } from '../utils/index.js'
+import { pagesMap, redirectsMap } from '../composables/index.js'
+import { withBase } from '../helpers/index.js'
+import { resolvers } from '../resolvers.js'
 
-export interface VPLinkProps {
+/**
+ * Forked from https://github.com/vuejs/router/blob/941b2131e80550009e5221d4db9f366b1fea3fd5/packages/router/src/RouterLink.ts#L293
+ */
+const guardEvent = (event: MouseEvent): boolean | void => {
+  // don't redirect with control keys
+  if (event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) return
+  // don't redirect when preventDefault called
+  if (event.defaultPrevented) return
+  // don't redirect on right click
+  if (event.button !== undefined && event.button !== 0) return
+  // don't redirect if `target="_blank"`
+  if (event.currentTarget) {
+    const target = (event.currentTarget as HTMLElement).getAttribute('target')
+    if (target?.match(/\b_blank\b/i)) return
+  }
+  event.preventDefault()
+  return true
+}
+
+interface VPLinkProps {
   to: string
 }
 
@@ -16,7 +36,9 @@ export const VPLink: FunctionalComponent<
   }
 > = ({ to = '' }, { slots }) => {
   const router = useRouter()
-  const path = withBase(resolve(to).path)
+  const path = withBase(
+    resolvers.resolvePagePath(pagesMap.value, redirectsMap.value, to),
+  )
 
   return h(
     'a',

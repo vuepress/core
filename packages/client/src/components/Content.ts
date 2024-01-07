@@ -9,7 +9,7 @@ export const Content = defineComponent({
   name: 'Content',
 
   props: {
-    url: {
+    path: {
       type: String,
       required: false,
       default: '',
@@ -19,7 +19,7 @@ export const Content = defineComponent({
   setup(props) {
     const page = usePageData()
     const pageComponent = computed(
-      () => pagesMap.value.get(props.url || page.value.path)?.comp,
+      () => pagesMap.value.get(props.path || page.value.path)?.comp,
     )
     return () =>
       pageComponent.value
