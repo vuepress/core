@@ -2,8 +2,8 @@ import { debug } from '@vuepress/utils'
 import type { App } from '../types/index.js'
 import {
   prepareClientConfigs,
+  preparePage,
   preparePageComponent,
-  preparePageData,
   preparePagesMap,
   prepareSiteData,
 } from './prepare/index.js'
@@ -28,7 +28,7 @@ export const appPrepare = async (app: App): Promise<void> => {
 
   // generate page data files
   for (const page of app.pages) {
-    await preparePageData(app, page)
+    await preparePage(app, page)
   }
 
   // generate pages map

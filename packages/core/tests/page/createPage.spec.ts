@@ -81,13 +81,13 @@ describe('core > page > createPage', () => {
       `pages/${page.htmlFilePathRelative}.vue`,
     )
     expect(page.componentFileChunkName).toBe(page.key)
-    expect(page.dataFilePath).toBe(
+    expect(page.chunkFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
     )
-    expect(page.dataFilePathRelative).toBe(
+    expect(page.chunkFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.js`,
     )
-    expect(page.dataFileChunkName).toBe(page.key)
+    expect(page.chunkName).toBe(page.key)
   })
 
   it('should be extended by plugin correctly', async () => {

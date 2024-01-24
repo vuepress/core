@@ -1,7 +1,7 @@
 import {
   createPage,
+  preparePage,
   preparePageComponent,
-  preparePageData,
   preparePagesMap,
 } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
@@ -34,7 +34,7 @@ export const handlePageChange = async (
 
   // prepare page files
   await preparePageComponent(app, pageNew)
-  await preparePageData(app, pageNew)
+  await preparePage(app, pageNew)
 
   const isPathChanged = pageOld.path !== pageNew.path
   const isMetaChanged =

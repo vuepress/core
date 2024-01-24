@@ -1,4 +1,4 @@
-import type { PageInfo, PageRedirectsMap, PagesMap } from '@internal/pagesMap'
+import type { PageRedirectsMap, PagesMap } from '@internal/pagesMap'
 import {
   dedupeHead,
   isArray,
@@ -69,14 +69,9 @@ export const resolvers = reactive({
    * Resolve page data according to page path and page info
    */
   resolvePageData: async (
-    pageInfo: PageInfo,
+    pageData: PageData,
     _path: string,
-  ): Promise<PageData> => {
-    const pageData = await pageInfo?.data?.()
-
-    return pageData ?? pageDataEmpty
-  },
-
+  ): Promise<PageData> => Promise.resolve(pageData ?? pageDataEmpty),
   /**
    * Resolve page frontmatter from page data
    */

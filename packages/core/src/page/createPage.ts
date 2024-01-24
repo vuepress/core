@@ -1,8 +1,8 @@
 import type { App, Page, PageOptions } from '../types/index.js'
 import { inferPagePath } from './inferPagePath.js'
 import { renderPageContent } from './renderPageContent.js'
+import { resolvePageChunkInfo } from './resolvePageChunkInfo.js'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo.js'
-import { resolvePageDataInfo } from './resolvePageDataInfo.js'
 import { resolvePageDate } from './resolvePageDate.js'
 import { resolvePageFileContent } from './resolvePageFileContent.js'
 import { resolvePageFilePath } from './resolvePageFilePath.js'
@@ -96,8 +96,8 @@ export const createPage = async (
     key,
   })
 
-  const { dataFilePath, dataFilePathRelative, dataFileChunkName } =
-    resolvePageDataInfo({ app, htmlFilePathRelative, key })
+  const { chunkFilePath, chunkFilePathRelative, chunkName } =
+    resolvePageChunkInfo({ app, htmlFilePathRelative, key })
 
   const page: Page = {
     // page data
@@ -138,9 +138,9 @@ export const createPage = async (
     componentFilePath,
     componentFilePathRelative,
     componentFileChunkName,
-    dataFilePath,
-    dataFilePathRelative,
-    dataFileChunkName,
+    chunkFilePath,
+    chunkFilePathRelative,
+    chunkName,
     htmlFilePath,
     htmlFilePathRelative,
 

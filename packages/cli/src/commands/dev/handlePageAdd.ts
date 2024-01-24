@@ -1,7 +1,7 @@
 import {
   createPage,
+  preparePage,
   preparePageComponent,
-  preparePageData,
   preparePagesMap,
 } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
@@ -31,7 +31,7 @@ export const handlePageAdd = async (
 
   // prepare page files
   await preparePageComponent(app, page)
-  await preparePageData(app, page)
+  await preparePage(app, page)
 
   // prepare pages entry
   await preparePagesMap(app)

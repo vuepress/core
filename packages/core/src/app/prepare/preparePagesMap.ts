@@ -57,26 +57,13 @@ const resolvePageRedirects = ({
 export const preparePagesMap = async (app: App): Promise<void> => {
   const pagesMapEntries = app.pages
     .map((page) => {
-      const {
-        meta,
-        path,
-        dataFilePath,
-        dataFileChunkName,
-        componentFilePath,
-        componentFileChunkName,
-      } = page
+      const { meta, path, chunkFilePath, chunkName } = page
       const redirects = resolvePageRedirects(page)
 
       return `\
-  [${JSON.stringify(path)}, defineAsyncComponent(() => import(${
-    componentFileChunkName
-      ? `/* webpackChunkName: "${componentFileChunkName}" */`
-      : ''
-  }${JSON.stringify(componentFilePath)})), () => import(${
-    dataFileChunkName ? `/* webpackChunkName: "${dataFileChunkName}" */` : ''
-  }${JSON.stringify(dataFilePath)}).then(({ data }) => data), ${JSON.stringify(
-    meta,
-  )}${
+  [${JSON.stringify(path)}, () => import(${
+    chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''
+  }${JSON.stringify(chunkFilePath)}), ${JSON.stringify(meta)}${
     redirects.length
       ? `, [${redirects.map((path) => JSON.stringify(path)).join(', ')}]`
       : ''
@@ -94,11 +81,11 @@ ${pagesMapEntries}
 
 export const redirectsMap = new Map(
   pagesMapEntries
-    .flatMap(([path, , , , redirects = []]) => redirects.map((redirect) => [redirect, path])),
+    .flatMap(([path, , , redirects = []]) => redirects.map((redirect) => [redirect, path])),
 );
 
 export const pagesMap = new Map(
-  pagesMapEntries.map(([path, comp, data, meta]) => [path, { comp, data, meta }]),
+  pagesMapEntries.map(([path, v, meta]) => [path, { v, meta }]),
 );
 `
 

@@ -16,13 +16,15 @@ if (import.meta.hot) {
 `
 
 /**
- * Generate page data temp file of a single page
+ * Generate page temp file of a single page
  */
-export const preparePageData = async (app: App, page: Page): Promise<void> => {
+export const preparePage = async (app: App, page: Page): Promise<void> => {
   // page data file content
-  let content = `export const data = JSON.parse(${JSON.stringify(
-    JSON.stringify(page.data),
-  )})
+  let content = `\
+import comp from ${JSON.stringify(page.componentFilePath)}
+
+const data = JSON.parse(${JSON.stringify(JSON.stringify(page.data))})
+export { comp, data }
 `
 
   // inject HMR code
@@ -30,5 +32,5 @@ export const preparePageData = async (app: App, page: Page): Promise<void> => {
     content += HMR_CODE
   }
 
-  await app.writeTemp(page.dataFilePathRelative, content)
+  await app.writeTemp(page.chunkFilePathRelative, content)
 }

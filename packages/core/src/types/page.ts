@@ -121,21 +121,21 @@ export type Page<
     componentFileChunkName: string
 
     /**
-     * Page data file path
+     * Page file path
      */
-    dataFilePath: string
+    chunkFilePath: string
 
     /**
-     * Page data file path relative to temp directory
+     * Page file path relative to temp directory
      */
-    dataFilePathRelative: string
+    chunkFilePathRelative: string
 
     /**
-     * Page data file chunk name
+     * Page file chunk name
      *
      * Only take effect in webpack
      */
-    dataFileChunkName: string
+    chunkName: string
 
     /**
      * Rendered html file path

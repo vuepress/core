@@ -1,4 +1,4 @@
-import { computed, defineComponent, h } from 'vue'
+import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
 import { pagesMap, usePageData } from '../composables/index.js'
 
 /**
@@ -18,9 +18,14 @@ export const Content = defineComponent({
 
   setup(props) {
     const page = usePageData()
-    const pageComponent = computed(
-      () => pagesMap.value.get(props.path || page.value.path)?.comp,
-    )
+    const pageComponent = computed(() => {
+      const pageInfo = pagesMap.value.get(props.path || page.value.path)
+
+      return pageInfo
+        ? defineAsyncComponent(() => pageInfo.v().then(({ comp }) => comp))
+        : null
+    })
+
     return () =>
       pageComponent.value
         ? // use page component

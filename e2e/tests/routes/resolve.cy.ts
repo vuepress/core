@@ -5,6 +5,6 @@ it('resolve', () => {
   cy.get('.e2e-theme-content ul li').each((el) => {
     const data = JSON.parse(/: (\{.*\})\s*$/.exec(el.text())![1])
 
-    expect(data).to.deep.contains(result)
+    expect(data).to.deep.include(result)
   })
 })

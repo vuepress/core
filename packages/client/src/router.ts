@@ -58,10 +58,10 @@ export const createVueRouter = (): Router => {
 
       // TODO: Added for backwards compatibility, remove in stable version
       to.meta = pageInfo.meta
-      ;[to.meta._data] = await Promise.all([
-        resolvers.resolvePageData(pageInfo, pagePath),
-        pageInfo.comp?.__asyncLoader(),
-      ])
+      to.meta._data = await resolvers.resolvePageData(
+        (await pageInfo.v()).data,
+        pagePath,
+      )
     }
   })
 
