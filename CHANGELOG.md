@@ -6,7 +6,7 @@
 * **bundler-vite:** serve assets with absolute path in dev server correctly (close [#1442](https://github.com/vuepress/core/issues/1442)) ([d0b4062](https://github.com/vuepress/core/commit/d0b4062d1975403f85504958bd9e87d9f35fb88e))
 * **client:** avoid updating existing head tags (close [#1268](https://github.com/vuepress/core/issues/1268)) ([#1314](https://github.com/vuepress/core/issues/1314)) ([bfbab28](https://github.com/vuepress/core/commit/bfbab2803ec090f80a287484a037b1f6e4a9827b))
 * **client:** merge locales head correctly ([2fe35bb](https://github.com/vuepress/core/commit/2fe35bb3a358b59d2b14b4bcae7eb644768e80ba))
-* **markdown:** use non-greedy matching when parsing attributes [#1469](https://github.com/vuepress/core/issues/1469) ([91d8e3d](https://github.com/vuepress/core/commit/91d8e3d91962a8c06b648bdadbe239be113d5d42))
+* **markdown:** use non-greedy matching when parsing attributes ([#1469](https://github.com/vuepress/core/issues/1469)) ([91d8e3d](https://github.com/vuepress/core/commit/91d8e3d91962a8c06b648bdadbe239be113d5d42))
 
 
 ### Features
@@ -25,8 +25,6 @@
 ### BREAKING CHANGES
 
 * **vuepress:** `vuepress-vite` and `vuepress-webpack` packages have been removed, and the corresponding commands have been moved to `vuepress` package. With `vuepress` command, you need to install bundler package and set bundler in config file manually. With `vuepress-vite` and `vuepress-webpack` command, you still need to install bundler package, but you can omit bundler option in config file.
-
-Co-authored-by: meteorlxy <meteor.lxy@foxmail.com>
 * **markdown:** the default permalink function of markdown-it-anchor has been changed from `ariaHidden` to `headerLink` for better accessibility, which would be a potential breaking change for theme authors
 * **markdown:** bump to markdown-it 14
 
