@@ -1,6 +1,3 @@
-// eslint-disable-next-line vue/prefer-import-from-vue
-export { isArray, isFunction, isString } from '@vue/shared'
-
 export * from './dedupeHead.js'
 export * from './ensureLeadingSlash.js'
 export * from './ensureEndingSlash.js'
@@ -15,3 +12,4 @@ export * from './removeLeadingSlash.js'
 export * from './resolveHeadIdentifier.js'
 export * from './resolveLocalePath.js'
 export * from './resolveRoutePathFromUrl.js'
+export * from './typeGuards.js'
