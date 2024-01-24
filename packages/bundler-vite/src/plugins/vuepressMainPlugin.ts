@@ -39,16 +39,13 @@ import 'vuepress/client-app'
       )
     }
 
-    // vuepress related packages that include pure esm client code,
+    // vuepress plugins and theme should include pure esm client code,
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
-    const clientPackages = [
-      '@vuepress/client',
-      ...app.pluginApi.plugins
-        // the 'user-config' plugin is created by cli internally
-        .filter(({ name }) => name !== 'user-config')
-        .map(({ name }) => name),
-    ]
+    const clientPackages = app.pluginApi.plugins
+      // the 'user-config' plugin is created by cli internally
+      .filter(({ name }) => name !== 'user-config')
+      .map(({ name }) => name)
 
     let postcssPlugins: AcceptedPlugin[]
     try {
@@ -104,11 +101,20 @@ import 'vuepress/client-app'
         minify: isServer ? false : !app.env.isDebug,
       },
       optimizeDeps: {
-        exclude: clientPackages,
+        exclude: [
+          // vuepress/client and vuepress/shared are pure esm packages
+          'vuepress/client',
+          'vuepress/shared',
+          ...clientPackages,
+        ],
       },
       ssr: {
         format: 'esm',
-        noExternal: clientPackages,
+        noExternal: [
+          // vuepress package must not be externalized so that alias in vuepress/client could be resolved
+          'vuepress',
+          ...clientPackages,
+        ],
       },
     }
   },
