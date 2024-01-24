@@ -1,1 +1,1 @@
-export * from '@vuepress/client/app'
+export { createVueApp } from '@vuepress/client/app'
