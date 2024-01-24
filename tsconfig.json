@@ -6,15 +6,15 @@
     "paths": {
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
       "@vuepress/*": ["./packages/*/src"],
-      "vuepress": ["./packages/vuepress/src"]
+      "vuepress": ["./packages/vuepress/src"],
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["webpack-env", "vite/client"],
   },
   "include": [
     "**/.vuepress/**/*",
     "e2e/**/*",
     "packages/**/*",
-    "vitest.config.ts"
+    "vitest.config.ts",
   ],
-  "exclude": ["node_modules", ".temp", "lib", "dist"]
+  "exclude": ["node_modules", ".temp", "lib", "dist"],
 }
