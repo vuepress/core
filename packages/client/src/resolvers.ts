@@ -1,5 +1,10 @@
 import type { PageRedirectsMap, PagesMap } from '@internal/pagesMap'
-import { dedupeHead, isString, resolveLocalePath } from '@vuepress/shared'
+import {
+  dedupeHead,
+  isString,
+  normalizePath,
+  resolveLocalePath,
+} from '@vuepress/shared'
 import type { Component } from 'vue'
 import { reactive } from 'vue'
 import type {
