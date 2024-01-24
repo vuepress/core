@@ -33,18 +33,18 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.0.0",
+    "@vitejs/plugin-vue": "^5.0.3",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "postcss-load-config": "^5.0.2",
-    "rollup": "^4.9.1",
-    "vite": "~5.0.10",
-    "vue": "^3.4.0",
+    "rollup": "^4.9.6",
+    "vite": "~5.0.12",
+    "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
   "publishConfig": {

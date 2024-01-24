@@ -18,14 +18,14 @@
   "dependencies": {
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.69.5",
-    "sass-loader": "^13.3.3",
-    "vue": "^3.4.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.0.0",
+    "vue": "^3.4.15",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.6.2",
+    "cypress": "^13.6.3",
     "process": "^0.11.10",
     "start-server-and-test": "^2.0.3"
   }
