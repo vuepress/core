@@ -1,3 +1,37 @@
+# [2.0.0-rc.1](https://github.com/vuepress/core/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* **bundler-vite:** serve assets with absolute path in dev server correctly (close [#1442](https://github.com/vuepress/core/issues/1442)) ([d0b4062](https://github.com/vuepress/core/commit/d0b4062d1975403f85504958bd9e87d9f35fb88e))
+* **client:** avoid updating existing head tags (close [#1268](https://github.com/vuepress/core/issues/1268)) ([#1314](https://github.com/vuepress/core/issues/1314)) ([bfbab28](https://github.com/vuepress/core/commit/bfbab2803ec090f80a287484a037b1f6e4a9827b))
+* **client:** merge locales head correctly ([2fe35bb](https://github.com/vuepress/core/commit/2fe35bb3a358b59d2b14b4bcae7eb644768e80ba))
+* **markdown:** use non-greedy matching when parsing attributes [#1469](https://github.com/vuepress/core/issues/1469) ([91d8e3d](https://github.com/vuepress/core/commit/91d8e3d91962a8c06b648bdadbe239be113d5d42))
+
+
+### Features
+
+* bump to vue 3.4 ([7f192ea](https://github.com/vuepress/core/commit/7f192ead367c59f811210a22c98bd4a6138d749c))
+* **cli:** update config file build target to node18 ([66d20fc](https://github.com/vuepress/core/commit/66d20fc91d95587212c81f8773a4a78a38a95dc3))
+* **cli:** update info command to include more binaries and remove ecosystem packages ([84b5c80](https://github.com/vuepress/core/commit/84b5c80989d59f14aecb6efd3cc5df4ed427a77d))
+* **markdown:** add absolutePathPrependBase option for assets plugin ([634af03](https://github.com/vuepress/core/commit/634af031331605d1d28cb7e92734c68842d009e0))
+* **markdown:** add title support for code blocks (close [#1277](https://github.com/vuepress/core/issues/1277)) ([#1456](https://github.com/vuepress/core/issues/1456)) ([706a427](https://github.com/vuepress/core/commit/706a42783bf54ccf5a9c1f5db2c615119436969c))
+* **markdown:** bump to markdown-it 14 ([5abdcdf](https://github.com/vuepress/core/commit/5abdcdfea433f7986e93cd6e766ce1cc445e9dff))
+* **markdown:** update default anchor permalink function (close [#1363](https://github.com/vuepress/core/issues/1363)) ([#1452](https://github.com/vuepress/core/issues/1452)) ([f7d6dde](https://github.com/vuepress/core/commit/f7d6dde7dc0ec461abb2529f72f2446eb6b87c5d))
+* **vuepress:** add client-types export ([#1460](https://github.com/vuepress/core/issues/1460)) ([57bb91b](https://github.com/vuepress/core/commit/57bb91b642e71c4fe33d45d9a06b2c9fe0f7b052))
+* **vuepress:** add more exports and bin shorthands (close [#1446](https://github.com/vuepress/core/issues/1446)) ([#1449](https://github.com/vuepress/core/issues/1449)) ([3a32e0a](https://github.com/vuepress/core/commit/3a32e0a3278514ee051ef34d9faa2dd9009b1677))
+
+
+### BREAKING CHANGES
+
+* **vuepress:** `vuepress-vite` and `vuepress-webpack` packages have been removed, and the corresponding commands have been moved to `vuepress` package. With `vuepress` command, you need to install bundler package and set bundler in config file manually. With `vuepress-vite` and `vuepress-webpack` command, you still need to install bundler package, but you can omit bundler option in config file.
+
+Co-authored-by: meteorlxy <meteor.lxy@foxmail.com>
+* **markdown:** the default permalink function of markdown-it-anchor has been changed from `ariaHidden` to `headerLink` for better accessibility, which would be a potential breaking change for theme authors
+* **markdown:** bump to markdown-it 14
+
+
+
 # [2.0.0-rc.0](https://github.com/vuepress/core/compare/v2.0.0-beta.68...v2.0.0-rc.0) (2023-11-16)
 
 
