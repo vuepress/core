@@ -1,11 +1,5 @@
 import type { PageRedirectsMap, PagesMap } from '@internal/pagesMap'
-import {
-  dedupeHead,
-  isArray,
-  isString,
-  normalizePath,
-  resolveLocalePath,
-} from '@vuepress/shared'
+import { dedupeHead, isString, resolveLocalePath } from '@vuepress/shared'
 import type { Component } from 'vue'
 import { reactive } from 'vue'
 import type {
@@ -92,7 +86,7 @@ export const resolvers = reactive({
       ? frontmatter.description
       : siteLocale.description
     const head: PageHead = [
-      ...(isArray(frontmatter.head) ? frontmatter.head : []),
+      ...(Array.isArray(frontmatter.head) ? frontmatter.head : []),
       ...siteLocale.head,
       ['title', {}, headTitle],
       ['meta', { name: 'description', content: description }],

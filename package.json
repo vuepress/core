@@ -27,7 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.5.0",
     "@commitlint/config-conventional": "^18.5.0",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.6",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "^1.2.1",
     "bumpp": "^9.3.0",
