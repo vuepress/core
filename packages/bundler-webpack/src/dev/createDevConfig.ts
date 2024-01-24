@@ -15,6 +15,9 @@ export const createDevConfig = async (
     isBuild: false,
   })
 
+  // ensure browser packages are packed
+  config.resolve.set('conditionNames', ['browser', 'import', 'module'])
+
   config.plugin('html').use(HtmlPlugin, [
     {
       template: app.options.templateDev,

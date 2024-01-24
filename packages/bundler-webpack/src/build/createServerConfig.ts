@@ -40,6 +40,9 @@ export const createServerConfig = async (
   // devtool
   config.devtool('source-map')
 
+  // ensure node packages are used when SSR
+  config.resolve.set('conditionNames', ['node', 'import', 'module'])
+
   // do not need to minimize server bundle
   config.optimization.minimize(false)
 

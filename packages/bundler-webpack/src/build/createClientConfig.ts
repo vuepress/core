@@ -25,6 +25,9 @@ export const createClientConfig = async (
     isBuild: true,
   })
 
+  // ensure browser packages are packed
+  config.resolve.set('conditionNames', ['browser', 'import', 'module'])
+
   // use internal vuepress-loader to handle SSR dependencies
   config.module
     .rule('vue')
