@@ -39,9 +39,6 @@ import 'vuepress/client-app'
       )
     }
 
-    // vuepress plugins and theme should include pure esm client code,
-    // which should not be optimized in dev mode, and should not be
-    // externalized in build ssr mode
     const clientPackages = app.pluginApi.plugins
       // the 'user-config' plugin is created by cli internally
       .filter(({ name }) => name !== 'user-config')
@@ -102,7 +99,9 @@ import 'vuepress/client-app'
       },
       optimizeDeps: {
         exclude: [
-          // vuepress/client and vuepress/shared are pure esm packages
+          // vuepress/client, vuepress/shared, vuepress plugins and themes
+          // are pure esm packages and have pure esm client code
+          // do not need to be optimized in dev mode
           'vuepress/client',
           'vuepress/shared',
           ...clientPackages,
@@ -111,7 +110,8 @@ import 'vuepress/client-app'
       ssr: {
         format: 'esm',
         noExternal: [
-          // vuepress package must not be externalized so that alias in vuepress/client could be resolved
+          // to correctly resolve alias, vuepress package, vuepress plugins and themes
+          // must not be externalized in build mode
           'vuepress',
           ...clientPackages,
         ],
