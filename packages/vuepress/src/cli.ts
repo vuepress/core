@@ -1,9 +1,12 @@
+export type {
+  BuildCommand,
+  BuildCommandOptions,
+  DevCommand,
+  DevCommandOptions,
+  UserConfig,
+} from '@vuepress/cli'
+
 export {
-  type BuildCommand,
-  type BuildCommandOptions,
-  type DevCommand,
-  type DevCommandOptions,
-  type UserConfig,
   cli,
   createBuild,
   createDev,

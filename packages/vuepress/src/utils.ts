@@ -1,7 +1,7 @@
+export type { TemplateRenderer, TemplateRendererContext } from '@vuepress/utils'
+
 export {
   TEMPLATE_RENDERER_OUTLETS,
-  type TemplateRenderer,
-  type TemplateRendererContext,
   colors,
   createError,
   debug,
