@@ -43,6 +43,7 @@ import 'vuepress/client-app'
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
     const clientPackages = [
+      '@vuepress/client',
       'vuepress',
       ...app.pluginApi.plugins
         // the 'user-config' plugin is created by cli internally
