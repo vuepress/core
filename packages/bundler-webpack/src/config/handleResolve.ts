@@ -20,11 +20,7 @@ export const handleResolve = async ({
     .set('@internal', app.dir.temp('internal'))
 
   // ensure correct packages are packed
-  config.resolve.set('conditionNames', [
-    isServer ? 'node' : 'browser',
-    'import',
-    'module',
-  ])
+  config.resolve.set('conditionNames', ['browser', 'import', 'module'])
 
   // extensions
   config.merge({
