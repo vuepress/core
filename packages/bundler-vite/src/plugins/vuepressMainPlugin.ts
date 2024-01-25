@@ -43,6 +43,7 @@ import 'vuepress/client-app'
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
     const clientPackages = [
+      // although discouraged, but users may still use `@vuepress/client` directly
       '@vuepress/client',
       'vuepress',
       ...app.pluginApi.plugins
