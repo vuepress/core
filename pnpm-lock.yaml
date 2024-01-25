@@ -77,6 +77,9 @@ importers:
 
   e2e:
     dependencies:
+      '@vuepress-e2e/conditional-exports':
+        specifier: file:./modules/conditional-exports
+        version: file:e2e/modules/conditional-exports
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../packages/bundler-vite
@@ -9068,3 +9071,8 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  file:e2e/modules/conditional-exports:
+    resolution: {directory: e2e/modules/conditional-exports, type: directory}
+    name: '@vuepress-e2e/conditional-exports'
+    dev: false
