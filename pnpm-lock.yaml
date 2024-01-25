@@ -77,6 +77,9 @@ importers:
 
   e2e:
     dependencies:
+      '@vuepress-e2e/conditional-exports':
+        specifier: file:./modules/conditional-exports
+        version: file:e2e/modules/conditional-exports
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../packages/bundler-vite
@@ -99,6 +102,9 @@ importers:
       anywhere:
         specifier: ^1.6.0
         version: 1.6.0
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       cypress:
         specifier: ^13.6.3
         version: 13.6.3
@@ -3162,6 +3168,14 @@ packages:
       parse-json: 5.2.0
       typescript: 5.3.3
     dev: false
+
+  /cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -9068,3 +9082,8 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  file:e2e/modules/conditional-exports:
+    resolution: {directory: e2e/modules/conditional-exports, type: directory}
+    name: '@vuepress-e2e/conditional-exports'
+    dev: false
