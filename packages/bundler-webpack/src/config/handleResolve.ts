@@ -19,6 +19,13 @@ export const handleResolve = async ({
     .set('@temp', app.dir.temp())
     .set('@internal', app.dir.temp('internal'))
 
+  // ensure correct packages are packed
+  config.resolve.set('conditionNames', [
+    isServer ? 'node' : 'browser',
+    'import',
+    'module',
+  ])
+
   // extensions
   config.merge({
     resolve: {
