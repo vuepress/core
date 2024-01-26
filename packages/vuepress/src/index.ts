@@ -1,2 +1,2 @@
-export * from '@vuepress/cli'
-export * from '@vuepress/core'
+export * from './cli.js'
+export * from './core.js'
