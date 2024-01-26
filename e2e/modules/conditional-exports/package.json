@@ -1,0 +1,19 @@
+{
+  "name": "@vuepress-e2e/conditional-exports",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types.d.ts",
+      "browser": "./browser.mjs",
+      "node": "./node.mjs",
+      "module": "./node.mjs",
+      "import": "./node.mjs",
+      "require": "./node.cjs",
+      "default": "./node.cjs"
+    },
+    "./*": "./*"
+  },
+  "main": "cjs.js",
+  "module": "esm.js",
+  "types": "types.d.ts"
+}

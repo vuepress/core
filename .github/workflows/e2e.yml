@@ -64,6 +64,7 @@ jobs:
         env:
           E2E_BASE: ${{ matrix.base }}
           E2E_BUNDLER: ${{ matrix.bundler }}
+          E2E_COMMAND: dev
 
       - name: E2E build
         working-directory: ./e2e
@@ -71,6 +72,7 @@ jobs:
         env:
           E2E_BASE: ${{ matrix.base }}
           E2E_BUNDLER: ${{ matrix.bundler }}
+          E2E_COMMAND: build
 
   e2e-result:
     if: ${{ always() }}

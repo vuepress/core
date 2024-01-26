@@ -17,6 +17,9 @@ module.exports = {
     {
       files: ['**/e2e/**/*.cy.ts', '**/e2e/cypress/**/*.ts'],
       extends: 'plugin:cypress/recommended',
+      rules: {
+        '@typescript-eslint/no-namespace': 'off',
+      },
     },
     {
       files: ['**/tests/**/*.ts', 'tsup.config.ts'],
