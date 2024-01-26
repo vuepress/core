@@ -1,3 +1,12 @@
+# [2.0.0-rc.2](https://github.com/vuepress/core/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-01-26)
+
+
+### Bug Fixes
+
+* **bundler-vite:** add vuepress to client packages list ([#1473](https://github.com/vuepress/core/issues/1473)) ([5771dbb](https://github.com/vuepress/core/commit/5771dbbba5415d7da6c0344034f573a2b70fe66d))
+
+
+
 # [2.0.0-rc.1](https://github.com/vuepress/core/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2024-01-24)
 
 
