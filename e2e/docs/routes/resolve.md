@@ -5,5 +5,5 @@
 - Markdown: {{JSON.stringify(resolve('/page-data/meta.md'))}}
 
 <script setup>
-import {  resolve } from 'vuepress/client'
+import { resolve } from 'vuepress/client'
 </script>
