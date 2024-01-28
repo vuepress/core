@@ -86,15 +86,12 @@ export const createPage = async (
   })
 
   // resolve page component and extract headers & links
-  const {
-    componentFilePath,
-    componentFilePathRelative,
-    componentFileChunkName,
-  } = await resolvePageComponentInfo({
-    app,
-    htmlFilePathRelative,
-    key,
-  })
+  const { componentFilePath, componentFilePathRelative } =
+    await resolvePageComponentInfo({
+      app,
+      htmlFilePathRelative,
+      key,
+    })
 
   const { chunkFilePath, chunkFilePathRelative, chunkName } =
     resolvePageChunkInfo({ app, htmlFilePathRelative, key })
@@ -137,7 +134,6 @@ export const createPage = async (
     filePathRelative,
     componentFilePath,
     componentFilePathRelative,
-    componentFileChunkName,
     chunkFilePath,
     chunkFilePathRelative,
     chunkName,

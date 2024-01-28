@@ -114,13 +114,6 @@ export type Page<
     componentFilePathRelative: string
 
     /**
-     * Component file chunk name
-     *
-     * Only take effect in webpack
-     */
-    componentFileChunkName: string
-
-    /**
      * Page file path
      */
     chunkFilePath: string

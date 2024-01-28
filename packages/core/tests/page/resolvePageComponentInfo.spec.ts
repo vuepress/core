@@ -19,7 +19,6 @@ describe('core > page > resolvePageComponentInfo', () => {
     expect(resolved).toEqual({
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
       componentFilePathRelative: 'pages/foo.html.vue',
-      componentFileChunkName: 'key',
     })
   })
 })

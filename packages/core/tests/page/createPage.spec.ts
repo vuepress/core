@@ -80,7 +80,6 @@ describe('core > page > createPage', () => {
     expect(page.componentFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.vue`,
     )
-    expect(page.componentFileChunkName).toBe(page.key)
     expect(page.chunkFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
     )

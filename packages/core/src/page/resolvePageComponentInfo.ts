@@ -15,7 +15,6 @@ export const resolvePageComponentInfo = async ({
 }): Promise<{
   componentFilePath: string
   componentFilePathRelative: string
-  componentFileChunkName: string
 }> => {
   // resolve component file path
   const componentFilePathRelative = path.join(
@@ -23,11 +22,9 @@ export const resolvePageComponentInfo = async ({
     `${htmlFilePathRelative}.vue`,
   )
   const componentFilePath = app.dir.temp(componentFilePathRelative)
-  const componentFileChunkName = key
 
   return {
     componentFilePath,
     componentFilePathRelative,
-    componentFileChunkName,
   }
 }
