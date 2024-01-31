@@ -99,7 +99,6 @@ export const createPage = async (
   const page: Page = {
     // page data
     data: {
-      key,
       path,
       title,
       lang,
@@ -108,7 +107,6 @@ export const createPage = async (
     },
 
     // base fields
-    key,
     path,
     title,
     lang,
