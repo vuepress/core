@@ -5,7 +5,7 @@ declare module '@internal/pagesMap' {
   export type PageRedirectsMap = Map<string, string>
 
   export interface PageInfo<PageMeta = Record<string, unknown>> {
-    v: () => Promise<{
+    loader: () => Promise<{
       comp: ComponentOptions
       data: PageData
     }>

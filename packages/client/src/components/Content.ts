@@ -22,7 +22,7 @@ export const Content = defineComponent({
       const pageInfo = pagesMap.value.get(props.path || page.value.path)
 
       return pageInfo
-        ? defineAsyncComponent(() => pageInfo.v().then(({ comp }) => comp))
+        ? defineAsyncComponent(() => pageInfo.loader().then(({ comp }) => comp))
         : null
     })
 

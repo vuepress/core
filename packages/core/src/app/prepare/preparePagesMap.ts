@@ -59,22 +59,12 @@ export const preparePagesMap = async (app: App): Promise<void> => {
     .map((page) => {
       const { meta, path, chunkFilePath, chunkName } = page
       const redirects = resolvePageRedirects(page)
-
-      return `\
-  [${JSON.stringify(path)}, () => import(${
-    chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''
-  }${JSON.stringify(chunkFilePath)}), ${JSON.stringify(meta)}${
-    redirects.length
-      ? `, [${redirects.map((path) => JSON.stringify(path)).join(', ')}]`
-      : ''
-  }],`
+      return `  [${JSON.stringify(path)}, () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), ${JSON.stringify(meta)}${redirects.length ? `, [${redirects.map((path) => JSON.stringify(path)).join(', ')}]` : ''}],`
     })
     .join('\n')
 
   // generate page component map file
   let content = `\
-import { defineAsyncComponent } from 'vue'
-
 const pagesMapEntries = [
 ${pagesMapEntries}
 ];
@@ -85,7 +75,7 @@ export const redirectsMap = new Map(
 );
 
 export const pagesMap = new Map(
-  pagesMapEntries.map(([path, v, meta]) => [path, { v, meta }]),
+  pagesMapEntries.map(([path, loader, meta]) => [path, { loader, meta }]),
 );
 `
 
