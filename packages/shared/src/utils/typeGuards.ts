@@ -2,7 +2,7 @@
  * Check if a value is a function
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (val: unknown): val is Function =>
+export const isFunction = <T extends Function>(val: T): val is T =>
   typeof val === 'function'
 
 /**
