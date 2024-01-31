@@ -13,7 +13,6 @@ describe('core > page > resolvePageComponentInfo', () => {
     const resolved = await resolvePageComponentInfo({
       app,
       htmlFilePathRelative: 'foo.html',
-      key: 'key',
     })
 
     expect(resolved).toEqual({

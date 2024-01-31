@@ -1,4 +1,4 @@
-import { path } from '@vuepress/utils'
+import { hash, path } from '@vuepress/utils'
 import type { App } from '../types/index.js'
 
 /**
@@ -7,11 +7,9 @@ import type { App } from '../types/index.js'
 export const resolvePageChunkInfo = ({
   app,
   htmlFilePathRelative,
-  key,
 }: {
   app: App
   htmlFilePathRelative: string
-  key: string
 }): {
   chunkFilePath: string
   chunkFilePathRelative: string
@@ -19,7 +17,7 @@ export const resolvePageChunkInfo = ({
 } => {
   const chunkFilePathRelative = path.join('pages', `${htmlFilePathRelative}.js`)
   const chunkFilePath = app.dir.temp(chunkFilePathRelative)
-  const chunkName = key
+  const chunkName = `v-${hash(htmlFilePathRelative)}`
 
   return {
     chunkFilePath,

@@ -7,11 +7,9 @@ import type { App } from '../types/index.js'
 export const resolvePageComponentInfo = async ({
   app,
   htmlFilePathRelative,
-  key,
 }: {
   app: App
   htmlFilePathRelative: string
-  key: string
 }): Promise<{
   componentFilePath: string
   componentFilePathRelative: string

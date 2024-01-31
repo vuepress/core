@@ -7,7 +7,6 @@ import { resolvePageDate } from './resolvePageDate.js'
 import { resolvePageFileContent } from './resolvePageFileContent.js'
 import { resolvePageFilePath } from './resolvePageFilePath.js'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
-import { resolvePageKey } from './resolvePageKey.js'
 import { resolvePageLang } from './resolvePageLang.js'
 import { resolvePageMeta } from './resolvePageMeta.js'
 import { resolvePagePath } from './resolvePagePath.js'
@@ -76,9 +75,6 @@ export const createPage = async (
   // resolve page path
   const path = resolvePagePath({ permalink, pathInferred, options })
 
-  // resolve page key
-  const key = resolvePageKey({ path })
-
   // resolve page rendered html file path
   const { htmlFilePath, htmlFilePathRelative } = resolvePageHtmlInfo({
     app,
@@ -90,11 +86,10 @@ export const createPage = async (
     await resolvePageComponentInfo({
       app,
       htmlFilePathRelative,
-      key,
     })
 
   const { chunkFilePath, chunkFilePathRelative, chunkName } =
-    resolvePageChunkInfo({ app, htmlFilePathRelative, key })
+    resolvePageChunkInfo({ app, htmlFilePathRelative })
 
   const page: Page = {
     // page data
