@@ -73,9 +73,11 @@ export const setupGlobalComputed = (
   )
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-    __VUE_HMR_RUNTIME__.updatePageData = (data: PageData) => {
-      pagesMap.value.get(data.path)!.data = () => Promise.resolve(data)
-      if (data.key === router.currentRoute.value.meta._data?.key) {
+    __VUE_HMR_RUNTIME__.updatePageData = async (data: PageData) => {
+      const pageChunk = await pagesMap.value[data.path].loader()
+      pagesMap.value[data.path].loader = () =>
+        Promise.resolve({ comp: pageChunk.comp, data })
+      if (data.path === router.currentRoute.value.meta._data?.path) {
         router.currentRoute.value.meta._data = data
         pageData.trigger()
       }

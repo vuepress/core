@@ -22,7 +22,6 @@ export const preparePage = async (app: App, page: Page): Promise<void> => {
   // page data file content
   let content = `\
 import comp from ${JSON.stringify(page.componentFilePath)}
-
 const data = JSON.parse(${JSON.stringify(JSON.stringify(page.data))})
 export { comp, data }
 `

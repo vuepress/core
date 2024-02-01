@@ -1,4 +1,4 @@
-import type { PageRedirectsMap, PagesMap } from '@internal/pagesMap'
+import type { PagesMap, RedirectsMap } from '@internal/pagesMap'
 import {
   dedupeHead,
   isString,
@@ -42,35 +42,34 @@ export const resolvers = reactive({
   /**
    * Resolve page info according to page path
    */
-  resolvePagePath: <PageMeta>(
-    pagesMap: PagesMap<PageMeta>,
-    redirectsMap: PageRedirectsMap,
+  resolvePagePath: (
+    pagesMap: PagesMap,
+    redirectsMap: RedirectsMap,
     path: string,
   ): string => {
     path = normalizePath(path)
 
     // original path
-    if (pagesMap.has(path)) return path
+    if (pagesMap[path]) return path
 
     // encoded path
     const encodedPath = encodeURI(path)
-    if (pagesMap.has(encodedPath)) return encodedPath
+    if (pagesMap[encodedPath]) return encodedPath
 
     return (
       // redirects
-      redirectsMap.get(path) ||
+      redirectsMap[path] ||
       // if no match at this point, then we should leave the path as is
       path
     )
   },
 
   /**
-   * Resolve page data according to page path and page info
+   * Resolve page data
    */
-  resolvePageData: async (
-    pageData: PageData,
-    _path: string,
-  ): Promise<PageData> => Promise.resolve(pageData ?? pageDataEmpty),
+  resolvePageData: (pageData: PageData): Promise<PageData> =>
+    Promise.resolve(pageData ?? pageDataEmpty),
+
   /**
    * Resolve page frontmatter from page data
    */

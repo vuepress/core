@@ -7,15 +7,15 @@ if (import.meta.webpackHot) {
   if (__VUE_HMR_RUNTIME__.updatePagesMap) {
     __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
   }
-  if (__VUE_HMR_RUNTIME__.updatePageRedirectsMap) {
-    __VUE_HMR_RUNTIME__.updatePageRedirectsMap(redirectsMap)
+  if (__VUE_HMR_RUNTIME__.updateRedirectsMap) {
+    __VUE_HMR_RUNTIME__.updateRedirectsMap(redirectsMap)
   }
 }
 
 if (import.meta.hot) {
   import.meta.hot.accept(({ pagesMap, redirectsMap }) => {
     __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
-    __VUE_HMR_RUNTIME__.updatePageRedirectsMap(redirectsMap)
+    __VUE_HMR_RUNTIME__.updateRedirectsMap(redirectsMap)
   })
 }
 `
@@ -55,28 +55,26 @@ const resolvePageRedirects = ({
  * Generate page map temp file
  */
 export const preparePagesMap = async (app: App): Promise<void> => {
-  const pagesMapEntries = app.pages
-    .map((page) => {
-      const { meta, path, chunkFilePath, chunkName } = page
-      const redirects = resolvePageRedirects(page)
-      return `  [${JSON.stringify(path)}, () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), ${JSON.stringify(meta)}${redirects.length ? `, [${redirects.map((path) => JSON.stringify(path)).join(', ')}]` : ''}],`
-    })
-    .join('\n')
-
   // generate page component map file
   let content = `\
-const pagesMapEntries = [
-${pagesMapEntries}
-];
+export const redirectsMap = JSON.parse(${JSON.stringify(
+    JSON.stringify(
+      Object.fromEntries(
+        app.pages.flatMap((page) =>
+          resolvePageRedirects(page).map((redirect) => [redirect, page.path]),
+        ),
+      ),
+    ),
+  )})
 
-export const redirectsMap = new Map(
-  pagesMapEntries
-    .flatMap(([path, , , redirects = []]) => redirects.map((redirect) => [redirect, path])),
-);
-
-export const pagesMap = new Map(
-  pagesMapEntries.map(([path, loader, meta]) => [path, { loader, meta }]),
-);
+export const pagesMap = Object.fromEntries([
+${app.pages
+  .map(
+    ({ meta, path, chunkFilePath, chunkName }) =>
+      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(meta)} }],`,
+  )
+  .join('\n')}
+]);
 `
 
   // inject HMR code

@@ -19,10 +19,11 @@ export const Content = defineComponent({
   setup(props) {
     const page = usePageData()
     const pageComponent = computed(() => {
-      const pageInfo = pagesMap.value.get(props.path || page.value.path)
-
-      return pageInfo
-        ? defineAsyncComponent(() => pageInfo.loader().then(({ comp }) => comp))
+      const pageMapItem = pagesMap.value[props.path || page.value.path]
+      return pageMapItem
+        ? defineAsyncComponent(() =>
+            pageMapItem.loader().then(({ comp }) => comp),
+          )
         : null
     })
 

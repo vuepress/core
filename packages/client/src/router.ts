@@ -52,16 +52,16 @@ export const createVueRouter = (): Router => {
         return pagePath
       }
 
-      // if no match at this point, then we should provide 404 page
-      const pageInfo =
-        pagesMap.value.get(pagePath) || pagesMap.value.get('/404.html')!
+      // get the target page map item or fallback to 404 page
+      const pageMapItem =
+        pagesMap.value[pagePath] || pagesMap.value['/404.html']!
 
-      // TODO: Added for backwards compatibility, remove in stable version
-      to.meta = pageInfo.meta
-      to.meta._data = await resolvers.resolvePageData(
-        (await pageInfo.loader()).data,
-        pagePath,
-      )
+      // attach page meta to route meta
+      to.meta = pageMapItem.meta
+
+      // attach page data to route meta to trigger page data computed when route changes
+      const pageChunk = await pageMapItem.loader()
+      to.meta._data = await resolvers.resolvePageData(pageChunk.data)
     }
   })
 

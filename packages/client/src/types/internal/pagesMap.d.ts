@@ -2,21 +2,20 @@ import type { PageData } from '@vuepress/shared'
 import type { ComponentOptions } from 'vue'
 
 declare module '@internal/pagesMap' {
-  export type PageRedirectsMap = Map<string, string>
+  export type RedirectsMap = Record<string, string>
 
-  export interface PageInfo<PageMeta = Record<string, unknown>> {
-    loader: () => Promise<{
-      comp: ComponentOptions
-      data: PageData
-    }>
+  export interface PageChunk {
+    comp: ComponentOptions
+    data: PageData
+  }
+
+  export interface PageMapItem<PageMeta = Record<string, unknown>> {
+    loader: () => Promise<PageChunk>
     meta: PageMeta
   }
 
-  export type PagesMap<PageMeta = Record<string, unknown>> = Map<
-    string,
-    PageInfo<PageMeta>
-  >
+  export type PagesMap = Record<string, PageMapItem>
 
-  export const redirectsMap: PageRedirectsMap
+  export const redirectsMap: RedirectsMap
   export const pagesMap: PagesMap
 }

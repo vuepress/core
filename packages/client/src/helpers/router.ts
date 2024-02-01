@@ -1,4 +1,3 @@
-import type { PagesMap } from '@internal/pagesMap'
 import { pagesMap, redirectsMap } from '../composables/index.js'
 import { resolvers } from '../resolvers.js'
 
@@ -7,7 +6,7 @@ import { resolvers } from '../resolvers.js'
  *
  * @returns all paths of pages
  */
-export const getPagesPath = (): string[] => Array.from(pagesMap.value.keys())
+export const getPagesPath = (): string[] => Object.keys(pagesMap.value)
 
 /**
  * Check whether the page exists
@@ -15,10 +14,10 @@ export const getPagesPath = (): string[] => Array.from(pagesMap.value.keys())
  * @param path path of the page
  * @returns whether the page exists
  */
-export const isPageExist = (path: string): boolean =>
-  pagesMap.value.has(
-    resolvers.resolvePagePath(pagesMap.value, redirectsMap.value, path),
-  )
+export const hasPage = (path: string): boolean =>
+  !!pagesMap.value[
+    resolvers.resolvePagePath(pagesMap.value, redirectsMap.value, path)
+  ]
 
 /**
  * Resolve final path and meta with given path
@@ -26,13 +25,16 @@ export const isPageExist = (path: string): boolean =>
  * @param path path of the page
  * @returns resolved path and meta
  */
-export const resolve = <PageMeta>(
+export const resolve = <PageMeta = Record<string, unknown> | null>(
   path: string,
 ): { path: string; meta: PageMeta | null } => {
-  path = resolvers.resolvePagePath(pagesMap.value, redirectsMap.value, path)
-
-  return {
+  const resolvedPath = resolvers.resolvePagePath(
+    pagesMap.value,
+    redirectsMap.value,
     path,
-    meta: (pagesMap.value as PagesMap<PageMeta>).get(path)?.meta ?? null,
+  )
+  return {
+    path: resolvedPath,
+    meta: (pagesMap.value[resolvedPath]?.meta ?? null) as PageMeta,
   }
 }
