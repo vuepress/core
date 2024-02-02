@@ -21,14 +21,19 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
     pageFilePaths.map((filePath) => createPage(app, { filePath })),
   )
 
+  // find the 404 page
+  const notFoundPage = pages.find((page) => page.path === '/404.html')
+
+  // if there is a 404 page, set the default layout to NotFound
+  if (notFoundPage) {
+    notFoundPage.frontmatter.layout ??= 'NotFound'
+  }
   // if there is no 404 page, add one
-  if (!pages.some((page) => page.path === '/404.html')) {
+  else {
     pages.push(
       await createPage(app, {
         path: '/404.html',
-        frontmatter: {
-          layout: 'NotFound',
-        },
+        frontmatter: { layout: 'NotFound' },
         content: '404 Not Found',
       }),
     )

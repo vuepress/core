@@ -46,13 +46,14 @@ export const createVueRouter = (): Router => {
       if (page.path !== to.path) {
         return page.path
       }
-
-      // attach page meta to route meta
-      to.meta = page.meta
-
-      // attach page data to route meta to trigger page data computed when route changes
       const pageChunk = await page.loader()
-      to.meta._data = pageChunk.data
+
+      to.meta = {
+        // attach page meta to route meta
+        ...page.meta,
+        // attach page data to route meta to trigger page data computed when route changes
+        _data: pageChunk.data,
+      }
     }
   })
 

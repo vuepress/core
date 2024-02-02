@@ -10,9 +10,9 @@
 
 #### Non-Index
 
-- Clean URL: {{ JSON.stringify(resolvePage('/helpers/resolve-page')) }}
-- HTML: {{ JSON.stringify(resolvePage('/helpers/resolve-page.html')) }}
-- Markdown: {{ JSON.stringify(resolvePage('/helpers/resolve-page.md')) }}
+- Clean URL: {{ JSON.stringify(resolvePage('/router/resolve-page')) }}
+- HTML: {{ JSON.stringify(resolvePage('/router/resolve-page.html')) }}
+- Markdown: {{ JSON.stringify(resolvePage('/router/resolve-page.md')) }}
 
 #### Non-ASCII
 
@@ -32,7 +32,7 @@
 - HTML: {{ JSON.stringify(resolvePage('/non-existent.html')) }}
 - Markdown: {{ JSON.stringify(resolvePage('/non-existent.md')) }}
 
-### Meta
+#### Meta
 
 - Clean URL: {{ JSON.stringify(resolvePage('/page-data/meta')) }}
 - HTML: {{ JSON.stringify(resolvePage('/page-data/meta.html')) }}
