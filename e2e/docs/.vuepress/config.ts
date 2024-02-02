@@ -54,11 +54,11 @@ export default defineUserConfig({
   theme: e2eTheme(),
 
   extendsPage: (page) => {
-    if (page.path === '/page-data/meta.html') {
-      page.meta = {
+    if (page.path === '/page-data/route-meta.html') {
+      page.routeMeta = {
         a: 1,
         b: 2,
-        ...page.meta,
+        ...page.routeMeta,
       }
     }
   },

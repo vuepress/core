@@ -4,7 +4,7 @@ import {
   prepareClientConfigs,
   preparePage,
   preparePageComponent,
-  preparePagesMap,
+  prepareRoutes,
   prepareSiteData,
 } from './prepare/index.js'
 
@@ -31,8 +31,8 @@ export const appPrepare = async (app: App): Promise<void> => {
     await preparePage(app, page)
   }
 
-  // generate pages map
-  await preparePagesMap(app)
+  // generate routes file
+  await prepareRoutes(app)
 
   // generate site data file
   await prepareSiteData(app)

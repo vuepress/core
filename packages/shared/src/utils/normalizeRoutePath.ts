@@ -1,4 +1,7 @@
-export const normalizePath = (path: string): string => {
+/**
+ * Normalize the given path to the final route path
+ */
+export const normalizeRoutePath = (path: string): string => {
   const convertedMdPath = path.endsWith('README.md')
     ? path.substring(0, path.length - 9)
     : path.endsWith('.md')

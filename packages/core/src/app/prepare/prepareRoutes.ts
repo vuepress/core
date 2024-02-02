@@ -1,27 +1,27 @@
-import { ensureLeadingSlash, normalizePath } from '@vuepress/shared'
+import { ensureLeadingSlash, normalizeRoutePath } from '@vuepress/shared'
 import type { App, Page } from '../../types/index.js'
 
 const HMR_CODE = `
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePagesMap) {
-    __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
+  if (__VUE_HMR_RUNTIME__.updateRoutes) {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
   }
-  if (__VUE_HMR_RUNTIME__.updateRedirectsMap) {
-    __VUE_HMR_RUNTIME__.updateRedirectsMap(redirectsMap)
+  if (__VUE_HMR_RUNTIME__.updateRedirects) {
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
   }
 }
 
 if (import.meta.hot) {
-  import.meta.hot.accept(({ pagesMap, redirectsMap }) => {
-    __VUE_HMR_RUNTIME__.updatePagesMap(pagesMap)
-    __VUE_HMR_RUNTIME__.updateRedirectsMap(redirectsMap)
+  import.meta.hot.accept(({ routes, redirects }) => {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
   })
 }
 `
 
 /**
- * Resolve page route item
+ * Resolve page redirects
  */
 const resolvePageRedirects = ({
   path,
@@ -33,7 +33,7 @@ const resolvePageRedirects = ({
 
   // add redirect to the set when the redirect could not be normalized & encoded to the page path
   const addRedirect = (redirect: string): void => {
-    const normalizedPath = normalizePath(redirect)
+    const normalizedPath = normalizeRoutePath(redirect)
     if (normalizedPath === path) return
 
     const encodedPath = encodeURI(normalizedPath)
@@ -56,12 +56,12 @@ const resolvePageRedirects = ({
 }
 
 /**
- * Generate page map temp file
+ * Generate routes temp file
  */
-export const preparePagesMap = async (app: App): Promise<void> => {
+export const prepareRoutes = async (app: App): Promise<void> => {
   // generate page component map file
   let content = `\
-export const redirectsMap = JSON.parse(${JSON.stringify(
+export const redirects = JSON.parse(${JSON.stringify(
     JSON.stringify(
       Object.fromEntries(
         app.pages.flatMap((page) =>
@@ -71,11 +71,11 @@ export const redirectsMap = JSON.parse(${JSON.stringify(
     ),
   )})
 
-export const pagesMap = Object.fromEntries([
+export const routes = Object.fromEntries([
 ${app.pages
   .map(
-    ({ meta, path, chunkFilePath, chunkName }) =>
-      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(meta)} }],`,
+    ({ chunkFilePath, chunkName, path, routeMeta }) =>
+      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
   )
   .join('\n')}
 ]);
@@ -86,5 +86,5 @@ ${app.pages
     content += HMR_CODE
   }
 
-  await app.writeTemp('internal/pagesMap.js', content)
+  await app.writeTemp('internal/routes.js', content)
 }

@@ -1,3 +1,3 @@
-export * from './pagesMap.js'
-export * from './resolvePage.js'
-export * from './resolvePagePath.js'
+export * from './resolveRoute.js'
+export * from './resolveRoutePath.js'
+export * from './routes.js'

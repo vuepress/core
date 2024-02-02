@@ -73,11 +73,9 @@ export type Page<
     permalink: string | null
 
     /**
-     * Custom data to be attached to page record
-     *
-     * @see https://router.vuejs.org/api/#meta
+     * Custom data to be attached to route record
      */
-    meta: Record<string, unknown>
+    routeMeta: Record<string, unknown>
 
     /**
      * Extracted sfc blocks of the page

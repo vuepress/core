@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { normalizePath } from '../src/index.js'
+import { normalizeRoutePath } from '../src/index.js'
 
 const testCases = [
   ['/', '/'],
@@ -23,6 +23,6 @@ const testCases = [
 
 testCases.forEach(([path, expected]) =>
   it(`should normalize "${path}" to "${expected}"`, () => {
-    expect(normalizePath(path)).toBe(expected)
+    expect(normalizeRoutePath(path)).toBe(expected)
   }),
 )

@@ -36,7 +36,7 @@ import {
 } from './composables/index.js'
 import { withBase } from './helpers/index.js'
 import { resolvers } from './resolvers.js'
-import { pagesMap } from './router/index.js'
+import { routes } from './router/index.js'
 import type { ClientConfig } from './types/index.js'
 
 /**
@@ -74,8 +74,8 @@ export const setupGlobalComputed = (
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (data: PageData) => {
-      const pageChunk = await pagesMap.value[data.path].loader()
-      pagesMap.value[data.path].loader = () =>
+      const pageChunk = await routes.value[data.path].loader()
+      routes.value[data.path].loader = () =>
         Promise.resolve({ comp: pageChunk.comp, data })
       if (data.path === router.currentRoute.value.meta._data?.path) {
         router.currentRoute.value.meta._data = data

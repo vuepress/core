@@ -64,7 +64,7 @@ export type PageFrontmatter<
   layout?: string
   permalink?: string
   permalinkPattern?: string | null
-  meta?: Record<string, unknown>
+  routeMeta?: Record<string, unknown>
   title?: string
 }
 

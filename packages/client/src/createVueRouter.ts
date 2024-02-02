@@ -8,7 +8,7 @@ import {
 } from 'vue-router'
 import { Vuepress } from './components/Vuepress.js'
 import type { PageData } from './composables/index.js'
-import { resolvePage } from './router/index.js'
+import { resolveRoute } from './router/index.js'
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
@@ -41,16 +41,16 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      const page = resolvePage(to.path)
+      const route = resolveRoute(to.path)
 
-      if (page.path !== to.path) {
-        return page.path
+      if (route.path !== to.path) {
+        return route.path
       }
-      const pageChunk = await page.loader()
+      const pageChunk = await route.loader()
 
       to.meta = {
-        // attach page meta to route meta
-        ...page.meta,
+        // attach route meta
+        ...route.meta,
         // attach page data to route meta to trigger page data computed when route changes
         _data: pageChunk.data,
       }
