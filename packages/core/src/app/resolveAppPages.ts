@@ -29,6 +29,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
         frontmatter: {
           layout: 'NotFound',
         },
+        content: '404 Not Found',
       }),
     )
   }

@@ -1,5 +1,6 @@
 import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
-import { pagesMap, usePageData } from '../composables/index.js'
+import { usePageData } from '../composables/index.js'
+import { resolvePage } from '../router/index.js'
 
 /**
  * Markdown rendered content
@@ -19,24 +20,12 @@ export const Content = defineComponent({
   setup(props) {
     const page = usePageData()
     const pageComponent = computed(() => {
-      const pageMapItem = pagesMap.value[props.path || page.value.path]
-      return pageMapItem
-        ? defineAsyncComponent(() =>
-            pageMapItem.loader().then(({ comp }) => comp),
-          )
-        : null
+      const resolvedPage = resolvePage(props.path || page.value.path)
+      return defineAsyncComponent(() =>
+        resolvedPage.loader().then(({ comp }) => comp),
+      )
     })
 
-    return () =>
-      pageComponent.value
-        ? // use page component
-          h(pageComponent.value)
-        : // fallback content
-          h(
-            'div',
-            __VUEPRESS_DEV__
-              ? 'Page does not exist. This is a fallback content.'
-              : '404 Not Found',
-          )
+    return () => h(pageComponent.value)
   },
 })

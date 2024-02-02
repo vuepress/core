@@ -30,13 +30,13 @@ import {
   pageHeadTitleSymbol,
   pageLangSymbol,
   pageLayoutSymbol,
-  pagesMap,
   routeLocaleSymbol,
   siteData,
   siteLocaleDataSymbol,
 } from './composables/index.js'
 import { withBase } from './helpers/index.js'
 import { resolvers } from './resolvers.js'
+import { pagesMap } from './router/index.js'
 import type { ClientConfig } from './types/index.js'
 
 /**

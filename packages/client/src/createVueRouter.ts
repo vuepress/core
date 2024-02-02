@@ -7,9 +7,8 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import { Vuepress } from './components/Vuepress.js'
-import { pagesMap, redirectsMap } from './composables/index.js'
 import type { PageData } from './composables/index.js'
-import { resolvers } from './resolvers.js'
+import { resolvePage } from './router/index.js'
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
@@ -42,26 +41,18 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      const pagePath = resolvers.resolvePagePath(
-        pagesMap.value,
-        redirectsMap.value,
-        to.path,
-      )
+      const resolvedPage = resolvePage(to.path)
 
-      if (pagePath !== to.path) {
-        return pagePath
+      if (resolvedPage.path !== to.path) {
+        return resolvedPage.path
       }
 
-      // get the target page map item or fallback to 404 page
-      const pageMapItem =
-        pagesMap.value[pagePath] || pagesMap.value['/404.html']!
-
       // attach page meta to route meta
-      to.meta = pageMapItem.meta
+      to.meta = resolvedPage.meta
 
       // attach page data to route meta to trigger page data computed when route changes
-      const pageChunk = await pageMapItem.loader()
-      to.meta._data = await resolvers.resolvePageData(pageChunk.data)
+      const pageChunk = await resolvedPage.loader()
+      to.meta._data = pageChunk.data
     }
   })
 
@@ -71,7 +62,7 @@ export const createVueRouter = (): Router => {
 declare module 'vue-router' {
   interface RouteMeta {
     /**
-     * Store page data to route meta
+     * Store page data in route meta
      *
      * @internal only for internal use
      */

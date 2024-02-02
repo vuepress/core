@@ -1,10 +1,4 @@
-import type { PagesMap, RedirectsMap } from '@internal/pagesMap'
-import {
-  dedupeHead,
-  isString,
-  normalizePath,
-  resolveLocalePath,
-} from '@vuepress/shared'
+import { dedupeHead, isString, resolveLocalePath } from '@vuepress/shared'
 import type { Component } from 'vue'
 import { reactive } from 'vue'
 import type {
@@ -17,7 +11,6 @@ import type {
   SiteData,
   SiteLocaleData,
 } from './composables/index.js'
-import { pageDataEmpty } from './composables/index.js'
 import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
 import type { ClientConfig, Layouts } from './types/index.js'
 
@@ -25,6 +18,8 @@ import type { ClientConfig, Layouts } from './types/index.js'
  * Resolver methods to get global computed
  *
  * Users can override corresponding method for advanced customization
+ *
+ * @experimental - This is an experimental API and may be changed in minor versions
  */
 export const resolvers = reactive({
   /**
@@ -38,37 +33,6 @@ export const resolvers = reactive({
       }),
       {} as Layouts,
     ),
-
-  /**
-   * Resolve page info according to page path
-   */
-  resolvePagePath: (
-    pagesMap: PagesMap,
-    redirectsMap: RedirectsMap,
-    path: string,
-  ): string => {
-    path = normalizePath(path)
-
-    // original path
-    if (pagesMap[path]) return path
-
-    // encoded path
-    const encodedPath = encodeURI(path)
-    if (pagesMap[encodedPath]) return encodedPath
-
-    return (
-      // redirects
-      redirectsMap[path] ||
-      // if no match at this point, then we should leave the path as is
-      path
-    )
-  },
-
-  /**
-   * Resolve page data
-   */
-  resolvePageData: (pageData: PageData): Promise<PageData> =>
-    Promise.resolve(pageData ?? pageDataEmpty),
 
   /**
    * Resolve page frontmatter from page data
