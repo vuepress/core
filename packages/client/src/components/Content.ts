@@ -18,12 +18,10 @@ export const Content = defineComponent({
   },
 
   setup(props) {
-    const page = usePageData()
+    const pageData = usePageData()
     const pageComponent = computed(() => {
-      const resolvedPage = resolvePage(props.path || page.value.path)
-      return defineAsyncComponent(() =>
-        resolvedPage.loader().then(({ comp }) => comp),
-      )
+      const page = resolvePage(props.path || pageData.value.path)
+      return defineAsyncComponent(() => page.loader().then(({ comp }) => comp))
     })
 
     return () => h(pageComponent.value)

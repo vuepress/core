@@ -41,17 +41,17 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      const resolvedPage = resolvePage(to.path)
+      const page = resolvePage(to.path)
 
-      if (resolvedPage.path !== to.path) {
-        return resolvedPage.path
+      if (page.path !== to.path) {
+        return page.path
       }
 
       // attach page meta to route meta
-      to.meta = resolvedPage.meta
+      to.meta = page.meta
 
       // attach page data to route meta to trigger page data computed when route changes
-      const pageChunk = await resolvedPage.loader()
+      const pageChunk = await page.loader()
       to.meta._data = pageChunk.data
     }
   })
