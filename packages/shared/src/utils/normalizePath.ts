@@ -6,7 +6,7 @@ export const normalizePath = (path: string): string => {
       : path
 
   return convertedMdPath.endsWith('/index.html')
-    ? convertedMdPath.substring(0, path.length - 10)
+    ? convertedMdPath.substring(0, convertedMdPath.length - 10)
     : convertedMdPath.endsWith('.html') || convertedMdPath.endsWith('/')
       ? convertedMdPath
       : convertedMdPath + '.html'

@@ -1,4 +1,4 @@
-import { ensureLeadingSlash } from '@vuepress/shared'
+import { ensureLeadingSlash, normalizePath } from '@vuepress/shared'
 import type { App, Page } from '../../types/index.js'
 
 const HMR_CODE = `
@@ -31,22 +31,26 @@ const resolvePageRedirects = ({
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
-  // redirect from decoded path
-  redirectsSet.add(decodeURI(path))
+  // add redirect to the set when the redirect could not be normalized & encoded to the page path
+  const addRedirect = (redirect: string): void => {
+    const normalizedPath = normalizePath(redirect)
+    if (normalizedPath === path) return
+
+    const encodedPath = encodeURI(normalizedPath)
+    if (encodedPath === path) return
+
+    redirectsSet.add(redirect)
+  }
 
   // redirect from inferred path
   if (pathInferred !== null) {
-    redirectsSet.add(pathInferred)
+    addRedirect(pathInferred)
   }
 
-  // redirect from none-markdown filename path
-  // markdown file path is omitted as it can be normalized to pathInferred
-  if (filePathRelative !== null && !filePathRelative.endsWith('.md')) {
-    redirectsSet.add(ensureLeadingSlash(filePathRelative))
+  // redirect from filename path
+  if (filePathRelative !== null) {
+    addRedirect(ensureLeadingSlash(filePathRelative))
   }
-
-  // avoid redirect from the page path itself
-  redirectsSet.delete(path)
 
   return Array.from(redirectsSet)
 }
