@@ -33,7 +33,6 @@
     "@vitest/coverage-istanbul": "^1.2.1",
     "bumpp": "^9.3.0",
     "conventional-changelog-cli": "^4.1.0",
-    "cypress": "^13.6.3",
     "eslint": "^8.56.0",
     "eslint-config-vuepress": "^4.10.0",
     "eslint-config-vuepress-typescript": "^4.10.0",

@@ -29,9 +29,6 @@ importers:
       conventional-changelog-cli:
         specifier: ^4.1.0
         version: 4.1.0
-      cypress:
-        specifier: ^13.6.3
-        version: 13.6.3
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
