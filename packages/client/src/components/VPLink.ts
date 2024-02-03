@@ -1,5 +1,5 @@
 import { h } from 'vue'
-import type { FunctionalComponent, VNode } from 'vue'
+import type { FunctionalComponent, HTMLAttributes, VNode } from 'vue'
 import { useRouter } from 'vue-router'
 import { withBase } from '../helpers/index.js'
 import { resolveRoutePath } from '../router/index.js'
@@ -23,7 +23,7 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   return true
 }
 
-export interface VPLinkProps {
+export interface VPLinkProps extends HTMLAttributes {
   to: string
 }
 
@@ -33,7 +33,7 @@ export const VPLink: FunctionalComponent<
   {
     default: () => string | VNode | (string | VNode)[]
   }
-> = ({ to = '' }, { slots }) => {
+> = ({ to = '', ...attrs }, { slots }) => {
   const router = useRouter()
   const path = withBase(resolveRoutePath(to))
 
@@ -42,6 +42,7 @@ export const VPLink: FunctionalComponent<
     {
       class: 'vp-link',
       href: path,
+      ...attrs,
       onClick: (event: MouseEvent = {} as MouseEvent) => {
         guardEvent(event) ? router.push(to).catch() : Promise.resolve()
       },
