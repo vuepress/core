@@ -2,17 +2,24 @@ import {
   redirects as redirectsRaw,
   routes as routesRaw,
 } from '@internal/routes'
-import type {
-  PageChunk,
-  PageMetaDefault,
-  Redirects,
-  Route,
-  Routes,
-} from '@internal/routes'
+import type { PageData } from '@vuepress/shared'
 import { shallowRef } from 'vue'
-import type { Ref } from 'vue'
+import type { ComponentOptions, Ref } from 'vue'
 
-export type { PageMetaDefault, PageChunk, Redirects, Route, Routes }
+export interface PageChunk {
+  comp: ComponentOptions
+  data: PageData
+}
+
+export type PageMetaDefault = Record<string, unknown>
+
+export interface Route<PageMeta extends PageMetaDefault = PageMetaDefault> {
+  loader: () => Promise<PageChunk>
+  meta: PageMeta
+}
+
+export type Redirects = Record<string, string>
+export type Routes = Record<string, Route>
 
 /**
  * Global redirects ref
