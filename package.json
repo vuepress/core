@@ -28,28 +28,28 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
-    "@types/node": "^20.11.6",
+    "@types/node": "^20.11.16",
     "@types/webpack-env": "^1.18.4",
-    "@vitest/coverage-istanbul": "^1.2.1",
+    "@vitest/coverage-istanbul": "^1.2.2",
     "bumpp": "^9.3.0",
     "conventional-changelog-cli": "^4.1.0",
     "eslint": "^8.56.0",
     "eslint-config-vuepress": "^4.10.0",
     "eslint-config-vuepress-typescript": "^4.10.0",
     "eslint-plugin-cypress": "^2.15.1",
-    "husky": "^9.0.6",
-    "lint-staged": "^15.2.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
     "prettier": "^3.2.4",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
-    "sort-package-json": "^2.6.0",
+    "sort-package-json": "^2.7.0",
     "tsconfig-vuepress": "^4.5.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite": "~5.0.12",
-    "vitest": "^1.2.1"
+    "vitest": "^1.2.2"
   },
-  "packageManager": "pnpm@8.14.3",
+  "packageManager": "pnpm@8.15.1",
   "engines": {
     "node": ">=18.16.0"
   }
