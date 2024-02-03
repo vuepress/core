@@ -4,6 +4,7 @@ const testCases = [
     expected: {
       path: '/',
       meta: {},
+      notFound: false,
     },
   },
   {
@@ -11,6 +12,7 @@ const testCases = [
     expected: {
       path: '/router/resolve-route.html',
       meta: {},
+      notFound: false,
     },
   },
   {
@@ -18,6 +20,7 @@ const testCases = [
     expected: {
       path: encodeURI('/routes/non-ascii-paths/中文目录名/中文文件名.html'),
       meta: {},
+      notFound: false,
     },
   },
   {
@@ -25,13 +28,15 @@ const testCases = [
     expected: {
       path: encodeURI('/routes/non-ascii-paths/中文目录名/中文文件名.html'),
       meta: {},
+      notFound: false,
     },
   },
   {
     selector: '#non-existent',
     expected: {
       path: '/non-existent.html',
-      meta: { notFound: true },
+      meta: { foo: 'bar' },
+      notFound: true,
     },
   },
   {
@@ -39,6 +44,7 @@ const testCases = [
     expected: {
       path: '/page-data/route-meta.html',
       meta: { a: 0, b: 2, c: 3 },
+      notFound: false,
     },
   },
 ]
@@ -54,6 +60,7 @@ it('should resolve routes correctly', () => {
       const resolvedRoute = parseResolvedRouteFromElement(el)
       expect(resolvedRoute.path).to.equal(expected.path)
       expect(resolvedRoute.meta).to.deep.equal(expected.meta)
+      expect(resolvedRoute.notFound).to.equal(expected.notFound)
     })
   })
 })

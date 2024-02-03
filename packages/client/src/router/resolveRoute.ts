@@ -5,6 +5,7 @@ import { routes } from './routes.js'
 interface ResolvedRoute<PageMeta extends PageMetaDefault = PageMetaDefault>
   extends Route<PageMeta> {
   path: string
+  notFound: boolean
 }
 
 /**
@@ -16,10 +17,14 @@ export const resolveRoute = <
   path: string,
 ): ResolvedRoute<PageMeta> => {
   const routePath = resolveRoutePath(path)
-  const route = routes.value[routePath] || routes.value['/404.html']
+  const route = routes.value[routePath] ?? {
+    ...routes.value['/404.html'],
+    notFound: true,
+  }
 
   return {
-    ...route,
     path: routePath,
+    notFound: false,
+    ...route,
   } as ResolvedRoute<PageMeta>
 }
