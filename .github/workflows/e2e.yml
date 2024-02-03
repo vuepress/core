@@ -16,7 +16,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['18', '20']
-        bundler: ['vite', 'webpack']
 
     runs-on: ${{ matrix.os }}
 
@@ -57,37 +56,33 @@ jobs:
       - name: Build source files
         run: pnpm build
 
-      - name: E2E dev (base /)
-        working-directory: ./e2e
-        run: pnpm e2e:ci:dev
+      - name: E2E test (base /, webpack)
+        run: pnpm test:e2e
         env:
           E2E_BASE: /
-          E2E_BUNDLER: ${{ matrix.bundler }}
+          E2E_BUNDLER: webpack
           E2E_COMMAND: dev
 
-      - name: E2E dev (base /e2e/)
-        working-directory: ./e2e
-        run: pnpm e2e:ci:dev
-        env:
-          E2E_BASE: /e2e/
-          E2E_BUNDLER: ${{ matrix.bundler }}
-          E2E_COMMAND: dev
-
-      - name: E2E build (base /)
-        working-directory: ./e2e
-        run: pnpm e2e:ci:build
+      - name: E2E test (base /, vite)
+        run: pnpm test:e2e
         env:
           E2E_BASE: /
-          E2E_BUNDLER: ${{ matrix.bundler }}
-          E2E_COMMAND: build
+          E2E_BUNDLER: vite
+          E2E_COMMAND: dev
 
-      - name: E2E build (base /e2e/)
-        working-directory: ./e2e
-        run: pnpm e2e:ci:build
+      - name: E2E test (base /e2e/, webpack)
+        run: pnpm test:e2e
         env:
           E2E_BASE: /e2e/
-          E2E_BUNDLER: ${{ matrix.bundler }}
-          E2E_COMMAND: build
+          E2E_BUNDLER: webpack
+          E2E_COMMAND: dev
+
+      - name: E2E test (base /e2e/, vite)
+        run: pnpm test:e2e
+        env:
+          E2E_BASE: /e2e/
+          E2E_BUNDLER: vite
+          E2E_COMMAND: dev
 
   e2e-result:
     if: ${{ always() }}
