@@ -112,19 +112,19 @@ export type Page<
     componentFilePathRelative: string
 
     /**
-     * Page file path
+     * Chunk file path
      */
     chunkFilePath: string
 
     /**
-     * Page file path relative to temp directory
+     * Chunk file path relative to temp directory
      */
     chunkFilePathRelative: string
 
     /**
-     * Page file chunk name
+     * Chunk name
      *
-     * Only take effect in webpack
+     * This will only take effect in webpack
      */
     chunkName: string
 
