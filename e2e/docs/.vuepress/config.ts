@@ -49,7 +49,16 @@ export default defineUserConfig({
     },
   },
 
-  bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
+  bundler:
+    E2E_BUNDLER === 'webpack'
+      ? webpackBundler()
+      : viteBundler({
+          viteOptions: {
+            optimizeDeps: {
+              include: ['@vuepress-e2e/conditional-exports'],
+            },
+          },
+        }),
 
   theme: e2eTheme(),
 
