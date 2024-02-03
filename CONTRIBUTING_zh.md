@@ -69,7 +69,7 @@ pnpm build
 
 #### `pnpm test`
 
-`test` 命令使用 Vitest 来运行单元测试。
+`test` 命令使用 Vitest 来运行单元测试，使用 Cypress 来运行端到端测试。
 
 ## 端到端测试
 

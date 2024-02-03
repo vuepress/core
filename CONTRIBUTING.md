@@ -69,7 +69,7 @@ The `lint` script uses ESLint to check all source files.
 
 #### `pnpm test`
 
-The `test` script uses Vitest to run unit testings.
+The `test` script uses Vitest to run unit testings, and uses Cypress to run end-to-end testings.
 
 ## End-to-end Testing
 

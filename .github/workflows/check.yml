@@ -41,7 +41,7 @@ jobs:
         run: pnpm lint
 
       - name: Unit test
-        run: pnpm test
+        run: pnpm test:unit
 
   check-result:
     if: ${{ always() }}
