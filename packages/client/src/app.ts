@@ -28,8 +28,8 @@ export const createVueApp: CreateVueAppFunction = async () => {
       }
 
       // get all root components
-      const rootComponents = clientConfigs.flatMap(
-        ({ rootComponents = [] }) => rootComponents,
+      const rootComponents = clientConfigs.flatMap(({ rootComponents = [] }) =>
+        rootComponents.map((component) => h(component)),
       )
 
       // get page layout
