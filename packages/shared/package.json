@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0-rc.3",
   "description": "Utils that shared between VuePress node and client",
   "keywords": [
     "vuepress",

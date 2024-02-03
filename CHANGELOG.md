@@ -1,3 +1,22 @@
+# [2.0.0-rc.3](https://github.com/vuepress/core/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-02-03)
+
+
+### Features
+
+* **cli:** add link for troubleshooting docs ([5281a42](https://github.com/vuepress/core/commit/5281a42f8c4350ab20a731a6ccace4b6274502f4))
+
+
+### Performance Improvements
+
+* implement custom routes ([#1447](https://github.com/vuepress/core/issues/1447)) ([8ca0cc6](https://github.com/vuepress/core/commit/8ca0cc68455046a4dc6abafaf54b0db6aa4dd295))
+
+
+### BREAKING CHANGES
+
+* vue-router's route records have been replaced by custom route records to get better performance. It should not break common usage, but could be a potential breaking change for some themes. vue-router is suitable for SPAs, but not for static sites. It has a negative impact on the performance of vuepress sites, especially large-scale ones. In the long run we'll replace vue-router with a light-weighted custom router totally.
+
+
+
 # [2.0.0-rc.2](https://github.com/vuepress/core/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-01-26)
 
 
