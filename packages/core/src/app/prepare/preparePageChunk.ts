@@ -16,10 +16,10 @@ if (import.meta.hot) {
 `
 
 /**
- * Generate page temp file of a single page
+ * Generate page chunk temp file of a single page
  */
-export const preparePage = async (app: App, page: Page): Promise<void> => {
-  // page data file content
+export const preparePageChunk = async (app: App, page: Page): Promise<void> => {
+  // page chunk file content
   let content = `\
 import comp from ${JSON.stringify(page.componentFilePath)}
 const data = JSON.parse(${JSON.stringify(JSON.stringify(page.data))})

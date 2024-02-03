@@ -59,7 +59,7 @@ const resolvePageRedirects = ({
  * Generate routes temp file
  */
 export const prepareRoutes = async (app: App): Promise<void> => {
-  // generate page component map file
+  // routes file content
   let content = `\
 export const redirects = JSON.parse(${JSON.stringify(
     JSON.stringify(
