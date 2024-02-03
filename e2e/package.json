@@ -6,8 +6,8 @@
   "scripts": {
     "e2e:build": "cross-env E2E_COMMAND=build vuepress build docs --clean-cache --clean-temp",
     "e2e:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm e2e:build",
-    "e2e:ci:build": "pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:9080 e2e:run",
-    "e2e:ci:dev": "start-server-and-test e2e:dev http-get://127.0.0.1:9080 e2e:run",
+    "e2e:ci:build": "pnpm e2e:clean && pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:9080 e2e:run",
+    "e2e:ci:dev": "pnpm e2e:clean && start-server-and-test e2e:dev http-get://127.0.0.1:9080 e2e:run",
     "e2e:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "e2e:dev": "cross-env E2E_COMMAND=dev vuepress dev docs --clean-cache --clean-temp",
     "e2e:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm e2e:dev",
