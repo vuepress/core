@@ -1,7 +1,6 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
-import { RouterView } from 'vue-router'
-import { siteData } from './composables/index.js'
+import { siteData, usePageLayout } from './composables/index.js'
 import { createVueRouter } from './createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
 import { setupGlobalComputed } from './setupGlobalComputed.js'
@@ -17,7 +16,7 @@ const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 export const createVueApp: CreateVueAppFunction = async () => {
   // create vue app
   const app = appCreator({
-    name: 'VuepressApp',
+    name: 'Vuepress',
 
     setup() {
       // auto update head
@@ -28,8 +27,10 @@ export const createVueApp: CreateVueAppFunction = async () => {
         clientConfig.setup?.()
       }
 
+      const layout = usePageLayout()
+
       return () => [
-        h(RouterView),
+        h(layout.value),
         ...clientConfigs.flatMap(({ rootComponents = [] }) =>
           rootComponents.map((component) => h(component)),
         ),
