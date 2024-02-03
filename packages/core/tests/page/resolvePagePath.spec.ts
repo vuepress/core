@@ -16,7 +16,7 @@ const testCases: [
         },
       },
     ],
-    '/options/',
+    '/options',
   ],
   [
     [
@@ -51,7 +51,7 @@ const testCases: [
         options: {},
       },
     ],
-    '/permalink/',
+    '/permalink',
   ],
   [
     [
@@ -72,7 +72,7 @@ const testCases: [
         options: {},
       },
     ],
-    '/inferred/',
+    '/inferred',
   ],
   [
     [

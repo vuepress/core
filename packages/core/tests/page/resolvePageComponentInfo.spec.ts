@@ -13,13 +13,11 @@ describe('core > page > resolvePageComponentInfo', () => {
     const resolved = await resolvePageComponentInfo({
       app,
       htmlFilePathRelative: 'foo.html',
-      key: 'key',
     })
 
     expect(resolved).toEqual({
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
       componentFilePathRelative: 'pages/foo.html.vue',
-      componentFileChunkName: 'key',
     })
   })
 })

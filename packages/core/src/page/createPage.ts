@@ -1,13 +1,12 @@
 import type { App, Page, PageOptions } from '../types/index.js'
 import { inferPagePath } from './inferPagePath.js'
 import { renderPageContent } from './renderPageContent.js'
+import { resolvePageChunkInfo } from './resolvePageChunkInfo.js'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo.js'
-import { resolvePageDataInfo } from './resolvePageDataInfo.js'
 import { resolvePageDate } from './resolvePageDate.js'
 import { resolvePageFileContent } from './resolvePageFileContent.js'
 import { resolvePageFilePath } from './resolvePageFilePath.js'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
-import { resolvePageKey } from './resolvePageKey.js'
 import { resolvePageLang } from './resolvePageLang.js'
 import { resolvePagePath } from './resolvePagePath.js'
 import { resolvePagePermalink } from './resolvePagePermalink.js'
@@ -76,9 +75,6 @@ export const createPage = async (
   // resolve page path
   const path = resolvePagePath({ permalink, pathInferred, options })
 
-  // resolve page key
-  const key = resolvePageKey({ path })
-
   // resolve page rendered html file path
   const { htmlFilePath, htmlFilePathRelative } = resolvePageHtmlInfo({
     app,
@@ -86,23 +82,18 @@ export const createPage = async (
   })
 
   // resolve page component and extract headers & links
-  const {
-    componentFilePath,
-    componentFilePathRelative,
-    componentFileChunkName,
-  } = await resolvePageComponentInfo({
-    app,
-    htmlFilePathRelative,
-    key,
-  })
+  const { componentFilePath, componentFilePathRelative } =
+    await resolvePageComponentInfo({
+      app,
+      htmlFilePathRelative,
+    })
 
-  const { dataFilePath, dataFilePathRelative, dataFileChunkName } =
-    resolvePageDataInfo({ app, htmlFilePathRelative, key })
+  const { chunkFilePath, chunkFilePathRelative, chunkName } =
+    resolvePageChunkInfo({ app, htmlFilePathRelative })
 
   const page: Page = {
     // page data
     data: {
-      key,
       path,
       title,
       lang,
@@ -111,7 +102,6 @@ export const createPage = async (
     },
 
     // base fields
-    key,
     path,
     title,
     lang,
@@ -137,10 +127,9 @@ export const createPage = async (
     filePathRelative,
     componentFilePath,
     componentFilePathRelative,
-    componentFileChunkName,
-    dataFilePath,
-    dataFilePathRelative,
-    dataFileChunkName,
+    chunkFilePath,
+    chunkFilePathRelative,
+    chunkName,
     htmlFilePath,
     htmlFilePathRelative,
   }

@@ -1,6 +1,6 @@
 import type { PageData } from '@vuepress/shared'
 import type { InjectionKey, Ref } from 'vue'
-import { inject, readonly } from 'vue'
+import { inject } from 'vue'
 
 export type { PageData }
 
@@ -16,18 +16,6 @@ export type PageDataRef<T extends Record<any, any> = Record<never, never>> =
 export const pageDataSymbol: InjectionKey<PageDataRef> = Symbol(
   __VUEPRESS_DEV__ ? 'pageData' : '',
 )
-
-/**
- * Empty page data to be used as the fallback value
- */
-export const pageDataEmpty = readonly({
-  key: '',
-  path: '',
-  title: '',
-  lang: '',
-  frontmatter: {},
-  headers: [],
-} as PageData) as PageData
 
 /**
  * Returns the ref of the data of current page

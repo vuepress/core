@@ -52,4 +52,14 @@ export default defineUserConfig({
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: e2eTheme(),
+
+  extendsPage: (page) => {
+    if (page.path === '/page-data/route-meta.html') {
+      page.routeMeta = {
+        a: 1,
+        b: 2,
+        ...page.routeMeta,
+      }
+    }
+  },
 })

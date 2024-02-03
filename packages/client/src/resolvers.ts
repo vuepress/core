@@ -11,7 +11,6 @@ import type {
   SiteData,
   SiteLocaleData,
 } from './composables/index.js'
-import { pageDataEmpty, pagesData } from './composables/index.js'
 import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
 import type { ClientConfig, Layouts } from './types/index.js'
 
@@ -19,6 +18,8 @@ import type { ClientConfig, Layouts } from './types/index.js'
  * Resolver methods to get global computed
  *
  * Users can override corresponding method for advanced customization
+ *
+ * @experimental - This is an experimental API and may be changed in minor versions
  */
 export const resolvers = reactive({
   /**
@@ -32,15 +33,6 @@ export const resolvers = reactive({
       }),
       {} as Layouts,
     ),
-
-  /**
-   * Resolve page data according to page key
-   */
-  resolvePageData: async (pageKey: string): Promise<PageData> => {
-    const pageDataResolver = pagesData.value[pageKey]
-    const pageData = await pageDataResolver?.()
-    return pageData ?? pageDataEmpty
-  },
 
   /**
    * Resolve page frontmatter from page data

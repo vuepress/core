@@ -1,10 +1,8 @@
 import {
   createPage,
+  preparePageChunk,
   preparePageComponent,
-  preparePageData,
-  preparePagesComponents,
-  preparePagesData,
-  preparePagesRoutes,
+  prepareRoutes,
 } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
 
@@ -36,21 +34,15 @@ export const handlePageChange = async (
 
   // prepare page files
   await preparePageComponent(app, pageNew)
-  await preparePageData(app, pageNew)
+  await preparePageChunk(app, pageNew)
 
   const isPathChanged = pageOld.path !== pageNew.path
   const isRouteMetaChanged =
     JSON.stringify(pageOld.routeMeta) !== JSON.stringify(pageNew.routeMeta)
 
-  // prepare pages entry if the path is changed
-  if (isPathChanged) {
-    await preparePagesComponents(app)
-    await preparePagesData(app)
-  }
-
-  // prepare pages routes if the path or routeMeta is changed
+  // prepare routes file if the path or route meta is changed
   if (isPathChanged || isRouteMetaChanged) {
-    await preparePagesRoutes(app)
+    await prepareRoutes(app)
   }
 
   return [pageOld, pageNew]

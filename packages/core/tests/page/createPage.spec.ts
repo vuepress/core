@@ -29,7 +29,6 @@ describe('core > page > createPage', () => {
     })
 
     // page data
-    expect(page.data.key).toBeTruthy()
     expect(page.data.path).toBe('/')
     expect(page.data.lang).toBe('en-US')
     expect(page.data.title).toBe('')
@@ -37,7 +36,6 @@ describe('core > page > createPage', () => {
     expect(page.data.headers).toEqual([])
 
     // base fields
-    expect(page.key).toBeTruthy()
     expect(page.path).toBe('/')
     expect(page.lang).toBe('en-US')
     expect(page.title).toBe('')
@@ -80,14 +78,13 @@ describe('core > page > createPage', () => {
     expect(page.componentFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.vue`,
     )
-    expect(page.componentFileChunkName).toBe(page.key)
-    expect(page.dataFilePath).toBe(
+    expect(page.chunkFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
     )
-    expect(page.dataFilePathRelative).toBe(
+    expect(page.chunkFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.js`,
     )
-    expect(page.dataFileChunkName).toBe(page.key)
+    expect(page.chunkName).toBeTruthy()
   })
 
   it('should be extended by plugin correctly', async () => {

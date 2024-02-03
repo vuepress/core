@@ -1,6 +1,6 @@
 import { siteData as siteDataRaw } from '@internal/siteData'
 import type { SiteData } from '@vuepress/shared'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import type { Ref } from 'vue'
 
 export type { SiteData }
@@ -13,7 +13,7 @@ export type SiteDataRef = Ref<SiteData>
 /**
  * Global site data ref
  */
-export const siteData: SiteDataRef = ref(siteDataRaw)
+export const siteData: SiteDataRef = shallowRef(siteDataRaw)
 
 /**
  * Returns the ref of the site data

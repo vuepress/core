@@ -59,9 +59,7 @@
     "external": [
       "@internal/clientConfigs",
       "@internal/layoutComponents",
-      "@internal/pagesComponents",
-      "@internal/pagesData",
-      "@internal/pagesRoutes",
+      "@internal/routes",
       "@internal/siteData"
     ],
     "format": [

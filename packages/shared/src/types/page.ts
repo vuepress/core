@@ -8,15 +8,6 @@ export interface PageBase<
   ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
 > {
   /**
-   * Identifier of the page
-   *
-   * Will also be used as the component name
-   *
-   * @example 'v-foobar'
-   */
-  key: string
-
-  /**
    * Route path of the page
    *
    * Firstly inferred from the file path

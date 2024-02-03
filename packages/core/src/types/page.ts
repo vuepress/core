@@ -73,9 +73,7 @@ export type Page<
     permalink: string | null
 
     /**
-     * Custom data to be attached to the page route record of vue-router
-     *
-     * @see https://router.vuejs.org/api/#meta
+     * Custom data to be attached to route record
      */
     routeMeta: Record<string, unknown>
 
@@ -114,28 +112,21 @@ export type Page<
     componentFilePathRelative: string
 
     /**
-     * Component file chunk name
+     * Chunk file path
+     */
+    chunkFilePath: string
+
+    /**
+     * Chunk file path relative to temp directory
+     */
+    chunkFilePathRelative: string
+
+    /**
+     * Chunk name
      *
-     * Only take effect in webpack
+     * This will only take effect in webpack
      */
-    componentFileChunkName: string
-
-    /**
-     * Page data file path
-     */
-    dataFilePath: string
-
-    /**
-     * Page data file path relative to temp directory
-     */
-    dataFilePathRelative: string
-
-    /**
-     * Page data file chunk name
-     *
-     * Only take effect in webpack
-     */
-    dataFileChunkName: string
+    chunkName: string
 
     /**
      * Rendered html file path
