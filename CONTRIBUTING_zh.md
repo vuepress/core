@@ -89,10 +89,10 @@ e2e 站点就是一个正常的 VuePress 项目，你可以在其中运行 `dev`
 
 ```bash
 # 启动开发服务器
-pnpm e2e:dev
+pnpm docs:dev
 # 构建静态站点并启动预览服务器
-pnpm e2e:build
-pnpm e2e:serve
+pnpm docs:build
+pnpm docs:serve
 ```
 
 ### 运行 E2E 测试
@@ -101,18 +101,18 @@ pnpm e2e:serve
 
 ```bash
 # 启动 Cypress 图形界面
-pnpm e2e:open
+pnpm cy:open
 # 或者，直接在命令行中运行测试
-pnpm e2e:run
+pnpm cy:run
 ```
 
-如果你不想在两个不同终端内启动服务器和运行测试，你可以使用 CI 命令，用单条命令来完成这两个操作：
+如果你不想在两个不同终端内启动服务器和运行测试，你可以使用如下命令：
 
 ```bash
 # 在开发模式下运行 e2e 测试
-pnpm e2e:ci:dev
+pnpm e2e:dev
 # 在构建模式下运行 e2e 测试
-pnpm e2e:ci:build
+pnpm e2e:build
 ```
 
 ## 项目仓库

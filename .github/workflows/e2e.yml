@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
 jobs:
   e2e:
     strategy:
@@ -57,28 +60,28 @@ jobs:
         run: pnpm build
 
       - name: E2E test (base /, webpack)
-        run: pnpm test:e2e
+        run: pnpm test:e2e:ci
         env:
           E2E_BASE: /
           E2E_BUNDLER: webpack
           E2E_COMMAND: dev
 
       - name: E2E test (base /, vite)
-        run: pnpm test:e2e
+        run: pnpm test:e2e:ci
         env:
           E2E_BASE: /
           E2E_BUNDLER: vite
           E2E_COMMAND: dev
 
       - name: E2E test (base /e2e/, webpack)
-        run: pnpm test:e2e
+        run: pnpm test:e2e:ci
         env:
           E2E_BASE: /e2e/
           E2E_BUNDLER: webpack
           E2E_COMMAND: dev
 
       - name: E2E test (base /e2e/, vite)
-        run: pnpm test:e2e
+        run: pnpm test:e2e:ci
         env:
           E2E_BASE: /e2e/
           E2E_BUNDLER: vite
