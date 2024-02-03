@@ -16,6 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['18', '20']
+        bundler: ['webpack', 'vite']
 
     runs-on: ${{ matrix.os }}
 
@@ -59,33 +60,17 @@ jobs:
       - name: Build source files
         run: pnpm build
 
-      - name: E2E test (base /, webpack)
+      - name: E2E test (base /)
         run: pnpm test:e2e:ci
         env:
           E2E_BASE: /
-          E2E_BUNDLER: webpack
-          E2E_COMMAND: dev
+          E2E_BUNDLER: ${{ matrix.bundler }}
 
-      - name: E2E test (base /, vite)
-        run: pnpm test:e2e:ci
-        env:
-          E2E_BASE: /
-          E2E_BUNDLER: vite
-          E2E_COMMAND: dev
-
-      - name: E2E test (base /e2e/, webpack)
+      - name: E2E test (base /e2e/)
         run: pnpm test:e2e:ci
         env:
           E2E_BASE: /e2e/
-          E2E_BUNDLER: webpack
-          E2E_COMMAND: dev
-
-      - name: E2E test (base /e2e/, vite)
-        run: pnpm test:e2e:ci
-        env:
-          E2E_BASE: /e2e/
-          E2E_BUNDLER: vite
-          E2E_COMMAND: dev
+          E2E_BUNDLER: ${{ matrix.bundler }}
 
   e2e-result:
     if: ${{ !cancelled() }}
