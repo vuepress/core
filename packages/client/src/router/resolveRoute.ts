@@ -16,10 +16,10 @@ export const resolveRoute = <
   path: string,
 ): ResolvedRoute<PageMeta> => {
   const routePath = resolveRoutePath(path)
-  const pageMapItem = routes.value[routePath] || routes.value['/404.html']
+  const route = routes.value[routePath] || routes.value['/404.html']
 
   return {
-    ...(pageMapItem as ResolvedRoute<PageMeta>),
+    ...route,
     path: routePath,
-  }
+  } as ResolvedRoute<PageMeta>
 }
