@@ -39,8 +39,9 @@ it('vp-link', () => {
 
   cy.get(`.e2e-theme-content #active + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
-      if (index < 2) cy.get('a').should('have.attr', 'class', /vp-link-active/)
-      else cy.get('a').should('not.have.attr', 'class', /vp-link-active/)
+      if (index < 2)
+        cy.get('a').should('have.attr', 'class', 'vp-link vp-link-active')
+      else cy.get('a').should('not.have.attr', 'class', 'vp-link')
       cy.get('a').should('have.text', 'text')
     })
   })
