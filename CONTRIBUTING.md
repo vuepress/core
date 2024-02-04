@@ -69,7 +69,7 @@ The `lint` script uses ESLint to check all source files.
 
 #### `pnpm test`
 
-The `test` script uses Vitest to run unit testings.
+The `test` script uses Vitest to run unit testings, and uses Cypress to run end-to-end testings.
 
 ## End-to-end Testing
 
@@ -89,10 +89,10 @@ The e2e site is a normal VuePress setup, you can run `dev` and `build` commands 
 
 ```bash
 # start dev server
-pnpm e2e:dev
+pnpm docs:dev
 # build and start preview server
-pnpm e2e:build
-pnpm e2e:serve
+pnpm docs:build
+pnpm docs:serve
 ```
 
 ### Run E2E Tests
@@ -101,18 +101,18 @@ After starting a dev server or a preview server, you can run e2e tests in anothe
 
 ```bash
 # open Cypress GUI
-pnpm e2e:open
+pnpm cy:open
 # or, run tests in command line
-pnpm e2e:run
+pnpm cy:run
 ```
 
-If you don't want to start a server and run tests in two different terminals, you can make use of the CI commands to do both in one command:
+If you don't want to start a server and run tests in two different terminals, you can make use of the following commands:
 
 ```bash
 # run e2e tests in dev mode
-pnpm e2e:ci:dev
+pnpm e2e:dev
 # run e2e tests in build mode
-pnpm e2e:ci:build
+pnpm e2e:build
 ```
 
 ## Repositories

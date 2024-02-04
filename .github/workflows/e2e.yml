@@ -16,10 +16,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['18', '20']
-        base: ['/', '/e2e/']
-        bundler: ['vite', 'webpack']
+        bundler: ['webpack', 'vite']
 
     runs-on: ${{ matrix.os }}
+
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
     steps:
       - uses: actions/checkout@v4
@@ -58,24 +60,20 @@ jobs:
       - name: Build source files
         run: pnpm build
 
-      - name: E2E dev
-        working-directory: ./e2e
-        run: pnpm e2e:ci:dev
+      - name: E2E test (base /)
+        run: pnpm test:e2e:ci
         env:
-          E2E_BASE: ${{ matrix.base }}
+          E2E_BASE: /
           E2E_BUNDLER: ${{ matrix.bundler }}
-          E2E_COMMAND: dev
 
-      - name: E2E build
-        working-directory: ./e2e
-        run: pnpm e2e:ci:build
+      - name: E2E test (base /e2e/)
+        run: pnpm test:e2e:ci
         env:
-          E2E_BASE: ${{ matrix.base }}
+          E2E_BASE: /e2e/
           E2E_BUNDLER: ${{ matrix.bundler }}
-          E2E_COMMAND: build
 
   e2e-result:
-    if: ${{ always() }}
+    if: ${{ !cancelled() }}
     name: e2e result
     runs-on: ubuntu-latest
     needs: [e2e]

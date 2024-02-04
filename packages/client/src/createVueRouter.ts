@@ -6,7 +6,6 @@ import {
   createWebHistory,
   START_LOCATION,
 } from 'vue-router'
-import { Vuepress } from './components/Vuepress.js'
 import type { PageData } from './composables/index.js'
 import { resolveRoute } from './router/index.js'
 
@@ -27,7 +26,7 @@ export const createVueRouter = (): Router => {
       {
         name: 'vuepress-route',
         path: '/:catchAll(.*)',
-        component: Vuepress,
+        components: {},
       },
     ],
     scrollBehavior: (to, _from, savedPosition) => {

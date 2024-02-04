@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/monorepo",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,14 +10,16 @@
     "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
     "lint:fix": "eslint --fix --ext .cjs,.js,.ts,.vue . && prettier --write .",
     "prepare": "husky",
-    "release": "pnpm release:check && pnpm release:e2e && pnpm release:version && pnpm release:publish",
+    "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
-    "release:e2e": "pnpm --filter e2e e2e:ci:dev && pnpm --filter e2e e2e:ci:build",
     "release:publish": "pnpm -r publish --tag next",
     "release:version": "bumpp -r --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all",
-    "test": "vitest run",
-    "test:cov": "vitest run --coverage"
+    "test": "pnpm test:unit && pnpm test:e2e",
+    "test:e2e": "pnpm --filter e2e e2e:dev && pnpm --filter e2e e2e:build",
+    "test:e2e:ci": "pnpm --filter e2e ci:dev && pnpm --filter e2e ci:build",
+    "test:unit": "vitest run",
+    "test:unit:cov": "vitest run --coverage"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",

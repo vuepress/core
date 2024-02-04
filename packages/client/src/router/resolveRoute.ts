@@ -1,9 +1,8 @@
+import type { Route, RouteMeta } from '../types/index.js'
 import { resolveRoutePath } from './resolveRoutePath.js'
-import type { PageMetaDefault, Route } from './routes.js'
 import { routes } from './routes.js'
 
-interface ResolvedRoute<PageMeta extends PageMetaDefault = PageMetaDefault>
-  extends Route<PageMeta> {
+interface ResolvedRoute<T extends RouteMeta = RouteMeta> extends Route<T> {
   path: string
   notFound: boolean
 }
@@ -11,11 +10,9 @@ interface ResolvedRoute<PageMeta extends PageMetaDefault = PageMetaDefault>
 /**
  * Resolve route with given path
  */
-export const resolveRoute = <
-  PageMeta extends PageMetaDefault = PageMetaDefault,
->(
+export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   path: string,
-): ResolvedRoute<PageMeta> => {
+): ResolvedRoute<T> => {
   const routePath = resolveRoutePath(path)
   const route = routes.value[routePath] ?? {
     ...routes.value['/404.html'],
@@ -26,5 +23,5 @@ export const resolveRoute = <
     path: routePath,
     notFound: false,
     ...route,
-  } as ResolvedRoute<PageMeta>
+  } as ResolvedRoute<T>
 }

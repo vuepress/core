@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+import RootComponentFromTheme from './components/RootComponentFromTheme.vue'
 import CustomLayout from './layouts/CustomLayout.vue'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
@@ -19,4 +20,6 @@ export default defineClientConfig({
     Layout,
     NotFound,
   },
+
+  rootComponents: [RootComponentFromTheme],
 })

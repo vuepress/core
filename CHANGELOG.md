@@ -1,3 +1,12 @@
+# [2.0.0-rc.4](https://github.com/vuepress/core/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-02-03)
+
+
+### Bug Fixes
+
+* **client:** fix routes types ([a290295](https://github.com/vuepress/core/commit/a29029563ec9902e79a9a8a3f6d24bbd7b119155))
+
+
+
 # [2.0.0-rc.3](https://github.com/vuepress/core/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-02-03)
 
 
