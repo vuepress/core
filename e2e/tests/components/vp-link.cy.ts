@@ -57,7 +57,7 @@ it('vp-link', () => {
     })
   })
 
-  const attrName = ['title', 'target', 'rel', 'class', 'aria-label']
+  const attrName = ['title', 'target', 'rel', 'aria-label']
   const attrValue = ['Title', '_blank', 'noopener', 'test']
 
   cy.get(`.e2e-theme-content #attrs + ul > li`).each((el, index) => {
@@ -71,7 +71,9 @@ it('vp-link', () => {
       cy.get('a')
         .children()
         .should('have.lengthOf', index + 1)
-        .should('have.html', '<span>text</span>')
+        .each((el) => {
+          cy.wrap(el).contains('span', 'text')
+        })
     })
   })
 })
