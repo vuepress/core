@@ -178,12 +178,12 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="foo/bar.html#hash">foobar2</a>',
             '<a href="../foo/bar.html">foobar3</a>',
             '<a href="../foo/bar.html#hash">foobar4</a>',
-            '<a href="">index1</a>',
-            '<a href="#hash">index2</a>',
-            '<a href="">index3</a>',
+            '<a href="index.html">index1</a>',
+            '<a href="index.html#hash">index2</a>',
+            '<a href="index.html">index3</a>',
             '<a href="../">index4</a>',
             '<a href="../foo/bar/">index5</a>',
-            '<a href="">readme1</a>',
+            '<a href="index.html">readme1</a>',
             '<a href="../#hash">readme2</a>',
             '<a href="../foo/bar/">readme3</a>',
           ]
@@ -303,12 +303,12 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<VPLink to="foo/bar.html#hash">foobar2</VPLink>',
             '<VPLink to="../foo/bar.html">foobar3</VPLink>',
             '<VPLink to="../foo/bar.html#hash">foobar4</VPLink>',
-            '<VPLink to="">index1</VPLink>',
-            '<VPLink to="#hash">index2</VPLink>',
-            '<VPLink to="">index3</VPLink>',
+            '<VPLink to="index.html">index1</VPLink>',
+            '<VPLink to="index.html#hash">index2</VPLink>',
+            '<VPLink to="index.html">index3</VPLink>',
             '<VPLink to="../">index4</VPLink>',
             '<VPLink to="../foo/bar/">index5</VPLink>',
-            '<VPLink to="">readme1</VPLink>',
+            '<VPLink to="index.html">readme1</VPLink>',
             '<VPLink to="../#hash">readme2</VPLink>',
             '<VPLink to="../foo/bar/">readme3</VPLink>',
           ]
@@ -814,7 +814,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           [
             '<VPLink to="/path/to/">md</VPLink>',
             '<VPLink to="/base/path/to/">md-with-redundant-base</VPLink>',
-            '<VPLink to="/path/to/index.html">html</VPLink>',
+            '<VPLink to="/path/to/">html</VPLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',

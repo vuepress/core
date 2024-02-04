@@ -1,4 +1,4 @@
-import { isLinkExternal } from '@vuepress/shared'
+import { isLinkExternal, normalizeRoutePath } from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.js'
 import type { MarkdownEnv } from '../../types.js'
@@ -113,10 +113,9 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     //
     // '/foo/index.md' => '/foo/'
     // '/foo/bar.md' => '/foo/bar.html'
-    const normalizedPath = absolutePath
-      .replace(new RegExp(`^${base}`), '/')
-      .replace(/(^|\/)(README|index).md$/i, '$1')
-      .replace(/\.md$/, '.html')
+    const normalizedPath = normalizeRoutePath(
+      absolutePath.replace(new RegExp(`^${base}`), '/'),
+    )
 
     if (['RouterLink', 'VPLink'].includes(internalTag)) {
       // convert starting tag of internal link to `internalTag`
