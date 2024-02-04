@@ -2,15 +2,27 @@
  * Normalize the given path to the final route path
  */
 export const normalizeRoutePath = (path: string): string => {
-  const convertedMdPath = path.endsWith('README.md')
-    ? path.substring(0, path.length - 9)
-    : path.endsWith('.md')
-      ? path.substring(0, path.length - 3) + '.html'
-      : path
+  if (!path || path.endsWith('/')) {
+    return path
+  }
 
-  return convertedMdPath.endsWith('/index.html')
-    ? convertedMdPath.substring(0, convertedMdPath.length - 10)
-    : convertedMdPath.endsWith('.html') || convertedMdPath.endsWith('/')
-      ? convertedMdPath
-      : convertedMdPath + '.html'
+  // convert README.md to index.html
+  let routePath = path.replace(/(^|\/)README.md$/i, '$1index.html')
+
+  // convert /foo/bar.md to /foo/bar.html
+  if (routePath.endsWith('.md')) {
+    routePath = routePath.substring(0, routePath.length - 3) + '.html'
+  }
+
+  // convert /foo/bar to /foo/bar.html
+  if (!routePath.endsWith('.html')) {
+    routePath = routePath + '.html'
+  }
+
+  // convert /foo/index.html to /foo/
+  if (routePath.endsWith('/index.html')) {
+    return routePath.substring(0, routePath.length - 10)
+  }
+
+  return routePath
 }
