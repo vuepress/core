@@ -41,13 +41,24 @@ it('vp-link', () => {
     cy.wrap(el).within(() => {
       if (index < 2)
         cy.get('a').should('have.attr', 'class', 'vp-link vp-link-active')
-      else cy.get('a').should('not.have.attr', 'class', 'vp-link')
+      else cy.get('a').should('have.attr', 'class', 'vp-link')
+      cy.get('a').should('have.text', 'text')
+    })
+  })
+
+  const classResults = [
+    'vp-link custom-class',
+    'vp-link vp-link-active custom-class',
+  ]
+  cy.get(`.e2e-theme-content #class + ul > li`).each((el, index) => {
+    cy.wrap(el).within(() => {
+      cy.get('a').should('have.attr', 'class', classResults[index])
       cy.get('a').should('have.text', 'text')
     })
   })
 
   const attrName = ['title', 'target', 'rel', 'class', 'aria-label']
-  const attrValue = ['Title', '_blank', 'noopener', 'vp-link-active', 'test']
+  const attrValue = ['Title', '_blank', 'noopener', 'test']
 
   cy.get(`.e2e-theme-content #attrs + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
