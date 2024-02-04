@@ -20,9 +20,6 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    env:
-      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -61,13 +58,13 @@ jobs:
         run: pnpm build
 
       - name: E2E test (base /)
-        run: pnpm test:e2e:ci
+        run: pnpm test:e2e
         env:
           E2E_BASE: /
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E test (base /e2e/)
-        run: pnpm test:e2e:ci
+        run: pnpm test:e2e
         env:
           E2E_BASE: /e2e/
           E2E_BUNDLER: ${{ matrix.bundler }}
