@@ -4,11 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "ci:build": "pnpm docs:clean && pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run:record",
-    "ci:dev": "pnpm docs:clean && start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run:record",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:run:record": "cypress run --record",
     "docs:build": "cross-env E2E_COMMAND=build vuepress build docs --clean-cache --clean-temp",
     "docs:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
