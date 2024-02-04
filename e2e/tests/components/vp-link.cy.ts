@@ -1,16 +1,18 @@
 it('vp-link', () => {
+  const E2E_BASE = Cypress.env('E2E_BASE')
+
   cy.visit('/components/vp-link.html')
 
   cy.get(`.e2e-theme-content #home-page + ul > li`).each((el) => {
     cy.wrap(el).within(() => {
-      cy.get('a').should('have.attr', 'href', '/')
+      cy.get('a').should('have.attr', 'href', E2E_BASE)
       cy.get('a').should('have.text', 'text')
     })
   })
 
   cy.get(`.e2e-theme-content #not-exist + ul > li`).each((el) => {
     cy.wrap(el).within(() => {
-      cy.get('a').should('have.attr', 'href', '/non-existent.html')
+      cy.get('a').should('have.attr', 'href', `${E2E_BASE}non-existent.html`)
       cy.get('a').should('have.text', 'text')
     })
   })
@@ -20,7 +22,9 @@ it('vp-link', () => {
       cy.get('a').should(
         'have.attr',
         'href',
-        encodeURI('/routes/non-ascii-paths/中文目录名/中文文件名.html'),
+        encodeURI(
+          `${E2E_BASE}routes/non-ascii-paths/中文目录名/中文文件名.html`,
+        ),
       )
       cy.get('a').should('have.text', 'text')
     })
@@ -31,7 +35,9 @@ it('vp-link', () => {
       cy.get('a').should(
         'have.attr',
         'href',
-        encodeURI('/routes/non-ascii-paths/中文目录名/中文文件名.html'),
+        encodeURI(
+          `${E2E_BASE}routes/non-ascii-paths/中文目录名/中文文件名.html`,
+        ),
       )
       cy.get('a').should('have.text', 'text')
     })
