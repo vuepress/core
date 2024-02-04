@@ -25,6 +25,7 @@ const guardEvent = (event: MouseEvent): boolean | void => {
 
 export interface VPLinkProps extends HTMLAttributes {
   to: string
+  active?: boolean
 }
 
 export const VPLink: FunctionalComponent<
@@ -33,14 +34,14 @@ export const VPLink: FunctionalComponent<
   {
     default: () => string | VNode | (string | VNode)[]
   }
-> = ({ to = '', ...attrs }, { slots }) => {
+> = ({ to = '', active = false, ...attrs }, { slots }) => {
   const router = useRouter()
   const path = withBase(resolveRoutePath(to))
 
   return h(
     'a',
     {
-      class: 'vp-link',
+      class: ['vp-link', { 'vp-link-active': active }],
       href: path,
       ...attrs,
       onClick: (event: MouseEvent = {} as MouseEvent) => {
@@ -52,3 +53,7 @@ export const VPLink: FunctionalComponent<
 }
 
 VPLink.displayName = 'VPLink'
+VPLink.props = {
+  to: String,
+  active: Boolean,
+}
