@@ -8,9 +8,9 @@ export interface LinksPluginOptions {
   /**
    * Tag for internal links
    *
-   * @default 'VPLink'
+   * @default 'RouteLink'
    */
-  internalTag?: 'a' | 'VPLink' | 'RouterLink'
+  internalTag?: 'a' | 'RouteLink' | 'RouterLink'
 
   /**
    * Additional attributes for external links
@@ -29,15 +29,15 @@ export interface LinksPluginOptions {
 /**
  * Process links in markdown file
  *
- * - internal links: convert them into `<VPLink>`
- * - external links: add extra attrs and external icon
+ * - internal links: convert `<a>` tag into internalTag
+ * - external links: add extra attrs
  */
 export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   md,
   options: LinksPluginOptions = {},
 ): void => {
   // tag of internal links
-  const internalTag = options.internalTag || 'VPLink'
+  const internalTag = options.internalTag || 'RouteLink'
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -93,7 +93,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // convert
     // <a href="hrefLink">
     // to
-    // <VPLink to="toProp">
+    // <RouteLink to="toProp">
 
     // notice that the path and hash are encoded by markdown-it
     const rawPath = internalLinkMatch[1]
@@ -106,27 +106,25 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       filePathRelative,
     )
 
-    // normalize markdown file path to route path
-    //
-    // we are removing the `base` from absolute path because it should not be
-    // passed to `<VPLink>`
-    //
-    // '/foo/index.md' => '/foo/'
-    // '/foo/bar.md' => '/foo/bar.html'
-    const normalizedPath = normalizeRoutePath(
-      absolutePath.replace(new RegExp(`^${base}`), '/'),
-    )
-
-    if (['RouterLink', 'VPLink'].includes(internalTag)) {
+    if (['RouterLink', 'RouteLink'].includes(internalTag)) {
       // convert starting tag of internal link to `internalTag`
       token.tag = internalTag
       // replace the original `href` attr with `to` attr
       hrefAttr[0] = 'to'
+      // normalize markdown file path to route path
+      // we are removing the `base` from absolute path because it should not be
+      // passed to `<RouteLink>` or `<RouterLink>`
+      const normalizedPath = normalizeRoutePath(
+        absolutePath.replace(new RegExp(`^${base}`), '/'),
+      )
+      // replace the original href link with the normalized path
+      hrefAttr[1] = `${normalizedPath}${rawHash}`
       // set `hasOpenInternalLink` to modify the ending tag
       hasOpenInternalLink = true
+    } else {
+      const normalizedPath = normalizeRoutePath(absolutePath)
+      hrefAttr[1] = `${normalizedPath}${rawHash}`
     }
-
-    hrefAttr[1] = `${normalizedPath}${rawHash}`
 
     // extract internal links for file / page existence check
     ;(env.links ??= []).push({

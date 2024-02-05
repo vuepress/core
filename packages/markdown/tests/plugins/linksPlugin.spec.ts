@@ -293,24 +293,24 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<VPLink to="foo.html">foo1</VPLink>',
-            '<VPLink to="foo.html#hash">foo2</VPLink>',
-            '<VPLink to="foo.html">foo3</VPLink>',
-            '<VPLink to="../bar.html">bar1</VPLink>',
-            '<VPLink to="../bar.html#hash">bar2</VPLink>',
-            '<VPLink to="../bar.html">bar3</VPLink>',
-            '<VPLink to="foo/bar.html">foobar1</VPLink>',
-            '<VPLink to="foo/bar.html#hash">foobar2</VPLink>',
-            '<VPLink to="../foo/bar.html">foobar3</VPLink>',
-            '<VPLink to="../foo/bar.html#hash">foobar4</VPLink>',
-            '<VPLink to="index.html">index1</VPLink>',
-            '<VPLink to="index.html#hash">index2</VPLink>',
-            '<VPLink to="index.html">index3</VPLink>',
-            '<VPLink to="../">index4</VPLink>',
-            '<VPLink to="../foo/bar/">index5</VPLink>',
-            '<VPLink to="index.html">readme1</VPLink>',
-            '<VPLink to="../#hash">readme2</VPLink>',
-            '<VPLink to="../foo/bar/">readme3</VPLink>',
+            '<RouteLink to="foo.html">foo1</RouteLink>',
+            '<RouteLink to="foo.html#hash">foo2</RouteLink>',
+            '<RouteLink to="foo.html">foo3</RouteLink>',
+            '<RouteLink to="../bar.html">bar1</RouteLink>',
+            '<RouteLink to="../bar.html#hash">bar2</RouteLink>',
+            '<RouteLink to="../bar.html">bar3</RouteLink>',
+            '<RouteLink to="foo/bar.html">foobar1</RouteLink>',
+            '<RouteLink to="foo/bar.html#hash">foobar2</RouteLink>',
+            '<RouteLink to="../foo/bar.html">foobar3</RouteLink>',
+            '<RouteLink to="../foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="index.html">index1</RouteLink>',
+            '<RouteLink to="index.html#hash">index2</RouteLink>',
+            '<RouteLink to="index.html">index3</RouteLink>',
+            '<RouteLink to="../">index4</RouteLink>',
+            '<RouteLink to="../foo/bar/">index5</RouteLink>',
+            '<RouteLink to="index.html">readme1</RouteLink>',
+            '<RouteLink to="../#hash">readme2</RouteLink>',
+            '<RouteLink to="../foo/bar/">readme3</RouteLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
@@ -420,24 +420,24 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<VPLink to="/path/to/foo.html">foo1</VPLink>',
-            '<VPLink to="/path/to/foo.html#hash">foo2</VPLink>',
-            '<VPLink to="/path/to/foo.html">foo3</VPLink>',
-            '<VPLink to="/path/bar.html">bar1</VPLink>',
-            '<VPLink to="/path/bar.html#hash">bar2</VPLink>',
-            '<VPLink to="/path/bar.html">bar3</VPLink>',
-            '<VPLink to="/path/to/foo/bar.html">foobar1</VPLink>',
-            '<VPLink to="/path/to/foo/bar.html#hash">foobar2</VPLink>',
-            '<VPLink to="/path/foo/bar.html">foobar3</VPLink>',
-            '<VPLink to="/path/foo/bar.html#hash">foobar4</VPLink>',
-            '<VPLink to="/path/to/">index1</VPLink>',
-            '<VPLink to="/path/to/#hash">index2</VPLink>',
-            '<VPLink to="/path/to/">index3</VPLink>',
-            '<VPLink to="/path/">index4</VPLink>',
-            '<VPLink to="/path/foo/bar/">index5</VPLink>',
-            '<VPLink to="/path/to/">readme1</VPLink>',
-            '<VPLink to="/path/#hash">readme2</VPLink>',
-            '<VPLink to="/path/foo/bar/">readme3</VPLink>',
+            '<RouteLink to="/path/to/foo.html">foo1</RouteLink>',
+            '<RouteLink to="/path/to/foo.html#hash">foo2</RouteLink>',
+            '<RouteLink to="/path/to/foo.html">foo3</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar1</RouteLink>',
+            '<RouteLink to="/path/bar.html#hash">bar2</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar3</RouteLink>',
+            '<RouteLink to="/path/to/foo/bar.html">foobar1</RouteLink>',
+            '<RouteLink to="/path/to/foo/bar.html#hash">foobar2</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html">foobar3</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="/path/to/">index1</RouteLink>',
+            '<RouteLink to="/path/to/#hash">index2</RouteLink>',
+            '<RouteLink to="/path/to/">index3</RouteLink>',
+            '<RouteLink to="/path/">index4</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">index5</RouteLink>',
+            '<RouteLink to="/path/to/">readme1</RouteLink>',
+            '<RouteLink to="/path/#hash">readme2</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">readme3</RouteLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
@@ -549,24 +549,24 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            `<VPLink to="/${encoded中}/${encoded文}/foo.html">foo1</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/foo.html#hash">foo2</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/foo.html">foo3</VPLink>`,
-            `<VPLink to="/${encoded中}/bar.html">bar1</VPLink>`,
-            `<VPLink to="/${encoded中}/bar.html#hash">bar2</VPLink>`,
-            `<VPLink to="/${encoded中}/bar.html">bar3</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/foo/bar.html">foobar1</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/foo/bar.html#hash">foobar2</VPLink>`,
-            `<VPLink to="/${encoded中}/foo/bar.html">foobar3</VPLink>`,
-            `<VPLink to="/${encoded中}/foo/bar.html#hash">foobar4</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/">index1</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/#hash">index2</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/">index3</VPLink>`,
-            `<VPLink to="/${encoded中}/">index4</VPLink>`,
-            `<VPLink to="/${encoded中}/foo/bar/">index5</VPLink>`,
-            `<VPLink to="/${encoded中}/${encoded文}/">readme1</VPLink>`,
-            `<VPLink to="/${encoded中}/#hash">readme2</VPLink>`,
-            `<VPLink to="/${encoded中}/foo/bar/">readme3</VPLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo.html">foo1</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo.html#hash">foo2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo.html">foo3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/bar.html">bar1</RouteLink>`,
+            `<RouteLink to="/${encoded中}/bar.html#hash">bar2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/bar.html">bar3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo/bar.html">foobar1</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo/bar.html#hash">foobar2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar.html">foobar3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar.html#hash">foobar4</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/">index1</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/#hash">index2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/">index3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/">index4</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar/">index5</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/">readme1</RouteLink>`,
+            `<RouteLink to="/${encoded中}/#hash">readme2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar/">readme3</RouteLink>`,
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
@@ -677,24 +677,24 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<VPLink to="/path/to/foo.html">foo1</VPLink>',
-            '<VPLink to="/path/to/foo.html#hash">foo2</VPLink>',
-            '<VPLink to="/path/to/foo.html">foo3</VPLink>',
-            '<VPLink to="/path/bar.html">bar1</VPLink>',
-            '<VPLink to="/path/bar.html#hash">bar2</VPLink>',
-            '<VPLink to="/path/bar.html">bar3</VPLink>',
-            '<VPLink to="/path/to/foo/bar.html">foobar1</VPLink>',
-            '<VPLink to="/path/to/foo/bar.html#hash">foobar2</VPLink>',
-            '<VPLink to="/path/foo/bar.html">foobar3</VPLink>',
-            '<VPLink to="/path/foo/bar.html#hash">foobar4</VPLink>',
-            '<VPLink to="/path/to/">index1</VPLink>',
-            '<VPLink to="/path/to/#hash">index2</VPLink>',
-            '<VPLink to="/path/to/">index3</VPLink>',
-            '<VPLink to="/path/">index4</VPLink>',
-            '<VPLink to="/path/foo/bar/">index5</VPLink>',
-            '<VPLink to="/path/to/">readme1</VPLink>',
-            '<VPLink to="/path/#hash">readme2</VPLink>',
-            '<VPLink to="/path/foo/bar/">readme3</VPLink>',
+            '<RouteLink to="/path/to/foo.html">foo1</RouteLink>',
+            '<RouteLink to="/path/to/foo.html#hash">foo2</RouteLink>',
+            '<RouteLink to="/path/to/foo.html">foo3</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar1</RouteLink>',
+            '<RouteLink to="/path/bar.html#hash">bar2</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar3</RouteLink>',
+            '<RouteLink to="/path/to/foo/bar.html">foobar1</RouteLink>',
+            '<RouteLink to="/path/to/foo/bar.html#hash">foobar2</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html">foobar3</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="/path/to/">index1</RouteLink>',
+            '<RouteLink to="/path/to/#hash">index2</RouteLink>',
+            '<RouteLink to="/path/to/">index3</RouteLink>',
+            '<RouteLink to="/path/">index4</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">index5</RouteLink>',
+            '<RouteLink to="/path/to/">readme1</RouteLink>',
+            '<RouteLink to="/path/#hash">readme2</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">readme3</RouteLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
@@ -812,9 +812,48 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<VPLink to="/path/to/">md</VPLink>',
-            '<VPLink to="/base/path/to/">md-with-redundant-base</VPLink>',
-            '<VPLink to="/path/to/">html</VPLink>',
+            '<RouteLink to="/path/to/">md</RouteLink>',
+            '<RouteLink to="/base/path/to/">md-with-redundant-base</RouteLink>',
+            '<RouteLink to="/path/to/">html</RouteLink>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n',
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: '/path/to/index.md',
+            relative: 'path/to/index.md',
+            absolute: '/base/path/to/index.md',
+          },
+          {
+            raw: '/base/path/to/index.md',
+            relative: 'base/path/to/index.md',
+            absolute: '/base/base/path/to/index.md',
+          },
+          {
+            raw: '/base/path/to/index.html',
+            relative: 'path/to/index.html',
+            absolute: '/base/path/to/index.html',
+          },
+        ])
+      })
+
+      it('should render to <a> tag correctly', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          internalTag: 'a',
+        })
+        const env: MarkdownEnv = {
+          base: '/base/',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="/base/path/to/">md</a>',
+            '<a href="/base/base/path/to/">md-with-redundant-base</a>',
+            '<a href="/base/path/to/">html</a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',

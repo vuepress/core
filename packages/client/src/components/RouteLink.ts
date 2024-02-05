@@ -23,27 +23,55 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   return true
 }
 
-export interface VPLinkProps extends HTMLAttributes {
-  to: string
+export interface RouteLinkProps extends HTMLAttributes {
+  /**
+   * Whether the link is active to have an active class
+   *
+   * Notice that the active status is not automatically determined according to the current route.
+   *
+   * @default false
+   */
   active?: boolean
+
+  /**
+   * The class to add when the link is active
+   *
+   * @default 'route-link-active'
+   */
+  activeClass?: string
+
+  /**
+   * The route path to link to
+   */
+  to: string
 }
 
-export const VPLink: FunctionalComponent<
-  VPLinkProps,
+/**
+ * Component to render a link to another route.
+ *
+ * It's similar to `RouterLink` in `vue-router`, but more lightweight.
+ *
+ * It's recommended to use `RouteLink` in VuePress.
+ */
+export const RouteLink: FunctionalComponent<
+  RouteLinkProps,
   Record<never, never>,
   {
     default: () => string | VNode | (string | VNode)[]
   }
-> = ({ to = '', active = false, ...attrs }, { slots }) => {
+> = (
+  { active = false, activeClass = 'route-link-active', to, ...attrs },
+  { slots },
+) => {
   const router = useRouter()
   const path = withBase(resolveRoutePath(to))
 
   return h(
     'a',
     {
-      class: ['vp-link', { 'vp-link-active': active }],
-      href: path,
       ...attrs,
+      class: ['route-link', { [activeClass]: active }],
+      href: path,
       onClick: (event: MouseEvent = {} as MouseEvent) => {
         guardEvent(event) ? router.push(to).catch() : Promise.resolve()
       },
@@ -52,8 +80,4 @@ export const VPLink: FunctionalComponent<
   )
 }
 
-VPLink.displayName = 'VPLink'
-VPLink.props = {
-  to: String,
-  active: Boolean,
-}
+RouteLink.displayName = 'RouteLink'
