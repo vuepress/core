@@ -1,3 +1,17 @@
+# [2.0.0-rc.6](https://github.com/vuepress/core/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2024-02-05)
+
+
+### Bug Fixes
+
+* **shared:** handle query and hash in normalizeRoutePath ([c1dbc2c](https://github.com/vuepress/core/commit/c1dbc2cac123ca12aae3dd754987f4a8128dcaf2))
+
+
+### Features
+
+* **client:** export useRoute and useRouter ([eb13cb0](https://github.com/vuepress/core/commit/eb13cb0942fa22aab90c658460fe9edb6256dae9))
+
+
+
 # [2.0.0-rc.5](https://github.com/vuepress/core/compare/v2.0.0-rc.4...v2.0.0-rc.5) (2024-02-05)
 
 
