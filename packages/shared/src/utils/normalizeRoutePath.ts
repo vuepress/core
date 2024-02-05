@@ -3,13 +3,10 @@
  */
 export const normalizeRoutePath = (path: string): string => {
   // split pathname and query/hash
-  const [pathname, ...rest] = path.split(/(\?|#)/)
+  const [pathname, ...queryAndHash] = path.split(/(\?|#)/)
 
   // if the pathname is empty or ends with `/`, return as is
   if (!pathname || pathname.endsWith('/')) return path
-
-  // join query and hash
-  const queryAndHash = rest.length > 0 ? rest.join('') : ''
 
   // convert README.md to index.html
   let routePath = pathname.replace(/(^|\/)README.md$/i, '$1index.html')
@@ -25,8 +22,9 @@ export const normalizeRoutePath = (path: string): string => {
 
   // convert /foo/index.html to /foo/
   if (routePath.endsWith('/index.html')) {
-    return routePath.substring(0, routePath.length - 10) + queryAndHash
+    routePath = routePath.substring(0, routePath.length - 10)
   }
 
-  return routePath + queryAndHash
+  // add query and hash back
+  return routePath + queryAndHash.join('')
 }
