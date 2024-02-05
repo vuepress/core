@@ -1,3 +1,19 @@
+# [2.0.0-rc.5](https://github.com/vuepress/core/compare/v2.0.0-rc.4...v2.0.0-rc.5) (2024-02-05)
+
+
+### Bug Fixes
+
+* **client:** support html attrs for VPLink ([#1483](https://github.com/vuepress/core/issues/1483)) ([bfadfcf](https://github.com/vuepress/core/commit/bfadfcf006df08af4d31a2e5298bb3b8edff4c7b))
+* **markdown:** keep base if link tag is not updated ([073e21d](https://github.com/vuepress/core/commit/073e21dae533136ba24245c9a9e765939560c059))
+* **shared:** improve normalizeRoutePath edge cases handling ([f2247bb](https://github.com/vuepress/core/commit/f2247bbce8c8b6059d42334fac77b6e3d620c412))
+
+
+### Features
+
+* **client:** add RouteLink component ([d4dbcc6](https://github.com/vuepress/core/commit/d4dbcc65721b3c4f12eb17faffb9d50a328beb5a))
+
+
+
 # [2.0.0-rc.4](https://github.com/vuepress/core/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-02-03)
 
 
