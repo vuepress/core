@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { normalizeRoutePath } from '../src/index.js'
 
 const testCases = [
@@ -49,8 +49,39 @@ const testCases = [
   ['/foo/.md', '/foo/.html'],
 ]
 
-testCases.forEach(([path, expected]) =>
-  it(`should normalize "${path}" to "${expected}"`, () => {
-    expect(normalizeRoutePath(path)).toBe(expected)
-  }),
-)
+describe('should normalize clean paths correctly', () =>
+  testCases.forEach(([path, expected]) =>
+    it(`"${path}" -> "${expected}"`, () => {
+      expect(normalizeRoutePath(path)).toBe(expected)
+    }),
+  ))
+
+describe('should normalize paths with query correctly', () =>
+  testCases
+    .map(([path, expected]) => [`${path}?foo=bar`, `${expected}?foo=bar`])
+    .forEach(([path, expected]) =>
+      it(`"${path}" -> "${expected}"`, () => {
+        expect(normalizeRoutePath(path)).toBe(expected)
+      }),
+    ))
+
+describe('should normalize paths with hash correctly', () =>
+  testCases
+    .map(([path, expected]) => [`${path}#foobar`, `${expected}#foobar`])
+    .forEach(([path, expected]) =>
+      it(`"${path}" -> "${expected}"`, () => {
+        expect(normalizeRoutePath(path)).toBe(expected)
+      }),
+    ))
+
+describe('should normalize paths with query and hash correctly', () =>
+  testCases
+    .map(([path, expected]) => [
+      `${path}?foo=1&bar=2#foobar`,
+      `${expected}?foo=1&bar=2#foobar`,
+    ])
+    .forEach(([path, expected]) =>
+      it(`"${path}" -> "${expected}"`, () => {
+        expect(normalizeRoutePath(path)).toBe(expected)
+      }),
+    ))
