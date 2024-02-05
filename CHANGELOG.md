@@ -3,7 +3,6 @@
 
 ### Bug Fixes
 
-* **client:** support html attrs for VPLink ([#1483](https://github.com/vuepress/core/issues/1483)) ([bfadfcf](https://github.com/vuepress/core/commit/bfadfcf006df08af4d31a2e5298bb3b8edff4c7b))
 * **markdown:** keep base if link tag is not updated ([073e21d](https://github.com/vuepress/core/commit/073e21dae533136ba24245c9a9e765939560c059))
 * **shared:** improve normalizeRoutePath edge cases handling ([f2247bb](https://github.com/vuepress/core/commit/f2247bbce8c8b6059d42334fac77b6e3d620c412))
 
