@@ -15,27 +15,25 @@ export const resolvePaths = (
   let absolutePath: string
   let relativePath: string
 
+  // if raw path is absolute
   if (rawPath.startsWith('/')) {
-    // if raw path is absolute
-
+    // if raw path is a link to markdown file
     if (rawPath.endsWith('.md')) {
-      // if raw path is a link to markdown file
-
       // prepend `base` to the link
       absolutePath = path.join(base, rawPath)
       relativePath = removeLeadingSlash(rawPath)
-    } else {
-      // if raw path is a link to other kind of file
-
+    }
+    // if raw path is a link to other kind of file
+    else {
       // keep the link as is
       absolutePath = rawPath
       relativePath = path.relative(base, absolutePath)
     }
-  } else {
-    // if raw path is relative
+  }
+  // if raw path is relative
+  else {
+    // if `filePathRelative` is available
     if (filePathRelative) {
-      // if `filePathRelative` is available
-
       // resolve relative path according to `filePathRelative`
       relativePath = path.join(
         // file path may contain non-ASCII characters
@@ -44,9 +42,9 @@ export const resolvePaths = (
       )
       // resolve absolute path according to `base`
       absolutePath = path.join(base, relativePath)
-    } else {
-      // if `filePathRelative` is not available
-
+    }
+    // if `filePathRelative` is not available
+    else {
       // remove leading './'
       relativePath = rawPath.replace(/^(?:\.\/)?(.*)$/, '$1')
       // just take relative link as absolute link

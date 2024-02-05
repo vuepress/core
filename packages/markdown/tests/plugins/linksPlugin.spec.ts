@@ -838,6 +838,45 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           },
         ])
       })
+
+      it('should render to <a> tag correctly', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          internalTag: 'a',
+        })
+        const env: MarkdownEnv = {
+          base: '/base/',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="/base/path/to/">md</a>',
+            '<a href="/base/base/path/to/">md-with-redundant-base</a>',
+            '<a href="/base/path/to/">html</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n',
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: '/path/to/index.md',
+            relative: 'path/to/index.md',
+            absolute: '/base/path/to/index.md',
+          },
+          {
+            raw: '/base/path/to/index.md',
+            relative: 'base/path/to/index.md',
+            absolute: '/base/base/path/to/index.md',
+          },
+          {
+            raw: '/base/path/to/index.html',
+            relative: 'path/to/index.html',
+            absolute: '/base/path/to/index.html',
+          },
+        ])
+      })
     })
   })
 
