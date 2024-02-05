@@ -28,7 +28,7 @@
 
 - <VPLink to="/README.md" active="">text</VPLink>
 - <VPLink to="/README.md" active>text</VPLink>
-- <VPLink to="/README.md" :active='false'>text</VPLink>
+- <VPLink to="/README.md" :active="false">text</VPLink>
 - <VPLink to="/README.md">text</VPLink>
 
 ## Class
