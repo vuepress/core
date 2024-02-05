@@ -54,8 +54,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
-    "@vuepress/utils": "workspace:*",
-    "vue": "^3.4.15"
+    "@vuepress/utils": "workspace:*"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "workspace:*",
