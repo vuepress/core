@@ -81,3 +81,8 @@ export const RouteLink: FunctionalComponent<
 }
 
 RouteLink.displayName = 'RouteLink'
+RouteLink.props = {
+  active: Boolean,
+  activeClass: String,
+  to: String,
+}

@@ -1,7 +1,7 @@
-it('vp-link', () => {
+it('RouteLink', () => {
   const E2E_BASE = Cypress.env('E2E_BASE')
 
-  cy.visit('/components/vp-link.html')
+  cy.visit('/components/route-link.html')
 
   cy.get(`.e2e-theme-content #home-page + ul > li`).each((el) => {
     cy.wrap(el).within(() => {
@@ -10,7 +10,7 @@ it('vp-link', () => {
     })
   })
 
-  cy.get(`.e2e-theme-content #not-exist + ul > li`).each((el) => {
+  cy.get(`.e2e-theme-content #non-existent + ul > li`).each((el) => {
     cy.wrap(el).within(() => {
       cy.get('a').should('have.attr', 'href', `${E2E_BASE}non-existent.html`)
       cy.get('a').should('have.text', 'text')
@@ -45,16 +45,18 @@ it('vp-link', () => {
 
   cy.get(`.e2e-theme-content #active + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
-      if (index < 2)
-        cy.get('a').should('have.attr', 'class', 'vp-link vp-link-active')
-      else cy.get('a').should('have.attr', 'class', 'vp-link')
+      if (index < 2) {
+        cy.get('a').should('have.attr', 'class', 'route-link route-link-active')
+      } else {
+        cy.get('a').should('have.attr', 'class', 'route-link')
+      }
       cy.get('a').should('have.text', 'text')
     })
   })
 
   const classResults = [
-    'vp-link custom-class',
-    'vp-link vp-link-active custom-class',
+    'route-link custom-class',
+    'route-link route-link-active custom-class',
   ]
   cy.get(`.e2e-theme-content #class + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
