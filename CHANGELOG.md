@@ -1,3 +1,12 @@
+# [2.0.0-rc.7](https://github.com/vuepress/core/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2024-02-06)
+
+
+### Features
+
+* **client:** add useClientData composable ([37f646b](https://github.com/vuepress/core/commit/37f646bf700c38614914450244b77cb82eb8d50f))
+
+
+
 # [2.0.0-rc.6](https://github.com/vuepress/core/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2024-02-05)
 
 
