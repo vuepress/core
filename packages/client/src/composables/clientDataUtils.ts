@@ -13,7 +13,7 @@ import type {
   SiteDataRef,
   SiteLocaleDataRef,
 } from '../types/index.js'
-import { useClientData } from './clientData'
+import { useClientData } from './clientData.js'
 
 export const useLayouts = (): LayoutsRef => useClientData().layouts
 
