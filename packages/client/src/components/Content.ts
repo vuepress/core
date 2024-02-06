@@ -1,5 +1,5 @@
 import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
-import { usePageData } from '../composables/index.js'
+import { usePageComponent } from '../composables/index.js'
 import { resolveRoute } from '../router/index.js'
 
 /**
@@ -18,12 +18,13 @@ export const Content = defineComponent({
   },
 
   setup(props) {
-    const pageData = usePageData()
-    const pageComponent = computed(() => {
-      const route = resolveRoute(props.path || pageData.value.path)
+    const pageComponent = usePageComponent()
+    const ContentComponent = computed(() => {
+      if (!props.path) return pageComponent.value
+      const route = resolveRoute(props.path)
       return defineAsyncComponent(() => route.loader().then(({ comp }) => comp))
     })
 
-    return () => h(pageComponent.value)
+    return () => h(ContentComponent.value)
   },
 })

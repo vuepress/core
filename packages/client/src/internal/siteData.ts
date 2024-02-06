@@ -1,24 +1,11 @@
 import { siteData as siteDataRaw } from '@internal/siteData'
-import type { SiteData } from '@vuepress/shared'
 import { shallowRef } from 'vue'
-import type { Ref } from 'vue'
-
-export type { SiteData }
-
-/**
- * Ref wrapper of `SiteData`
- */
-export type SiteDataRef = Ref<SiteData>
+import type { SiteData, SiteDataRef } from '../types/index.js'
 
 /**
  * Global site data ref
  */
 export const siteData: SiteDataRef = shallowRef(siteDataRaw)
-
-/**
- * Returns the ref of the site data
- */
-export const useSiteData = (): SiteDataRef => siteData
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   // reuse vue HMR runtime

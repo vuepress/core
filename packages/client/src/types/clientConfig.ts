@@ -1,7 +1,6 @@
 import type { App, Component } from 'vue'
 import type { Router } from 'vue-router'
-import type { SiteDataRef } from '../composables/index.js'
-import type { Layouts } from './layouts.js'
+import type { Layouts, SiteDataRef } from './clientData.js'
 
 /**
  * Configure vuepress client

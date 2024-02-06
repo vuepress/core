@@ -1,7 +1,8 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
-import { siteData, usePageLayout } from './composables/index.js'
-import { createVueRouter } from './createVueRouter.js'
+import { usePageLayout } from './composables/index.js'
+import { siteData } from './internal/siteData.js'
+import { createVueRouter } from './router/createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
 import { setupGlobalComputed } from './setupGlobalComputed.js'
 import { setupUpdateHead } from './setupUpdateHead.js'
@@ -33,10 +34,10 @@ export const createVueApp: CreateVueAppFunction = async () => {
       )
 
       // get page layout
-      const layout = usePageLayout()
+      const pageLayout = usePageLayout()
 
       // render layout and root components
-      return () => [h(layout.value), rootComponents]
+      return () => [h(pageLayout.value), rootComponents]
     },
   })
 

@@ -70,7 +70,7 @@ export interface SiteLocaleData {
   /**
    * Head config
    *
-   * Descibe the tags to be appended into the `<head>` tag
+   * Describe the tags to be appended into the `<head>` tag
    *
    * @default []
    *

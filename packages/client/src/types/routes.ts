@@ -1,8 +1,8 @@
-import type { PageData } from '@vuepress/shared'
-import type { ComponentOptions } from 'vue'
+import type { Component } from 'vue'
+import type { PageData } from '../types/index.js'
 
 export interface PageChunk {
-  comp: ComponentOptions
+  comp: Component
   data: PageData
 }
 

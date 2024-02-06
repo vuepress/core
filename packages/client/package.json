@@ -58,7 +58,6 @@
     ],
     "external": [
       "@internal/clientConfigs",
-      "@internal/layoutComponents",
       "@internal/routes",
       "@internal/siteData"
     ],

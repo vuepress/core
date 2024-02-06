@@ -1,6 +1,6 @@
+import { routes } from '../internal/routes.js'
 import type { Route, RouteMeta } from '../types/index.js'
 import { resolveRoutePath } from './resolveRoutePath.js'
-import { routes } from './routes.js'
 
 interface ResolvedRoute<T extends RouteMeta = RouteMeta> extends Route<T> {
   path: string

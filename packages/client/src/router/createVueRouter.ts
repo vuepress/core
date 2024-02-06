@@ -6,8 +6,8 @@ import {
   createWebHistory,
   START_LOCATION,
 } from 'vue-router'
-import type { PageData } from './composables/index.js'
-import { resolveRoute } from './router/index.js'
+import type { PageChunk } from '../types/index.js'
+import { resolveRoute } from './resolveRoute.js'
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
@@ -16,7 +16,7 @@ import { resolveRoute } from './router/index.js'
 const historyCreator = __VUEPRESS_SSR__ ? createMemoryHistory : createWebHistory
 
 /**
- * Create vue-router instance
+ * Create router instance
  */
 export const createVueRouter = (): Router => {
   const router = createRouter({
@@ -50,8 +50,8 @@ export const createVueRouter = (): Router => {
       to.meta = {
         // attach route meta
         ...route.meta,
-        // attach page data to route meta to trigger page data computed when route changes
-        _data: pageChunk.data,
+        // attach page chunk route meta
+        _pageChunk: pageChunk,
       }
     }
   })
@@ -62,10 +62,10 @@ export const createVueRouter = (): Router => {
 declare module 'vue-router' {
   interface RouteMeta {
     /**
-     * Store page data in route meta
+     * Store page chunk in route meta
      *
      * @internal only for internal use
      */
-    _data?: PageData
+    _pageChunk?: PageChunk
   }
 }

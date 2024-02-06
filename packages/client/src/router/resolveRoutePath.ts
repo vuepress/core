@@ -1,5 +1,5 @@
 import { normalizeRoutePath } from '@vuepress/shared'
-import { redirects, routes } from './routes.js'
+import { redirects, routes } from '../internal/routes.js'
 
 /**
  * Resolve route path with given raw path

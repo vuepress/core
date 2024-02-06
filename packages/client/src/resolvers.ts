@@ -1,18 +1,19 @@
 import { dedupeHead, isString, resolveLocalePath } from '@vuepress/shared'
-import type { Component } from 'vue'
 import { reactive } from 'vue'
+import { LANG_DEFAULT, LAYOUT_NAME_DEFAULT } from './constants.js'
 import type {
+  ClientConfig,
+  Layouts,
   PageData,
   PageFrontmatter,
   PageHead,
   PageHeadTitle,
   PageLang,
+  PageLayout,
   RouteLocale,
   SiteData,
   SiteLocaleData,
-} from './composables/index.js'
-import { LAYOUT_NAME_DEFAULT, LAYOUT_NAME_NOT_FOUND } from './constants.js'
-import type { ClientConfig, Layouts } from './types/index.js'
+} from './types/index.js'
 
 /**
  * Resolver methods to get global computed
@@ -35,28 +36,22 @@ export const resolvers = reactive({
     ),
 
   /**
-   * Resolve page frontmatter from page data
-   */
-  resolvePageFrontmatter: (pageData: PageData): PageFrontmatter =>
-    pageData.frontmatter,
-
-  /**
    * Merge the head config in frontmatter and site locale
    *
    * Frontmatter should take priority over site locale
    */
   resolvePageHead: (
-    headTitle: PageHeadTitle,
-    frontmatter: PageFrontmatter,
-    siteLocale: SiteLocaleData,
+    pageHeadTitle: PageHeadTitle,
+    pageFrontmatter: PageFrontmatter,
+    siteLocaleDate: SiteData,
   ): PageHead => {
-    const description = isString(frontmatter.description)
-      ? frontmatter.description
-      : siteLocale.description
+    const description = isString(pageFrontmatter.description)
+      ? pageFrontmatter.description
+      : siteLocaleDate.description
     const head: PageHead = [
-      ...(Array.isArray(frontmatter.head) ? frontmatter.head : []),
-      ...siteLocale.head,
-      ['title', {}, headTitle],
+      ...(Array.isArray(pageFrontmatter.head) ? pageFrontmatter.head : []),
+      ...siteLocaleDate.head,
+      ['title', {}, pageHeadTitle],
       ['meta', { name: 'description', content: description }],
     ]
     return dedupeHead(head)
@@ -68,42 +63,26 @@ export const resolvers = reactive({
    * It would be used as the content of the `<title>` tag
    */
   resolvePageHeadTitle: (
-    page: PageData,
-    siteLocale: SiteLocaleData,
+    pageData: PageData,
+    siteLocaleDate: SiteData,
   ): PageHeadTitle =>
-    [page.title, siteLocale.title].filter((item) => !!item).join(' | '),
+    [pageData.title, siteLocaleDate.title].filter((item) => !!item).join(' | '),
 
   /**
    * Resolve page language from page data
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (page: PageData, siteLocale: SiteLocaleData): PageLang =>
-    page.lang || siteLocale.lang || 'en-US',
+  resolvePageLang: (pageData: PageData, siteLocaleData: SiteData): PageLang =>
+    pageData.lang || siteLocaleData.lang || LANG_DEFAULT,
 
   /**
    * Resolve layout component of current page
    */
-  resolvePageLayout: (page: PageData, layouts: Layouts): Component => {
-    let layoutName: string
-
-    // if current page exists
-    if (page.path) {
-      // use layout from frontmatter
-      const frontmatterLayout = page.frontmatter.layout
-
-      if (isString(frontmatterLayout)) {
-        layoutName = frontmatterLayout
-      } else {
-        // fallback to default layout
-        layoutName = LAYOUT_NAME_DEFAULT
-      }
-    }
-    // if current page does not exist
-    else {
-      // use NotFound layout
-      layoutName = LAYOUT_NAME_NOT_FOUND
-    }
+  resolvePageLayout: (pageData: PageData, layouts: Layouts): PageLayout => {
+    const layoutName = isString(pageData.frontmatter.layout)
+      ? pageData.frontmatter.layout
+      : LAYOUT_NAME_DEFAULT
     return layouts[layoutName]
   },
 
@@ -121,16 +100,16 @@ export const resolvers = reactive({
    * It would merge the locales fields to the root fields
    */
   resolveSiteLocaleData: (
-    site: SiteData,
+    siteData: SiteData,
     routeLocale: RouteLocale,
   ): SiteLocaleData => ({
-    ...site,
-    ...site.locales[routeLocale],
+    ...siteData,
+    ...siteData.locales[routeLocale],
     head: [
       // when merging head, the locales head should be placed before root head
       // to get higher priority
-      ...(site.locales[routeLocale]?.head ?? []),
-      ...(site.head ?? []),
+      ...(siteData.locales[routeLocale]?.head ?? []),
+      ...(siteData.head ?? []),
     ],
   }),
 })
