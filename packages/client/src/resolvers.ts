@@ -83,6 +83,9 @@ export const resolvers = reactive({
     const layoutName = isString(pageData.frontmatter.layout)
       ? pageData.frontmatter.layout
       : LAYOUT_NAME_DEFAULT
+    if (!layouts[layoutName]) {
+      throw new Error(`[vuepress] Cannot resolve layout: ${layoutName}`)
+    }
     return layouts[layoutName]
   },
 
