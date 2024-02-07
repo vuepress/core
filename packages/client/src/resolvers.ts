@@ -32,8 +32,8 @@ export const resolvers = reactive({
         ...prev,
         ...item.layouts,
       }),
-      {} as Layouts,
-    ),
+      {},
+    ) as Layouts,
 
   /**
    * Merge the head config in frontmatter and site locale

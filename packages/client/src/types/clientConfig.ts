@@ -24,7 +24,7 @@ export interface ClientConfig {
   /**
    * Layout components
    */
-  layouts?: Layouts
+  layouts?: Partial<Layouts>
 
   /**
    * Components to be placed directly into the root node of vue app
