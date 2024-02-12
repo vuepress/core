@@ -40,7 +40,7 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "cac": "^6.7.14",
-    "chokidar": "^3.5.3",
+    "chokidar": "^3.6.0",
     "envinfo": "^7.11.1",
     "esbuild": "~0.19.12"
   },

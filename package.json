@@ -29,7 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
-    "@types/node": "^20.11.16",
+    "@types/node": "^20.11.17",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "^1.2.2",
     "bumpp": "^9.3.0",
@@ -45,7 +45,7 @@
     "rimraf": "^5.0.5",
     "sort-package-json": "^2.7.0",
     "tsconfig-vuepress": "^4.5.0",
-    "tsup": "^8.0.1",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3",
     "vite": "~5.0.12",
     "vitest": "^1.2.2"
