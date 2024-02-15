@@ -1,4 +1,4 @@
-import { hash, path } from '@vuepress/utils'
+import { path, sanitizeFileName } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import { createBaseApp, resolvePageChunkInfo } from '../../src/index.js'
 
@@ -18,7 +18,7 @@ describe('core > page > resolvePageChunkInfo', () => {
     expect(resolved).toEqual({
       chunkFilePath: app.dir.temp('pages/foo.html.js'),
       chunkFilePathRelative: 'pages/foo.html.js',
-      chunkName: `v-${hash('foo.html')}`,
+      chunkName: sanitizeFileName('foo.html'),
     })
   })
 })
