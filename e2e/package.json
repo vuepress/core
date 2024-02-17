@@ -16,12 +16,12 @@
     "e2e:dev": "pnpm docs:clean && start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run"
   },
   "dependencies": {
-    "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
+    "@vuepress-e2e/conditional-exports": "file:modules/conditional-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.70.0",
+    "sass": "^1.71.0",
     "sass-loader": "^14.1.0",
-    "vue": "^3.4.18",
+    "vue": "^3.4.19",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
