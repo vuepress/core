@@ -1,6 +1,6 @@
-import { computedWithControl } from '@vueuse/core'
-import type { App } from 'vue'
-import { computed } from 'vue'
+import { computedWithControl, syncRef } from '@vueuse/core'
+import type { App, Ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Router } from 'vue-router'
 import { clientDataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
@@ -9,6 +9,7 @@ import { resolvers } from './resolvers.js'
 import type {
   ClientConfig,
   ClientData,
+  PageChunk,
   PageData,
   PageFrontmatter,
   PageHead,
@@ -36,6 +37,11 @@ export const setupGlobalComputed = (
     routePath,
     () => router.currentRoute.value.meta._pageChunk!,
   )
+  // #1500 get a side-effect free ref to use in the computed
+  const pageChunkSideEffectFreeRef: Ref<PageChunk> = ref(pageChunk.value)
+  syncRef(pageChunk, pageChunkSideEffectFreeRef, {
+    direction: 'ltr',
+  })
 
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
@@ -61,8 +67,8 @@ export const setupGlobalComputed = (
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
-  const pageComponent = computed(() => pageChunk.value.comp)
-  const pageData = computed(() => pageChunk.value.data)
+  const pageComponent = computed(() => pageChunkSideEffectFreeRef.value.comp)
+  const pageData = computed(() => pageChunkSideEffectFreeRef.value.data)
   const pageFrontmatter = computed(() => pageData.value.frontmatter)
   const pageHeadTitle = computed(() =>
     resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),
