@@ -1,4 +1,9 @@
 if (Cypress.env('E2E_COMMAND') === 'dev') {
+  after(() => {
+    cy.task('hmr:title:restore')
+    cy.task('hmr:frontmatter:restore')
+  })
+
   it('should update title and frontmatter correctly after navigation', () => {
     cy.visit('/hmr/title.html')
     cy.title().should('include', 'HMR Title')

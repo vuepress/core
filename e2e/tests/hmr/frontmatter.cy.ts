@@ -1,4 +1,8 @@
 if (Cypress.env('E2E_COMMAND') === 'dev') {
+  after(() => {
+    cy.task('hmr:frontmatter:restore')
+  })
+
   it('should update frontmatter correctly', () => {
     cy.visit('/hmr/frontmatter.html')
     cy.get('.e2e-theme-content #rendered-foo + p').should(
