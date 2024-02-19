@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { computed } from 'vue'
+import { computed, customRef } from 'vue'
 import type { Router } from 'vue-router'
 import { clientDataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
@@ -8,6 +8,7 @@ import { resolvers } from './resolvers.js'
 import type {
   ClientConfig,
   ClientData,
+  PageChunk,
   PageData,
   PageFrontmatter,
   PageHead,
@@ -31,19 +32,29 @@ export const setupGlobalComputed = (
   const routePath = computed(() => router.currentRoute.value.path)
 
   // load page chunk from route meta
-  const pageChunk = computed(() => router.currentRoute.value.meta._pageChunk!)
+  const pageChunk = customRef<PageChunk>((track, trigger) => ({
+    get() {
+      track()
+      return router.currentRoute.value.meta._pageChunk!
+    },
+    set(value) {
+      router.currentRoute.value.meta._pageChunk = value
+      trigger()
+    },
+  }))
 
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
       const oldPageChunk = await routes.value[newPageData.path].loader()
+      const newPageChunk = { comp: oldPageChunk.comp, data: newPageData }
       routes.value[newPageData.path].loader = () =>
-        Promise.resolve({ comp: oldPageChunk.comp, data: newPageData })
+        Promise.resolve(newPageChunk)
       if (
         newPageData.path ===
         router.currentRoute.value.meta._pageChunk?.data.path
       ) {
-        router.currentRoute.value.meta._pageChunk.data = newPageData
+        pageChunk.value = newPageChunk
       }
     }
   }
