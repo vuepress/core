@@ -50,7 +50,10 @@ export const setupGlobalComputed = (
       const newPageChunk = { comp: oldPageChunk.comp, data: newPageData }
       routes.value[newPageData.path].loader = () =>
         Promise.resolve(newPageChunk)
-      if (newPageData.path === pageChunk.value.data.path) {
+      if (
+        newPageData.path ===
+        router.currentRoute.value.meta._pageChunk?.data.path
+      ) {
         pageChunk.value = newPageChunk
       }
     }
