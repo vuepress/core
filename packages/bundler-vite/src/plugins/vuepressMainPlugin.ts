@@ -209,6 +209,7 @@ const resolveDefine = async ({
     // enable options API by default
     __VUE_OPTIONS_API__: JSON.stringify(true),
     __VUE_PROD_DEVTOOLS__: JSON.stringify(app.env.isDebug),
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
   }
 
   // override vite built-in define config in debug mode
