@@ -1,3 +1,26 @@
+# [2.0.0-rc.8](https://github.com/vuepress/core/compare/v2.0.0-rc.7...v2.0.0-rc.8) (2024-02-19)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** inject all vue feature flags explicitly ([c645d1a](https://github.com/vuepress/core/commit/c645d1a9a56a8df77f3117d22699a31c2ce908f1))
+* **client:** make layouts client config optional (close [#1494](https://github.com/vuepress/core/issues/1494)) ([27a88ec](https://github.com/vuepress/core/commit/27a88ecf832b2dd3068b77005901b89fb7f48261))
+* **client:** remove usage of vueuse (close [#1500](https://github.com/vuepress/core/issues/1500)) ([b352c09](https://github.com/vuepress/core/commit/b352c090794f2675a43e8a886e14d2f315f8e095))
+
+
+### Features
+
+* **bundler-vite:** bump vite to 5.1 ([b2e322a](https://github.com/vuepress/core/commit/b2e322a323c4f9f74e43967522b6c05854b3f89b))
+* **bundler-webpack:** bump webpack-dev-server to v5 ([a250c76](https://github.com/vuepress/core/commit/a250c767190b3883cfa085f43b01838fddbdea9e))
+* **client:** throw error when layout does not exist ([158b12c](https://github.com/vuepress/core/commit/158b12c34f007735f0a3986da8215a3410740c30))
+
+
+### Reverts
+
+* refactor(client): handle page data hmr by checking pageChunk ref ([bb96427](https://github.com/vuepress/core/commit/bb96427c2505f3d65d36539242a3ec15f55bf4be))
+
+
+
 # [2.0.0-rc.7](https://github.com/vuepress/core/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2024-02-06)
 
 
