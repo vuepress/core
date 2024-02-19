@@ -4,16 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "docs:build": "cross-env E2E_COMMAND=build vuepress build docs --clean-cache --clean-temp",
+    "cy:open:build": "cross-env E2E_COMMAND=build cypress open",
+    "cy:open:dev": "cross-env E2E_COMMAND=dev cypress open",
+    "cy:run:build": "cross-env E2E_COMMAND=build cypress run",
+    "cy:run:dev": "cross-env E2E_COMMAND=dev cypress run",
+    "docs:build": "vuepress build docs --clean-cache --clean-temp",
     "docs:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
-    "docs:dev": "cross-env E2E_COMMAND=dev vuepress dev docs --clean-cache --clean-temp",
+    "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
     "docs:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
-    "e2e:build": "pnpm docs:clean && pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run",
-    "e2e:dev": "pnpm docs:clean && start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run"
+    "e2e:build": "pnpm docs:clean && pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run:build",
+    "e2e:dev": "pnpm docs:clean && start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run:dev"
   },
   "dependencies": {
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",

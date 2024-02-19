@@ -101,9 +101,11 @@ pnpm docs:serve
 
 ```bash
 # 启动 Cypress 图形界面
-pnpm cy:open
+pnpm cy:open:dev
+pnpm cy:open:build
 # 或者，直接在命令行中运行测试
-pnpm cy:run
+pnpm cy:run:dev
+pnpm cy:run:build
 ```
 
 如果你不想在两个不同终端内启动服务器和运行测试，你可以使用如下命令：

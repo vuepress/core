@@ -101,9 +101,11 @@ After starting a dev server or a preview server, you can run e2e tests in anothe
 
 ```bash
 # open Cypress GUI
-pnpm cy:open
+pnpm cy:open:dev
+pnpm cy:open:build
 # or, run tests in command line
-pnpm cy:run
+pnpm cy:run:dev
+pnpm cy:run:build
 ```
 
 If you don't want to start a server and run tests in two different terminals, you can make use of the following commands:
