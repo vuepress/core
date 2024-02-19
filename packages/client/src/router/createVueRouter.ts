@@ -53,6 +53,8 @@ export const createVueRouter = (): Router => {
         // attach page chunk route meta
         _pageChunk: pageChunk,
       }
+    } else if (to.path === from.path) {
+      to.meta = from.meta
     }
   })
 

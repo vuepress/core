@@ -1,4 +1,3 @@
-import { computedWithControl } from '@vueuse/core'
 import type { App } from 'vue'
 import { computed } from 'vue'
 import type { Router } from 'vue-router'
@@ -32,10 +31,7 @@ export const setupGlobalComputed = (
   const routePath = computed(() => router.currentRoute.value.path)
 
   // load page chunk from route meta
-  const pageChunk = computedWithControl(
-    routePath,
-    () => router.currentRoute.value.meta._pageChunk!,
-  )
+  const pageChunk = computed(() => router.currentRoute.value.meta._pageChunk!)
 
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
@@ -48,7 +44,6 @@ export const setupGlobalComputed = (
         router.currentRoute.value.meta._pageChunk?.data.path
       ) {
         router.currentRoute.value.meta._pageChunk.data = newPageData
-        pageChunk.trigger()
       }
     }
   }
