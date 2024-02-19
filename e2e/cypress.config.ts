@@ -14,46 +14,61 @@ export default defineConfig({
         'hmr:title': async () => {
           const hmrTitleSourceMarkdownPath =
             resolveSourceMarkdownPath('hmr/title.md')
-          const content = await fs.readFile(hmrTitleSourceMarkdownPath, 'utf-8')
-          await fs.writeFile(
+          const hmrTitleSourceMarkdownContent = await fs.readFile(
             hmrTitleSourceMarkdownPath,
-            content.replace('# HMR Title', '# Updated Title'),
+            'utf-8',
           )
-          return true
-        },
-        'hmr:title:restore': async () => {
-          const hmrTitleSourceMarkdownPath =
-            resolveSourceMarkdownPath('hmr/title.md')
-          const content = await fs.readFile(hmrTitleSourceMarkdownPath, 'utf-8')
           await fs.writeFile(
             hmrTitleSourceMarkdownPath,
-            content.replace('# Updated Title', '# HMR Title'),
+            hmrTitleSourceMarkdownContent.replace(
+              '# HMR Title',
+              '# Updated Title',
+            ),
           )
           return true
         },
         'hmr:frontmatter': async () => {
           const hmrFrontmatterSourceMarkdownPath =
             resolveSourceMarkdownPath('hmr/frontmatter.md')
-          const content = await fs.readFile(
+          const hmrFrontmatterSourceMarkdownContent = await fs.readFile(
             hmrFrontmatterSourceMarkdownPath,
             'utf-8',
           )
           await fs.writeFile(
             hmrFrontmatterSourceMarkdownPath,
-            content.replace('foo: HMR foo', 'foo: Updated foo'),
+            hmrFrontmatterSourceMarkdownContent.replace(
+              'foo: HMR foo',
+              'foo: Updated foo',
+            ),
           )
           return true
         },
-        'hmr:frontmatter:restore': async () => {
+        'hmr:restore': async () => {
+          const hmrTitleSourceMarkdownPath =
+            resolveSourceMarkdownPath('hmr/title.md')
+          const hmrTitleSourceMarkdownContent = await fs.readFile(
+            hmrTitleSourceMarkdownPath,
+            'utf-8',
+          )
+          await fs.writeFile(
+            hmrTitleSourceMarkdownPath,
+            hmrTitleSourceMarkdownContent.replace(
+              '# Updated Title',
+              '# HMR Title',
+            ),
+          )
           const hmrFrontmatterSourceMarkdownPath =
             resolveSourceMarkdownPath('hmr/frontmatter.md')
-          const content = await fs.readFile(
+          const hmrFrontmatterSourceMarkdownContent = await fs.readFile(
             hmrFrontmatterSourceMarkdownPath,
             'utf-8',
           )
           await fs.writeFile(
             hmrFrontmatterSourceMarkdownPath,
-            content.replace('foo: Updated foo', 'foo: HMR foo'),
+            hmrFrontmatterSourceMarkdownContent.replace(
+              'foo: Updated foo',
+              'foo: HMR foo',
+            ),
           )
           return true
         },
