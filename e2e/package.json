@@ -23,7 +23,7 @@
     "@vuepress/bundler-webpack": "workspace:*",
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
-    "vue": "^3.4.20",
+    "vue": "^3.4.21",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
