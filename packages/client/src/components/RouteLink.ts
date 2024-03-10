@@ -64,7 +64,13 @@ export const RouteLink: FunctionalComponent<
   { slots },
 ) => {
   const router = useRouter()
-  const path = withBase(resolveRoutePath(to))
+  const resolvedPath = resolveRoutePath(to)
+
+  const path =
+    // only anchor or query
+    resolvedPath.startsWith('#') || resolvedPath.startsWith('?')
+      ? resolvedPath
+      : withBase(resolveRoutePath(to))
 
   return h(
     'a',
