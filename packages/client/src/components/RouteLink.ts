@@ -70,7 +70,7 @@ export const RouteLink: FunctionalComponent<
     // only anchor or query
     resolvedPath.startsWith('#') || resolvedPath.startsWith('?')
       ? resolvedPath
-      : withBase(resolveRoutePath(to))
+      : withBase(resolvedPath)
 
   return h(
     'a',
