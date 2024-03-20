@@ -14,7 +14,7 @@ const CONFIGS = [
   {
     id: '中文-ascii',
     filename: '中文-ascii.md',
-    permalink: '/永久链接-中文-ascii/',
+    permalink: '/permalink-non-ascii-ascii/',
   },
   {
     id: '中文-中文',

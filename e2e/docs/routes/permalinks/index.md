@@ -12,8 +12,8 @@
 
 ### 中文-ascii
 
-- <a :href="$withBase('/永久链接-中文-ascii/')">permalink with base</a>
-- [permalink](/永久链接-中文-ascii/)
+- <a :href="$withBase('/permalink-non-ascii-ascii/')">permalink with base</a>
+- [permalink](/permalink-non-ascii-ascii/)
 - [filename](./中文-ascii.md)
 
 ### 中文-中文

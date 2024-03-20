@@ -1,5 +1,5 @@
 ---
-permalink: /永久链接-中文-ascii/
+permalink: /permalink-non-ascii-ascii/
 ---
 
-/永久链接-中文-ascii/
+/permalink-non-ascii-ascii/
