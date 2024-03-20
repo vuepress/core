@@ -84,4 +84,25 @@ it('RouteLink', () => {
         })
     })
   })
+
+  const HASH_AND_QUERY_RESULTS = [
+    `${E2E_BASE}#hash`,
+    `${E2E_BASE}?query`,
+    `${E2E_BASE}?query#hash`,
+    `${E2E_BASE}?query=1#hash`,
+    `${E2E_BASE}?query=1&query=2#hash`,
+    `${E2E_BASE}#hash?query=1&query=2`,
+    `#hash`,
+    `?query`,
+    `?query#hash`,
+    `?query=1#hash`,
+    `?query=1&query=2#hash`,
+    `#hash?query=1&query=2`,
+  ]
+
+  cy.get(`.e2e-theme-content #hash-and-query + ul > li`).each((el, index) => {
+    cy.wrap(el).within(() => {
+      cy.get('a').should('have.attr', 'href', HASH_AND_QUERY_RESULTS[index])
+    })
+  })
 })
