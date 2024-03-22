@@ -1,3 +1,13 @@
+# [2.0.0-rc.9](https://github.com/vuepress/core/compare/v2.0.0-rc.8...v2.0.0-rc.9) (2024-03-22)
+
+
+### Bug Fixes
+
+* **client:** fix RouteLink path resolve ([#1512](https://github.com/vuepress/core/issues/1512)) ([010c8bf](https://github.com/vuepress/core/commit/010c8bf9e9ee805f4f1432cdbecd39cb04088421))
+* fix permalink redirecting (close [#1516](https://github.com/vuepress/core/issues/1516)) ([#1517](https://github.com/vuepress/core/issues/1517)) ([ab41ba1](https://github.com/vuepress/core/commit/ab41ba1acb96f14c4dfaa0cadfae34413e4a0544))
+
+
+
 # [2.0.0-rc.8](https://github.com/vuepress/core/compare/v2.0.0-rc.7...v2.0.0-rc.8) (2024-02-19)
 
 
