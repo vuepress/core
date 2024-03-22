@@ -1,4 +1,4 @@
-import { ensureLeadingSlash, normalizeRoutePath } from '@vuepress/shared'
+import { normalizeRoutePath } from '@vuepress/shared'
 import type { App, Page } from '../../types/index.js'
 
 const HMR_CODE = `
@@ -23,11 +23,7 @@ if (import.meta.hot) {
 /**
  * Resolve page redirects
  */
-const resolvePageRedirects = ({
-  path,
-  pathInferred,
-  filePathRelative,
-}: Page): string[] => {
+const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
@@ -42,14 +38,9 @@ const resolvePageRedirects = ({
     redirectsSet.add(redirect)
   }
 
-  // redirect from inferred path
+  // redirect from inferred path, notice that the inferred path is not uri-encoded
   if (pathInferred !== null) {
-    addRedirect(pathInferred)
-  }
-
-  // redirect from filename path
-  if (filePathRelative !== null) {
-    addRedirect(ensureLeadingSlash(filePathRelative))
+    addRedirect(encodeURI(pathInferred))
   }
 
   return Array.from(redirectsSet)
