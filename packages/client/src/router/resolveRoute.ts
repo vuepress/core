@@ -7,10 +7,12 @@ interface ResolvedRoute<T extends RouteMeta = RouteMeta> extends Route<T> {
   notFound: boolean
 }
 
+const FAKE_HOST = 'http://.'
+
 /**
  * Resolve route with given path
  */
-export const resolveRoute = <T extends RouteMeta = RouteMeta>(
+export const resolveRouteInfo = <T extends RouteMeta = RouteMeta>(
   path: string,
 ): ResolvedRoute<T> => {
   const routePath = resolveRoutePath(path)
@@ -24,4 +26,22 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
     notFound: false,
     ...route,
   } as ResolvedRoute<T>
+}
+
+/**
+ * Resolve route with given path
+ */
+export const resolveRoute = <T extends RouteMeta = RouteMeta>(
+  path: string,
+  current?: string,
+): ResolvedRoute<T> => {
+  if (current) {
+    const loc = current.slice(0, current.lastIndexOf('/'))
+
+    const routePath = new URL(`${loc}/${encodeURI(path)}`, FAKE_HOST).pathname
+
+    return resolveRouteInfo(routePath)
+  }
+
+  return resolveRouteInfo(path)
 }
