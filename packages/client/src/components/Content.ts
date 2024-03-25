@@ -1,6 +1,6 @@
 import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
 import { usePageComponent } from '../composables/index.js'
-import { resolveRoute } from '../router/index.js'
+import { resolveRouteInfo } from '../router/index.js'
 
 /**
  * Markdown rendered content
@@ -21,7 +21,7 @@ export const Content = defineComponent({
     const pageComponent = usePageComponent()
     const ContentComponent = computed(() => {
       if (!props.path) return pageComponent.value
-      const route = resolveRoute(props.path)
+      const route = resolveRouteInfo(props.path)
       return defineAsyncComponent(() => route.loader().then(({ comp }) => comp))
     })
 

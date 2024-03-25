@@ -7,7 +7,7 @@ import {
   START_LOCATION,
 } from 'vue-router'
 import type { PageChunk } from '../types/index.js'
-import { resolveRoute } from './resolveRoute.js'
+import { resolveRouteInfo } from './resolveRoute.js'
 
 /**
  * - use `createWebHistory` in dev mode and build mode client bundle
@@ -40,7 +40,7 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      const route = resolveRoute(to.path)
+      const route = resolveRouteInfo(to.path)
 
       if (route.path !== to.path) {
         return route.path
