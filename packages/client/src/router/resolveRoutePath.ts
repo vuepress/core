@@ -14,5 +14,9 @@ export const resolveRoutePath = (path: string): string => {
   if (routes.value[encodedPath]) return encodedPath
 
   // redirected path or fallback to the normalized path
-  return redirects.value[normalizedPath] || normalizedPath
+  return (
+    redirects.value[normalizedPath] ||
+    redirects.value[encodedPath] ||
+    normalizedPath
+  )
 }
