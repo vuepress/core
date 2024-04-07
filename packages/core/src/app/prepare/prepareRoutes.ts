@@ -52,24 +52,22 @@ const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
 export const prepareRoutes = async (app: App): Promise<void> => {
   // routes file content
   let content = `\
-export const redirects = JSON.parse(${JSON.stringify(
-    JSON.stringify(
-      Object.fromEntries(
-        app.pages.flatMap((page) =>
-          resolvePageRedirects(page).map((redirect) => [redirect, page.path]),
-        ),
+export const redirects = ${JSON.stringify(
+    Object.fromEntries(
+      app.pages.flatMap((page) =>
+        resolvePageRedirects(page).map((redirect) => [redirect, page.path]),
       ),
     ),
-  )})
+  )}
 
-export const routes = Object.fromEntries([
+export const routes = {
 ${app.pages
   .map(
     ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
+      `  ${JSON.stringify(path)}: { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} },`,
   )
   .join('\n')}
-]);
+};
 `
 
   // inject HMR code
