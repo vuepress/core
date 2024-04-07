@@ -5,7 +5,8 @@ it('should preserve query', () => {
 
   cy.get('#home').click()
 
-  cy.location().eq(`${E2E_BASE}?home=true`)
+  cy.location('pathname').should('eq', E2E_BASE)
+  cy.location('search').should('eq', '?home=true')
 })
 
 it('should preserve hash', () => {
@@ -15,5 +16,6 @@ it('should preserve hash', () => {
 
   cy.get('#404').click()
 
-  cy.location().eq(`${E2E_BASE}404.html#404`)
+  cy.location('pathname').should('eq', `${E2E_BASE}404.html`)
+  cy.location('hash').should('eq', '#404')
 })

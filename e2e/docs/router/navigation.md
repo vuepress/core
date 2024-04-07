@@ -2,7 +2,7 @@
 <button id="404" @click="go404">404</button>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vuepress/client';
 
 const router = useRouter();
 
