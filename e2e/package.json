@@ -21,7 +21,7 @@
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
     "vue": "^3.4.21",
     "vuepress": "workspace:*"
@@ -29,7 +29,7 @@
   "devDependencies": {
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3",
-    "cypress": "^13.7.1",
+    "cypress": "^13.7.2",
     "process": "^0.11.10",
     "start-server-and-test": "^2.0.3"
   }
