@@ -64,7 +64,10 @@ export const routes = {
 ${app.pages
   .map(
     ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  ${JSON.stringify(path)}: { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} },`,
+      `  ${JSON.stringify(path)}: {
+        loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}),
+        meta: ${JSON.stringify(routeMeta)}
+    },`,
   )
   .join('\n')}
 };
