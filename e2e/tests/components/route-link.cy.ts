@@ -45,7 +45,7 @@ it('RouteLink', () => {
 
   cy.get(`.e2e-theme-content #active + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
-      if (index < 2) {
+      if (index < 4) {
         cy.get('a').should('have.attr', 'class', 'route-link route-link-active')
       } else {
         cy.get('a').should('have.attr', 'class', 'route-link')
@@ -60,7 +60,7 @@ it('RouteLink', () => {
   ]
   cy.get(`.e2e-theme-content #class + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
-      cy.get('a').should('have.attr', 'class', classResults[index])
+      cy.get('a').should('have.attr', 'class', classResults[index % 2])
       cy.get('a').should('have.text', 'text')
     })
   })
@@ -70,7 +70,7 @@ it('RouteLink', () => {
 
   cy.get(`.e2e-theme-content #attrs + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
-      cy.get('a').should('have.attr', attrName[index], attrValue[index])
+      cy.get('a').should('have.attr', attrName[index % 4], attrValue[index % 4])
     })
   })
 
@@ -92,6 +92,12 @@ it('RouteLink', () => {
     `${E2E_BASE}?query=1#hash`,
     `${E2E_BASE}?query=1&query=2#hash`,
     `${E2E_BASE}#hash?query=1&query=2`,
+    `${E2E_BASE}#hash`,
+    `${E2E_BASE}?query`,
+    `${E2E_BASE}?query#hash`,
+    `${E2E_BASE}?query=1#hash`,
+    `${E2E_BASE}?query=1&query=2#hash`,
+    `${E2E_BASE}#hash?query=1&query=2`,
     `#hash`,
     `?query`,
     `?query#hash`,
@@ -103,6 +109,18 @@ it('RouteLink', () => {
   cy.get(`.e2e-theme-content #hash-and-query + ul > li`).each((el, index) => {
     cy.wrap(el).within(() => {
       cy.get('a').should('have.attr', 'href', HASH_AND_QUERY_RESULTS[index])
+    })
+  })
+
+  const RELATIVE_RESULTS = [
+    E2E_BASE,
+    `${E2E_BASE}404.html`,
+    `${E2E_BASE}components/not-exist.html`,
+  ]
+
+  cy.get(`.e2e-theme-content #relative + ul > li`).each((el, index) => {
+    cy.wrap(el).within(() => {
+      cy.get('a').should('have.attr', 'href', RELATIVE_RESULTS[index % 3])
     })
   })
 })
