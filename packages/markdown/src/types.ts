@@ -2,6 +2,7 @@ import type { MarkdownSfcBlocks } from '@mdit-vue/plugin-sfc'
 import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { PageFrontmatter, PageHeader } from '@vuepress/shared'
 import type MarkdownIt from 'markdown-it'
+import type { Options } from 'markdown-it'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
@@ -18,7 +19,7 @@ import type {
 export type Markdown = MarkdownIt
 export type { MarkdownSfcBlocks }
 
-export interface MarkdownOptions extends MarkdownIt.Options {
+export interface MarkdownOptions extends Options {
   anchor?: false | AnchorPluginOptions
   assets?: false | AssetsPluginOptions
   code?: false | CodePluginOptions
