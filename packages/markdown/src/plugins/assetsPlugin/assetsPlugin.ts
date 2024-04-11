@@ -1,5 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer.js'
+import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
 import type { MarkdownEnv } from '../../types.js'
 import { resolveLink } from './resolveLink.js'
 

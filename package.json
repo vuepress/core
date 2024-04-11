@@ -32,7 +32,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@types/node": "^20.11.30",
+    "@commitlint/types": "^19.0.3",
+    "@types/node": "^20.12.5",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "^1.4.0",
     "bumpp": "^9.4.0",
@@ -46,14 +47,14 @@
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
-    "sort-package-json": "^2.8.0",
+    "sort-package-json": "^2.10.0",
     "tsconfig-vuepress": "^4.5.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3",
-    "vite": "~5.2.2",
+    "typescript": "^5.4.4",
+    "vite": "~5.2.8",
     "vitest": "^1.4.0"
   },
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18.16.0"
   }

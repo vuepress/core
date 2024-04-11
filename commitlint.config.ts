@@ -1,16 +1,17 @@
-const fs = require('fs')
-const path = require('path')
+import * as fs from 'node:fs'
+import * as path from 'node:path'
+import type { UserConfig } from '@commitlint/types'
 
-const getSubDirectories = (dir) =>
+const getSubDirectories = (dir: string): string[] =>
   fs
     .readdirSync(dir)
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
 const packages = getSubDirectories(path.resolve(__dirname, 'packages'))
 
-module.exports = {
+export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', packages],
+    'scope-enum': [2, 'always', [...packages, 'e2e']],
     'footer-max-line-length': [0],
   },
-}
+} satisfies UserConfig
