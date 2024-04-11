@@ -78,7 +78,7 @@ it('RouteLink', () => {
     cy.wrap(el).within(() => {
       cy.get('a')
         .children()
-        .should('have.lengthOf', (index + 1) % 2)
+        .should('have.lengthOf', (index % 2) + 1)
         .each((el) => {
           cy.wrap(el).contains('span', 'text')
         })
