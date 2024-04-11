@@ -1,6 +1,6 @@
 const FAKE_HOST = 'http://.'
 
-const inferRoutePath = (path: string): string => {
+export const inferRoutePath = (path: string): string => {
   // if the pathname is empty or ends with `/`, return as is
   if (!path || path.endsWith('/')) return path
 

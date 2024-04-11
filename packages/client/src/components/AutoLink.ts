@@ -90,8 +90,8 @@ export const AutoLink = defineComponent({
     // If the `target` attr is "_blank"
     const isBlankTarget = computed(() => linkTarget.value === '_blank')
 
-    // Render `<RouteLink>` or not
-    const renderRouteLink = computed(
+    // Whether the link is internal
+    const isInternal = computed(
       () => !withProtocol.value && !isBlankTarget.value,
     )
 
@@ -122,15 +122,15 @@ export const AutoLink = defineComponent({
     })
 
     // If this link is active
-    const isActive = computed(() =>
-      renderRouteLink.value
-        ? config.value.activeMatch
+    const isActive = computed(
+      () =>
+        isInternal.value &&
+        (config.value.activeMatch
           ? new RegExp(config.value.activeMatch, 'u').test(route.path)
           : // If this link is active in subpath
             shouldBeActiveInSubpath.value
             ? route.path.startsWith(config.value.link)
-            : route.path === config.value.link
-        : false,
+            : route.path === config.value.link),
     )
 
     return (): VNode => {
@@ -143,7 +143,7 @@ export const AutoLink = defineComponent({
         after?.(),
       ]
 
-      return renderRouteLink.value
+      return isInternal.value
         ? h(
             RouteLink,
             {
@@ -151,7 +151,6 @@ export const AutoLink = defineComponent({
               'to': link,
               'active': isActive.value,
               'aria-label': linkAriaLabel.value,
-              // Class needs to be merged manually
             },
             () => content,
           )
