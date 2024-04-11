@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { normalizeRoutePath } from '../src/index.js'
 
 const testCases = [
-  // index
+  // absolute index
   ['/', '/'],
   ['/README.md', '/'],
   ['/readme.md', '/'],
@@ -15,12 +15,21 @@ const testCases = [
   ['/foo/index.md', '/foo/'],
   ['/foo/index.html', '/foo/'],
   ['/foo/index', '/foo/'],
-  ['', ''],
   ['README.md', 'index.html'],
   ['readme.md', 'index.html'],
   ['index.md', 'index.html'],
   ['index.html', 'index.html'],
   ['index', 'index.html'],
+
+  // absolute non-index
+  ['/foo', '/foo.html'],
+  ['/foo.md', '/foo.html'],
+  ['/foo.html', '/foo.html'],
+  ['/foo/bar', '/foo/bar.html'],
+  ['/foo/bar.md', '/foo/bar.html'],
+  ['/foo/bar.html', '/foo/bar.html'],
+
+  // relative index without current
   ['foo/', 'foo/'],
   ['foo/README.md', 'foo/'],
   ['foo/readme.md', 'foo/'],
@@ -28,13 +37,7 @@ const testCases = [
   ['foo/index.html', 'foo/'],
   ['foo/index', 'foo/'],
 
-  // non-index
-  ['/foo', '/foo.html'],
-  ['/foo.md', '/foo.html'],
-  ['/foo.html', '/foo.html'],
-  ['/foo/bar', '/foo/bar.html'],
-  ['/foo/bar.md', '/foo/bar.html'],
-  ['/foo/bar.html', '/foo/bar.html'],
+  // relative non index without current
   ['foo', 'foo.html'],
   ['foo.md', 'foo.html'],
   ['foo.html', 'foo.html'],
@@ -42,10 +45,7 @@ const testCases = [
   ['foo/bar.md', 'foo/bar.html'],
   ['foo/bar.html', 'foo/bar.html'],
 
-  // only hash and query
-  ['', ''],
-
-  // relative non index
+  // relative non index with current
   ['foo', '/foo.html', '/'],
   ['foo', '/foo.html', '/a.html'],
   ['foo', '/foo.html', '/index.html'],
@@ -137,7 +137,7 @@ const testCases = [
   ['../foo/bar.html', '/foo/bar.html', '/a/index.html'],
   ['../foo/bar.html', '/foo/bar.html', '/a/b.html'],
 
-  // absolute non index
+  // absolute non index with current
   ['/foo', '/foo.html', '/'],
   ['/foo', '/foo.html', '/a.html'],
   ['/foo', '/foo.html', '/index.html'],
@@ -174,6 +174,9 @@ const testCases = [
   ['/foo/bar.html', '/foo/bar.html', '/a/'],
   ['/foo/bar.html', '/foo/bar.html', '/a/index.html'],
   ['/foo/bar.html', '/foo/bar.html', '/a/b.html'],
+
+  // only hash and query
+  ['', ''],
 
   // unexpected corner cases
   ['.md', '.html'],
