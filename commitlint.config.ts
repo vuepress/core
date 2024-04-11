@@ -11,7 +11,7 @@ const packages = getSubDirectories(path.resolve(__dirname, 'packages'))
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', packages],
+    'scope-enum': [2, 'always', [...packages, 'e2e']],
     'footer-max-line-length': [0],
   },
 } satisfies UserConfig
