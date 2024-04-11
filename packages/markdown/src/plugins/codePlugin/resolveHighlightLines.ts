@@ -1,4 +1,4 @@
-export type HighlightLinesRange = [number, number]
+export type HighlightLinesRange = [start: number, end: number]
 
 /**
  * Resolve highlight-lines ranges from token info

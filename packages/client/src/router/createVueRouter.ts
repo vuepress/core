@@ -40,9 +40,9 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      const route = resolveRoute(to.path)
+      const route = resolveRoute(to.fullPath)
 
-      if (route.path !== to.path) {
+      if (route.path !== to.fullPath) {
         return route.path
       }
       const pageChunk = await route.loader()
