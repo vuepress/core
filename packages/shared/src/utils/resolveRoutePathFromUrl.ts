@@ -1,7 +1,7 @@
 export const resolveRoutePathFromUrl = (url: string, base = '/'): string => {
   const pathname = url
     // remove url origin
-    .replace(/^(https?:)?\/\/[^/]*/, '')
+    .replace(/^(?:https?:)?\/\/[^/]*/, '')
 
   // remove site base
   return pathname.startsWith(base)
