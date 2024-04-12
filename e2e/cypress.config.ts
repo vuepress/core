@@ -74,6 +74,7 @@ export default defineConfig({
         },
       })
     },
+    experimentalRunAllSpecs: true,
   },
   env: {
     E2E_BASE: process.env.E2E_BASE ?? '/',

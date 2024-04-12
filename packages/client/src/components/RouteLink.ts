@@ -23,6 +23,29 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   return true
 }
 
+export interface RouteLinkProps {
+  /**
+   * Whether the link is active to have an active class
+   *
+   * Notice that the active status is not automatically determined according to the current route.
+   *
+   * @default false
+   */
+  active?: boolean
+
+  /**
+   * The class to add when the link is active
+   *
+   * @default 'route-link-active'
+   */
+  activeClass?: string
+
+  /**
+   * The route path to link to
+   */
+  to: string
+}
+
 /**
  * Component to render a link to another route.
  *
@@ -80,7 +103,7 @@ export const RouteLink = defineComponent({
           href: path.value,
           onClick: (event: MouseEvent = {} as MouseEvent) => {
             if (guardEvent(event)) {
-              router.push(path.value).catch()
+              router.push(props.to).catch()
             }
           },
         },
