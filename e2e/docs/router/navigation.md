@@ -1,5 +1,5 @@
 <button id="home" @click="goHome">Home</button>
-<button id="404" @click="go404">404</button>
+<button id="not-found" @click="go404">404</button>
 
 <script setup lang="ts">
 import { useRouter } from 'vuepress/client';
