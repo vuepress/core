@@ -103,15 +103,15 @@ export const resolvers = reactive({
    * It would merge the locales fields to the root fields
    */
   resolveSiteLocaleData: (
-    siteData: SiteData,
+    { base, locales, ...siteData }: SiteData,
     routeLocale: RouteLocale,
   ): SiteLocaleData => ({
     ...siteData,
-    ...siteData.locales[routeLocale],
+    ...locales[routeLocale],
     head: [
       // when merging head, the locales head should be placed before root head
       // to get higher priority
-      ...(siteData.locales[routeLocale]?.head ?? []),
+      ...(locales[routeLocale]?.head ?? []),
       ...(siteData.head ?? []),
     ],
   }),

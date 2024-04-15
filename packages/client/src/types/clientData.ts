@@ -4,6 +4,7 @@ import type {
   PageFrontmatter,
   PageHeader,
   SiteData,
+  SiteLocaleData,
 } from '@vuepress/shared'
 import type { Component, ComputedRef, Ref } from 'vue'
 import type {
@@ -12,7 +13,14 @@ import type {
 } from '../constants.js'
 import type { Redirects, Routes } from './routes.js'
 
-export type { HeadConfig, PageData, PageFrontmatter, PageHeader, SiteData }
+export type {
+  HeadConfig,
+  PageData,
+  PageFrontmatter,
+  PageHeader,
+  SiteData,
+  SiteLocaleData,
+}
 
 export interface Layouts {
   [LAYOUT_NAME_DEFAULT]: Component
@@ -26,7 +34,6 @@ export type PageLang = string
 export type PageLayout = Component
 export type RoutePath = string
 export type RouteLocale = string
-export type SiteLocaleData = SiteData
 
 export type LayoutsRef = ComputedRef<Layouts>
 export type PageComponentRef = ComputedRef<PageComponent>
