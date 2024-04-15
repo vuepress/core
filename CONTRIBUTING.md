@@ -43,7 +43,7 @@ pnpm build
 - [TypeScript](https://www.typescriptlang.org/) as the development language
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for code linting and formatting
 - [Vitest](https://vitest.dev/) for unit testing
-- [Cypress](https://www.cypress.io/) for end-to-end testing
+- [Playwright](https://playwright.dev/) for end-to-end testing
 
 ### Scripts
 
@@ -69,7 +69,7 @@ The `lint` script uses ESLint to check all source files.
 
 #### `pnpm test`
 
-The `test` script uses Vitest to run unit testings, and uses Cypress to run end-to-end testings.
+The `test` script uses Vitest to run unit testings, and uses Playwright to run end-to-end testings.
 
 ## End-to-end Testing
 
@@ -96,19 +96,6 @@ pnpm docs:serve
 ```
 
 ### Run E2E Tests
-
-After starting a dev server or a preview server, you can run e2e tests in another terminal:
-
-```bash
-# open Cypress GUI
-pnpm cy:open:dev
-pnpm cy:open:build
-# or, run tests in command line
-pnpm cy:run:dev
-pnpm cy:run:build
-```
-
-If you don't want to start a server and run tests in two different terminals, you can make use of the following commands:
 
 ```bash
 # run e2e tests in dev mode

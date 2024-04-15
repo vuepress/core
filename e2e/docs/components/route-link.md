@@ -46,7 +46,7 @@
 ### Slots
 
 - <RouteLink to="/README.md"><span>text</span></RouteLink>
-- <RouteLink to="/README.md"><span>text</span><span>text</span></RouteLink>
+- <RouteLink to="/README.md"><span>text</span><span>text2</span></RouteLink>
 
 ### Hash and query
 

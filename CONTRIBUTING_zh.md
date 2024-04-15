@@ -43,7 +43,7 @@ pnpm build
 - [TypeScript](https://www.typescriptlang.org/) 作为开发语言
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) 用于代码检查和格式化
 - [Vitest](https://vitest.dev/) 用于单元测试
-- [Cypress](https://www.cypress.io/) 用于端到端测试
+- [Playwright](https://playwright.dev/) 用于端到端测试
 
 ### 开发脚本
 
@@ -69,7 +69,7 @@ pnpm build
 
 #### `pnpm test`
 
-`test` 命令使用 Vitest 来运行单元测试，使用 Cypress 来运行端到端测试。
+`test` 命令使用 Vitest 来运行单元测试，使用 Playwright 来运行端到端测试。
 
 ## 端到端测试
 
@@ -96,19 +96,6 @@ pnpm docs:serve
 ```
 
 ### 运行 E2E 测试
-
-在启动开发服务器或预览服务器后，你可以在另一个终端中运行 e2e 测试：
-
-```bash
-# 启动 Cypress 图形界面
-pnpm cy:open:dev
-pnpm cy:open:build
-# 或者，直接在命令行中运行测试
-pnpm cy:run:dev
-pnpm cy:run:build
-```
-
-如果你不想在两个不同终端内启动服务器和运行测试，你可以使用如下命令：
 
 ```bash
 # 在开发模式下运行 e2e 测试
