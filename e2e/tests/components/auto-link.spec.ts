@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { BASE } from '../../utils/env'
 
 test.beforeEach(async ({ page }) => {
   await page.goto('components/auto-link.html')
@@ -24,6 +25,6 @@ test('should render config correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #config a')
 
   await expect(locator).toHaveText('text')
-  await expect(locator).toHaveAttribute('href', '/')
+  await expect(locator).toHaveAttribute('href', BASE)
   await expect(locator).toHaveAttribute('aria-label', 'label')
 })
