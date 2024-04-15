@@ -52,7 +52,7 @@ const testCases = [
 ]
 
 test('should resolve routes correctly', async ({ page }) => {
-  await page.goto('/router/resolve-route.html')
+  await page.goto('router/resolve-route.html')
 
   for (const { selector, expected } of testCases) {
     const listItemsLocator = await page

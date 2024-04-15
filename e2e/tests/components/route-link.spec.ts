@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import { BASE } from '../../utils/env'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/components/route-link.html')
+  await page.goto('components/route-link.html')
 })
 
 test('should render paths correctly', async ({ page }) => {

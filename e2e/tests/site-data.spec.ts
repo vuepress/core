@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('en-US', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
+    await page.goto('')
   })
 
   test('lang', async ({ page }) => {
@@ -50,7 +50,7 @@ test.describe('en-US', () => {
 })
 
 test.describe('zh-CN', () => {
-  test.beforeEach(async ({ page }) => page.goto('/zh/'))
+  test.beforeEach(async ({ page }) => page.goto('zh/'))
 
   test('lang', async ({ page }) => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'zh-CN')

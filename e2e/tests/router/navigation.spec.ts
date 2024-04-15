@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import { BASE } from '../../utils/env'
 
 test('should preserve query', async ({ page }) => {
-  await page.goto('/router/navigation.html')
+  await page.goto('router/navigation.html')
 
   await page.locator('#home').click()
 
@@ -10,7 +10,7 @@ test('should preserve query', async ({ page }) => {
 })
 
 test('should preserve hash', async ({ page }) => {
-  await page.goto('/router/navigation.html')
+  await page.goto('router/navigation.html')
 
   await page.locator('#not-found').click()
 

@@ -6,7 +6,7 @@ test('should render links and navigate between pages correctly', async ({
 }) => {
   const linksLocator = page.locator('.e2e-theme-content ul li a')
 
-  await page.goto('/markdown/links/foo.html')
+  await page.goto('markdown/links/foo.html')
 
   await expect(linksLocator).toHaveCount(2)
   await expect(linksLocator.first()).toHaveText('bar')

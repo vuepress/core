@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { removeEndingSlash, removeLeadingSlash } from 'vuepress/shared'
 import { BASE } from '../../utils/env'
 
-const PERMALINK_PREFIX = BASE.replace(/\/$/, '')
+const PERMALINK_PREFIX = removeEndingSlash(BASE)
 
 const CONFIGS = [
   {
@@ -28,7 +29,7 @@ const CONFIGS = [
 
 test('should support visiting permalinks directly', async ({ page }) => {
   for (const { permalink } of CONFIGS) {
-    await page.goto(encodeURI(permalink))
+    await page.goto(removeLeadingSlash(encodeURI(permalink)))
     await expect(page.locator('.e2e-theme-content p')).toHaveText(permalink)
   }
 })
@@ -40,7 +41,7 @@ test('should support rendering link by permalink and navigate to it correctly', 
     const linksLocator = page.locator(`.e2e-theme-content #${id} + ul > li a`)
     const contentLocator = page.locator('.e2e-theme-content p')
 
-    await page.goto('/routes/permalinks/')
+    await page.goto('routes/permalinks/')
 
     await expect(linksLocator).toHaveCount(3)
 
@@ -70,7 +71,7 @@ test('should support rendering link by filename and navigate to it correctly', a
     const linksLocator = page.locator(`.e2e-theme-content #${id} + ul > li a`)
     const contentLocator = page.locator('.e2e-theme-content p')
 
-    await page.goto('/routes/permalinks/')
+    await page.goto('routes/permalinks/')
 
     await expect(linksLocator).toHaveCount(3)
 

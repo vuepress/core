@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 test('should render images correctly', async ({ page }) => {
   const imagesLocator = page.locator('.e2e-theme-content img')
 
-  await page.goto('/markdown/images/images.html')
+  await page.goto('markdown/images/images.html')
 
   await expect(imagesLocator).toHaveCount(2)
   await expect(imagesLocator.first()).toHaveAttribute('alt', 'logo-public')

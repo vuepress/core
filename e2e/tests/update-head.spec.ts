@@ -11,7 +11,7 @@ test('should update head correctly', async ({ page }) => {
   const fooZhLocator = page.locator('head meta[name="foo-zh"]')
 
   // en-US
-  await page.goto('/')
+  await page.goto('')
 
   // lang
   await expect(htmlLocator).toHaveAttribute('lang', 'en-US')

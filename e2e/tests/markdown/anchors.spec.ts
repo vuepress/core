@@ -5,7 +5,7 @@ test('should render anchors and navigate correctly', async ({ page }) => {
   const anchorLocator = page.locator('.e2e-theme-content h1 > a')
   const anchorOneDashOneLocator = page.locator('#anchor-1-1 > a')
 
-  await page.goto('/markdown/anchors.html')
+  await page.goto('markdown/anchors.html')
 
   await expect(headingLocator).toHaveAttribute('id', 'title')
   await expect(headingLocator).toHaveAttribute('tabindex', '-1')

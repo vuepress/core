@@ -46,7 +46,7 @@ if (isDev) {
       '.e2e-theme-content #rendered-foo + p',
     )
 
-    await page.goto('/hmr/frontmatter.html')
+    await page.goto('hmr/frontmatter.html')
 
     await expect(frontmatterLocator).toHaveText('HMR foo')
     await hmrUpdateFrontmatter()
@@ -56,7 +56,7 @@ if (isDev) {
   test('should update title correctly', async ({ page }) => {
     const titleLocator = page.locator('.e2e-theme-content #rendered-title + p')
 
-    await page.goto('/hmr/title.html')
+    await page.goto('hmr/title.html')
 
     await expect(page).toHaveTitle(/HMR Title/)
     await expect(titleLocator).toHaveText('HMR Title')
@@ -73,7 +73,7 @@ if (isDev) {
       '.e2e-theme-content #rendered-foo + p',
     )
 
-    await page.goto('/hmr/title.html')
+    await page.goto('hmr/title.html')
     await expect(page).toHaveTitle(/HMR Title/)
     await expect(titleLocator).toHaveText('HMR Title')
 
