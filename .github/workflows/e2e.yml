@@ -35,24 +35,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Get cypress cache path
+      - name: Install playwright browsers
         working-directory: ./e2e
         shell: bash
-        run: |
-          echo "CYPRESS_CACHE_PATH=$(pnpm cypress cache path)" >> $GITHUB_ENV
-
-      - name: Setup cypress cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.CYPRESS_CACHE_PATH }}
-          key: cypress-${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-node-${{ matrix.node }}-
-            cypress-${{ runner.os }}-
-
-      - name: Install cypress binary
-        working-directory: ./e2e
-        run: pnpm cypress install
+        run: pnpm playwright install --with-deps
 
       - name: Build source files
         run: pnpm build
