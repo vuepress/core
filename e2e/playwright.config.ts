@@ -10,7 +10,7 @@ export default defineConfig({
   forbidOnly: isCI,
   reporter: isCI ? 'github' : 'line',
   retries: isCI ? 2 : 0,
-  workers: isCI || isDev ? 1 : undefined,
+  workers: isDev ? 1 : undefined,
   projects: [
     {
       name: 'chromium',
