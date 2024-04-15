@@ -8,7 +8,7 @@
   <AutoLink v-for="item in anchorLinksConfig" :config="item" />
 </div>
 
-<div id="aria-label">
+<div id="config">
   <AutoLink :config="{ text: 'text', link: '/', ariaLabel: 'label' }" />
 </div>
 
