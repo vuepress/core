@@ -1,3 +1,5 @@
+import { expect, test } from '@playwright/test'
+
 const testCases = [
   {
     selector: '#index',
@@ -49,18 +51,19 @@ const testCases = [
   },
 ]
 
-const parseResolvedRouteFromElement = (el: Cypress.JQueryWithSelector) =>
-  JSON.parse(/: (\{.*\})\s*$/.exec(el.text())![1])
+test('should resolve routes correctly', async ({ page }) => {
+  await page.goto('router/resolve-route.html')
 
-it('should resolve routes correctly', () => {
-  cy.visit('/router/resolve-route.html')
-
-  testCases.forEach(({ selector, expected }) => {
-    cy.get(`.e2e-theme-content ${selector} + ul > li`).each((el) => {
-      const resolvedRoute = parseResolvedRouteFromElement(el)
-      expect(resolvedRoute.path).to.equal(expected.path)
-      expect(resolvedRoute.meta).to.deep.equal(expected.meta)
-      expect(resolvedRoute.notFound).to.equal(expected.notFound)
-    })
-  })
+  for (const { selector, expected } of testCases) {
+    const listItemsLocator = await page
+      .locator(`.e2e-theme-content ${selector} + ul > li`)
+      .all()
+    for (const li of listItemsLocator) {
+      const textContent = await li.textContent()
+      const resolvedRoute = JSON.parse(/: (\{.*\})\s*$/.exec(textContent!)![1])
+      expect(resolvedRoute.path).toEqual(expected.path)
+      expect(resolvedRoute.meta).toStrictEqual(expected.meta)
+      expect(resolvedRoute.notFound).toEqual(expected.notFound)
+    }
+  }
 })

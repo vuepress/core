@@ -4,18 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cy:open:build": "cross-env E2E_COMMAND=build cypress open",
-    "cy:open:dev": "cross-env E2E_COMMAND=dev cypress open",
-    "cy:run:build": "cross-env E2E_COMMAND=build cypress run",
-    "cy:run:dev": "cross-env E2E_COMMAND=dev cypress run",
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
     "docs:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
     "docs:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
-    "e2e:build": "pnpm docs:clean && pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run:build",
-    "e2e:dev": "pnpm docs:clean && start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run:dev"
+    "e2e:build": "cross-env E2E_COMMAND=build playwright test",
+    "e2e:build-webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
+    "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
+    "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
@@ -27,10 +25,8 @@
     "vuepress": "workspace:*"
   },
   "devDependencies": {
+    "@playwright/test": "^1.43.0",
     "anywhere": "^1.6.0",
-    "cross-env": "^7.0.3",
-    "cypress": "^13.7.2",
-    "process": "^0.11.10",
-    "start-server-and-test": "^2.0.3"
+    "cross-env": "^7.0.3"
   }
 }

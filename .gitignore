@@ -13,7 +13,8 @@ dist/
 coverage/
 
 # E2E temp files
-e2e/cypress/screenshots/
+e2e/playwright-report/
+e2e/test-results/
 
 # Node modules
 node_modules/
