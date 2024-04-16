@@ -38,6 +38,10 @@ test('should render active status correctly', async ({ page }) => {
   const CONFIGS = [
     'route-link route-link-active',
     'route-link route-link-active',
+    'route-link route-link-active',
+    'route-link route-link-active',
+    'route-link',
+    'route-link',
     'route-link',
     'route-link',
   ]
@@ -53,6 +57,8 @@ test('should render class correctly', async ({ page }) => {
   const CONFIGS = [
     'route-link custom-class',
     'route-link route-link-active custom-class',
+    'route-link custom-class',
+    'route-link route-link-active custom-class',
   ]
 
   for (const [index, className] of CONFIGS.entries()) {
@@ -64,6 +70,22 @@ test('should render class correctly', async ({ page }) => {
 
 test('should render attributes correctly', async ({ page }) => {
   const CONFIGS = [
+    {
+      attrName: 'title',
+      attrValue: 'Title',
+    },
+    {
+      attrName: 'target',
+      attrValue: '_blank',
+    },
+    {
+      attrName: 'rel',
+      attrValue: 'noopener',
+    },
+    {
+      attrName: 'aria-label',
+      attrValue: 'test',
+    },
     {
       attrName: 'title',
       attrValue: 'Title',
@@ -99,6 +121,14 @@ test('should render slots correctly', async ({ page }) => {
       spansCount: 2,
       spansText: ['text', 'text2'],
     },
+    {
+      spansCount: 1,
+      spansText: ['text'],
+    },
+    {
+      spansCount: 2,
+      spansText: ['text', 'text2'],
+    },
   ]
   for (const [index, { spansCount, spansText }] of CONFIGS.entries()) {
     const children = await page
@@ -120,6 +150,12 @@ test('should render hash and query correctly', async ({ page }) => {
     `${BASE}?query=1#hash`,
     `${BASE}?query=1&query=2#hash`,
     `${BASE}#hash?query=1&query=2`,
+    `${BASE}#hash`,
+    `${BASE}?query`,
+    `${BASE}?query#hash`,
+    `${BASE}?query=1#hash`,
+    `${BASE}?query=1&query=2#hash`,
+    `${BASE}#hash?query=1&query=2`,
     `#hash`,
     `?query`,
     `?query#hash`,
@@ -131,6 +167,23 @@ test('should render hash and query correctly', async ({ page }) => {
   for (const [index, href] of CONFIGS.entries()) {
     await expect(
       page.locator('.e2e-theme-content #hash-and-query + ul > li a').nth(index),
+    ).toHaveAttribute('href', href)
+  }
+})
+
+test('should render relative links correctly', async ({ page }) => {
+  const CONFIGS = [
+    BASE,
+    `${BASE}404.html`,
+    `${BASE}components/not-exist.html`,
+    BASE,
+    `${BASE}404.html`,
+    `${BASE}components/not-exist.html`,
+  ]
+
+  for (const [index, href] of CONFIGS.entries()) {
+    await expect(
+      page.locator('.e2e-theme-content #relative + ul > li a').nth(index),
     ).toHaveAttribute('href', href)
   }
 })
