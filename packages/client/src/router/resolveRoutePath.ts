@@ -4,9 +4,9 @@ import { redirects, routes } from '../internal/routes.js'
 /**
  * Resolve route path with given raw path
  */
-export const resolveRoutePath = (path: string): string => {
+export const resolveRoutePath = (path: string, current?: string): string => {
   // normalized path
-  const normalizedPath = normalizeRoutePath(path)
+  const normalizedPath = normalizeRoutePath(path, current)
   if (routes.value[normalizedPath]) return normalizedPath
 
   // encoded path
