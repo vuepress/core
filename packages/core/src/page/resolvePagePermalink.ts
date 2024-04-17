@@ -25,9 +25,15 @@ export const resolvePagePermalink = ({
     return frontmatter.permalink
   }
 
+  if (frontmatter.permalink === null || frontmatter.permalinkPattern === null) {
+    return null
+  }
+
   // get permalink pattern
-  const permalinkPattern = getPermalinkPattern({ app, frontmatter })
-  if (permalinkPattern === null) {
+  const permalinkPattern =
+    frontmatter.permalinkPattern || app.options.permalinkPattern
+
+  if (!permalinkPattern) {
     return null
   }
 
@@ -44,23 +50,4 @@ export const resolvePagePermalink = ({
   )
 
   return ensureLeadingSlash(link)
-}
-
-/**
- * Get permalink pattern from frontmatter or app options
- */
-const getPermalinkPattern = ({
-  app,
-  frontmatter,
-}: {
-  app: App
-  frontmatter: PageFrontmatter
-}): string | null => {
-  if (frontmatter.permalinkPattern === null) {
-    return null
-  }
-  if (isString(frontmatter.permalinkPattern)) {
-    return frontmatter.permalinkPattern
-  }
-  return app.options.permalinkPattern
 }
