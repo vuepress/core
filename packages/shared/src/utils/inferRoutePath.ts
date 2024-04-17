@@ -1,3 +1,6 @@
+/**
+ * Infer route path according to the given (markdown file) path
+ */
 export const inferRoutePath = (path: string): string => {
   // if the pathname is empty or ends with `/`, return as is
   if (!path || path.endsWith('/')) return path
