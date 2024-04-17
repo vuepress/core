@@ -20,13 +20,13 @@ const testCases: [
   [['//foobar.com/base/README.md', '/base/'], true],
 
   // links with other protocols
-  [['mailto:foobar', '/base/'], false],
-  [['tel:foobar', '/base/'], false],
-  [['ftp://foobar.com'], false],
-  [['ftp://foobar.com', '/base/'], false],
-  [['ftp://foobar.com/base/README.md'], false],
-  [['ftp://foobar.com/base/README.md', '/base/'], false],
-  [['ms-windows-store://home', '/base/'], false],
+  [['mailto:foobar', '/base/'], true],
+  [['tel:foobar', '/base/'], true],
+  [['ftp://foobar.com'], true],
+  [['ftp://foobar.com', '/base/'], true],
+  [['ftp://foobar.com/base/README.md'], true],
+  [['ftp://foobar.com/base/README.md', '/base/'], true],
+  [['ms-windows-store://home', '/base/'], true],
 
   // absolute links
   [['/foo/bar'], false],

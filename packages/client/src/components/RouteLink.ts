@@ -1,4 +1,3 @@
-import { removeLeadingSlash } from '@vuepress/shared'
 import { computed, defineComponent, h } from 'vue'
 import type { SlotsType, VNode } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -92,7 +91,7 @@ export const RouteLink = defineComponent({
     const path = computed(() =>
       props.to.startsWith('#') || props.to.startsWith('?')
         ? props.to
-        : `${__VUEPRESS_BASE__}${removeLeadingSlash(resolveRoutePath(props.to, route.path))}`,
+        : `${__VUEPRESS_BASE__}${resolveRoutePath(props.to, route.path).substring(1)}`,
     )
 
     return () =>
