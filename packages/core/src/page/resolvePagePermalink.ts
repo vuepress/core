@@ -20,14 +20,23 @@ export const resolvePagePermalink = ({
   pathInferred: string | null
   pathLocale: string
 }): string | null => {
-  // use permalink in frontmatter directly
+  // frontmatter.permalink has the highest priority
+  if (frontmatter.permalink === null) {
+    return null
+  }
   if (isString(frontmatter.permalink)) {
     return frontmatter.permalink
   }
 
-  // get permalink pattern
-  const permalinkPattern = getPermalinkPattern({ app, frontmatter })
-  if (permalinkPattern === null) {
+  // frontmatter.permalinkPattern has higher priority than app.options.permalinkPattern
+  if (frontmatter.permalinkPattern === null) {
+    return null
+  }
+
+  const permalinkPattern =
+    frontmatter.permalinkPattern || app.options.permalinkPattern
+
+  if (!isString(permalinkPattern)) {
     return null
   }
 
@@ -44,23 +53,4 @@ export const resolvePagePermalink = ({
   )
 
   return ensureLeadingSlash(link)
-}
-
-/**
- * Get permalink pattern from frontmatter or app options
- */
-const getPermalinkPattern = ({
-  app,
-  frontmatter,
-}: {
-  app: App
-  frontmatter: PageFrontmatter
-}): string | null => {
-  if (frontmatter.permalinkPattern === null) {
-    return null
-  }
-  if (isString(frontmatter.permalinkPattern)) {
-    return frontmatter.permalinkPattern
-  }
-  return app.options.permalinkPattern
 }
