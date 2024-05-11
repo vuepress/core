@@ -36,6 +36,21 @@ describe('core > page > resolvePagePermalink', () => {
       expect(resolved).toBe('/frontmatter')
     })
 
+    it('should return null', () => {
+      const resolved = resolvePagePermalink({
+        app: appWithPermalinkPattern,
+        frontmatter: {
+          permalink: null,
+        },
+        slug: '',
+        date: '',
+        pathInferred: '/inferred',
+        pathLocale: '',
+      })
+
+      expect(resolved).toBe(null)
+    })
+
     it('should use permalinkPattern in frontmatter', () => {
       const resolved = resolvePagePermalink({
         app,
