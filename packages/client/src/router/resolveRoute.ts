@@ -13,9 +13,9 @@ export interface ResolvedRoute<T extends RouteMeta = RouteMeta>
  */
 export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   path: string,
-  current?: string,
+  currentPath?: string,
 ): ResolvedRoute<T> => {
-  const routePath = resolveRoutePath(path, current)
+  const routePath = resolveRoutePath(path, currentPath)
   const route = routes.value[routePath] ?? {
     ...routes.value['/404.html'],
     notFound: true,
