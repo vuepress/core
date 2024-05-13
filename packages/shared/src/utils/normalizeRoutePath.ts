@@ -1,30 +1,21 @@
+import { inferRoutePath } from './inferRoutePath.js'
+
+const FAKE_HOST = 'http://.'
+
 /**
  * Normalize the given path to the final route path
  */
-export const normalizeRoutePath = (path: string): string => {
-  // split pathname and query/hash
+export const normalizeRoutePath = (path: string, current?: string): string => {
+  if (!path.startsWith('/') && current) {
+    // the relative path should be resolved against the current path
+    const loc = current.slice(0, current.lastIndexOf('/'))
+
+    const { pathname, search, hash } = new URL(`${loc}/${path}`, FAKE_HOST)
+
+    return inferRoutePath(pathname) + search + hash
+  }
+
   const [pathname, ...queryAndHash] = path.split(/(\?|#)/)
 
-  // if the pathname is empty or ends with `/`, return as is
-  if (!pathname || pathname.endsWith('/')) return path
-
-  // convert README.md to index.html
-  let routePath = pathname.replace(/(^|\/)README.md$/i, '$1index.html')
-
-  // convert /foo/bar.md to /foo/bar.html
-  if (routePath.endsWith('.md')) {
-    routePath = routePath.substring(0, routePath.length - 3) + '.html'
-  }
-  // convert /foo/bar to /foo/bar.html
-  else if (!routePath.endsWith('.html')) {
-    routePath = routePath + '.html'
-  }
-
-  // convert /foo/index.html to /foo/
-  if (routePath.endsWith('/index.html')) {
-    routePath = routePath.substring(0, routePath.length - 10)
-  }
-
-  // add query and hash back
-  return routePath + queryAndHash.join('')
+  return inferRoutePath(pathname) + queryAndHash.join('')
 }
