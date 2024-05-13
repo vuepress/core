@@ -1,6 +1,7 @@
 # VuePress
 
-[![check](https://github.com/vuepress/core/workflows/check/badge.svg)](https://github.com/vuepress/core/actions/workflows/check.yml?query=workflow%3Acheck)
+[![check](https://github.com/vuepress/core/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/vuepress/core/actions/workflows/check.yml)
+[![e2e](https://github.com/vuepress/core/actions/workflows/e2e.yml/badge.svg?branch=main)](https://github.com/vuepress/core/actions/workflows/e2e.yml)
 [![npm](https://badgen.net/npm/v/vuepress/next)](https://www.npmjs.com/package/vuepress)
 [![coverage](https://coveralls.io/repos/github/vuepress/core/badge.svg?branch=main)](https://coveralls.io/github/vuepress/core?branch=main)
 [![license](https://badgen.net/github/license/vuepress/core)](https://github.com/vuepress/core/blob/main/LICENSE)
