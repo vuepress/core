@@ -183,6 +183,18 @@ const testCases = [
   [['foo/.md'], 'foo/.html'],
   [['/.md'], '/.html'],
   [['/foo/.md'], '/foo/.html'],
+  [['.md', '/a/'], '/a/.html'],
+  [['foo/.md', '/a/'], '/a/foo/.html'],
+  [['/.md', '/a/'], '/.html'],
+  [['/foo/.md', '/a/'], '/foo/.html'],
+  [['.md', '/a/index.html'], '/a/.html'],
+  [['foo/.md', '/a/index.html'], '/a/foo/.html'],
+  [['/.md', '/a/index.html'], '/.html'],
+  [['/foo/.md', '/a/index.html'], '/foo/.html'],
+  [['.md', '/a/b.html'], '/a/.html'],
+  [['foo/.md', '/a/b.html'], '/a/foo/.html'],
+  [['/.md', '/a/b.html'], '/.html'],
+  [['/foo/.md', '/a/b.html'], '/foo/.html'],
 ]
 
 describe('should normalize clean paths correctly', () => {
