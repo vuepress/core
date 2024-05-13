@@ -1,8 +1,7 @@
-import { h } from 'vue'
-import type { FunctionalComponent, HTMLAttributes, VNode } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, defineComponent, h } from 'vue'
+import type { SlotsType, VNode } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { resolveRoutePath } from '../router/index.js'
-import { withBase } from '../utils/index.js'
 
 /**
  * Forked from https://github.com/vuejs/router/blob/941b2131e80550009e5221d4db9f366b1fea3fd5/packages/router/src/RouterLink.ts#L293
@@ -23,7 +22,7 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   return true
 }
 
-export interface RouteLinkProps extends HTMLAttributes {
+export interface RouteLinkProps {
   /**
    * Whether the link is active to have an active class
    *
@@ -53,42 +52,61 @@ export interface RouteLinkProps extends HTMLAttributes {
  *
  * It's recommended to use `RouteLink` in VuePress.
  */
-export const RouteLink: FunctionalComponent<
-  RouteLinkProps,
-  Record<never, never>,
-  {
-    default: () => string | VNode | (string | VNode)[]
-  }
-> = (
-  { active = false, activeClass = 'route-link-active', to, ...attrs },
-  { slots },
-) => {
-  const router = useRouter()
-  const resolvedPath = resolveRoutePath(to)
+export const RouteLink = defineComponent({
+  name: 'RouteLink',
 
-  const path =
-    // only anchor or query
-    resolvedPath.startsWith('#') || resolvedPath.startsWith('?')
-      ? resolvedPath
-      : withBase(resolvedPath)
-
-  return h(
-    'a',
-    {
-      ...attrs,
-      class: ['route-link', { [activeClass]: active }],
-      href: path,
-      onClick: (event: MouseEvent = {} as MouseEvent) => {
-        guardEvent(event) ? router.push(to).catch() : Promise.resolve()
-      },
+  props: {
+    /**
+     * The route path to link to
+     */
+    to: {
+      type: String,
+      required: true,
     },
-    slots.default?.(),
-  )
-}
 
-RouteLink.displayName = 'RouteLink'
-RouteLink.props = {
-  active: Boolean,
-  activeClass: String,
-  to: String,
-}
+    /**
+     * Whether the link is active to have an active class
+     *
+     * Notice that the active status is not automatically determined according to the current route.
+     */
+    active: Boolean,
+
+    /**
+     * The class to add when the link is active
+     */
+    activeClass: {
+      type: String,
+      default: 'route-link-active',
+    },
+  },
+
+  slots: Object as SlotsType<{
+    default: () => string | VNode | (string | VNode)[]
+  }>,
+
+  setup(props, { slots }) {
+    const router = useRouter()
+    const route = useRoute()
+
+    const path = computed(() =>
+      props.to.startsWith('#') || props.to.startsWith('?')
+        ? props.to
+        : `${__VUEPRESS_BASE__}${resolveRoutePath(props.to, route.path).substring(1)}`,
+    )
+
+    return () =>
+      h(
+        'a',
+        {
+          class: ['route-link', { [props.activeClass]: props.active }],
+          href: path.value,
+          onClick: (event: MouseEvent = {} as MouseEvent) => {
+            if (guardEvent(event)) {
+              router.push(props.to).catch()
+            }
+          },
+        },
+        slots.default?.(),
+      )
+  },
+})
