@@ -4,7 +4,10 @@ import { redirects, routes } from '../internal/routes.js'
 /**
  * Resolve route path with given raw path
  */
-export const resolveRoutePath = (path: string, currentPath?: string): string => {
+export const resolveRoutePath = (
+  path: string,
+  currentPath?: string,
+): string => {
   // normalized path
   const normalizedPath = normalizeRoutePath(path, currentPath)
   if (routes.value[normalizedPath]) return normalizedPath
