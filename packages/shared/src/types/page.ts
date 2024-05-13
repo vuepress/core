@@ -62,7 +62,7 @@ export type PageFrontmatter<
   head?: HeadConfig[]
   lang?: string
   layout?: string
-  permalink?: string
+  permalink?: string | null
   permalinkPattern?: string | null
   routeMeta?: Record<string, unknown>
   title?: string
