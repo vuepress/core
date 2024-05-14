@@ -9,7 +9,7 @@ export const resolvePaths = (
   base: string,
   filePathRelative: string | null,
 ): {
-  absolutePath: string
+  absolutePath: string | null
   relativePath: string
 } => {
   let absolutePath: string
@@ -48,7 +48,7 @@ export const resolvePaths = (
       // remove leading './'
       relativePath = rawPath.replace(/^(?:\.\/)?(.*)$/, '$1')
       // just take relative link as absolute link
-      absolutePath = relativePath
+      absolutePath = null
     }
   }
 

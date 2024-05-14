@@ -1,4 +1,4 @@
-import { isLinkExternal, normalizeRoutePath } from '@vuepress/shared'
+import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { MarkdownEnv } from '../../types.js'
@@ -67,7 +67,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // if `href` attr exists, `token.attrs` is not `null`
     const hrefAttr = token.attrs![hrefIndex]
-    const hrefLink = hrefAttr[1]
+    const hrefLink: string = hrefAttr[1]
 
     // get `base` and `filePathRelative` from `env`
     const { base = '/', filePathRelative = null } = env
@@ -83,7 +83,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // check if a link is an internal link
     const internalLinkMatch = hrefLink.match(
-      /^((?:.*)(?:\/|\.md|\.html))(#.*)?$/,
+      /^([^#?]*?(?:\/|\.md|\.html))([#?].*)?$/,
     )
 
     if (!internalLinkMatch) {
@@ -97,7 +97,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // notice that the path and hash are encoded by markdown-it
     const rawPath = internalLinkMatch[1]
-    const rawHash = internalLinkMatch[2] || ''
+    const rawHashAndQueries = internalLinkMatch[2] || ''
 
     // resolve relative and absolute path
     const { relativePath, absolutePath } = resolvePaths(
@@ -114,16 +114,19 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       // normalize markdown file path to route path
       // we are removing the `base` from absolute path because it should not be
       // passed to `<RouteLink>` or `<RouterLink>`
-      const normalizedPath = normalizeRoutePath(
-        absolutePath.replace(new RegExp(`^${base}`), '/'),
+      const normalizedPath = inferRoutePath(
+        absolutePath
+          ? absolutePath.replace(new RegExp(`^${base}`), '/')
+          : relativePath,
       )
       // replace the original href link with the normalized path
-      hrefAttr[1] = `${normalizedPath}${rawHash}`
+      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
       // set `hasOpenInternalLink` to modify the ending tag
       hasOpenInternalLink = true
     } else {
-      const normalizedPath = normalizeRoutePath(absolutePath)
-      hrefAttr[1] = `${normalizedPath}${rawHash}`
+      const normalizedPath = inferRoutePath(absolutePath ?? relativePath)
+      // replace the original href link with the normalized path
+      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
     }
 
     // extract internal links for file / page existence check
