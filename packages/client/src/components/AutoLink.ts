@@ -174,7 +174,7 @@ export const AutoLink = defineComponent({
       return route.path === props.link
     })
 
-    return (): VNode => {
+    return () => {
       const { before, after, default: defaultSlot } = slots
 
       const content = defaultSlot?.() || [before?.(), props.text, after?.()]
