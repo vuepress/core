@@ -142,7 +142,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     return self.renderToken(tokens, idx, options)
   }
 
-  md.renderer.rules.link_close = (tokens, idx, options, env, self) => {
+  md.renderer.rules.link_close = (tokens, idx, options, _env, self) => {
     // convert ending tag of internal link
     if (hasOpenInternalLink) {
       hasOpenInternalLink = false
