@@ -188,7 +188,7 @@ export const AutoLink = defineComponent({
               'active': isActive.value,
               'aria-label': linkAriaLabel.value,
             },
-            content,
+            () => content,
           )
         : h(
             'a',
