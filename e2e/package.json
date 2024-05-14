@@ -19,13 +19,13 @@
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.75.0",
+    "sass": "^1.77.1",
     "sass-loader": "^14.2.1",
-    "vue": "^3.4.23",
+    "vue": "^3.4.27",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.43.1",
+    "@playwright/test": "^1.44.0",
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3"
   }
