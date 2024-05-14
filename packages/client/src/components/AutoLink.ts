@@ -5,78 +5,26 @@ import { useRoute } from 'vue-router'
 import { useSiteData } from '../composables/index.js'
 import { RouteLink } from './RouteLink.js'
 
-export interface AutoLinkConfig {
-  /**
-   * Text of item
-   *
-   * 项目文字
-   */
-  text: string
-
-  /**
-   * Aria label of item
-   *
-   * 项目无障碍标签
-   */
-  ariaLabel?: string
-
-  /**
-   * Link of item
-   *
-   * 当前页面链接
-   */
-  link: string
-
-  /**
-   * Rel of `<a>` tag
-   *
-   * `<a>` 标签的 `rel` 属性
-   */
-  rel?: string
-
-  /**
-   * Target of `<a>` tag
-   *
-   * `<a>` 标签的 `target` 属性
-   */
-  target?: string
-
-  /**
-   * Regexp mode to be active
-   *
-   * 匹配激活的正则表达式
-   */
-  activeMatch?: string
-}
-
+/**
+ * Component to render a link automatically according to the link type
+ *
+ * - If the link is internal, it will be rendered as a `<RouteLink>`
+ * - If the link is external, it will be rendered as a normal `<a>` tag
+ */
 export const AutoLink = defineComponent({
   name: 'AutoLink',
 
   props: {
     /**
-     * Text of item
-     *
-     * 项目文字
+     * regexp to determine if the link should be active, which has higher priority than `exact`
      */
-    text: {
-      type: String,
-      required: true,
+    activeMatch: {
+      type: [String, RegExp],
+      default: '',
     },
 
     /**
-     * Link of item
-     *
-     * 当前页面链接
-     */
-    link: {
-      type: String,
-      required: true,
-    },
-
-    /**
-     * Aria label of item
-     *
-     * 项目无障碍标签
+     * `aria-label` attribute
      */
     ariaLabel: {
       type: String,
@@ -84,9 +32,20 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * Rel of `<a>` tag
-     *
-     * `<a>` 标签的 `rel` 属性
+     * whether the link should be active only if the url is an exact match
+     */
+    exact: Boolean,
+
+    /**
+     * url of the auto link
+     */
+    link: {
+      type: String,
+      required: true,
+    },
+
+    /**
+     * `rel` attribute
      */
     rel: {
       type: String,
@@ -94,9 +53,7 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * Target of `<a>` tag
-     *
-     * `<a>` 标签的 `target` 属性
+     * `target` attribute
      */
     target: {
       type: String,
@@ -104,24 +61,11 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * Whether it's active only when exact match
-     *
-     * 是否当恰好匹配时激活
+     * text of the auto link
      */
-    exact: Boolean,
-
-    /**
-     * Regexp mode to be active
-     *
-     * @description has higher priority than exact
-     *
-     * 匹配激活的正则表达式
-     *
-     * @description 比 exact 的优先级更高
-     */
-    activeMatch: {
-      type: [String, RegExp],
-      default: '',
+    text: {
+      type: String,
+      required: true,
     },
   },
 
@@ -177,16 +121,18 @@ export const AutoLink = defineComponent({
     const isActive = computed(() => {
       if (!isInternal.value) return false
 
-      if (props.activeMatch)
+      if (props.activeMatch) {
         return (
           props.activeMatch instanceof RegExp
             ? props.activeMatch
             : new RegExp(props.activeMatch, 'u')
         ).test(route.path)
+      }
 
       // If this link is active in subpath
-      if (shouldBeActiveInSubpath.value)
+      if (shouldBeActiveInSubpath.value) {
         return route.path.startsWith(props.link)
+      }
 
       return route.path === props.link
     })
@@ -194,11 +140,7 @@ export const AutoLink = defineComponent({
     return (): VNode => {
       const { before, after, default: defaultSlot } = slots
 
-      const content = defaultSlot?.() || [
-        before ? before() : null,
-        props.text,
-        after?.(),
-      ]
+      const content = defaultSlot?.() || [before?.(), props.text, after?.()]
 
       return isInternal.value
         ? h(
@@ -209,16 +151,16 @@ export const AutoLink = defineComponent({
               'active': isActive.value,
               'aria-label': linkAriaLabel.value,
             },
-            () => content,
+            content,
           )
         : h(
             'a',
             {
               'class': 'auto-link external-link',
               'href': props.link,
+              'aria-label': linkAriaLabel.value,
               'rel': linkRel.value,
               'target': linkTarget.value,
-              'aria-label': linkAriaLabel.value,
             },
             content,
           )
