@@ -5,6 +5,43 @@ import { useRoute } from 'vue-router'
 import { useSiteData } from '../composables/index.js'
 import { RouteLink } from './RouteLink.js'
 
+export interface AutoLinkProps {
+  /**
+   * Pattern to determine if the link should be active, which has higher priority than `exact`
+   */
+  activeMatch?: string | RegExp
+
+  /**
+   * The `aria-label` attribute
+   */
+  ariaLabel?: string
+
+  /**
+   * Whether the link should be active only if the url is an exact match
+   */
+  exact?: boolean
+
+  /**
+   * URL of the auto link
+   */
+  link: string
+
+  /**
+   * The `rel` attribute
+   */
+  rel?: string
+
+  /**
+   * The `target` attribute
+   */
+  target?: string
+
+  /**
+   * Text of the auto link
+   */
+  text: string
+}
+
 /**
  * Component to render a link automatically according to the link type
  *
@@ -16,7 +53,7 @@ export const AutoLink = defineComponent({
 
   props: {
     /**
-     * regexp to determine if the link should be active, which has higher priority than `exact`
+     * Pattern to determine if the link should be active, which has higher priority than `exact`
      */
     activeMatch: {
       type: [String, RegExp],
@@ -24,7 +61,7 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * `aria-label` attribute
+     * The `aria-label` attribute
      */
     ariaLabel: {
       type: String,
@@ -32,12 +69,12 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * whether the link should be active only if the url is an exact match
+     * Whether the link should be active only if the url is an exact match
      */
     exact: Boolean,
 
     /**
-     * url of the auto link
+     * URL of the auto link
      */
     link: {
       type: String,
@@ -45,7 +82,7 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * `rel` attribute
+     * The `rel` attribute
      */
     rel: {
       type: String,
@@ -53,7 +90,7 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * `target` attribute
+     * The `target` attribute
      */
     target: {
       type: String,
@@ -61,7 +98,7 @@ export const AutoLink = defineComponent({
     },
 
     /**
-     * text of the auto link
+     * Text of the auto link
      */
     text: {
       type: String,
