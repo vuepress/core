@@ -7,6 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('should render route-link correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #route-link a')
+
   for (const el of await locator.all()) {
     await expect(el).toHaveAttribute('class', /route-link/)
   }
@@ -14,6 +15,7 @@ test('should render route-link correctly', async ({ page }) => {
 
 test('should render external-link correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #external-link a')
+
   for (const el of await locator.all()) {
     await expect(el).toHaveAttribute('class', /external-link/)
   }
