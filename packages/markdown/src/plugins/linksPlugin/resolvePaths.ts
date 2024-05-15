@@ -12,7 +12,7 @@ export const resolvePaths = (
   absolutePath: string | null
   relativePath: string
 } => {
-  let absolutePath: string
+  let absolutePath: string | null
   let relativePath: string
 
   // if raw path is absolute
