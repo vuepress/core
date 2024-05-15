@@ -151,7 +151,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         '[readme1](readme.md)',
         '[readme2](../foo/bar/readme.md)',
       ]
-        .map((item) => {
+        .flatMap((item) => {
           const link = /([^)]*)/.exec(item)![1]
 
           return [
@@ -162,7 +162,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             item.replace(link, `${link}?a=1&amp;b=2#hash`),
           ]
         })
-        .flat()
         .join('\n\n')
 
       const expectRelativeLinks = [
@@ -226,15 +225,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           relative: '../foo/bar/readme.md',
           absolute: null,
         },
-      ]
-        .map(({ raw, ...rest }) => [
-          { raw, ...rest },
-          { raw: `${raw}#hash`, ...rest },
-          { raw: `${raw}?a=1&b=2`, ...rest },
-          { raw: `${raw}#hash?a=1&b=2`, ...rest },
-          { raw: `${raw}?a=1&b=2#hash`, ...rest },
-        ])
-        .flat()
+      ].flatMap(({ raw, ...rest }) => [
+        { raw, ...rest },
+        { raw: `${raw}#hash`, ...rest },
+        { raw: `${raw}?a=1&b=2`, ...rest },
+        { raw: `${raw}#hash?a=1&b=2`, ...rest },
+        { raw: `${raw}?a=1&b=2#hash`, ...rest },
+      ])
 
       it('should render to <a> tag correctly', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
@@ -259,7 +256,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="index.html">readme1</a>',
             '<a href="../foo/bar/">readme2</a>',
           ]
-            .map((item) => {
+            .flatMap((item) => {
               const link = /href="([^"]*)"/.exec(item)![1]
 
               return [
@@ -270,7 +267,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
                 item.replace(link, `${link}?a=1&amp;b=2#hash`),
               ]
             })
-            .flat()
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
@@ -299,7 +295,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouteLink to="index.html">readme1</RouteLink>',
             '<RouteLink to="../foo/bar/">readme2</RouteLink>',
           ]
-            .map((item) => {
+            .flatMap((item) => {
               const link = /to="([^"]*)"/.exec(item)![1]
 
               return [
@@ -310,7 +306,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
                 item.replace(link, `${link}?a=1&amp;b=2#hash`),
               ]
             })
-            .flat()
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
@@ -341,7 +336,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouteLink to="/path/to/">readme1</RouteLink>',
             '<RouteLink to="/path/foo/bar/">readme2</RouteLink>',
           ]
-            .map((item) => {
+            .flatMap((item) => {
               const link = /to="([^"]*)"/.exec(item)![1]
 
               return [
@@ -352,7 +347,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
                 item.replace(link, `${link}?a=1&amp;b=2#hash`),
               ]
             })
-            .flat()
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
@@ -419,15 +413,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
               relative: 'path/foo/bar/readme.md',
               absolute: '/path/foo/bar/readme.md',
             },
-          ]
-            .map(({ raw, ...rest }) => [
-              { raw, ...rest },
-              { raw: `${raw}#hash`, ...rest },
-              { raw: `${raw}?a=1&b=2`, ...rest },
-              { raw: `${raw}#hash?a=1&b=2`, ...rest },
-              { raw: `${raw}?a=1&b=2#hash`, ...rest },
-            ])
-            .flat(),
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
         )
       })
 
@@ -456,7 +448,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             `<RouteLink to="/${encoded中}/${encoded文}/">readme1</RouteLink>`,
             `<RouteLink to="/${encoded中}/foo/bar/">readme2</RouteLink>`,
           ]
-            .map((item) => {
+            .flatMap((item) => {
               const link = /to="([^"]*)"/.exec(item)![1]
 
               return [
@@ -467,7 +459,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
                 item.replace(link, `${link}?a=1&amp;b=2#hash`),
               ]
             })
-            .flat()
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
@@ -534,15 +525,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
               relative: `${encoded中}/foo/bar/readme.md`,
               absolute: `/${encoded中}/foo/bar/readme.md`,
             },
-          ]
-            .map(({ raw, ...rest }) => [
-              { raw, ...rest },
-              { raw: `${raw}#hash`, ...rest },
-              { raw: `${raw}?a=1&b=2`, ...rest },
-              { raw: `${raw}#hash?a=1&b=2`, ...rest },
-              { raw: `${raw}?a=1&b=2#hash`, ...rest },
-            ])
-            .flat(),
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
         )
       })
 
@@ -570,7 +559,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<RouteLink to="/path/to/">readme1</RouteLink>',
             '<RouteLink to="/path/foo/bar/">readme2</RouteLink>',
           ]
-            .map((item) => {
+            .flatMap((item) => {
               const link = /to="([^"]*)"/.exec(item)![1]
 
               return [
@@ -581,7 +570,6 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
                 item.replace(link, `${link}?a=1&amp;b=2#hash`),
               ]
             })
-            .flat()
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
@@ -648,15 +636,13 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
               relative: 'path/foo/bar/readme.md',
               absolute: '/path/path/foo/bar/readme.md',
             },
-          ]
-            .map(({ raw, ...rest }) => [
-              { raw, ...rest },
-              { raw: `${raw}#hash`, ...rest },
-              { raw: `${raw}?a=1&b=2`, ...rest },
-              { raw: `${raw}#hash?a=1&b=2`, ...rest },
-              { raw: `${raw}?a=1&b=2#hash`, ...rest },
-            ])
-            .flat(),
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
         )
       })
     })
