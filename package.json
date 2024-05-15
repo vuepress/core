@@ -34,7 +34,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.12.12",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^1.6.0",
     "bumpp": "^9.4.1",
