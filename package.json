@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r --workspace-concurrency=1 --stream build",
+    "check-types": "vue-tsc --noEmit",
     "clean": "pnpm --parallel --stream clean",
     "format": "prettier --write .",
     "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
@@ -12,7 +13,7 @@
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
+    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm check-types && pnpm test",
     "release:publish": "pnpm -r publish --tag next",
     "release:version": "bumpp -r --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all",
     "test": "pnpm test:unit && pnpm test:e2e",
@@ -33,7 +34,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.12.12",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^1.6.0",
     "bumpp": "^9.4.1",
@@ -51,7 +52,8 @@
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vite": "~5.2.11",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "vue-tsc": "^2.0.17"
   },
   "packageManager": "pnpm@9.1.1",
   "engines": {

@@ -1,5 +1,5 @@
 import { path } from '@vuepress/utils'
-import type ParserBlock from 'markdown-it/lib/parser_block.mjs'
+import type { RuleBlock } from 'markdown-it/lib/parser_block.mjs'
 import type { ImportCodePluginOptions } from './importCodePlugin.js'
 import type { ImportCodeTokenMeta } from './types.js'
 
@@ -13,9 +13,7 @@ const START_CODES = [64, 91, 99, 111, 100, 101]
 const SYNTAX_RE = /^@\[code(?:{(?:(\d+)?-(\d+)?)})?(?: ([^\]]+))?\]\(([^)]*)\)/
 
 export const createImportCodeBlockRule =
-  ({
-    handleImportPath = (str) => str,
-  }: ImportCodePluginOptions): ParserBlock.RuleBlock =>
+  ({ handleImportPath = (str) => str }: ImportCodePluginOptions): RuleBlock =>
   (state, startLine, endLine, silent): boolean => {
     // if it's indented more than 3 spaces, it should be a code block
     /* istanbul ignore if */
