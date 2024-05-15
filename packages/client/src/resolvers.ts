@@ -43,7 +43,7 @@ export const resolvers = reactive({
   resolvePageHead: (
     pageHeadTitle: PageHeadTitle,
     pageFrontmatter: PageFrontmatter,
-    siteLocaleDate: SiteData,
+    siteLocaleDate: SiteLocaleData,
   ): PageHead => {
     const description = isString(pageFrontmatter.description)
       ? pageFrontmatter.description
@@ -64,7 +64,7 @@ export const resolvers = reactive({
    */
   resolvePageHeadTitle: (
     pageData: PageData,
-    siteLocaleDate: SiteData,
+    siteLocaleDate: SiteLocaleData,
   ): PageHeadTitle =>
     [pageData.title, siteLocaleDate.title].filter((item) => !!item).join(' | '),
 
@@ -73,8 +73,10 @@ export const resolvers = reactive({
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (pageData: PageData, siteLocaleData: SiteData): PageLang =>
-    pageData.lang || siteLocaleData.lang || LANG_DEFAULT,
+  resolvePageLang: (
+    pageData: PageData,
+    siteLocaleData: SiteLocaleData,
+  ): PageLang => pageData.lang || siteLocaleData.lang || LANG_DEFAULT,
 
   /**
    * Resolve layout component of current page
