@@ -1,3 +1,34 @@
+# [2.0.0-rc.10](https://github.com/vuepress/core/compare/v2.0.0-rc.9...v2.0.0-rc.10) (2024-05-16)
+
+
+### Bug Fixes
+
+* **bundler-vite:** disable server.fs.cachedChecks by default (close [#1526](https://github.com/vuepress/core/issues/1526)) ([bab6ae9](https://github.com/vuepress/core/commit/bab6ae90beb34194557eea1c979aacb0ea72ca91))
+* **client:** fix siteLocaleData type ([#1529](https://github.com/vuepress/core/issues/1529)) ([1825636](https://github.com/vuepress/core/commit/1825636bee63554945afe52138e2efa805de0ec2))
+* **client:** keep full path during route navigation (close [#1514](https://github.com/vuepress/core/issues/1514)) ([#1527](https://github.com/vuepress/core/issues/1527)) ([e6455e0](https://github.com/vuepress/core/commit/e6455e0d4af71f006f639d39b89d96cc52013eeb))
+* **core:** transform file path to chunk name (close [#1531](https://github.com/vuepress/core/issues/1531)) ([d584ee3](https://github.com/vuepress/core/commit/d584ee3df9f72f84737f135b4957a3940c621bd2))
+* **markdown:** fix query parsing and absolute link fallback in linksPlugin (close [#1536](https://github.com/vuepress/core/issues/1536)) ([#1537](https://github.com/vuepress/core/issues/1537)) ([5082b3d](https://github.com/vuepress/core/commit/5082b3df08d06f81560d656144b2b0f3aeb3366a))
+* **shared:** check external link correctly ([#1543](https://github.com/vuepress/core/issues/1543)) ([34e240c](https://github.com/vuepress/core/commit/34e240c7b66357563b4ccd17a11709a661ffbb03))
+* **shared:** check link with protocol correctly ([#1542](https://github.com/vuepress/core/issues/1542)) ([8b1ab67](https://github.com/vuepress/core/commit/8b1ab674136cd4d4672b0c26cc9be008236a9efa))
+
+
+### Features
+
+* **client:** add AutoLink component ([#1546](https://github.com/vuepress/core/issues/1546)) ([8eb722f](https://github.com/vuepress/core/commit/8eb722febacf8e4271fa6ad5410298f001c73509))
+* **client:** export ResolvedRoute type ([#1525](https://github.com/vuepress/core/issues/1525)) ([950f158](https://github.com/vuepress/core/commit/950f15824397ecce839ab1b6fe50543bc7a91634))
+* **client:** support relative link in RouteLink ([#1545](https://github.com/vuepress/core/issues/1545)) ([7c8f271](https://github.com/vuepress/core/commit/7c8f2712489db9880d77bb783618d2226926b11d))
+* **core:** allow null permalink in frontmatter to disable permalink ([#1547](https://github.com/vuepress/core/issues/1547)) ([becebb2](https://github.com/vuepress/core/commit/becebb23fa3c811879ca6ae68f7c532c3b7ee267))
+* enable hydration mismatch details in debug mode ([#1530](https://github.com/vuepress/core/issues/1530)) ([b752f9c](https://github.com/vuepress/core/commit/b752f9c79a693dedeb0c352fd94979f480bad2e7))
+* **markdown:** upgrade markdown-it type to v14 ([0a5d4eb](https://github.com/vuepress/core/commit/0a5d4eb2fd95da71687725a1b8b37d7f1572439d))
+* **shared:** support relative links in normalizeRoutePath ([#1544](https://github.com/vuepress/core/issues/1544)) ([c443a95](https://github.com/vuepress/core/commit/c443a95a7002e37e852caf566d0bb283c76e45ce))
+
+
+### Performance Improvements
+
+* **shared:** use non-capture group for resolveRoutePathFromUrl ([#1539](https://github.com/vuepress/core/issues/1539)) ([2bbb2b2](https://github.com/vuepress/core/commit/2bbb2b2b64a3429315044a419192ddfa6bd0f594))
+
+
+
 # [2.0.0-rc.9](https://github.com/vuepress/core/compare/v2.0.0-rc.8...v2.0.0-rc.9) (2024-03-22)
 
 
