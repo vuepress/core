@@ -53,7 +53,7 @@ test('should append attrs correctly', async ({ page }) => {
   )
   await expect(locator.nth(1)).toHaveAttribute('target', '_blank')
   await expect(locator.nth(1)).toHaveAttribute('rel', 'noopener noreferrer')
-  await expect(locator.nth(0)).toHaveAttribute('id', 'id')
+  await expect(locator.nth(1)).toHaveAttribute('id', 'id')
   await expect(locator.nth(1)).not.toHaveAttribute('unknown')
 
   await expect(locator.nth(2)).toHaveText('text3')
@@ -61,7 +61,7 @@ test('should append attrs correctly', async ({ page }) => {
     'href',
     'https://example.com/test.png',
   )
-  await expect(locator.nth(3)).toHaveAttribute('target', '_blank')
-  await expect(locator.nth(3)).toHaveAttribute('rel', 'noopener noreferrer')
-  await expect(locator.nth(3)).toHaveAttribute('download', 'example-test.png')
+  await expect(locator.nth(2)).toHaveAttribute('target', '_blank')
+  await expect(locator.nth(2)).toHaveAttribute('rel', 'noopener noreferrer')
+  await expect(locator.nth(2)).toHaveAttribute('download', 'example-test.png')
 })
