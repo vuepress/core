@@ -13,6 +13,12 @@
   <AutoLink :config="{ text: 'text2', link: 'https://example.com/test/' }" />
 </div>
 
+<div id="attrs">
+  <AutoLink class="class" :config="{ text: 'text1', link: '/', ariaLabel: 'label', icon: 'icon1' }" />
+  <AutoLink id="id" :config="{ text: 'text2', link: 'https://example.com/test/', unknown: 'value' }" />
+  <AutoLink download="example-test.png" :config="{ text: 'text3', link: 'https://example.com/test.png' }" />
+</div>
+
 <script setup lang="ts">
 import { AutoLink } from 'vuepress/client'
 

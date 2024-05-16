@@ -51,8 +51,6 @@ export interface AutoLinkConfig {
 export const AutoLink = defineComponent({
   name: 'AutoLink',
 
-  inheritAttrs: false,
-
   props: {
     config: {
       type: Object as PropType<AutoLinkConfig>,
