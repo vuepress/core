@@ -139,24 +139,99 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
     describe('relative links', () => {
       const source = [
         '[foo1](foo.md)',
-        '[foo2](foo.md#hash)',
-        '[foo3](./foo.md)',
+        '[foo2](./foo.md)',
         '[bar1](../bar.md)',
-        '[bar2](../bar.md#hash)',
-        '[bar3](./../bar.md)',
+        '[bar2](./../bar.md)',
         '[foobar1](foo/bar.md)',
-        '[foobar2](foo/bar.md#hash)',
-        '[foobar3](../foo/bar.md)',
-        '[foobar4](../foo/bar.md#hash)',
+        '[foobar2](../foo/bar.md)',
         '[index1](index.md)',
-        '[index2](index.md#hash)',
-        '[index3](./index.md)',
-        '[index4](../index.md)',
-        '[index5](../foo/bar/index.md)',
+        '[index2](./index.md)',
+        '[index3](../index.md)',
+        '[index4](../foo/bar/index.md)',
         '[readme1](readme.md)',
-        '[readme2](../readme.md#hash)',
-        '[readme3](../foo/bar/readme.md)',
-      ].join('\n\n')
+        '[readme2](../foo/bar/readme.md)',
+      ]
+        .flatMap((item) => {
+          const link = /([^)]*)/.exec(item)![1]
+
+          return [
+            item,
+            item.replace(link, `${link}#hash`),
+            item.replace(link, `${link}?a=1&amp;b=2`),
+            item.replace(link, `${link}#hash?a=1&amp;b=2`),
+            item.replace(link, `${link}?a=1&amp;b=2#hash`),
+          ]
+        })
+        .join('\n\n')
+
+      const expectRelativeLinks = [
+        {
+          raw: 'foo.md',
+          relative: 'foo.md',
+          absolute: null,
+        },
+        {
+          raw: './foo.md',
+          relative: 'foo.md',
+          absolute: null,
+        },
+        {
+          raw: '../bar.md',
+          relative: '../bar.md',
+          absolute: null,
+        },
+        {
+          raw: './../bar.md',
+          relative: '../bar.md',
+          absolute: null,
+        },
+        {
+          raw: 'foo/bar.md',
+          relative: 'foo/bar.md',
+          absolute: null,
+        },
+        {
+          raw: '../foo/bar.md',
+          relative: '../foo/bar.md',
+          absolute: null,
+        },
+        {
+          raw: 'index.md',
+          relative: 'index.md',
+          absolute: null,
+        },
+        {
+          raw: './index.md',
+          relative: 'index.md',
+          absolute: null,
+        },
+        {
+          raw: '../index.md',
+          relative: '../index.md',
+          absolute: null,
+        },
+        {
+          raw: '../foo/bar/index.md',
+          relative: '../foo/bar/index.md',
+          absolute: null,
+        },
+        {
+          raw: 'readme.md',
+          relative: 'readme.md',
+          absolute: null,
+        },
+        {
+          raw: '../foo/bar/readme.md',
+          relative: '../foo/bar/readme.md',
+          absolute: null,
+        },
+      ].flatMap(({ raw, ...rest }) => [
+        { raw, ...rest },
+        { raw: `${raw}#hash`, ...rest },
+        { raw: `${raw}?a=1&b=2`, ...rest },
+        { raw: `${raw}#hash?a=1&b=2`, ...rest },
+        { raw: `${raw}?a=1&b=2#hash`, ...rest },
+      ])
 
       it('should render to <a> tag correctly', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
@@ -169,120 +244,34 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<a href="foo.html">foo1</a>',
-            '<a href="foo.html#hash">foo2</a>',
-            '<a href="foo.html">foo3</a>',
+            '<a href="foo.html">foo2</a>',
             '<a href="../bar.html">bar1</a>',
-            '<a href="../bar.html#hash">bar2</a>',
-            '<a href="../bar.html">bar3</a>',
+            '<a href="../bar.html">bar2</a>',
             '<a href="foo/bar.html">foobar1</a>',
-            '<a href="foo/bar.html#hash">foobar2</a>',
-            '<a href="../foo/bar.html">foobar3</a>',
-            '<a href="../foo/bar.html#hash">foobar4</a>',
+            '<a href="../foo/bar.html">foobar2</a>',
             '<a href="index.html">index1</a>',
-            '<a href="index.html#hash">index2</a>',
-            '<a href="index.html">index3</a>',
-            '<a href="../">index4</a>',
-            '<a href="../foo/bar/">index5</a>',
+            '<a href="index.html">index2</a>',
+            '<a href="../">index3</a>',
+            '<a href="../foo/bar/">index4</a>',
             '<a href="index.html">readme1</a>',
-            '<a href="../#hash">readme2</a>',
-            '<a href="../foo/bar/">readme3</a>',
+            '<a href="../foo/bar/">readme2</a>',
           ]
+            .flatMap((item) => {
+              const link = /href="([^"]*)"/.exec(item)![1]
+
+              return [
+                item,
+                item.replace(link, `${link}#hash`),
+                item.replace(link, `${link}?a=1&amp;b=2`),
+                item.replace(link, `${link}#hash?a=1&amp;b=2`),
+                item.replace(link, `${link}?a=1&amp;b=2#hash`),
+              ]
+            })
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
 
-        expect(env.links).toEqual([
-          {
-            raw: 'foo.md',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: 'foo.md#hash',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: './foo.md',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: '../bar.md',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: '../bar.md#hash',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: './../bar.md',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: 'foo/bar.md',
-            relative: 'foo/bar.md',
-            absolute: 'foo/bar.md',
-          },
-          {
-            raw: 'foo/bar.md#hash',
-            relative: 'foo/bar.md',
-            absolute: 'foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md',
-            relative: '../foo/bar.md',
-            absolute: '../foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md#hash',
-            relative: '../foo/bar.md',
-            absolute: '../foo/bar.md',
-          },
-          {
-            raw: 'index.md',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: 'index.md#hash',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: './index.md',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: '../index.md',
-            relative: '../index.md',
-            absolute: '../index.md',
-          },
-          {
-            raw: '../foo/bar/index.md',
-            relative: '../foo/bar/index.md',
-            absolute: '../foo/bar/index.md',
-          },
-          {
-            raw: 'readme.md',
-            relative: 'readme.md',
-            absolute: 'readme.md',
-          },
-          {
-            raw: '../readme.md#hash',
-            relative: '../readme.md',
-            absolute: '../readme.md',
-          },
-          {
-            raw: '../foo/bar/readme.md',
-            relative: '../foo/bar/readme.md',
-            absolute: '../foo/bar/readme.md',
-          },
-        ])
+        expect(env.links).toEqual(expectRelativeLinks)
       })
 
       it('should render relative links correctly', () => {
@@ -294,120 +283,34 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<RouteLink to="foo.html">foo1</RouteLink>',
-            '<RouteLink to="foo.html#hash">foo2</RouteLink>',
-            '<RouteLink to="foo.html">foo3</RouteLink>',
+            '<RouteLink to="foo.html">foo2</RouteLink>',
             '<RouteLink to="../bar.html">bar1</RouteLink>',
-            '<RouteLink to="../bar.html#hash">bar2</RouteLink>',
-            '<RouteLink to="../bar.html">bar3</RouteLink>',
+            '<RouteLink to="../bar.html">bar2</RouteLink>',
             '<RouteLink to="foo/bar.html">foobar1</RouteLink>',
-            '<RouteLink to="foo/bar.html#hash">foobar2</RouteLink>',
-            '<RouteLink to="../foo/bar.html">foobar3</RouteLink>',
-            '<RouteLink to="../foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="../foo/bar.html">foobar2</RouteLink>',
             '<RouteLink to="index.html">index1</RouteLink>',
-            '<RouteLink to="index.html#hash">index2</RouteLink>',
-            '<RouteLink to="index.html">index3</RouteLink>',
-            '<RouteLink to="../">index4</RouteLink>',
-            '<RouteLink to="../foo/bar/">index5</RouteLink>',
+            '<RouteLink to="index.html">index2</RouteLink>',
+            '<RouteLink to="../">index3</RouteLink>',
+            '<RouteLink to="../foo/bar/">index4</RouteLink>',
             '<RouteLink to="index.html">readme1</RouteLink>',
-            '<RouteLink to="../#hash">readme2</RouteLink>',
-            '<RouteLink to="../foo/bar/">readme3</RouteLink>',
+            '<RouteLink to="../foo/bar/">readme2</RouteLink>',
           ]
+            .flatMap((item) => {
+              const link = /to="([^"]*)"/.exec(item)![1]
+
+              return [
+                item,
+                item.replace(link, `${link}#hash`),
+                item.replace(link, `${link}?a=1&amp;b=2`),
+                item.replace(link, `${link}#hash?a=1&amp;b=2`),
+                item.replace(link, `${link}?a=1&amp;b=2#hash`),
+              ]
+            })
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
 
-        expect(env.links).toEqual([
-          {
-            raw: 'foo.md',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: 'foo.md#hash',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: './foo.md',
-            relative: 'foo.md',
-            absolute: 'foo.md',
-          },
-          {
-            raw: '../bar.md',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: '../bar.md#hash',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: './../bar.md',
-            relative: '../bar.md',
-            absolute: '../bar.md',
-          },
-          {
-            raw: 'foo/bar.md',
-            relative: 'foo/bar.md',
-            absolute: 'foo/bar.md',
-          },
-          {
-            raw: 'foo/bar.md#hash',
-            relative: 'foo/bar.md',
-            absolute: 'foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md',
-            relative: '../foo/bar.md',
-            absolute: '../foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md#hash',
-            relative: '../foo/bar.md',
-            absolute: '../foo/bar.md',
-          },
-          {
-            raw: 'index.md',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: 'index.md#hash',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: './index.md',
-            relative: 'index.md',
-            absolute: 'index.md',
-          },
-          {
-            raw: '../index.md',
-            relative: '../index.md',
-            absolute: '../index.md',
-          },
-          {
-            raw: '../foo/bar/index.md',
-            relative: '../foo/bar/index.md',
-            absolute: '../foo/bar/index.md',
-          },
-          {
-            raw: 'readme.md',
-            relative: 'readme.md',
-            absolute: 'readme.md',
-          },
-          {
-            raw: '../readme.md#hash',
-            relative: '../readme.md',
-            absolute: '../readme.md',
-          },
-          {
-            raw: '../foo/bar/readme.md',
-            relative: '../foo/bar/readme.md',
-            absolute: '../foo/bar/readme.md',
-          },
-        ])
+        expect(env.links).toEqual(expectRelativeLinks)
       })
 
       it('should convert to absolute links correctly', () => {
@@ -421,120 +324,103 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<RouteLink to="/path/to/foo.html">foo1</RouteLink>',
-            '<RouteLink to="/path/to/foo.html#hash">foo2</RouteLink>',
-            '<RouteLink to="/path/to/foo.html">foo3</RouteLink>',
+            '<RouteLink to="/path/to/foo.html">foo2</RouteLink>',
             '<RouteLink to="/path/bar.html">bar1</RouteLink>',
-            '<RouteLink to="/path/bar.html#hash">bar2</RouteLink>',
-            '<RouteLink to="/path/bar.html">bar3</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar2</RouteLink>',
             '<RouteLink to="/path/to/foo/bar.html">foobar1</RouteLink>',
-            '<RouteLink to="/path/to/foo/bar.html#hash">foobar2</RouteLink>',
-            '<RouteLink to="/path/foo/bar.html">foobar3</RouteLink>',
-            '<RouteLink to="/path/foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html">foobar2</RouteLink>',
             '<RouteLink to="/path/to/">index1</RouteLink>',
-            '<RouteLink to="/path/to/#hash">index2</RouteLink>',
-            '<RouteLink to="/path/to/">index3</RouteLink>',
-            '<RouteLink to="/path/">index4</RouteLink>',
-            '<RouteLink to="/path/foo/bar/">index5</RouteLink>',
+            '<RouteLink to="/path/to/">index2</RouteLink>',
+            '<RouteLink to="/path/">index3</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">index4</RouteLink>',
             '<RouteLink to="/path/to/">readme1</RouteLink>',
-            '<RouteLink to="/path/#hash">readme2</RouteLink>',
-            '<RouteLink to="/path/foo/bar/">readme3</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">readme2</RouteLink>',
           ]
+            .flatMap((item) => {
+              const link = /to="([^"]*)"/.exec(item)![1]
+
+              return [
+                item,
+                item.replace(link, `${link}#hash`),
+                item.replace(link, `${link}?a=1&amp;b=2`),
+                item.replace(link, `${link}#hash?a=1&amp;b=2`),
+                item.replace(link, `${link}?a=1&amp;b=2#hash`),
+              ]
+            })
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
 
-        expect(env.links).toEqual([
-          {
-            raw: 'foo.md',
-            relative: 'path/to/foo.md',
-            absolute: '/path/to/foo.md',
-          },
-          {
-            raw: 'foo.md#hash',
-            relative: 'path/to/foo.md',
-            absolute: '/path/to/foo.md',
-          },
-          {
-            raw: './foo.md',
-            relative: 'path/to/foo.md',
-            absolute: '/path/to/foo.md',
-          },
-          {
-            raw: '../bar.md',
-            relative: 'path/bar.md',
-            absolute: '/path/bar.md',
-          },
-          {
-            raw: '../bar.md#hash',
-            relative: 'path/bar.md',
-            absolute: '/path/bar.md',
-          },
-          {
-            raw: './../bar.md',
-            relative: 'path/bar.md',
-            absolute: '/path/bar.md',
-          },
-          {
-            raw: 'foo/bar.md',
-            relative: 'path/to/foo/bar.md',
-            absolute: '/path/to/foo/bar.md',
-          },
-          {
-            raw: 'foo/bar.md#hash',
-            relative: 'path/to/foo/bar.md',
-            absolute: '/path/to/foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md',
-            relative: 'path/foo/bar.md',
-            absolute: '/path/foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md#hash',
-            relative: 'path/foo/bar.md',
-            absolute: '/path/foo/bar.md',
-          },
-          {
-            raw: 'index.md',
-            relative: 'path/to/index.md',
-            absolute: '/path/to/index.md',
-          },
-          {
-            raw: 'index.md#hash',
-            relative: 'path/to/index.md',
-            absolute: '/path/to/index.md',
-          },
-          {
-            raw: './index.md',
-            relative: 'path/to/index.md',
-            absolute: '/path/to/index.md',
-          },
-          {
-            raw: '../index.md',
-            relative: 'path/index.md',
-            absolute: '/path/index.md',
-          },
-          {
-            raw: '../foo/bar/index.md',
-            relative: 'path/foo/bar/index.md',
-            absolute: '/path/foo/bar/index.md',
-          },
-          {
-            raw: 'readme.md',
-            relative: 'path/to/readme.md',
-            absolute: '/path/to/readme.md',
-          },
-          {
-            raw: '../readme.md#hash',
-            relative: 'path/readme.md',
-            absolute: '/path/readme.md',
-          },
-          {
-            raw: '../foo/bar/readme.md',
-            relative: 'path/foo/bar/readme.md',
-            absolute: '/path/foo/bar/readme.md',
-          },
-        ])
+        expect(env.links).toEqual(
+          [
+            {
+              raw: 'foo.md',
+              relative: 'path/to/foo.md',
+              absolute: '/path/to/foo.md',
+            },
+            {
+              raw: './foo.md',
+              relative: 'path/to/foo.md',
+              absolute: '/path/to/foo.md',
+            },
+            {
+              raw: '../bar.md',
+              relative: 'path/bar.md',
+              absolute: '/path/bar.md',
+            },
+            {
+              raw: './../bar.md',
+              relative: 'path/bar.md',
+              absolute: '/path/bar.md',
+            },
+            {
+              raw: 'foo/bar.md',
+              relative: 'path/to/foo/bar.md',
+              absolute: '/path/to/foo/bar.md',
+            },
+            {
+              raw: '../foo/bar.md',
+              relative: 'path/foo/bar.md',
+              absolute: '/path/foo/bar.md',
+            },
+            {
+              raw: 'index.md',
+              relative: 'path/to/index.md',
+              absolute: '/path/to/index.md',
+            },
+            {
+              raw: './index.md',
+              relative: 'path/to/index.md',
+              absolute: '/path/to/index.md',
+            },
+            {
+              raw: '../index.md',
+              relative: 'path/index.md',
+              absolute: '/path/index.md',
+            },
+            {
+              raw: '../foo/bar/index.md',
+              relative: 'path/foo/bar/index.md',
+              absolute: '/path/foo/bar/index.md',
+            },
+            {
+              raw: 'readme.md',
+              relative: 'path/to/readme.md',
+              absolute: '/path/to/readme.md',
+            },
+            {
+              raw: '../foo/bar/readme.md',
+              relative: 'path/foo/bar/readme.md',
+              absolute: '/path/foo/bar/readme.md',
+            },
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
+        )
       })
 
       it('should convert to absolute links correctly if the file path contains non-ASCII characters', () => {
@@ -550,120 +436,103 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             `<RouteLink to="/${encoded中}/${encoded文}/foo.html">foo1</RouteLink>`,
-            `<RouteLink to="/${encoded中}/${encoded文}/foo.html#hash">foo2</RouteLink>`,
-            `<RouteLink to="/${encoded中}/${encoded文}/foo.html">foo3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/foo.html">foo2</RouteLink>`,
             `<RouteLink to="/${encoded中}/bar.html">bar1</RouteLink>`,
-            `<RouteLink to="/${encoded中}/bar.html#hash">bar2</RouteLink>`,
-            `<RouteLink to="/${encoded中}/bar.html">bar3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/bar.html">bar2</RouteLink>`,
             `<RouteLink to="/${encoded中}/${encoded文}/foo/bar.html">foobar1</RouteLink>`,
-            `<RouteLink to="/${encoded中}/${encoded文}/foo/bar.html#hash">foobar2</RouteLink>`,
-            `<RouteLink to="/${encoded中}/foo/bar.html">foobar3</RouteLink>`,
-            `<RouteLink to="/${encoded中}/foo/bar.html#hash">foobar4</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar.html">foobar2</RouteLink>`,
             `<RouteLink to="/${encoded中}/${encoded文}/">index1</RouteLink>`,
-            `<RouteLink to="/${encoded中}/${encoded文}/#hash">index2</RouteLink>`,
-            `<RouteLink to="/${encoded中}/${encoded文}/">index3</RouteLink>`,
-            `<RouteLink to="/${encoded中}/">index4</RouteLink>`,
-            `<RouteLink to="/${encoded中}/foo/bar/">index5</RouteLink>`,
+            `<RouteLink to="/${encoded中}/${encoded文}/">index2</RouteLink>`,
+            `<RouteLink to="/${encoded中}/">index3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar/">index4</RouteLink>`,
             `<RouteLink to="/${encoded中}/${encoded文}/">readme1</RouteLink>`,
-            `<RouteLink to="/${encoded中}/#hash">readme2</RouteLink>`,
-            `<RouteLink to="/${encoded中}/foo/bar/">readme3</RouteLink>`,
+            `<RouteLink to="/${encoded中}/foo/bar/">readme2</RouteLink>`,
           ]
+            .flatMap((item) => {
+              const link = /to="([^"]*)"/.exec(item)![1]
+
+              return [
+                item,
+                item.replace(link, `${link}#hash`),
+                item.replace(link, `${link}?a=1&amp;b=2`),
+                item.replace(link, `${link}#hash?a=1&amp;b=2`),
+                item.replace(link, `${link}?a=1&amp;b=2#hash`),
+              ]
+            })
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
 
-        expect(env.links).toEqual([
-          {
-            raw: 'foo.md',
-            relative: `${encoded中}/${encoded文}/foo.md`,
-            absolute: `/${encoded中}/${encoded文}/foo.md`,
-          },
-          {
-            raw: 'foo.md#hash',
-            relative: `${encoded中}/${encoded文}/foo.md`,
-            absolute: `/${encoded中}/${encoded文}/foo.md`,
-          },
-          {
-            raw: './foo.md',
-            relative: `${encoded中}/${encoded文}/foo.md`,
-            absolute: `/${encoded中}/${encoded文}/foo.md`,
-          },
-          {
-            raw: '../bar.md',
-            relative: `${encoded中}/bar.md`,
-            absolute: `/${encoded中}/bar.md`,
-          },
-          {
-            raw: '../bar.md#hash',
-            relative: `${encoded中}/bar.md`,
-            absolute: `/${encoded中}/bar.md`,
-          },
-          {
-            raw: './../bar.md',
-            relative: `${encoded中}/bar.md`,
-            absolute: `/${encoded中}/bar.md`,
-          },
-          {
-            raw: 'foo/bar.md',
-            relative: `${encoded中}/${encoded文}/foo/bar.md`,
-            absolute: `/${encoded中}/${encoded文}/foo/bar.md`,
-          },
-          {
-            raw: 'foo/bar.md#hash',
-            relative: `${encoded中}/${encoded文}/foo/bar.md`,
-            absolute: `/${encoded中}/${encoded文}/foo/bar.md`,
-          },
-          {
-            raw: '../foo/bar.md',
-            relative: `${encoded中}/foo/bar.md`,
-            absolute: `/${encoded中}/foo/bar.md`,
-          },
-          {
-            raw: '../foo/bar.md#hash',
-            relative: `${encoded中}/foo/bar.md`,
-            absolute: `/${encoded中}/foo/bar.md`,
-          },
-          {
-            raw: 'index.md',
-            relative: `${encoded中}/${encoded文}/index.md`,
-            absolute: `/${encoded中}/${encoded文}/index.md`,
-          },
-          {
-            raw: 'index.md#hash',
-            relative: `${encoded中}/${encoded文}/index.md`,
-            absolute: `/${encoded中}/${encoded文}/index.md`,
-          },
-          {
-            raw: './index.md',
-            relative: `${encoded中}/${encoded文}/index.md`,
-            absolute: `/${encoded中}/${encoded文}/index.md`,
-          },
-          {
-            raw: '../index.md',
-            relative: `${encoded中}/index.md`,
-            absolute: `/${encoded中}/index.md`,
-          },
-          {
-            raw: '../foo/bar/index.md',
-            relative: `${encoded中}/foo/bar/index.md`,
-            absolute: `/${encoded中}/foo/bar/index.md`,
-          },
-          {
-            raw: 'readme.md',
-            relative: `${encoded中}/${encoded文}/readme.md`,
-            absolute: `/${encoded中}/${encoded文}/readme.md`,
-          },
-          {
-            raw: '../readme.md#hash',
-            relative: `${encoded中}/readme.md`,
-            absolute: `/${encoded中}/readme.md`,
-          },
-          {
-            raw: '../foo/bar/readme.md',
-            relative: `${encoded中}/foo/bar/readme.md`,
-            absolute: `/${encoded中}/foo/bar/readme.md`,
-          },
-        ])
+        expect(env.links).toEqual(
+          [
+            {
+              raw: 'foo.md',
+              relative: `${encoded中}/${encoded文}/foo.md`,
+              absolute: `/${encoded中}/${encoded文}/foo.md`,
+            },
+            {
+              raw: './foo.md',
+              relative: `${encoded中}/${encoded文}/foo.md`,
+              absolute: `/${encoded中}/${encoded文}/foo.md`,
+            },
+            {
+              raw: '../bar.md',
+              relative: `${encoded中}/bar.md`,
+              absolute: `/${encoded中}/bar.md`,
+            },
+            {
+              raw: './../bar.md',
+              relative: `${encoded中}/bar.md`,
+              absolute: `/${encoded中}/bar.md`,
+            },
+            {
+              raw: 'foo/bar.md',
+              relative: `${encoded中}/${encoded文}/foo/bar.md`,
+              absolute: `/${encoded中}/${encoded文}/foo/bar.md`,
+            },
+            {
+              raw: '../foo/bar.md',
+              relative: `${encoded中}/foo/bar.md`,
+              absolute: `/${encoded中}/foo/bar.md`,
+            },
+            {
+              raw: 'index.md',
+              relative: `${encoded中}/${encoded文}/index.md`,
+              absolute: `/${encoded中}/${encoded文}/index.md`,
+            },
+            {
+              raw: './index.md',
+              relative: `${encoded中}/${encoded文}/index.md`,
+              absolute: `/${encoded中}/${encoded文}/index.md`,
+            },
+            {
+              raw: '../index.md',
+              relative: `${encoded中}/index.md`,
+              absolute: `/${encoded中}/index.md`,
+            },
+            {
+              raw: '../foo/bar/index.md',
+              relative: `${encoded中}/foo/bar/index.md`,
+              absolute: `/${encoded中}/foo/bar/index.md`,
+            },
+            {
+              raw: 'readme.md',
+              relative: `${encoded中}/${encoded文}/readme.md`,
+              absolute: `/${encoded中}/${encoded文}/readme.md`,
+            },
+            {
+              raw: '../foo/bar/readme.md',
+              relative: `${encoded中}/foo/bar/readme.md`,
+              absolute: `/${encoded中}/foo/bar/readme.md`,
+            },
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
+        )
       })
 
       it('should not conflict with base', () => {
@@ -678,120 +547,103 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(rendered).toEqual(
           [
             '<RouteLink to="/path/to/foo.html">foo1</RouteLink>',
-            '<RouteLink to="/path/to/foo.html#hash">foo2</RouteLink>',
-            '<RouteLink to="/path/to/foo.html">foo3</RouteLink>',
+            '<RouteLink to="/path/to/foo.html">foo2</RouteLink>',
             '<RouteLink to="/path/bar.html">bar1</RouteLink>',
-            '<RouteLink to="/path/bar.html#hash">bar2</RouteLink>',
-            '<RouteLink to="/path/bar.html">bar3</RouteLink>',
+            '<RouteLink to="/path/bar.html">bar2</RouteLink>',
             '<RouteLink to="/path/to/foo/bar.html">foobar1</RouteLink>',
-            '<RouteLink to="/path/to/foo/bar.html#hash">foobar2</RouteLink>',
-            '<RouteLink to="/path/foo/bar.html">foobar3</RouteLink>',
-            '<RouteLink to="/path/foo/bar.html#hash">foobar4</RouteLink>',
+            '<RouteLink to="/path/foo/bar.html">foobar2</RouteLink>',
             '<RouteLink to="/path/to/">index1</RouteLink>',
-            '<RouteLink to="/path/to/#hash">index2</RouteLink>',
-            '<RouteLink to="/path/to/">index3</RouteLink>',
-            '<RouteLink to="/path/">index4</RouteLink>',
-            '<RouteLink to="/path/foo/bar/">index5</RouteLink>',
+            '<RouteLink to="/path/to/">index2</RouteLink>',
+            '<RouteLink to="/path/">index3</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">index4</RouteLink>',
             '<RouteLink to="/path/to/">readme1</RouteLink>',
-            '<RouteLink to="/path/#hash">readme2</RouteLink>',
-            '<RouteLink to="/path/foo/bar/">readme3</RouteLink>',
+            '<RouteLink to="/path/foo/bar/">readme2</RouteLink>',
           ]
+            .flatMap((item) => {
+              const link = /to="([^"]*)"/.exec(item)![1]
+
+              return [
+                item,
+                item.replace(link, `${link}#hash`),
+                item.replace(link, `${link}?a=1&amp;b=2`),
+                item.replace(link, `${link}#hash?a=1&amp;b=2`),
+                item.replace(link, `${link}?a=1&amp;b=2#hash`),
+              ]
+            })
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n',
         )
 
-        expect(env.links).toEqual([
-          {
-            raw: 'foo.md',
-            relative: 'path/to/foo.md',
-            absolute: '/path/path/to/foo.md',
-          },
-          {
-            raw: 'foo.md#hash',
-            relative: 'path/to/foo.md',
-            absolute: '/path/path/to/foo.md',
-          },
-          {
-            raw: './foo.md',
-            relative: 'path/to/foo.md',
-            absolute: '/path/path/to/foo.md',
-          },
-          {
-            raw: '../bar.md',
-            relative: 'path/bar.md',
-            absolute: '/path/path/bar.md',
-          },
-          {
-            raw: '../bar.md#hash',
-            relative: 'path/bar.md',
-            absolute: '/path/path/bar.md',
-          },
-          {
-            raw: './../bar.md',
-            relative: 'path/bar.md',
-            absolute: '/path/path/bar.md',
-          },
-          {
-            raw: 'foo/bar.md',
-            relative: 'path/to/foo/bar.md',
-            absolute: '/path/path/to/foo/bar.md',
-          },
-          {
-            raw: 'foo/bar.md#hash',
-            relative: 'path/to/foo/bar.md',
-            absolute: '/path/path/to/foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md',
-            relative: 'path/foo/bar.md',
-            absolute: '/path/path/foo/bar.md',
-          },
-          {
-            raw: '../foo/bar.md#hash',
-            relative: 'path/foo/bar.md',
-            absolute: '/path/path/foo/bar.md',
-          },
-          {
-            raw: 'index.md',
-            relative: 'path/to/index.md',
-            absolute: '/path/path/to/index.md',
-          },
-          {
-            raw: 'index.md#hash',
-            relative: 'path/to/index.md',
-            absolute: '/path/path/to/index.md',
-          },
-          {
-            raw: './index.md',
-            relative: 'path/to/index.md',
-            absolute: '/path/path/to/index.md',
-          },
-          {
-            raw: '../index.md',
-            relative: 'path/index.md',
-            absolute: '/path/path/index.md',
-          },
-          {
-            raw: '../foo/bar/index.md',
-            relative: 'path/foo/bar/index.md',
-            absolute: '/path/path/foo/bar/index.md',
-          },
-          {
-            raw: 'readme.md',
-            relative: 'path/to/readme.md',
-            absolute: '/path/path/to/readme.md',
-          },
-          {
-            raw: '../readme.md#hash',
-            relative: 'path/readme.md',
-            absolute: '/path/path/readme.md',
-          },
-          {
-            raw: '../foo/bar/readme.md',
-            relative: 'path/foo/bar/readme.md',
-            absolute: '/path/path/foo/bar/readme.md',
-          },
-        ])
+        expect(env.links).toEqual(
+          [
+            {
+              raw: 'foo.md',
+              relative: 'path/to/foo.md',
+              absolute: '/path/path/to/foo.md',
+            },
+            {
+              raw: './foo.md',
+              relative: 'path/to/foo.md',
+              absolute: '/path/path/to/foo.md',
+            },
+            {
+              raw: '../bar.md',
+              relative: 'path/bar.md',
+              absolute: '/path/path/bar.md',
+            },
+            {
+              raw: './../bar.md',
+              relative: 'path/bar.md',
+              absolute: '/path/path/bar.md',
+            },
+            {
+              raw: 'foo/bar.md',
+              relative: 'path/to/foo/bar.md',
+              absolute: '/path/path/to/foo/bar.md',
+            },
+            {
+              raw: '../foo/bar.md',
+              relative: 'path/foo/bar.md',
+              absolute: '/path/path/foo/bar.md',
+            },
+            {
+              raw: 'index.md',
+              relative: 'path/to/index.md',
+              absolute: '/path/path/to/index.md',
+            },
+            {
+              raw: './index.md',
+              relative: 'path/to/index.md',
+              absolute: '/path/path/to/index.md',
+            },
+            {
+              raw: '../index.md',
+              relative: 'path/index.md',
+              absolute: '/path/path/index.md',
+            },
+            {
+              raw: '../foo/bar/index.md',
+              relative: 'path/foo/bar/index.md',
+              absolute: '/path/path/foo/bar/index.md',
+            },
+            {
+              raw: 'readme.md',
+              relative: 'path/to/readme.md',
+              absolute: '/path/path/to/readme.md',
+            },
+            {
+              raw: '../foo/bar/readme.md',
+              relative: 'path/foo/bar/readme.md',
+              absolute: '/path/path/foo/bar/readme.md',
+            },
+          ].flatMap(({ raw, ...rest }) => [
+            { raw, ...rest },
+            { raw: `${raw}#hash`, ...rest },
+            { raw: `${raw}?a=1&b=2`, ...rest },
+            { raw: `${raw}#hash?a=1&b=2`, ...rest },
+            { raw: `${raw}?a=1&b=2#hash`, ...rest },
+          ]),
+        )
       })
     })
 

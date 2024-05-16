@@ -48,7 +48,7 @@ export type MarkdownHeader = PageHeader
 export interface MarkdownLink {
   raw: string
   relative: string
-  absolute: string
+  absolute: string | null
 }
 
 /**
