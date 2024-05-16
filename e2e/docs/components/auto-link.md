@@ -1,16 +1,16 @@
 # AutoLink
 
 <div id="route-link">
-  <AutoLink v-for="item in routeLinksConfig" v-bind="item" />
+  <AutoLink v-for="item in routeLinksConfig" :config="item" />
 </div>
 
 <div id="external-link">
-  <AutoLink v-for="item in externalLinksConfig" v-bind="item" />
+  <AutoLink v-for="item in externalLinksConfig" :config="item" />
 </div>
 
 <div id="config">
-  <AutoLink v-bind="{ text: 'text1', link: '/', ariaLabel: 'label' }" />
-  <AutoLink v-bind="{ text: 'text2', link: 'https://example.com/test/' }" />
+  <AutoLink :config="{ text: 'text1', link: '/', ariaLabel: 'label' }" />
+  <AutoLink :config="{ text: 'text2', link: 'https://example.com/test/' }" />
 </div>
 
 <script setup lang="ts">
