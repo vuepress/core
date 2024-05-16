@@ -1,3 +1,13 @@
+# [2.0.0-rc.11](https://github.com/vuepress/core/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2024-05-16)
+
+
+### Features
+
+* **client:** improve AutoLinkProps ([#1554](https://github.com/vuepress/core/issues/1554)) ([0777d09](https://github.com/vuepress/core/commit/0777d098e420ebc44ed9bb983009ee5d6367bb1d))
+* **client:** support slot props in AutoLink ([630e29a](https://github.com/vuepress/core/commit/630e29a0a64973cf41369b854c0663ea36b12608))
+
+
+
 # [2.0.0-rc.10](https://github.com/vuepress/core/compare/v2.0.0-rc.9...v2.0.0-rc.10) (2024-05-16)
 
 
