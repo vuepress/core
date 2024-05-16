@@ -1,11 +1,11 @@
 import { isLinkWithProtocol } from '@vuepress/shared'
-import type { SlotsType, VNode } from 'vue'
-import { computed, defineComponent, h } from 'vue'
+import type { PropType, SlotsType, VNode } from 'vue'
+import { computed, defineComponent, h, toRef } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSiteData } from '../composables/index.js'
 import { RouteLink } from './RouteLink.js'
 
-export interface AutoLinkProps {
+export interface AutoLinkConfig {
   /**
    * Pattern to determine if the link should be active, which has higher priority than `exact`
    */
@@ -51,57 +51,11 @@ export interface AutoLinkProps {
 export const AutoLink = defineComponent({
   name: 'AutoLink',
 
+  inheritAttrs: false,
+
   props: {
-    /**
-     * Pattern to determine if the link should be active, which has higher priority than `exact`
-     */
-    activeMatch: {
-      type: [String, RegExp],
-      default: '',
-    },
-
-    /**
-     * The `aria-label` attribute
-     */
-    ariaLabel: {
-      type: String,
-      default: '',
-    },
-
-    /**
-     * Whether the link should be active only if the url is an exact match
-     */
-    exact: Boolean,
-
-    /**
-     * URL of the auto link
-     */
-    link: {
-      type: String,
-      required: true,
-    },
-
-    /**
-     * The `rel` attribute
-     */
-    rel: {
-      type: String,
-      default: '',
-    },
-
-    /**
-     * The `target` attribute
-     */
-    target: {
-      type: String,
-      default: '',
-    },
-
-    /**
-     * Text of the auto link
-     */
-    text: {
-      type: String,
+    config: {
+      type: Object as PropType<AutoLinkConfig>,
       required: true,
     },
   },
@@ -113,15 +67,16 @@ export const AutoLink = defineComponent({
   }>,
 
   setup(props, { slots }) {
+    const config = toRef(props, 'config')
     const route = useRoute()
     const siteData = useSiteData()
 
     // If the link has non-http protocol
-    const withProtocol = computed(() => isLinkWithProtocol(props.link))
+    const withProtocol = computed(() => isLinkWithProtocol(config.value.link))
 
     // Resolve the `target` attr
     const linkTarget = computed(
-      () => props.target || (withProtocol.value ? '_blank' : undefined),
+      () => config.value.target || (withProtocol.value ? '_blank' : undefined),
     )
 
     // If the `target` attr is "_blank"
@@ -134,57 +89,65 @@ export const AutoLink = defineComponent({
 
     // Resolve the `rel` attr
     const linkRel = computed(
-      () => props.rel || (isBlankTarget.value ? 'noopener noreferrer' : null),
+      () =>
+        config.value.rel ||
+        (isBlankTarget.value ? 'noopener noreferrer' : null),
     )
 
     // Resolve the `aria-label` attr
-    const linkAriaLabel = computed(() => props.ariaLabel ?? props.text)
+    const linkAriaLabel = computed(
+      () => config.value.ariaLabel ?? config.value.text,
+    )
 
     // Should be active when current route is a subpath of this link
     const shouldBeActiveInSubpath = computed(() => {
       // Should not be active in `exact` mode
-      if (props.exact) return false
+      if (config.value.exact) return false
 
       const localePaths = Object.keys(siteData.value.locales)
 
       return localePaths.length
         ? // Check all the locales
-          localePaths.every((key) => key !== props.link)
+          localePaths.every((key) => key !== config.value.link)
         : // Check root
-          props.link !== '/'
+          config.value.link !== '/'
     })
 
     // If this link is active
     const isActive = computed(() => {
       if (!isInternal.value) return false
 
-      if (props.activeMatch) {
+      if (config.value.activeMatch) {
         return (
-          props.activeMatch instanceof RegExp
-            ? props.activeMatch
-            : new RegExp(props.activeMatch, 'u')
+          config.value.activeMatch instanceof RegExp
+            ? config.value.activeMatch
+            : new RegExp(config.value.activeMatch, 'u')
         ).test(route.path)
       }
 
       // If this link is active in subpath
       if (shouldBeActiveInSubpath.value) {
-        return route.path.startsWith(props.link)
+        return route.path.startsWith(config.value.link)
       }
 
-      return route.path === props.link
+      return route.path === config.value.link
     })
 
     return () => {
       const { before, after, default: defaultSlot } = slots
 
-      const content = defaultSlot?.() || [before?.(), props.text, after?.()]
+      const content = defaultSlot?.() || [
+        before?.(),
+        config.value.text,
+        after?.(),
+      ]
 
       return isInternal.value
         ? h(
             RouteLink,
             {
               'class': 'auto-link',
-              'to': props.link,
+              'to': config.value.link,
               'active': isActive.value,
               'aria-label': linkAriaLabel.value,
             },
@@ -194,7 +157,7 @@ export const AutoLink = defineComponent({
             'a',
             {
               'class': 'auto-link external-link',
-              'href': props.link,
+              'href': config.value.link,
               'aria-label': linkAriaLabel.value,
               'rel': linkRel.value,
               'target': linkTarget.value,
