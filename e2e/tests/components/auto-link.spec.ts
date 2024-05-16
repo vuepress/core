@@ -65,3 +65,12 @@ test('should append attrs correctly', async ({ page }) => {
   await expect(locator.nth(2)).toHaveAttribute('rel', 'noopener noreferrer')
   await expect(locator.nth(2)).toHaveAttribute('download', 'example-test.png')
 })
+
+test('should render slots correctly', async ({ page }) => {
+  const locator = page.locator('.e2e-theme-content #slots a')
+
+  await expect(locator.nth(0)).toHaveText('slot-text')
+  await expect(locator.nth(1)).toHaveText('label')
+  await expect(locator.nth(2)).toHaveText('beforetext3after')
+  await expect(locator.nth(3)).toHaveText('before labeltext4after label')
+})

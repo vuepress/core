@@ -59,9 +59,9 @@ export const AutoLink = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: () => VNode[] | VNode
-    before?: () => VNode[] | VNode | null
-    after?: () => VNode[] | VNode | null
+    default?: (config: AutoLinkConfig) => VNode[] | VNode
+    before?: (config: AutoLinkConfig) => VNode[] | VNode | null
+    after?: (config: AutoLinkConfig) => VNode[] | VNode | null
   }>,
 
   setup(props, { slots }) {
@@ -134,10 +134,10 @@ export const AutoLink = defineComponent({
     return () => {
       const { before, after, default: defaultSlot } = slots
 
-      const content = defaultSlot?.() || [
-        before?.(),
+      const content = defaultSlot?.(config.value) || [
+        before?.(config.value),
         config.value.text,
-        after?.(),
+        after?.(config.value),
       ]
 
       return isInternal.value

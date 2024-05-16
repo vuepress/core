@@ -19,6 +19,23 @@
   <AutoLink download="example-test.png" :config="{ text: 'text3', link: 'https://example.com/test.png' }" />
 </div>
 
+<div id="slots">
+  <AutoLink :config="{ text: 'text1', link: '/', ariaLabel: 'label', icon: 'icon1' }">
+    slot-text
+  </AutoLink>
+  <AutoLink :config="{ text: 'text2', link: '/', ariaLabel: 'label', icon: 'icon1' }">
+    <template v-slot="{ ariaLabel }">{{ ariaLabel }}</template>
+  </AutoLink>
+  <AutoLink :config="{ text: 'text3', link: '/', ariaLabel: 'label', icon: 'icon1' }">
+    <template #before>before</template>
+    <template #after>after</template>
+  </AutoLink>
+  <AutoLink :config="{ text: 'text4', link: '/', ariaLabel: 'label', icon: 'icon1' }">
+    <template #before="{ ariaLabel }">before {{ ariaLabel }}</template>
+    <template #after="{ ariaLabel }">after {{ ariaLabel }}</template>
+  </AutoLink>
+</div>
+
 <script setup lang="ts">
 import { AutoLink } from 'vuepress/client'
 
