@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import styles from '../styles/styles.module.css?module'
-import variables from '../styles/variables.module.scss?module'
+import styles from '../styles/styles.module.css'
+import variables from '../styles/variables.module.scss'
 </script>
 
 <template>
