@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module'
 import autoprefixer from 'autoprefixer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import postcssCsso from 'postcss-csso'
 import type Config from 'webpack-chain'
 import type {
   LessLoaderOptions,
@@ -69,7 +68,7 @@ export const handleModuleStyles = ({
       .loader(require.resolve('postcss-loader'))
       .options({
         postcssOptions: {
-          plugins: [autoprefixer, postcssCsso],
+          plugins: [autoprefixer],
         },
         ...options.postcss,
       })
