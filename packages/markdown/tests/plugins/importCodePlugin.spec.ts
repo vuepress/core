@@ -9,7 +9,7 @@ import {
   it,
   vi,
 } from 'vitest'
-import { codePlugin, importCodePlugin } from '../../src/index.js'
+import { importCodePlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
 
 const jsFixturePathRelative = '../__fixtures__/importCode.js'
@@ -283,21 +283,21 @@ foo
     })
   })
 
-  describe('compatibility with codePlugin', () => {
-    it('should work with syntax supported by codePlugin', () => {
-      const source = `\
-@[code js{1,3-4}](${jsFixturePathRelative})
-@[code md:no-line-numbers title="no-line-numbers.md"](${mdFixturePathRelative})
-`
+  //   describe('compatibility with codePlugin', () => {
+  //     it('should work with syntax supported by codePlugin', () => {
+  //       const source = `\
+  // @[code js{1,3-4}](${jsFixturePathRelative})
+  // @[code md:no-line-numbers title="no-line-numbers.md"](${mdFixturePathRelative})
+  // `
 
-      const md = MarkdownIt().use(importCodePlugin).use(codePlugin)
-      const env: MarkdownEnv = {
-        filePath: __filename,
-      }
-      const rendered = md.render(source, env)
+  //       const md = MarkdownIt().use(importCodePlugin).use(codePlugin)
+  //       const env: MarkdownEnv = {
+  //         filePath: __filename,
+  //       }
+  //       const rendered = md.render(source, env)
 
-      expect(rendered).toMatchSnapshot()
-      expect(env.importedFiles).toEqual([jsFixturePath, mdFixturePath])
-    })
-  })
+  //       expect(rendered).toMatchSnapshot()
+  //       expect(env.importedFiles).toEqual([jsFixturePath, mdFixturePath])
+  //     })
+  //   })
 })

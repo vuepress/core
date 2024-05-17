@@ -85,7 +85,6 @@ export const createMarkdown = ({
     logger.warn(
       `\`markdown.code\` option is deprecated, use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
     )
-    // md.use<CodePluginOptions>(codePlugin, code)
   }
 
   // treat unknown html tags as components
