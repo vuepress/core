@@ -22,6 +22,10 @@ export type { MarkdownSfcBlocks }
 export interface MarkdownOptions extends Options {
   anchor?: false | AnchorPluginOptions
   assets?: false | AssetsPluginOptions
+
+  /**
+   * @deprecated This feature has been deprecated. Please use `@vuepress/prismjs` or `@vuepress/shiki` to instead it.
+   */
   code?: false | CodePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions

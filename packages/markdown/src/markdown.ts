@@ -1,4 +1,5 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
+import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
 import {
   anchorPlugin,
@@ -82,7 +83,10 @@ export const createMarkdown = ({
   }
 
   // process code fence
-  if (code !== false) {
+  if (code) {
+    logger.warn(
+      `\`markdown.code\` option is deprecated, use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
+    )
     md.use<CodePluginOptions>(codePlugin, code)
   }
 
