@@ -24,7 +24,7 @@ export interface MarkdownOptions extends Options {
   assets?: false | AssetsPluginOptions
 
   /**
-   * @deprecated This feature has been deprecated. Please use `@vuepress/prismjs` or `@vuepress/shiki` to instead it.
+   * @deprecated This feature has been deprecated. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` to instead it.
    */
   code?: false | CodePluginOptions
   component?: false
