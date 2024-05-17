@@ -4,7 +4,6 @@ import MarkdownIt from 'markdown-it'
 import {
   anchorPlugin,
   assetsPlugin,
-  // codePlugin,
   componentPlugin,
   emojiPlugin,
   frontmatterPlugin,
@@ -18,7 +17,6 @@ import {
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
-  // CodePluginOptions,
   EmojiPluginOptions,
   FrontmatterPluginOptions,
   HeadersPluginOptions,

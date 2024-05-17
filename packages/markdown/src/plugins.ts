@@ -22,10 +22,6 @@ export {
   assetsPlugin,
   type AssetsPluginOptions,
 } from './plugins/assetsPlugin/assetsPlugin.js'
-export {
-  codePlugin,
-  type CodePluginOptions,
-} from './plugins/codePlugin/codePlugin.js'
 export { emojiPlugin, type EmojiPluginOptions } from './plugins/emojiPlugin.js'
 export {
   importCodePlugin,
