@@ -6,7 +6,7 @@ import type { Options } from 'markdown-it'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
-  CodePluginOptions,
+  // CodePluginOptions,
   EmojiPluginOptions,
   FrontmatterPluginOptions,
   HeadersPluginOptions,
@@ -26,7 +26,8 @@ export interface MarkdownOptions extends Options {
   /**
    * @deprecated This feature has been deprecated. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` to instead it.
    */
-  code?: false | CodePluginOptions
+  code?: never
+  // code?: false | CodePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
   frontmatter?: false | FrontmatterPluginOptions

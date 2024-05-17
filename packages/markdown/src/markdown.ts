@@ -4,7 +4,7 @@ import MarkdownIt from 'markdown-it'
 import {
   anchorPlugin,
   assetsPlugin,
-  codePlugin,
+  // codePlugin,
   componentPlugin,
   emojiPlugin,
   frontmatterPlugin,
@@ -18,7 +18,7 @@ import {
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
-  CodePluginOptions,
+  // CodePluginOptions,
   EmojiPluginOptions,
   FrontmatterPluginOptions,
   HeadersPluginOptions,
@@ -87,7 +87,7 @@ export const createMarkdown = ({
     logger.warn(
       `\`markdown.code\` option is deprecated, use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
     )
-    md.use<CodePluginOptions>(codePlugin, code)
+    // md.use<CodePluginOptions>(codePlugin, code)
   }
 
   // treat unknown html tags as components
