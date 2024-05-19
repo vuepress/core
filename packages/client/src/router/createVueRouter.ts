@@ -40,7 +40,6 @@ export const createVueRouter = (): Router => {
   // and save page data to route meta
   router.beforeResolve(async (to, from): Promise<string | void> => {
     if (to.path !== from.path || from === START_LOCATION) {
-      console.log(to)
       const fullPath = to.fullPath.split(/#|\?/)[0]
       const route = resolveRoute(fullPath)
 
