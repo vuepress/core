@@ -13,6 +13,7 @@ import type {
   LinksPluginOptions,
   SfcPluginOptions,
   TocPluginOptions,
+  VPrePluginOptions,
 } from './plugins.js'
 
 export type Markdown = MarkdownIt
@@ -26,6 +27,8 @@ export interface MarkdownOptions extends Options {
    * @deprecated This feature has been deprecated. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` to instead it.
    */
   code?: never
+
+  vPre?: false | VPrePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
   frontmatter?: false | FrontmatterPluginOptions

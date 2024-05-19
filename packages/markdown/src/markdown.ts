@@ -13,6 +13,7 @@ import {
   sfcPlugin,
   titlePlugin,
   tocPlugin,
+  vPrePlugin,
 } from './plugins.js'
 import type {
   AnchorPluginOptions,
@@ -24,6 +25,7 @@ import type {
   LinksPluginOptions,
   SfcPluginOptions,
   TocPluginOptions,
+  VPrePluginOptions,
 } from './plugins.js'
 import type { Markdown, MarkdownOptions } from './types.js'
 
@@ -34,6 +36,7 @@ export const createMarkdown = ({
   anchor,
   assets,
   code,
+  vPre,
   component,
   emoji,
   frontmatter,
@@ -85,6 +88,11 @@ export const createMarkdown = ({
     logger.warn(
       `\`markdown.code\` option is deprecated, use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
     )
+  }
+
+  // add v-pre to `<pre>` and `<code>`
+  if (vPre !== false) {
+    md.use<VPrePluginOptions>(vPrePlugin, vPre)
   }
 
   // treat unknown html tags as components
