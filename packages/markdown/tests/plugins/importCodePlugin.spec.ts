@@ -282,22 +282,4 @@ foo
       expect(mockConsoleError).toHaveBeenCalledTimes(1)
     })
   })
-
-  //   describe('compatibility with codePlugin', () => {
-  //     it('should work with syntax supported by codePlugin', () => {
-  //       const source = `\
-  // @[code js{1,3-4}](${jsFixturePathRelative})
-  // @[code md:no-line-numbers title="no-line-numbers.md"](${mdFixturePathRelative})
-  // `
-
-  //       const md = MarkdownIt().use(importCodePlugin).use(codePlugin)
-  //       const env: MarkdownEnv = {
-  //         filePath: __filename,
-  //       }
-  //       const rendered = md.render(source, env)
-
-  //       expect(rendered).toMatchSnapshot()
-  //       expect(env.importedFiles).toEqual([jsFixturePath, mdFixturePath])
-  //     })
-  //   })
 })
