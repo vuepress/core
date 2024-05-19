@@ -1,4 +1,4 @@
-import { normalizeRoutePath, resolveRoutePathname } from '@vuepress/shared'
+import { normalizeRoutePath, resolveRouteFullPath } from '@vuepress/shared'
 import { redirects, routes } from '../internal/routes.js'
 
 /**
@@ -10,16 +10,20 @@ export const resolveRoutePath = (
 ): string => {
   // normalized path
   const normalizedPath = normalizeRoutePath(path, currentPath)
-  const normalizedPathname = resolveRoutePathname(normalizedPath)
+  const [normalizedPathname, queryAndHash] =
+    resolveRouteFullPath(normalizedPath)
+
   if (routes.value[normalizedPathname]) return normalizedPath
+
   // encoded path
   const encodedPathname = encodeURI(normalizedPathname)
   if (routes.value[encodedPathname]) return encodeURI(normalizedPath)
 
-  // redirected path or fallback to the normalized path
-  return (
-    redirects.value[normalizedPathname] ||
-    redirects.value[encodedPathname] ||
-    normalizedPath
-  )
+  // redirected path
+  const redirectPath =
+    redirects.value[normalizedPathname] || redirects.value[encodedPathname]
+  if (redirectPath) return redirectPath + queryAndHash
+
+  // fallback to the normalized path
+  return normalizedPath
 }

@@ -1,4 +1,5 @@
 import { inferRoutePath } from './inferRoutePath.js'
+import { resolveRouteFullPath } from './resolveRouteFullPath.js'
 
 const FAKE_HOST = 'http://.'
 
@@ -15,7 +16,7 @@ export const normalizeRoutePath = (path: string, current?: string): string => {
     return inferRoutePath(pathname) + search + hash
   }
 
-  const [pathname, ...queryAndHash] = path.split(/(\?|#)/)
+  const [pathname, queryAndHash] = resolveRouteFullPath(path)
 
-  return inferRoutePath(pathname) + queryAndHash.join('')
+  return inferRoutePath(pathname) + queryAndHash
 }
