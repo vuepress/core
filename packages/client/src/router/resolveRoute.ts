@@ -16,7 +16,8 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   currentPath?: string,
 ): ResolvedRoute<T> => {
   const routePath = resolveRoutePath(path, currentPath)
-  const route = routes.value[routePath] ?? {
+  const pathname = routePath.split(/#|\?/)[0]
+  const route = routes.value[pathname] ?? {
     ...routes.value['/404.html'],
     notFound: true,
   }
