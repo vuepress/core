@@ -2,6 +2,7 @@ import { createRequire } from 'node:module'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type Config from 'webpack-chain'
 import { createClientBaseConfig } from '../config/index.js'
@@ -82,6 +83,16 @@ export const createClientConfig = async (
 
   // enable runtimeChunk
   config.optimization.runtimeChunk(true)
+
+  // minify css
+  config.optimization
+    .minimizer('css-minimizer-webpack-plugin')
+    .use(CssMinimizerPlugin, [
+      {
+        minify:
+          CssMinimizerPlugin.lightningCssMinify as CssMinimizerPlugin.BasicMinimizerImplementation<unknown>,
+      },
+    ])
 
   // disable performance hints
   if (!app.env.isDebug) {

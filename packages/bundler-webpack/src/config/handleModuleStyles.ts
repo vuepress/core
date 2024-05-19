@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module'
 import autoprefixer from 'autoprefixer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import postcssCsso from 'postcss-csso'
 import type Config from 'webpack-chain'
 import type {
   LessLoaderOptions,
@@ -12,8 +11,6 @@ import type {
 } from '../types.js'
 
 const require = createRequire(import.meta.url)
-
-type StyleRule = Config.Rule<Config.Rule<Config.Module>>
 
 /**
  * Set webpack module to handle style files
@@ -29,36 +26,19 @@ export const handleModuleStyles = ({
   isBuild: boolean
   isServer: boolean
 }): void => {
-  const createStyleRules = ({
+  const handleStyle = <T extends LoaderOptions = LoaderOptions>({
     lang,
     test,
+    loaderName,
+    loaderOptions,
   }: {
     lang: string
     test: RegExp
-  }): {
-    modulesRule: StyleRule
-    normalRule: StyleRule
-  } => {
-    const baseRule = config.module.rule(lang).test(test)
-    const modulesRule = baseRule.oneOf('modules').resourceQuery(/module/)
-    const normalRule = baseRule.oneOf('normal')
-    return {
-      modulesRule,
-      normalRule,
-    }
-  }
-
-  const applyStyleHandlers = ({
-    rule,
-    cssModules,
-    loaderName,
-    loaderOptions = {},
-  }: {
-    rule: StyleRule
-    cssModules: boolean
     loaderName?: string
-    loaderOptions?: LoaderOptions
+    loaderOptions?: T
   }): void => {
+    const rule = config.module.rule(lang).test(test)
+
     if (!isServer) {
       if (isBuild) {
         rule.use('extract-css-loader').loader(MiniCssExtractPlugin.loader)
@@ -72,13 +52,14 @@ export const handleModuleStyles = ({
       .use('css-loader')
       .loader(require.resolve('css-loader'))
       .options({
-        modules: cssModules
-          ? {
-              localIdentName: `[local]_[contenthash:base64:8]`,
-              exportOnlyLocals: isServer,
-            }
-          : false,
-        importLoaders: 1,
+        modules: {
+          auto: true,
+          exportLocalsConvention: 'as-is',
+          exportOnlyLocals: isServer,
+          localIdentName: `[local]_[contenthash:base64:8]`,
+          namedExport: false,
+        },
+        importLoaders: loaderName ? 2 : 1,
       })
 
     // use postcss-loader
@@ -87,46 +68,18 @@ export const handleModuleStyles = ({
       .loader(require.resolve('postcss-loader'))
       .options({
         postcssOptions: {
-          plugins: [autoprefixer, postcssCsso],
+          plugins: [autoprefixer],
         },
         ...options.postcss,
       })
 
     // use extra loader
     if (loaderName) {
-      rule.use(loaderName).loader(loaderName).options(loaderOptions)
+      rule
+        .use(loaderName)
+        .loader(loaderName)
+        .options(loaderOptions ?? {})
     }
-  }
-
-  const handleStyle = <T extends LoaderOptions = LoaderOptions>({
-    lang,
-    test,
-    loaderName,
-    loaderOptions,
-  }: {
-    lang: string
-    test: RegExp
-    loaderName?: string
-    loaderOptions?: T
-  }): void => {
-    const { modulesRule, normalRule } = createStyleRules({
-      lang,
-      test,
-    })
-
-    applyStyleHandlers({
-      rule: modulesRule,
-      cssModules: true,
-      loaderName,
-      loaderOptions,
-    })
-
-    applyStyleHandlers({
-      rule: normalRule,
-      cssModules: false,
-      loaderName,
-      loaderOptions,
-    })
   }
 
   handleStyle({
