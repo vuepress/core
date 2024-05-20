@@ -1,7 +1,7 @@
 import { computed, defineComponent, h } from 'vue'
 import type { SlotsType, VNode } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { resolveRoutePath } from '../router/index.js'
+import { resolveRouteFullPath } from '../router/index.js'
 
 /**
  * Forked from https://github.com/vuejs/router/blob/941b2131e80550009e5221d4db9f366b1fea3fd5/packages/router/src/RouterLink.ts#L293
@@ -91,7 +91,7 @@ export const RouteLink = defineComponent({
     const path = computed(() =>
       props.to.startsWith('#') || props.to.startsWith('?')
         ? props.to
-        : `${__VUEPRESS_BASE__}${resolveRoutePath(props.to, route.path).substring(1)}`,
+        : `${__VUEPRESS_BASE__}${resolveRouteFullPath(props.to, route.path).substring(1)}`,
     )
 
     return () =>

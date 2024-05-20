@@ -1,22 +1,20 @@
 import { inferRoutePath } from './inferRoutePath.js'
-import { resolveRouteFullPath } from './resolveRouteFullPath.js'
 
 const FAKE_HOST = 'http://.'
 
 /**
- * Normalize the given path to the final route path
+ * Normalize the given pathname path to the final route path
  */
-export const normalizeRoutePath = (path: string, current?: string): string => {
-  if (!path.startsWith('/') && current) {
+export const normalizeRoutePath = (
+  pathname: string,
+  current?: string,
+): string => {
+  if (!pathname.startsWith('/') && current) {
     // the relative path should be resolved against the current path
     const loc = current.slice(0, current.lastIndexOf('/'))
 
-    const { pathname, search, hash } = new URL(`${loc}/${path}`, FAKE_HOST)
-
-    return inferRoutePath(pathname) + search + hash
+    return inferRoutePath(new URL(`${loc}/${pathname}`, FAKE_HOST).pathname)
   }
 
-  const [pathname, queryAndHash] = resolveRouteFullPath(path)
-
-  return inferRoutePath(pathname) + queryAndHash
+  return inferRoutePath(pathname)
 }

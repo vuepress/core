@@ -1,29 +1,34 @@
-import { normalizeRoutePath, resolveRouteFullPath } from '@vuepress/shared'
+import { normalizeRoutePath } from '@vuepress/shared'
 import { redirects, routes } from '../internal/routes.js'
 
 /**
  * Resolve route path with given raw path
  */
 export const resolveRoutePath = (
-  path: string,
+  pathname: string,
   currentPath?: string,
 ): string => {
   // normalized path
-  const normalizedPath = normalizeRoutePath(path, currentPath)
-  const [normalizedPathname, queryAndHash] =
-    resolveRouteFullPath(normalizedPath)
+  const normalizedRoutePath = normalizeRoutePath(pathname, currentPath)
 
-  if (routes.value[normalizedPathname]) return normalizedPath
+  // check if the normalized path is in routes
+  if (routes.value[normalizedRoutePath]) return normalizedRoutePath
 
-  // encoded path
-  const encodedPathname = encodeURI(normalizedPathname)
-  if (routes.value[encodedPathname]) return encodeURI(normalizedPath)
+  // check encoded path
+  const encodedRoutePath = encodeURI(normalizedRoutePath)
 
-  // redirected path
-  const redirectPath =
-    redirects.value[normalizedPathname] || redirects.value[encodedPathname]
-  if (redirectPath) return redirectPath + queryAndHash
+  if (routes.value[encodedRoutePath]) {
+    return encodedRoutePath
+  }
 
-  // fallback to the normalized path
-  return normalizedPath
+  // check redirected path with normalized path and encoded path
+  const redirectedRoutePath =
+    redirects.value[normalizedRoutePath] || redirects.value[encodedRoutePath]
+
+  if (redirectedRoutePath) {
+    return redirectedRoutePath
+  }
+
+  // default to normalized route path
+  return normalizedRoutePath
 }

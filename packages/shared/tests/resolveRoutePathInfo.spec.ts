@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { resolveRouteFullPath } from '../src/index.js'
+import { resolveRoutePathInfo } from '../src/index.js'
 
 const testCases: [string, [string, string]][] = [
   ['/a/b/c/', ['/a/b/c/', '']],
@@ -12,10 +12,10 @@ const testCases: [string, [string, string]][] = [
   ['/a/index.html?a=1#b', ['/a/index.html', '?a=1#b']],
 ]
 
-describe('should resolve route pathname correctly', () => {
+describe('should resolve route path info correctly', () => {
   testCases.forEach(([source, expected]) => {
     it(`${source} -> ${expected}`, () => {
-      expect(resolveRouteFullPath(source)).toEqual(expected)
+      expect(resolveRoutePathInfo(source)).toEqual(expected)
     })
   })
 })
