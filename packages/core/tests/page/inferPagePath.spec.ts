@@ -10,6 +10,7 @@ const app = createBaseApp({
     '/': {},
     '/en/': {},
     '/zh/': {},
+    '/中文/': {},
   },
 })
 const appWithoutLocales = createBaseApp({
@@ -38,6 +39,13 @@ const testCases: [string, ReturnType<typeof inferPagePath>][] = [
     {
       pathInferred: '/zh/foo.html',
       pathLocale: '/zh/',
+    },
+  ],
+  [
+    '中文/foo.md',
+    {
+      pathInferred: '/中文/foo.html',
+      pathLocale: '/中文/',
     },
   ],
 ]

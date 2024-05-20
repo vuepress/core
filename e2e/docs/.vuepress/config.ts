@@ -41,6 +41,15 @@ export default defineUserConfig({
         ['meta', { name: 'bar', content: 'foobar zh' }],
       ],
     },
+    '/中文/': {
+      lang: '中文',
+      title: 'VuePress E2E',
+      description: 'VuePress E2E 测试站点',
+      head: [
+        ['meta', { name: 'foo-中文', content: 'foo-中文' }],
+        ['meta', { name: 'bar', content: '中文' }],
+      ],
+    },
   },
 
   markdown: {

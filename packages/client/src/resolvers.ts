@@ -97,7 +97,7 @@ export const resolvers = reactive({
   resolveRouteLocale: (
     locales: SiteData['locales'],
     routePath: string,
-  ): RouteLocale => resolveLocalePath(locales, routePath),
+  ): RouteLocale => resolveLocalePath(locales, decodeURI(routePath)),
 
   /**
    * Resolve site data for specific locale
