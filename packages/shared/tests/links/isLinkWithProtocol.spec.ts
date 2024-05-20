@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { isLinkWithProtocol } from '../src/index.js'
+import { isLinkWithProtocol } from '../../src/index.js'
 
 const testCases: [string, ReturnType<typeof isLinkWithProtocol>][] = [
   // with protocol
