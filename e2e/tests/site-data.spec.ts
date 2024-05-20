@@ -95,3 +95,50 @@ test.describe('zh-CN', () => {
     await expect(fooZhLocator.first()).toHaveAttribute('content', 'foo-zh')
   })
 })
+
+test.describe('non-ASCII', () => {
+  test.beforeEach(async ({ page }) => page.goto('中文/'))
+
+  test('lang', async ({ page }) => {
+    await expect(page.locator('html')).toHaveAttribute('lang', '中文')
+  })
+
+  test('title', async ({ page }) => {
+    const locator = page.locator('head title')
+
+    await expect(page).toHaveTitle('VuePress E2E')
+    await expect(locator).toHaveCount(1)
+    await expect(locator.first()).toHaveText('VuePress E2E', {
+      useInnerText: true,
+    })
+  })
+
+  test('description', async ({ page }) => {
+    const locator = page.locator('head meta[name="description"]')
+
+    await expect(locator).toHaveCount(1)
+    await expect(locator.first()).toHaveAttribute(
+      'content',
+      'VuePress E2E 测试站点',
+    )
+  })
+
+  test('head', async ({ page }) => {
+    const fooLocator = page.locator('head meta[name="foo"]')
+    const barLocator = page.locator('head meta[name="bar"]')
+    const bazLocator = page.locator('head meta[name="baz"]')
+    const fooChsLocator = page.locator('head meta[name="foo-中文"]')
+
+    await expect(fooLocator).toHaveCount(1)
+    await expect(fooLocator.first()).toHaveAttribute('content', 'foo')
+
+    await expect(barLocator).toHaveCount(1)
+    await expect(barLocator.first()).toHaveAttribute('content', '中文')
+
+    await expect(bazLocator).toHaveCount(1)
+    await expect(bazLocator.first()).toHaveAttribute('content', 'baz')
+
+    await expect(fooChsLocator).toHaveCount(1)
+    await expect(fooChsLocator.first()).toHaveAttribute('content', 'foo-中文')
+  })
+})

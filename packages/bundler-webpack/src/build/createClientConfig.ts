@@ -84,15 +84,18 @@ export const createClientConfig = async (
   // enable runtimeChunk
   config.optimization.runtimeChunk(true)
 
-  // minify css
-  config.optimization
-    .minimizer('css-minimizer-webpack-plugin')
-    .use(CssMinimizerPlugin, [
-      {
-        minify:
-          CssMinimizerPlugin.lightningCssMinify as CssMinimizerPlugin.BasicMinimizerImplementation<unknown>,
-      },
-    ])
+  // minimize
+  config.optimization.minimize(true)
+
+  // minimizer
+  config.optimization.set('minimizer', [
+    // keep the default minimizer
+    '...',
+    // add css minimizer
+    new CssMinimizerPlugin({
+      minify: CssMinimizerPlugin.lightningCssMinify,
+    }),
+  ])
 
   // disable performance hints
   if (!app.env.isDebug) {
