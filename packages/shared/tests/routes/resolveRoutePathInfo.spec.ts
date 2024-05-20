@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { resolveRoutePathInfo } from '../src/index.js'
+import { resolveRoutePathInfo } from '../../src/index.js'
 
 const testCases: [string, [string, string]][] = [
   ['/a/b/c/', ['/a/b/c/', '']],

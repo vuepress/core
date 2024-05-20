@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { inferRoutePath } from '../src/index.js'
+import { inferRoutePath } from '../../src/index.js'
 
 const testCases = [
   // absolute index

@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
-import { resolveLocalePath } from '../src/index.js'
-import type { LocaleConfig } from '../src/index.js'
+import type { LocaleConfig } from '../../src/index.js'
+import { resolveLocalePath } from '../../src/index.js'
 
 const locales: LocaleConfig = {
   '/': {
