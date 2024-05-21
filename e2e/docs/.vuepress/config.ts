@@ -3,6 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
+import { testPlugin } from './plugins/testPlugin.js'
 import { e2eTheme } from './theme/node/e2eTheme.js'
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
@@ -80,4 +81,6 @@ export default defineUserConfig({
       }
     }
   },
+
+  plugins: [testPlugin],
 })
