@@ -9,7 +9,7 @@ import {
   it,
   vi,
 } from 'vitest'
-import { importCodePlugin } from '../../src/index.js'
+import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
 
 const jsFixturePathRelative = '../__fixtures__/importCode.js'
@@ -280,6 +280,70 @@ foo
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual(['/path/to/foo.js'])
       expect(mockConsoleError).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('compatibility with otherPlugin', () => {
+    it('should preserve the things after code as fence info', () => {
+      const source1 = `\
+@[code js{1,3-4}](${jsFixturePathRelative})
+`
+      const source2 = `\
+@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${mdFixturePathRelative})
+`
+
+      const md = MarkdownIt().use(importCodePlugin)
+      const env1: MarkdownEnv = {
+        filePath: __filename,
+      }
+
+      const rendered1 = md.render(source1, env1)
+
+      expect(rendered1).toEqual(
+        md.render(`\
+\`\`\`js{1,3-4}
+${jsFixtureContent}\
+\`\`\`
+`),
+      )
+      expect(rendered1).toMatchSnapshot()
+      expect(env1.importedFiles).toEqual([jsFixturePath])
+
+      const env2: MarkdownEnv = {
+        filePath: __filename,
+      }
+
+      const rendered2 = md.render(source2, env2)
+
+      expect(rendered2).toEqual(
+        md.render(`\
+\`\`\`md:no-line-numbers:no-v-pre title="no-line-numbers.md"
+${mdFixtureContent}\
+\`\`\`
+`),
+      )
+      expect(rendered2).toMatchSnapshot()
+      expect(env2.importedFiles).toEqual([mdFixturePath])
+    })
+
+    it('should work with syntax supported by vPrePlugin', () => {
+      const source1 = `\
+@[code js{1,3-4}](${jsFixturePathRelative})
+`
+      const source2 = `\
+@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${mdFixturePathRelative})
+`
+
+      const md = MarkdownIt().use(importCodePlugin).use(vPrePlugin)
+      const env: MarkdownEnv = {
+        filePath: __filename,
+      }
+
+      const rendered1 = md.render(source1, env)
+      const rendered2 = md.render(source2, env)
+
+      expect(rendered1).to.contain('v-pre')
+      expect(rendered2).to.not.contain(' v-pre')
     })
   })
 })
