@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 
 /**
  * Set webpack mode

@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 
 /**
  * Set webpack devtool
@@ -18,7 +18,6 @@ export const handleDevtool = ({
     config.devtool('source-map')
   } else if (!isBuild) {
     // only enable eval-source-map in dev mode
-    // TODO: remove type assertion when webpack-chain updates its types for webpack 5
-    config.devtool('eval-cheap-module-source-map' as Config.DevTool)
+    config.devtool('eval-cheap-module-source-map')
   }
 }
