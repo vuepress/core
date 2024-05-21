@@ -8,6 +8,7 @@ import type {
   CssNanoOptionsExtended,
 } from 'css-minimizer-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import type { CssModule } from 'mini-css-extract-plugin'
 import type Config from 'webpack-5-chain'
 import { createClientBaseConfig } from '../config/index.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -69,7 +70,7 @@ export const createClientConfig = async (
       styles: {
         idHint: 'styles',
         // necessary to ensure async chunks are also extracted
-        test: (m) => /css\/mini-extract/.test(m.type),
+        test: (m: CssModule) => /css\/mini-extract/.test(m.type),
         chunks: 'all',
         enforce: true,
         reuseExistingChunk: true,
