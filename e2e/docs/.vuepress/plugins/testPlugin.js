@@ -1,8 +1,8 @@
-import { createRequire } from 'node:module'
+import { getDirname, path } from 'vuepress/utils'
 
-const require = createRequire(import.meta.url)
+const __dirname = getDirname(import.meta.url)
 
 export const testPlugin = {
   name: 'test-plugin',
-  clientConfigFile: require.resolve('./clientConfig.js'),
+  clientConfigFile: path.resolve(__dirname, './clientConfig.js'),
 }
