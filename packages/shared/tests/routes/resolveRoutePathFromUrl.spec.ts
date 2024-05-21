@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { resolveRoutePathFromUrl } from '../src/index.js'
+import { resolveRoutePathFromUrl } from '../../src/index.js'
 
 const testCases: [
   Parameters<typeof resolveRoutePathFromUrl>,

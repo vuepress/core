@@ -27,20 +27,15 @@ const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
-  // add redirect to the set when the redirect could not be normalized & encoded to the page path
-  const addRedirect = (redirect: string): void => {
-    const normalizedPath = normalizeRoutePath(redirect)
-    if (normalizedPath === path) return
-
-    const encodedPath = encodeURI(normalizedPath)
-    if (encodedPath === path) return
-
-    redirectsSet.add(redirect)
-  }
-
   // redirect from inferred path, notice that the inferred path is not uri-encoded
   if (pathInferred !== null) {
-    addRedirect(encodeURI(pathInferred))
+    const normalizedPathInferred = normalizeRoutePath(pathInferred)
+    const encodedPathInferred = encodeURI(normalizedPathInferred)
+
+    // add redirect to the set when the redirect could not be normalized & encoded to the page path
+    if (normalizedPathInferred !== path && encodedPathInferred !== path) {
+      redirectsSet.add(encodedPathInferred)
+    }
   }
 
   return Array.from(redirectsSet)

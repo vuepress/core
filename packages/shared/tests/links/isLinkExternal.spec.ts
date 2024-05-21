@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { isLinkExternal } from '../src/index.js'
+import { isLinkExternal } from '../../src/index.js'
 
 const testCases: [
   Parameters<typeof isLinkExternal>,

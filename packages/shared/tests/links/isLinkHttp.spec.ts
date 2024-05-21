@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { isLinkHttp } from '../src/index.js'
+import { isLinkHttp } from '../../src/index.js'
 
 const testCases: [string, ReturnType<typeof isLinkHttp>][] = [
   ['https://foobar.com', true],
