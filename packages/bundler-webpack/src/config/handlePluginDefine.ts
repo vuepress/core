@@ -1,6 +1,6 @@
 import type { App } from '@vuepress/core'
 import webpack from 'webpack'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 
 /**
  * Set webpack DefinePlugin

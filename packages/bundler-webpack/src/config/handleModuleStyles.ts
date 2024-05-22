@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 import autoprefixer from 'autoprefixer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 import type {
   LessLoaderOptions,
   LoaderOptions,

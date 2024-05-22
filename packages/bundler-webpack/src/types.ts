@@ -1,8 +1,10 @@
 import type { VueLoaderOptions } from 'vue-loader'
-import type { Configuration as WebpackConfiguration } from 'webpack'
-import type WebpackChainConfig from 'webpack-chain'
+import type {
+  LoaderContext,
+  Configuration as WebpackConfiguration,
+} from 'webpack'
+import type WebpackChainConfig from 'webpack-5-chain'
 import type WebpackDevServer from 'webpack-dev-server'
-import type { LoaderContext } from './types.webpack.js'
 
 export type {
   VueLoaderOptions,
@@ -25,7 +27,7 @@ export interface WebpackBundlerOptions {
   ) => WebpackConfiguration | void
 
   /**
-   * use webpack-chain to set webpack config
+   * use webpack-5-chain to set webpack config
    */
   chainWebpack?: (
     config: WebpackChainConfig,
@@ -82,7 +84,10 @@ export interface LoaderOptions {
   webpackImporter?: boolean
   additionalData?:
     | string
-    | ((content: string, loaderContext: LoaderContext) => string)
+    | ((
+        content: string,
+        loaderContext: LoaderContext<Record<string, any>>,
+      ) => string)
 }
 
 /**
@@ -90,7 +95,7 @@ export interface LoaderOptions {
  */
 export type StylePreprocessorOptions<
   T extends Record<string, any> = Record<string, any>,
-> = T | ((loaderContext: LoaderContext) => TextDecodeOptions)
+> = T | ((loaderContext: LoaderContext<T>) => TextDecodeOptions)
 
 /**
  * Options for postcss-loader
