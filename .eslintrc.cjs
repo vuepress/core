@@ -1,6 +1,12 @@
 module.exports = {
   root: true,
   extends: 'vuepress',
+
+  // FIXME: This should be added to `eslint-config-vuepress`
+  globals: {
+    __VUEPRESS_CLEAN_URL__: 'readonly',
+  },
+
   overrides: [
     {
       files: ['*.ts', '*.vue', '*.cts'],

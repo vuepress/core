@@ -73,6 +73,11 @@ export type Page<
     permalink: string | null
 
     /**
+     * Key in routes record
+     */
+    routeKey: string
+
+    /**
      * Custom data to be attached to route record
      */
     routeMeta: Record<string, unknown>

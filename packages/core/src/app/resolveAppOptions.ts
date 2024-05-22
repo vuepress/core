@@ -38,8 +38,16 @@ export const resolveAppOptions = ({
   bundler,
   debug = false,
   markdown = {},
-  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
-  permalinkPattern = null,
+  pagePatterns: _pagePatterns,
+  permalinkPattern: _permalinkPattern,
+  route: {
+    cleanUrl = false,
+    pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
+    permalinkPattern = null,
+  } = {
+    pagePatterns: _pagePatterns,
+    permalinkPattern: _permalinkPattern,
+  },
   plugins = [],
   theme,
 }: AppConfig): AppOptions => ({
@@ -65,8 +73,11 @@ export const resolveAppOptions = ({
   bundler,
   debug,
   markdown,
-  pagePatterns,
-  permalinkPattern,
+  route: {
+    cleanUrl,
+    pagePatterns,
+    permalinkPattern,
+  },
   plugins,
   theme,
 })

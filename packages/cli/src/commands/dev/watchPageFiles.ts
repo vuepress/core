@@ -41,7 +41,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   app.pages.forEach((page) => addDeps(page))
 
   // watch page files
-  const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
+  const pagesWatcher = chokidar.watch(app.options.route.pagePatterns, {
     cwd: app.dir.source(),
     ignoreInitial: true,
   })

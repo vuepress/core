@@ -11,7 +11,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
   log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
-  const pageFilePaths = await globby(app.options.pagePatterns, {
+  const pageFilePaths = await globby(app.options.route.pagePatterns, {
     absolute: true,
     cwd: app.dir.source(),
   })
@@ -22,7 +22,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
   )
 
   // find the 404 page
-  const notFoundPage = pages.find((page) => page.path === '/404.html')
+  const notFoundPage = pages.find((page) => page.routeKey === '/404')
 
   // if there is a 404 page, set the default layout to NotFound
   if (notFoundPage) {

@@ -3,4 +3,5 @@ export { useRoute, useRouter } from 'vue-router'
 
 export * from './resolveRoute.js'
 export * from './resolveRouteFullPath.js'
+export * from './resolveRouteKey.js'
 export * from './resolveRoutePath.js'
