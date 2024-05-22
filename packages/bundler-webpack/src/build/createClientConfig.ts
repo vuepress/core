@@ -3,10 +3,6 @@ import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-import type {
-  BasicMinimizerImplementation,
-  CssNanoOptionsExtended,
-} from 'css-minimizer-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { CssModule } from 'mini-css-extract-plugin'
 import type Config from 'webpack-5-chain'
@@ -93,11 +89,13 @@ export const createClientConfig = async (
   config.optimization.minimize(true)
 
   // minimizer
-  config.optimization.minimizer('css').use(CssMinimizerPlugin, [
-    {
-      minify:
-        CssMinimizerPlugin.lightningCssMinify as BasicMinimizerImplementation<CssNanoOptionsExtended>,
-    },
+  config.optimization.set('minimizer', [
+    // keep the default minimizer
+    '...',
+    // add css minimizer
+    new CssMinimizerPlugin({
+      minify: CssMinimizerPlugin.lightningCssMinify,
+    }),
   ])
 
   // disable performance hints
