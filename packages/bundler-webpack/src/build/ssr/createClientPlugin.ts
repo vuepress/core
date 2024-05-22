@@ -34,14 +34,12 @@ export const createClientPlugin = (
           const allFiles = assets.map((a) => a.name)
 
           // get initial entry files
-          const initialFiles =
-            Object.keys(entrypoints)
-              .map(
-                (name) =>
-                  entrypoints[name].assets?.map((item) => item.name) ?? [],
-              )
-              .reduce((assets, all) => all.concat(assets), [])
-              .filter((file) => isJS(file) || isCSS(file)) ?? []
+          const initialFiles = Object.keys(entrypoints)
+            .flatMap(
+              (name) =>
+                entrypoints[name].assets?.map((item) => item.name) ?? [],
+            )
+            .filter((file) => isJS(file) || isCSS(file))
 
           // get files that should be loaded asynchronously
           // i.e. script and style files that are not included in the initial entry files
