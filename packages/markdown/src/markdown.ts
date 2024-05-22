@@ -86,7 +86,7 @@ export const createMarkdown = ({
   // process code fence
   if (code) {
     logger.warn(
-      `\`markdown.code\` option is deprecated, use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
+      `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
     )
   }
 

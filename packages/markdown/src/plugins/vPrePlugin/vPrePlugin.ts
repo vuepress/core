@@ -13,6 +13,9 @@ export interface VPrePluginOptions {
   inline?: boolean
 }
 
+/**
+ * v-pre plugin
+ */
 export const vPrePlugin: PluginWithOptions<VPrePluginOptions> = (
   md,
   { inline = true, block = true }: VPrePluginOptions = {},

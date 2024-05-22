@@ -22,13 +22,6 @@ export type { MarkdownSfcBlocks }
 export interface MarkdownOptions extends Options {
   anchor?: false | AnchorPluginOptions
   assets?: false | AssetsPluginOptions
-
-  /**
-   * @deprecated This feature has been deprecated. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` to instead it.
-   */
-  code?: never
-
-  vPre?: false | VPrePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
   frontmatter?: false | FrontmatterPluginOptions
@@ -39,6 +32,11 @@ export interface MarkdownOptions extends Options {
   sfc?: false | SfcPluginOptions
   slugify?: MarkdownSlugifyFunction
   toc?: false | TocPluginOptions
+  vPre?: false | VPrePluginOptions
+  /**
+   * @deprecated This feature has been removed. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` instead.
+   */
+  code?: never
 }
 
 /**

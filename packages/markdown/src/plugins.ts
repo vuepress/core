@@ -31,7 +31,6 @@ export {
   linksPlugin,
   type LinksPluginOptions,
 } from './plugins/linksPlugin/linksPlugin.js'
-
 export {
   vPrePlugin,
   type VPrePluginOptions,
