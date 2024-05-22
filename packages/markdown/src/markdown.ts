@@ -90,11 +90,6 @@ export const createMarkdown = ({
     )
   }
 
-  // add v-pre to `<pre>` and `<code>`
-  if (vPre !== false) {
-    md.use<VPrePluginOptions>(vPrePlugin, vPre)
-  }
-
   // treat unknown html tags as components
   if (component !== false) {
     md.use(componentPlugin)
@@ -153,6 +148,11 @@ export const createMarkdown = ({
   // extract title into env
   if (title !== false) {
     md.use(titlePlugin)
+  }
+
+  // add v-pre to `<pre>` and `<code>`
+  if (vPre !== false) {
+    md.use<VPrePluginOptions>(vPrePlugin, vPre)
   }
 
   return md
