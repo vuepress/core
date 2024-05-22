@@ -43,7 +43,7 @@
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.4",
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.7",
@@ -55,7 +55,7 @@
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.19"
   },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.1.2",
   "engines": {
     "node": ">=18.16.0"
   }
