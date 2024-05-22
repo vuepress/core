@@ -1,4 +1,4 @@
-import { resolveRoutePathInfo } from '@vuepress/shared'
+import { resolvePathInfo } from '@vuepress/shared'
 import { resolveRoutePath } from './resolveRoutePath.js'
 
 /**
@@ -8,7 +8,7 @@ export const resolveRouteFullPath = (
   path: string,
   currentPath?: string,
 ): string => {
-  const [pathname, hashAndQueries] = resolveRoutePathInfo(path)
+  const [pathname, hashAndQueries] = resolvePathInfo(path)
 
   return resolveRoutePath(pathname, currentPath) + hashAndQueries
 }
