@@ -225,9 +225,9 @@ importers:
       webpack:
         specifier: ^5.91.0
         version: 5.91.0(esbuild@0.19.12)
-      webpack-chain:
-        specifier: ^6.5.1
-        version: 6.5.1
+      webpack-5-chain:
+        specifier: ^8.0.2
+        version: 8.0.2
       webpack-dev-server:
         specifier: ^5.0.4
         version: 5.0.4(webpack@5.91.0(esbuild@0.19.12))
@@ -5110,10 +5110,9 @@ packages:
   webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
 
-  webpack-chain@6.5.1:
-    resolution: {integrity: sha512-7doO/SRtLu8q5WM0s7vPKPWX580qhi0/yBHkOxNkv50f6qB76Zy9o2wRTrrPULqYTvQlVHuvbA8v+G5ayuUDsA==}
-    engines: {node: '>=8'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+  webpack-5-chain@8.0.2:
+    resolution: {integrity: sha512-gpzlChffrVUu5YwIw9i240/wdcglw53mSEV/7WoK7L/ddfb6Al8/sRjztyPYV8VgJAmkapH5T1AOUfMFryQ/VA==}
+    engines: {node: '>=10'}
 
   webpack-dev-middleware@7.2.1:
     resolution: {integrity: sha512-hRLz+jPQXo999Nx9fXVdKlg/aehsw1ajA9skAneGmT03xwmyuhvF93p6HUKKbWhXdcERtGTzUCtIQr+2IQegrA==}
@@ -10318,7 +10317,7 @@ snapshots:
 
   webidl-conversions@4.0.2: {}
 
-  webpack-chain@6.5.1:
+  webpack-5-chain@8.0.2:
     dependencies:
       deepmerge: 1.5.2
       javascript-stringify: 2.1.0

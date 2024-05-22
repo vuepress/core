@@ -59,7 +59,7 @@
     "vue-loader": "^17.4.2",
     "vue-router": "^4.3.2",
     "webpack": "^5.91.0",
-    "webpack-chain": "^6.5.1",
+    "webpack-5-chain": "^8.0.2",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0"
   },
