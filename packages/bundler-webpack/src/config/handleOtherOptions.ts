@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module'
 import type { App } from '@vuepress/core'
-import type { Configuration } from 'webpack'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 
 const require = createRequire(import.meta.url)
 
@@ -22,12 +21,12 @@ export const handleOtherOptions = ({
   isServer: boolean
 }): void => {
   // set infrastructureLogging options
-  config.set('infrastructureLogging', {
+  config.infrastructureLogging({
     level: app.env.isDebug ? 'info' : 'error',
-  } as Configuration['infrastructureLogging'])
+  })
 
   // set cache options
-  config.set('cache', {
+  config.cache({
     type: 'filesystem',
     cacheDirectory: app.dir.cache(),
     version: JSON.stringify({
@@ -40,5 +39,5 @@ export const handleOtherOptions = ({
       'vue-loader': require('vue-loader/package.json').version,
       'webpack': require('webpack/package.json').version,
     }),
-  } as Configuration['cache'])
+  })
 }

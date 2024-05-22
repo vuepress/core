@@ -1,6 +1,5 @@
 import { fs } from '@vuepress/utils'
-import type { WebpackPluginInstance } from 'webpack'
-import type { FnModules, StatsToJsonOutput } from '../../types.webpack.js'
+import type { StatsModule, WebpackPluginInstance } from 'webpack'
 import { isCSS, isJS } from './utils.js'
 
 export interface ClientManifest {
@@ -29,17 +28,17 @@ export const createClientPlugin = (
             modules = [],
             entrypoints = {},
             chunks = [],
-          }: StatsToJsonOutput = compilation
-            .getStats()
-            .toJson() as unknown as StatsToJsonOutput
+          } = compilation.getStats().toJson()
 
           // get all files
           const allFiles = assets.map((a) => a.name)
 
           // get initial entry files
           const initialFiles = Object.keys(entrypoints)
-            .map((name) => entrypoints[name].assets.map((item) => item.name))
-            .reduce((assets, all) => all.concat(assets), [])
+            .flatMap(
+              (name) =>
+                entrypoints[name].assets?.map((item) => item.name) ?? [],
+            )
             .filter((file) => isJS(file) || isCSS(file))
 
           // get files that should be loaded asynchronously
@@ -51,18 +50,19 @@ export const createClientPlugin = (
 
           // get asset modules
           const assetModules = modules.filter(
-            (m): m is FnModules & Required<Pick<FnModules, 'assets'>> =>
-              !!(m.assets && m.assets.length),
+            (m): m is StatsModule & Required<Pick<StatsModule, 'assets'>> =>
+              Boolean(m.assets?.length),
           )
 
           // get modules for client manifest
           const manifestModules: ClientManifest['modules'] = {}
 
-          const fileToIndex = (file: string): number => allFiles.indexOf(file)
+          const fileToIndex = (file: number | string): number =>
+            allFiles.indexOf(file.toString())
 
           modules.forEach((m) => {
             // ignore modules duplicated in multiple chunks
-            if (m.chunks.length !== 1) {
+            if (m.chunks?.length !== 1) {
               return
             }
 
@@ -75,21 +75,21 @@ export const createClientPlugin = (
 
             // remove appended hash of module identifier
             // which is the request string of the module
-            const request = m.identifier.replace(/\|\w+$/, '')
+            const request = m.identifier?.replace(/\|\w+$/, '')
 
             // get chunk files index
             const files = [...chunk.files.map(fileToIndex)]
 
             // find all asset modules associated with the same chunk
             assetModules.forEach((m) => {
-              if (m.chunks.some((id) => id === cid)) {
+              if (m.chunks?.some((id) => id === cid)) {
                 // get asset files
                 files.push(...m.assets.map(fileToIndex))
               }
             })
 
             // map the module request to files index
-            manifestModules[request] = files
+            if (request) manifestModules[request] = files
           })
 
           // generate client manifest json file

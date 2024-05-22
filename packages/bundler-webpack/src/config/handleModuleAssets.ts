@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 
 /**
  * Set webpack config to handle assets files
@@ -15,8 +15,8 @@ export const handleModuleAssets = ({
   config.module
     .rule('images')
     .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
-    .type('asset' as any)
-    .set('generator', {
+    .type('asset')
+    .generator({
       filename: 'assets/img/[name].[contenthash:8][ext]',
     })
 
@@ -26,8 +26,8 @@ export const handleModuleAssets = ({
   config.module
     .rule('svg')
     .test(/\.(svg)(\?.*)?$/)
-    .type('asset/resource' as any)
-    .set('generator', {
+    .type('asset/resource')
+    .generator({
       filename: 'assets/img/[name].[contenthash:8][ext]',
     })
 
@@ -35,8 +35,8 @@ export const handleModuleAssets = ({
   config.module
     .rule('media')
     .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
-    .type('asset/resource' as any)
-    .set('generator', {
+    .type('asset/resource')
+    .generator({
       filename: 'assets/media/[name].[contenthash:8][ext]',
     })
 
@@ -44,8 +44,8 @@ export const handleModuleAssets = ({
   config.module
     .rule('fonts')
     .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
-    .type('asset/resource' as any)
-    .set('generator', {
+    .type('asset/resource')
+    .generator({
       filename: 'assets/fonts/[name].[contenthash:8][ext]',
     })
 }

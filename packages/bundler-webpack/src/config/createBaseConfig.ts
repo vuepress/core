@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import Config from 'webpack-chain'
+import Config from 'webpack-5-chain'
 import type { WebpackBundlerOptions } from '../types.js'
 import { handleDevtool } from './handleDevtool.js'
 import { handleEntry } from './handleEntry.js'
@@ -21,7 +21,7 @@ export const createBaseConfig = async ({
   isBuild: boolean
   isServer: boolean
 }): Promise<Config> => {
-  // create new webpack-chain config
+  // create new webpack-5-chain config
   const config = new Config()
 
   /**

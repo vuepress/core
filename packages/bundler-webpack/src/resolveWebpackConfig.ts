@@ -1,5 +1,5 @@
 import type { Configuration } from 'webpack'
-import type Config from 'webpack-chain'
+import type Config from 'webpack-5-chain'
 import { merge } from 'webpack-merge'
 import type { WebpackBundlerOptions } from './types.js'
 
@@ -17,7 +17,7 @@ export const resolveWebpackConfig = ({
   // allow modifying webpack config via `chainWebpack`
   options.chainWebpack?.(config, isServer, isBuild)
 
-  // generate webpack config from webpack-chain
+  // generate webpack config from webpack-5-chain
   const webpackConfig = config.toConfig()
 
   // allow modifying webpack config via `configureWebpack`
