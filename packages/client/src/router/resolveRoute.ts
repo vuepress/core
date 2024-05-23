@@ -1,4 +1,4 @@
-import { resolvePathInfo } from '@vuepress/shared'
+import { splitPath } from '@vuepress/shared'
 import { routes } from '../internal/routes.js'
 import type { Route, RouteMeta } from '../types/index.js'
 import { resolveRoutePath } from './resolveRoutePath.js'
@@ -17,7 +17,7 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   currentPath?: string,
 ): ResolvedRoute<T> => {
   // get only the pathname from the path
-  const [pathname, hashAndQueries] = resolvePathInfo(path)
+  const { pathname, hashAndQueries } = splitPath(path)
 
   // resolve the route path
   const routePath = resolveRoutePath(pathname, currentPath)
