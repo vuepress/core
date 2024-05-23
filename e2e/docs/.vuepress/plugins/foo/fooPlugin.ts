@@ -2,7 +2,10 @@ import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 
-export const testPlugin = {
+export const fooPlugin = {
   name: 'test-plugin',
-  clientConfigFile: path.resolve(__dirname, './clientConfig.js'),
+  clientConfigFile: path.resolve(
+    __dirname,
+    './nonDefaultExportClientConfig.js',
+  ),
 }
