@@ -18,8 +18,20 @@ test.describe('should preserve query', () => {
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
 
-  test('html links', async ({ page }) => {
-    await page.locator('#html-links + p > a').nth(0).click()
+  test('markdown clean links', async ({ page }) => {
+    await page.locator('#markdown-clean-links + ul > li > a').nth(0).click()
+    await expect(page).toHaveURL(`${BASE}?home=true`)
+    await expect(page.locator('#home-h2')).toHaveText('Home H2')
+  })
+
+  test('html full links', async ({ page }) => {
+    await page.locator('#html-full-links + p > a').nth(0).click()
+    await expect(page).toHaveURL(`${BASE}?home=true`)
+    await expect(page.locator('#home-h2')).toHaveText('Home H2')
+  })
+
+  test('html clean links', async ({ page }) => {
+    await page.locator('#html-clean-links + p > a').nth(0).click()
     await expect(page).toHaveURL(`${BASE}?home=true`)
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
@@ -38,8 +50,20 @@ test.describe('should preserve query and hash', () => {
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
 
-  test('html links', async ({ page }) => {
-    await page.locator('#html-links + p > a').nth(1).click()
+  test('markdown clean links', async ({ page }) => {
+    await page.locator('#markdown-clean-links + ul > li > a').nth(1).click()
+    await expect(page).toHaveURL(`${BASE}?home=true#home`)
+    await expect(page.locator('#home-h2')).toHaveText('Home H2')
+  })
+
+  test('html full links', async ({ page }) => {
+    await page.locator('#html-full-links + p > a').nth(1).click()
+    await expect(page).toHaveURL(`${BASE}?home=true#home`)
+    await expect(page.locator('#home-h2')).toHaveText('Home H2')
+  })
+
+  test('html clean links', async ({ page }) => {
+    await page.locator('#html-clean-links + p > a').nth(1).click()
     await expect(page).toHaveURL(`${BASE}?home=true#home`)
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
@@ -58,8 +82,20 @@ test.describe('should preserve hash', () => {
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 
-  test('html links', async ({ page }) => {
-    await page.locator('#html-links + p > a').nth(2).click()
+  test('markdown clean links', async ({ page }) => {
+    await page.locator('#markdown-clean-links + ul > li > a').nth(2).click()
+    await expect(page).toHaveURL(`${BASE}404.html#404`)
+    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+  })
+
+  test('html full links', async ({ page }) => {
+    await page.locator('#html-full-links + p > a').nth(2).click()
+    await expect(page).toHaveURL(`${BASE}404.html#404`)
+    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+  })
+
+  test('html clean links', async ({ page }) => {
+    await page.locator('#html-clean-links + p > a').nth(2).click()
     await expect(page).toHaveURL(`${BASE}404.html#404`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
@@ -78,8 +114,20 @@ test.describe('should preserve hash and query', () => {
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 
-  test('html links', async ({ page }) => {
-    await page.locator('#html-links + p > a').nth(3).click()
+  test('markdown clean links', async ({ page }) => {
+    await page.locator('#markdown-clean-links + ul > li > a').nth(3).click()
+    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
+    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+  })
+
+  test('html full links', async ({ page }) => {
+    await page.locator('#html-full-links + p > a').nth(3).click()
+    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
+    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+  })
+
+  test('html clean links', async ({ page }) => {
+    await page.locator('#html-clean-links + p > a').nth(3).click()
     await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
