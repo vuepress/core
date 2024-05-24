@@ -10,6 +10,7 @@ import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
 import { resolvePageLang } from './resolvePageLang.js'
 import { resolvePagePath } from './resolvePagePath.js'
 import { resolvePagePermalink } from './resolvePagePermalink.js'
+import { resolvePageRouteKey } from './resolvePageRouteKey.js'
 import { resolvePageRouteMeta } from './resolvePageRouteMeta.js'
 import { resolvePageSlug } from './resolvePageSlug.js'
 
@@ -75,6 +76,9 @@ export const createPage = async (
   // resolve page path
   const path = resolvePagePath({ permalink, pathInferred, options })
 
+  // resolve page routeKey
+  const routeKey = resolvePageRouteKey(path)
+
   // resolve page rendered html file path
   const { htmlFilePath, htmlFilePathRelative } = resolvePageHtmlInfo({
     app,
@@ -118,6 +122,7 @@ export const createPage = async (
     pathInferred,
     pathLocale,
     permalink,
+    routeKey,
     routeMeta,
     sfcBlocks,
     slug,

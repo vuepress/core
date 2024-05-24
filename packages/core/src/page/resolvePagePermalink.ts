@@ -34,7 +34,7 @@ export const resolvePagePermalink = ({
   }
 
   const permalinkPattern =
-    frontmatter.permalinkPattern || app.options.permalinkPattern
+    frontmatter.permalinkPattern || app.options.route.permalinkPattern
 
   if (!isString(permalinkPattern)) {
     return null

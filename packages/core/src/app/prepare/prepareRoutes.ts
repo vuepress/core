@@ -51,7 +51,10 @@ export const redirects = JSON.parse(${JSON.stringify(
     JSON.stringify(
       Object.fromEntries(
         app.pages.flatMap((page) =>
-          resolvePageRedirects(page).map((redirect) => [redirect, page.path]),
+          resolvePageRedirects(page).map((redirect) => [
+            redirect,
+            page.routeKey,
+          ]),
         ),
       ),
     ),
@@ -60,8 +63,8 @@ export const redirects = JSON.parse(${JSON.stringify(
 export const routes = Object.fromEntries([
 ${app.pages
   .map(
-    ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
+    ({ chunkFilePath, chunkName, routeKey, routeMeta }) =>
+      `  [${JSON.stringify(routeKey)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
   )
   .join('\n')}
 ]);

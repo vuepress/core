@@ -1,6 +1,7 @@
+import { resolveRoutePathWithExt, splitPath } from '@vuepress/shared'
 import { routes } from '../internal/routes.js'
 import type { Route, RouteMeta } from '../types/index.js'
-import { resolveRoutePath } from './resolveRoutePath.js'
+import { resolveRouteKey } from './resolveRouteKey.js'
 
 export interface ResolvedRoute<T extends RouteMeta = RouteMeta>
   extends Route<T> {
@@ -15,15 +16,26 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   path: string,
   currentPath?: string,
 ): ResolvedRoute<T> => {
-  const routePath = resolveRoutePath(path, currentPath)
-  const route = routes.value[routePath] ?? {
-    ...routes.value['/404.html'],
-    notFound: true,
+  const { pathname, hashAndQueries } = splitPath(path)
+
+  // calculate the route key and full path
+  const routeKey = resolveRouteKey(pathname, currentPath)
+  const routeFullPath =
+    (__VUEPRESS_CLEAN_URL__ ? routeKey : resolveRoutePathWithExt(routeKey)) +
+    hashAndQueries
+
+  // the route not found
+  if (!routes.value[routeKey]) {
+    return {
+      ...routes.value['/404'],
+      path: routeFullPath,
+      notFound: true,
+    } as ResolvedRoute<T>
   }
 
   return {
-    path: routePath,
+    ...routes.value[routeKey],
+    path: routeFullPath,
     notFound: false,
-    ...route,
   } as ResolvedRoute<T>
 }

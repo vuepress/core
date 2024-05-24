@@ -5,6 +5,7 @@ import { clientDataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
 import { siteData } from './internal/siteData.js'
 import { resolvers } from './resolvers.js'
+import { resolveRouteKey } from './router/resolveRouteKey.js'
 import type {
   ClientConfig,
   ClientData,
@@ -46,10 +47,10 @@ export const setupGlobalComputed = (
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
-      const oldPageChunk = await routes.value[newPageData.path].loader()
+      const routeKey = resolveRouteKey(newPageData.path)
+      const oldPageChunk = await routes.value[routeKey].loader()
       const newPageChunk = { comp: oldPageChunk.comp, data: newPageData }
-      routes.value[newPageData.path].loader = () =>
-        Promise.resolve(newPageChunk)
+      routes.value[routeKey].loader = () => Promise.resolve(newPageChunk)
       if (
         newPageData.path ===
         router.currentRoute.value.meta._pageChunk?.data.path

@@ -5,6 +5,12 @@ import type { Bundler } from '../bundler.js'
 import type { PluginConfig } from '../plugin.js'
 import type { Theme } from '../theme.js'
 
+export interface RouteOptions {
+  cleanUrl?: boolean
+  pagePatterns?: string[]
+  permalinkPattern?: string | null
+}
+
 /**
  * Vuepress app common config that shared between dev and build
  */
@@ -14,11 +20,9 @@ export interface AppConfigCommon extends Partial<SiteData> {
   temp?: string
   cache?: string
   public?: string
-
   debug?: boolean
   markdown?: MarkdownOptions
-  pagePatterns?: string[]
-  permalinkPattern?: string | null
+  route?: RouteOptions
   bundler: Bundler
   theme: Theme
   plugins?: PluginConfig
@@ -95,9 +99,20 @@ export interface AppConfigBuild {
 /**
  * Vuepress app config
  */
-export type AppConfig = AppConfigCommon & AppConfigDev & AppConfigBuild
+export type AppConfig = AppConfigCommon &
+  AppConfigDev &
+  AppConfigBuild & {
+    /** @deprecated use route.pagePatterns instead */
+    pagePatterns?: string[]
+    /** @deprecated use route.permalinkPattern instead */
+    permalinkPattern?: string | null
+  }
 
 /**
  * Vuepress app options
  */
-export type AppOptions = Required<AppConfig>
+export type AppOptions = Required<
+  AppConfigCommon & AppConfigDev & AppConfigBuild
+> & {
+  route: Required<RouteOptions>
+}

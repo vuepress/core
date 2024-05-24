@@ -1,4 +1,8 @@
-import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
+import {
+  inferRoutePath,
+  isLinkExternal,
+  resolveRoutePathWithExt,
+} from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { MarkdownEnv } from '../../types.js'
@@ -114,17 +118,22 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       // normalize markdown file path to route path
       // we are removing the `base` from absolute path because it should not be
       // passed to `<RouteLink>` or `<RouterLink>`
-      const normalizedPath = inferRoutePath(
-        absolutePath
-          ? absolutePath.replace(new RegExp(`^${base}`), '/')
-          : relativePath,
+      const normalizedPath = resolveRoutePathWithExt(
+        inferRoutePath(
+          absolutePath
+            ? absolutePath.replace(new RegExp(`^${base}`), '/')
+            : relativePath,
+        ),
       )
       // replace the original href link with the normalized path
       hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
       // set `hasOpenInternalLink` to modify the ending tag
       hasOpenInternalLink = true
     } else {
-      const normalizedPath = inferRoutePath(absolutePath ?? relativePath)
+      // ext is added here
+      const normalizedPath = resolveRoutePathWithExt(
+        inferRoutePath(absolutePath ?? relativePath),
+      )
       // replace the original href link with the normalized path
       hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
     }

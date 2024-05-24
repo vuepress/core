@@ -1,25 +1,15 @@
-import { normalizeRoutePath } from '@vuepress/shared'
-import { redirects, routes } from '../internal/routes.js'
+import { resolveRoutePathWithExt } from '@vuepress/shared'
+import { resolveRouteKey } from './resolveRouteKey.js'
 
 /**
  * Resolve route path with given raw path
  */
 export const resolveRoutePath = (
-  path: string,
+  pathname: string,
   currentPath?: string,
 ): string => {
-  // normalized path
-  const normalizedPath = normalizeRoutePath(path, currentPath)
-  if (routes.value[normalizedPath]) return normalizedPath
+  // clean route path format used as key in routes
+  const routeKey = resolveRouteKey(pathname, currentPath)
 
-  // encoded path
-  const encodedPath = encodeURI(normalizedPath)
-  if (routes.value[encodedPath]) return encodedPath
-
-  // redirected path or fallback to the normalized path
-  return (
-    redirects.value[normalizedPath] ||
-    redirects.value[encodedPath] ||
-    normalizedPath
-  )
+  return __VUEPRESS_CLEAN_URL__ ? routeKey : resolveRoutePathWithExt(routeKey)
 }
