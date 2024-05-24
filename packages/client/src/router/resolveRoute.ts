@@ -16,14 +16,13 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
   path: string,
   currentPath?: string,
 ): ResolvedRoute<T> => {
-  // get only the pathname from the path
   const { pathname, hashAndQueries } = splitPath(path)
 
-  // resolve the route path
+  // calculate the route key and full path
   const routeKey = resolveRouteKey(pathname, currentPath)
-  const routeFullPath = __VUEPRESS_CLEAN_URL__
-    ? routeKey
-    : resolveRoutePathWithExt(routeKey) + hashAndQueries
+  const routeFullPath =
+    (__VUEPRESS_CLEAN_URL__ ? routeKey : resolveRoutePathWithExt(routeKey)) +
+    hashAndQueries
 
   // the route not found
   if (!routes.value[routeKey]) {
