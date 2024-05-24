@@ -21,14 +21,14 @@
 
 ## HTML Full Links
 
-<a href="/?home=true" class="home-with-query">Home</a>
-<a href="/?home=true#home" class="home-with-query-and-hash">Home</a>
-<a href="/404.html#404" class="not-found-with-hash">404</a>
-<a href="/404.html#404?notFound=true" class="not-found-with-hash-and-query">404</a>
+<a :href="$withBase('/?home=true')" class="home-with-query">Home</a>
+<a :href="$withBase('/?home=true#home')" class="home-with-query-and-hash">Home</a>
+<a :href="$withBase('/404.html#404')" class="not-found-with-hash">404</a>
+<a :href="$withBase('/404.html#404?notFound=true')" class="not-found-with-hash-and-query">404</a>
 
 ## HTML Clean Links
 
-<a href="/?home=true" class="home-with-query">Home</a>
-<a href="/?home=true#home" class="home-with-query-and-hash">Home</a>
-<a href="/404#404" class="not-found-with-hash">404</a>
-<a href="/404#404?notFound=true" class="not-found-with-hash-and-query">404</a>
+<a :href="$withBase('/?home=true')" class="home-with-query">Home</a>
+<a :href="$withBase('/?home=true#home')" class="home-with-query-and-hash">Home</a>
+<a :href="$withBase('/404#404')" class="not-found-with-hash">404</a>
+<a :href="$withBase('/404#404?notFound=true')" class="not-found-with-hash-and-query">404</a>
