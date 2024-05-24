@@ -11,12 +11,14 @@ export const prepareClientConfigs = async (app: App): Promise<void> => {
   // generate client config files entry
   const content = `\
 ${clientConfigFiles
-  .map((filePath, index) => `import clientConfig${index} from '${filePath}'`)
+  .map(
+    (filePath, index) => `import * as clientConfig${index} from '${filePath}'`,
+  )
   .join('\n')}
 
 export const clientConfigs = [
 ${clientConfigFiles.map((_, index) => `  clientConfig${index},`).join('\n')}
-]
+].map((m) => m.default).filter(Boolean)
 `
 
   await app.writeTemp('internal/clientConfigs.js', content)
