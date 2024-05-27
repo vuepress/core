@@ -5,6 +5,18 @@ test.beforeEach(async ({ page }) => {
   await page.goto('router/navigate-by-router.html')
 })
 
+test('should navigate to home correctly', async ({ page }) => {
+  await page.locator('#home').click()
+  await expect(page).toHaveURL(`${BASE}`)
+  await expect(page.locator('#home-h2')).toHaveText('Home H2')
+})
+
+test('should navigate to 404 page correctly', async ({ page }) => {
+  await page.locator('#not-found').click()
+  await expect(page).toHaveURL(`${BASE}404.html`)
+  await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+})
+
 test('should preserve query', async ({ page }) => {
   await page.locator('#home-with-query').click()
   await expect(page).toHaveURL(`${BASE}?home=true`)
