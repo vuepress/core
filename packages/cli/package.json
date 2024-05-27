@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "2.0.0-rc.11",
+  "version": "2.0.0-rc.12",
   "description": "CLI package of VuePress",
   "keywords": [
     "vuepress",

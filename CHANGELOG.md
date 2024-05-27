@@ -1,3 +1,34 @@
+# [2.0.0-rc.12](https://github.com/vuepress/core/compare/v2.0.0-rc.11...v2.0.0-rc.12) (2024-05-27)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** keep the default minimizer ([e08e81f](https://github.com/vuepress/core/commit/e08e81f9bc8f6801d6d9140bf893bb296aa04ab6))
+* **client:** support non-ascii locale path ([01ee546](https://github.com/vuepress/core/commit/01ee546167c5b2b781efca4c49d197593c79193e))
+* **core:** fix page redirects comparison ([#1563](https://github.com/vuepress/core/issues/1563)) ([90a11d9](https://github.com/vuepress/core/commit/90a11d9fb9b2701145ca1717c7d67da7b1e3e0ed))
+* fix route resolving error with hash and queries (close [#1561](https://github.com/vuepress/core/issues/1561)) ([#1562](https://github.com/vuepress/core/issues/1562)) ([4df59d4](https://github.com/vuepress/core/commit/4df59d4a6c8ae590cf976727f6b872436320df73))
+
+
+### Code Refactoring
+
+* **markdown:** remove codePlugin and add vPrePlugin (close [#1550](https://github.com/vuepress/core/issues/1550)) ([#1556](https://github.com/vuepress/core/issues/1556)) ([385577c](https://github.com/vuepress/core/commit/385577ce62da060eee787845398a9c23cfbb32c7))
+
+
+### Features
+
+* **bundler-webpack:** enable css-modules for .module.css files (close [#1557](https://github.com/vuepress/core/issues/1557)) ([#1560](https://github.com/vuepress/core/issues/1560)) ([10378e1](https://github.com/vuepress/core/commit/10378e10f090f834daf25ca32fb6142b7b1c0da2))
+* **bundler-webpack:** replace postcss-csso with lightningcss (close [#1349](https://github.com/vuepress/core/issues/1349)) ([c854b19](https://github.com/vuepress/core/commit/c854b19c1c71251326cf44208ee8400fce0f33b4))
+* **bundler-webpack:** replace webpack-chain with webpack-5-chain (close [#1503](https://github.com/vuepress/core/issues/1503)) ([#1566](https://github.com/vuepress/core/issues/1566)) ([21ae915](https://github.com/vuepress/core/commit/21ae9154b4a7fc379fc5f7d67043c15ebc81bcf1))
+* **core:** allow non-default-export client config file ([#1564](https://github.com/vuepress/core/issues/1564)) ([d3b3cc4](https://github.com/vuepress/core/commit/d3b3cc415bb24b2434d4c509b34b6c7cc3326d60))
+
+
+### BREAKING CHANGES
+
+* **markdown:** `markdown.code` option is remove. Please use `@vuepress/plugin-shiki` and `@vuepress/plugin-prismjs` instead.
+* **bundler-webpack:** For webpack bundler, css-modules will be enabled for `*.module.[ext]` files. The previous `*.[ext]?module` usage is no longer supported.
+
+
+
 # [2.0.0-rc.11](https://github.com/vuepress/core/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2024-05-16)
 
 
