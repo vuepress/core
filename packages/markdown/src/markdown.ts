@@ -1,9 +1,9 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
+import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
 import {
   anchorPlugin,
   assetsPlugin,
-  codePlugin,
   componentPlugin,
   emojiPlugin,
   frontmatterPlugin,
@@ -13,11 +13,11 @@ import {
   sfcPlugin,
   titlePlugin,
   tocPlugin,
+  vPrePlugin,
 } from './plugins.js'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
-  CodePluginOptions,
   EmojiPluginOptions,
   FrontmatterPluginOptions,
   HeadersPluginOptions,
@@ -25,6 +25,7 @@ import type {
   LinksPluginOptions,
   SfcPluginOptions,
   TocPluginOptions,
+  VPrePluginOptions,
 } from './plugins.js'
 import type { Markdown, MarkdownOptions } from './types.js'
 
@@ -35,6 +36,7 @@ export const createMarkdown = ({
   anchor,
   assets,
   code,
+  vPre,
   component,
   emoji,
   frontmatter,
@@ -82,8 +84,10 @@ export const createMarkdown = ({
   }
 
   // process code fence
-  if (code !== false) {
-    md.use<CodePluginOptions>(codePlugin, code)
+  if (code) {
+    logger.warn(
+      `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
+    )
   }
 
   // treat unknown html tags as components
@@ -144,6 +148,11 @@ export const createMarkdown = ({
   // extract title into env
   if (title !== false) {
     md.use(titlePlugin)
+  }
+
+  // add v-pre to `<pre>` and `<code>`
+  if (vPre !== false) {
+    md.use<VPrePluginOptions>(vPrePlugin, vPre)
   }
 
   return md

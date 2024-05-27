@@ -6,7 +6,6 @@ import type { Options } from 'markdown-it'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
-  CodePluginOptions,
   EmojiPluginOptions,
   FrontmatterPluginOptions,
   HeadersPluginOptions,
@@ -14,6 +13,7 @@ import type {
   LinksPluginOptions,
   SfcPluginOptions,
   TocPluginOptions,
+  VPrePluginOptions,
 } from './plugins.js'
 
 export type Markdown = MarkdownIt
@@ -22,7 +22,6 @@ export type { MarkdownSfcBlocks }
 export interface MarkdownOptions extends Options {
   anchor?: false | AnchorPluginOptions
   assets?: false | AssetsPluginOptions
-  code?: false | CodePluginOptions
   component?: false
   emoji?: false | EmojiPluginOptions
   frontmatter?: false | FrontmatterPluginOptions
@@ -33,6 +32,11 @@ export interface MarkdownOptions extends Options {
   sfc?: false | SfcPluginOptions
   slugify?: MarkdownSlugifyFunction
   toc?: false | TocPluginOptions
+  vPre?: false | VPrePluginOptions
+  /**
+   * @deprecated This feature has been removed. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` instead.
+   */
+  code?: never
 }
 
 /**
