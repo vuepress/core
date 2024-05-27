@@ -3,7 +3,6 @@
 
 ### Bug Fixes
 
-* **bundler-webpack:** keep the default minimizer ([e08e81f](https://github.com/vuepress/core/commit/e08e81f9bc8f6801d6d9140bf893bb296aa04ab6))
 * **client:** support non-ascii locale path ([01ee546](https://github.com/vuepress/core/commit/01ee546167c5b2b781efca4c49d197593c79193e))
 * **core:** fix page redirects comparison ([#1563](https://github.com/vuepress/core/issues/1563)) ([90a11d9](https://github.com/vuepress/core/commit/90a11d9fb9b2701145ca1717c7d67da7b1e3e0ed))
 * fix route resolving error with hash and queries (close [#1561](https://github.com/vuepress/core/issues/1561)) ([#1562](https://github.com/vuepress/core/issues/1562)) ([4df59d4](https://github.com/vuepress/core/commit/4df59d4a6c8ae590cf976727f6b872436320df73))
