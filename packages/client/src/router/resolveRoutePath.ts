@@ -5,21 +5,30 @@ import { redirects, routes } from '../internal/routes.js'
  * Resolve route path with given raw path
  */
 export const resolveRoutePath = (
-  path: string,
+  pathname: string,
   currentPath?: string,
 ): string => {
   // normalized path
-  const normalizedPath = normalizeRoutePath(path, currentPath)
-  if (routes.value[normalizedPath]) return normalizedPath
+  const normalizedRoutePath = normalizeRoutePath(pathname, currentPath)
 
-  // encoded path
-  const encodedPath = encodeURI(normalizedPath)
-  if (routes.value[encodedPath]) return encodedPath
+  // check if the normalized path is in routes
+  if (routes.value[normalizedRoutePath]) return normalizedRoutePath
 
-  // redirected path or fallback to the normalized path
-  return (
-    redirects.value[normalizedPath] ||
-    redirects.value[encodedPath] ||
-    normalizedPath
-  )
+  // check encoded path
+  const encodedRoutePath = encodeURI(normalizedRoutePath)
+
+  if (routes.value[encodedRoutePath]) {
+    return encodedRoutePath
+  }
+
+  // check redirected path with normalized path and encoded path
+  const redirectedRoutePath =
+    redirects.value[normalizedRoutePath] || redirects.value[encodedRoutePath]
+
+  if (redirectedRoutePath) {
+    return redirectedRoutePath
+  }
+
+  // default to normalized route path
+  return normalizedRoutePath
 }
