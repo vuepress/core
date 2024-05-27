@@ -2,12 +2,10 @@
 
 ## 概览
 
-项目仓库借助于 [pnpm 工作空间](https://pnpm.io/zh/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，存放了多个互相关联的独立 Package 。
+项目仓库借助于 [pnpm 工作空间](https://pnpm.io/zh/workspaces) 来实现 [Monorepo](https://en.wikipedia.org/wiki/Monorepo) ，在 `packages` 目录下存放了多个互相关联的独立 Package 。
 
-在 `packages` 目录下：
+Core Packages ：
 
-- `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
-- `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
 - `cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 VuePress App 、执行对应命令等功能。
 - `client`: Client 模块。包含客户端页面入口，并提供了客户端开发时可以用到的类型和工具函数。
 - `core`: Core 模块。提供 Node API 来创建 VuePress App ，包括页面逻辑、插件系统、数据准备等功能。
@@ -15,16 +13,21 @@
 - `shared`: 既可以在 Node 端使用、也可以在客户端使用的工具函数模块。
 - `utils`: 仅可以在 Node 端使用的工具函数模块。
 
-还有一些对上述 Package 进行封装后的 Package ：
+Core Packages 的封装：
 
-- `vuepress`: 是上述包的封装，提供了 `vuepress` 命令行工具。用户需要在此包的基础上自行选择并安装打包工具和主题。
+- `vuepress`: 是上述 Core Packages 的封装，提供了 `vuepress` 命令行工具。用户需要在此包的基础上自行选择并安装打包工具和主题。
+
+Bundler Packages ：
+
+- `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
+- `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
 
 ## 开发配置
 
 开发要求：
 
 - [Node.js](http://nodejs.org) **version 18.16.0+**
-- [pnpm](https://pnpm.io/zh/) **version 8+**
+- [pnpm](https://pnpm.io/zh/) **version 9+**
 
 克隆代码仓库，并安装依赖：
 
