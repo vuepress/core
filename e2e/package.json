@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
+    "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
     "sass": "^1.77.4",

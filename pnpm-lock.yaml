@@ -83,6 +83,9 @@ importers:
       '@vuepress-e2e/conditional-exports':
         specifier: file:./modules/conditional-exports
         version: file:e2e/modules/conditional-exports
+      '@vuepress-e2e/style-exports':
+        specifier: file:./modules/style-exports
+        version: file:e2e/modules/style-exports
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../packages/bundler-vite
@@ -1375,6 +1378,9 @@ packages:
 
   '@vuepress-e2e/conditional-exports@file:e2e/modules/conditional-exports':
     resolution: {directory: e2e/modules/conditional-exports, type: directory}
+
+  '@vuepress-e2e/style-exports@file:e2e/modules/style-exports':
+    resolution: {directory: e2e/modules/style-exports, type: directory}
 
   '@webassemblyjs/ast@1.12.1':
     resolution: {integrity: sha512-EKfMUOPRRUTy5UII4qJDGPpqfwjOmZ5jeGFwid9mnoqIFK+e0vqoi1qH56JpmZSzEL53jKnNzScdmftJyG5xWg==}
@@ -6237,6 +6243,8 @@ snapshots:
   '@vue/shared@3.4.27': {}
 
   '@vuepress-e2e/conditional-exports@file:e2e/modules/conditional-exports': {}
+
+  '@vuepress-e2e/style-exports@file:e2e/modules/style-exports': {}
 
   '@webassemblyjs/ast@1.12.1':
     dependencies:

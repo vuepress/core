@@ -1,0 +1,17 @@
+{
+  "name": "@vuepress-e2e/style-exports",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types.d.ts",
+      "default": "./index.css"
+    },
+    "./foo.css": {
+      "types": "./types.d.ts",
+      "default": "./foo.css"
+    }
+  },
+  "main": "./index.css",
+  "module": "./index.css",
+  "types": "./types.d.ts"
+}
