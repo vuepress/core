@@ -1,3 +1,12 @@
+# [2.0.0-rc.13](https://github.com/vuepress/core/compare/v2.0.0-rc.12...v2.0.0-rc.13) (2024-05-31)
+
+
+### Bug Fixes
+
+* **bundler-vite:** exclude vite 5.2.12 from version range (close [#1573](https://github.com/vuepress/core/issues/1573)) ([1b77850](https://github.com/vuepress/core/commit/1b77850a145c7a9deba6643e2b8967430e2e7638))
+
+
+
 # [2.0.0-rc.12](https://github.com/vuepress/core/compare/v2.0.0-rc.11...v2.0.0-rc.12) (2024-05-27)
 
 
