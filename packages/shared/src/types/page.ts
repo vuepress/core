@@ -33,11 +33,6 @@ export interface PageBase<
    * Front matter of the page
    */
   frontmatter: PageFrontmatter<ExtraPageFrontmatter>
-
-  /**
-   * Headers of the page
-   */
-  headers: PageHeader[]
 }
 
 /**
