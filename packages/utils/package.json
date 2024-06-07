@@ -35,7 +35,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/hash-sum": "^1.0.2",
     "@vuepress/shared": "workspace:*",
-    "debug": "^4.3.4",
+    "debug": "^4.3.5",
     "fs-extra": "^11.2.0",
     "globby": "^14.0.1",
     "hash-sum": "^2.0.0",
