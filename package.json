@@ -43,8 +43,8 @@
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.5",
-    "prettier": "^3.3.1",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.7",
     "sort-package-json": "^2.10.0",
@@ -53,9 +53,9 @@
     "typescript": "^5.4.5",
     "vite": "5.2.11",
     "vitest": "^1.6.0",
-    "vue-tsc": "^2.0.19"
+    "vue-tsc": "^2.0.21"
   },
-  "packageManager": "pnpm@9.2.0",
+  "packageManager": "pnpm@9.3.0",
   "engines": {
     "node": ">=18.16.0"
   }

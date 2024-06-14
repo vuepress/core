@@ -57,8 +57,8 @@
     "style-loader": "^4.0.0",
     "vue": "^3.4.27",
     "vue-loader": "^17.4.2",
-    "vue-router": "^4.3.2",
-    "webpack": "^5.91.0",
+    "vue-router": "^4.3.3",
+    "webpack": "^5.92.0",
     "webpack-5-chain": "^8.0.2",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0"
