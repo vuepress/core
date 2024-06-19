@@ -1,3 +1,13 @@
+# [2.0.0-rc.14](https://github.com/vuepress/core/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-06-19)
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to v5.3 ([68d3dbc](https://github.com/vuepress/core/commit/68d3dbc4aab849acc2148d2343d1d7ed7f5bdb59))
+* **markdown:** support single line code import syntax (close [#1355](https://github.com/vuepress/core/issues/1355)) ([34e291e](https://github.com/vuepress/core/commit/34e291e4afca7eac3f302e41e1e483e3f1c09201))
+
+
+
 # [2.0.0-rc.13](https://github.com/vuepress/core/compare/v2.0.0-rc.12...v2.0.0-rc.13) (2024-05-31)
 
 
