@@ -10,7 +10,14 @@ const MIN_LENGTH = 9
 const START_CODES = [64, 91, 99, 111, 100, 101]
 
 // regexp to match the import syntax
-const SYNTAX_RE = /^@\[code(?:{(?:(\d+)?-(\d+)?)})?(?: ([^\]]+))?\]\(([^)]*)\)/
+const SYNTAX_RE =
+  /^@\[code(?:{(?:(?:(?<lineStart>\d+)?-(?<lineEnd>\d+)?)|(?<lineSingle>\d+))})?(?: (?<info>[^\]]+))?\]\((?<importPath>[^)]*)\)/
+
+/**
+ * Utility function to parse line number from line string that matched by SYNTAX_RE
+ */
+const parseLineNumber = (line: string | undefined): number | undefined =>
+  line ? Number.parseInt(line, 10) : undefined
 
 export const createImportCodeBlockRule =
   ({ handleImportPath = (str) => str }: ImportCodePluginOptions): RuleBlock =>
@@ -36,17 +43,21 @@ export const createImportCodeBlockRule =
 
     // check if it's matched the syntax
     const match = state.src.slice(pos, max).match(SYNTAX_RE)
-    if (!match) return false
+    if (!match?.groups) return false
 
     // return true as we have matched the syntax
     if (silent) return true
 
-    const [, lineStart, lineEnd, info, importPath] = match
+    const { info, importPath } = match.groups
+
+    const lineSingle = parseLineNumber(match.groups.lineSingle)
+    const lineStart = lineSingle ?? parseLineNumber(match.groups.lineStart) ?? 0
+    const lineEnd = lineSingle ?? parseLineNumber(match.groups.lineEnd)
 
     const meta: ImportCodeTokenMeta = {
       importPath: handleImportPath(importPath),
-      lineStart: lineStart ? Number.parseInt(lineStart, 10) : 0,
-      lineEnd: lineEnd ? Number.parseInt(lineEnd, 10) : undefined,
+      lineStart,
+      lineEnd,
     }
 
     // create a import_code token
