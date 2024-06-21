@@ -52,7 +52,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<img\b.*?src=)(['"])([^\2]*?)\2/gs,
+          /(<img\b.*?src=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
@@ -63,7 +63,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
         )
         // handle srcset
         .replace(
-          /(<img\b.*?srcset=)(['"])([^\2]*?)\2/gs,
+          /(<img\b.*?srcset=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, srcset: string) =>
             `${prefix}${quote}${srcset
               .split(',')
