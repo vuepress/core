@@ -21,12 +21,14 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./client": "./client.d.ts",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "client.d.ts"
   ],
   "scripts": {
     "build": "tsup",
