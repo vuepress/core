@@ -39,6 +39,7 @@
     "@vitest/coverage-istanbul": "^1.6.0",
     "bumpp": "^9.4.1",
     "conventional-changelog-cli": "^5.0.0",
+    "core-js": "^3.37.1",
     "eslint": "^8.57.0",
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
