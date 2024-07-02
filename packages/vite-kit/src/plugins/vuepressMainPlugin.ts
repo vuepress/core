@@ -13,16 +13,18 @@ export const vuepressMainPlugin = ({
   app,
   isBuild,
   isServer,
+  alwaysWriteEntryHtml,
 }: {
   app: App
   isBuild: boolean
   isServer: boolean
+  alwaysWriteEntryHtml?: boolean
 }): Plugin => ({
   name: 'vuepress:main',
 
   config: async () => {
     // create a temp index.html as dev entry point
-    if (!isBuild) {
+    if (!isBuild || alwaysWriteEntryHtml) {
       await app.writeTemp(
         'vite-root/index.html',
         fs

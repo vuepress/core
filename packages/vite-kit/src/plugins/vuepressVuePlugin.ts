@@ -1,16 +1,16 @@
 import vuePlugin from '@vitejs/plugin-vue'
 import type { Plugin } from 'vite'
 import type { AssetURLOptions, AssetURLTagConfig } from 'vue/compiler-sfc'
-import type { ViteBundlerOptions } from '../types.js'
+import type { VuePluginOptions } from '../types.js'
 
 /**
  * Wrapper of official vue plugin
  */
-export const vuepressVuePlugin = (options: ViteBundlerOptions): Plugin => {
+export const vuepressVuePlugin = (options: VuePluginOptions): Plugin => {
   return vuePlugin({
-    ...options.vuePluginOptions,
+    ...options,
     template: {
-      ...options.vuePluginOptions?.template,
+      ...options?.template,
       transformAssetUrls: resolveTransformAssetUrls(options),
     },
   })
@@ -28,14 +28,13 @@ const isAssetURLTagConfig = (
  * Resolve `template.transformAssetUrls` option from user config
  */
 const resolveTransformAssetUrls = (
-  options: ViteBundlerOptions,
+  options: VuePluginOptions,
 ): AssetURLOptions => {
   // default transformAssetUrls option
   const defaultTransformAssetUrls = { includeAbsolute: true }
 
   // user provided transformAssetUrls option
-  const { transformAssetUrls: userTransformAssetUrls } =
-    options.vuePluginOptions?.template ?? {}
+  const { transformAssetUrls: userTransformAssetUrls } = options?.template ?? {}
 
   // if user does not provide an object as transformAssetUrls
   if (typeof userTransformAssetUrls !== 'object') {

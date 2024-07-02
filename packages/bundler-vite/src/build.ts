@@ -1,11 +1,11 @@
 import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, importFile, withSpinner } from '@vuepress/utils'
+import { renderPage } from '@vuepress/vite-kit'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import { build as viteBuild } from 'vite'
-import { resolveViteConfig } from '../resolveViteConfig.js'
-import type { ViteBundlerOptions } from '../types.js'
-import { renderPage } from './renderPage.js'
+import { resolveViteConfig } from './resolveViteConfig.js'
+import type { ViteBundlerOptions } from './types.js'
 
 const log = debug('vuepress:bundler-vite/build')
 

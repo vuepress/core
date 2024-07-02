@@ -1,11 +1,8 @@
 import type { App } from '@vuepress/core'
+import { vuepressMainPlugin, vuepressVuePlugin } from '@vuepress/vite-kit'
 import type { InlineConfig } from 'vite'
 import { mergeConfig } from 'vite'
-import {
-  vuepressMainPlugin,
-  vuepressUserConfigPlugin,
-  vuepressVuePlugin,
-} from './plugins/index.js'
+import { vuepressUserConfigPlugin } from './plugins/index.js'
 import type { ViteBundlerOptions } from './types.js'
 
 export const resolveViteConfig = async ({
@@ -28,7 +25,7 @@ export const resolveViteConfig = async ({
         charset: 'utf8',
       },
       plugins: [
-        vuepressVuePlugin(options),
+        vuepressVuePlugin(options.vuePluginOptions ?? {}),
         vuepressMainPlugin({ app, isBuild, isServer }),
         vuepressUserConfigPlugin(options),
       ],
