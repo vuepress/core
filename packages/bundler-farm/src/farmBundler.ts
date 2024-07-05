@@ -1,10 +1,10 @@
 import type { Bundler } from '@vuepress/core'
 import { build } from './build.js'
 import { dev } from './dev.js'
-import type { ViteBundlerOptions } from './types.js'
+import type { FarmBundlerOptions } from './types.js'
 
-export const viteBundler = (options: ViteBundlerOptions = {}): Bundler => ({
-  name: '@vuepress/bundler-vite',
+export const farmBundler = (options: FarmBundlerOptions = {}): Bundler => ({
+  name: '@vuepress/bundler-farm',
   dev: (app) => dev(options, app),
   build: (app) => build(options, app),
 })

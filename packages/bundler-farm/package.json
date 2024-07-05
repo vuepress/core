@@ -1,12 +1,12 @@
 {
-  "name": "@vuepress/bundler-vite",
+  "name": "@vuepress/bundler-farm",
   "version": "2.0.0-rc.14",
-  "description": "Bundler vite package of VuePress",
+  "description": "Bundler farm package of VuePress",
   "keywords": [
     "vuepress-bundler",
     "vuepress",
     "bundler",
-    "vite"
+    "farm"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
@@ -35,15 +35,19 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@farmfe/core": "^1.2.4",
+    "@farmfe/plugin-sass": "^1.0.5",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "@vuepress/vite-kit": "workspace:*",
-    "vite": "~5.3.1",
     "vue": "^3.4.29"
   },
   "devDependencies": {
     "rollup": "^4.18.0"
+  },
+  "peerDependencies": {
+    "core-js": "^3.37.1"
   },
   "publishConfig": {
     "access": "public"

@@ -5,21 +5,28 @@
   "type": "module",
   "scripts": {
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
+    "docs:build-farm": "cross-env E2E_BUNDLER=farm pnpm docs:build",
     "docs:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
+    "docs:dev-farm": "cross-env E2E_BUNDLER=farm pnpm docs:dev",
     "docs:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
     "e2e:build": "cross-env E2E_COMMAND=build playwright test",
+    "e2e:build-farm": "cross-env E2E_COMMAND=build E2E_BUNDLER=farm playwright test",
     "e2e:build-webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
     "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
+    "e2e:dev-farm": "cross-env E2E_COMMAND=dev E2E_BUNDLER=farm playwright test",
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
+    "@farmfe/plugin-sass": "^1.0.5",
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
+    "@vuepress/bundler-farm": "workspace:*",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
+    "core-js": "^3.37.1",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
     "vue": "^3.4.29",
@@ -28,6 +35,7 @@
   "devDependencies": {
     "@playwright/test": "^1.44.1",
     "anywhere": "^1.6.0",
+    "core-js": "^3.37.1",
     "cross-env": "^7.0.3"
   }
 }

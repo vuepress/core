@@ -1,4 +1,4 @@
-import type { Options as VuePluginOptions } from '@vitejs/plugin-vue'
+import type { VuePluginOptions } from '@vuepress/vite-kit'
 import type { InlineConfig } from 'vite'
 
 /**
