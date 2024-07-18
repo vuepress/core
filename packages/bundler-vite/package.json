@@ -45,8 +45,8 @@
     "postcss": "^8.4.39",
     "postcss-load-config": "^6.0.1",
     "rollup": "^4.18.1",
-    "vite": "~5.3.3",
-    "vue": "^3.4.31",
+    "vite": "~5.3.4",
+    "vue": "^3.4.32",
     "vue-router": "^4.4.0"
   },
   "publishConfig": {
