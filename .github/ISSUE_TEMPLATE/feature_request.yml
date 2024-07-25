@@ -5,7 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest in the project and taking the time to fill out this feature request!
+        NOTICE: This repository is only for VuePress core packages. Please go to the corresponding repository for themes / plugins / documentation feature requests.
+        - [vuepress/ecosystem](https://github.com/vuepress/ecosystem): Official themes and plugins.
+        - [vuepress/docs](https://github.com/vuepress/docs): Official documentation.
   - type: textarea
     id: feature-description
     attributes:

@@ -3,3 +3,9 @@ contact_links:
   - name: Question & Discussion
     url: https://github.com/vuepress/core/discussions
     about: Please ask and answer questions here.
+  - name: Themes & Plugins Issue
+    url: https://github.com/vuepress/ecosystem/issues
+    about: Please go to the ecosystem repository for themes and plugins issues.
+  - name: Documentation Issue
+    url: https://github.com/vuepress/docs/issues
+    about: Please go to the docs repository for documentation issues.

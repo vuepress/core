@@ -5,7 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        NOTICE: This repository is only for VuePress core packages. Please go to the corresponding repository for themes / plugins / documentation issues.
+        - [vuepress/ecosystem](https://github.com/vuepress/ecosystem): Official themes and plugins.
+        - [vuepress/docs](https://github.com/vuepress/docs): Official documentation.
   - type: textarea
     id: bug-description
     attributes:
@@ -18,7 +20,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction
-      description: Please provide a link via [v2.vuepress.vuejs.org/new](https://v2.vuepress.vuejs.org/new) or a link to a repo that can reproduce the problem you ran into. A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is required.
+      description: Please provide a link via [vuepress.vuejs.org/new](https://vuepress.vuejs.org/new) or a link to a repo that can reproduce the problem you ran into. A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is required.
       placeholder: Reproduction
     validations:
       required: true
