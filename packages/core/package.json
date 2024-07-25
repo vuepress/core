@@ -35,7 +35,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.4.29"
+    "vue": "^3.4.34"
   },
   "publishConfig": {
     "access": "public"
