@@ -96,20 +96,14 @@ export const handleModuleStyles = ({
     lang: 'scss',
     test: /\.scss$/,
     loaderName: 'sass-loader',
-    loaderOptions: {
-      api: 'modern-compiler',
-      ...options.scss,
-    },
+    loaderOptions: options.scss,
   })
 
   handleStyle<SassLoaderOptions>({
     lang: 'sass',
     test: /\.sass$/,
     loaderName: 'sass-loader',
-    loaderOptions: {
-      api: 'modern-compiler',
-      ...options.sass,
-    },
+    loaderOptions: options.sass,
   })
 
   handleStyle<LessLoaderOptions>({
