@@ -92,12 +92,12 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: workspace:*
         version: link:../packages/bundler-webpack
-      sass:
+      sass-embedded:
         specifier: ^1.77.8
         version: 1.77.8
       sass-loader:
-        specifier: ^14.2.1
-        version: 14.2.1(sass@1.77.8)(webpack@5.93.0(esbuild@0.23.0))
+        specifier: ^15.0.0
+        version: 15.0.0(sass-embedded@1.77.8)(sass@1.77.8)(webpack@5.93.0(esbuild@0.23.0))
       vue:
         specifier: ^3.4.32
         version: 3.4.32(typescript@5.5.3)
@@ -518,6 +518,9 @@ packages:
   '@babel/types@7.24.8':
     resolution: {integrity: sha512-SkSBEHwwJRU52QEVZBmMBnE5Ux2/6WU1grdYyOhpbCNxbmJrDuDCphBzKZSO3taf0zztp+qkWlymE5tVL5l0TA==}
     engines: {node: '>=6.9.0'}
+
+  '@bufbuild/protobuf@1.10.0':
+    resolution: {integrity: sha512-QDdVFLoN93Zjg36NoQPZfsVH9tZew7wKDKyV5qRdj8ntT4wQCOradQjRaTdwMhWUYsgKsvCINKKm87FdEk96Ag==}
 
   '@commitlint/cli@19.3.0':
     resolution: {integrity: sha512-LgYWOwuDR7BSTQ9OLZ12m7F/qhNY+NpAyPBgo4YNMkACE7lGuUnuQq1yi9hz1KA4+3VqpOYl8H1rY/LYK43v7g==}
@@ -1668,6 +1671,9 @@ packages:
     resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
+
+  buffer-builder@0.2.0:
+    resolution: {integrity: sha512-7VPMEPuYznPSoR21NE1zvd2Xna6c/CloiZCfcMXR1Jny6PjX0N4Nsa38zcBFo/FMK+BlA+FLKbJCQ0i2yxp+Xg==}
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -4388,6 +4394,9 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
+  rxjs@7.8.1:
+    resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
+
   safe-array-concat@1.1.2:
     resolution: {integrity: sha512-vj6RsCsWBCf19jIeHEfkRMw8DPiBb+DMXklQ/1SGDHOMlHdPUkZXFQ2YdplS23zESTijAcurb1aSgJA3AgMu1Q==}
     engines: {node: '>=0.4'}
@@ -4408,8 +4417,127 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass-loader@14.2.1:
-    resolution: {integrity: sha512-G0VcnMYU18a4N7VoNDegg2OuMjYtxnqzQWARVWCIVSZwJeiL9kg8QMsuIZOplsJgTzZLF6jGxI3AClj8I9nRdQ==}
+  sass-embedded-android-arm64@1.77.8:
+    resolution: {integrity: sha512-EmWHLbEx0Zo/f/lTFzMeH2Du+/I4RmSRlEnERSUKQWVp3aBSO04QDvdxfFezgQ+2Yt/ub9WMqBpma9P/8MPsLg==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm64]
+    os: [android]
+    hasBin: true
+
+  sass-embedded-android-arm@1.77.8:
+    resolution: {integrity: sha512-GpGL7xZ7V1XpFbnflib/NWbM0euRzineK0iwoo31/ntWKAXGj03iHhGzkSiOwWSFcXgsJJi3eRA5BTmBvK5Q+w==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm]
+    os: [android]
+    hasBin: true
+
+  sass-embedded-android-ia32@1.77.8:
+    resolution: {integrity: sha512-+GjfJ3lDezPi4dUUyjQBxlNKXNa+XVWsExtGvVNkv1uKyaOxULJhubVo2G6QTJJU0esJdfeXf5Ca5/J0ph7+7w==}
+    engines: {node: '>=14.0.0'}
+    cpu: [ia32]
+    os: [android]
+    hasBin: true
+
+  sass-embedded-android-x64@1.77.8:
+    resolution: {integrity: sha512-YZbFDzGe5NhaMCygShqkeCWtzjhkWxGVunc7ULR97wmxYPQLPeVyx7XFQZc84Aj0lKAJBJS4qRZeqphMqZEJsQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [x64]
+    os: [android]
+    hasBin: true
+
+  sass-embedded-darwin-arm64@1.77.8:
+    resolution: {integrity: sha512-aifgeVRNE+i43toIkDFFJc/aPLMo0PJ5s5hKb52U+oNdiJE36n65n2L8F/8z3zZRvCa6eYtFY2b7f1QXR3B0LA==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+    hasBin: true
+
+  sass-embedded-darwin-x64@1.77.8:
+    resolution: {integrity: sha512-/VWZQtcWIOek60Zj6Sxk6HebXA1Qyyt3sD8o5qwbTgZnKitB1iEBuNunyGoAgMNeUz2PRd6rVki6hvbas9hQ6w==}
+    engines: {node: '>=14.0.0'}
+    cpu: [x64]
+    os: [darwin]
+    hasBin: true
+
+  sass-embedded-linux-arm64@1.77.8:
+    resolution: {integrity: sha512-6iIOIZtBFa2YfMsHqOb3qake3C9d/zlKxjooKKnTSo+6g6z+CLTzMXe1bOfayb7yxeenElmFoK1k54kWD/40+g==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    hasBin: true
+
+  sass-embedded-linux-arm@1.77.8:
+    resolution: {integrity: sha512-2edZMB6jf0whx3T0zlgH+p131kOEmWp+I4wnKj7ZMUeokiY4Up05d10hSvb0Q63lOrSjFAWu6P5/pcYUUx8arQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm]
+    os: [linux]
+    hasBin: true
+
+  sass-embedded-linux-ia32@1.77.8:
+    resolution: {integrity: sha512-63GsFFHWN5yRLTWiSef32TM/XmjhCBx1DFhoqxmj+Yc6L9Z1h0lDHjjwdG6Sp5XTz5EmsaFKjpDgnQTP9hJX3Q==}
+    engines: {node: '>=14.0.0'}
+    cpu: [ia32]
+    os: [linux]
+    hasBin: true
+
+  sass-embedded-linux-musl-arm64@1.77.8:
+    resolution: {integrity: sha512-j8cgQxNWecYK+aH8ESFsyam/Q6G+9gg8eJegiRVpA9x8yk3ykfHC7UdQWwUcF22ZcuY4zegrjJx8k+thsgsOVA==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  sass-embedded-linux-musl-arm@1.77.8:
+    resolution: {integrity: sha512-nFkhSl3uu9btubm+JBW7uRglNVJ8W8dGfzVqh3fyQJKS1oyBC3vT3VOtfbT9YivXk28wXscSHpqXZwY7bUuopA==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm]
+    os: [linux]
+
+  sass-embedded-linux-musl-ia32@1.77.8:
+    resolution: {integrity: sha512-oWveMe+8TFlP8WBWPna/+Ec5TV0CE+PxEutyi0ltSruBds2zxRq9dPVOqrpPcDN9QUx50vNZC0Afgch0aQEd0g==}
+    engines: {node: '>=14.0.0'}
+    cpu: [ia32]
+    os: [linux]
+
+  sass-embedded-linux-musl-x64@1.77.8:
+    resolution: {integrity: sha512-2NtRpMXHeFo9kaYxuZ+Ewwo39CE7BTS2JDfXkTjZTZqd8H+8KC53eBh516YQnn2oiqxSiKxm7a6pxbxGZGwXOQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  sass-embedded-linux-x64@1.77.8:
+    resolution: {integrity: sha512-ND5qZLWUCpOn7LJfOf0gLSZUWhNIysY+7NZK1Ctq+pM6tpJky3JM5I1jSMplNxv5H3o8p80n0gSm+fcjsEFfjQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [x64]
+    os: [linux]
+    hasBin: true
+
+  sass-embedded-win32-arm64@1.77.8:
+    resolution: {integrity: sha512-7L8zT6xzEvTYj86MvUWnbkWYCNQP+74HvruLILmiPPE+TCgOjgdi750709BtppVJGGZSs40ZuN6mi/YQyGtwXg==}
+    engines: {node: '>=14.0.0'}
+    cpu: [arm64]
+    os: [win32]
+    hasBin: true
+
+  sass-embedded-win32-ia32@1.77.8:
+    resolution: {integrity: sha512-7Buh+4bP0WyYn6XPbthkIa3M2vtcR8QIsFVg3JElVlr+8Ng19jqe0t0SwggDgbMX6AdQZC+Wj4F1BprZSok42A==}
+    engines: {node: '>=14.0.0'}
+    cpu: [ia32]
+    os: [win32]
+    hasBin: true
+
+  sass-embedded-win32-x64@1.77.8:
+    resolution: {integrity: sha512-rZmLIx4/LLQm+4GW39sRJW0MIlDqmyV0fkRzTmhFP5i/wVC7cuj8TUubPHw18rv2rkHFfBZKZJTCkPjCS5Z+SA==}
+    engines: {node: '>=14.0.0'}
+    cpu: [x64]
+    os: [win32]
+    hasBin: true
+
+  sass-embedded@1.77.8:
+    resolution: {integrity: sha512-WGXA6jcaoBo5Uhw0HX/s6z/sl3zyYQ7ZOnLOJzqwpctFcFmU4L07zn51e2VSkXXFpQZFAdMZNqOGz/7h/fvcRA==}
+    engines: {node: '>=16.0.0'}
+
+  sass-loader@15.0.0:
+    resolution: {integrity: sha512-mbXAL7sI/fgt3skXR6xHxtKkaGyxRrGf7zrU4hLLWxBDJEcAe0QsoNy92qKttCb3zfMniTkU2kD9yakUKtW7vQ==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@rspack/core': 0.x || 1.x
@@ -5022,6 +5150,9 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
+  varint@6.0.0:
+    resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
+
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
@@ -5423,6 +5554,8 @@ snapshots:
       '@babel/helper-string-parser': 7.24.8
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
+
+  '@bufbuild/protobuf@1.10.0': {}
 
   '@commitlint/cli@19.3.0(@types/node@20.14.11)(typescript@5.5.3)':
     dependencies:
@@ -6632,6 +6765,8 @@ snapshots:
       electron-to-chromium: 1.4.827
       node-releases: 2.0.14
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
+
+  buffer-builder@0.2.0: {}
 
   buffer-from@1.1.2: {}
 
@@ -9578,6 +9713,10 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
+  rxjs@7.8.1:
+    dependencies:
+      tslib: 2.6.3
+
   safe-array-concat@1.1.2:
     dependencies:
       call-bind: 1.0.7
@@ -9601,11 +9740,90 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-loader@14.2.1(sass@1.77.8)(webpack@5.93.0(esbuild@0.23.0)):
+  sass-embedded-android-arm64@1.77.8:
+    optional: true
+
+  sass-embedded-android-arm@1.77.8:
+    optional: true
+
+  sass-embedded-android-ia32@1.77.8:
+    optional: true
+
+  sass-embedded-android-x64@1.77.8:
+    optional: true
+
+  sass-embedded-darwin-arm64@1.77.8:
+    optional: true
+
+  sass-embedded-darwin-x64@1.77.8:
+    optional: true
+
+  sass-embedded-linux-arm64@1.77.8:
+    optional: true
+
+  sass-embedded-linux-arm@1.77.8:
+    optional: true
+
+  sass-embedded-linux-ia32@1.77.8:
+    optional: true
+
+  sass-embedded-linux-musl-arm64@1.77.8:
+    optional: true
+
+  sass-embedded-linux-musl-arm@1.77.8:
+    optional: true
+
+  sass-embedded-linux-musl-ia32@1.77.8:
+    optional: true
+
+  sass-embedded-linux-musl-x64@1.77.8:
+    optional: true
+
+  sass-embedded-linux-x64@1.77.8:
+    optional: true
+
+  sass-embedded-win32-arm64@1.77.8:
+    optional: true
+
+  sass-embedded-win32-ia32@1.77.8:
+    optional: true
+
+  sass-embedded-win32-x64@1.77.8:
+    optional: true
+
+  sass-embedded@1.77.8:
+    dependencies:
+      '@bufbuild/protobuf': 1.10.0
+      buffer-builder: 0.2.0
+      immutable: 4.3.6
+      rxjs: 7.8.1
+      supports-color: 8.1.1
+      varint: 6.0.0
+    optionalDependencies:
+      sass-embedded-android-arm: 1.77.8
+      sass-embedded-android-arm64: 1.77.8
+      sass-embedded-android-ia32: 1.77.8
+      sass-embedded-android-x64: 1.77.8
+      sass-embedded-darwin-arm64: 1.77.8
+      sass-embedded-darwin-x64: 1.77.8
+      sass-embedded-linux-arm: 1.77.8
+      sass-embedded-linux-arm64: 1.77.8
+      sass-embedded-linux-ia32: 1.77.8
+      sass-embedded-linux-musl-arm: 1.77.8
+      sass-embedded-linux-musl-arm64: 1.77.8
+      sass-embedded-linux-musl-ia32: 1.77.8
+      sass-embedded-linux-musl-x64: 1.77.8
+      sass-embedded-linux-x64: 1.77.8
+      sass-embedded-win32-arm64: 1.77.8
+      sass-embedded-win32-ia32: 1.77.8
+      sass-embedded-win32-x64: 1.77.8
+
+  sass-loader@15.0.0(sass-embedded@1.77.8)(sass@1.77.8)(webpack@5.93.0(esbuild@0.23.0)):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
       sass: 1.77.8
+      sass-embedded: 1.77.8
       webpack: 5.93.0(esbuild@0.23.0)
 
   sass@1.77.8:
@@ -9613,6 +9831,7 @@ snapshots:
       chokidar: 3.6.0
       immutable: 4.3.6
       source-map-js: 1.2.0
+    optional: true
 
   schema-utils@3.3.0:
     dependencies:
@@ -10249,6 +10468,8 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  varint@6.0.0: {}
 
   vary@1.1.2: {}
 
