@@ -4,8 +4,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type Config from 'webpack-5-chain'
 import type {
   LessLoaderOptions,
-  LoaderOptions,
   SassLoaderOptions,
+  StylePreprocessorLoaderOptions,
   StylusLoaderOptions,
   WebpackBundlerOptions,
 } from '../types.js'
@@ -26,7 +26,9 @@ export const handleModuleStyles = ({
   isBuild: boolean
   isServer: boolean
 }): void => {
-  const handleStyle = <T extends LoaderOptions = LoaderOptions>({
+  const handleStyle = <
+    T extends StylePreprocessorLoaderOptions = StylePreprocessorLoaderOptions,
+  >({
     lang,
     test,
     loaderName,

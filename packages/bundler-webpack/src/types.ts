@@ -77,17 +77,17 @@ export interface WebpackBundlerOptions {
 }
 
 /**
- * Common options for some webpack loaders
+ * Common options for style preprocessor webpack loaders
  */
-export interface LoaderOptions {
-  sourceMap?: boolean
-  webpackImporter?: boolean
+export interface StylePreprocessorLoaderOptions {
   additionalData?:
     | string
     | ((
         content: string,
         loaderContext: LoaderContext<Record<string, any>>,
       ) => string)
+  sourceMap?: boolean
+  webpackImporter?: boolean
 }
 
 /**
@@ -102,10 +102,11 @@ export type StylePreprocessorOptions<
  *
  * @see https://github.com/webpack-contrib/postcss-loader#options
  */
-export interface PostcssLoaderOptions extends Pick<LoaderOptions, 'sourceMap'> {
+export interface PostcssLoaderOptions
+  extends Pick<StylePreprocessorLoaderOptions, 'sourceMap'> {
   execute?: boolean
-  postcssOptions?: StylePreprocessorOptions
   implementation?: ((...args: any) => any) | string
+  postcssOptions?: StylePreprocessorOptions
 }
 
 /**
@@ -113,7 +114,8 @@ export interface PostcssLoaderOptions extends Pick<LoaderOptions, 'sourceMap'> {
  *
  * @see https://github.com/webpack-contrib/stylus-loader#options
  */
-export interface StylusLoaderOptions extends LoaderOptions {
+export interface StylusLoaderOptions extends StylePreprocessorLoaderOptions {
+  implementation?: ((...args: any) => any) | string
   stylusOptions?: StylePreprocessorOptions
 }
 
@@ -122,10 +124,11 @@ export interface StylusLoaderOptions extends LoaderOptions {
  *
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
-export interface SassLoaderOptions extends LoaderOptions {
+export interface SassLoaderOptions extends StylePreprocessorLoaderOptions {
   api?: 'legacy' | 'modern' | 'modern-compiler'
   implementation?: Record<string, any> | string
   sassOptions?: StylePreprocessorOptions
+  warnRuleAsWarning?: boolean
 }
 
 /**
@@ -133,6 +136,8 @@ export interface SassLoaderOptions extends LoaderOptions {
  *
  * @see https://github.com/webpack-contrib/less-loader#options
  */
-export interface LessLoaderOptions extends LoaderOptions {
+export interface LessLoaderOptions extends StylePreprocessorLoaderOptions {
+  implementation?: Record<string, any> | string
+  lessLogAsWarnOrErr?: boolean
   lessOptions?: StylePreprocessorOptions
 }
