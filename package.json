@@ -42,7 +42,7 @@
     "eslint": "^8.57.0",
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
     "prettier-config-vuepress": "^4.4.0",
