@@ -123,6 +123,7 @@ export interface StylusLoaderOptions extends LoaderOptions {
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
 export interface SassLoaderOptions extends LoaderOptions {
+  api?: 'legacy' | 'modern' | 'modern-compiler'
   implementation?: Record<string, any> | string
   sassOptions?: StylePreprocessorOptions
 }
