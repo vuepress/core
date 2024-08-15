@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
 import { resolveUserConfigPath } from '../../src/index.js'

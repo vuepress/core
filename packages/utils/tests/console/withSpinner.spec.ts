@@ -58,7 +58,9 @@ it('should call target with spinner.fail', async () => {
   const error = new Error('mock error')
   const target = vi.fn().mockRejectedValue(error)
 
-  await expect(() => withSpinner('msg')(target)).rejects.toThrowError(error)
+  await expect(async () => withSpinner('msg')(target)).rejects.toThrowError(
+    error,
+  )
 
   expect(target).toHaveBeenCalledTimes(1)
   expect(mocks.ora).toHaveBeenCalledTimes(1)

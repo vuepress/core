@@ -1,5 +1,5 @@
-import { computed, defineComponent, h } from 'vue'
 import type { SlotsType, VNode } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { resolveRouteFullPath } from '../router/index.js'
 
@@ -81,7 +81,7 @@ export const RouteLink = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default: () => string | VNode | (string | VNode)[]
+    default: () => (VNode | string)[] | VNode | string
   }>,
 
   setup(props, { slots }) {
@@ -102,11 +102,11 @@ export const RouteLink = defineComponent({
           href: path.value,
           onClick: (event: MouseEvent = {} as MouseEvent) => {
             if (guardEvent(event)) {
-              router.push(props.to).catch()
+              void router.push(props.to).catch()
             }
           },
         },
-        slots.default?.(),
+        slots.default(),
       )
   },
 })

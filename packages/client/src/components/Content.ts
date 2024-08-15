@@ -6,7 +6,6 @@ import { resolveRoute } from '../router/index.js'
  * Markdown rendered content
  */
 export const Content = defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Content',
 
   props: {
@@ -22,7 +21,9 @@ export const Content = defineComponent({
     const ContentComponent = computed(() => {
       if (!props.path) return pageComponent.value
       const route = resolveRoute(props.path)
-      return defineAsyncComponent(() => route.loader().then(({ comp }) => comp))
+      return defineAsyncComponent(async () =>
+        route.loader().then(({ comp }) => comp),
+      )
     })
 
     return () => h(ContentComponent.value)

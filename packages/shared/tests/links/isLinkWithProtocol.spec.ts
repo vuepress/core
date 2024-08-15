@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { isLinkWithProtocol } from '../../src/index.js'
 
-const testCases: [string, ReturnType<typeof isLinkWithProtocol>][] = [
+const TEST_CASES: [string, ReturnType<typeof isLinkWithProtocol>][] = [
   // with protocol
   ['ftp://foobar.com', true],
   ['ms-windows-store://home', true],
@@ -23,7 +23,7 @@ const testCases: [string, ReturnType<typeof isLinkWithProtocol>][] = [
   ['foo/bar', false],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(`link: ${source}`, () => {
     expect(isLinkWithProtocol(source)).toBe(expected)
   })

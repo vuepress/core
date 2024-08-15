@@ -1,6 +1,6 @@
 import process from 'node:process'
-import { createBuildApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
+import { createBuildApp } from '@vuepress/core'
 import { debug, formatMs, fs, logger, withSpinner } from '@vuepress/utils'
 import {
   loadUserConfig,
@@ -53,13 +53,13 @@ export const createBuild =
 
     // clean temp and cache
     if (commandOptions.cleanTemp === true) {
-      await withSpinner('Cleaning temp')(() => {
-        return fs.remove(app.dir.temp())
+      await withSpinner('Cleaning temp')(async () => {
+        await fs.remove(app.dir.temp())
       })
     }
     if (commandOptions.cleanCache === true) {
-      await withSpinner('Cleaning cache')(() => {
-        return fs.remove(app.dir.cache())
+      await withSpinner('Cleaning cache')(async () => {
+        await fs.remove(app.dir.cache())
       })
     }
 

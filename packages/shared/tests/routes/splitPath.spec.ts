@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { splitPath } from '../../src/index.js'
 
-const testCases: [string, ReturnType<typeof splitPath>][] = [
+const TEST_CASES: [string, ReturnType<typeof splitPath>][] = [
   ['/a/b/c/', { pathname: '/a/b/c/', hashAndQueries: '' }],
   ['/a/b/c/?a=1', { pathname: '/a/b/c/', hashAndQueries: '?a=1' }],
   ['/a/b/c/#b', { pathname: '/a/b/c/', hashAndQueries: '#b' }],
@@ -15,8 +15,8 @@ const testCases: [string, ReturnType<typeof splitPath>][] = [
   ],
 ]
 
-testCases.forEach(([source, expected]) => {
-  it(`${source} -> ${expected}`, () => {
+TEST_CASES.forEach(([source, expected]) => {
+  it(`${source} -> ${JSON.stringify(expected)}`, () => {
     expect(splitPath(source)).toEqual(expected)
   })
 })

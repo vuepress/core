@@ -25,7 +25,12 @@ export const resolveAppConfig = ({
     ...userConfig,
     // allow cli options to override config file
     ...cliAppConfig,
-  } as AppConfig
+  }
+
+  if (appConfig.source === undefined) {
+    logger.error(`The ${colors.magenta('source')} option is missing.`)
+    return null
+  }
 
   if (appConfig.bundler === undefined || appConfig.theme === undefined) {
     logger.error(
@@ -57,5 +62,5 @@ export const resolveAppConfig = ({
     delete appConfig.dest
   }
 
-  return appConfig
+  return appConfig as AppConfig
 }

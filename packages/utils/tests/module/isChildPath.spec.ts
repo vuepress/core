@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { isChildPath } from '../../src/index.js'
 
-const testCases: [[string, string], boolean][] = [
+const TEST_CASES: [[string, string], boolean][] = [
   [['/foo', '/foo'], true],
   [['/foo', '/bar'], false],
   [['/foo', '/foo/bar'], false],
@@ -22,7 +22,7 @@ const testCases: [[string, string], boolean][] = [
   [['foo-bar', 'foo'], false],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(`${JSON.stringify(source)} -> ${expected}`, () => {
     expect(isChildPath(...source)).toBe(expected)
   })

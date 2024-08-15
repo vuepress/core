@@ -56,7 +56,7 @@ import 'vuepress/client-app'
     try {
       const postcssConfigResult = await postcssrc()
       postcssPlugins = postcssConfigResult.plugins
-    } catch (error) {
+    } catch {
       postcssPlugins = [autoprefixer]
     }
 
@@ -164,11 +164,11 @@ const resolveAlias = async ({
   // plugin hook: alias
   const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
-  aliasResult.forEach((aliasObject) =>
+  aliasResult.forEach((aliasObject) => {
     Object.entries(aliasObject).forEach(([key, value]) => {
       alias[key] = value
-    }),
-  )
+    })
+  })
 
   return [
     ...Object.keys(alias).map((item) => ({
@@ -222,11 +222,11 @@ const resolveDefine = async ({
   // plugin hook: define
   const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
 
-  defineResult.forEach((defineObject) =>
+  defineResult.forEach((defineObject) => {
     Object.entries(defineObject).forEach(([key, value]) => {
       define[key] = JSON.stringify(value)
-    }),
-  )
+    })
+  })
 
   return define
 }

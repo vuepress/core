@@ -8,7 +8,7 @@ import {
 } from './plugins/index.js'
 import type { ViteBundlerOptions } from './types.js'
 
-export const resolveViteConfig = async ({
+export const resolveViteConfig = ({
   app,
   options,
   isBuild,
@@ -18,8 +18,8 @@ export const resolveViteConfig = async ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): Promise<InlineConfig> => {
-  return mergeConfig(
+}): InlineConfig =>
+  mergeConfig(
     {
       clearScreen: false,
       configFile: false,
@@ -36,4 +36,3 @@ export const resolveViteConfig = async ({
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin
     options.viteOptions ?? {},
   )
-}

@@ -1,5 +1,5 @@
-import { prepareRoutes } from '@vuepress/core'
 import type { App, Page } from '@vuepress/core'
+import { prepareRoutes } from '@vuepress/core'
 
 /**
  * Event handler for page unlink event

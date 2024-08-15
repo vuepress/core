@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { removeLeadingSlash } from '../src/index.js'
 
-const testCases = [
+const TEST_CASES = [
   ['foo/bar', 'foo/bar'],
   ['foo/bar/', 'foo/bar/'],
   ['/foo/bar', 'foo/bar'],
@@ -10,7 +10,7 @@ const testCases = [
   ['/foo/bar.html', 'foo/bar.html'],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(source, () => {
     expect(removeLeadingSlash(source)).toBe(expected)
   })

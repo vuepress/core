@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { isLinkExternal } from '../../src/index.js'
 
-const testCases: [
+const TEST_CASES: [
   Parameters<typeof isLinkExternal>,
   ReturnType<typeof isLinkExternal>,
 ][] = [
@@ -62,7 +62,7 @@ const testCases: [
   [['./foo/bar/baz.html', '/foo/'], false],
 ]
 
-testCases.forEach(([[link, base], expected]) => {
+TEST_CASES.forEach(([[link, base], expected]) => {
   it(`link: ${link}, base: ${base}`, () => {
     expect(isLinkExternal(link, base)).toBe(expected)
     expect(isLinkExternal(`${link}#foobar`, base)).toBe(expected)

@@ -15,5 +15,5 @@ export const resolvePageSlug = ({
   }
   const filename = path.parse(filePathRelative).name
   const match = filename.match(DATE_RE)
-  return match ? match[3]! : filename
+  return match ? match[3] : filename
 }

@@ -6,12 +6,13 @@ const getSubDirectories = (dir: string): string[] =>
   fs
     .readdirSync(dir)
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
-const packages = getSubDirectories(path.resolve(__dirname, 'packages'))
+
+const PACKAGES = getSubDirectories(path.resolve(__dirname, 'packages'))
 
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', [...packages, 'e2e']],
+    'scope-enum': [2, 'always', [...PACKAGES, 'e2e']],
     'footer-max-line-length': [0],
   },
 } satisfies UserConfig

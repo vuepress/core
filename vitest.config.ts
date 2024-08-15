@@ -7,8 +7,9 @@ const getSubDirectories = (dir: string): string[] =>
   fs
     .readdirSync(dir)
     .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
-const root = path.dirname(fileURLToPath(import.meta.url))
-const packages = getSubDirectories(path.resolve(root, 'packages')).filter(
+
+const ROOT = path.dirname(fileURLToPath(import.meta.url))
+const PACKAGES = getSubDirectories(path.resolve(ROOT, 'packages')).filter(
   (item) => item !== 'vuepress',
 )
 
@@ -16,8 +17,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: new RegExp(`^@vuepress/(${packages.join('|')})$`),
-        replacement: path.resolve(root, './packages/$1/src/index.ts'),
+        find: new RegExp(`^@vuepress/(${PACKAGES.join('|')})$`),
+        replacement: path.resolve(ROOT, './packages/$1/src/index.ts'),
       },
     ],
   },

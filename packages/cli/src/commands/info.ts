@@ -1,4 +1,4 @@
-import { ora } from '@vuepress/utils'
+import { logger, ora } from '@vuepress/utils'
 import envinfo from 'envinfo'
 
 export const info = async (): Promise<void> => {
@@ -33,5 +33,5 @@ export const info = async (): Promise<void> => {
   )
   spinner.stop()
 
-  console.info(result)
+  logger.info(result)
 }

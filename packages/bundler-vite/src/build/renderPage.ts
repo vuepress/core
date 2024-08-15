@@ -1,8 +1,9 @@
 import type { App, Page } from '@vuepress/core'
+import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
-import { ssrContextKey } from 'vue'
 import type { App as VueApp } from 'vue'
+import { ssrContextKey } from 'vue'
 import type { SSRContext } from 'vue/server-renderer'
 import type { Router } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
@@ -37,8 +38,9 @@ export const renderPage = async ({
   await vueRouter.isReady()
 
   // create vue ssr context with default values
+  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete, no-underscore-dangle
   delete vueApp._context.provides[ssrContextKey]
-  const ssrContext: SSRContext = {
+  const ssrContext: VuepressSSRContext = {
     lang: 'en',
     head: [],
   }

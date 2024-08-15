@@ -1,2 +1,2 @@
-declare const str: string
-export default str
+declare const STR: string
+export default STR

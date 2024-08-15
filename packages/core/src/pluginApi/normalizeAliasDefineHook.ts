@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await, @typescript-eslint/no-unsafe-return */
 import { isFunction } from '@vuepress/shared'
 import type { AliasDefineHook } from '../types/index.js'
 

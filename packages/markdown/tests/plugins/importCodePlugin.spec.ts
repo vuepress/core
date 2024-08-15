@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { fs, path } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
 import {
@@ -9,8 +10,8 @@ import {
   it,
   vi,
 } from 'vitest'
-import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
+import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 
 const jsFixturePathRelative = '../__fixtures__/importCode.js'
 const mdFixturePathRelative = '../__fixtures__/importCode.md'
@@ -52,7 +53,7 @@ describe('@vuepress/markdown > plugins > importCodePlugin', () => {
     const rendered = md.render(source.join('\n\n'), env)
 
     expect(rendered).toEqual(
-      source.map((item) => `<p>${item}</p>`).join('\n') + '\n',
+      `${source.map((item) => `<p>${item}</p>`).join('\n')}\n`,
     )
     expect(env.importedFiles).toBeUndefined()
   })

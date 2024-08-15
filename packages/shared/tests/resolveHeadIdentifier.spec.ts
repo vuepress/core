@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
-import { resolveHeadIdentifier } from '../src/index.js'
 import type { HeadConfig } from '../src/index.js'
+import { resolveHeadIdentifier } from '../src/index.js'
 
 it('should resolve same identifiers of <title>', () => {
   const titleFoo = resolveHeadIdentifier(['title', {}, 'title foo'])

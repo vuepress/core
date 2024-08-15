@@ -10,11 +10,11 @@ export const inferRoutePath = (path: string): string => {
 
   // convert /foo/bar.md to /foo/bar.html
   if (routePath.endsWith('.md')) {
-    routePath = routePath.substring(0, routePath.length - 3) + '.html'
+    routePath = `${routePath.substring(0, routePath.length - 3)}.html`
   }
   // convert /foo/bar to /foo/bar.html
   else if (!routePath.endsWith('.html')) {
-    routePath = routePath + '.html'
+    routePath = `${routePath}.html`
   }
 
   // convert /foo/index.html to /foo/
