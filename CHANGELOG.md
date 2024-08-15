@@ -1,3 +1,15 @@
+# [2.0.0-rc.15](https://github.com/vuepress/core/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-08-15)
+
+
+### Features
+
+* **bundler-vite:** add client type export (close [#1579](https://github.com/vuepress/core/issues/1579)) ([#1580](https://github.com/vuepress/core/issues/1580)) ([e3ed143](https://github.com/vuepress/core/commit/e3ed143979b63aecab7772bd5cf3f67735d8c03c))
+* **bundler-vite:** upgrade vite to v5.4 (close [#1598](https://github.com/vuepress/core/issues/1598)) ([97af89c](https://github.com/vuepress/core/commit/97af89caf5e3bcab21dd7b3fcaa38bbb1e9fe4bb))
+* **bundler-webpack:** add api field in sass-loader option type ([#1588](https://github.com/vuepress/core/issues/1588)) ([f3251b7](https://github.com/vuepress/core/commit/f3251b7a73e234cb585edfb969b1b1981d872cd6))
+* **bundler-webpack:** normalize loader options type ([679cf8f](https://github.com/vuepress/core/commit/679cf8fe5f061f34b059e087bc8694f1b94d452a))
+
+
+
 # [2.0.0-rc.14](https://github.com/vuepress/core/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-06-19)
 
 
