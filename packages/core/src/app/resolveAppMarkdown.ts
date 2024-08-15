@@ -1,5 +1,5 @@
-import { createMarkdown } from '@vuepress/markdown'
 import type { Markdown } from '@vuepress/markdown'
+import { createMarkdown } from '@vuepress/markdown'
 import type { App } from '../types/index.js'
 
 /**

@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
-import { dedupeHead } from '../src/index.js'
 import type { HeadConfig } from '../src/index.js'
+import { dedupeHead } from '../src/index.js'
 
 it('should dedupe head correctly', () => {
   const head: HeadConfig[] = [

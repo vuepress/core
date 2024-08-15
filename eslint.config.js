@@ -32,9 +32,10 @@ export default vuepress(
     },
   },
   {
-    files: ['**/*.spec.ts'],
+    files: ['**/tests/**'],
     rules: {
       'no-console': 'off',
+      'prefer-template': 'off',
     },
   },
 )
