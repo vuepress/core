@@ -6,6 +6,6 @@ import { createBaseApp } from './createBaseApp.js'
  */
 export const createDevApp = (config: AppConfig): DevApp => {
   const app = createBaseApp(config, false) as DevApp
-  app.dev = () => app.options.bundler.dev(app)
+  app.dev = async () => app.options.bundler.dev(app)
   return app
 }

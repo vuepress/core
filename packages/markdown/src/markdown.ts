@@ -1,6 +1,18 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
 import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
+import type {
+  AnchorPluginOptions,
+  AssetsPluginOptions,
+  EmojiPluginOptions,
+  FrontmatterPluginOptions,
+  HeadersPluginOptions,
+  ImportCodePluginOptions,
+  LinksPluginOptions,
+  SfcPluginOptions,
+  TocPluginOptions,
+  VPrePluginOptions,
+} from './plugins.js'
 import {
   anchorPlugin,
   assetsPlugin,
@@ -14,18 +26,6 @@ import {
   titlePlugin,
   tocPlugin,
   vPrePlugin,
-} from './plugins.js'
-import type {
-  AnchorPluginOptions,
-  AssetsPluginOptions,
-  EmojiPluginOptions,
-  FrontmatterPluginOptions,
-  HeadersPluginOptions,
-  ImportCodePluginOptions,
-  LinksPluginOptions,
-  SfcPluginOptions,
-  TocPluginOptions,
-  VPrePluginOptions,
 } from './plugins.js'
 import type { Markdown, MarkdownOptions } from './types.js'
 
@@ -83,7 +83,7 @@ export const createMarkdown = ({
     md.use<AssetsPluginOptions>(assetsPlugin, assets)
   }
 
-  // process code fence
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- deprecation warning
   if (code) {
     logger.warn(
       `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,

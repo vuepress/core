@@ -1,6 +1,6 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
-import type { Bundler, ClientConfigFileHook, Theme } from '../../src/index.js'
+import type { Bundler, ClientConfigFileHook } from '../../src/index.js'
 import {
   createBaseApp,
   normalizeClientConfigFileHook,
@@ -8,7 +8,7 @@ import {
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' } as Theme,
+  theme: { name: 'test' },
   bundler: {} as Bundler,
 })
 const CLIENT_CONFIG_FILE = path.resolve(

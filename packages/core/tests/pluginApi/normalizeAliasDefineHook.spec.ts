@@ -1,11 +1,11 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
-import type { AliasDefineHook, Bundler, Theme } from '../../src/index.js'
+import type { AliasDefineHook, Bundler } from '../../src/index.js'
 import { createBaseApp, normalizeAliasDefineHook } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' } as Theme,
+  theme: { name: 'test' },
   bundler: {} as Bundler,
 })
 

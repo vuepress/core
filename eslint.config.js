@@ -20,7 +20,7 @@ export default vuepress(
         '@typescript-eslint/no-non-null-assertion': 'off',
         'no-underscore-dangle': [
           'warn',
-          { allow: ['_context', '_registeredComponents'] },
+          { allow: ['_context', '_pageChunk', '_registeredComponents'] },
         ],
       },
     },

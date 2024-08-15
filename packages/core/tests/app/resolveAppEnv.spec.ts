@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { Bundler, Theme } from '../../src/index.js'
+import type { Bundler } from '../../src/index.js'
 import { resolveAppEnv, resolveAppOptions } from '../../src/index.js'
 
 const TEST_CASES: [
@@ -10,7 +10,7 @@ const TEST_CASES: [
     [
       resolveAppOptions({
         source: '/foo',
-        theme: { name: 'test' } as Theme,
+        theme: { name: 'test' },
         bundler: {} as Bundler,
       }),
       false,
@@ -25,7 +25,7 @@ const TEST_CASES: [
     [
       resolveAppOptions({
         source: '/foo',
-        theme: { name: 'test' } as Theme,
+        theme: { name: 'test' },
         bundler: {} as Bundler,
         debug: true,
       }),
@@ -41,7 +41,7 @@ const TEST_CASES: [
     [
       resolveAppOptions({
         source: '/foo',
-        theme: { name: 'test' } as Theme,
+        theme: { name: 'test' },
         bundler: {} as Bundler,
       }),
       true,

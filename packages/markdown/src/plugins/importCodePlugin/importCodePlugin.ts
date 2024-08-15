@@ -2,6 +2,7 @@ import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from '../../types.js'
 import { createImportCodeBlockRule } from './createImportCodeBlockRule.js'
 import { resolveImportCode } from './resolveImportCode.js'
+import type { ImportCodeTokenMeta } from './types.js'
 
 export interface ImportCodePluginOptions {
   /**
@@ -28,14 +29,17 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
   md.renderer.rules.import_code = (
     tokens,
     idx,
-    options,
+    opts,
     env: MarkdownEnv,
     slf,
   ) => {
     const token = tokens[idx]
 
     // use imported code as token content
-    const { importFilePath, importCode } = resolveImportCode(token.meta, env)
+    const { importFilePath, importCode } = resolveImportCode(
+      token.meta as ImportCodeTokenMeta,
+      env,
+    )
     token.content = importCode
 
     // extract imported files to env
@@ -44,6 +48,6 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
     }
 
     // render the import_code token as a fence token
-    return md.renderer.rules.fence!(tokens, idx, options, env, slf)
+    return md.renderer.rules.fence!(tokens, idx, opts, env, slf)
   }
 }

@@ -48,7 +48,7 @@ export const setupGlobalComputed = (
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
       const oldPageChunk = await routes.value[newPageData.path].loader()
       const newPageChunk = { comp: oldPageChunk.comp, data: newPageData }
-      routes.value[newPageData.path].loader = () =>
+      routes.value[newPageData.path].loader = async () =>
         Promise.resolve(newPageChunk)
       if (
         newPageData.path ===
