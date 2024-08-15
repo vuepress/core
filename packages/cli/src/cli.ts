@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
 import type { AppConfig } from '@vuepress/core'
-import { colors } from '@vuepress/utils'
+import { colors, logger } from '@vuepress/utils'
 import { cac } from 'cac'
 import { createBuild, createDev, info } from './commands/index.js'
 
@@ -15,8 +15,10 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
   const program = cac('vuepress')
 
   // display core version and cli version
-  const versionCli = require('../package.json').version
-  const versionCore = require('@vuepress/core/package.json').version
+  const versionCli = (require('../package.json') as { version: string }).version
+  const versionCore = (
+    require('@vuepress/core/package.json') as { version: string }
+  ).version
   program.version(`core@${versionCore} vuepress/cli@${versionCli}`)
 
   // display help message
@@ -59,8 +61,8 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
 
   // run command or fallback to help messages
   if (program.matchedCommand) {
-    program.runMatchedCommand().catch((err) => {
-      console.error(colors.red(err.stack))
+    ;(program.runMatchedCommand() as Promise<void>).catch((err: unknown) => {
+      logger.error(err instanceof Error ? colors.red(err.stack) : err)
       process.exit(1)
     })
   } else {
