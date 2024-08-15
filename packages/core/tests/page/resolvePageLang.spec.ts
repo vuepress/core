@@ -1,11 +1,12 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import type { Bundler, Theme } from '../../src/index.js'
 import { createBaseApp, resolvePageLang } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' },
-  bundler: {} as any,
+  theme: { name: 'test' } as Theme,
+  bundler: {} as Bundler,
   lang: 'site-lang',
   locales: {
     '/': {

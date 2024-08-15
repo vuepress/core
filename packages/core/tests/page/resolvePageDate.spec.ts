@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { resolvePageDate } from '../../src/index.js'
 
-const testCases: [
+const TEST_CASES: [
   Parameters<typeof resolvePageDate>,
   ReturnType<typeof resolvePageDate>,
 ][] = [
@@ -149,7 +149,7 @@ const testCases: [
 
 describe('core > page > resolvePageDate', () => {
   describe('should resolve page date correctly', () => {
-    testCases.forEach(([source, expected]) => {
+    TEST_CASES.forEach(([source, expected]) => {
       it(`raw: ${JSON.stringify(source)}`, () => {
         expect(resolvePageDate(...source)).toEqual(expected)
       })

@@ -1,18 +1,17 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler, Theme } from '../../src/index.js'
 import { resolveAppEnv, resolveAppOptions } from '../../src/index.js'
 
-const source = '/foo'
-
-const testCases: [
+const TEST_CASES: [
   Parameters<typeof resolveAppEnv>,
   ReturnType<typeof resolveAppEnv>,
 ][] = [
   [
     [
       resolveAppOptions({
-        source,
-        theme: { name: 'test' },
-        bundler: {} as any,
+        source: '/foo',
+        theme: { name: 'test' } as Theme,
+        bundler: {} as Bundler,
       }),
       false,
     ],
@@ -25,9 +24,9 @@ const testCases: [
   [
     [
       resolveAppOptions({
-        source,
-        theme: { name: 'test' },
-        bundler: {} as any,
+        source: '/foo',
+        theme: { name: 'test' } as Theme,
+        bundler: {} as Bundler,
         debug: true,
       }),
       false,
@@ -41,9 +40,9 @@ const testCases: [
   [
     [
       resolveAppOptions({
-        source,
-        theme: { name: 'test' },
-        bundler: {} as any,
+        source: '/foo',
+        theme: { name: 'test' } as Theme,
+        bundler: {} as Bundler,
       }),
       true,
     ],
@@ -57,7 +56,7 @@ const testCases: [
 
 describe('core > app > resolveAppEnv', () => {
   describe('should create app env correctly', () => {
-    testCases.forEach(([params, expected], i) => {
+    TEST_CASES.forEach(([params, expected], i) => {
       it(`case ${i}`, () => {
         expect(resolveAppEnv(...params)).toEqual(expected)
       })

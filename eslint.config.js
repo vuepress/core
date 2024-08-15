@@ -31,11 +31,10 @@ export default vuepress(
       },
     },
   },
-  // {
-  //   files: ['**/tests/**/*.ts', 'e2e/**/*.ts', 'tsup.config.ts'],
-  //   rules: {
-  //     '@typescript-eslint/explicit-function-return-type': 'off',
-  //     'vue/one-component-per-file': 'off',
-  //   },
-  // },
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
 )

@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
-import { assetsPlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
+import { assetsPlugin } from '../../src/index.js'
 
 describe('@vuepress/markdown > plugins > assetsPlugin', () => {
   describe('markdown image syntax', () => {
@@ -38,7 +38,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       '![data-uri](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==)',
     ]
 
-    const testCases: {
+    const TEST_CASES: {
       description: string
       md: MarkdownIt
       env: MarkdownEnv
@@ -207,13 +207,13 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
       },
     ]
 
-    testCases.forEach(({ description, md, env, expected }) =>
+    TEST_CASES.forEach(({ description, md, env, expected }) => {
       it(description, () => {
         expect(md.render(source.join('\n\n'), env)).toEqual(
-          expected.map((item) => `<p>${item}</p>`).join('\n') + '\n',
+          `${expected.map((item) => `<p>${item}</p>`).join('\n')}\n`,
         )
-      }),
-    )
+      })
+    })
   })
 
   describe('html <img> tag', () => {
@@ -292,7 +292,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wr4H/wAAAABJRU5ErkJggg==">',
       ]
 
-      const testCases: {
+      const TEST_CASES: {
         description: string
         md: MarkdownIt
         env: MarkdownEnv
@@ -541,11 +541,11 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
       ]
 
-      testCases.forEach(({ description, md, env, expected }) =>
+      TEST_CASES.forEach(({ description, md, env, expected }) => {
         it(description, () => {
           // block
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n'),
+            expected.map((item) => item).join('\n'),
           )
 
           // block with leading white space
@@ -557,14 +557,14 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
           expect(
             md.render(source.map((item) => `foo${item}`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>foo${item}</p>`).join('\n') + '\n',
+            `${expected.map((item) => `<p>foo${item}</p>`).join('\n')}\n`,
           )
 
           // inline with suffix
           expect(
             md.render(source.map((item) => `${item}foo`).join('\n\n'), env),
           ).toEqual(
-            expected.map((item) => `<p>${item}foo</p>`).join('\n') + '\n',
+            `${expected.map((item) => `<p>${item}foo</p>`).join('\n')}\n`,
           )
 
           // inline with line break
@@ -574,9 +574,9 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               env,
             ),
           ).toEqual(
-            expected
+            `${expected
               .map((item) => `<p>${item.replace('<img', '<img\n')}</p>`)
-              .join('\n') + '\n',
+              .join('\n')}\n`,
           )
 
           // wrapped item
@@ -619,8 +619,8 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
               .map((item) => `<p>\n<span>\n${item}\n${item}\n</span>\n</p>`)
               .join('\n'),
           )
-        }),
-      )
+        })
+      })
     })
 
     // multi-line `<img>` tag will be wrapped with `<p>` tag
@@ -648,7 +648,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
     ,default.png " width="100px">`,
       ]
 
-      const testCases: {
+      const TEST_CASES: {
         description: string
         md: MarkdownIt
         env: MarkdownEnv
@@ -714,21 +714,20 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         },
       ]
 
-      testCases.forEach(({ description, md, env, expected }) =>
+      TEST_CASES.forEach(({ description, md, env, expected }) => {
         it(description, () => {
           // double quote
           expect(md.render(source.join('\n\n'), env)).toEqual(
-            expected.map((item) => `${item}`).join('\n') + '\n',
+            `${expected.map((item) => item).join('\n')}\n`,
           )
           // single quote
           expect(
             md.render(source.join('\n\n').replace(/"/g, "'"), env),
           ).toEqual(
-            expected.map((item) => `${item}`.replace(/"/g, "'")).join('\n') +
-              '\n',
+            `${expected.map((item) => item.replace(/"/g, "'")).join('\n')}\n`,
           )
-        }),
-      )
+        })
+      })
     })
   })
 })

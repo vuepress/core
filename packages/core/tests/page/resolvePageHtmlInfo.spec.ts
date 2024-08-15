@@ -1,14 +1,15 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import type { Bundler, Theme } from '../../src/index.js'
 import { createBaseApp, resolvePageHtmlInfo } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' },
-  bundler: {} as any,
+  theme: { name: 'test' } as Theme,
+  bundler: {} as Bundler,
 })
 
-const testCases: [string, string][] = [
+const TEST_CASES: [string, string][] = [
   ['/foo', 'foo.html'],
   ['/foo.html', 'foo.html'],
   ['/foo/bar.html', 'foo/bar.html'],
@@ -21,7 +22,7 @@ const testCases: [string, string][] = [
 
 describe('core > page > resolvePageHtmlInfo', () => {
   describe('should resolve page html file path correctly', () => {
-    testCases.forEach(([source, expected]) => {
+    TEST_CASES.forEach(([source, expected]) => {
       it(JSON.stringify(source), () => {
         expect(
           resolvePageHtmlInfo({

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { inferRoutePath } from '../../src/index.js'
 
-const testCases = [
+const TEST_CASES = [
   // absolute index
   ['/', '/'],
   ['/README.md', '/'],
@@ -54,9 +54,9 @@ const testCases = [
 ]
 
 describe('should normalize clean paths correctly', () => {
-  testCases.forEach(([path, expected]) =>
+  TEST_CASES.forEach(([path, expected]) => {
     it(`"${path}" -> "${expected}"`, () => {
       expect(inferRoutePath(path)).toBe(expected)
-    }),
-  )
+    })
+  })
 })

@@ -5,7 +5,7 @@ import { resolveUserConfigConventionalPath } from '../../src/index.js'
 const resolveFixtures = (str: string): string =>
   path.resolve(__dirname, '../__fixtures__/config/convention', str)
 
-const testCases: [string, string][] = [
+const TEST_CASES: [string, string][] = [
   [resolveFixtures('case1'), 'vuepress.config.ts'],
   [resolveFixtures('case2'), '.vuepress/config.ts'],
   [resolveFixtures('case3'), 'vuepress.config.js'],
@@ -16,7 +16,7 @@ const testCases: [string, string][] = [
 
 describe('cli > config > resolveUserConfigConventionalPath', () => {
   describe('should resolve conventional config file correctly', () => {
-    testCases.forEach(([source, expected]) => {
+    TEST_CASES.forEach(([source, expected]) => {
       it(expected, () => {
         const configFile = resolveUserConfigConventionalPath(source, source)
         expect(configFile).toEqual(path.resolve(source, expected))

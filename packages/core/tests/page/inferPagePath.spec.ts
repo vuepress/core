@@ -1,11 +1,12 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import type { Bundler, Theme } from '../../src/index.js'
 import { createBaseApp, inferPagePath } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' },
-  bundler: {} as any,
+  theme: { name: 'test' } as Theme,
+  bundler: {} as Bundler,
   locales: {
     '/': {},
     '/en/': {},
@@ -15,11 +16,11 @@ const app = createBaseApp({
 })
 const appWithoutLocales = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' },
-  bundler: {} as any,
+  theme: { name: 'test' } as Theme,
+  bundler: {} as Bundler,
 })
 
-const testCases: [string, ReturnType<typeof inferPagePath>][] = [
+const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
     'foo.md',
     {
@@ -52,7 +53,7 @@ const testCases: [string, ReturnType<typeof inferPagePath>][] = [
 
 describe('core > page > inferPagePath', () => {
   describe('should infer page path according to relative path of page file', () => {
-    testCases.forEach(([source, expected]) => {
+    TEST_CASES.forEach(([source, expected]) => {
       it(JSON.stringify(source), () => {
         expect(
           inferPagePath({

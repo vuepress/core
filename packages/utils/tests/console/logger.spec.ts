@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { expect, it, vi } from 'vitest'
 import { logger } from '../../src/index.js'
 

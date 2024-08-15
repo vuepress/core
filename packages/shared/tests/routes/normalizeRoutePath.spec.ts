@@ -195,12 +195,12 @@ const TEST_CASES = [
   [['foo/.md', '/a/b.html'], '/a/foo/.html'],
   [['/.md', '/a/b.html'], '/.html'],
   [['/foo/.md', '/a/b.html'], '/foo/.html'],
-]
+] as const
 
 describe('should normalize clean paths correctly', () => {
-  TEST_CASES.forEach(([[path, current], expected]) =>
+  TEST_CASES.forEach(([[path, current], expected]) => {
     it(`${current ? `"${current}"-` : ''}"${path}" -> "${expected}"`, () => {
       expect(normalizeRoutePath(path, current)).toBe(expected)
-    }),
-  )
+    })
+  })
 })

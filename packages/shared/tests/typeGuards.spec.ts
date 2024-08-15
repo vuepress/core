@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { isPlainObject } from '../src/index.js'
 
 describe('isPlainObject', () => {
-  const testCases: [unknown, boolean][] = [
+  const TEST_CASES: [unknown, boolean][] = [
     [true, false],
     [false, false],
     ['', false],
@@ -16,7 +16,7 @@ describe('isPlainObject', () => {
   ]
 
   it('should determine plain object correctly', () => {
-    testCases.forEach(([source, expected]) => {
+    TEST_CASES.forEach(([source, expected]) => {
       expect(isPlainObject(source)).toBe(expected)
     })
   })
