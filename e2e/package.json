@@ -22,12 +22,12 @@
     "@vuepress/bundler-webpack": "workspace:*",
     "sass": "^1.77.8",
     "sass-embedded": "^1.77.8",
-    "sass-loader": "^15.0.0",
-    "vue": "^3.4.34",
+    "sass-loader": "^16.0.0",
+    "vue": "^3.4.37",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.3",
+    "@playwright/test": "^1.46.0",
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3"
   }
