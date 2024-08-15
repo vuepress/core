@@ -134,7 +134,7 @@ export const AutoLink = defineComponent({
     return () => {
       const { before, after, default: defaultSlot } = slots
 
-      const content = defaultSlot?.(config.value) || [
+      const content = defaultSlot?.(config.value) ?? [
         before?.(config.value),
         config.value.text,
         after?.(config.value),

@@ -993,8 +993,8 @@ packages:
   '@mdit-vue/types@2.1.0':
     resolution: {integrity: sha512-TMBB/BQWVvwtpBdWD75rkZx4ZphQ6MN0O4QB2Bc0oI5PC2uE57QerhNxdRZ7cvBHE2iY2C+BUNUziCfJbjIRRA==}
 
-  '@meteorlxy/eslint-config@4.2.0':
-    resolution: {integrity: sha512-G8K9Is7bkG0d/eumMxWOS86C2w7ulaAlVM1p2bja3NAgCmwQqeOiGsYrsmrhLhGO/H/rb2c9gRnxZ7WbApM+PQ==}
+  '@meteorlxy/eslint-config@4.2.1':
+    resolution: {integrity: sha512-uiqEsyMVlbtIJj8oDHs+J51kKqPLijp46PWzkeRjcqHo/4ERtuTKYVvWtjRkmYkfE9XdL5EJvTE+NQsnSormrQ==}
     peerDependencies:
       eslint-plugin-react: ^7.35.0
       eslint-plugin-react-hooks: ^4.6.2
@@ -5748,7 +5748,7 @@ snapshots:
 
   '@mdit-vue/types@2.1.0': {}
 
-  '@meteorlxy/eslint-config@4.2.0(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))':
+  '@meteorlxy/eslint-config@4.2.1(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))':
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.1.0(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       '@typescript-eslint/parser': 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
@@ -7305,7 +7305,7 @@ snapshots:
 
   eslint-config-vuepress@5.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6))):
     dependencies:
-      '@meteorlxy/eslint-config': 4.2.0(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
+      '@meteorlxy/eslint-config': 4.2.1(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
       '@typescript-eslint/utils': 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       eslint-plugin-vue: 9.27.0(eslint@9.9.0(jiti@1.21.6))
     transitivePeerDependencies:
