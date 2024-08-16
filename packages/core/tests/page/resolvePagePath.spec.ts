@@ -96,28 +96,26 @@ const TEST_CASES: [
   ],
 ]
 
-describe('core > page > resolvePagePath', () => {
-  describe('should resolve page path correctly', () => {
-    TEST_CASES.forEach(([input, expected]) => {
-      it(`input: ${JSON.stringify(input)}`, () => {
-        expect(resolvePagePath(...input)).toEqual(expected)
-      })
+describe('should resolve page path correctly', () => {
+  TEST_CASES.forEach(([input, expected]) => {
+    it(`input: ${JSON.stringify(input)}`, () => {
+      expect(resolvePagePath(...input)).toEqual(expected)
     })
   })
+})
 
-  it('should throw an error', () => {
-    const consoleError = console.error
-    console.error = vi.fn()
+it('should throw an error', () => {
+  const consoleError = console.error
+  console.error = vi.fn()
 
-    expect(() =>
-      resolvePagePath({
-        permalink: null,
-        pathInferred: null,
-        options: {},
-      }),
-    ).toThrow()
-    expect(console.error).toHaveBeenCalled()
+  expect(() =>
+    resolvePagePath({
+      permalink: null,
+      pathInferred: null,
+      options: {},
+    }),
+  ).toThrow()
+  expect(console.error).toHaveBeenCalled()
 
-    console.error = consoleError
-  })
+  console.error = consoleError
 })

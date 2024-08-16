@@ -70,7 +70,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
               .map((item) =>
                 item.trim().replace(
                   /^([^ ]*?)([ \n].*)?$/,
-                  (_, url, descriptor = '') =>
+                  (__, url: string, descriptor: string | undefined = '') =>
                     `${resolveLink(url.trim(), {
                       env,
                       absolutePathPrependBase,

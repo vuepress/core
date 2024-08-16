@@ -20,19 +20,17 @@ const TEST_CASES: [string, string][] = [
   ['/foo/bar/', 'foo/bar/index.html'],
 ]
 
-describe('core > page > resolvePageHtmlInfo', () => {
-  describe('should resolve page html file path correctly', () => {
-    TEST_CASES.forEach(([source, expected]) => {
-      it(JSON.stringify(source), () => {
-        expect(
-          resolvePageHtmlInfo({
-            app,
-            path: source,
-          }),
-        ).toEqual({
-          htmlFilePath: app.dir.dest(expected),
-          htmlFilePathRelative: expected,
-        })
+describe('should resolve page html file path correctly', () => {
+  TEST_CASES.forEach(([source, expected]) => {
+    it(JSON.stringify(source), () => {
+      expect(
+        resolvePageHtmlInfo({
+          app,
+          path: source,
+        }),
+      ).toEqual({
+        htmlFilePath: app.dir.dest(expected),
+        htmlFilePathRelative: expected,
       })
     })
   })

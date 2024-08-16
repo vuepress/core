@@ -51,41 +51,39 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   ],
 ]
 
-describe('core > page > inferPagePath', () => {
-  describe('should infer page path according to relative path of page file', () => {
-    TEST_CASES.forEach(([source, expected]) => {
-      it(JSON.stringify(source), () => {
-        expect(
-          inferPagePath({
-            app,
-            filePathRelative: source,
-          }),
-        ).toEqual(expected)
-      })
+describe('should infer page path according to relative path of page file', () => {
+  TEST_CASES.forEach(([source, expected]) => {
+    it(JSON.stringify(source), () => {
+      expect(
+        inferPagePath({
+          app,
+          filePathRelative: source,
+        }),
+      ).toEqual(expected)
     })
   })
+})
 
-  it('should use `/` as the default locale path', () => {
-    expect(
-      inferPagePath({
-        app: appWithoutLocales,
-        filePathRelative: 'en/foo/bar.md',
-      }),
-    ).toEqual({
-      pathInferred: '/en/foo/bar.html',
-      pathLocale: '/',
-    })
+it('should use `/` as the default locale path', () => {
+  expect(
+    inferPagePath({
+      app: appWithoutLocales,
+      filePathRelative: 'en/foo/bar.md',
+    }),
+  ).toEqual({
+    pathInferred: '/en/foo/bar.html',
+    pathLocale: '/',
   })
+})
 
-  it('should handle empty file relative path', () => {
-    expect(
-      inferPagePath({
-        app,
-        filePathRelative: null,
-      }),
-    ).toEqual({
-      pathInferred: null,
-      pathLocale: '/',
-    })
+it('should handle empty file relative path', () => {
+  expect(
+    inferPagePath({
+      app,
+      filePathRelative: null,
+    }),
+  ).toEqual({
+    pathInferred: null,
+    pathLocale: '/',
   })
 })

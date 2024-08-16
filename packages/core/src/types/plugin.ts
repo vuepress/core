@@ -11,8 +11,8 @@ import type { HooksExposed } from './pluginApi/index.js'
  * A plugin package should have a `Plugin` as the default export
  */
 export type Plugin<T extends PluginObject = PluginObject> =
-  | T
   | PluginFunction<T>
+  | T
 
 /**
  * Vuepress plugin function

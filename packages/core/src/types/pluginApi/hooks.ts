@@ -12,11 +12,11 @@ interface Closable {
 export interface Hook<
   Exposed,
   Normalized = Exposed,
-  Result = Normalized extends (...args: any) => infer U
+  Result = Normalized extends (...args: unknown[]) => infer U
     ? U extends Promise<infer V>
       ? V
       : U
-    : void,
+    : never,
 > {
   exposed: Exposed
   normalized: Normalized
@@ -41,9 +41,9 @@ export type ClientConfigFileHook = Hook<
 
 // alias and define hook
 export type AliasDefineHook = Hook<
-  | Record<string, any>
-  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, any>>),
-  (app: App, isServer: boolean) => Promise<Record<string, any>>
+  | Record<string, unknown>
+  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, unknown>>),
+  (app: App, isServer: boolean) => Promise<Record<string, unknown>>
 >
 
 /**
@@ -58,7 +58,7 @@ export interface Hooks {
   extendsMarkdown: ExtendsHook<Markdown>
   extendsPageOptions: ExtendsHook<PageOptions>
   extendsPage: ExtendsHook<Page>
-  extendsBundlerOptions: ExtendsHook<any>
+  extendsBundlerOptions: ExtendsHook<Record<string, unknown>>
   clientConfigFile: ClientConfigFileHook
   alias: AliasDefineHook
   define: AliasDefineHook

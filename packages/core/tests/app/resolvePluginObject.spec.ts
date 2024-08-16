@@ -1,12 +1,12 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
+import type { Bundler, PluginFunction, PluginObject } from '../../src/index.js'
 import { createBaseApp, resolvePluginObject } from '../../src/index.js'
-import type { PluginFunction, PluginObject } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
-  bundler: {} as any,
+  bundler: {} as Bundler,
 })
 
 describe('core > app > resolvePluginObject', () => {
@@ -20,7 +20,7 @@ describe('core > app > resolvePluginObject', () => {
   })
 
   it('should work with plugin function', () => {
-    const pluginFunction: PluginFunction = vi.fn((app) => ({
+    const pluginFunction: PluginFunction = vi.fn(() => ({
       name: 'plugin-function',
     }))
 

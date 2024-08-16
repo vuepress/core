@@ -147,12 +147,10 @@ const TEST_CASES: [
   ],
 ]
 
-describe('core > page > resolvePageDate', () => {
-  describe('should resolve page date correctly', () => {
-    TEST_CASES.forEach(([source, expected]) => {
-      it(`raw: ${JSON.stringify(source)}`, () => {
-        expect(resolvePageDate(...source)).toEqual(expected)
-      })
+describe('should resolve page date correctly', () => {
+  TEST_CASES.forEach(([source, expected]) => {
+    it(`raw: ${JSON.stringify(source)}`, () => {
+      expect(resolvePageDate(...source)).toEqual(expected)
     })
   })
 })
