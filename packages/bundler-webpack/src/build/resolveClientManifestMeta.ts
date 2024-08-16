@@ -27,17 +27,15 @@ export const resolveClientManifestMeta = ({
 
   // module to files meta map
   const moduleFilesMetaMap = Object.fromEntries(
-    Object.entries(modules).map(([moduleRequest, assetFilesIndex]) => {
-      return [
-        moduleRequest,
-        assetFilesIndex
-          .map((fileIndex) => allFilesMeta[fileIndex])
-          .filter(
-            ({ file, type }) =>
-              async.includes(file) || (type !== 'style' && type !== 'script'),
-          ),
-      ]
-    }),
+    Object.entries(modules).map(([moduleRequest, assetFilesIndex]) => [
+      moduleRequest,
+      assetFilesIndex
+        .map((fileIndex) => allFilesMeta[fileIndex])
+        .filter(
+          ({ file, type }) =>
+            async.includes(file) || (type !== 'style' && type !== 'script'),
+        ),
+    ]),
   )
 
   return {

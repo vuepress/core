@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { normalizeRoutePath } from '../../src/index.js'
 
-const testCases = [
+const TEST_CASES = [
   // absolute index
   [['/'], '/'],
   [['/README.md'], '/'],
@@ -195,12 +195,12 @@ const testCases = [
   [['foo/.md', '/a/b.html'], '/a/foo/.html'],
   [['/.md', '/a/b.html'], '/.html'],
   [['/foo/.md', '/a/b.html'], '/foo/.html'],
-]
+] as const
 
 describe('should normalize clean paths correctly', () => {
-  testCases.forEach(([[path, current], expected]) =>
+  TEST_CASES.forEach(([[path, current], expected]) => {
     it(`${current ? `"${current}"-` : ''}"${path}" -> "${expected}"`, () => {
       expect(normalizeRoutePath(path, current)).toBe(expected)
-    }),
-  )
+    })
+  })
 })

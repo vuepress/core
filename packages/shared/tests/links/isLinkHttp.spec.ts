@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { isLinkHttp } from '../../src/index.js'
 
-const testCases: [string, ReturnType<typeof isLinkHttp>][] = [
+const TEST_CASES: [string, ReturnType<typeof isLinkHttp>][] = [
   ['https://foobar.com', true],
   ['http://foobar.com', true],
   ['//foobar.com', true],
@@ -9,7 +9,7 @@ const testCases: [string, ReturnType<typeof isLinkHttp>][] = [
   ['/foo/bar', false],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(`link: ${source}`, () => {
     expect(isLinkHttp(source)).toBe(expected)
   })

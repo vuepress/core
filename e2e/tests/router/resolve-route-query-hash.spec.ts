@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const testCases = [
+const TEST_CASES = [
   {
     path: '/?query=1',
     notFound: false,
@@ -28,8 +28,11 @@ test('should resolve routes when including both the query and hash', async ({
 
   for (const [index, li] of listItemsLocator.entries()) {
     const textContent = await li.textContent()
-    const resolvedRoute = JSON.parse(/: (\{.*\})\s*$/.exec(textContent!)![1])
-    expect(resolvedRoute.path).toEqual(testCases[index].path)
-    expect(resolvedRoute.notFound).toEqual(testCases[index].notFound)
+    const resolvedRoute = JSON.parse(
+      /: (\{.*\})\s*$/.exec(textContent!)![1],
+    ) as { path: string; notFound: boolean }
+
+    expect(resolvedRoute.path).toEqual(TEST_CASES[index].path)
+    expect(resolvedRoute.notFound).toEqual(TEST_CASES[index].notFound)
   }
 })

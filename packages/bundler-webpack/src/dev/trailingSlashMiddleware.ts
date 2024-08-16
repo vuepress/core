@@ -15,7 +15,8 @@ export const trailingSlashMiddleware: RequestHandler = (req, res, next) => {
     // if the path already has trailing slash
     req.path.endsWith('/')
   ) {
-    return next()
+    next()
+    return
   }
 
   // add trailing slash and retain query

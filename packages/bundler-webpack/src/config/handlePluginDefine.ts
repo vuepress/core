@@ -36,12 +36,14 @@ export const handlePluginDefine = async ({
 
   // tap the arguments of DefinePlugin
   config.plugin('define').tap(([options]) => {
-    defineResult.forEach((defineObject) =>
+    defineResult.forEach((defineObject) => {
       Object.entries(defineObject).forEach(([key, value]) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         options[key] = JSON.stringify(value)
-      }),
-    )
+      })
+    })
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return [options]
   })
 }

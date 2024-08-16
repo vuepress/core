@@ -12,6 +12,7 @@ export const resolvePageClientFilesMeta = ({
 }): FileMeta[] => {
   const files = new Set<FileMeta>()
   moduleRequests.forEach((request) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
     moduleFilesMetaMap[request]?.forEach((file) => files.add(file))
   })
   return Array.from(files)

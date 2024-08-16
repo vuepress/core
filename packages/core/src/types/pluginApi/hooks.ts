@@ -1,5 +1,6 @@
 import type { Markdown, MarkdownOptions } from '@vuepress/markdown'
 import type { App } from '../app/index.js'
+import type { BundlerOptions } from '../bundler.js'
 import type { Page, PageOptions } from '../page.js'
 
 // util type
@@ -12,11 +13,12 @@ interface Closable {
 export interface Hook<
   Exposed,
   Normalized = Exposed,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- `any` type is required to infer the result type correctly
   Result = Normalized extends (...args: any) => infer U
     ? U extends Promise<infer V>
       ? V
       : U
-    : void,
+    : never,
 > {
   exposed: Exposed
   normalized: Normalized
@@ -41,9 +43,9 @@ export type ClientConfigFileHook = Hook<
 
 // alias and define hook
 export type AliasDefineHook = Hook<
-  | Record<string, any>
-  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, any>>),
-  (app: App, isServer: boolean) => Promise<Record<string, any>>
+  | Record<string, unknown>
+  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, unknown>>),
+  (app: App, isServer: boolean) => Promise<Record<string, unknown>>
 >
 
 /**
@@ -58,7 +60,7 @@ export interface Hooks {
   extendsMarkdown: ExtendsHook<Markdown>
   extendsPageOptions: ExtendsHook<PageOptions>
   extendsPage: ExtendsHook<Page>
-  extendsBundlerOptions: ExtendsHook<any>
+  extendsBundlerOptions: ExtendsHook<BundlerOptions>
   clientConfigFile: ClientConfigFileHook
   alias: AliasDefineHook
   define: AliasDefineHook

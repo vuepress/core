@@ -2,7 +2,7 @@ import { expect, it } from 'vitest'
 import type { TemplateRendererContext } from '../../src/index.js'
 import { templateRenderer } from '../../src/index.js'
 
-const template = `\
+const TEMPLATE = `\
 <!DOCTYPE html>
 <html lang="{{ lang }}">
   <head>
@@ -22,18 +22,7 @@ const template = `\
 
 `
 
-const context: TemplateRendererContext = {
-  content: '#content#',
-  head: '#head#',
-  lang: '#lang#',
-  prefetch: '#prefetch#',
-  preload: '#preload#',
-  scripts: '#scripts#',
-  styles: '#styles#',
-  version: '#version#',
-}
-
-const expected = `\
+const EXPECTED = `\
 <!DOCTYPE html>
 <html lang="#lang#">
   <head>
@@ -53,8 +42,19 @@ const expected = `\
 
 `
 
-it('should fill template outlets correctly', () => {
-  const result = templateRenderer(template, context)
+const context: TemplateRendererContext = {
+  content: '#content#',
+  head: '#head#',
+  lang: '#lang#',
+  prefetch: '#prefetch#',
+  preload: '#preload#',
+  scripts: '#scripts#',
+  styles: '#styles#',
+  version: '#version#',
+}
 
-  expect(result).toBe(expected)
+it('should fill template outlets correctly', () => {
+  const result = templateRenderer(TEMPLATE, context)
+
+  expect(result).toBe(EXPECTED)
 })

@@ -63,7 +63,7 @@ export interface TemplateRendererContext {
 export type TemplateRenderer = (
   template: string,
   context: TemplateRendererContext,
-) => string | Promise<string>
+) => Promise<string> | string
 
 /**
  * The default template renderer implementation

@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('should navigate to home correctly', async ({ page }) => {
   await page.locator('#home').click()
-  await expect(page).toHaveURL(`${BASE}`)
+  await expect(page).toHaveURL(BASE)
   await expect(page.locator('#home-h2')).toHaveText('Home H2')
 })
 

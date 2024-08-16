@@ -42,10 +42,10 @@ export const loadUserConfig = async (
     plugins: [
       {
         name: 'externalize-deps',
-        setup(build) {
-          build.onResolve({ filter: /.*/ }, ({ path: id }) => {
+        setup(pluginBuild) {
+          pluginBuild.onResolve({ filter: /.*/ }, ({ path: id }) => {
             // externalize bare imports
-            if (id[0] !== '.' && !path.isAbsolute(id)) {
+            if (!id.startsWith('.') && !path.isAbsolute(id)) {
               return {
                 external: true,
               }
@@ -56,8 +56,8 @@ export const loadUserConfig = async (
       },
       {
         name: 'inject-file-scope-variables',
-        setup(build) {
-          build.onLoad({ filter: /\.[cm]?[jt]s$/ }, async (args) => {
+        setup(pluginBuild) {
+          pluginBuild.onLoad({ filter: /\.[cm]?[jt]s$/ }, async (args) => {
             const contents = await fs.readFile(args.path, 'utf8')
             const injectValues =
               `const ${dirnameVarName} = ${JSON.stringify(
@@ -92,6 +92,6 @@ export const loadUserConfig = async (
   }
   return {
     userConfig,
-    userConfigDependencies: Object.keys(result.metafile?.inputs ?? {}),
+    userConfigDependencies: Object.keys(result.metafile.inputs),
   }
 }

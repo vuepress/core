@@ -5,13 +5,14 @@ import {
   debug,
   fs,
   importFileDefault,
+  logger,
   withSpinner,
 } from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
 import {
-  clientManifestFilename,
+  CLIENT_MANIFEST_FILENAME,
   createClientConfig,
 } from './createClientConfig.js'
 import { createServerConfig } from './createServerConfig.js'
@@ -50,14 +51,14 @@ export const build = async (
         if (err) {
           reject(err)
         } else if (stats?.hasErrors()) {
-          stats.toJson().errors?.forEach((err) => {
-            console.error(err)
+          stats.toJson().errors?.forEach((item) => {
+            logger.error(item)
           })
           reject(new Error('Failed to compile with errors'))
         } else {
           if (stats?.hasWarnings()) {
             stats.toJson().warnings?.forEach((warning) => {
-              console.warn(warning)
+              logger.warn(warning)
             })
           }
           resolve()
@@ -70,8 +71,10 @@ export const build = async (
   // render pages
   await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
     // load the client manifest file
-    const clientManifestPath = app.dir.temp(clientManifestFilename)
-    const clientManifest: ClientManifest = await fs.readJson(clientManifestPath)
+    const clientManifestPath = app.dir.temp(CLIENT_MANIFEST_FILENAME)
+    const clientManifest = (await fs.readJson(
+      clientManifestPath,
+    )) as ClientManifest
 
     // resolve client files meta
     const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =

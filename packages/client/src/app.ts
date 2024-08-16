@@ -29,15 +29,16 @@ export const createVueApp: CreateVueAppFunction = async () => {
       }
 
       // get all root components
-      const rootComponents = clientConfigs.flatMap(({ rootComponents = [] }) =>
-        rootComponents.map((component) => h(component)),
+      const clientRootComponents = clientConfigs.flatMap(
+        ({ rootComponents = [] }) =>
+          rootComponents.map((component) => h(component)),
       )
 
       // get page layout
       const pageLayout = usePageLayout()
 
       // render layout and root components
-      return () => [h(pageLayout.value), rootComponents]
+      return () => [h(pageLayout.value), clientRootComponents]
     },
   })
 
@@ -74,8 +75,8 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
 // mount app in client bundle
 if (!__VUEPRESS_SSR__) {
-  createVueApp().then(({ app, router }) => {
-    router.isReady().then(() => {
+  void createVueApp().then(({ app, router }) => {
+    void router.isReady().then(() => {
       app.mount('#app')
     })
   })

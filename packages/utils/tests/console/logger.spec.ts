@@ -1,15 +1,15 @@
 import { expect, it, vi } from 'vitest'
 import { logger } from '../../src/index.js'
 
-const methods = [
+const METHODS = [
   ['info', 'log'],
   ['tip', 'log'],
   ['success', 'log'],
   ['warn', 'warn'],
   ['error', 'error'],
-]
+] as const
 
-methods.forEach(([method, innerMethod]) => {
+METHODS.forEach(([method, innerMethod]) => {
   it(method, () => {
     const stored = console[innerMethod]
     console[innerMethod] = vi.fn()

@@ -37,10 +37,11 @@ export type RouteLocale = string
 
 export type LayoutsRef = ComputedRef<Layouts>
 export type PageComponentRef = ComputedRef<PageComponent>
-export type PageDataRef<T extends Record<any, any> = Record<never, never>> =
-  ComputedRef<PageData<T>>
+export type PageDataRef<
+  T extends Record<string, unknown> = Record<string, unknown>,
+> = ComputedRef<PageData<T>>
 export type PageFrontmatterRef<
-  T extends Record<any, any> = Record<never, never>,
+  T extends Record<string, unknown> = Record<string, unknown>,
 > = ComputedRef<PageFrontmatter<T>>
 export type PageHeadRef = ComputedRef<PageHead>
 export type PageHeadTitleRef = ComputedRef<PageHeadTitle>

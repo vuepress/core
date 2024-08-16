@@ -45,9 +45,9 @@ export const resolvePagePermalink = ({
   const link = path.join(
     pathLocale,
     permalinkPattern
-      .replace(/:year/, year!)
-      .replace(/:month/, month!)
-      .replace(/:day/, day!)
+      .replace(/:year/, year)
+      .replace(/:month/, month)
+      .replace(/:day/, day)
       .replace(/:slug/, slug)
       .replace(/:raw/, pathInferred?.replace(/^\//, '') ?? ''),
   )

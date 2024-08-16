@@ -2,14 +2,14 @@ import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import { vPrePlugin } from '../../src/index.js'
 
-const codeFence = '```'
+const CODE_FENCE = '```'
 
 describe('@vuepress/markdown > plugins > vPrePlugin', () => {
   describe('plugin options', () => {
     const source = `\
-${codeFence}js
+${CODE_FENCE}js
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
 \`inline\`
 `
@@ -40,33 +40,33 @@ ${codeFence}
 
   describe(':v-pre / :no-v-pre', () => {
     const source = `\
-${codeFence}js:v-pre
+${CODE_FENCE}js:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:no-v-pre
+${CODE_FENCE}js:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js{1,2}:v-pre
+${CODE_FENCE}js{1,2}:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js{1,2}:no-v-pre
+${CODE_FENCE}js{1,2}:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:other-syntax:v-pre
+${CODE_FENCE}js:other-syntax:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:other-syntax:no-v-pre
+${CODE_FENCE}js:other-syntax:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js
+${CODE_FENCE}js
 const a = 1
-${codeFence}
+${CODE_FENCE}
 `
     it('should work if `block` is enabled by default', () => {
       const md = MarkdownIt().use(vPrePlugin)
@@ -83,33 +83,33 @@ ${codeFence}
 
   describe('syntax highlighting', () => {
     const source = `\
-${codeFence}js:v-pre
+${CODE_FENCE}js:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:no-v-pre
+${CODE_FENCE}js:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js{1,2}:v-pre
+${CODE_FENCE}js{1,2}:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js{1,2}:no-v-pre
+${CODE_FENCE}js{1,2}:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:other-syntax:v-pre
+${CODE_FENCE}js:other-syntax:v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js:other-syntax:no-v-pre
+${CODE_FENCE}js:other-syntax:no-v-pre
 const a = 1
-${codeFence}
+${CODE_FENCE}
 
-${codeFence}js
+${CODE_FENCE}js
 const a = 1
-${codeFence}
+${CODE_FENCE}
 `
     it('should work highlighted code is wrapped with `<pre>`', () => {
       const highlight = vi.fn(

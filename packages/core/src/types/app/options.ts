@@ -67,7 +67,7 @@ export interface AppConfigBuild {
    *
    * @default true
    */
-  shouldPreload?: ((file: string, type: string) => boolean) | boolean
+  shouldPreload?: boolean | ((file: string, type: string) => boolean)
 
   /**
    * Determine what resource files should be prefetched. Use boolean value to
@@ -75,7 +75,7 @@ export interface AppConfigBuild {
    *
    * @default true
    */
-  shouldPrefetch?: ((file: string, type: string) => boolean) | boolean
+  shouldPrefetch?: boolean | ((file: string, type: string) => boolean)
 
   /**
    * Specify the path of the HTML template to be used for build
@@ -95,7 +95,7 @@ export interface AppConfigBuild {
 /**
  * Vuepress app config
  */
-export type AppConfig = AppConfigCommon & AppConfigDev & AppConfigBuild
+export type AppConfig = AppConfigBuild & AppConfigCommon & AppConfigDev
 
 /**
  * Vuepress app options

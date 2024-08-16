@@ -7,6 +7,6 @@ export const webpackBundler = (
   options: WebpackBundlerOptions = {},
 ): Bundler => ({
   name: '@vuepress/bundler-webpack',
-  dev: (app) => dev(options, app),
-  build: (app) => build(options, app),
+  dev: async (app) => dev(options, app),
+  build: async (app) => build(options, app),
 })

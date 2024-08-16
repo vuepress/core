@@ -7,9 +7,10 @@ const require = createRequire(import.meta.url)
 /**
  * Create directory util function
  */
-export const createAppDirFunction = (baseDir: string): AppDirFunction => {
-  return (...args: string[]): string => path.resolve(baseDir, ...args)
-}
+export const createAppDirFunction =
+  (baseDir: string): AppDirFunction =>
+  (...args) =>
+    path.resolve(baseDir, ...args)
 
 /**
  * Resolve directory utils for vuepress app

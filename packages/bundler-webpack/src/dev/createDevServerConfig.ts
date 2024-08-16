@@ -5,10 +5,10 @@ import type WebpackDevServer from 'webpack-dev-server'
 import type { WebpackBundlerOptions } from '../types.js'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 
-export const createDevServerConfig = async (
+export const createDevServerConfig = (
   app: App,
   options: WebpackBundlerOptions,
-): Promise<WebpackDevServer.Configuration> => ({
+): WebpackDevServer.Configuration => ({
   allowedHosts: 'all',
   compress: true,
   devMiddleware: {

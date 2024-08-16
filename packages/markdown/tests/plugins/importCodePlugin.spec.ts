@@ -9,15 +9,15 @@ import {
   it,
   vi,
 } from 'vitest'
-import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 import type { MarkdownEnv } from '../../src/index.js'
+import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 
-const jsFixturePathRelative = '../__fixtures__/importCode.js'
-const mdFixturePathRelative = '../__fixtures__/importCode.md'
-const jsFixturePath = path.resolve(__dirname, jsFixturePathRelative)
-const mdFixturePath = path.resolve(__dirname, mdFixturePathRelative)
-const jsFixtureContent = fs.readFileSync(jsFixturePath).toString()
-const mdFixtureContent = fs.readFileSync(mdFixturePath).toString()
+const JS_FIXTURE_PATH_RELATIVE = '../__fixtures__/importCode.js'
+const MD_FIXTURE_PATH_RELATIVE = '../__fixtures__/importCode.md'
+const JS_FIXTURE_PATH = path.resolve(__dirname, JS_FIXTURE_PATH_RELATIVE)
+const MD_FIXTURE_PATH = path.resolve(__dirname, MD_FIXTURE_PATH_RELATIVE)
+const JS_FIXTURE_CONTENT = fs.readFileSync(JS_FIXTURE_PATH).toString()
+const MD_FIXTURE_CONTENT = fs.readFileSync(MD_FIXTURE_PATH).toString()
 
 const consoleError = console.error
 const mockConsoleError = vi.fn()
@@ -52,7 +52,7 @@ describe('@vuepress/markdown > plugins > importCodePlugin', () => {
     const rendered = md.render(source.join('\n\n'), env)
 
     expect(rendered).toEqual(
-      source.map((item) => `<p>${item}</p>`).join('\n') + '\n',
+      `${source.map((item) => `<p>${item}</p>`).join('\n')}\n`,
     )
     expect(env.importedFiles).toBeUndefined()
   })
@@ -60,16 +60,16 @@ describe('@vuepress/markdown > plugins > importCodePlugin', () => {
   describe('lines range', () => {
     it('should import all lines', () => {
       const source = `\
-@[code](${jsFixturePathRelative})
-@[code](${mdFixturePathRelative})
+@[code](${JS_FIXTURE_PATH_RELATIVE})
+@[code](${MD_FIXTURE_PATH_RELATIVE})
 `
 
       const expected = `\
 <pre><code class="language-js">\
-${jsFixtureContent}\
+${JS_FIXTURE_CONTENT}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent}\
+${MD_FIXTURE_CONTENT}\
 </code></pre>
 `
 
@@ -80,37 +80,37 @@ ${mdFixtureContent}\
       const rendered = md.render(source, env)
 
       expect(rendered).toEqual(expected)
-      expect(env.importedFiles).toEqual([jsFixturePath, mdFixturePath])
+      expect(env.importedFiles).toEqual([JS_FIXTURE_PATH, MD_FIXTURE_PATH])
     })
 
     it('should import partial lines', () => {
       const source = `\
-@[code{1-2}](${jsFixturePathRelative})
-@[code{1-}](${jsFixturePathRelative})
-@[code{2}](${jsFixturePathRelative})
-@[code{4-5}](${mdFixturePathRelative})
-@[code{-5}](${mdFixturePathRelative})
-@[code{5}](${mdFixturePathRelative})
+@[code{1-2}](${JS_FIXTURE_PATH_RELATIVE})
+@[code{1-}](${JS_FIXTURE_PATH_RELATIVE})
+@[code{2}](${JS_FIXTURE_PATH_RELATIVE})
+@[code{4-5}](${MD_FIXTURE_PATH_RELATIVE})
+@[code{-5}](${MD_FIXTURE_PATH_RELATIVE})
+@[code{5}](${MD_FIXTURE_PATH_RELATIVE})
 `
 
       const expected = `\
 <pre><code class="language-js">\
-${jsFixtureContent.split('\n').slice(0, 2).join('\n').replace(/\n?$/, '\n')}\
+${JS_FIXTURE_CONTENT.split('\n').slice(0, 2).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-js">\
-${jsFixtureContent.split('\n').slice(0).join('\n').replace(/\n?$/, '\n')}\
+${JS_FIXTURE_CONTENT.split('\n').slice(0).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-js">\
-${jsFixtureContent.split('\n').slice(1, 1).join('\n').replace(/\n?$/, '\n')}\
+${JS_FIXTURE_CONTENT.split('\n').slice(1, 1).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent.split('\n').slice(3, 5).join('\n').replace(/\n?$/, '\n')}\
+${MD_FIXTURE_CONTENT.split('\n').slice(3, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
+${MD_FIXTURE_CONTENT.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent.split('\n').slice(4, 5).join('\n').replace(/\n?$/, '\n')}\
+${MD_FIXTURE_CONTENT.split('\n').slice(4, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 `
 
@@ -122,12 +122,12 @@ ${mdFixtureContent.split('\n').slice(4, 5).join('\n').replace(/\n?$/, '\n')}\
 
       expect(rendered).toEqual(expected)
       expect(env.importedFiles).toEqual([
-        jsFixturePath,
-        jsFixturePath,
-        jsFixturePath,
-        mdFixturePath,
-        mdFixturePath,
-        mdFixturePath,
+        JS_FIXTURE_PATH,
+        JS_FIXTURE_PATH,
+        JS_FIXTURE_PATH,
+        MD_FIXTURE_PATH,
+        MD_FIXTURE_PATH,
+        MD_FIXTURE_PATH,
       ])
     })
   })
@@ -229,7 +229,7 @@ ${mdFixtureContent.split('\n').slice(4, 5).join('\n').replace(/\n?$/, '\n')}\
 `
       const expected = `\
 <pre><code class="language-js">\
-${jsFixtureContent}\
+${JS_FIXTURE_CONTENT}\
 </code></pre>
 `
 
@@ -243,7 +243,7 @@ ${jsFixtureContent}\
       const rendered = md.render(source, env)
 
       expect(rendered).toEqual(expected)
-      expect(env.importedFiles).toEqual([jsFixturePath])
+      expect(env.importedFiles).toEqual([JS_FIXTURE_PATH])
     })
   })
 
@@ -296,10 +296,10 @@ foo
   describe('compatibility with otherPlugin', () => {
     it('should preserve the things after code as fence info', () => {
       const source1 = `\
-@[code js{1,3-4}](${jsFixturePathRelative})
+@[code js{1,3-4}](${JS_FIXTURE_PATH_RELATIVE})
 `
       const source2 = `\
-@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${mdFixturePathRelative})
+@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${MD_FIXTURE_PATH_RELATIVE})
 `
 
       const md = MarkdownIt().use(importCodePlugin)
@@ -312,12 +312,12 @@ foo
       expect(rendered1).toEqual(
         md.render(`\
 \`\`\`js{1,3-4}
-${jsFixtureContent}\
+${JS_FIXTURE_CONTENT}\
 \`\`\`
 `),
       )
       expect(rendered1).toMatchSnapshot()
-      expect(env1.importedFiles).toEqual([jsFixturePath])
+      expect(env1.importedFiles).toEqual([JS_FIXTURE_PATH])
 
       const env2: MarkdownEnv = {
         filePath: __filename,
@@ -328,20 +328,20 @@ ${jsFixtureContent}\
       expect(rendered2).toEqual(
         md.render(`\
 \`\`\`md:no-line-numbers:no-v-pre title="no-line-numbers.md"
-${mdFixtureContent}\
+${MD_FIXTURE_CONTENT}\
 \`\`\`
 `),
       )
       expect(rendered2).toMatchSnapshot()
-      expect(env2.importedFiles).toEqual([mdFixturePath])
+      expect(env2.importedFiles).toEqual([MD_FIXTURE_PATH])
     })
 
     it('should work with syntax supported by vPrePlugin', () => {
       const source1 = `\
-@[code js{1,3-4}](${jsFixturePathRelative})
+@[code js{1,3-4}](${JS_FIXTURE_PATH_RELATIVE})
 `
       const source2 = `\
-@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${mdFixturePathRelative})
+@[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${MD_FIXTURE_PATH_RELATIVE})
 `
 
       const md = MarkdownIt().use(importCodePlugin).use(vPrePlugin)

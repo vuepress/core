@@ -74,6 +74,7 @@ export const renderPageContent = ({
       'frontmatter',
     ),
     sfcBlocks,
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-template-expression -- the title from frontmatter is not guaranteed to be a string
     title: frontmatter.title ? `${frontmatter.title}` : title,
   }
 }

@@ -48,7 +48,13 @@ export const createImportCodeBlockRule =
     // return true as we have matched the syntax
     if (silent) return true
 
-    const { info, importPath } = match.groups
+    const { info, importPath } = match.groups as {
+      lineSingle?: string
+      lineStart?: string
+      lineEnd?: string
+      info?: string
+      importPath: string
+    }
 
     const lineSingle = parseLineNumber(match.groups.lineSingle)
     const lineStart = lineSingle ?? parseLineNumber(match.groups.lineStart) ?? 0

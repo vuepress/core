@@ -36,8 +36,8 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
 
     // methods
     use: (plugin: Plugin) => appUse(app, plugin),
-    init: () => appInit(app),
-    prepare: () => appPrepare(app),
+    init: async () => appInit(app),
+    prepare: async () => appPrepare(app),
   } as App
 
   // setup theme and plugins

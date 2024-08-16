@@ -1,6 +1,7 @@
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from '../../src/index.js'
 import { createBaseApp, resolveAppPages } from '../../src/index.js'
 
 describe('core > app > resolveAppPages', () => {
@@ -8,7 +9,7 @@ describe('core > app > resolveAppPages', () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages'),
       theme: { name: 'test' },
-      bundler: {} as any,
+      bundler: {} as Bundler,
     })
     app.markdown = createMarkdown()
 
@@ -28,7 +29,7 @@ describe('core > app > resolveAppPages', () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
       theme: { name: 'test' },
-      bundler: {} as any,
+      bundler: {} as Bundler,
     })
     app.markdown = createMarkdown()
 
@@ -47,7 +48,7 @@ describe('core > app > resolveAppPages', () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
       theme: { name: 'test' },
-      bundler: {} as any,
+      bundler: {} as Bundler,
     })
 
     app.use({
@@ -71,7 +72,7 @@ describe('core > app > resolveAppPages', () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
       theme: { name: 'test' },
-      bundler: {} as any,
+      bundler: {} as Bundler,
     })
 
     app.use({

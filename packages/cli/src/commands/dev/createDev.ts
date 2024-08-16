@@ -1,6 +1,6 @@
 import process from 'node:process'
-import { createDevApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
+import { createDevApp } from '@vuepress/core'
 import { debug, fs, logger, withSpinner } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import {
@@ -57,14 +57,12 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
 
     // clean temp and cache
     if (commandOptions.cleanTemp === true) {
-      await withSpinner('Cleaning temp')(() => {
-        return fs.remove(app.dir.temp())
-      })
+      await withSpinner('Cleaning temp')(async () => fs.remove(app.dir.temp()))
     }
     if (commandOptions.cleanCache === true) {
-      await withSpinner('Cleaning cache')(() => {
-        return fs.remove(app.dir.cache())
-      })
+      await withSpinner('Cleaning cache')(async () =>
+        fs.remove(app.dir.cache()),
+      )
     }
 
     // initialize and prepare
@@ -88,7 +86,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     const restart = async (): Promise<void> => {
       await Promise.all([
         // close all watchers
-        ...watchers.map((item) => item.close()),
+        ...watchers.map(async (item) => item.close()),
         // close current dev server
         close(),
       ])

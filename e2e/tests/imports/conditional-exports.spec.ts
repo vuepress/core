@@ -8,8 +8,8 @@ test('should load different files correctly', async ({ page }) => {
 
   if (COMMAND === 'build') {
     expect(
-      await page.evaluate(() =>
-        fetch('./conditional-exports.html').then((res) => res.text()),
+      await page.evaluate(async () =>
+        fetch('./conditional-exports.html').then(async (res) => res.text()),
       ),
     ).toContain('<p>node-mjs</p>')
   }

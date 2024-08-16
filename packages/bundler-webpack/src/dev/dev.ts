@@ -29,7 +29,7 @@ export const dev = async (
   const compiler = webpack(webpackConfig)
 
   // create webpack-dev-server
-  const serverConfig = await createDevServerConfig(app, options)
+  const serverConfig = createDevServerConfig(app, options)
   const server = new WebpackDevServer(serverConfig, compiler)
 
   const [, close] = await Promise.all([
@@ -56,7 +56,7 @@ export const dev = async (
         if (hasFinished) return
         hasFinished = true
 
-        spinner.succeed(`Compilation finished in ${endTime! - startTime!}ms`)
+        spinner.succeed(`Compilation finished in ${endTime - startTime}ms`)
 
         // replace `0.0.0.0` with `localhost` as `0.0.0.0` is not available on windows
         const url = `http://${
@@ -67,7 +67,7 @@ export const dev = async (
         )
 
         // resolve the close function
-        resolve((): Promise<void> => server.stop())
+        resolve(async (): Promise<void> => server.stop())
       })
 
       // stop spinner and reject error if the first compilation is failed

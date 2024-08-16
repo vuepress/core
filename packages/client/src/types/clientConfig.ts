@@ -14,7 +14,7 @@ export interface ClientConfig {
     app: App
     router: Router
     siteData: SiteDataRef
-  }) => void | Promise<void>
+  }) => Promise<void> | void
 
   /**
    * A function to be called inside the setup function of vue app

@@ -2,7 +2,7 @@ import type { HeadConfig } from '@vuepress/shared'
 import { expect, it } from 'vitest'
 import { renderHead } from '../../src/index.js'
 
-const testCases: [HeadConfig, string][] = [
+const TEST_CASES: [HeadConfig, string][] = [
   [['title', {}, 'vuepress site title'], `<title>vuepress site title</title>`],
   [
     [
@@ -70,7 +70,7 @@ const testCases: [HeadConfig, string][] = [
   ],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(expected, () => {
     expect(renderHead(source)).toBe(expected)
   })

@@ -1,12 +1,76 @@
-import { isPlainObject, isString } from '@vuepress/shared'
 import type { HeadConfig, VuepressSSRContext } from '@vuepress/shared'
+import { isPlainObject, isString } from '@vuepress/shared'
 import { onMounted, provide, useSSRContext, watch } from 'vue'
+import type { UpdateHead } from './composables/index.js'
 import {
   updateHeadSymbol,
   usePageHead,
   usePageLang,
 } from './composables/index.js'
-import type { UpdateHead } from './composables/index.js'
+
+/**
+ * Query the matched head element of head config
+ */
+export const queryHeadElement = ([
+  tagName,
+  attrs,
+  content = '',
+]: HeadConfig): HTMLElement | null => {
+  const attrsSelector = Object.entries(attrs)
+    .map(([key, value]) => {
+      if (isString(value)) {
+        return `[${key}=${JSON.stringify(value)}]`
+      }
+      if (value) {
+        return `[${key}]`
+      }
+      return ''
+    })
+    .join('')
+
+  const selector = `head > ${tagName}${attrsSelector}`
+  const headElements = Array.from(
+    document.querySelectorAll<HTMLElement>(selector),
+  )
+  const matchedHeadElement = headElements.find(
+    (item) => item.innerText === content,
+  )
+  return matchedHeadElement ?? null
+}
+
+/**
+ * Create head element from head config
+ */
+export const createHeadElement = ([
+  tagName,
+  attrs,
+  content,
+]: HeadConfig): HTMLElement | null => {
+  if (!isString(tagName)) {
+    return null
+  }
+
+  // create element
+  const headElement = document.createElement(tagName)
+
+  // set attributes
+  if (isPlainObject(attrs)) {
+    Object.entries(attrs).forEach(([key, value]) => {
+      if (isString(value)) {
+        headElement.setAttribute(key, value)
+      } else if (value) {
+        headElement.setAttribute(key, '')
+      }
+    })
+  }
+
+  // set content
+  if (isString(content)) {
+    headElement.appendChild(document.createTextNode(content))
+  }
+
+  return headElement
+}
 
 /**
  * Auto update head and provide as global util
@@ -71,7 +135,7 @@ export const setupUpdateHead = (): void => {
       // remove the non-intersection from old elements
       if (matchedIndex === -1) {
         oldEl.remove()
-        // use delete to make the index consistent
+        // eslint-disable-next-line @typescript-eslint/no-array-delete -- use delete to make the index consistent
         delete managedHeadElements[oldIndex]
       }
       // keep the intersection in old elements, and remove it from new elements
@@ -85,7 +149,7 @@ export const setupUpdateHead = (): void => {
     // update managed head elements
     managedHeadElements = [
       // filter out empty deleted items
-      ...managedHeadElements.filter((item) => !!item),
+      ...managedHeadElements.filter((item: HTMLElement | undefined) => !!item),
       ...newHeadElements,
     ]
   }
@@ -99,68 +163,4 @@ export const setupUpdateHead = (): void => {
     }
     watch(head, updateHead, { immediate: __VUEPRESS_DEV__ })
   })
-}
-
-/**
- * Query the matched head element of head config
- */
-export const queryHeadElement = ([
-  tagName,
-  attrs,
-  content = '',
-]: HeadConfig): HTMLElement | null => {
-  const attrsSelector = Object.entries(attrs)
-    .map(([key, value]) => {
-      if (isString(value)) {
-        return `[${key}=${JSON.stringify(value)}]`
-      }
-      if (value === true) {
-        return `[${key}]`
-      }
-      return ''
-    })
-    .join('')
-
-  const selector = `head > ${tagName}${attrsSelector}`
-  const headElements = Array.from(
-    document.querySelectorAll<HTMLElement>(selector),
-  )
-  const matchedHeadElement = headElements.find(
-    (item) => item.innerText === content,
-  )
-  return matchedHeadElement || null
-}
-
-/**
- * Create head element from head config
- */
-export const createHeadElement = ([
-  tagName,
-  attrs,
-  content,
-]: HeadConfig): HTMLElement | null => {
-  if (!isString(tagName)) {
-    return null
-  }
-
-  // create element
-  const headElement = document.createElement(tagName)
-
-  // set attributes
-  if (isPlainObject(attrs)) {
-    Object.entries(attrs).forEach(([key, value]) => {
-      if (isString(value)) {
-        headElement.setAttribute(key, value)
-      } else if (value === true) {
-        headElement.setAttribute(key, '')
-      }
-    })
-  }
-
-  // set content
-  if (isString(content)) {
-    headElement.appendChild(document.createTextNode(content))
-  }
-
-  return headElement
 }

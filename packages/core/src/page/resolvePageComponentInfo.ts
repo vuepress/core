@@ -4,16 +4,16 @@ import type { App } from '../types/index.js'
 /**
  * Resolve page component and related info
  */
-export const resolvePageComponentInfo = async ({
+export const resolvePageComponentInfo = ({
   app,
   htmlFilePathRelative,
 }: {
   app: App
   htmlFilePathRelative: string
-}): Promise<{
+}): {
   componentFilePath: string
   componentFilePathRelative: string
-}> => {
+} => {
   // resolve component file path
   const componentFilePathRelative = path.join(
     'pages',

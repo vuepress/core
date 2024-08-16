@@ -1,5 +1,6 @@
 import { path, templateRenderer } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from '../../src/index.js'
 import { resolveAppOptions } from '../../src/index.js'
 
 describe('core > app > resolveAppOptions', () => {
@@ -9,8 +10,8 @@ describe('core > app > resolveAppOptions', () => {
     expect(
       resolveAppOptions({
         source,
-        theme: { name: 'theme' } as any,
-        bundler: { name: 'bundler' } as any,
+        theme: { name: 'theme' },
+        bundler: { name: 'bundler' } as Bundler,
       }),
     ).toEqual({
       base: '/',

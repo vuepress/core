@@ -1,6 +1,6 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
-import { watch } from 'vue'
 import type { App } from 'vue'
+import { watch } from 'vue'
 import type { ClientData } from './types/index.js'
 
 const PLUGIN_ID = 'org.vuejs.vuepress'
@@ -12,11 +12,14 @@ const INSPECTOR_LABEL = PLUGIN_LABEL
 const INSPECTOR_CLIENT_DATA_ID = 'client-data'
 const INSPECTOR_CLIENT_DATA_LABEL = 'Client Data'
 
+type ClientDataKey = keyof ClientData
+type ClientDataValue = ClientData[ClientDataKey]
+
 export const setupDevtools = (app: App, clientData: ClientData): void => {
   setupDevtoolsPlugin(
     {
       // fix recursive reference
-      app: app as any,
+      app: app as never,
       id: PLUGIN_ID,
       label: PLUGIN_LABEL,
       packageName: '@vuepress/client',
@@ -25,9 +28,12 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
       componentStateTypes: [PLUGIN_COMPONENT_STATE_TYPE],
     },
     (api) => {
-      const clientDataEntries = Object.entries(clientData)
-      const clientDataKeys = Object.keys(clientData)
-      const clientDataValues = Object.values(clientData)
+      const clientDataEntries = Object.entries(clientData) as [
+        ClientDataKey,
+        ClientDataValue,
+      ][]
+      const clientDataKeys = Object.keys(clientData) as ClientDataKey[]
+      const clientDataValues = Object.values(clientData) as ClientDataValue[]
 
       // setup component state
       api.on.inspectComponent((payload) => {
@@ -72,12 +78,12 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
             ),
           }
         }
-        if (clientDataKeys.includes(payload.nodeId)) {
+        if (clientDataKeys.includes(payload.nodeId as ClientDataKey)) {
           payload.state = {
             [INSPECTOR_CLIENT_DATA_LABEL]: [
               {
                 key: payload.nodeId,
-                value: clientData[payload.nodeId].value,
+                value: clientData[payload.nodeId as ClientDataKey].value,
               },
             ],
           }

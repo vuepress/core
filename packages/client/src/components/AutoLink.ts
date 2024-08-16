@@ -9,7 +9,7 @@ export interface AutoLinkConfig {
   /**
    * Pattern to determine if the link should be active, which has higher priority than `exact`
    */
-  activeMatch?: string | RegExp
+  activeMatch?: RegExp | string
 
   /**
    * The `aria-label` attribute
@@ -59,9 +59,9 @@ export const AutoLink = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: (config: AutoLinkConfig) => VNode[] | VNode
-    before?: (config: AutoLinkConfig) => VNode[] | VNode | null
-    after?: (config: AutoLinkConfig) => VNode[] | VNode | null
+    default?: (config: AutoLinkConfig) => VNode | VNode[]
+    before?: (config: AutoLinkConfig) => VNode | VNode[] | null
+    after?: (config: AutoLinkConfig) => VNode | VNode[] | null
   }>,
 
   setup(props, { slots }) {
@@ -134,7 +134,7 @@ export const AutoLink = defineComponent({
     return () => {
       const { before, after, default: defaultSlot } = slots
 
-      const content = defaultSlot?.(config.value) || [
+      const content = defaultSlot?.(config.value) ?? [
         before?.(config.value),
         config.value.text,
         after?.(config.value),

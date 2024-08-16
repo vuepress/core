@@ -14,7 +14,7 @@ export const renderPagePrefetchLinks = ({
   pageClientFilesMeta: FileMeta[]
 }): string => {
   // shouldPrefetch option
-  const shouldPrefetch = app.options.shouldPrefetch
+  const { shouldPrefetch } = app.options
 
   // do not render prefetch links
   if (shouldPrefetch === false) {

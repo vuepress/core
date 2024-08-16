@@ -1,10 +1,10 @@
 import { removeEndingSlash } from '@vuepress/shared'
 import type { Router } from 'vue-router'
 import {
+  START_LOCATION,
   createMemoryHistory,
   createRouter,
   createWebHistory,
-  START_LOCATION,
 } from 'vue-router'
 import type { PageChunk } from '../types/index.js'
 import { resolveRoute } from './resolveRoute.js'

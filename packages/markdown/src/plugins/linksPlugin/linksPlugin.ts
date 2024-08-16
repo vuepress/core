@@ -75,9 +75,9 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // check if a link is an external link
     if (isLinkExternal(hrefLink, base)) {
       // set `externalAttrs` to current token
-      Object.entries(externalAttrs).forEach(([key, val]) =>
-        token.attrSet(key, val),
-      )
+      Object.entries(externalAttrs).forEach(([key, val]) => {
+        token.attrSet(key, val)
+      })
       return
     }
 
@@ -137,17 +137,17 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     })
   }
 
-  md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+  md.renderer.rules.link_open = (tokens, idx, opts, env: MarkdownEnv, self) => {
     handleLinkOpen(tokens, idx, env)
-    return self.renderToken(tokens, idx, options)
+    return self.renderToken(tokens, idx, opts)
   }
 
-  md.renderer.rules.link_close = (tokens, idx, options, _env, self) => {
+  md.renderer.rules.link_close = (tokens, idx, opts, _env, self) => {
     // convert ending tag of internal link
     if (hasOpenInternalLink) {
       hasOpenInternalLink = false
       tokens[idx].tag = internalTag
     }
-    return self.renderToken(tokens, idx, options)
+    return self.renderToken(tokens, idx, opts)
   }
 }

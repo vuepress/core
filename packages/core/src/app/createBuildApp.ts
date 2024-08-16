@@ -6,6 +6,6 @@ import { createBaseApp } from './createBaseApp.js'
  */
 export const createBuildApp = (config: AppConfig): BuildApp => {
   const app = createBaseApp(config, true) as BuildApp
-  app.build = () => app.options.bundler.build(app)
+  app.build = async () => app.options.bundler.build(app)
   return app
 }

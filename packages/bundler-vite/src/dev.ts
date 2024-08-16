@@ -14,7 +14,7 @@ export const dev = async (
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
 
-  const viteConfig = await resolveViteConfig({
+  const viteConfig = resolveViteConfig({
     app,
     options,
     isBuild: false,
@@ -24,8 +24,8 @@ export const dev = async (
   const server = await createServer(viteConfig)
   await server.listen()
 
-  const viteVersion = fs.readJsonSync(
-    require.resolve('vite/package.json'),
+  const viteVersion = (
+    fs.readJsonSync(require.resolve('vite/package.json')) as { version: string }
   ).version
   server.config.logger.info(
     colors.cyan(`\n  vite v${viteVersion}`) +

@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { formatMs } from '../../src/index.js'
 
-const testCases: [source: number, expected: string][] = [
+const TEST_CASES: [source: number, expected: string][] = [
   [0, '0ms'],
   [999, '999ms'],
   [1000, '1.00s'],
@@ -11,7 +11,7 @@ const testCases: [source: number, expected: string][] = [
   [2001, '2.00s'],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(`${source} -> ${expected}`, () => {
     expect(formatMs(source)).toBe(expected)
   })

@@ -1,16 +1,9 @@
-import type { App } from '@vuepress/core'
 import type Config from 'webpack-5-chain'
 
 /**
  * Set webpack config to handle assets files
  */
-export const handleModuleAssets = ({
-  app,
-  config,
-}: {
-  app: App
-  config: Config
-}): void => {
+export const handleModuleAssets = ({ config }: { config: Config }): void => {
   // images
   config.module
     .rule('images')

@@ -20,19 +20,19 @@ export type Markdown = MarkdownIt
 export type { MarkdownSfcBlocks }
 
 export interface MarkdownOptions extends Options {
-  anchor?: false | AnchorPluginOptions
-  assets?: false | AssetsPluginOptions
+  anchor?: AnchorPluginOptions | false
+  assets?: AssetsPluginOptions | false
   component?: false
-  emoji?: false | EmojiPluginOptions
-  frontmatter?: false | FrontmatterPluginOptions
-  headers?: false | HeadersPluginOptions
+  emoji?: EmojiPluginOptions | false
+  frontmatter?: FrontmatterPluginOptions | false
+  headers?: HeadersPluginOptions | false
   title?: false
-  importCode?: false | ImportCodePluginOptions
-  links?: false | LinksPluginOptions
-  sfc?: false | SfcPluginOptions
+  importCode?: ImportCodePluginOptions | false
+  links?: LinksPluginOptions | false
+  sfc?: SfcPluginOptions | false
   slugify?: MarkdownSlugifyFunction
-  toc?: false | TocPluginOptions
-  vPre?: false | VPrePluginOptions
+  toc?: TocPluginOptions | false
+  vPre?: VPrePluginOptions | false
   /**
    * @deprecated This feature has been removed. Please use `@vuepress/plugin-prismjs` or `@vuepress/plugin-shiki` instead.
    */

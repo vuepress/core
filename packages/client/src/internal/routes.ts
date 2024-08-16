@@ -2,8 +2,8 @@ import {
   redirects as redirectsRaw,
   routes as routesRaw,
 } from '@internal/routes'
-import { shallowRef } from 'vue'
 import type { Ref } from 'vue'
+import { shallowRef } from 'vue'
 import type { Redirects, Routes } from '../types/index.js'
 
 /**

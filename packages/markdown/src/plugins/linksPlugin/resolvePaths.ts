@@ -31,25 +31,23 @@ export const resolvePaths = (
     }
   }
   // if raw path is relative
+  // if `filePathRelative` is available
+  else if (filePathRelative) {
+    // resolve relative path according to `filePathRelative`
+    relativePath = path.join(
+      // file path may contain non-ASCII characters
+      path.dirname(encodeURI(filePathRelative)),
+      rawPath,
+    )
+    // resolve absolute path according to `base`
+    absolutePath = path.join(base, relativePath)
+  }
+  // if `filePathRelative` is not available
   else {
-    // if `filePathRelative` is available
-    if (filePathRelative) {
-      // resolve relative path according to `filePathRelative`
-      relativePath = path.join(
-        // file path may contain non-ASCII characters
-        path.dirname(encodeURI(filePathRelative)),
-        rawPath,
-      )
-      // resolve absolute path according to `base`
-      absolutePath = path.join(base, relativePath)
-    }
-    // if `filePathRelative` is not available
-    else {
-      // remove leading './'
-      relativePath = rawPath.replace(/^(?:\.\/)?(.*)$/, '$1')
-      // just take relative link as absolute link
-      absolutePath = null
-    }
+    // remove leading './'
+    relativePath = rawPath.replace(/^(?:\.\/)?(.*)$/, '$1')
+    // just take relative link as absolute link
+    absolutePath = null
   }
 
   return {

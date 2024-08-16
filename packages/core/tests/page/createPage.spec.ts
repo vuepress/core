@@ -1,18 +1,19 @@
 import { path } from '@vuepress/utils'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
+import type { Bundler } from '../../src/index.js'
 import { createBaseApp, createPage } from '../../src/index.js'
 
-const app = createBaseApp({
-  source: path.resolve(__dirname, 'fake-source'),
-  theme: { name: 'test' },
-  bundler: {} as any,
-})
+describe('should work without plugins', () => {
+  const app = createBaseApp({
+    source: path.resolve(__dirname, 'fake-source'),
+    theme: { name: 'test' },
+    bundler: {} as Bundler,
+  })
 
-beforeAll(async () => {
-  await app.init()
-})
+  beforeAll(async () => {
+    await app.init()
+  })
 
-describe('core > page > createPage', () => {
   it('should throw an error', async () => {
     const consoleError = console.error
     console.error = vi.fn()
@@ -86,12 +87,14 @@ describe('core > page > createPage', () => {
     )
     expect(page.chunkName).toBeTruthy()
   })
+})
 
+describe('should work with plugins', () => {
   it('should be extended by plugin correctly', async () => {
     const app = createBaseApp({
       source: path.resolve(__dirname, 'fake-source'),
       theme: { name: 'test' },
-      bundler: {} as any,
+      bundler: {} as Bundler,
     })
     app.use({
       name: 'foo',

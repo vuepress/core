@@ -5,11 +5,14 @@ import type { PageBase, PageData, PageFrontmatter } from '@vuepress/shared'
  * Vuepress Page
  */
 export type Page<
-  ExtraPageData extends Record<any, any> = Record<never, never>,
-  ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-  ExtraPageFields extends Record<any, any> = Record<never, never>,
-> = PageBase<ExtraPageFrontmatter> &
-  ExtraPageFields & {
+  ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
+  ExtraPageFrontmatter extends Record<string, unknown> = Record<
+    string,
+    unknown
+  >,
+  ExtraPageFields extends Record<string, unknown> = Record<string, unknown>,
+> = ExtraPageFields &
+  PageBase<ExtraPageFrontmatter> & {
     /**
      * Data of the page, which will be available in client code
      */

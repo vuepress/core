@@ -10,17 +10,17 @@ export type HeadConfig =
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
  */
-export type HeadTag = HeadTagNonEmpty | HeadTagEmpty
+export type HeadTag = HeadTagEmpty | HeadTagNonEmpty
 
 /**
  * Non-empty tags in `<head>`
  */
 export type HeadTagNonEmpty =
-  | 'title'
-  | 'style'
-  | 'script'
   | 'noscript'
+  | 'script'
+  | 'style'
   | 'template'
+  | 'title'
 
 /**
  * Empty tags in `<head>`
@@ -30,4 +30,4 @@ export type HeadTagEmpty = 'base' | 'link' | 'meta' | 'script'
 /**
  * Attributes to be set for tags in `<head>`
  */
-export type HeadAttrsConfig = Record<string, string | boolean>
+export type HeadAttrsConfig = Record<string, boolean | string>

@@ -5,7 +5,10 @@ import type { HeadConfig } from './head.js'
  * Base type of vuepress page
  */
 export interface PageBase<
-  ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
+  ExtraPageFrontmatter extends Record<string, unknown> = Record<
+    string,
+    unknown
+  >,
 > {
   /**
    * Route path of the page
@@ -44,9 +47,12 @@ export interface PageBase<
  * Vuepress page data
  */
 export type PageData<
-  ExtraPageData extends Record<any, any> = Record<never, never>,
-  ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-> = PageBase<ExtraPageFrontmatter> & ExtraPageData
+  ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
+  ExtraPageFrontmatter extends Record<string, unknown> = Record<
+    string,
+    unknown
+  >,
+> = ExtraPageData & PageBase<ExtraPageFrontmatter>
 
 /**
  * Vuepress page frontmatter
@@ -55,9 +61,9 @@ export type PageData<
  * so we cannot guarantee the type safety
  */
 export type PageFrontmatter<
-  T extends Record<any, any> = Record<string, unknown>,
+  T extends Record<string, unknown> = Record<string, unknown>,
 > = Partial<T> & {
-  date?: string | Date
+  date?: Date | string
   description?: string
   head?: HeadConfig[]
   lang?: string

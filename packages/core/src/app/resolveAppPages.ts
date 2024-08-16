@@ -18,7 +18,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
 
   // create pages from files
   const pages = await Promise.all(
-    pageFilePaths.map((filePath) => createPage(app, { filePath })),
+    pageFilePaths.map(async (filePath) => createPage(app, { filePath })),
   )
 
   // find the 404 page

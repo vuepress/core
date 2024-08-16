@@ -7,145 +7,6 @@ import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
 /**
- * The main plugin to compat vuepress with vite
- */
-export const vuepressMainPlugin = ({
-  app,
-  isBuild,
-  isServer,
-}: {
-  app: App
-  isBuild: boolean
-  isServer: boolean
-}): Plugin => ({
-  name: 'vuepress:main',
-
-  config: async () => {
-    // create a temp index.html as dev entry point
-    if (!isBuild) {
-      await app.writeTemp(
-        'vite-root/index.html',
-        fs
-          .readFileSync(app.options.templateDev)
-          .toString()
-          .replace(
-            /<\/body>/,
-            `\
-<script type="module">
-import 'vuepress/client-app'
-</script>
-</body>`,
-          ),
-      )
-    }
-
-    // vuepress related packages that include pure esm client code,
-    // which should not be optimized in dev mode, and should not be
-    // externalized in build ssr mode
-    const clientPackages = [
-      // although discouraged, but users may still use `@vuepress/client` directly
-      '@vuepress/client',
-      'vuepress',
-      ...app.pluginApi.plugins
-        // the 'user-config' plugin is created by cli internally
-        .filter(({ name }) => name !== 'user-config')
-        .map(({ name }) => name),
-    ]
-
-    let postcssPlugins: AcceptedPlugin[]
-    try {
-      const postcssConfigResult = await postcssrc()
-      postcssPlugins = postcssConfigResult.plugins
-    } catch (error) {
-      postcssPlugins = [autoprefixer]
-    }
-
-    return {
-      root: app.dir.temp('vite-root'),
-      base: app.options.base,
-      mode: !isBuild || app.env.isDebug ? 'development' : 'production',
-      define: await resolveDefine({ app, isBuild, isServer }),
-      publicDir: app.dir.public(),
-      cacheDir: app.dir.cache(),
-      resolve: {
-        alias: await resolveAlias({ app, isServer }),
-      },
-      css: {
-        postcss: {
-          plugins: isServer ? [] : postcssPlugins,
-        },
-        preprocessorOptions: {
-          scss: { charset: false },
-        },
-      },
-      server: {
-        host: app.options.host,
-        port: app.options.port,
-        open: app.options.open,
-        // ref: https://github.com/vitejs/vite/issues/15784#issuecomment-1923683823
-        fs: { cachedChecks: false },
-      },
-      build: {
-        ssr: isServer,
-        outDir: isServer ? app.dir.temp('.server') : app.dir.dest(),
-        emptyOutDir: false,
-        cssCodeSplit: false,
-        rollupOptions: {
-          input: app.dir.client(
-            fs.readJsonSync(app.dir.client('package.json')).exports['./app'],
-          ),
-          output: {
-            sanitizeFileName,
-            ...(isServer
-              ? {
-                  // also add hash to ssr entry file, so that users could build multiple sites in a single process
-                  entryFileNames: `[name].[hash].mjs`,
-                }
-              : {}),
-          },
-          preserveEntrySignatures: 'allow-extension',
-        },
-        minify: isServer ? false : !app.env.isDebug,
-      },
-      optimizeDeps: {
-        exclude: clientPackages,
-      },
-      ssr: {
-        format: 'esm',
-        noExternal: clientPackages,
-      },
-    }
-  },
-
-  generateBundle(_, bundle) {
-    // delete all asset outputs in server build
-    if (isServer) {
-      Object.keys(bundle).forEach((key) => {
-        if (bundle[key].type === 'asset') {
-          delete bundle[key]
-        }
-      })
-    }
-  },
-
-  configureServer(server) {
-    return () => {
-      // fallback all `.html` requests to `/index.html`
-      server.middlewares.use(
-        history({
-          rewrites: [
-            {
-              from: /\.html$/,
-              to: '/index.html',
-            },
-          ],
-        }) as Connect.NextHandleFunction,
-      )
-    }
-  },
-})
-
-/**
  * Resolve vite config `resolve.alias`
  */
 const resolveAlias = async ({
@@ -164,11 +25,11 @@ const resolveAlias = async ({
   // plugin hook: alias
   const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
-  aliasResult.forEach((aliasObject) =>
+  aliasResult.forEach((aliasObject) => {
     Object.entries(aliasObject).forEach(([key, value]) => {
-      alias[key] = value
-    }),
-  )
+      alias[key] = value as string
+    })
+  })
 
   return [
     ...Object.keys(alias).map((item) => ({
@@ -222,11 +83,154 @@ const resolveDefine = async ({
   // plugin hook: define
   const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
 
-  defineResult.forEach((defineObject) =>
+  defineResult.forEach((defineObject) => {
     Object.entries(defineObject).forEach(([key, value]) => {
       define[key] = JSON.stringify(value)
-    }),
-  )
+    })
+  })
 
   return define
 }
+
+/**
+ * The main plugin to compat vuepress with vite
+ */
+export const vuepressMainPlugin = ({
+  app,
+  isBuild,
+  isServer,
+}: {
+  app: App
+  isBuild: boolean
+  isServer: boolean
+}): Plugin => ({
+  name: 'vuepress:main',
+
+  config: async () => {
+    // create a temp index.html as dev entry point
+    if (!isBuild) {
+      await app.writeTemp(
+        'vite-root/index.html',
+        fs
+          .readFileSync(app.options.templateDev)
+          .toString()
+          .replace(
+            /<\/body>/,
+            `\
+<script type="module">
+import 'vuepress/client-app'
+</script>
+</body>`,
+          ),
+      )
+    }
+
+    // vuepress related packages that include pure esm client code,
+    // which should not be optimized in dev mode, and should not be
+    // externalized in build ssr mode
+    const clientPackages = [
+      // although discouraged, but users may still use `@vuepress/client` directly
+      '@vuepress/client',
+      'vuepress',
+      ...app.pluginApi.plugins
+        // the 'user-config' plugin is created by cli internally
+        .filter(({ name }) => name !== 'user-config')
+        .map(({ name }) => name),
+    ]
+
+    let postcssPlugins: AcceptedPlugin[]
+    try {
+      const postcssConfigResult = await postcssrc()
+      postcssPlugins = postcssConfigResult.plugins
+    } catch {
+      postcssPlugins = [autoprefixer]
+    }
+
+    return {
+      root: app.dir.temp('vite-root'),
+      base: app.options.base,
+      mode: !isBuild || app.env.isDebug ? 'development' : 'production',
+      define: await resolveDefine({ app, isBuild, isServer }),
+      publicDir: app.dir.public(),
+      cacheDir: app.dir.cache(),
+      resolve: {
+        alias: await resolveAlias({ app, isServer }),
+      },
+      css: {
+        postcss: {
+          plugins: isServer ? [] : postcssPlugins,
+        },
+        preprocessorOptions: {
+          scss: { charset: false },
+        },
+      },
+      server: {
+        host: app.options.host,
+        port: app.options.port,
+        open: app.options.open,
+        // ref: https://github.com/vitejs/vite/issues/15784#issuecomment-1923683823
+        fs: { cachedChecks: false },
+      },
+      build: {
+        ssr: isServer,
+        outDir: isServer ? app.dir.temp('.server') : app.dir.dest(),
+        emptyOutDir: false,
+        cssCodeSplit: false,
+        rollupOptions: {
+          input: app.dir.client(
+            (
+              fs.readJsonSync(app.dir.client('package.json')) as {
+                exports: { './app': string }
+              }
+            ).exports['./app'],
+          ),
+          output: {
+            sanitizeFileName,
+            ...(isServer
+              ? {
+                  // also add hash to ssr entry file, so that users could build multiple sites in a single process
+                  entryFileNames: `[name].[hash].mjs`,
+                }
+              : {}),
+          },
+          preserveEntrySignatures: 'allow-extension',
+        },
+        minify: isServer ? false : !app.env.isDebug,
+      },
+      optimizeDeps: {
+        exclude: clientPackages,
+      },
+      ssr: {
+        format: 'esm',
+        noExternal: clientPackages,
+      },
+    }
+  },
+
+  generateBundle(_, bundle) {
+    // delete all asset outputs in server build
+    if (isServer) {
+      Object.keys(bundle).forEach((key) => {
+        if (bundle[key].type === 'asset') {
+          delete bundle[key]
+        }
+      })
+    }
+  },
+
+  configureServer(server) {
+    return () => {
+      // fallback all `.html` requests to `/index.html`
+      server.middlewares.use(
+        history({
+          rewrites: [
+            {
+              from: /\.html$/,
+              to: '/index.html',
+            },
+          ],
+        }) as Connect.NextHandleFunction,
+      )
+    }
+  },
+})

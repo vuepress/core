@@ -1,10 +1,10 @@
+import type { App, Page } from '@vuepress/core'
 import {
   createPage,
   preparePageChunk,
   preparePageComponent,
   prepareRoutes,
 } from '@vuepress/core'
-import type { App, Page } from '@vuepress/core'
 
 /**
  * Event handler for page add event

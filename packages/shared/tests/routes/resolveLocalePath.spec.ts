@@ -17,7 +17,7 @@ const locales: LocaleConfig = {
   },
 }
 
-const testCases: [string, string][] = [
+const TEST_CASES: [string, string][] = [
   ['/', '/'],
   ['/foo/', '/foo/'],
   ['/foo/foo/', '/foo/'],
@@ -27,7 +27,7 @@ const testCases: [string, string][] = [
   ['/foo-baz/foobar', '/foo-baz/'],
 ]
 
-testCases.forEach(([routePath, expected]) => {
+TEST_CASES.forEach(([routePath, expected]) => {
   it(routePath, () => {
     expect(resolveLocalePath(locales, routePath)).toEqual(expected)
   })

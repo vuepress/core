@@ -50,7 +50,7 @@ export const createClientPlugin = (
 
           // get asset modules
           const assetModules = modules.filter(
-            (m): m is StatsModule & Required<Pick<StatsModule, 'assets'>> =>
+            (m): m is Required<Pick<StatsModule, 'assets'>> & StatsModule =>
               Boolean(m.assets?.length),
           )
 
@@ -81,10 +81,10 @@ export const createClientPlugin = (
             const files = [...chunk.files.map(fileToIndex)]
 
             // find all asset modules associated with the same chunk
-            assetModules.forEach((m) => {
-              if (m.chunks?.some((id) => id === cid)) {
+            assetModules.forEach((item) => {
+              if (item.chunks?.some((id) => id === cid)) {
                 // get asset files
-                files.push(...m.assets.map(fileToIndex))
+                files.push(...item.assets.map(fileToIndex))
               }
             })
 

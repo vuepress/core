@@ -1,5 +1,5 @@
-import { computed, defineComponent, h } from 'vue'
 import type { SlotsType, VNode } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { resolveRouteFullPath } from '../router/index.js'
 
@@ -12,6 +12,7 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   // don't redirect when preventDefault called
   if (event.defaultPrevented) return
   // don't redirect on right click
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (event.button !== undefined && event.button !== 0) return
   // don't redirect if `target="_blank"`
   if (event.currentTarget) {
@@ -81,7 +82,7 @@ export const RouteLink = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default: () => string | VNode | (string | VNode)[]
+    default: () => (VNode | string)[] | VNode | string
   }>,
 
   setup(props, { slots }) {
@@ -102,11 +103,11 @@ export const RouteLink = defineComponent({
           href: path.value,
           onClick: (event: MouseEvent = {} as MouseEvent) => {
             if (guardEvent(event)) {
-              router.push(props.to).catch()
+              void router.push(props.to).catch()
             }
           },
         },
-        slots.default?.(),
+        slots.default(),
       )
   },
 })

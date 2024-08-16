@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { colors, logger } from '@vuepress/utils'
-import chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
+import chokidar from 'chokidar'
 
 export const watchUserConfigFile = ({
   userConfigPath,
@@ -20,7 +20,7 @@ export const watchUserConfigFile = ({
   })
   configWatcher.on('change', (configFile) => {
     logger.info(`config ${colors.magenta(configFile)} is modified`)
-    restart()
+    void restart()
   })
 
   const depsWatcher = chokidar.watch(userConfigDependencies, {
@@ -29,7 +29,7 @@ export const watchUserConfigFile = ({
   })
   depsWatcher.on('change', (depFile) => {
     logger.info(`config dependency ${colors.magenta(depFile)} is modified`)
-    restart()
+    void restart()
   })
 
   return [configWatcher, depsWatcher]

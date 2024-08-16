@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { resolveRoutePathFromUrl } from '../../src/index.js'
 
-const testCases: [
+const TEST_CASES: [
   Parameters<typeof resolveRoutePathFromUrl>,
   ReturnType<typeof resolveRoutePathFromUrl>,
 ][] = [
@@ -23,9 +23,9 @@ const testCases: [
   [['foo/bar', '/base/'], 'foo/bar'],
 ]
 
-testCases.forEach(([source, expected]) => {
+TEST_CASES.forEach(([source, expected]) => {
   it(`url: ${source[0]}, base: ${
-    source[1] || '/'
+    source[1] ?? '/'
   } => expected: ${expected}`, () => {
     expect(resolveRoutePathFromUrl(...source)).toEqual(expected)
   })
