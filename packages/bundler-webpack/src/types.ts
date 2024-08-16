@@ -1,3 +1,4 @@
+import type { BundlerOptions } from '@vuepress/core'
 import type { VueLoaderOptions } from 'vue-loader'
 import type {
   LoaderContext,
@@ -16,7 +17,7 @@ export type {
 /**
  * Options for bundler-webpack
  */
-export interface WebpackBundlerOptions {
+export interface WebpackBundlerOptions extends BundlerOptions {
   /**
    * use webpack-merge to set webpack config
    */

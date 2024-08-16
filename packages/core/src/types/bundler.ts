@@ -12,3 +12,5 @@ export interface Bundler {
   dev: (app: App) => Promise<() => Promise<void>>
   build: (app: App) => Promise<void>
 }
+
+export type BundlerOptions = Record<string, unknown>

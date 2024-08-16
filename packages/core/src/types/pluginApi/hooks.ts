@@ -1,5 +1,6 @@
 import type { Markdown, MarkdownOptions } from '@vuepress/markdown'
 import type { App } from '../app/index.js'
+import type { BundlerOptions } from '../bundler.js'
 import type { Page, PageOptions } from '../page.js'
 
 // util type
@@ -59,7 +60,7 @@ export interface Hooks {
   extendsMarkdown: ExtendsHook<Markdown>
   extendsPageOptions: ExtendsHook<PageOptions>
   extendsPage: ExtendsHook<Page>
-  extendsBundlerOptions: ExtendsHook<Record<string, unknown>>
+  extendsBundlerOptions: ExtendsHook<BundlerOptions>
   clientConfigFile: ClientConfigFileHook
   alias: AliasDefineHook
   define: AliasDefineHook
