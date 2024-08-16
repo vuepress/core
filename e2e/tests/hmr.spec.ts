@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { isDev } from '../utils/env'
+import { IS_DEV } from '../utils/env'
 import { readSourceMarkdown, writeSourceMarkdown } from '../utils/source'
 
 const hmrUpdateTitle = async (): Promise<void> => {
@@ -33,7 +33,7 @@ const hmrRestore = async (): Promise<void> => {
   )
 }
 
-if (isDev) {
+if (IS_DEV) {
   test.beforeEach(async () => {
     await hmrRestore()
   })

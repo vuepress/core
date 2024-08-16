@@ -38,7 +38,6 @@ export const renderPage = async ({
   await vueRouter.isReady()
 
   // create vue ssr context with default values
-  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete, no-underscore-dangle
   delete vueApp._context.provides[ssrContextKey]
   const ssrContext: VuepressSSRContext = {
     lang: 'en',

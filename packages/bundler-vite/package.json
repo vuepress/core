@@ -49,6 +49,9 @@
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"
   },
+  "devDependencies": {
+    "@types/connect-history-api-fallback": "^1.5.4"
+  },
   "publishConfig": {
     "access": "public"
   },

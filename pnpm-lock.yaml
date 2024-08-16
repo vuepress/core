@@ -156,6 +156,10 @@ importers:
       vue-router:
         specifier: ^4.4.3
         version: 4.4.3(vue@3.4.38(typescript@5.5.4))
+    devDependencies:
+      '@types/connect-history-api-fallback':
+        specifier: ^1.5.4
+        version: 1.5.4
 
   packages/bundler-webpack:
     dependencies:
@@ -993,8 +997,8 @@ packages:
   '@mdit-vue/types@2.1.0':
     resolution: {integrity: sha512-TMBB/BQWVvwtpBdWD75rkZx4ZphQ6MN0O4QB2Bc0oI5PC2uE57QerhNxdRZ7cvBHE2iY2C+BUNUziCfJbjIRRA==}
 
-  '@meteorlxy/eslint-config@4.2.1':
-    resolution: {integrity: sha512-uiqEsyMVlbtIJj8oDHs+J51kKqPLijp46PWzkeRjcqHo/4ERtuTKYVvWtjRkmYkfE9XdL5EJvTE+NQsnSormrQ==}
+  '@meteorlxy/eslint-config@4.2.2':
+    resolution: {integrity: sha512-kVEigfYiptY3feIfyIr8JIYubLPkqeL3W+lqUvgyE6lk8ab2oZUW0mUgNQW6wDcMbdzL0KSWiTjnn+D79JZNSw==}
     peerDependencies:
       eslint-plugin-react: ^7.35.0
       eslint-plugin-react-hooks: ^4.6.2
@@ -5748,7 +5752,7 @@ snapshots:
 
   '@mdit-vue/types@2.1.0': {}
 
-  '@meteorlxy/eslint-config@4.2.1(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))':
+  '@meteorlxy/eslint-config@4.2.2(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))':
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.1.0(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       '@typescript-eslint/parser': 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
@@ -7305,7 +7309,7 @@ snapshots:
 
   eslint-config-vuepress@5.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6))):
     dependencies:
-      '@meteorlxy/eslint-config': 4.2.1(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
+      '@meteorlxy/eslint-config': 4.2.2(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
       '@typescript-eslint/utils': 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       eslint-plugin-vue: 9.27.0(eslint@9.9.0(jiti@1.21.6))
     transitivePeerDependencies:

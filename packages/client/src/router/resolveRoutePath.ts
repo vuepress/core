@@ -12,11 +12,13 @@ export const resolveRoutePath = (
   const normalizedRoutePath = normalizeRoutePath(pathname, currentPath)
 
   // check if the normalized path is in routes
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
   if (routes.value[normalizedRoutePath]) return normalizedRoutePath
 
   // check encoded path
   const encodedRoutePath = encodeURI(normalizedRoutePath)
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
   if (routes.value[encodedRoutePath]) {
     return encodedRoutePath
   }

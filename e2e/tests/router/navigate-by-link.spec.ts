@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('markdown links', () => {
   test('should navigate to home correctly', async ({ page }) => {
     await page.locator('#markdown-links + ul > li > a').nth(0).click()
-    await expect(page).toHaveURL(`${BASE}`)
+    await expect(page).toHaveURL(BASE)
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
 
@@ -46,7 +46,7 @@ test.describe('markdown links', () => {
 test.describe('html links', () => {
   test('should navigate to home correctly', async ({ page }) => {
     await page.locator('#html-links + p > a').nth(0).click()
-    await expect(page).toHaveURL(`${BASE}`)
+    await expect(page).toHaveURL(BASE)
     await expect(page.locator('#home-h2')).toHaveText('Home H2')
   })
 

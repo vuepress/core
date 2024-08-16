@@ -7,6 +7,92 @@ import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 
 /**
+ * Resolve vite config `resolve.alias`
+ */
+const resolveAlias = async ({
+  app,
+  isServer,
+}: {
+  app: App
+  isServer: boolean
+}): Promise<AliasOptions> => {
+  const alias: AliasOptions = {
+    '@internal': app.dir.temp('internal'),
+    '@temp': app.dir.temp(),
+    '@source': app.dir.source(),
+  }
+
+  // plugin hook: alias
+  const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
+
+  aliasResult.forEach((aliasObject) => {
+    Object.entries(aliasObject).forEach(([key, value]) => {
+      alias[key] = value as string
+    })
+  })
+
+  return [
+    ...Object.keys(alias).map((item) => ({
+      find: item,
+      replacement: alias[item],
+    })),
+    ...(isServer
+      ? []
+      : [
+          {
+            find: /^vue$/,
+            replacement: 'vue/dist/vue.runtime.esm-bundler.js',
+          },
+          {
+            find: /^vue-router$/,
+            replacement: 'vue-router/dist/vue-router.esm-bundler.js',
+          },
+        ]),
+  ]
+}
+
+/**
+ * Resolve vite config `define`
+ */
+const resolveDefine = async ({
+  app,
+  isBuild,
+  isServer,
+}: {
+  app: App
+  isBuild: boolean
+  isServer: boolean
+}): Promise<UserConfig['define']> => {
+  const define: UserConfig['define'] = {
+    __VUEPRESS_VERSION__: JSON.stringify(app.version),
+    __VUEPRESS_BASE__: JSON.stringify(app.options.base),
+    __VUEPRESS_DEV__: JSON.stringify(!isBuild),
+    __VUEPRESS_SSR__: JSON.stringify(isServer),
+    // @see http://link.vuejs.org/feature-flags
+    // enable options API by default
+    __VUE_OPTIONS_API__: JSON.stringify(true),
+    __VUE_PROD_DEVTOOLS__: JSON.stringify(app.env.isDebug),
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(app.env.isDebug),
+  }
+
+  // override vite built-in define config in debug mode
+  if (app.env.isDebug) {
+    define['process.env.NODE_ENV'] = JSON.stringify('development')
+  }
+
+  // plugin hook: define
+  const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
+
+  defineResult.forEach((defineObject) => {
+    Object.entries(defineObject).forEach(([key, value]) => {
+      define[key] = JSON.stringify(value)
+    })
+  })
+
+  return define
+}
+
+/**
  * The main plugin to compat vuepress with vite
  */
 export const vuepressMainPlugin = ({
@@ -92,7 +178,11 @@ import 'vuepress/client-app'
         cssCodeSplit: false,
         rollupOptions: {
           input: app.dir.client(
-            fs.readJsonSync(app.dir.client('package.json')).exports['./app'],
+            (
+              fs.readJsonSync(app.dir.client('package.json')) as {
+                exports: { './app': string }
+              }
+            ).exports['./app'],
           ),
           output: {
             sanitizeFileName,
@@ -144,89 +234,3 @@ import 'vuepress/client-app'
     }
   },
 })
-
-/**
- * Resolve vite config `resolve.alias`
- */
-const resolveAlias = async ({
-  app,
-  isServer,
-}: {
-  app: App
-  isServer: boolean
-}): Promise<AliasOptions> => {
-  const alias: AliasOptions = {
-    '@internal': app.dir.temp('internal'),
-    '@temp': app.dir.temp(),
-    '@source': app.dir.source(),
-  }
-
-  // plugin hook: alias
-  const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
-
-  aliasResult.forEach((aliasObject) => {
-    Object.entries(aliasObject).forEach(([key, value]) => {
-      alias[key] = value
-    })
-  })
-
-  return [
-    ...Object.keys(alias).map((item) => ({
-      find: item,
-      replacement: alias[item],
-    })),
-    ...(isServer
-      ? []
-      : [
-          {
-            find: /^vue$/,
-            replacement: 'vue/dist/vue.runtime.esm-bundler.js',
-          },
-          {
-            find: /^vue-router$/,
-            replacement: 'vue-router/dist/vue-router.esm-bundler.js',
-          },
-        ]),
-  ]
-}
-
-/**
- * Resolve vite config `define`
- */
-const resolveDefine = async ({
-  app,
-  isBuild,
-  isServer,
-}: {
-  app: App
-  isBuild: boolean
-  isServer: boolean
-}): Promise<UserConfig['define']> => {
-  const define: UserConfig['define'] = {
-    __VUEPRESS_VERSION__: JSON.stringify(app.version),
-    __VUEPRESS_BASE__: JSON.stringify(app.options.base),
-    __VUEPRESS_DEV__: JSON.stringify(!isBuild),
-    __VUEPRESS_SSR__: JSON.stringify(isServer),
-    // @see http://link.vuejs.org/feature-flags
-    // enable options API by default
-    __VUE_OPTIONS_API__: JSON.stringify(true),
-    __VUE_PROD_DEVTOOLS__: JSON.stringify(app.env.isDebug),
-    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(app.env.isDebug),
-  }
-
-  // override vite built-in define config in debug mode
-  if (app.env.isDebug) {
-    define['process.env.NODE_ENV'] = JSON.stringify('development')
-  }
-
-  // plugin hook: define
-  const defineResult = await app.pluginApi.hooks.define.process(app, isServer)
-
-  defineResult.forEach((defineObject) => {
-    Object.entries(defineObject).forEach(([key, value]) => {
-      define[key] = JSON.stringify(value)
-    })
-  })
-
-  return define
-}

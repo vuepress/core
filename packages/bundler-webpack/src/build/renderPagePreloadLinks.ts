@@ -14,7 +14,7 @@ export const renderPagePreloadLinks = ({
   pageClientFilesMeta: FileMeta[]
 }): string => {
   // shouldPreload option
-  const shouldPreload = app.options.shouldPreload
+  const { shouldPreload } = app.options
 
   // do not render preload links
   if (shouldPreload === false) {

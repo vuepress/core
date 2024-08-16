@@ -9,8 +9,8 @@ const app = createBaseApp({
   bundler: {} as Bundler,
 })
 
-it('should resolve page component info correctly', async () => {
-  const resolved = await resolvePageComponentInfo({
+it('should resolve page component info correctly', () => {
+  const resolved = resolvePageComponentInfo({
     app,
     htmlFilePathRelative: 'foo.html',
   })

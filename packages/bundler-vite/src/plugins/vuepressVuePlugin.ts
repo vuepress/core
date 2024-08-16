@@ -4,19 +4,6 @@ import type { AssetURLOptions, AssetURLTagConfig } from 'vue/compiler-sfc'
 import type { ViteBundlerOptions } from '../types.js'
 
 /**
- * Wrapper of official vue plugin
- */
-export const vuepressVuePlugin = (options: ViteBundlerOptions): Plugin => {
-  return vuePlugin({
-    ...options.vuePluginOptions,
-    template: {
-      ...options.vuePluginOptions?.template,
-      transformAssetUrls: resolveTransformAssetUrls(options),
-    },
-  })
-}
-
-/**
  * Determine if the given `transformAssetUrls` option is `AssetURLTagConfig`
  */
 const isAssetURLTagConfig = (
@@ -56,3 +43,15 @@ const resolveTransformAssetUrls = (
     ...userTransformAssetUrls,
   }
 }
+
+/**
+ * Wrapper of official vue plugin
+ */
+export const vuepressVuePlugin = (options: ViteBundlerOptions): Plugin =>
+  vuePlugin({
+    ...options.vuePluginOptions,
+    template: {
+      ...options.vuePluginOptions?.template,
+      transformAssetUrls: resolveTransformAssetUrls(options),
+    },
+  })
