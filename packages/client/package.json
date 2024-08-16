@@ -39,7 +39,7 @@
   "dependencies": {
     "@vue/devtools-api": "^6.6.3",
     "@vuepress/shared": "workspace:*",
-    "vue": "^3.4.37",
+    "vue": "^3.4.38",
     "vue-router": "^4.4.3"
   },
   "publishConfig": {

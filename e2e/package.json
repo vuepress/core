@@ -23,7 +23,7 @@
     "sass": "^1.77.8",
     "sass-embedded": "^1.77.8",
     "sass-loader": "^16.0.0",
-    "vue": "^3.4.37",
+    "vue": "^3.4.38",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
