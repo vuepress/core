@@ -8,7 +8,7 @@ import NotFound from './layouts/NotFound.vue'
 import './styles/index.scss'
 
 export default defineClientConfig({
-  enhance({ app, router }) {
+  enhance() {
     // ...
   },
 
@@ -16,12 +16,14 @@ export default defineClientConfig({
     // ...
   },
 
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment -- vue sfc type info is not available in eslint scope */
   layouts: {
     CssModulesLayout,
     CustomLayout,
     Layout,
     NotFound,
   },
+  /* eslint-enable @typescript-eslint/no-unsafe-assignment */
 
   rootComponents: [RootComponentFromTheme],
 })

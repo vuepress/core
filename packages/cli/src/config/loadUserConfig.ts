@@ -92,6 +92,6 @@ export const loadUserConfig = async (
   }
   return {
     userConfig,
-    userConfigDependencies: Object.keys(result.metafile?.inputs ?? {}),
+    userConfigDependencies: Object.keys(result.metafile.inputs),
   }
 }
