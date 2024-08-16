@@ -36,8 +36,8 @@ importers:
         specifier: ^9.9.0
         version: 9.9.0(jiti@1.21.6)
       eslint-config-vuepress:
-        specifier: ^5.1.0
-        version: 5.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
+        specifier: ^5.1.2
+        version: 5.1.2(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
       husky:
         specifier: ^9.1.4
         version: 9.1.4
@@ -2394,8 +2394,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-vuepress@5.1.0:
-    resolution: {integrity: sha512-7rMq5I2Io6tcMAkcaqzI0mowQyQrd11EEDBcHmFRbhSuxsjDt6VF8FGRUNRhkBQGCc3WqdTcoIzI2KYdjj5Q4A==}
+  eslint-config-vuepress@5.1.2:
+    resolution: {integrity: sha512-JkspJeMslF7k7XrloW6ZkRNKJQLm1e4lVuV+xkDQwDn2INScDneEkMgIGZT7l14nA7ElAHh5Zt+pz4bYxW1rxw==}
 
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
@@ -7307,7 +7307,7 @@ snapshots:
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
 
-  eslint-config-vuepress@5.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6))):
+  eslint-config-vuepress@5.1.2(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6))):
     dependencies:
       '@meteorlxy/eslint-config': 4.2.2(eslint-plugin-vue@9.27.0(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint@9.9.0(jiti@1.21.6)))
       '@typescript-eslint/utils': 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)

@@ -21,7 +21,7 @@ export interface FileMeta {
 /**
  * Client file meta type, mainly used for <preload as="type">
  */
-export type FileMetaType = 'script' | 'style' | 'image' | 'font' | ''
+export type FileMetaType = '' | 'font' | 'image' | 'script' | 'style'
 
 /**
  * A "module request" to "client files meta" key-value map

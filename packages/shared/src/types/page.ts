@@ -47,7 +47,7 @@ export interface PageBase<
  * Vuepress page data
  */
 export type PageData<
-  ExtraPageData extends Record<string, unknown> = Record<never, never>,
+  ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
   ExtraPageFrontmatter extends Record<string, unknown> = Record<
     string,
     unknown

@@ -85,6 +85,7 @@ export const resolvers = reactive({
     const layoutName = isString(pageData.frontmatter.layout)
       ? pageData.frontmatter.layout
       : LAYOUT_NAME_DEFAULT
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
     if (!layouts[layoutName]) {
       throw new Error(`[vuepress] Cannot resolve layout: ${layoutName}`)
     }
@@ -113,8 +114,9 @@ export const resolvers = reactive({
     head: [
       // when merging head, the locales head should be placed before root head
       // to get higher priority
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
       ...(locales[routeLocale]?.head ?? []),
-      ...(siteData.head ?? []),
+      ...siteData.head,
     ],
   }),
 })

@@ -3,10 +3,7 @@ import autoprefixer from 'autoprefixer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type Config from 'webpack-5-chain'
 import type {
-  LessLoaderOptions,
-  SassLoaderOptions,
   StylePreprocessorLoaderOptions,
-  StylusLoaderOptions,
   WebpackBundlerOptions,
 } from '../types.js'
 
@@ -26,9 +23,7 @@ export const handleModuleStyles = ({
   isBuild: boolean
   isServer: boolean
 }): void => {
-  const handleStyle = <
-    T extends StylePreprocessorLoaderOptions = StylePreprocessorLoaderOptions,
-  >({
+  const handleStyle = ({
     lang,
     test,
     loaderName,
@@ -37,7 +32,7 @@ export const handleModuleStyles = ({
     lang: string
     test: RegExp
     loaderName?: string
-    loaderOptions?: T
+    loaderOptions?: StylePreprocessorLoaderOptions
   }): void => {
     const rule = config.module.rule(lang).test(test)
 
@@ -94,28 +89,28 @@ export const handleModuleStyles = ({
     test: /\.p(ost)?css$/,
   })
 
-  handleStyle<SassLoaderOptions>({
+  handleStyle({
     lang: 'scss',
     test: /\.scss$/,
     loaderName: 'sass-loader',
     loaderOptions: options.scss,
   })
 
-  handleStyle<SassLoaderOptions>({
+  handleStyle({
     lang: 'sass',
     test: /\.sass$/,
     loaderName: 'sass-loader',
     loaderOptions: options.sass,
   })
 
-  handleStyle<LessLoaderOptions>({
+  handleStyle({
     lang: 'less',
     test: /\.less$/,
     loaderName: 'less-loader',
     loaderOptions: options.less,
   })
 
-  handleStyle<StylusLoaderOptions>({
+  handleStyle({
     lang: 'stylus',
     test: /\.styl(us)?$/,
     loaderName: 'stylus-loader',

@@ -12,6 +12,7 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   // don't redirect when preventDefault called
   if (event.defaultPrevented) return
   // don't redirect on right click
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (event.button !== undefined && event.button !== 0) return
   // don't redirect if `target="_blank"`
   if (event.currentTarget) {

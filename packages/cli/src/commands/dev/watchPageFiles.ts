@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import type { App, Page } from '@vuepress/core'
 import { colors, logger } from '@vuepress/utils'
-import chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
+import chokidar from 'chokidar'
 import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
@@ -27,7 +28,6 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   }
   const depsListener = async (dep: string): Promise<void> => {
     const pagePaths = depsHelper.get(dep)
-    if (!pagePaths) return
     for (const filePathRelative of pagePaths) {
       logger.info(
         `dependency of page ${colors.magenta(filePathRelative)} is modified`,
@@ -38,7 +38,9 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   depsWatcher.on('add', depsListener)
   depsWatcher.on('change', depsListener)
   depsWatcher.on('unlink', depsListener)
-  app.pages.forEach((page) => addDeps(page))
+  app.pages.forEach((page) => {
+    addDeps(page)
+  })
 
   // watch page files
   const pagesWatcher = chokidar.watch(app.options.pagePatterns, {

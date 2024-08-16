@@ -13,11 +13,13 @@ export const handleEntry = ({
   config: Config
 }): void => {
   // set client app as entry point
-  config
-    .entry('app')
-    .add(
-      app.dir.client(
-        fs.readJsonSync(app.dir.client('package.json')).exports['./app'],
-      ),
-    )
+  config.entry('app').add(
+    app.dir.client(
+      (
+        fs.readJsonSync(app.dir.client('package.json')) as {
+          exports: { './app': string }
+        }
+      ).exports['./app'],
+    ),
+  )
 }

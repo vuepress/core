@@ -40,7 +40,7 @@
     "bumpp": "^9.5.1",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.9.0",
-    "eslint-config-vuepress": "^5.1.0",
+    "eslint-config-vuepress": "^5.1.2",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",

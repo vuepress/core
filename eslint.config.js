@@ -26,7 +26,6 @@ export default vuepress(
     },
     vue: {
       overrides: {
-        'vue/multi-word-component-names': 'off',
         'no-useless-assignment': 'off', // TODO: false positive in vue sfc
       },
     },
@@ -34,6 +33,7 @@ export default vuepress(
   {
     files: ['**/tests/**'],
     rules: {
+      'import/no-unresolved': 'off',
       'no-console': 'off',
       'prefer-template': 'off',
     },

@@ -35,9 +35,13 @@ export const handleOtherOptions = ({
       isServer,
       'version': app.version,
       // dependencies
-      'esbuild-loader': require('esbuild-loader/package.json').version,
-      'vue-loader': require('vue-loader/package.json').version,
-      'webpack': require('webpack/package.json').version,
+      'esbuild-loader': (
+        require('esbuild-loader/package.json') as { version: string }
+      ).version,
+      'vue-loader': (require('vue-loader/package.json') as { version: string })
+        .version,
+      'webpack': (require('webpack/package.json') as { version: string })
+        .version,
     }),
   })
 }

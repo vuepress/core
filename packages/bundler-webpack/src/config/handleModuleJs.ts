@@ -45,7 +45,7 @@ export const handleModuleJs = ({
         return false
       }
       // don't transpile node_modules
-      return /node_modules/.test(filePath)
+      return filePath.includes('node_modules')
     })
     .end()
     // use esbuild-loader
