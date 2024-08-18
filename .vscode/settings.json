@@ -10,7 +10,9 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.options": {
+    "flags": ["unstable_ts_config"]
+  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -41,5 +43,6 @@
     "vuepress",
     "vueuse",
     "zoomable"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

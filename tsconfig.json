@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": false,
     "jsx": "preserve",
     "paths": {
       "@internal/*": ["./packages/client/src/types/internal/*.d.ts"],
@@ -14,8 +15,8 @@
     "**/.vuepress/**/*",
     "e2e/**/*",
     "packages/**/*",
-    "commitlint.config.ts",
-    "vitest.config.ts"
+    "scripts/**/*",
+    "*.config.ts"
   ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]
 }

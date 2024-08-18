@@ -1,7 +1,7 @@
 import type { Theme } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
-const DIRNAME = getDirname(import.meta.url)
+const __dirname = getDirname(import.meta.url)
 
 export const e2eTheme = (): Theme => ({
   name: '@vuepress/theme-e2e',
@@ -14,7 +14,7 @@ export const e2eTheme = (): Theme => ({
     // ...
   },
 
-  clientConfigFile: path.resolve(DIRNAME, '../client/config.ts'),
+  clientConfigFile: path.resolve(__dirname, '../client/config.ts'),
 
   extendsPage: () => {
     // ...

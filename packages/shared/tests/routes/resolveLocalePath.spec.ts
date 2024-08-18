@@ -2,7 +2,7 @@ import { expect, it } from 'vitest'
 import type { LocaleConfig } from '../../src/index.js'
 import { resolveLocalePath } from '../../src/index.js'
 
-const locales: LocaleConfig = {
+const LOCALES: LocaleConfig = {
   '/': {
     lang: 'en-US',
   },
@@ -29,6 +29,6 @@ const TEST_CASES: [string, string][] = [
 
 TEST_CASES.forEach(([routePath, expected]) => {
   it(routePath, () => {
-    expect(resolveLocalePath(locales, routePath)).toEqual(expected)
+    expect(resolveLocalePath(LOCALES, routePath)).toEqual(expected)
   })
 })

@@ -8,8 +8,8 @@
     "check-types": "vue-tsc --noEmit",
     "clean": "pnpm --parallel --stream clean",
     "format": "prettier --write .",
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint --fix . && prettier --write .",
+    "lint": "eslint --flag unstable_ts_config . && prettier --check .",
+    "lint:fix": "eslint --flag unstable_ts_config --fix . && prettier --write .",
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -24,7 +24,7 @@
   "lint-staged": {
     "*.!(cjs|js|ts|vue)": "prettier --write --ignore-unknown",
     "*.(cjs|js|ts|vue)": [
-      "eslint --fix",
+      "eslint --flag unstable_ts_config --fix",
       "prettier --write"
     ],
     "package.json": "sort-package-json"
@@ -42,6 +42,7 @@
     "eslint": "^9.9.0",
     "eslint-config-vuepress": "^5.1.4",
     "husky": "^9.1.4",
+    "jiti": "^1.21.6",
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "prettier-config-vuepress": "^5.0.0",

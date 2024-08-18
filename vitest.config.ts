@@ -1,17 +1,6 @@
-import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
-
-const getSubDirectories = (dir: string): string[] =>
-  fs
-    .readdirSync(dir)
-    .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
-
-const ROOT = path.dirname(fileURLToPath(import.meta.url))
-const PACKAGES = getSubDirectories(path.resolve(ROOT, 'packages')).filter(
-  (item) => item !== 'vuepress',
-)
+import { PACKAGES, ROOT } from './scripts/constants.js'
 
 export default defineConfig({
   resolve: {
