@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-playwright.playwright",
+    "vitest.explorer",
     "vue.volar"
   ]
 }
