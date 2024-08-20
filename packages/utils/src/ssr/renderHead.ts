@@ -9,9 +9,11 @@ export const renderHead = ([
   attrs,
   innerHTML = '',
 ]: HeadConfig): string => {
-  const openTag = `<${tag}${renderHeadAttrs(attrs)}>`
-  if (tag === 'link' || tag === 'meta' || tag === 'base') {
-    return openTag
+  const openTag = `<${tag}${renderHeadAttrs(attrs)}>`;
+  const tagsWithNoInnerHtml = ['link', 'meta', 'base'];
+
+  if (tagsWithNoInnerHtml.includes(tag)) {
+    return openTag;
   }
-  return `${openTag}${innerHTML}</${tag}>`
+  return `${openTag}${innerHTML}</${tag}>`;
 }

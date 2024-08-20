@@ -7,18 +7,20 @@ export const withSpinner =
   (msg: string) =>
   async <T>(target: (spinner?: Ora) => Promise<T>): Promise<T> => {
     if (process.env.DEBUG) {
-      return target()
+      return target();
     }
 
-    const start = Date.now()
-    const spinner = ora()
+    const start = Date.now();
+    const spinner = ora();
     try {
-      spinner.start(msg)
-      const result = await target(spinner)
-      spinner.succeed(`${msg} - done in ${formatMs(Date.now() - start)}`)
-      return result
+      spinner.start(msg);
+      const result = await target(spinner);
+      const after = Date.now();
+      spinner.succeed(`${msg} - done in ${formatMs(after - start)}`);
+      return result;
     } catch (e) {
-      spinner.fail(`${msg} - failed in ${formatMs(Date.now() - start)}`)
+      const after = Date.now();
+      spinner.fail(`${msg} - failed in ${formatMs(after - start)}`);
       throw e
     }
   }

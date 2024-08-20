@@ -2,6 +2,5 @@
  * Format millisecond
  */
 export const formatMs = (ms: number): string => {
-  if (ms < 1000) return `${ms}ms`
-  return `${(ms / 1000).toFixed(2)}s`
+  return (ms < 1000) ? `${ms}ms` : `${(ms / 1000).toFixed(2)}s`;
 }

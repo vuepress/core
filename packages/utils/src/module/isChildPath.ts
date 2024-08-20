@@ -5,12 +5,12 @@ import path from 'upath'
  * they are the same path
  */
 export const isChildPath = (child: string, parent: string): boolean => {
-  const childPath = path.normalize(child)
-  const parentPath = path.normalize(parent)
+  const childPath = path.normalize(child);
+  const parentPath = path.normalize(parent);
   // path.win32.isAbsolute could check both win32 and posix absolute path correctly
   if (!path.win32.isAbsolute(childPath) || !path.win32.isAbsolute(parentPath)) {
-    return false
+    return false;
   }
-  const relativePath = path.relative(parentPath, childPath)
-  return relativePath === '' || !relativePath.startsWith('..')
+  const relativePath = path.relative(parentPath, childPath);
+  return relativePath === '' || !relativePath.startsWith('..');
 }
