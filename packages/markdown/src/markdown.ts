@@ -35,6 +35,7 @@ import type { Markdown, MarkdownOptions } from './types.js'
 export const createMarkdown = ({
   anchor,
   assets,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   code,
   vPre,
   component,

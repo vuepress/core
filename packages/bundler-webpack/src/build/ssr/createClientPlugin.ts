@@ -69,7 +69,7 @@ export const createClientPlugin = (
             const cid = m.chunks[0]
             const chunk = chunks.find((c) => c.id === cid)
 
-            if (!chunk || !chunk.files) {
+            if (!chunk?.files) {
               return
             }
 
