@@ -56,8 +56,5 @@
     "vitest": "^2.0.5",
     "vue-tsc": "^2.0.29"
   },
-  "packageManager": "pnpm@9.9.0",
-  "engines": {
-    "node": ">=18.16.0"
-  }
+  "packageManager": "pnpm@9.9.0"
 }
