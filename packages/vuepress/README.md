@@ -5,7 +5,7 @@
 
 ## Documentation
 
-https://v2.vuepress.vuejs.org
+https://vuepress.vuejs.org
 
 ## License
 

@@ -23,8 +23,8 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
       id: PLUGIN_ID,
       label: PLUGIN_LABEL,
       packageName: '@vuepress/client',
-      homepage: 'https://v2.vuepress.vuejs.org',
-      logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
+      homepage: 'https://vuepress.vuejs.org',
+      logo: 'https://vuepress.vuejs.org/images/hero.png',
       componentStateTypes: [PLUGIN_COMPONENT_STATE_TYPE],
     },
     (api) => {

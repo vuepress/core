@@ -87,7 +87,7 @@ export const createMarkdown = ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- deprecation warning
   if (code) {
     logger.warn(
-      `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://v2.vuepress.vuejs.org/reference/config.html#markdown-code`,
+      `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://vuepress.vuejs.org/reference/config.html#markdown-code`,
     )
   }
 

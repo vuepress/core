@@ -34,7 +34,7 @@ export const resolveAppConfig = ({
 
   if (appConfig.bundler === undefined || appConfig.theme === undefined) {
     logger.error(
-      `The ${colors.magenta('bundler')} or ${colors.magenta('theme')} option is missing. For more details: ${colors.green('https://v2.vuepress.vuejs.org/guide/troubleshooting.html#the-bundler-theme-option-is-missing')}`,
+      `The ${colors.magenta('bundler')} or ${colors.magenta('theme')} option is missing. For more details: ${colors.green('https://vuepress.vuejs.org/guide/troubleshooting.html#the-bundler-theme-option-is-missing')}`,
     )
     return null
   }
