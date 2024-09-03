@@ -55,12 +55,12 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.4.38"
+    "vue": "^3.5.0"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "vue": "^3.4.0"
+    "vue": "^3.5.0"
   },
   "peerDependenciesMeta": {
     "@vuepress/bundler-vite": {
