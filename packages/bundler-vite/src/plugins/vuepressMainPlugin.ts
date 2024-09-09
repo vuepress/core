@@ -107,24 +107,6 @@ export const vuepressMainPlugin = ({
   name: 'vuepress:main',
 
   config: async () => {
-    // create a temp index.html as dev entry point
-    if (!isBuild) {
-      await app.writeTemp(
-        'vite-root/index.html',
-        fs
-          .readFileSync(app.options.templateDev)
-          .toString()
-          .replace(
-            /<\/body>/,
-            `\
-<script type="module">
-import 'vuepress/client-app'
-</script>
-</body>`,
-          ),
-      )
-    }
-
     // vuepress related packages that include pure esm client code,
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
@@ -147,7 +129,7 @@ import 'vuepress/client-app'
     }
 
     return {
-      root: app.dir.temp('vite-root'),
+      root: app.dir.source(),
       base: app.options.base,
       mode: !isBuild || app.env.isDebug ? 'development' : 'production',
       define: await resolveDefine({ app, isBuild, isServer }),
@@ -231,6 +213,33 @@ import 'vuepress/client-app'
           ],
         }) as Connect.NextHandleFunction,
       )
+
+      // serve the dev template as `/index.html`
+      server.middlewares.use((req, res, next) => {
+        if (!req.url?.endsWith('.html')) {
+          next()
+          return
+        }
+
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'text/html')
+        const indexHtml = fs
+          .readFileSync(app.options.templateDev)
+          .toString()
+          .replace(
+            /<\/body>/,
+            `\
+<script type="module">
+import 'vuepress/client-app'
+</script>
+</body>`,
+          )
+        void server
+          .transformIndexHtml(req.url, indexHtml, req.originalUrl)
+          .then((result) => {
+            res.end(result)
+          })
+      })
     }
   },
 })
