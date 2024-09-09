@@ -18,7 +18,7 @@ export default defineConfig([
   {
     ...shared,
     entry: {
-      'vuepress-loader': './src/build/ssr/vuepressLoader.cts',
+      'vuepress-ssr-loader': './src/build/ssr/vuepressSsrLoader.cts',
     },
     format: ['cjs'],
   },

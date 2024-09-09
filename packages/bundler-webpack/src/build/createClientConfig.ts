@@ -27,13 +27,13 @@ export const createClientConfig = async (
     isBuild: true,
   })
 
-  // use internal vuepress-loader to handle SSR dependencies
+  // use internal vuepress-ssr-loader to handle SSR dependencies
   config.module
     .rule('vue')
     .test(/\.vue$/)
-    .use('vuepress-loader')
+    .use('vuepress-ssr-loader')
     .before('vue-loader')
-    .loader(require.resolve('#vuepress-loader'))
+    .loader(require.resolve('#vuepress-ssr-loader'))
     .end()
 
   // vuepress client plugin, handle client assets info for ssr

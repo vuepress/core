@@ -14,7 +14,7 @@ import type { FileMeta, ModuleFilesMetaMap } from './types.js'
 
 interface PageRenderContext extends SSRContext, VuepressSSRContext {
   /**
-   * Injected by vuepress-loader
+   * Injected by vuepress-ssr-loader
    *
    * Store the module request of components that used by current page
    */
