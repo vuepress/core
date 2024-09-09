@@ -21,7 +21,7 @@ export const error = (...args: unknown[]): void => {
   console.error(colors.red('error'), ...args)
 }
 
-export const createError = (message?: string | undefined): Error => {
+export const createError = (message?: string): Error => {
   error(message)
   return new Error(message)
 }
