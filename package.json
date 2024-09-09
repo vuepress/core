@@ -18,6 +18,7 @@
     "release:version": "bumpp -r --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all",
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:e2e": "pnpm --filter e2e e2e:dev && pnpm --filter e2e e2e:build",
+    "test:e2e:webpack": "pnpm --filter e2e e2e:dev:webpack && pnpm --filter e2e e2e:build:webpack",
     "test:unit": "vitest run",
     "test:unit:cov": "vitest run --coverage"
   },

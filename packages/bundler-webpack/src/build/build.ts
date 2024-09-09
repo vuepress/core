@@ -18,7 +18,7 @@ import {
 import { createServerConfig } from './createServerConfig.js'
 import { renderPage } from './renderPage.js'
 import { resolveClientManifestMeta } from './resolveClientManifestMeta.js'
-import type { ClientManifest } from './ssr/index.js'
+import type { ClientManifest } from './types.js'
 
 const log = debug('vuepress:bundler-webpack/build')
 

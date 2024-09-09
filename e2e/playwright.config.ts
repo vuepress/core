@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test'
 import { BASE, BUNDLER, IS_CI, IS_DEV } from './utils/env'
 
 const COMMAND_PART1 = IS_DEV ? 'docs:dev' : 'docs:build'
-const COMMAND_PART2 = BUNDLER === 'vite' ? '' : `-${BUNDLER}`
+const COMMAND_PART2 = BUNDLER === 'vite' ? '' : `:${BUNDLER}`
 const COMMAND_PART3 = IS_DEV ? '' : ' && pnpm docs:serve'
 
 export default defineConfig({

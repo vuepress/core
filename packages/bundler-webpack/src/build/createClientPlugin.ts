@@ -1,13 +1,10 @@
 import { fs } from '@vuepress/utils'
 import type { StatsModule, WebpackPluginInstance } from 'webpack'
-import { isCSS, isJS } from './utils.js'
+import type { ClientManifest } from './types.js'
 
-export interface ClientManifest {
-  all: string[]
-  initial: string[]
-  async: string[]
-  modules: Record<string, number[]>
-}
+const isJS = (file: string): boolean => /\.js(\?[^.]+)?$/.test(file)
+
+const isCSS = (file: string): boolean => /\.css(\?[^.]+)?$/.test(file)
 
 /**
  * Vuepress client plugin

@@ -27,3 +27,13 @@ export type FileMetaType = '' | 'font' | 'image' | 'script' | 'style'
  * A "module request" to "client files meta" key-value map
  */
 export type ModuleFilesMetaMap = Record<string, FileMeta[]>
+
+/**
+ * Client manifest that collected from webpack stats
+ */
+export interface ClientManifest {
+  all: string[]
+  initial: string[]
+  async: string[]
+  modules: Record<string, number[]>
+}

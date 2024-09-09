@@ -1,6 +1,5 @@
 import { resolveFileMeta } from './resolveFileMeta.js'
-import type { ClientManifest } from './ssr/index.js'
-import type { FileMeta, ModuleFilesMetaMap } from './types.js'
+import type { ClientManifest, FileMeta, ModuleFilesMetaMap } from './types.js'
 
 /**
  * Resolve files meta from clientManifest

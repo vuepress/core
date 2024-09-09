@@ -8,7 +8,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type Config from 'webpack-5-chain'
 import { createClientBaseConfig } from '../config/index.js'
 import type { WebpackBundlerOptions } from '../types.js'
-import { createClientPlugin } from './ssr/index.js'
+import { createClientPlugin } from './createClientPlugin.js'
 
 const require = createRequire(import.meta.url)
 
