@@ -34,13 +34,13 @@
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@commitlint/types": "^19.0.3",
-    "@types/node": "^22.5.2",
+    "@types/node": "^22.5.4",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^2.0.5",
     "bumpp": "^9.5.2",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.9.1",
-    "eslint-config-vuepress": "^5.1.6",
+    "eslint": "^9.10.0",
+    "eslint-config-vuepress": "^5.2.0",
     "husky": "^9.1.5",
     "jiti": "^1.21.6",
     "lint-staged": "^15.2.10",
@@ -49,12 +49,12 @@
     "rimraf": "^6.0.1",
     "sort-package-json": "^2.10.1",
     "taze": "^0.16.7",
-    "tsconfig-vuepress": "^5.0.0",
+    "tsconfig-vuepress": "^5.2.0",
     "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vite": "~5.4.1",
+    "typescript": "^5.6.2",
+    "vite": "~5.4.3",
     "vitest": "^2.0.5",
-    "vue-tsc": "^2.1.4"
+    "vue-tsc": "^2.1.6"
   },
-  "packageManager": "pnpm@9.9.0"
+  "packageManager": "pnpm@9.10.0"
 }
