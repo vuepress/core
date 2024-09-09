@@ -29,8 +29,8 @@ export const resolveViteConfig = ({
       },
       plugins: [
         vuepressMainPlugin({ app, isBuild, isServer }),
-        vuepressUserConfigPlugin(options),
         vuepressVuePlugin(options),
+        vuepressUserConfigPlugin(options),
       ],
     },
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin
