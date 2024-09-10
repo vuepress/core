@@ -1014,8 +1014,8 @@ packages:
   '@mdit-vue/types@2.1.0':
     resolution: {integrity: sha512-TMBB/BQWVvwtpBdWD75rkZx4ZphQ6MN0O4QB2Bc0oI5PC2uE57QerhNxdRZ7cvBHE2iY2C+BUNUziCfJbjIRRA==}
 
-  '@meteorlxy/eslint-config@4.5.0':
-    resolution: {integrity: sha512-+IRTlZ4GnIczUff3Nqr8ZN5Oc7+rn+3trI0SQqKKIcsWvk/t/tOSIxLltb1TZyIVe0D4USHsfRQc+ULmitig3w==}
+  '@meteorlxy/eslint-config@4.5.1':
+    resolution: {integrity: sha512-rdazcyU6GGW6+wIDJpCHmB/x7mt4/MPmiFZ5KFUxW6hhCV7e2MgxSL5p3qC8f3aCFk7Ve33mja0TBAwBfN8Vpg==}
     peerDependencies:
       eslint-plugin-react: ^7.35.0
       eslint-plugin-react-hooks: 5.x
@@ -4548,6 +4548,10 @@ packages:
     resolution: {integrity: sha512-XGuRDNjXUijsUL0vl6nSD7cwURuzEgglbOaFuZM9g3kwDXOWVTck0jLzjPzGD+TazWbboZYu52/9/XPdUgne9g==}
     engines: {node: '>= 0.8.0'}
 
+  serve-static@1.16.0:
+    resolution: {integrity: sha512-pDLK8zwl2eKaYrs8mrPZBJua4hMplRWJ1tIFksVC3FtBEBnl8dxgeHtsaMS8DhS9i4fLObaon6ABoc4/hQGdPA==}
+    engines: {node: '>= 0.8.0'}
+
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
     engines: {node: '>= 0.4'}
@@ -5905,7 +5909,7 @@ snapshots:
 
   '@mdit-vue/types@2.1.0': {}
 
-  '@meteorlxy/eslint-config@4.5.0(eslint-plugin-vue@9.28.0(eslint@9.10.0(jiti@1.21.6)))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)(vue-eslint-parser@9.4.3(eslint@9.10.0(jiti@1.21.6)))':
+  '@meteorlxy/eslint-config@4.5.1(eslint-plugin-vue@9.28.0(eslint@9.10.0(jiti@1.21.6)))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)(vue-eslint-parser@9.4.3(eslint@9.10.0(jiti@1.21.6)))':
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.5.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       '@typescript-eslint/parser': 8.5.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
@@ -6560,7 +6564,7 @@ snapshots:
       http-proxy-middleware: 0.19.2(debug@2.6.9)
       minimist: 1.2.8
       serve-index: 1.9.1
-      serve-static: 1.15.0
+      serve-static: 1.16.0
     transitivePeerDependencies:
       - supports-color
 
@@ -7462,7 +7466,7 @@ snapshots:
 
   eslint-config-vuepress@5.2.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)(vue-eslint-parser@9.4.3(eslint@9.10.0(jiti@1.21.6))):
     dependencies:
-      '@meteorlxy/eslint-config': 4.5.0(eslint-plugin-vue@9.28.0(eslint@9.10.0(jiti@1.21.6)))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)(vue-eslint-parser@9.4.3(eslint@9.10.0(jiti@1.21.6)))
+      '@meteorlxy/eslint-config': 4.5.1(eslint-plugin-vue@9.28.0(eslint@9.10.0(jiti@1.21.6)))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)(vue-eslint-parser@9.4.3(eslint@9.10.0(jiti@1.21.6)))
       '@typescript-eslint/utils': 8.5.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)
       eslint-plugin-vue: 9.28.0(eslint@9.10.0(jiti@1.21.6))
     transitivePeerDependencies:
@@ -9705,6 +9709,15 @@ snapshots:
       - supports-color
 
   serve-static@1.15.0:
+    dependencies:
+      encodeurl: 1.0.2
+      escape-html: 1.0.3
+      parseurl: 1.3.3
+      send: 0.18.0
+    transitivePeerDependencies:
+      - supports-color
+
+  serve-static@1.16.0:
     dependencies:
       encodeurl: 1.0.2
       escape-html: 1.0.3

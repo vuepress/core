@@ -16,20 +16,23 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
     cwd: app.dir.source(),
   })
 
+  let hasNotFoundPage = false as boolean
+
   // create pages from files
   const pages = await Promise.all(
-    pageFilePaths.map(async (filePath) => createPage(app, { filePath })),
+    pageFilePaths.map(async (filePath) => {
+      const page = await createPage(app, { filePath })
+      // if there is a 404 page, set the default layout to NotFound
+      if (page.path === '/404.html') {
+        page.frontmatter.layout ??= 'NotFound'
+        hasNotFoundPage = true
+      }
+      return page
+    }),
   )
 
-  // find the 404 page
-  const notFoundPage = pages.find((page) => page.path === '/404.html')
-
-  // if there is a 404 page, set the default layout to NotFound
-  if (notFoundPage) {
-    notFoundPage.frontmatter.layout ??= 'NotFound'
-  }
-  // if there is no 404 page, add one
-  else {
+  // if there is no 404 page, add a virtual one
+  if (!hasNotFoundPage) {
     pages.push(
       await createPage(app, {
         path: '/404.html',
