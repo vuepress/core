@@ -2,7 +2,9 @@ import type { App } from '@vuepress/core'
 import type { InlineConfig } from 'vite'
 import { mergeConfig } from 'vite'
 import {
-  vuepressMainPlugin,
+  vuepressBuildPlugin,
+  vuepressConfigPlugin,
+  vuepressDevPlugin,
   vuepressUserConfigPlugin,
   vuepressVuePlugin,
 } from './plugins/index.js'
@@ -28,9 +30,11 @@ export const resolveViteConfig = ({
         charset: 'utf8',
       },
       plugins: [
-        vuepressMainPlugin({ app, isBuild, isServer }),
-        vuepressVuePlugin(options),
-        vuepressUserConfigPlugin(options),
+        vuepressConfigPlugin({ app, isBuild, isServer }),
+        vuepressDevPlugin({ app }),
+        vuepressBuildPlugin({ isServer }),
+        vuepressVuePlugin({ options }),
+        vuepressUserConfigPlugin({ options }),
       ],
     },
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin

@@ -1,10 +1,9 @@
 import type { App } from '@vuepress/core'
 import { fs, sanitizeFileName } from '@vuepress/utils'
 import autoprefixer from 'autoprefixer'
-import history from 'connect-history-api-fallback'
 import type { AcceptedPlugin } from 'postcss'
 import postcssrc from 'postcss-load-config'
-import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
+import type { AliasOptions, Plugin, UserConfig } from 'vite'
 
 /**
  * Resolve vite config `resolve.alias`
@@ -93,9 +92,9 @@ const resolveDefine = async ({
 }
 
 /**
- * The main plugin to compat vuepress with vite
+ * Resolve and setup vite config
  */
-export const vuepressMainPlugin = ({
+export const vuepressConfigPlugin = ({
   app,
   isBuild,
   isServer,
@@ -104,9 +103,11 @@ export const vuepressMainPlugin = ({
   isBuild: boolean
   isServer: boolean
 }): Plugin => ({
-  name: 'vuepress:main',
+  name: 'vuepress:config',
 
-  config: async () => {
+  enforce: 'pre',
+
+  async config() {
     // vuepress related packages that include pure esm client code,
     // which should not be optimized in dev mode, and should not be
     // externalized in build ssr mode
@@ -186,60 +187,6 @@ export const vuepressMainPlugin = ({
         format: 'esm',
         noExternal: clientPackages,
       },
-    }
-  },
-
-  generateBundle(_, bundle) {
-    // delete all asset outputs in server build
-    if (isServer) {
-      Object.keys(bundle).forEach((key) => {
-        if (bundle[key].type === 'asset') {
-          delete bundle[key]
-        }
-      })
-    }
-  },
-
-  configureServer(server) {
-    return () => {
-      // fallback all `.html` requests to `/index.html`
-      server.middlewares.use(
-        history({
-          rewrites: [
-            {
-              from: /\.html$/,
-              to: '/index.html',
-            },
-          ],
-        }) as Connect.NextHandleFunction,
-      )
-
-      // serve the dev template as `/index.html`
-      server.middlewares.use((req, res, next) => {
-        if (!req.url?.endsWith('.html')) {
-          next()
-          return
-        }
-
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'text/html')
-        const indexHtml = fs
-          .readFileSync(app.options.templateDev)
-          .toString()
-          .replace(
-            /<\/body>/,
-            `\
-<script type="module">
-import 'vuepress/client-app'
-</script>
-</body>`,
-          )
-        void server
-          .transformIndexHtml(req.url, indexHtml, req.originalUrl)
-          .then((result) => {
-            res.end(result)
-          })
-      })
     }
   },
 })
