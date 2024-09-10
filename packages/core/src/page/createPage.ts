@@ -85,6 +85,8 @@ export const createPage = async (
   const { componentFilePath, componentFilePathRelative } =
     resolvePageComponentInfo({
       app,
+      filePath,
+      filePathRelative,
       htmlFilePathRelative,
     })
 

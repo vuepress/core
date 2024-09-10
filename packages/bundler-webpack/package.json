@@ -20,6 +20,7 @@
   "author": "meteorlxy",
   "type": "module",
   "imports": {
+    "#vuepress-markdown-loader": "./dist/vuepress-markdown-loader.cjs",
     "#vuepress-ssr-loader": "./dist/vuepress-ssr-loader.cjs"
   },
   "exports": {

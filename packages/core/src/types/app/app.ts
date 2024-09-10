@@ -79,6 +79,13 @@ export interface App {
    * Only available after initialization
    */
   pages: Page[]
+
+  /**
+   * Page source filepath map.
+   *
+   * Only available after initialization
+   */
+  pagesMap: Record<string, Page | undefined>
 }
 
 /**

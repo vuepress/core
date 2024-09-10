@@ -13,7 +13,7 @@ describe('core > app > resolveAppPages', () => {
     })
     app.markdown = createMarkdown()
 
-    const pages = await resolveAppPages(app)
+    const { pages } = await resolveAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
     const barPage = pages.find((page) => page.path === '/bar.html')
     const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -33,7 +33,7 @@ describe('core > app > resolveAppPages', () => {
     })
     app.markdown = createMarkdown()
 
-    const pages = await resolveAppPages(app)
+    const { pages } = await resolveAppPages(app)
     const fooPage = pages.find((page) => page.path === '/foo.html')
     const barPage = pages.find((page) => page.path === '/bar.html')
     const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -61,7 +61,7 @@ describe('core > app > resolveAppPages', () => {
     app.pluginApi.registerHooks()
     app.markdown = createMarkdown()
 
-    const pages = await resolveAppPages(app)
+    const { pages } = await resolveAppPages(app)
 
     pages.forEach((page) => {
       expect(page.frontmatter.foo).toBe('bar')
@@ -84,7 +84,7 @@ describe('core > app > resolveAppPages', () => {
     app.pluginApi.registerHooks()
     app.markdown = createMarkdown()
 
-    const pages = await resolveAppPages(app)
+    const { pages } = await resolveAppPages(app)
 
     pages.forEach((page) => {
       expect(page.frontmatter.foo).toBe('baz')
