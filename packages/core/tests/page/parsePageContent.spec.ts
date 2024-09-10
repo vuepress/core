@@ -2,7 +2,7 @@ import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from '../../src/index.js'
-import { createBaseApp, renderPageContent } from '../../src/index.js'
+import { createBaseApp, parsePageContent } from '../../src/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
@@ -11,8 +11,8 @@ const app = createBaseApp({
 })
 app.markdown = createMarkdown()
 
-it('should render page content correctly', () => {
-  const resolved = renderPageContent({
+it('should parse page content correctly', () => {
+  const result = parsePageContent({
     app,
     content: `\
 foobar
@@ -25,7 +25,7 @@ const msg = 'msg'
     options: {},
   })
 
-  expect(resolved).toEqual({
+  expect(result).toEqual({
     contentRendered: '<p>foobar</p>\n',
     deps: [],
     frontmatter: {},
@@ -66,7 +66,7 @@ const msg = 'msg'
 
 describe('page title', () => {
   it('should use title in frontmatter', () => {
-    const resolved = renderPageContent({
+    const result = parsePageContent({
       app,
       content: '# title in header',
       filePath: null,
@@ -78,11 +78,11 @@ describe('page title', () => {
       },
     })
 
-    expect(resolved.title).toEqual('title in frontmatter')
+    expect(result.title).toEqual('title in frontmatter')
   })
 
   it('should use title in the first h1 header', () => {
-    const resolved = renderPageContent({
+    const result = parsePageContent({
       app,
       content: '# title in header',
       filePath: null,
@@ -90,11 +90,11 @@ describe('page title', () => {
       options: {},
     })
 
-    expect(resolved.title).toEqual('title in header')
+    expect(result.title).toEqual('title in header')
   })
 
   it('should use empty title', () => {
-    const resolved = renderPageContent({
+    const result = parsePageContent({
       app,
       content: '',
       filePath: null,
@@ -102,13 +102,13 @@ describe('page title', () => {
       options: {},
     })
 
-    expect(resolved.title).toEqual('')
+    expect(result.title).toEqual('')
   })
 })
 
 describe('page frontmatter', () => {
   it('should merge markdown frontmatter and options frontmatter', () => {
-    const resolved = renderPageContent({
+    const result = parsePageContent({
       app,
       content: `\
 ---
@@ -124,14 +124,14 @@ title: title in markdown frontmatter
       },
     })
 
-    expect(resolved.frontmatter).toEqual({
+    expect(result.frontmatter).toEqual({
       title: 'title in markdown frontmatter',
       description: 'description in options frontmatter',
     })
   })
 
   it('should use fields from markdown frontmatter first', () => {
-    const resolved = renderPageContent({
+    const result = parsePageContent({
       app,
       content: `\
 ---
@@ -147,7 +147,7 @@ title: title in markdown frontmatter
       },
     })
 
-    expect(resolved.frontmatter).toEqual({
+    expect(result.frontmatter).toEqual({
       title: 'title in markdown frontmatter',
     })
   })

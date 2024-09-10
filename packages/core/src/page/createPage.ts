@@ -1,6 +1,6 @@
 import type { App, Page, PageOptions } from '../types/index.js'
 import { inferPagePath } from './inferPagePath.js'
-import { renderPageContent } from './renderPageContent.js'
+import { parsePageContent } from './parsePageContent.js'
 import { resolvePageChunkInfo } from './resolvePageChunkInfo.js'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo.js'
 import { resolvePageDate } from './resolvePageDate.js'
@@ -39,7 +39,7 @@ export const createPage = async (
     markdownEnv,
     sfcBlocks,
     title,
-  } = renderPageContent({
+  } = parsePageContent({
     app,
     content,
     filePath,

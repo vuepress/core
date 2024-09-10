@@ -10,7 +10,7 @@ import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 /**
  * Render page content and extract related info
  */
-export const renderPageContent = ({
+export const parsePageContent = ({
   app,
   content,
   filePath,
