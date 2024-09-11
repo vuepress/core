@@ -81,7 +81,7 @@ export const setupUpdateHead = (): void => {
 
   // ssr-only, extract page meta info to ssrContext
   if (__VUEPRESS_SSR__) {
-    const ssrContext: VuepressSSRContext | undefined = useSSRContext()
+    const ssrContext = useSSRContext<VuepressSSRContext>()
     if (ssrContext) {
       ssrContext.head = head.value
       ssrContext.lang = lang.value
