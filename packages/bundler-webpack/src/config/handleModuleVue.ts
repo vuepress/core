@@ -24,13 +24,15 @@ export const handleModuleVue = ({
   isBuild: boolean
   isServer: boolean
 }): void => {
-  const applyVuePipeline = ({
-    rule,
-    isMd,
+  const handleVue = ({
+    lang,
+    test,
   }: {
-    rule: Config.Rule
-    isMd: boolean
+    lang: 'md' | 'vue'
+    test: RegExp
   }): void => {
+    const rule = config.module.rule(lang).test(test)
+
     // use internal vuepress-ssr-loader to handle SSR dependencies
     if (isBuild) {
       rule
@@ -50,7 +52,7 @@ export const handleModuleVue = ({
       .end()
 
     // use internal vuepress-markdown-loader to handle markdown files
-    if (isMd) {
+    if (lang === 'md') {
       rule
         .use('vuepress-markdown-loader')
         .loader(require.resolve('#vuepress-markdown-loader'))
@@ -59,15 +61,8 @@ export const handleModuleVue = ({
     }
   }
 
-  applyVuePipeline({
-    rule: config.module.rule('md').test(/\.md$/),
-    isMd: true,
-  })
-
-  applyVuePipeline({
-    rule: config.module.rule('vue').test(/\.vue$/),
-    isMd: false,
-  })
+  handleVue({ lang: 'md', test: /\.md$/ })
+  handleVue({ lang: 'vue', test: /\.vue$/ })
 
   // use vue-loader plugin
   config.plugin('vue-loader').use(VueLoaderPlugin)
