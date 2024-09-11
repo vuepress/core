@@ -1,12 +1,12 @@
 /**
- * Infer route path according to the given (markdown file) path
+ * Infer route path of the given raw path
  */
-export const inferRoutePath = (path: string): string => {
-  // if the pathname is empty or ends with `/`, return as is
-  if (!path || path.endsWith('/')) return path
+export const inferRoutePath = (rawPath: string): string => {
+  // if the raw path is empty or ends with `/`, return as is
+  if (!rawPath || rawPath.endsWith('/')) return rawPath
 
   // convert README.md to index.html
-  let routePath = path.replace(/(^|\/)README.md$/i, '$1index.html')
+  let routePath = rawPath.replace(/(^|\/)README.md$/i, '$1index.html')
 
   // convert /foo/bar.md to /foo/bar.html
   if (routePath.endsWith('.md')) {

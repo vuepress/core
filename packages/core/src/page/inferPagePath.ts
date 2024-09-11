@@ -1,4 +1,8 @@
-import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
+import {
+  ensureLeadingSlash,
+  inferRoutePath,
+  resolveLocalePath,
+} from '@vuepress/shared'
 import type { App } from '../types/index.js'
 
 /**
@@ -23,9 +27,7 @@ export const inferPagePath = ({
 
   // infer page route path from file path
   // foo/bar.md -> /foo/bar.html
-  const pathInferred = ensureLeadingSlash(filePathRelative)
-    .replace(/\.md$/, '.html')
-    .replace(/\/(README|index).html$/i, '/')
+  const pathInferred = ensureLeadingSlash(inferRoutePath(filePathRelative))
 
   // resolve page locale path
   const pathLocale = resolveLocalePath(app.siteData.locales, pathInferred)
