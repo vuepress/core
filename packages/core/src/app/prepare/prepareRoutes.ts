@@ -1,21 +1,20 @@
 import { normalizeRoutePath } from '@vuepress/shared'
 import type { App, Page } from '../../types/index.js'
 
+const ROUTES_VAR_NAME = 'routes'
+const REDIRECTS_VAR_NAME = 'redirects'
+
 const HMR_CODE = `
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateRoutes) {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-  }
-  if (__VUE_HMR_RUNTIME__.updateRedirects) {
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  }
+  __VUE_HMR_RUNTIME__.updateRoutes?.(${ROUTES_VAR_NAME})
+  __VUE_HMR_RUNTIME__.updateRedirects?.(${REDIRECTS_VAR_NAME}})
 }
 
 if (import.meta.hot) {
-  import.meta.hot.accept(({ routes, redirects }) => {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
+  import.meta.hot.accept((m) => {
+    __VUE_HMR_RUNTIME__.updateRoutes?.(m.${ROUTES_VAR_NAME})
+    __VUE_HMR_RUNTIME__.updateRedirects?.(m.${REDIRECTS_VAR_NAME})
   })
 }
 `
@@ -47,7 +46,7 @@ const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
 export const prepareRoutes = async (app: App): Promise<void> => {
   // routes file content
   let content = `\
-export const redirects = JSON.parse(${JSON.stringify(
+export const ${REDIRECTS_VAR_NAME} = JSON.parse(${JSON.stringify(
     JSON.stringify(
       Object.fromEntries(
         app.pages.flatMap((page) =>
@@ -57,7 +56,7 @@ export const redirects = JSON.parse(${JSON.stringify(
     ),
   )})
 
-export const routes = Object.fromEntries([
+export const ${ROUTES_VAR_NAME} = Object.fromEntries([
 ${app.pages
   .map(
     ({ chunkFilePath, chunkName, path, routeMeta }) =>

@@ -1,16 +1,16 @@
 import type { App } from '../../types/index.js'
 
+const SITE_DATA_VAR_NAME = 'siteData'
+
 const HMR_CODE = `
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSiteData) {
-    __VUE_HMR_RUNTIME__.updateSiteData(siteData)
-  }
+  __VUE_HMR_RUNTIME__.updateSiteData?.(${SITE_DATA_VAR_NAME})
 }
 
 if (import.meta.hot) {
-  import.meta.hot.accept(({ siteData }) => {
-    __VUE_HMR_RUNTIME__.updateSiteData(siteData)
+  import.meta.hot.accept((m) => {
+    __VUE_HMR_RUNTIME__.updateSiteData?.(m.${SITE_DATA_VAR_NAME})
   })
 }
 `
@@ -20,7 +20,7 @@ if (import.meta.hot) {
  */
 export const prepareSiteData = async (app: App): Promise<void> => {
   let content = `\
-export const siteData = JSON.parse(${JSON.stringify(
+export const ${SITE_DATA_VAR_NAME} = JSON.parse(${JSON.stringify(
     JSON.stringify(app.siteData),
   )})
 `

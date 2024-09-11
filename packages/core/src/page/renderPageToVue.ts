@@ -1,5 +1,5 @@
 import { isString } from '@vuepress/shared'
-import type { Page } from '../types/index.js'
+import type { App, Page } from '../types/index.js'
 
 const TEMPLATE_WRAPPER_TAG_OPEN = '<div>'
 const TEMPLATE_WRAPPER_TAG_CLOSE = '</div>'
@@ -10,20 +10,31 @@ const SCRIPT_TAG_CLOSE = '</script>'
 const SCRIPT_TAG_OPEN_LANG_TS_REGEX = /<\s*script[^>]*\blang=['"]ts['"][^>]*/
 const SCRIPT_TAG_OPEN_LANG_TS = '<script lang="ts">'
 
+const PAGE_DATA_CODE_VAR_NAME = '_pageData'
+const PAGE_DATA_CODE_TEMPLATE_OUTLET = '__PAGE_DATA__'
+const PAGE_DATA_CODE_TEMPLATE = `export const ${PAGE_DATA_CODE_VAR_NAME} = JSON.parse(${PAGE_DATA_CODE_TEMPLATE_OUTLET})`
+
 const HMR_CODE = `
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(_pageData)
-  }
+  __VUE_HMR_RUNTIME__.updatePageData?.(${PAGE_DATA_CODE_VAR_NAME})
 }
 
 if (import.meta.hot) {
-  import.meta.hot.accept(({ _pageData }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(_pageData)
+  import.meta.hot.accept((m) => {
+    __VUE_HMR_RUNTIME__.updatePageData?.(m.${PAGE_DATA_CODE_VAR_NAME})
   })
 }
 `
+
+/**
+ * Util to resolve the page data code
+ */
+const resolvePageDataCode = (data: Page['data']): string =>
+  PAGE_DATA_CODE_TEMPLATE.replace(
+    PAGE_DATA_CODE_TEMPLATE_OUTLET,
+    JSON.stringify(JSON.stringify(data)),
+  )
 
 /**
  * Util to resolve the open tag of script block
@@ -43,7 +54,10 @@ const resolveScriptTagOpen = (sfcBlocks: Page['sfcBlocks']): string => {
 /**
  * Render page to vue component
  */
-export const renderPageToVue = ({ data, sfcBlocks }: Page): string => {
+export const renderPageToVue = (
+  app: App,
+  { data, sfcBlocks }: Page,
+): string => {
   // #688: wrap the content of `<template>` with a `<div>` to avoid some potential issues of fragment component
   const templateContent =
     sfcBlocks.template &&
@@ -56,12 +70,13 @@ export const renderPageToVue = ({ data, sfcBlocks }: Page): string => {
     ].join('')
 
   // inject page data code and HMR code into the script content
-  const pageDataCode = `export const _pageData = JSON.parse(${JSON.stringify(JSON.stringify(data))})`
+  const scriptTagOpen = resolveScriptTagOpen(sfcBlocks)
+  const pageDataCode = resolvePageDataCode(data)
   const scriptContent = [
-    resolveScriptTagOpen(sfcBlocks),
+    scriptTagOpen,
     sfcBlocks.script?.contentStripped,
     pageDataCode,
-    HMR_CODE,
+    app.env.isDev && HMR_CODE,
     sfcBlocks.script?.tagClose ?? SCRIPT_TAG_CLOSE,
   ]
     .filter(isString)
