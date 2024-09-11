@@ -20,9 +20,7 @@ export const handlePageChange = async (
   const pageOld = app.pages[pageIndex]
 
   // create a new page from the changed file
-  const pageNew = await createPage(app, {
-    filePath,
-  })
+  const pageNew = await createPage(app, { filePath })
 
   // replace the old page with the new page
   app.pages.splice(pageIndex, 1, pageNew)

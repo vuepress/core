@@ -17,9 +17,7 @@ export const handlePageAdd = async (
   }
 
   // create page
-  const page = await createPage(app, {
-    filePath,
-  })
+  const page = await createPage(app, { filePath })
 
   // add the new page
   app.pages.push(page)
@@ -28,7 +26,7 @@ export const handlePageAdd = async (
   // prepare page file
   await preparePageChunk(app, page)
 
-  // prepare routes file
+  // re-prepare routes file
   await prepareRoutes(app)
 
   return page
