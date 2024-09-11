@@ -147,11 +147,10 @@ export type Page<
  */
 export interface PageOptions {
   /**
-   * If `filePath` is not set, this option will be used as the raw
-   * markdown content of the page.
+   * The raw markdown content of the page.
    *
-   * If `filePath` is set, this option will be ignored, while the
-   * content of the file will be used.
+   * If `content` is not provided, the file content of the `filePath`
+   * will be used.
    */
   content?: string
 

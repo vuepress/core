@@ -1,10 +1,10 @@
 import { fs, path } from '@vuepress/utils'
 import { expect, it } from 'vitest'
-import { resolvePageFileContent } from '../../src/index.js'
+import { resolvePageContent } from '../../src/index.js'
 
 it('should resolve file content correctly from file path', async () => {
   const filePath = path.resolve(__dirname, '../__fixtures__/pages/foo.md')
-  const resolved = await resolvePageFileContent({ filePath, options: {} })
+  const resolved = await resolvePageContent({ filePath, options: {} })
 
   const expected = (await fs.readFile(filePath)).toString()
   expect(resolved).toBe(expected)
@@ -12,24 +12,40 @@ it('should resolve file content correctly from file path', async () => {
 
 it('should use content from page options', async () => {
   const content = 'foobar'
-  const resolved = await resolvePageFileContent({
+  const resolved = await resolvePageContent({
     filePath: null,
     options: { content },
   })
-  expect(resolved).toBe(resolved)
+
+  const expected = content
+  expect(resolved).toBe(expected)
 })
 
 it('should return empty string if nothing provided', async () => {
-  const resolved = await resolvePageFileContent({
+  const resolved = await resolvePageContent({
     filePath: null,
     options: {},
   })
-  expect(resolved).toBe('')
+
+  const expected = ''
+  expect(resolved).toBe(expected)
+})
+
+it('should use content from page options and ignore file path', async () => {
+  const filePath = path.resolve(__dirname, '../__fixtures__/pages/foo.md')
+  const content = 'foobar'
+  const resolved = await resolvePageContent({
+    filePath,
+    options: { content },
+  })
+
+  const expected = content
+  expect(resolved).toBe(expected)
 })
 
 it('should throw error if the file does not exist', async () => {
   try {
-    await resolvePageFileContent({
+    await resolvePageContent({
       filePath: '404',
       options: {},
     })
