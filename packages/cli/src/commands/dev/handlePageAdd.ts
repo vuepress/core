@@ -1,10 +1,5 @@
 import type { App, Page } from '@vuepress/core'
-import {
-  createPage,
-  preparePageChunk,
-  preparePageComponent,
-  prepareRoutes,
-} from '@vuepress/core'
+import { createPage, preparePageChunk, prepareRoutes } from '@vuepress/core'
 
 /**
  * Event handler for page add event
@@ -28,9 +23,9 @@ export const handlePageAdd = async (
 
   // add the new page
   app.pages.push(page)
+  app.pagesMap[filePath] = page
 
-  // prepare page files
-  await preparePageComponent(app, page)
+  // prepare page file
   await preparePageChunk(app, page)
 
   // prepare routes file

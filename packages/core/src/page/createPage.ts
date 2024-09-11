@@ -2,9 +2,8 @@ import type { App, Page, PageOptions } from '../types/index.js'
 import { inferPagePath } from './inferPagePath.js'
 import { parsePageContent } from './parsePageContent.js'
 import { resolvePageChunkInfo } from './resolvePageChunkInfo.js'
-import { resolvePageComponentInfo } from './resolvePageComponentInfo.js'
+import { resolvePageContent } from './resolvePageContent.js'
 import { resolvePageDate } from './resolvePageDate.js'
-import { resolvePageFileContent } from './resolvePageFileContent.js'
 import { resolvePageFilePath } from './resolvePageFilePath.js'
 import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
 import { resolvePageLang } from './resolvePageLang.js'
@@ -27,7 +26,7 @@ export const createPage = async (
   })
 
   // read the raw file content according to the absolute file path
-  const content = await resolvePageFileContent({ filePath, options })
+  const content = await resolvePageContent({ filePath, options })
 
   // render page content and extract information
   const {
@@ -81,17 +80,13 @@ export const createPage = async (
     path,
   })
 
-  // resolve page component and extract headers & links
-  const { componentFilePath, componentFilePathRelative } =
-    resolvePageComponentInfo({
+  const { chunkFilePath, chunkFilePathRelative, chunkName } =
+    resolvePageChunkInfo({
       app,
       filePath,
       filePathRelative,
       htmlFilePathRelative,
     })
-
-  const { chunkFilePath, chunkFilePathRelative, chunkName } =
-    resolvePageChunkInfo({ app, htmlFilePathRelative })
 
   const page: Page = {
     // page data
@@ -127,8 +122,6 @@ export const createPage = async (
     // file info
     filePath,
     filePathRelative,
-    componentFilePath,
-    componentFilePathRelative,
     chunkFilePath,
     chunkFilePathRelative,
     chunkName,

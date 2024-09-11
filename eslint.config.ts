@@ -19,6 +19,7 @@ export default vuepress(
             allow: [
               '__dirname',
               '_context',
+              '_pageData',
               '_pageChunk',
               '_registeredComponents',
             ],

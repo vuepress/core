@@ -1,6 +1,5 @@
 import type { App } from '@vuepress/core'
-import { parsePageContent, renderPageSfcBlocksToVue } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import { createPage, renderPageToVue } from '@vuepress/core'
 import type { Plugin } from 'vite'
 
 /**
@@ -11,7 +10,7 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
 
   enforce: 'pre',
 
-  transform(code, id) {
+  async transform(code, id) {
     if (!id.endsWith('.md')) return
 
     // get the matched page by file path (id)
@@ -19,18 +18,15 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
 
     // if the page content is not changed, render it to vue component directly
     if (page?.content === code) {
-      return renderPageSfcBlocksToVue(page.sfcBlocks)
+      return renderPageToVue(page)
     }
 
-    // parse the markdown content to sfc blocks and render it to vue component
-    const { sfcBlocks } = parsePageContent({
-      app,
+    // create a new page with the new content
+    const newPage = await createPage(app, {
       content: code,
       filePath: id,
-      filePathRelative: path.relative(app.dir.source(), id),
-      options: {},
     })
-    return renderPageSfcBlocksToVue(sfcBlocks)
+    return renderPageToVue(newPage)
   },
 
   async handleHotUpdate(ctx) {
@@ -39,15 +35,12 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
     // read the source code
     const code = await ctx.read()
 
-    // parse the content to sfc blocks
-    const { sfcBlocks } = parsePageContent({
-      app,
+    // create a new page with the new content
+    const newPage = await createPage(app, {
       content: code,
       filePath: ctx.file,
-      filePathRelative: path.relative(app.dir.source(), ctx.file),
-      options: {},
     })
 
-    ctx.read = () => renderPageSfcBlocksToVue(sfcBlocks)
+    ctx.read = () => renderPageToVue(newPage)
   },
 })

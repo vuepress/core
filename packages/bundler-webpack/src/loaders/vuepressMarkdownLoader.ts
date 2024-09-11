@@ -11,8 +11,7 @@ export interface VuepressMarkdownLoaderOptions {
 export const vuepressMarkdownLoader: LoaderDefinitionFunction<VuepressMarkdownLoaderOptions> =
   async function vuepressMarkdownLoader(source) {
     // import esm dependencies
-    const [{ parsePageContent, renderPageSfcBlocksToVue }, { path }] =
-      await Promise.all([import('@vuepress/core'), import('@vuepress/utils')])
+    const { createPage, renderPageToVue } = await import('@vuepress/core')
 
     // get app instance from loader options
     const { app } = this.getOptions()
@@ -22,16 +21,13 @@ export const vuepressMarkdownLoader: LoaderDefinitionFunction<VuepressMarkdownLo
 
     // if the page content is not changed, render it to vue component directly
     if (page?.content === source) {
-      return renderPageSfcBlocksToVue(page.sfcBlocks)
+      return renderPageToVue(page)
     }
 
-    // parse the markdown content to sfc blocks and render it to vue component
-    const { sfcBlocks } = parsePageContent({
-      app,
+    // create a new page with the new content
+    const newPage = await createPage(app, {
       content: source,
       filePath: this.resourcePath,
-      filePathRelative: path.relative(app.dir.source(), this.resourcePath),
-      options: {},
     })
-    return renderPageSfcBlocksToVue(sfcBlocks)
+    return renderPageToVue(newPage)
   }

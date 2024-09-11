@@ -105,16 +105,6 @@ export type Page<
     filePathRelative: string | null
 
     /**
-     * Component file path
-     */
-    componentFilePath: string
-
-    /**
-     * Component file path relative to temp directory
-     */
-    componentFilePathRelative: string
-
-    /**
      * Chunk file path
      */
     chunkFilePath: string
@@ -147,11 +137,10 @@ export type Page<
  */
 export interface PageOptions {
   /**
-   * If `filePath` is not set, this option will be used as the raw
-   * markdown content of the page.
+   * The raw markdown content of the page.
    *
-   * If `filePath` is set, this option will be ignored, while the
-   * content of the file will be used.
+   * If `content` is not provided, the file content of the `filePath`
+   * will be used.
    */
   content?: string
 
