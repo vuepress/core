@@ -22,10 +22,24 @@ const appWithoutLocales = createBaseApp({
 
 const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
+    'README.md',
+    {
+      pathInferred: '/',
+      pathLocale: '/',
+    },
+  ],
+  [
     'foo.md',
     {
       pathInferred: '/foo.html',
       pathLocale: '/',
+    },
+  ],
+  [
+    'en/README.md',
+    {
+      pathInferred: '/en/',
+      pathLocale: '/en/',
     },
   ],
   [
@@ -36,10 +50,24 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
     },
   ],
   [
+    'zh/README.md',
+    {
+      pathInferred: '/zh/',
+      pathLocale: '/zh/',
+    },
+  ],
+  [
     'zh/foo.md',
     {
       pathInferred: '/zh/foo.html',
       pathLocale: '/zh/',
+    },
+  ],
+  [
+    '中文/README.md',
+    {
+      pathInferred: '/中文/',
+      pathLocale: '/中文/',
     },
   ],
   [
