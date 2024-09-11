@@ -21,7 +21,7 @@ export const vuepressMarkdownLoader: LoaderDefinitionFunction<VuepressMarkdownLo
 
     // if the page content is not changed, render it to vue component directly
     if (page?.content === source) {
-      return renderPageToVue(page)
+      return renderPageToVue(app, page)
     }
 
     // create a new page with the new content
@@ -29,5 +29,5 @@ export const vuepressMarkdownLoader: LoaderDefinitionFunction<VuepressMarkdownLo
       content: source,
       filePath: this.resourcePath,
     })
-    return renderPageToVue(newPage)
+    return renderPageToVue(app, newPage)
   }

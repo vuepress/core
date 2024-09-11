@@ -6,6 +6,6 @@ import type { App, Page } from '../../types/index.js'
  */
 export const preparePageChunk = async (app: App, page: Page): Promise<void> => {
   if (page.filePath === null) {
-    await app.writeTemp(page.chunkFilePathRelative, renderPageToVue(page))
+    await app.writeTemp(page.chunkFilePathRelative, renderPageToVue(app, page))
   }
 }

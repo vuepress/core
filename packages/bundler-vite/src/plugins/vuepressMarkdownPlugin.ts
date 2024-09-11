@@ -18,7 +18,7 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
 
     // if the page content is not changed, render it to vue component directly
     if (page?.content === code) {
-      return renderPageToVue(page)
+      return renderPageToVue(app, page)
     }
 
     // create a new page with the new content
@@ -26,7 +26,7 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
       content: code,
       filePath: id,
     })
-    return renderPageToVue(newPage)
+    return renderPageToVue(app, newPage)
   },
 
   async handleHotUpdate(ctx) {
@@ -41,6 +41,6 @@ export const vuepressMarkdownPlugin = ({ app }: { app: App }): Plugin => ({
       filePath: ctx.file,
     })
 
-    ctx.read = () => renderPageToVue(newPage)
+    ctx.read = () => renderPageToVue(app, newPage)
   },
 })
