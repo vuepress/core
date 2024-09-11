@@ -73,19 +73,13 @@ describe('should work without plugins', () => {
     expect(page.filePathRelative).toBeNull()
     expect(page.htmlFilePath).toBe(app.dir.dest(`index.html`))
     expect(page.htmlFilePathRelative).toBe(`index.html`)
-    expect(page.componentFilePath).toBe(
+    expect(page.chunkFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.vue`),
     )
-    expect(page.componentFilePathRelative).toBe(
+    expect(page.chunkFilePathRelative).toBe(
       `pages/${page.htmlFilePathRelative}.vue`,
     )
-    expect(page.chunkFilePath).toBe(
-      app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
-    )
-    expect(page.chunkFilePathRelative).toBe(
-      `pages/${page.htmlFilePathRelative}.js`,
-    )
-    expect(page.chunkName).toBeTruthy()
+    expect(page.chunkName).toBe(`index.html`)
   })
 })
 

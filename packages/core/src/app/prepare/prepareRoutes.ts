@@ -8,7 +8,7 @@ const HMR_CODE = `
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
   __VUE_HMR_RUNTIME__.updateRoutes?.(${ROUTES_VAR_NAME})
-  __VUE_HMR_RUNTIME__.updateRedirects?.(${REDIRECTS_VAR_NAME}})
+  __VUE_HMR_RUNTIME__.updateRedirects?.(${REDIRECTS_VAR_NAME})
 }
 
 if (import.meta.hot) {
