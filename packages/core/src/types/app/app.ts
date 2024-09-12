@@ -8,48 +8,38 @@ import type { AppOptions } from './options.js'
 import type { AppDir, AppEnv, AppWriteTemp } from './utils.js'
 
 /**
- * Vuepress app
+ * App base properties, will be available after creation, even before initialization
  */
-export interface App {
+export interface AppPropertiesBase {
   /**
-   * Directory utils
+   * Directory utils.
    */
   dir: AppDir
 
   /**
-   * Environment flags
+   * Environment flags.
    */
   env: AppEnv
 
   /**
-   * Options that filled all optional fields with a default value
+   * Options that filled all optional fields with a default value.
    */
   options: AppOptions
 
   /**
-   * Plugin system
+   * Plugin system.
    */
   pluginApi: PluginApi
 
   /**
-   * Site data, which will be used in client side
+   * Site data, which will be used in client side.
    */
   siteData: SiteData
 
   /**
-   * Version of vuepress core
+   * Version of vuepress core.
    */
   version: string
-
-  /**
-   * Write temp file
-   */
-  writeTemp: AppWriteTemp
-
-  /**
-   * Use a plugin
-   */
-  use: (plugin: Plugin) => this
 
   /**
    * Initialize app.
@@ -67,6 +57,23 @@ export interface App {
   prepare: () => Promise<void>
 
   /**
+   * Use a plugin.
+   *
+   * Should be called before `app.init()`.
+   */
+  use: (plugin: Plugin) => this
+
+  /**
+   * Util to write temp file
+   */
+  writeTemp: AppWriteTemp
+}
+
+/**
+ * App initialized properties, will only be available after initialization
+ */
+export interface AppPropertiesInitialized {
+  /**
    * Markdown-it instance.
    *
    * Only available after initialization
@@ -80,6 +87,11 @@ export interface App {
    */
   pages: Page[]
 }
+
+/**
+ * Vuepress app instance
+ */
+export type App = AppPropertiesBase & AppPropertiesInitialized
 
 /**
  * Vuepress dev app

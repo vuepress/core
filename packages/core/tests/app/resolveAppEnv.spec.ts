@@ -13,11 +13,10 @@ const TEST_CASES: [
         theme: { name: 'test' },
         bundler: {} as Bundler,
       }),
-      false,
     ],
     {
       isBuild: false,
-      isDev: true,
+      isDev: false,
       isDebug: false,
     },
   ],
@@ -29,27 +28,11 @@ const TEST_CASES: [
         bundler: {} as Bundler,
         debug: true,
       }),
-      false,
     ],
     {
       isBuild: false,
-      isDev: true,
-      isDebug: true,
-    },
-  ],
-  [
-    [
-      resolveAppOptions({
-        source: '/foo',
-        theme: { name: 'test' },
-        bundler: {} as Bundler,
-      }),
-      true,
-    ],
-    {
-      isBuild: true,
       isDev: false,
-      isDebug: false,
+      isDebug: true,
     },
   ],
 ]
