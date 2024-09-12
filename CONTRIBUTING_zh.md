@@ -17,10 +17,11 @@ Core Packages 的封装：
 
 - `vuepress`: 是上述 Core Packages 的封装，提供了 `vuepress` 命令行工具。用户需要在此包的基础上自行选择并安装打包工具和主题。
 
-Bundler Packages ：
+Bundler 及其相关 Packages ：
 
 - `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
 - `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
+- `bundlerutils`: 供 Bundler 模块使用的工具函数模块。
 
 ## 开发配置
 

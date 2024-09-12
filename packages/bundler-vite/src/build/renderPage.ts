@@ -1,10 +1,8 @@
+import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
-import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
 import type { App as VueApp } from 'vue'
-import { ssrContextKey } from 'vue'
-import type { SSRContext } from 'vue/server-renderer'
 import type { Router } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
@@ -17,7 +15,6 @@ export const renderPage = async ({
   page,
   vueApp,
   vueRouter,
-  renderToString,
   ssrTemplate,
   output,
   outputEntryChunk,
@@ -27,32 +24,24 @@ export const renderPage = async ({
   page: Page
   vueApp: VueApp
   vueRouter: Router
-  renderToString: (input: VueApp, context: SSRContext) => Promise<string>
   ssrTemplate: string
   output: RollupOutput['output']
   outputEntryChunk: OutputChunk
   outputCssAsset: OutputAsset | undefined
 }): Promise<void> => {
-  // switch to current page route
-  await vueRouter.push(page.path)
-  await vueRouter.isReady()
-
-  // create vue ssr context with default values
-  delete vueApp._context.provides[ssrContextKey]
-  const ssrContext: VuepressSSRContext = {
-    lang: 'en',
-    head: [],
-  }
-
   // render current page to string
-  const pageRendered = await renderToString(vueApp, ssrContext)
+  const { ssrContext, ssrString } = await renderPageToString({
+    page,
+    vueApp,
+    vueRouter,
+  })
 
   // resolve page chunks
   const pageChunkFiles = resolvePageChunkFiles({ page, output })
 
   // generate html string
   const html = await app.options.templateBuildRenderer(ssrTemplate, {
-    content: pageRendered,
+    content: ssrString,
     head: ssrContext.head.map(renderHead).join(''),
     lang: ssrContext.lang,
     prefetch: renderPagePrefetchLinks({
