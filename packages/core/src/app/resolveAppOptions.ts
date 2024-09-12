@@ -34,6 +34,7 @@ export const resolveAppOptions = ({
   templateBuild = path.normalize(
     require.resolve('@vuepress/client/templates/build.html'),
   ),
+  templateBuildRenderer = templateRenderer,
   // common config
   bundler,
   debug = false,
@@ -61,7 +62,7 @@ export const resolveAppOptions = ({
   shouldPreload,
   shouldPrefetch,
   templateBuild,
-  templateBuildRenderer: templateRenderer,
+  templateBuildRenderer,
   bundler,
   debug,
   markdown,
