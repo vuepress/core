@@ -6,6 +6,8 @@ const require = createRequire(import.meta.url)
 
 /**
  * Create app options with default values
+ *
+ * @internal
  */
 export const resolveAppOptions = ({
   // site config

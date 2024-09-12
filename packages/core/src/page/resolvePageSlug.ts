@@ -4,6 +4,8 @@ const DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
 
 /**
  * Resolve page slug from filename
+ *
+ * @internal
  */
 export const resolvePageSlug = ({
   filePathRelative,

@@ -13,6 +13,9 @@ import { resolvePagePermalink } from './resolvePagePermalink.js'
 import { resolvePageRouteMeta } from './resolvePageRouteMeta.js'
 import { resolvePageSlug } from './resolvePageSlug.js'
 
+/**
+ * Create vuepress page object
+ */
 export const createPage = async (
   app: App,
   options: PageOptions,

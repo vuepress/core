@@ -4,6 +4,8 @@ import type { App } from '../types/index.js'
 
 /**
  * Resolve markdown-it instance for vuepress app
+ *
+ * @internal
  */
 export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
   // plugin hook: extendsMarkdownOptions

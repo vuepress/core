@@ -4,6 +4,8 @@ import type { App, PageFrontmatter } from '../types/index.js'
 
 /**
  * Resolve page permalink from frontmatter / options / pattern
+ *
+ * @internal
  */
 export const resolvePagePermalink = ({
   app,

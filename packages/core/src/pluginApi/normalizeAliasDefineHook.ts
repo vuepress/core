@@ -3,6 +3,8 @@ import type { AliasDefineHook } from '../types/index.js'
 
 /**
  * Normalize alias and define hook
+ *
+ * @internal
  */
 export const normalizeAliasDefineHook =
   (hook: AliasDefineHook['exposed']): AliasDefineHook['normalized'] =>

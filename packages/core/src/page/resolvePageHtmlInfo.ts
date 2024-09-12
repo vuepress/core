@@ -3,6 +3,8 @@ import type { App } from '../types/index.js'
 
 /**
  * Resolve page rendered html file path
+ *
+ * @internal
  */
 export const resolvePageHtmlInfo = ({
   app,

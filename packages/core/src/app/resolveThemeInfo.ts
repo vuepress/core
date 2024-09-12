@@ -3,6 +3,8 @@ import { resolvePluginObject } from './resolvePluginObject.js'
 
 /**
  * Resolve theme info and its parent theme info
+ *
+ * @internal
  */
 export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
   // resolve current theme info

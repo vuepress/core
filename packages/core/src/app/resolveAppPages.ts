@@ -6,6 +6,8 @@ const log = debug('vuepress:core/app')
 
 /**
  * Resolve pages for vuepress app
+ *
+ * @internal
  */
 export const resolveAppPages = async (app: App): Promise<Page[]> => {
   log('resolveAppPages start')

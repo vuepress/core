@@ -17,7 +17,11 @@ import { resolveAppWriteTemp } from './resolveAppWriteTemp.js'
 import { setupAppThemeAndPlugins } from './setupAppThemeAndPlugins.js'
 
 /**
- * Create vuepress app
+ * Create base vuepress app.
+ *
+ * Notice that the base app could not be used for dev nor build.
+ *
+ * It would be used for creating dev app or build app, or for testing.
  */
 export const createBaseApp = (config: AppConfig): App => {
   const options = resolveAppOptions(config)
