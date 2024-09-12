@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > :v-pre / :no-v-pre > should work if \`block\` is disabled 1`] = `
+exports[`:v-pre / :no-v-pre > should work if \`block\` is disabled 1`] = `
 "<pre v-pre><code class="language-js:v-pre">const a = 1
 </code></pre>
 <pre><code class="language-js:no-v-pre">const a = 1
@@ -18,7 +18,7 @@ exports[`@vuepress/markdown > plugins > vPrePlugin > :v-pre / :no-v-pre > should
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > :v-pre / :no-v-pre > should work if \`block\` is enabled by default 1`] = `
+exports[`:v-pre / :no-v-pre > should work if \`block\` is enabled by default 1`] = `
 "<pre v-pre><code class="language-js:v-pre">const a = 1
 </code></pre>
 <pre><code class="language-js:no-v-pre">const a = 1
@@ -36,35 +36,35 @@ exports[`@vuepress/markdown > plugins > vPrePlugin > :v-pre / :no-v-pre > should
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > plugin options > should disable \`block\` 1`] = `
+exports[`plugin options > should disable \`block\` 1`] = `
 "<pre><code class="language-js">const a = 1
 </code></pre>
 <p><code v-pre>inline</code></p>
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > plugin options > should disable \`block\` and \`inline\` 1`] = `
+exports[`plugin options > should disable \`block\` and \`inline\` 1`] = `
 "<pre><code class="language-js">const a = 1
 </code></pre>
 <p><code>inline</code></p>
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > plugin options > should disable \`inline\` 1`] = `
+exports[`plugin options > should disable \`inline\` 1`] = `
 "<pre v-pre><code class="language-js">const a = 1
 </code></pre>
 <p><code>inline</code></p>
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > plugin options > should process code with default options 1`] = `
+exports[`plugin options > should process code with default options 1`] = `
 "<pre v-pre><code class="language-js">const a = 1
 </code></pre>
 <p><code v-pre>inline</code></p>
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > syntax highlighting > should work highlighted code is wrapped with \`<pre>\` 1`] = `
+exports[`syntax highlighting > should work highlighted code is wrapped with \`<pre>\` 1`] = `
 "<pre v-pre><code>highlighted code: const a = 1
 , lang: js:v-pre</code></pre>
 <pre><code>highlighted code: const a = 1
@@ -82,7 +82,7 @@ exports[`@vuepress/markdown > plugins > vPrePlugin > syntax highlighting > shoul
 "
 `;
 
-exports[`@vuepress/markdown > plugins > vPrePlugin > syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
+exports[`syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
 "<pre v-pre><code class="language-js:v-pre">highlighted code: const a = 1
 , lang: js:v-pre</code></pre>
 <pre><code class="language-js:no-v-pre">highlighted code: const a = 1

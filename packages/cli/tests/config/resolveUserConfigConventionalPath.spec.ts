@@ -14,13 +14,11 @@ const TEST_CASES: [string, string][] = [
   [resolveFixtures('case6'), '.vuepress/config.mjs'],
 ]
 
-describe('cli > config > resolveUserConfigConventionalPath', () => {
-  describe('should resolve conventional config file correctly', () => {
-    TEST_CASES.forEach(([source, expected]) => {
-      it(expected, () => {
-        const configFile = resolveUserConfigConventionalPath(source, source)
-        expect(configFile).toEqual(path.resolve(source, expected))
-      })
+describe('should resolve conventional config file correctly', () => {
+  TEST_CASES.forEach(([source, expected]) => {
+    it(expected, () => {
+      const configFile = resolveUserConfigConventionalPath(source, source)
+      expect(configFile).toEqual(path.resolve(source, expected))
     })
   })
 })
