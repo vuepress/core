@@ -3,6 +3,8 @@ import { resolveThemeInfo } from './resolveThemeInfo.js'
 
 /**
  * Setup theme and plugins for vuepress app
+ *
+ * @internal
  */
 export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
   // recursively resolve theme info

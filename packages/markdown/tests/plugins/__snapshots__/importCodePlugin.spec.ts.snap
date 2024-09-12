@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`@vuepress/markdown > plugins > importCodePlugin > compatibility with otherPlugin > should preserve the things after code as fence info 1`] = `
+exports[`compatibility with otherPlugin > should preserve the things after code as fence info 1`] = `
 "<pre><code class="language-js{1,3-4}">const msg = 'hello from js'
 
 console.log(msg)
@@ -10,7 +10,7 @@ console.log('foo bar')
 "
 `;
 
-exports[`@vuepress/markdown > plugins > importCodePlugin > compatibility with otherPlugin > should preserve the things after code as fence info 2`] = `
+exports[`compatibility with otherPlugin > should preserve the things after code as fence info 2`] = `
 "<pre><code class="language-md:no-line-numbers:no-v-pre"># msg
 
 hello from md

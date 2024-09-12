@@ -2,6 +2,8 @@ import type { App } from '../../types/index.js'
 
 /**
  * Generate client configs temp file
+ *
+ * @internal
  */
 export const prepareClientConfigs = async (app: App): Promise<void> => {
   // plugin hook: clientConfigFile

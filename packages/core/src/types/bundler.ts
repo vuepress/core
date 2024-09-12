@@ -8,8 +8,19 @@ import type { App } from './app/index.js'
  * - build: bundle assets for deployment
  */
 export interface Bundler {
+  /**
+   * Name of the bundler
+   */
   name: string
+
+  /**
+   * Method to run vuepress app in dev mode, starting dev server
+   */
   dev: (app: App) => Promise<() => Promise<void>>
+
+  /**
+   * Method to run vuepress app in build mode, generating static pages and assets
+   */
   build: (app: App) => Promise<void>
 }
 

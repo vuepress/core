@@ -1,5 +1,10 @@
 import { createPluginApi } from '../pluginApi/index.js'
-import type { App, AppConfig, Plugin } from '../types/index.js'
+import type {
+  App,
+  AppConfig,
+  AppPropertiesBase,
+  Plugin,
+} from '../types/index.js'
 import { appInit } from './appInit.js'
 import { appPrepare } from './appPrepare.js'
 import { appUse } from './appUse.js'
@@ -12,12 +17,16 @@ import { resolveAppWriteTemp } from './resolveAppWriteTemp.js'
 import { setupAppThemeAndPlugins } from './setupAppThemeAndPlugins.js'
 
 /**
- * Create vuepress app
+ * Create base vuepress app.
+ *
+ * Notice that the base app could not be used for dev nor build.
+ *
+ * It would be used for creating dev app or build app, or for testing.
  */
-export const createBaseApp = (config: AppConfig, isBuild = false): App => {
+export const createBaseApp = (config: AppConfig): App => {
   const options = resolveAppOptions(config)
   const dir = resolveAppDir(options)
-  const env = resolveAppEnv(options, isBuild)
+  const env = resolveAppEnv(options)
   const pluginApi = createPluginApi()
   const siteData = resolveAppSiteData(options)
   const version = resolveAppVersion()
@@ -38,7 +47,7 @@ export const createBaseApp = (config: AppConfig, isBuild = false): App => {
     use: (plugin: Plugin) => appUse(app, plugin),
     init: async () => appInit(app),
     prepare: async () => appPrepare(app),
-  } as App
+  } satisfies AppPropertiesBase as App
 
   // setup theme and plugins
   // notice that we setup theme before plugins,

@@ -3,6 +3,8 @@ import type { App, PageOptions } from '../types/index.js'
 
 /**
  * Resolve absolute and relative path of page file
+ *
+ * @internal
  */
 export const resolvePageFilePath = ({
   app,

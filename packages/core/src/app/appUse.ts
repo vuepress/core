@@ -4,6 +4,13 @@ import { resolvePluginObject } from './resolvePluginObject.js'
 
 const log = debug('vuepress:core/app')
 
+/**
+ * Use a plugin in vuepress app.
+ *
+ * Should be called before initialization.
+ *
+ * @internal
+ */
 export const appUse = (app: App, rawPlugin: Plugin): App => {
   const pluginObject = resolvePluginObject(app, rawPlugin)
 

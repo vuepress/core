@@ -21,6 +21,8 @@ if (import.meta.hot) {
 
 /**
  * Resolve page redirects
+ *
+ * @internal
  */
 const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
   // paths that should redirect to this page, use set to dedupe

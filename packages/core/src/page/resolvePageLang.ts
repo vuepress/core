@@ -3,6 +3,8 @@ import type { App, PageFrontmatter } from '../types/index.js'
 
 /**
  * Resolve language of page
+ *
+ * @internal
  */
 export const resolvePageLang = ({
   app,
