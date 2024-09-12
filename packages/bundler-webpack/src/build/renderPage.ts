@@ -1,9 +1,8 @@
+import type { PageSSRContext } from '@vuepress/bundlerutils'
+import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
-import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import type { App as VueApp } from 'vue'
-import { ssrContextKey } from 'vue'
-import type { SSRContext } from 'vue/server-renderer'
 import type { Router } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
@@ -12,7 +11,7 @@ import { renderPageStyles } from './renderPageStyles.js'
 import { resolvePageClientFilesMeta } from './resolvePageClientFilesMeta.js'
 import type { FileMeta, ModuleFilesMetaMap } from './types.js'
 
-interface PageRenderContext extends SSRContext, VuepressSSRContext {
+interface WebpackPageSSRContext extends PageSSRContext {
   /**
    * Injected by vuepress-ssr-loader
    *
@@ -29,7 +28,6 @@ export const renderPage = async ({
   page,
   vueApp,
   vueRouter,
-  renderToString,
   ssrTemplate,
   initialFilesMeta,
   asyncFilesMeta,
@@ -39,26 +37,19 @@ export const renderPage = async ({
   page: Page
   vueApp: VueApp
   vueRouter: Router
-  renderToString: (input: VueApp, context: SSRContext) => Promise<string>
   ssrTemplate: string
   initialFilesMeta: FileMeta[]
   asyncFilesMeta: FileMeta[]
   moduleFilesMetaMap: ModuleFilesMetaMap
 }): Promise<void> => {
-  // switch to current page route
-  await vueRouter.push(page.path)
-  await vueRouter.isReady()
-
-  // create vue ssr context with default values
-  delete vueApp._context.provides[ssrContextKey]
-  const ssrContext: PageRenderContext = {
-    _registeredComponents: new Set(),
-    lang: 'en',
-    head: [],
-  }
-
   // render current page to string
-  const pageRendered = await renderToString(vueApp, ssrContext)
+  const { ssrContext, ssrString } =
+    await renderPageToString<WebpackPageSSRContext>({
+      page,
+      vueApp,
+      vueRouter,
+      ssrContextInit: { _registeredComponents: new Set() },
+    })
 
   // resolve client files that used by this page
   const pageClientFilesMeta = resolvePageClientFilesMeta({
@@ -68,7 +59,7 @@ export const renderPage = async ({
 
   // generate html string
   const html = await app.options.templateBuildRenderer(ssrTemplate, {
-    content: pageRendered,
+    content: ssrString,
     head: ssrContext.head.map(renderHead).join(''),
     lang: ssrContext.lang,
     prefetch: renderPagePrefetchLinks({

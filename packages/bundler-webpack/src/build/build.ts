@@ -1,13 +1,6 @@
-import type { CreateVueAppFunction } from '@vuepress/client'
+import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
-import {
-  colors,
-  debug,
-  fs,
-  importFileDefault,
-  logger,
-  withSpinner,
-} from '@vuepress/utils'
+import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -80,19 +73,11 @@ export const build = async (
     const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
       resolveClientManifestMeta(clientManifest)
 
-    // load the compiled server bundle
-    const serverEntryPath = app.dir.temp('.server/app.cjs')
-    const { createVueApp } = await importFileDefault<{
-      createVueApp: CreateVueAppFunction
-    }>(serverEntryPath)
-    // create vue ssr app
-    const { app: vueApp, router: vueRouter } = await createVueApp()
-    const { renderToString } = await import('vue/server-renderer')
-
-    // load ssr template file
-    const ssrTemplate = await fs.readFile(app.options.templateBuild, {
-      encoding: 'utf8',
-    })
+    // create vue ssr app and get ssr template
+    const { vueApp, vueRouter } = await createVueServerApp(
+      app.dir.temp('.server/app.cjs'),
+    )
+    const ssrTemplate = await getSsrTemplate(app)
 
     // pre-render pages to html files
     for (const page of app.pages) {
@@ -104,7 +89,6 @@ export const build = async (
         page,
         vueApp,
         vueRouter,
-        renderToString,
         ssrTemplate,
         initialFilesMeta,
         asyncFilesMeta,

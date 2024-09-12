@@ -126,6 +126,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.3
         version: 5.1.3(vite@5.4.3(@types/node@22.5.4)(lightningcss@1.26.0)(sass-embedded@1.78.0)(sass@1.78.0)(terser@5.32.0))(vue@3.5.3(typescript@5.6.2))
+      '@vuepress/bundlerutils':
+        specifier: workspace:*
+        version: link:../bundlerutils
       '@vuepress/client':
         specifier: workspace:*
         version: link:../client
@@ -175,6 +178,9 @@ importers:
       '@types/webpack-env':
         specifier: ^1.18.5
         version: 1.18.5
+      '@vuepress/bundlerutils':
+        specifier: workspace:*
+        version: link:../bundlerutils
       '@vuepress/client':
         specifier: workspace:*
         version: link:../client
@@ -247,6 +253,27 @@ importers:
       webpack-merge:
         specifier: ^6.0.1
         version: 6.0.1
+
+  packages/bundlerutils:
+    dependencies:
+      '@vuepress/client':
+        specifier: workspace:*
+        version: link:../client
+      '@vuepress/core':
+        specifier: workspace:*
+        version: link:../core
+      '@vuepress/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@vuepress/utils':
+        specifier: workspace:*
+        version: link:../utils
+      vue:
+        specifier: ^3.5.3
+        version: 3.5.3(typescript@5.6.2)
+      vue-router:
+        specifier: ^4.4.3
+        version: 4.4.3(vue@3.5.3(typescript@5.6.2))
 
   packages/cli:
     dependencies:

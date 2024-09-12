@@ -2,7 +2,7 @@ import { path, transformPathToFileName } from '@vuepress/utils'
 import type { App } from '../types/index.js'
 
 /**
- * Resolve page chunk file relative info
+ * Resolve page chunk file related info
  *
  * @internal
  */

@@ -15,7 +15,7 @@ export default defineConfig({
     coverage: {
       all: true,
       exclude: [
-        'packages/bundler-*/**',
+        'packages/bundler*/**',
         'packages/client/**',
         'packages/vuepress/**',
       ],
