@@ -3,6 +3,8 @@ import type { App } from '../types/index.js'
 
 /**
  * Resolve page data file path
+ *
+ * @internal
  */
 export const resolvePageChunkInfo = ({
   app,

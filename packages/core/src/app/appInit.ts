@@ -9,6 +9,8 @@ const log = debug('vuepress:core/app')
  * Initialize a vuepress app
  *
  * Plugins should be used before initialization.
+ *
+ * @internal
  */
 export const appInit = async (app: App): Promise<void> => {
   log('init start')

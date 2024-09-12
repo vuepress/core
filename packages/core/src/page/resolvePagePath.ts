@@ -3,6 +3,8 @@ import type { PageOptions } from '../types/index.js'
 
 /**
  * Resolve the final route path of a page
+ *
+ * @internal
  */
 export const resolvePagePath = ({
   permalink,

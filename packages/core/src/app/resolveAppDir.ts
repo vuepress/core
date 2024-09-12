@@ -6,6 +6,8 @@ const require = createRequire(import.meta.url)
 
 /**
  * Create directory util function
+ *
+ * @internal
  */
 export const createAppDirFunction =
   (baseDir: string): AppDirFunction =>

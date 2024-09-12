@@ -2,6 +2,8 @@ import type { MarkdownSfcBlocks } from '@vuepress/markdown'
 
 /**
  * Render page sfc blocks to vue component
+ *
+ * @internal
  */
 export const renderPageSfcBlocksToVue = (
   sfcBlocks: MarkdownSfcBlocks,

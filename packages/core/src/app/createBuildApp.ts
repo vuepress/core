@@ -2,7 +2,7 @@ import type { AppConfig, BuildApp } from '../types/index.js'
 import { createBaseApp } from './createBaseApp.js'
 
 /**
- * Create vuepress build app
+ * Create vuepress build app.
  */
 export const createBuildApp = (config: AppConfig): BuildApp => {
   const app = createBaseApp(config) as BuildApp

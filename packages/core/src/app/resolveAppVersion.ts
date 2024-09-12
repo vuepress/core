@@ -5,6 +5,8 @@ const require = createRequire(import.meta.url)
 
 /**
  * Resolve version of vuepress app
+ *
+ * @internal
  */
 export const resolveAppVersion = (): string => {
   const pkgJson = fs.readJsonSync(

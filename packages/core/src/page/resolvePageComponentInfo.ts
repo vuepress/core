@@ -3,6 +3,8 @@ import type { App } from '../types/index.js'
 
 /**
  * Resolve page component and related info
+ *
+ * @internal
  */
 export const resolvePageComponentInfo = ({
   app,

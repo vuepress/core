@@ -7,6 +7,8 @@ import type { App } from '../types/index.js'
 
 /**
  * Infer page path according to file path
+ *
+ * @internal
  */
 export const inferPagePath = ({
   app,

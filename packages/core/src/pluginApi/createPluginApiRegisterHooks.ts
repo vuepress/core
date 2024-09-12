@@ -2,6 +2,11 @@ import type { PluginApi } from '../types/index.js'
 import { normalizeAliasDefineHook } from './normalizeAliasDefineHook.js'
 import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook.js'
 
+/**
+ * Create registerHooks method for plugin api
+ *
+ * @internal
+ */
 export const createPluginApiRegisterHooks =
   (
     plugins: PluginApi['plugins'],

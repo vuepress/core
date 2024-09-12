@@ -1,6 +1,11 @@
 import type { PluginApi } from '../types/index.js'
 import { createHookQueue } from './createHookQueue.js'
 
+/**
+ * Create hooks for plugin api
+ *
+ * @internal
+ */
 export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   // life cycle hooks
   onInitialized: createHookQueue('onInitialized'),

@@ -17,6 +17,8 @@ if (import.meta.hot) {
 
 /**
  * Generate site data temp file
+ *
+ * @internal
  */
 export const prepareSiteData = async (app: App): Promise<void> => {
   let content = `\

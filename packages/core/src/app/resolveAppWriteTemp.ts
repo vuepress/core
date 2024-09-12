@@ -3,6 +3,8 @@ import type { AppDir, AppWriteTemp } from '../types/index.js'
 
 /**
  * Resolve write temp file util for vuepress app
+ *
+ * @internal
  */
 export const resolveAppWriteTemp = (dir: AppDir): AppWriteTemp => {
   const writeTemp: AppWriteTemp = async (file: string, content: string) => {

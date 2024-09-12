@@ -4,6 +4,8 @@ import type { ClientConfigFileHook } from '../types/index.js'
 
 /**
  * Normalize hook for client config file
+ *
+ * @internal
  */
 export const normalizeClientConfigFileHook =
   (hook: ClientConfigFileHook['exposed']): ClientConfigFileHook['normalized'] =>

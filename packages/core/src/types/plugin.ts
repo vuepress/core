@@ -27,10 +27,14 @@ export type PluginFunction<T extends PluginObject = PluginObject> = (
  * Vuepress plugin object
  */
 export interface PluginObject extends Partial<HooksExposed> {
-  // plugin name
+  /**
+   * Name of the plugin
+   */
   name: string
 
-  // allow use a plugin multiple times or not
+  /**
+   * Allow the plugin to be used multiple times or not
+   */
   multiple?: boolean
 }
 

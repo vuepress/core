@@ -10,6 +10,8 @@ const DEFAULT_DATE = '0000-00-00'
  * Resolve page date according to frontmatter or file path
  *
  * It will be resolved as 'yyyy-MM-dd' format
+ *
+ * @internal
  */
 export const resolvePageDate = ({
   frontmatter,

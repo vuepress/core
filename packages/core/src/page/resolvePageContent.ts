@@ -9,6 +9,8 @@ const FALLBACK_CONTENT = ''
 
 /**
  * Resolve page content according to `content` or `filePath`
+ *
+ * @internal
  */
 export const resolvePageContent = async ({
   filePath,

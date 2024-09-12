@@ -10,6 +10,8 @@ const log = debug('vuepress:core/plugin-api')
 
 /**
  * Create hook queue for plugin system
+ *
+ * @internal
  */
 export const createHookQueue = <T extends HooksName>(name: T): HookQueue<T> => {
   const items: HookItem<T>[] = []
