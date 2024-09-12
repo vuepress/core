@@ -14,7 +14,12 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      include: ['packages/*/src/**/*.ts'],
+      exclude: [
+        'packages/bundler-*/**',
+        'packages/client/**',
+        'packages/vuepress/**',
+      ],
+      include: ['packages/*/src/**'],
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },
