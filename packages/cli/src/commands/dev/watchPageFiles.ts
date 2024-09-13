@@ -3,6 +3,7 @@ import type { App, Page } from '@vuepress/core'
 import { colors, logger } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import chokidar from 'chokidar'
+import { globSync } from 'glob'
 import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
@@ -14,7 +15,6 @@ import { createPageDepsHelper } from './pageDepsHelper.js'
 export const watchPageFiles = (app: App): FSWatcher[] => {
   // watch page deps
   const depsWatcher = chokidar.watch([], {
-    disableGlobbing: true,
     ignoreInitial: true,
   })
   const depsHelper = createPageDepsHelper()
@@ -43,17 +43,18 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   })
 
   // watch page files
-  const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
+  // FIXME: Page files are still not correctly tracked here
+  const pagesWatcher = chokidar.watch(globSync(app.options.pagePatterns), {
     cwd: app.dir.source(),
     ignoreInitial: true,
   })
-  pagesWatcher.on('add', async (filePathRelative) => {
+  pagesWatcher.on('add', async (filePathRelative: string) => {
     logger.info(`page ${colors.magenta(filePathRelative)} is created`)
     const page = await handlePageAdd(app, app.dir.source(filePathRelative))
     if (page === null) return
     addDeps(page)
   })
-  pagesWatcher.on('change', async (filePathRelative) => {
+  pagesWatcher.on('change', async (filePathRelative: string) => {
     logger.info(`page ${colors.magenta(filePathRelative)} is modified`)
     const result = await handlePageChange(app, app.dir.source(filePathRelative))
     if (result === null) return
@@ -61,7 +62,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     removeDeps(pageOld)
     addDeps(pageNew)
   })
-  pagesWatcher.on('unlink', async (filePathRelative) => {
+  pagesWatcher.on('unlink', async (filePathRelative: string) => {
     logger.info(`page ${colors.magenta(filePathRelative)} is removed`)
     const page = await handlePageUnlink(app, app.dir.source(filePathRelative))
     if (page === null) return

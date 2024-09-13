@@ -18,7 +18,7 @@ export const watchUserConfigFile = ({
     cwd,
     ignoreInitial: true,
   })
-  configWatcher.on('change', (configFile) => {
+  configWatcher.on('change', (configFile: string) => {
     logger.info(`config ${colors.magenta(configFile)} is modified`)
     void restart()
   })
@@ -27,7 +27,7 @@ export const watchUserConfigFile = ({
     cwd,
     ignoreInitial: true,
   })
-  depsWatcher.on('change', (depFile) => {
+  depsWatcher.on('change', (depFile: string) => {
     logger.info(`config dependency ${colors.magenta(depFile)} is modified`)
     void restart()
   })
