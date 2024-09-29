@@ -1,3 +1,20 @@
+# [2.0.0-rc.16](https://github.com/vuepress/core/compare/v2.0.0-rc.15...v2.0.0-rc.16) (2024-09-29)
+
+
+### Bug Fixes
+
+* **core:** handle templateBuildRenderer option correctly ([427e3cc](https://github.com/vuepress/core/commit/427e3cc976770ec801605f561ebab3e1629f43be))
+* **core:** make `content` have higher priority than `filePath` in page options ([12dbc67](https://github.com/vuepress/core/commit/12dbc67775c3e0f573793d9d2b01929e58322879))
+* **vuepress:** update required node version ([98a1830](https://github.com/vuepress/core/commit/98a18308260a8476b6b94eb905aeef6f5bedef75))
+
+
+### Features
+
+* **bundlerutils:** add bundlerutils package ([5488138](https://github.com/vuepress/core/commit/548813890385c6d8f54e00eb952452aed2439867))
+* upgrade to vue 3.5 ([d43bf23](https://github.com/vuepress/core/commit/d43bf234fc8f2ba3ffd44811c5d38571e142bc99))
+
+
+
 # [2.0.0-rc.15](https://github.com/vuepress/core/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-08-15)
 
 
