@@ -1,3 +1,3 @@
-export * from './app.js'
-export * from './options.js'
-export * from './utils.js'
+export type * from './app.js'
+export type * from './options.js'
+export type * from './utils.js'

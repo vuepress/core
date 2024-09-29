@@ -1,2 +1,2 @@
-export * from './hooks.js'
-export * from './pluginApi.js'
+export type * from './hooks.js'
+export type * from './pluginApi.js'
