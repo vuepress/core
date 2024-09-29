@@ -20,9 +20,6 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
 
-    env:
-      NODE_VERSION: '18'
-
     steps:
       - uses: actions/checkout@v4
 
@@ -32,8 +29,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
+          node-version: lts/*
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

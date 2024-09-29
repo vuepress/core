@@ -1,10 +1,12 @@
 name: release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
 
 jobs:
   release:
@@ -18,13 +20,13 @@ jobs:
       - name: Push to release branch
         run: git push origin HEAD:release
 
-      - name: Create release
-        if: ${{ github.event_name != 'workflow_dispatch' }}
-        id: release_tag
-        uses: yyx990803/release-tag@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org/
+
+      - name: Create release changelog
+        run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
