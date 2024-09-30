@@ -13,7 +13,7 @@
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm check-types && pnpm test",
+    "release:check": "pnpm clean && pnpm build && pnpm check-types && pnpm lint && pnpm test",
     "release:publish": "pnpm -r publish --tag next",
     "release:version": "bumpp -r --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all",
     "test": "pnpm test:unit && pnpm test:e2e",
