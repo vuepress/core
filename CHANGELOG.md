@@ -1,3 +1,17 @@
+# [2.0.0-rc.17](https://github.com/vuepress/core/compare/v2.0.0-rc.16...v2.0.0-rc.17) (2024-09-30)
+
+
+### Bug Fixes
+
+* **shared:** revert unexpected type changes (close [#1610](https://github.com/vuepress/core/issues/1610)) ([d21a934](https://github.com/vuepress/core/commit/d21a934b2c2ad28626f4e59820c53e08ed50f18f))
+
+
+### Features
+
+* **client:** upgrade vue devtools-api to v7 ([7940a3d](https://github.com/vuepress/core/commit/7940a3d79f9281a5ff100ed859d966e15c82c556))
+
+
+
 # [2.0.0-rc.16](https://github.com/vuepress/core/compare/v2.0.0-rc.15...v2.0.0-rc.16) (2024-09-29)
 
 
