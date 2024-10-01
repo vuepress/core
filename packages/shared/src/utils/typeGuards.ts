@@ -8,10 +8,8 @@ export const isFunction = (val: unknown): val is Function =>
 /**
  * Check if a value is plain object, with generic type support
  */
-export const isPlainObject = <
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
-  T extends Record<string, unknown> = Record<string, unknown>,
->(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unnecessary-type-parameters
+export const isPlainObject = <T extends Record<any, any> = Record<any, any>>(
   val: unknown,
 ): val is T => Object.prototype.toString.call(val) === '[object Object]'
 
