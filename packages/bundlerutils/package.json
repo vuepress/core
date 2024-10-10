@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundlerutils",
-  "version": "2.0.0-rc.17",
+  "version": "2.0.0-rc.18",
   "description": "Utils package of VuePress bundler",
   "keywords": [
     "bundler",
