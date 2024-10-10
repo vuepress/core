@@ -6,13 +6,6 @@ import { resolvePaths } from './resolvePaths.js'
 
 export interface LinksPluginOptions {
   /**
-   * Tag for internal links
-   *
-   * @default 'RouteLink'
-   */
-  internalTag?: 'a' | 'RouteLink' | 'RouterLink'
-
-  /**
    * Additional attributes for external links
    *
    * @default
@@ -24,6 +17,20 @@ export interface LinksPluginOptions {
    * ```
    */
   externalAttrs?: Record<string, string>
+
+  /**
+   * Tag for internal links
+   *
+   * @default 'RouteLink'
+   */
+  internalTag?: 'a' | 'RouteLink' | 'RouterLink'
+
+  /**
+   * Method to check if a link is external
+   *
+   * @default import { isLinkExternal } from '@vuepress/shared'
+   */
+  isExternal?: (href: string, env: MarkdownEnv) => boolean
 }
 
 /**
@@ -38,6 +45,8 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 ): void => {
   // tag of internal links
   const internalTag = options.internalTag || 'RouteLink'
+  const isExternal =
+    options.isExternal ?? ((href, env) => isLinkExternal(href, env.base))
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -73,7 +82,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     const { base = '/', filePathRelative = null } = env
 
     // check if a link is an external link
-    if (isLinkExternal(hrefLink, base)) {
+    if (isExternal(hrefLink, env)) {
       // set `externalAttrs` to current token
       Object.entries(externalAttrs).forEach(([key, val]) => {
         token.attrSet(key, val)
