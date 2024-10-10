@@ -1,5 +1,10 @@
 import type { MarkdownLink, MarkdownSfcBlocks } from '@vuepress/markdown'
-import type { PageBase, PageData, PageFrontmatter } from '@vuepress/shared'
+import type {
+  PageBase,
+  PageData,
+  PageFrontmatter,
+  PageHeader,
+} from '@vuepress/shared'
 
 /**
  * Vuepress Page
@@ -39,6 +44,11 @@ export type Page<
      * Dependencies of the page
      */
     deps: string[]
+
+    /**
+     * Headers of the page
+     */
+    headers: PageHeader[]
 
     /**
      * Links of the page
