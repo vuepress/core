@@ -8,8 +8,41 @@ test.beforeEach(async ({ page }) => {
 test('should render route-link correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #route-link a')
 
-  for (const el of await locator.all()) {
+  const count = await locator.count()
+
+  const results = [
+    '/',
+    '/',
+    '/',
+    '/not-existent.html',
+    '/not-existent.html',
+    '/not-existent.html',
+    '/routes/non-ascii-paths/中文目录名/中文文件名.html',
+    '/routes/non-ascii-paths/中文目录名/中文文件名.html',
+    '/routes/non-ascii-paths/中文目录名/中文文件名.html',
+    '/#hash',
+    '/?query',
+    '/?query#hash',
+    '#hash',
+    '?query',
+    '?query#hash',
+    'route-link.html',
+    'route-link.html',
+    'route-link.html',
+    'not-existent.html',
+    'not-existent.html',
+    'not-existent.html',
+    '../',
+    '../',
+    '../404.html',
+    '../404.html',
+  ]
+
+  for (let index = 0; index < count; index++) {
+    const el = locator.nth(index)
+
     await expect(el).toHaveAttribute('class', /route-link/)
+    await expect(el).toHaveAttribute('href', results[0].replace(/^\//, BASE))
   }
 })
 
