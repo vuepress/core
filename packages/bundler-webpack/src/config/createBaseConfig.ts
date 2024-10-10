@@ -52,7 +52,7 @@ export const createBaseConfig = async ({
   /**
    * module
    */
-  handleModule({ options, config, isBuild, isServer })
+  handleModule({ app, options, config, isBuild, isServer })
 
   /**
    * plugins

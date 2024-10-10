@@ -5,6 +5,7 @@ import {
   vuepressBuildPlugin,
   vuepressConfigPlugin,
   vuepressDevPlugin,
+  vuepressMarkdownPlugin,
   vuepressUserConfigPlugin,
   vuepressVuePlugin,
 } from './plugins/index.js'
@@ -31,6 +32,7 @@ export const resolveViteConfig = ({
       },
       plugins: [
         vuepressConfigPlugin({ app, isBuild, isServer }),
+        vuepressMarkdownPlugin({ app }),
         vuepressDevPlugin({ app }),
         vuepressBuildPlugin({ isServer }),
         vuepressVuePlugin({ options }),
