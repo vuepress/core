@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { fs, hash, importFileDefault, path } from '@vuepress/utils'
 import { build } from 'esbuild'
@@ -18,7 +19,7 @@ export const loadUserConfig = async (
       userConfigDependencies: [],
     }
   }
-  // following code is forked and modified from vite
+  // forked and modified from https://github.com/vitejs/vite/blob/889bfc0ada6d6cd356bb7a92efdce96298f82fef/packages/vite/src/node/config.ts#L1531
   // TODO: we can migrate to something like `bundler-require`, but its `__dirname` support is not as good as vite
   const dirnameVarName = '__vite_injected_original_dirname'
   const filenameVarName = '__vite_injected_original_filename'
@@ -26,18 +27,20 @@ export const loadUserConfig = async (
   const result = await build({
     absWorkingDir: process.cwd(),
     entryPoints: [userConfigPath],
-    outfile: 'out.js',
     write: false,
-    target: ['node18'],
+    target: [`node${process.versions.node}`],
     platform: 'node',
     bundle: true,
     format: 'esm',
+    mainFields: ['main'],
     sourcemap: 'inline',
     metafile: true,
     define: {
       '__dirname': dirnameVarName,
       '__filename': filenameVarName,
       'import.meta.url': importMetaUrlVarName,
+      'import.meta.dirname': dirnameVarName,
+      'import.meta.filename': filenameVarName,
     },
     plugins: [
       {
@@ -58,7 +61,7 @@ export const loadUserConfig = async (
         name: 'inject-file-scope-variables',
         setup(pluginBuild) {
           pluginBuild.onLoad({ filter: /\.[cm]?[jt]s$/ }, async (args) => {
-            const contents = await fs.readFile(args.path, 'utf8')
+            const contents = await fs.readFile(args.path, 'utf-8')
             const injectValues =
               `const ${dirnameVarName} = ${JSON.stringify(
                 path.dirname(args.path),

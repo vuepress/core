@@ -14,7 +14,6 @@ import { resolveAppOptions } from './resolveAppOptions.js'
 import { resolveAppSiteData } from './resolveAppSiteData.js'
 import { resolveAppVersion } from './resolveAppVersion.js'
 import { resolveAppWriteTemp } from './resolveAppWriteTemp.js'
-import { setupAppThemeAndPlugins } from './setupAppThemeAndPlugins.js'
 
 /**
  * Create base vuepress app.
@@ -48,11 +47,6 @@ export const createBaseApp = (config: AppConfig): App => {
     init: async () => appInit(app),
     prepare: async () => appPrepare(app),
   } satisfies AppPropertiesBase as App
-
-  // setup theme and plugins
-  // notice that we setup theme before plugins,
-  // so user plugins could override theme plugins
-  setupAppThemeAndPlugins(app, config)
 
   return app
 }

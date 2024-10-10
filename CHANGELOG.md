@@ -1,3 +1,19 @@
+# [2.0.0-rc.18](https://github.com/vuepress/core/compare/v2.0.0-rc.17...v2.0.0-rc.18) (2024-10-10)
+
+
+### Bug Fixes
+
+* **core:** fix app env flag regression (close [#1612](https://github.com/vuepress/core/issues/1612)) ([e693cdc](https://github.com/vuepress/core/commit/e693cdc6892aa977dc92c37c4869ad86fa5a8d69))
+
+
+### Features
+
+* **core:** improve user config file loading ([#1615](https://github.com/vuepress/core/issues/1615)) ([01f6ab3](https://github.com/vuepress/core/commit/01f6ab3c24d34c85b090656b1352b38913084809))
+* **markdown:** add isExternal option for linksPlugin (close [#1611](https://github.com/vuepress/core/issues/1611)) ([41214eb](https://github.com/vuepress/core/commit/41214eb4060e6b5537cd1ee25e2803bf1f66a7e6))
+* **utils:** sync latest sanitizeFileName logic from rollup ([#1614](https://github.com/vuepress/core/issues/1614)) ([aaf3bba](https://github.com/vuepress/core/commit/aaf3bba36134fe31518f559f08fbe9dfd8f98c4a))
+
+
+
 # [2.0.0-rc.17](https://github.com/vuepress/core/compare/v2.0.0-rc.16...v2.0.0-rc.17) (2024-09-30)
 
 

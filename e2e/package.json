@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/e2e",
-  "version": "2.0.0-rc.17",
+  "version": "2.0.0-rc.18",
   "private": true,
   "type": "module",
   "scripts": {
@@ -23,11 +23,11 @@
     "sass": "^1.79.4",
     "sass-embedded": "^1.79.4",
     "sass-loader": "^16.0.2",
-    "vue": "^3.5.10",
+    "vue": "^3.5.11",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.47.2",
+    "@playwright/test": "^1.48.0",
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3"
   }
