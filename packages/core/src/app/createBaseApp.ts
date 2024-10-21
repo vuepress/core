@@ -20,7 +20,9 @@ import { resolveAppWriteTemp } from './resolveAppWriteTemp.js'
  *
  * Notice that the base app could not be used for dev nor build.
  *
- * It would be used for creating dev app or build app, or for testing.
+ * It would be used for creating dev app or build app internally.
+ *
+ * @internal
  */
 export const createBaseApp = (config: AppConfig): App => {
   const options = resolveAppOptions(config)
