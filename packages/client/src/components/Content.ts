@@ -1,5 +1,5 @@
 import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
-import { usePageComponent } from '../composables/index.js'
+import { runCallbacks, usePageComponent } from '../composables/index.js'
 import { resolveRoute } from '../router/index.js'
 
 /**
@@ -26,6 +26,11 @@ export const Content = defineComponent({
       )
     })
 
-    return () => h(ContentComponent.value)
+    return () =>
+      h(ContentComponent.value, {
+        onVnodeMounted: runCallbacks,
+        onVnodeUpdated: runCallbacks,
+        onVnodeBeforeUnmount: runCallbacks,
+      })
   },
 })
