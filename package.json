@@ -38,7 +38,7 @@
     "@types/node": "^22.10.1",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^3.0.0-beta.2",
-    "bumpp": "^9.9.0",
+    "bumpp": "9.8.1",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.16.0",
     "eslint-config-vuepress": "^5.2.4",
