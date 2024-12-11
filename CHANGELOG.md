@@ -1,3 +1,12 @@
+# [2.0.0-rc.19](https://github.com/vuepress/core/compare/v2.0.0-rc.18...v2.0.0-rc.19) (2024-12-11)
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to v6 ([faddbe6](https://github.com/vuepress/core/commit/faddbe64e4c71a115bf300b4fc831118dbf3eca7))
+
+
+
 # [2.0.0-rc.18](https://github.com/vuepress/core/compare/v2.0.0-rc.17...v2.0.0-rc.18) (2024-10-10)
 
 
