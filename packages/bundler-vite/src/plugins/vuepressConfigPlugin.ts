@@ -151,8 +151,6 @@ export const vuepressConfigPlugin = ({
         host: app.options.host,
         port: app.options.port,
         open: app.options.open,
-        // ref: https://github.com/vitejs/vite/issues/15784#issuecomment-1923683823
-        fs: { cachedChecks: false },
       },
       build: {
         ssr: isServer,

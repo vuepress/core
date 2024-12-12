@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-rc.18",
+  "version": "2.0.0-rc.19",
   "description": "Client package of VuePress",
   "keywords": [
     "vuepress",
@@ -37,10 +37,10 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^7.4.6",
+    "@vue/devtools-api": "^7.6.7",
     "@vuepress/shared": "workspace:*",
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "publishConfig": {
     "access": "public"

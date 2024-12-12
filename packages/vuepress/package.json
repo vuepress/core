@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-rc.18",
+  "version": "2.0.0-rc.19",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -55,7 +55,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.5.12"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "workspace:*",
