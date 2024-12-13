@@ -27,15 +27,18 @@ test('should call content mounted hook', async ({ page }) => {
   await expect(mountedLocator).toHaveText(
     'mounted: /content-hooks/content.html 1',
   )
+
+  // update content but mounted hook should not be called twice
+  await updateMarkdownContent()
+  await expect(mountedLocator).toHaveText(
+    'mounted: /content-hooks/content.html 1',
+  )
 })
 
 /**
  * onContentChange hook should only called in development
  */
 test('should call content change hook', async ({ page }) => {
-  const mountedLocator = page.locator(
-    '.markdown-content-hooks .markdown-content-mounted',
-  )
   const changeLocator = page.locator(
     '.markdown-content-hooks .markdown-content-change',
   )
@@ -46,11 +49,6 @@ test('should call content change hook', async ({ page }) => {
 
   await updateMarkdownContent()
   await expect(changeLocator).toHaveText(`changedCount: ${IS_DEV ? 2 : 0}`) // 2
-
-  // update content but mounted hook should not be called twice
-  await expect(mountedLocator).toHaveText(
-    'mounted: /content-hooks/content.html 1',
-  )
 })
 
 test('should call content before unmount hook', async ({ page }) => {
