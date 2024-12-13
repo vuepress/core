@@ -14,9 +14,6 @@ const restoreMarkdownContent = async (): Promise<void> => {
   await writeSourceMarkdown('content-hooks/content.md', '## title\n\ncontent\n')
 }
 
-test.beforeEach(async () => {
-  await restoreMarkdownContent()
-})
 test.afterAll(async () => {
   await restoreMarkdownContent()
 })
