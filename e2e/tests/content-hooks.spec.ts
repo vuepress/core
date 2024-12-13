@@ -2,10 +2,7 @@ import { expect, test } from '@playwright/test'
 import { IS_DEV } from '../utils/env'
 import { readSourceMarkdown, writeSourceMarkdown } from '../utils/source'
 
-let changeCount = 0
-
 const updateMarkdownContent = async (): Promise<void> => {
-  changeCount++
   const content = await readSourceMarkdown('content-hooks/content.md')
   await writeSourceMarkdown(
     'content-hooks/content.md',
@@ -14,14 +11,13 @@ const updateMarkdownContent = async (): Promise<void> => {
 }
 
 const restoreMarkdownContent = async (): Promise<void> => {
-  changeCount = 0
   await writeSourceMarkdown('content-hooks/content.md', '## title\n\ncontent\n')
 }
 
 test.beforeEach(async () => {
   await restoreMarkdownContent()
 })
-test.afterAll(async () => {
+test.afterEach(async () => {
   await restoreMarkdownContent()
 })
 
@@ -52,14 +48,10 @@ test('should call content change hook', async ({ page }) => {
   await page.goto('content-hooks/content.html')
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(
-    `changedCount: ${IS_DEV ? changeCount : 0}`,
-  ) // 1
+  await expect(changeLocator).toHaveText(`changedCount: ${IS_DEV ? 1 : 0}`) // 1
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(
-    `changedCount: ${IS_DEV ? changeCount : 0}`,
-  ) // 2
+  await expect(changeLocator).toHaveText(`changedCount: ${IS_DEV ? 2 : 0}`) // 2
 })
 
 test('should call content before unmount hook', async ({ page }) => {
