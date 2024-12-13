@@ -18,14 +18,12 @@ const restoreMarkdownContent = async (): Promise<void> => {
   await writeSourceMarkdown('content-hooks/content.md', '## title\n\ncontent\n')
 }
 
-if (IS_DEV) {
-  test.beforeEach(async () => {
-    await restoreMarkdownContent()
-  })
-  test.afterEach(async () => {
-    await restoreMarkdownContent()
-  })
-}
+test.beforeEach(async () => {
+  await restoreMarkdownContent()
+})
+test.afterAll(async () => {
+  await restoreMarkdownContent()
+})
 
 test('should call content mounted hook', async ({ page }) => {
   const mountedLocator = page.locator(
@@ -44,6 +42,9 @@ test('should call content mounted hook', async ({ page }) => {
   )
 })
 
+/**
+ * onContentChange hook should only called in development
+ */
 test('should call content change hook', async ({ page }) => {
   const changeLocator = page.locator(
     '.markdown-content-hooks .markdown-content-change',
@@ -51,10 +52,14 @@ test('should call content change hook', async ({ page }) => {
   await page.goto('content-hooks/content.html')
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(`changedCount: ${changeCount}`) // 1
+  await expect(changeLocator).toHaveText(
+    `changedCount: ${IS_DEV ? changeCount : 0}`,
+  ) // 1
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(`changedCount: ${changeCount}`) // 2
+  await expect(changeLocator).toHaveText(
+    `changedCount: ${IS_DEV ? changeCount : 0}`,
+  ) // 2
 })
 
 test('should call content before unmount hook', async ({ page }) => {
