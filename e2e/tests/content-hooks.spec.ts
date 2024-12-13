@@ -17,7 +17,7 @@ const restoreMarkdownContent = async (): Promise<void> => {
 test.beforeEach(async () => {
   await restoreMarkdownContent()
 })
-test.afterEach(async () => {
+test.afterAll(async () => {
   await restoreMarkdownContent()
 })
 
