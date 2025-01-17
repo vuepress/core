@@ -1,6 +1,6 @@
 import { clientConfigs } from '@internal/clientConfigs'
-import { createApp, createSSRApp, h } from 'vue'
-import { usePageLayout } from './composables/index.js'
+import { createApp, createSSRApp, h, onMounted, watch } from 'vue'
+import { usePageLayout, useRoutePath } from './composables/index.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
@@ -36,6 +36,19 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
       // get page layout
       const pageLayout = usePageLayout()
+
+      onMounted(() => {
+        watch(useRoutePath(), () => {
+          console.log('app root path changed')
+        })
+        watch(
+          useRoutePath(),
+          () => {
+            console.log('app route path changed post')
+          },
+          { flush: 'post' },
+        )
+      })
 
       // render layout and root components
       return () => [h(pageLayout.value), clientRootComponents]

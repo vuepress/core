@@ -1,7 +1,19 @@
 <script setup lang="ts">
-import { Content, useSiteData } from 'vuepress/client'
+import { watch } from 'vue'
+import { Content, RouteLink, useRoutePath, useSiteData } from 'vuepress/client'
 
 const siteData = useSiteData()
+
+watch(useRoutePath(), () => {
+  console.log('layout route path changed')
+})
+watch(
+  useRoutePath(),
+  () => {
+    console.log('layout route path changed post')
+  },
+  { flush: 'post' },
+)
 </script>
 
 <template>
@@ -10,7 +22,7 @@ const siteData = useSiteData()
       <div>Languages</div>
       <ul>
         <li v-for="[key, value] in Object.entries(siteData.locales)" :key="key">
-          <RouterLink :to="key">{{ value.lang }}</RouterLink>
+          <RouteLink :to="key">{{ value.lang }}</RouteLink>
         </li>
       </ul>
     </nav>

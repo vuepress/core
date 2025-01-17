@@ -1,5 +1,5 @@
-import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
-import { usePageComponent } from '../composables/index.js'
+import { computed, defineAsyncComponent, defineComponent, h, watch } from 'vue'
+import { usePageComponent, useRoutePath } from '../composables/index.js'
 import { resolveRoute } from '../router/index.js'
 
 /**
@@ -26,6 +26,21 @@ export const Content = defineComponent({
       )
     })
 
-    return () => h(ContentComponent.value)
+    watch(useRoutePath(), () => {
+      console.log('markdown route path changed')
+    })
+    watch(
+      useRoutePath(),
+      () => {
+        console.log('markdown route path changed post')
+      },
+      { flush: 'post' },
+    )
+
+    return () => {
+      console.log('render', ContentComponent.value)
+
+      h(ContentComponent.value)
+    }
   },
 })
