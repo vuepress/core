@@ -54,11 +54,14 @@ export type RoutesRef = Ref<Routes>
 export type SiteDataRef = Ref<SiteData>
 export type SiteLocaleDataRef = ComputedRef<SiteLocaleData>
 
-export interface ClientData {
+export interface ClientData<
+  Frontmatter extends Record<string, unknown> = Record<string, unknown>,
+  Data extends Record<string, unknown> = Record<string, unknown>,
+> {
   layouts: LayoutsRef
   pageComponent: PageComponentRef
-  pageData: PageDataRef
-  pageFrontmatter: PageFrontmatterRef
+  pageData: PageDataRef<Data>
+  pageFrontmatter: PageFrontmatterRef<Frontmatter>
   pageHead: PageHeadRef
   pageHeadTitle: PageHeadTitleRef
   pageLang: PageLangRef
