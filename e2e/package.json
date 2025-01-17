@@ -16,12 +16,12 @@
     "e2e:dev:webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
-    "@vuepress-e2e/style-exports": "file:./modules/style-exports",
+    "@vuepress-e2e/conditional-exports": "file:modules/conditional-exports",
+    "@vuepress-e2e/style-exports": "file:modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.82.0",
-    "sass-embedded": "^1.82.0",
+    "sass": "^1.83.4",
+    "sass-embedded": "^1.83.4",
     "sass-loader": "^16.0.4",
     "vue": "^3.5.13",
     "vuepress": "workspace:*"

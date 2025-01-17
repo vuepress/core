@@ -8,8 +8,8 @@
     "check-types": "vue-tsc --noEmit",
     "clean": "pnpm --parallel --stream clean",
     "format": "prettier --write .",
-    "lint": "eslint --flag unstable_ts_config . && prettier --check .",
-    "lint:fix": "eslint --flag unstable_ts_config --fix . && prettier --write .",
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint --fix . && prettier --write .",
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -25,37 +25,37 @@
   "lint-staged": {
     "*.!(cjs|js|ts|vue)": "prettier --write --ignore-unknown",
     "*.(cjs|js|ts|vue)": [
-      "eslint --flag unstable_ts_config --fix",
+      "eslint --fix",
       "prettier --write"
     ],
     "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@commitlint/types": "^19.5.0",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.7",
     "@types/webpack-env": "^1.18.5",
-    "@vitest/coverage-istanbul": "^3.0.0-beta.2",
-    "bumpp": "9.8.1",
+    "@vitest/coverage-istanbul": "^3.0.1",
+    "bumpp": "9.10.1",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.16.0",
+    "eslint": "^9.18.0",
     "eslint-config-vuepress": "^5.2.4",
     "husky": "^9.1.7",
-    "jiti": "^2.4.1",
-    "lint-staged": "^15.2.11",
+    "jiti": "^2.4.2",
+    "lint-staged": "^15.4.1",
     "prettier": "^3.4.2",
     "prettier-config-vuepress": "^5.0.0",
     "rimraf": "^6.0.1",
-    "sort-package-json": "^2.12.0",
-    "taze": "^0.17.2",
+    "sort-package-json": "^2.14.0",
+    "taze": "^18.2.0",
     "tsconfig-vuepress": "^5.2.1",
     "tsup": "^8.3.5",
-    "typescript": "~5.6.3",
-    "vite": "~6.0.3",
-    "vitest": "^3.0.0-beta.2",
-    "vue-tsc": "^2.1.10"
+    "typescript": "~5.7.3",
+    "vite": "~6.0.7",
+    "vitest": "^3.0.1",
+    "vue-tsc": "^2.2.0"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@9.15.4"
 }
