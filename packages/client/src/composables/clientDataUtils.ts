@@ -22,12 +22,11 @@ export const usePageComponent = (): PageComponentRef =>
 
 export const usePageData = <
   T extends Record<string, unknown> = Record<string, unknown>,
->(): PageDataRef<T> => useClientData().pageData as PageDataRef<T>
+>(): PageDataRef<T> => useClientData<Record<string, unknown>, T>().pageData
 
 export const usePageFrontmatter = <
   T extends Record<string, unknown> = Record<string, unknown>,
->(): PageFrontmatterRef<T> =>
-  useClientData().pageFrontmatter as PageFrontmatterRef<T>
+>(): PageFrontmatterRef<T> => useClientData<T>().pageFrontmatter
 
 export const usePageHead = (): PageHeadRef => useClientData().pageHead
 
