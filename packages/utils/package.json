@@ -36,10 +36,10 @@
     "@types/hash-sum": "^1.0.2",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.4.0",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "globby": "^14.0.2",
     "hash-sum": "^2.0.0",
-    "ora": "^8.1.1",
+    "ora": "^8.2.0",
     "picocolors": "^1.1.1",
     "upath": "^2.0.1"
   },
