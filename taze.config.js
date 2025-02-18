@@ -2,8 +2,7 @@ import { defineConfig } from 'taze'
 
 export default defineConfig({
   packageMode: {
-    esbuild: 'minor',
-    vite: 'minor',
+    vite: 'patch',
   },
   recursive: true,
   write: true,

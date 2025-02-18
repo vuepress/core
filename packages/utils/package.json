@@ -37,7 +37,7 @@
     "@vuepress/shared": "workspace:*",
     "debug": "^4.4.0",
     "fs-extra": "^11.3.0",
-    "globby": "^14.0.2",
+    "globby": "^14.1.0",
     "hash-sum": "^2.0.0",
     "ora": "^8.2.0",
     "picocolors": "^1.1.1",
