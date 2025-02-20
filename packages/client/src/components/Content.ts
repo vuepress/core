@@ -1,5 +1,9 @@
-import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
-import { runCallbacks, usePageComponent } from '../composables/index.js'
+import { computed, defineAsyncComponent, defineComponent, h, watch } from 'vue'
+import {
+  runCallbacks,
+  usePageComponent,
+  usePageFrontmatter,
+} from '../composables/index.js'
 import { resolveRoute } from '../router/index.js'
 
 /**
@@ -26,13 +30,22 @@ export const Content = defineComponent({
       )
     })
 
+    const frontmatter = usePageFrontmatter()
+    watch(
+      frontmatter,
+      () => {
+        runCallbacks('updated')
+      },
+      { deep: true, flush: 'post' },
+    )
+
     return () =>
       h(ContentComponent.value, {
         onVnodeMounted: () => {
           runCallbacks('mounted')
         },
         onVnodeUpdated: () => {
-          runCallbacks('change')
+          runCallbacks('updated')
         },
         onVnodeBeforeUnmount: () => {
           runCallbacks('beforeUnmount')

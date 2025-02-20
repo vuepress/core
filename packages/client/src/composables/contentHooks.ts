@@ -1,31 +1,21 @@
 import { onUnmounted } from 'vue'
 
-type LifeCycle = 'beforeUnmount' | 'change' | 'mounted'
+type ContentUpdatedReason = 'beforeUnmount' | 'mounted' | 'updated'
+type ContentUpdatedCallback = (reason: ContentUpdatedReason) => unknown
 
-const hooks: Record<LifeCycle, (() => unknown)[]> = {
-  mounted: [],
-  beforeUnmount: [],
-  change: [],
-}
-
-const createHook =
-  (lifeCycle: LifeCycle) =>
-  (fn: () => unknown): void => {
-    hooks[lifeCycle].push(fn)
-    onUnmounted(() => {
-      hooks[lifeCycle] = hooks[lifeCycle].filter((f) => f !== fn)
-    })
-  }
-
-export const onContentChange = createHook('change')
-
-export const onContentMounted = createHook('mounted')
-
-export const onContentBeforeUnmount = createHook('beforeUnmount')
+let contentUpdatedCallbacks: ContentUpdatedCallback[] = []
 
 /**
- * Call all registered callbacks
+ * Register callback that is called every time the markdown content is updated
+ * in the DOM.
  */
-export const runCallbacks = (lifeCycle: LifeCycle): void => {
-  hooks[lifeCycle].forEach((fn) => fn())
+export const onContentUpdated = (fn: ContentUpdatedCallback): void => {
+  contentUpdatedCallbacks.push(fn)
+  onUnmounted(() => {
+    contentUpdatedCallbacks = contentUpdatedCallbacks.filter((f) => f !== fn)
+  })
+}
+
+export function runCallbacks(reason: ContentUpdatedReason): void {
+  contentUpdatedCallbacks.forEach((fn) => fn(reason))
 }

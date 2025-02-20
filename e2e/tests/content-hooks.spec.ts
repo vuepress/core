@@ -18,12 +18,11 @@ test.afterAll(async () => {
   await restoreMarkdownContent()
 })
 
-test('should call content mounted hook', async ({ page }) => {
+test('should call content hook on mounted', async ({ page }) => {
+  await page.goto('content-hooks/content.html')
   const mountedLocator = page.locator(
     '.markdown-content-hooks .markdown-content-mounted',
   )
-  await page.goto('content-hooks/content.html')
-
   await expect(mountedLocator).toHaveText(
     'mounted: /content-hooks/content.html 1',
   )
@@ -38,27 +37,27 @@ test('should call content mounted hook', async ({ page }) => {
 /**
  * onContentChange hook should only called in development
  */
-test('should call content change hook', async ({ page }) => {
-  const changeLocator = page.locator(
-    '.markdown-content-hooks .markdown-content-change',
-  )
+test('should call content hook on updated', async ({ page }) => {
   await page.goto('content-hooks/content.html')
+  const updatedLocator = page.locator(
+    '.markdown-content-hooks .markdown-content-updated',
+  )
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(`changedCount: ${IS_DEV ? 1 : 0}`) // 1
+  await expect(updatedLocator).toHaveText(`updatedCount: ${IS_DEV ? 1 : 0}`) // 1
 
   await updateMarkdownContent()
-  await expect(changeLocator).toHaveText(`changedCount: ${IS_DEV ? 2 : 0}`) // 2
+  await expect(updatedLocator).toHaveText(`updatedCount: ${IS_DEV ? 2 : 0}`) // 2
 })
 
-test('should call content before unmount hook', async ({ page }) => {
-  const beforeUnmountLocator = page.locator(
-    '.markdown-content-hooks .markdown-content-before-unmount',
-  )
+test('should call content hook on beforeUnmount', async ({ page }) => {
   await page.goto('content-hooks/content.html')
+
+  const beforeUnmountLocator = page.locator(
+    '.markdown-content-hooks .markdown-content-beforeUnmount',
+  )
+
   await page.locator('.e2e-theme-nav ul > li > a').nth(0).click()
 
-  await expect(beforeUnmountLocator).toHaveText(
-    'beforeUnmount: /content-hooks/content.html',
-  )
+  await expect(beforeUnmountLocator).toHaveText('beforeUnmount: /')
 })
