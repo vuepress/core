@@ -1,7 +1,7 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import type { App } from 'vue'
 import { watch } from 'vue'
-import type { ClientData } from './types/index.js'
+import type { Data } from './types/index.js'
 
 const PLUGIN_ID = 'org.vuejs.vuepress'
 const PLUGIN_LABEL = 'VuePress'
@@ -12,10 +12,10 @@ const INSPECTOR_LABEL = PLUGIN_LABEL
 const INSPECTOR_CLIENT_DATA_ID = 'client-data'
 const INSPECTOR_CLIENT_DATA_LABEL = 'Client Data'
 
-type ClientDataKey = keyof ClientData
-type ClientDataValue = ClientData[ClientDataKey]
+type ClientDataKey = keyof Data
+type ClientDataValue = Data[ClientDataKey]
 
-export const setupDevtools = (app: App, clientData: ClientData): void => {
+export const setupDevtools = (app: App, clientData: Data): void => {
   setupDevtoolsPlugin(
     {
       // fix recursive reference

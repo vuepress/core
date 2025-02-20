@@ -40,7 +40,7 @@ export const resolvers = reactive({
    *
    * Frontmatter should take priority over site locale
    */
-  resolvePageHead: (
+  resolveHead: (
     pageHeadTitle: PageHeadTitle,
     pageFrontmatter: PageFrontmatter,
     siteLocaleDate: SiteLocaleData,
@@ -62,7 +62,7 @@ export const resolvers = reactive({
    *
    * It would be used as the content of the `<title>` tag
    */
-  resolvePageHeadTitle: (
+  resolveHeadTitle: (
     pageData: PageData,
     siteLocaleDate: SiteLocaleData,
   ): PageHeadTitle =>
@@ -73,15 +73,13 @@ export const resolvers = reactive({
    *
    * It would be used as the `lang` attribute of `<html>` tag
    */
-  resolvePageLang: (
-    pageData: PageData,
-    siteLocaleData: SiteLocaleData,
-  ): PageLang => pageData.lang || siteLocaleData.lang || LANG_DEFAULT,
+  resolveLang: (pageData: PageData, siteLocaleData: SiteLocaleData): PageLang =>
+    pageData.lang || siteLocaleData.lang || LANG_DEFAULT,
 
   /**
    * Resolve layout component of current page
    */
-  resolvePageLayout: (pageData: PageData, layouts: Layouts): PageLayout => {
+  resolveLayout: (pageData: PageData, layouts: Layouts): PageLayout => {
     const layoutName = isString(pageData.frontmatter.layout)
       ? pageData.frontmatter.layout
       : LAYOUT_NAME_DEFAULT
@@ -105,7 +103,7 @@ export const resolvers = reactive({
    *
    * It would merge the locales fields to the root fields
    */
-  resolveSiteLocaleData: (
+  resolveSiteLocale: (
     { base, locales, ...siteData }: SiteData,
     routeLocale: RouteLocale,
   ): SiteLocaleData => ({
