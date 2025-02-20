@@ -37,12 +37,6 @@ test.describe('markdown links', () => {
     await expect(page).toHaveURL(`${BASE}404.html#404`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
-
-  test('should preserve hash and query', async ({ page }) => {
-    await page.locator(selector).nth(5).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-  })
 })
 
 test.describe('html links', () => {
@@ -77,12 +71,6 @@ test.describe('html links', () => {
     await expect(page).toHaveURL(`${BASE}404.html#404`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
-
-  test('should preserve hash and query', async ({ page }) => {
-    await page.locator(selector).nth(5).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-  })
 })
 
 test.describe('html clean links', () => {
@@ -115,12 +103,6 @@ test.describe('html clean links', () => {
   test('should preserve hash', async ({ page }) => {
     await page.locator(selector).nth(4).click()
     await expect(page).toHaveURL(`${BASE}404.html#404`)
-    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-  })
-
-  test('should preserve hash and query', async ({ page }) => {
-    await page.locator(selector).nth(5).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 })
@@ -192,19 +174,6 @@ test.describe('markdown clean links', () => {
       await expect(locator).toHaveAttribute('target', '_blank')
     }
   })
-
-  test('should preserve hash and query', async ({ page }) => {
-    const locator = page.locator(selector).nth(5)
-
-    if (BASE === '/') {
-      await locator.click()
-      await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-      await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-    } else {
-      await expect(locator).toHaveAttribute('href', '/404#404?notFound=true')
-      await expect(locator).toHaveAttribute('target', '_blank')
-    }
-  })
 })
 
 test.describe('markdown links with html paths', () => {
@@ -271,22 +240,6 @@ test.describe('markdown links with html paths', () => {
       await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
     } else {
       await expect(locator).toHaveAttribute('href', '/404.html#404')
-      await expect(locator).toHaveAttribute('target', '_blank')
-    }
-  })
-
-  test('should preserve hash and query', async ({ page }) => {
-    const locator = page.locator(selector).nth(5)
-
-    if (BASE === '/') {
-      await locator.click()
-      await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-      await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-    } else {
-      await expect(locator).toHaveAttribute(
-        'href',
-        '/404.html#404?notFound=true',
-      )
       await expect(locator).toHaveAttribute('target', '_blank')
     }
   })

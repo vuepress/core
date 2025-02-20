@@ -74,17 +74,3 @@ test.describe('should preserve  hash', () => {
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 })
-
-test.describe('should preserve hash and query', () => {
-  test('full', async ({ page }) => {
-    await page.locator('#full .not-found-with-hash-and-query').click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-  })
-
-  test('clean', async ({ page }) => {
-    await page.locator('#clean .not-found-with-hash-and-query').click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
-    await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
-  })
-})

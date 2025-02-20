@@ -4,7 +4,6 @@
   <button class="home-with-query" @click="goHomeWithQuery">Home</button>
   <button class="home-with-query-and-hash" @click="goHomeWithQueryAndHash">Home</button>
   <button class="not-found-with-hash" @click="go404WithHash">404</button>
-  <button class="not-found-with-hash-and-query" @click="go404WithHashAndQuery">404</button>
 </div>
 
 <div id="clean">
@@ -13,7 +12,6 @@
   <button class="home-with-query" @click="goHomeWithQuery">Home</button>
   <button class="home-with-query-and-hash" @click="goHomeWithQueryAndHash">Home</button>
   <button class="not-found-with-hash" @click="go404WithHash">404</button>
-  <button class="not-found-with-hash-and-query" @click="go404WithHashAndQuery">404</button>
 </div>
 
 <script setup lang="ts">
@@ -58,14 +56,6 @@ const go404WithHash = (event) => {
     router.push('/404.html#404');
   } else {
     router.push('/404#404');
-  }
-}
-
-const go404WithHashAndQuery = (event) => {
-  if (event.currentTarget.parentElement.id === 'full') {
-    router.push('/404.html#404?notFound=true');
-  } else {
-    router.push('/404#404?notFound=true');
   }
 }
 </script>

@@ -177,7 +177,7 @@ const TEST_CASES: TestCase[] = [
   [['/foo/bar.html', '/a/index.html'], '/foo/bar'],
   [['/foo/bar.html', '/a/b.html'], '/foo/bar'],
 
-  // only hash and query
+  // empty
   [[''], ''],
 
   // unexpected corner cases
