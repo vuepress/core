@@ -23,5 +23,9 @@ export const resolvePagePath = ({
     )
   }
 
-  return encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
+  return (
+    encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
+      // get clean format
+      .replace(/\.html$/, '')
+  )
 }

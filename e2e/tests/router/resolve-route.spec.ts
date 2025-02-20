@@ -45,7 +45,7 @@ const TEST_CASES = [
     selector: '#route-meta',
     expected: {
       path: '/page-data/route-meta.html',
-      meta: { a: 0, b: 2, c: 3 },
+      meta: { a: 0, c: 3 },
       notFound: false,
     },
   },

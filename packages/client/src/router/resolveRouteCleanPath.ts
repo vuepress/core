@@ -4,7 +4,7 @@ import { redirects, routes } from '../internal/routes.js'
 /**
  * Resolve route path with given raw path
  */
-export const resolveRoutePath = (
+export const resolveRouteCleanPath = (
   pathname: string,
   currentPath?: string,
 ): string => {

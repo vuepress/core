@@ -43,7 +43,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   })
 
   // watch page files
-  const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
+  const pagesWatcher = chokidar.watch(app.options.route.pagePatterns, {
     cwd: app.dir.source(),
     ignoreInitial: true,
   })
