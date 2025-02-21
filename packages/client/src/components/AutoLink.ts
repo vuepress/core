@@ -67,7 +67,7 @@ export const AutoLink = defineComponent({
   setup(props, { slots }) {
     const config = toRef(props, 'config')
     const route = useRoute()
-    const siteData = useSite()
+    const site = useSite()
 
     // If the link has non-http protocol
     const withProtocol = computed(() => isLinkWithProtocol(config.value.link))
@@ -102,7 +102,7 @@ export const AutoLink = defineComponent({
       // Should not be active in `exact` mode
       if (config.value.exact) return false
 
-      const localePaths = Object.keys(siteData.value.locales)
+      const localePaths = Object.keys(site.value.locales)
 
       return localePaths.length
         ? // Check all the locales
