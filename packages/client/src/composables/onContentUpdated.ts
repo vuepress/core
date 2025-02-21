@@ -16,6 +16,9 @@ export const onContentUpdated = (fn: ContentUpdatedCallback): void => {
   })
 }
 
-export function runCallbacks(reason: ContentUpdatedReason): void {
+/** @internal */
+export const runContentUpdatedCallbacks = (
+  reason: ContentUpdatedReason,
+): void => {
   contentUpdatedCallbacks.forEach((fn) => fn(reason))
 }

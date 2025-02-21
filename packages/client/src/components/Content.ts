@@ -1,6 +1,6 @@
 import { computed, defineAsyncComponent, defineComponent, h, watch } from 'vue'
 import {
-  runCallbacks,
+  runContentUpdatedCallbacks,
   usePageComponent,
   usePageFrontmatter,
 } from '../composables/index.js'
@@ -34,7 +34,7 @@ export const Content = defineComponent({
     watch(
       frontmatter,
       () => {
-        runCallbacks('updated')
+        runContentUpdatedCallbacks('updated')
       },
       { deep: true, flush: 'post' },
     )
@@ -42,13 +42,13 @@ export const Content = defineComponent({
     return () =>
       h(ContentComponent.value, {
         onVnodeMounted: () => {
-          runCallbacks('mounted')
+          runContentUpdatedCallbacks('mounted')
         },
         onVnodeUpdated: () => {
-          runCallbacks('updated')
+          runContentUpdatedCallbacks('updated')
         },
         onVnodeBeforeUnmount: () => {
-          runCallbacks('beforeUnmount')
+          runContentUpdatedCallbacks('beforeUnmount')
         },
       })
   },
