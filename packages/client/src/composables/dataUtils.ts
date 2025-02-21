@@ -38,7 +38,8 @@ export const useHead = (): PageHeadRef => useData().head
  */
 export const useLang = (): PageLangRef => useData().lang
 
-// router related
+// route related
+
 /**
  * Get routes map
  */
@@ -48,7 +49,6 @@ export const useRoutes = (): RoutesRef => useData().routes
  */
 export const useRedirects = (): RedirectsRef => useData().redirects
 
-// route related
 /**
  * Get route locale
  */
@@ -68,7 +68,10 @@ export const useSite = (): SiteDataRef => useData().site
  */
 export const useSiteLocale = (): SiteLocaleDataRef => useData().siteLocale
 
-// internal
+// internal composables before `useData` was introduced, which are never expected to be called outside of vuePress/client
+// these are marked deprecated and kept for backward compatibility for now
+// FIXME: remove these in stable
+
 /** @deprecated use useData().pageComponent instead */
 export const usePageComponent = (): PageComponentRef => useData().pageComponent
 /** @deprecated use useData().pageLayout instead */
@@ -76,20 +79,22 @@ export const usePageLayout = (): PageLayoutRef => useData().pageLayout
 /** @deprecated use useData().layouts instead */
 export const useLayouts = (): LayoutsRef => useData().layouts
 
-// deprecated
-/** @deprecated use usePage instead */
+// original long composable names
+// these are kept for backward compatibility, and might not need to implicitly marked as deprecated
+
+/** Note: suggest using `usePage` instead */
 export const usePageData = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(): PageDataRef<T> => useData<Record<string, unknown>, T>().page
-/** @deprecated use useFrontmatter instead */
+/** Note: suggest using `useFrontmatter` instead */
 export const usePageFrontmatter = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(): PageFrontmatterRef<T> => useData<T>().frontmatter
-/** @deprecated use useHead instead */
+/** Note: suggest using `useHead` instead */
 export const usePageHead = (): PageHeadRef => useData().head
-/** @deprecated use useLang instead */
+/** Note: suggest using `useLang` instead */
 export const usePageLang = (): PageLangRef => useData().lang
-/** @deprecated use useSite instead */
+/** Note: suggest using `useSite` instead */
 export const useSiteData = (): SiteDataRef => useData().site
-/** @deprecated use useSiteLocale instead */
+/** Note: suggest using `useSiteLocale` instead */
 export const useSiteLocaleData = (): SiteLocaleDataRef => useData().siteLocale

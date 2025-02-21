@@ -62,11 +62,9 @@ export interface Data<
   site: SiteDataRef
   siteLocale: SiteLocaleDataRef
 
-  // routes
+  // route
   routes: RoutesRef
   redirects: RedirectsRef
-
-  // route
   routePath: RoutePathRef
   routeLocale: RouteLocaleRef
 

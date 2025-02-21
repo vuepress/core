@@ -89,11 +89,9 @@ export const setupGlobalComputed = (
     site: siteData,
     siteLocale,
 
-    // router
+    // route
     routes,
     redirects,
-
-    // route
     routeLocale,
     routePath,
 
@@ -116,14 +114,15 @@ export const setupGlobalComputed = (
     $site: { get: () => siteData.value },
     $siteLocale: { get: () => siteLocale.value },
 
+    // route
+    // $router and $route are provided by vue-router
+    $routeLocale: { get: () => routeLocale.value },
+
     // page
     $frontmatter: { get: () => frontmatter.value },
     $head: { get: () => head.value },
     $lang: { get: () => lang.value },
     $page: { get: () => page.value },
-
-    // route
-    $routeLocale: { get: () => routeLocale.value },
 
     // helper
     $withBase: { get: () => withBase },

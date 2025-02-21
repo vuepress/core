@@ -23,5 +23,7 @@ export const useData = <
   return data
 }
 
-/** @deprecated use useData instead */
+// FIXME: remove this in stable
+
+/** @deprecated using `useData` instead */
 export const useClientData = useData
