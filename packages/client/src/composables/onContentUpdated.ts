@@ -16,7 +16,10 @@ export const onContentUpdated = (fn: ContentUpdatedCallback): void => {
   })
 }
 
-/** @internal */
+/**
+ * Execute all callbacks registered via `onContentUpdated`.
+ * @internal
+ */
 export const runContentUpdatedCallbacks = (
   reason: ContentUpdatedReason,
 ): void => {
