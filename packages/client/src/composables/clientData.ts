@@ -12,8 +12,11 @@ export const clientDataSymbol: InjectionKey<ClientData> = Symbol(
 /**
  * Returns client data
  */
-export const useClientData = (): ClientData => {
-  const clientData = inject(clientDataSymbol)
+export const useClientData = <
+  Frontmatter extends Record<string, unknown> = Record<string, unknown>,
+  Data extends Record<string, unknown> = Record<string, unknown>,
+>(): ClientData<Frontmatter, Data> => {
+  const clientData = inject<ClientData<Frontmatter, Data>>(clientDataSymbol)
   if (!clientData) {
     throw new Error('useClientData() is called without provider.')
   }

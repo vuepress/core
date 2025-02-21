@@ -1,3 +1,4 @@
+import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
 const shared = defineConfig({
@@ -6,7 +7,7 @@ const shared = defineConfig({
   sourcemap: false,
   target: 'es2022',
   tsconfig: '../tsconfig.dts.json',
-})
+}) as Options
 
 export default defineConfig([
   {
