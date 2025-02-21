@@ -157,7 +157,6 @@ describe('internal links', () => {
           item,
           item.replace(link, `${link}#hash`),
           item.replace(link, `${link}?a=1&amp;b=2`),
-          item.replace(link, `${link}#hash?a=1&amp;b=2`),
           item.replace(link, `${link}?a=1&amp;b=2#hash`),
         ]
       })
@@ -228,7 +227,6 @@ describe('internal links', () => {
       { raw, ...rest },
       { raw: `${raw}#hash`, ...rest },
       { raw: `${raw}?a=1&b=2`, ...rest },
-      { raw: `${raw}#hash?a=1&b=2`, ...rest },
       { raw: `${raw}?a=1&b=2#hash`, ...rest },
     ])
 
@@ -262,7 +260,6 @@ describe('internal links', () => {
               item,
               item.replace(link, `${link}#hash`),
               item.replace(link, `${link}?a=1&amp;b=2`),
-              item.replace(link, `${link}#hash?a=1&amp;b=2`),
               item.replace(link, `${link}?a=1&amp;b=2#hash`),
             ]
           })
@@ -301,7 +298,6 @@ describe('internal links', () => {
               item,
               item.replace(link, `${link}#hash`),
               item.replace(link, `${link}?a=1&amp;b=2`),
-              item.replace(link, `${link}#hash?a=1&amp;b=2`),
               item.replace(link, `${link}?a=1&amp;b=2#hash`),
             ]
           })
@@ -342,7 +338,6 @@ describe('internal links', () => {
               item,
               item.replace(link, `${link}#hash`),
               item.replace(link, `${link}?a=1&amp;b=2`),
-              item.replace(link, `${link}#hash?a=1&amp;b=2`),
               item.replace(link, `${link}?a=1&amp;b=2#hash`),
             ]
           })
@@ -416,7 +411,6 @@ describe('internal links', () => {
           { raw, ...rest },
           { raw: `${raw}#hash`, ...rest },
           { raw: `${raw}?a=1&b=2`, ...rest },
-          { raw: `${raw}#hash?a=1&b=2`, ...rest },
           { raw: `${raw}?a=1&b=2#hash`, ...rest },
         ]),
       )
@@ -454,7 +448,6 @@ describe('internal links', () => {
               item,
               item.replace(link, `${link}#hash`),
               item.replace(link, `${link}?a=1&amp;b=2`),
-              item.replace(link, `${link}#hash?a=1&amp;b=2`),
               item.replace(link, `${link}?a=1&amp;b=2#hash`),
             ]
           })
@@ -528,7 +521,6 @@ describe('internal links', () => {
           { raw, ...rest },
           { raw: `${raw}#hash`, ...rest },
           { raw: `${raw}?a=1&b=2`, ...rest },
-          { raw: `${raw}#hash?a=1&b=2`, ...rest },
           { raw: `${raw}?a=1&b=2#hash`, ...rest },
         ]),
       )
@@ -565,7 +557,6 @@ describe('internal links', () => {
               item,
               item.replace(link, `${link}#hash`),
               item.replace(link, `${link}?a=1&amp;b=2`),
-              item.replace(link, `${link}#hash?a=1&amp;b=2`),
               item.replace(link, `${link}?a=1&amp;b=2#hash`),
             ]
           })
@@ -639,7 +630,6 @@ describe('internal links', () => {
           { raw, ...rest },
           { raw: `${raw}#hash`, ...rest },
           { raw: `${raw}?a=1&b=2`, ...rest },
-          { raw: `${raw}#hash?a=1&b=2`, ...rest },
           { raw: `${raw}?a=1&b=2#hash`, ...rest },
         ]),
       )

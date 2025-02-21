@@ -8,6 +8,7 @@ export const resolvePaths = (
   rawPath: string,
   base: string,
   filePathRelative: string | null,
+  cleanUrl: boolean,
 ): {
   absolutePath: string | null
   relativePath: string

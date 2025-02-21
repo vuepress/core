@@ -6,6 +6,8 @@ import {
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { MarkdownEnv } from '../../types.js'
+import type { LinkInfo } from './isLinkInternal.js'
+import { isLinkInternal } from './isLinkInternal.js'
 import { resolvePaths } from './resolvePaths.js'
 
 export interface LinksPluginOptions {
@@ -37,9 +39,20 @@ export interface LinksPluginOptions {
   internalTag?: 'a' | 'RouteLink' | 'RouterLink'
 
   /**
+   * Method to check if a link is internal
+   *
+   * @default isLinkExternal from '@vuepress/shared'
+   */
+  isInternal?: (
+    href: string,
+    env: MarkdownEnv,
+    cleanUrl: boolean,
+  ) => LinkInfo | false
+
+  /**
    * Method to check if a link is external
    *
-   * @default import { isLinkExternal } from '@vuepress/shared'
+   * @default isLinkExternal fom '@vuepress/shared'
    */
   isExternal?: (href: string, env: MarkdownEnv) => boolean
 }
@@ -56,9 +69,10 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 ): void => {
   // tag of internal links
   const internalTag = options.internalTag || 'RouteLink'
+  const cleanUrl = options.cleanUrl ?? false
+  const isInternal = options.isInternal ?? isLinkInternal
   const isExternal =
     options.isExternal ?? ((href, env) => isLinkExternal(href, env.base))
-  const cleanUrl = options.cleanUrl ?? false
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -104,7 +118,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // check if a link is an internal link
     const internalLinkMatch = hrefLink.match(
-      /^([^#?]*?(?:\/|\.md|\.html))([#?].*)?$/,
+      /^([^#?]*?(?:\/|\.md|\.html|\/[A-z]+))([#?].*)?$/,
     )
 
     if (!internalLinkMatch) {
