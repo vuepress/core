@@ -1,6 +1,6 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
-import { useLayout } from './composables/index.js'
+import { useData } from './composables/index.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
@@ -35,10 +35,10 @@ export const createVueApp: CreateVueAppFunction = async () => {
       )
 
       // get page layout
-      const layout = useLayout()
+      const { pageLayout } = useData()
 
       // render layout and root components
-      return () => [h(layout.value), clientRootComponents]
+      return () => [h(pageLayout.value), clientRootComponents]
     },
   })
 

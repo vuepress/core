@@ -69,17 +69,17 @@ export const setupGlobalComputed = (
   )
   const page = computed(() => pageChunk.value.data)
   const frontmatter = computed(() => page.value.frontmatter)
+  const lang = computed(() =>
+    resolvers.resolveLang(page.value, siteLocale.value),
+  )
   const headTitle = computed(() =>
     resolvers.resolveHeadTitle(page.value, siteLocale.value),
   )
   const head = computed(() =>
     resolvers.resolveHead(headTitle.value, frontmatter.value, siteLocale.value),
   )
-  const lang = computed(() =>
-    resolvers.resolveLang(page.value, siteLocale.value),
-  )
-  const component = computed(() => pageChunk.value.comp)
-  const layout = computed(() =>
+  const pageComponent = computed(() => pageChunk.value.comp)
+  const pageLayout = computed(() =>
     resolvers.resolveLayout(page.value, layouts.value),
   )
 
@@ -88,7 +88,6 @@ export const setupGlobalComputed = (
     // site
     site: siteData,
     siteLocale,
-    layouts,
 
     // router
     routes,
@@ -99,12 +98,15 @@ export const setupGlobalComputed = (
     routePath,
 
     // page
-    page,
     frontmatter,
     head,
     lang,
-    component,
-    layout,
+    page,
+
+    // internal
+    layouts,
+    pageComponent,
+    pageLayout,
   }
   app.provide(dataSymbol, clientData)
 
@@ -115,10 +117,10 @@ export const setupGlobalComputed = (
     $siteLocale: { get: () => siteLocale.value },
 
     // page
-    $page: { get: () => page.value },
     $frontmatter: { get: () => frontmatter.value },
     $head: { get: () => head.value },
     $lang: { get: () => lang.value },
+    $page: { get: () => page.value },
 
     // route
     $routeLocale: { get: () => routeLocale.value },

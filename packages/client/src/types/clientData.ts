@@ -61,7 +61,6 @@ export interface Data<
   // site
   site: SiteDataRef
   siteLocale: SiteLocaleDataRef
-  layouts: LayoutsRef
 
   // routes
   routes: RoutesRef
@@ -72,12 +71,15 @@ export interface Data<
   routeLocale: RouteLocaleRef
 
   // page
-  page: PageDataRef<Page>
   frontmatter: PageFrontmatterRef<Frontmatter>
   head: PageHeadRef
   lang: PageLangRef
-  component: PageComponentRef
-  layout: PageLayoutRef
+  page: PageDataRef<Page>
+
+  // internal
+  layouts: LayoutsRef
+  pageComponent: PageComponentRef
+  pageLayout: PageLayoutRef
 }
 /** @deprecated use Data instead */
 export type ClientData = Data
