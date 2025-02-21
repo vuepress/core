@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { Content, useSiteData } from 'vuepress/client'
-
-const siteData = useSiteData()
+import { Content } from 'vuepress/client'
 </script>
 
 <template>
@@ -9,7 +7,7 @@ const siteData = useSiteData()
     <nav class="e2e-theme-nav">
       <div>Languages</div>
       <ul>
-        <li v-for="[key, value] in Object.entries(siteData.locales)" :key="key">
+        <li v-for="[key, value] in Object.entries($site.locales)" :key="key">
           <RouterLink :to="key">{{ value.lang }}</RouterLink>
         </li>
       </ul>

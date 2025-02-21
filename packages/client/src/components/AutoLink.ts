@@ -2,7 +2,7 @@ import { isLinkWithProtocol } from '@vuepress/shared'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h, toRef } from 'vue'
 import { useRoute } from 'vue-router'
-import { useSiteData } from '../composables/index.js'
+import { useSite } from '../composables/index.js'
 import { RouteLink } from './RouteLink.js'
 
 export interface AutoLinkConfig {
@@ -67,7 +67,7 @@ export const AutoLink = defineComponent({
   setup(props, { slots }) {
     const config = toRef(props, 'config')
     const route = useRoute()
-    const siteData = useSiteData()
+    const site = useSite()
 
     // If the link has non-http protocol
     const withProtocol = computed(() => isLinkWithProtocol(config.value.link))
@@ -102,7 +102,7 @@ export const AutoLink = defineComponent({
       // Should not be active in `exact` mode
       if (config.value.exact) return false
 
-      const localePaths = Object.keys(siteData.value.locales)
+      const localePaths = Object.keys(site.value.locales)
 
       return localePaths.length
         ? // Check all the locales

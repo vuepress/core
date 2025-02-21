@@ -1,3 +1,3 @@
-export * from './clientData.js'
-export * from './clientDataUtils.js'
+export * from './data.js'
+export * from './dataUtils.js'
 export * from './updateHead.js'
