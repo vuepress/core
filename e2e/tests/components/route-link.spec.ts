@@ -163,7 +163,7 @@ test('should render query and hash correctly', async ({ page }) => {
 
   for (const [index, href] of CONFIGS.entries()) {
     await expect(
-      page.locator('.e2e-theme-content #hash-and-query + ul > li a').nth(index),
+      page.locator('.e2e-theme-content #query-and-hash + ul > li a').nth(index),
     ).toHaveAttribute('href', href)
   }
 })
