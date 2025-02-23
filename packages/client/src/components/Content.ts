@@ -1,10 +1,17 @@
 import { computed, defineAsyncComponent, defineComponent, h, watch } from 'vue'
-import {
-  runContentUpdatedCallbacks,
-  usePageComponent,
-  usePageFrontmatter,
-} from '../composables/index.js'
+import { usePageComponent, usePageFrontmatter } from '../composables/index.js'
+import { contentUpdatedCallbacks } from '../internal/contentUpdatedCallbacks'
 import { resolveRoute } from '../router/index.js'
+import type { ContentUpdatedReason } from '../types/index.js'
+
+/**
+ * Execute all callbacks registered via `onContentUpdated`.
+ *
+ * @internal
+ */
+const runContentUpdatedCallbacks = (reason: ContentUpdatedReason): void => {
+  contentUpdatedCallbacks.value.forEach((fn) => fn(reason))
+}
 
 /**
  * Markdown rendered content
