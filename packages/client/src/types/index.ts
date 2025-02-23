@@ -1,5 +1,5 @@
 export type * from './clientConfig.js'
 export type * from './clientData.js'
-export type * from './contentUpdated.js'
+export type * from './onContentUpdated.js'
 export type * from './createVueAppFunction.js'
 export type * from './routes.js'
