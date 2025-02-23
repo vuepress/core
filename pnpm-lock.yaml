@@ -308,6 +308,9 @@ importers:
       '@vue/devtools-api':
         specifier: ^7.7.2
         version: 7.7.2
+      '@vue/devtools-kit':
+        specifier: ^7.7.2
+        version: 7.7.2
       '@vuepress/shared':
         specifier: workspace:*
         version: link:../shared
