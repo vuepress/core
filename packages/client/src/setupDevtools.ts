@@ -6,9 +6,9 @@ import type { ClientData } from './types/index.js'
 const PLUGIN_ID = 'org.vuejs.vuepress'
 const PLUGIN_LABEL = 'VuePress'
 
-export const COMPONENT_STATE_TYPE = PLUGIN_LABEL
-export const INSPECTOR_ID = PLUGIN_ID
-export const INSPECTOR_LABEL = PLUGIN_LABEL
+const COMPONENT_STATE_TYPE = PLUGIN_LABEL
+const INSPECTOR_ID = PLUGIN_ID
+const INSPECTOR_LABEL = PLUGIN_LABEL
 
 type ClientDataKey = keyof ClientData
 type ClientDataValue = ClientData[ClientDataKey]
@@ -40,6 +40,15 @@ const PAGE_DATA_KEYS: ClientDataKey[] = [
   'pageLayout',
   'pageComponent',
 ]
+
+/**
+ * Expose devtools constants so that ecosystem can reuse them directly.
+ */
+export const DEVTOOLS = {
+  COMPONENT_STATE_TYPE,
+  INSPECTOR_ID,
+  INSPECTOR_LABEL,
+}
 
 export const setupDevtools = (app: App, clientData: ClientData): void => {
   setupDevtoolsPlugin(
