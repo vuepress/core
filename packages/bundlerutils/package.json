@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundlerutils",
-  "version": "2.0.0-rc.18",
+  "version": "2.0.0-rc.20",
   "description": "Utils package of VuePress bundler",
   "keywords": [
     "bundler",
@@ -36,8 +36,8 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "publishConfig": {
     "access": "public"

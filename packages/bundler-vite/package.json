@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-vite",
-  "version": "2.0.0-rc.18",
+  "version": "2.0.0-rc.20",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",
@@ -35,7 +35,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vuepress/bundlerutils": "workspace:*",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
@@ -43,12 +43,12 @@
     "@vuepress/utils": "workspace:*",
     "autoprefixer": "^10.4.20",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.3",
     "postcss-load-config": "^6.0.1",
-    "rollup": "^4.24.0",
-    "vite": "~5.4.9",
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "rollup": "^4.34.8",
+    "vite": "~6.1.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@types/connect-history-api-fallback": "^1.5.4"

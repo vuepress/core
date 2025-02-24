@@ -1,3 +1,23 @@
+# [2.0.0-rc.20](https://github.com/vuepress/core/compare/v2.0.0-rc.19...v2.0.0-rc.20) (2025-02-23)
+
+
+### Features
+
+* **client:** add onContentUpdated composition API ([#1620](https://github.com/vuepress/core/issues/1620)) ([cd7252f](https://github.com/vuepress/core/commit/cd7252f11bc7df1ddf7ebad769590a44d9ccb15d))
+* **client:** improve client data types ([#1626](https://github.com/vuepress/core/issues/1626)) ([8bd5438](https://github.com/vuepress/core/commit/8bd5438a46cf4966c28bc687f8b5dad000d993c3))
+* **client:** improve devtools and export constants (close [#1625](https://github.com/vuepress/core/issues/1625)) ([4a105cb](https://github.com/vuepress/core/commit/4a105cb0a4fe1cb5c0d4ab8022e0161de85c8531))
+
+
+
+# [2.0.0-rc.19](https://github.com/vuepress/core/compare/v2.0.0-rc.18...v2.0.0-rc.19) (2024-12-11)
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to v6 ([faddbe6](https://github.com/vuepress/core/commit/faddbe64e4c71a115bf300b4fc831118dbf3eca7))
+
+
+
 # [2.0.0-rc.18](https://github.com/vuepress/core/compare/v2.0.0-rc.17...v2.0.0-rc.18) (2024-10-10)
 
 
