@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
+import type { ContentUpdatedCallback } from 'vuepress/client'
 import { onContentUpdated, useRoutePath } from 'vuepress/client'
 
 const mounted = ref('')
@@ -14,7 +15,7 @@ watch(routePath, () => {
   updatedCount.value = 0
 })
 
-onContentUpdated((reason) => {
+const callback: ContentUpdatedCallback = (reason) => {
   switch (reason) {
     case 'mounted':
       mounted.value = routePath.value
@@ -28,7 +29,12 @@ onContentUpdated((reason) => {
       break
     default:
   }
-})
+}
+
+onContentUpdated(callback)
+
+// should not be triggered twice
+onContentUpdated(callback)
 </script>
 
 <template>

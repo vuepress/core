@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Content, useSiteData } from 'vuepress/client'
-import MarkdownContentHooks from '../components/MarkdownContentHooks.vue'
 
 const siteData = useSiteData()
 </script>
@@ -19,8 +18,6 @@ const siteData = useSiteData()
     <main class="e2e-theme-content">
       <Content />
     </main>
-
-    <MarkdownContentHooks />
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 import { defineClientConfig } from 'vuepress/client'
 import ComponentForMarkdownGlobal from './components/ComponentForMarkdownGlobal.vue'
+import OnContentUpdated from './components/OnContentUpdated.vue'
 import RootComponentFromUserConfig from './components/RootComponentFromUserConfig.vue'
 
 // static imported styles file
@@ -13,5 +14,5 @@ export default defineClientConfig({
     // dynamic imported styles file
     await import('@vuepress-e2e/style-exports')
   },
-  rootComponents: [RootComponentFromUserConfig],
+  rootComponents: [OnContentUpdated, RootComponentFromUserConfig],
 })
