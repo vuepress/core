@@ -1,8 +1,13 @@
 <ComponentForMarkdownGlobal />
 
-<ComponentForMarkdownImport />
+<ComponentForMarkdownImportFoo />
+
+<ComponentForMarkdownImportBar />
 
 <script setup>
-// TODO: relative path import?
-import ComponentForMarkdownImport from '@source/.vuepress/components/ComponentForMarkdownImport.vue';
+// import via alias
+import ComponentForMarkdownImportFoo from '@source/.vuepress/components/ComponentForMarkdownImportFoo.vue';
+
+// import via relative path
+import ComponentForMarkdownImportBar from '../.vuepress/components/ComponentForMarkdownImportBar.vue';
 </script>
