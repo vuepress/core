@@ -15,19 +15,19 @@ const TEST_CASES = [
   ['/foo/index.md', '/foo/'],
   ['/foo/index.html', '/foo/'],
   ['/foo/index', '/foo/'],
-  ['README.md', 'index.html'],
-  ['readme.md', 'index.html'],
-  ['index.md', 'index.html'],
-  ['index.html', 'index.html'],
-  ['index', 'index.html'],
+  ['README.md', 'index'],
+  ['readme.md', 'index'],
+  ['index.md', 'index'],
+  ['index.html', 'index'],
+  ['index', 'index'],
 
   // absolute non-index
-  ['/foo', '/foo.html'],
-  ['/foo.md', '/foo.html'],
-  ['/foo.html', '/foo.html'],
-  ['/foo/bar', '/foo/bar.html'],
-  ['/foo/bar.md', '/foo/bar.html'],
-  ['/foo/bar.html', '/foo/bar.html'],
+  ['/foo', '/foo'],
+  ['/foo.md', '/foo'],
+  ['/foo.html', '/foo'],
+  ['/foo/bar', '/foo/bar'],
+  ['/foo/bar.md', '/foo/bar'],
+  ['/foo/bar.html', '/foo/bar'],
 
   // relative index without current
   ['foo/', 'foo/'],
@@ -38,19 +38,19 @@ const TEST_CASES = [
   ['foo/index', 'foo/'],
 
   // relative non index without current
-  ['foo', 'foo.html'],
-  ['foo.md', 'foo.html'],
-  ['foo.html', 'foo.html'],
-  ['foo/bar', 'foo/bar.html'],
-  ['foo/bar.md', 'foo/bar.html'],
-  ['foo/bar.html', 'foo/bar.html'],
+  ['foo', 'foo'],
+  ['foo.md', 'foo'],
+  ['foo.html', 'foo'],
+  ['foo/bar', 'foo/bar'],
+  ['foo/bar.md', 'foo/bar'],
+  ['foo/bar.html', 'foo/bar'],
 
   // unexpected corner cases
   ['', ''],
-  ['.md', '.html'],
-  ['foo/.md', 'foo/.html'],
-  ['/.md', '/.html'],
-  ['/foo/.md', '/foo/.html'],
+  ['.md', ''],
+  ['foo/.md', 'foo/'],
+  ['/.md', '/'],
+  ['/foo/.md', '/foo/'],
 ]
 
 describe('should normalize clean paths correctly', () => {
