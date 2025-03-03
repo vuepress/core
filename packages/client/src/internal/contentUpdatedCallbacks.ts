@@ -1,9 +1,6 @@
-import type { Ref } from 'vue'
-import { shallowRef } from 'vue'
 import type { ContentUpdatedCallback } from '../types/index.js'
 
 /**
- * Global content updated callbacks ref
+ * Global content updated callbacks
  */
-export const contentUpdatedCallbacks: Ref<ContentUpdatedCallback[]> =
-  shallowRef([])
+export const contentUpdatedCallbacks = new Set<ContentUpdatedCallback>()

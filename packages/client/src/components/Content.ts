@@ -10,7 +10,7 @@ import type { ContentUpdatedReason } from '../types/index.js'
  * @internal
  */
 const runContentUpdatedCallbacks = (reason: ContentUpdatedReason): void => {
-  contentUpdatedCallbacks.value.forEach((fn) => fn(reason))
+  contentUpdatedCallbacks.forEach((fn) => fn(reason))
 }
 
 /**
