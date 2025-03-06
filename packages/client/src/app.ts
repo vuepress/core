@@ -51,7 +51,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
   // setup devtools in dev mode
   if (__VUEPRESS_DEV__ || __VUE_PROD_DEVTOOLS__) {
-    const { setupDevtools } = await import('./setupDevtools.js')
+    const { setupDevtools } = await import('./devtools/setupDevtools.js')
     setupDevtools(app, globalComputed)
   }
 
