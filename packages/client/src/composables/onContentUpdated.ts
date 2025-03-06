@@ -7,10 +7,8 @@ import type { ContentUpdatedCallback } from '../types/index.js'
  * in the DOM.
  */
 export const onContentUpdated = (fn: ContentUpdatedCallback): void => {
-  contentUpdatedCallbacks.value.push(fn)
+  contentUpdatedCallbacks.add(fn)
   onUnmounted(() => {
-    contentUpdatedCallbacks.value = contentUpdatedCallbacks.value.filter(
-      (f) => f !== fn,
-    )
+    contentUpdatedCallbacks.delete(fn)
   })
 }
