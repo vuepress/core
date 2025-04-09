@@ -7,7 +7,7 @@ export const handleModuleAssets = ({ config }: { config: Config }): void => {
   // images
   config.module
     .rule('images')
-    .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+    .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/i)
     .type('asset')
     .generator({
       filename: 'assets/img/[name].[contenthash:8][ext]',
@@ -18,7 +18,7 @@ export const handleModuleAssets = ({ config }: { config: Config }): void => {
   // https://github.com/facebookincubator/create-react-app/pull/1180
   config.module
     .rule('svg')
-    .test(/\.(svg)(\?.*)?$/)
+    .test(/\.(svg)(\?.*)?$/i)
     .type('asset/resource')
     .generator({
       filename: 'assets/img/[name].[contenthash:8][ext]',
@@ -27,7 +27,7 @@ export const handleModuleAssets = ({ config }: { config: Config }): void => {
   // media
   config.module
     .rule('media')
-    .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
+    .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i)
     .type('asset/resource')
     .generator({
       filename: 'assets/media/[name].[contenthash:8][ext]',
