@@ -24,9 +24,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
   ): Promise<void> => {
     log(`commandOptions:`, commandOptions)
 
-    if (process.env.NODE_ENV === undefined) {
-      process.env.NODE_ENV = 'development'
-    }
+    process.env.NODE_ENV ??= 'development'
 
     // resolve app config from cli options
     const cliAppConfig = resolveCliAppConfig(sourceDir, commandOptions)

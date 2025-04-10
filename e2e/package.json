@@ -20,14 +20,14 @@
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.85.1",
-    "sass-embedded": "^1.85.1",
+    "sass": "^1.86.3",
+    "sass-embedded": "^1.86.3",
     "sass-loader": "^16.0.5",
     "vue": "catalog:",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.1",
+    "@playwright/test": "^1.51.1",
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3"
   }

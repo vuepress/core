@@ -3,8 +3,8 @@ import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-import type { CssModule } from 'mini-css-extract-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import type { Module } from 'webpack'
 import type Config from 'webpack-5-chain'
 import { createClientBaseConfig } from '../config/index.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -66,7 +66,7 @@ export const createClientConfig = async (
       styles: {
         idHint: 'styles',
         // necessary to ensure async chunks are also extracted
-        test: (m: CssModule) => m.type.includes('css/mini-extract'),
+        test: (m: Module) => m.type.includes('css/mini-extract'),
         chunks: 'all',
         enforce: true,
         reuseExistingChunk: true,

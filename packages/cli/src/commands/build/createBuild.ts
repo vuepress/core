@@ -21,9 +21,7 @@ export const createBuild =
 
     log(`commandOptions:`, commandOptions)
 
-    if (process.env.NODE_ENV === undefined) {
-      process.env.NODE_ENV = 'production'
-    }
+    process.env.NODE_ENV ??= 'production'
 
     // resolve app config from cli options
     const cliAppConfig = resolveCliAppConfig(sourceDir, commandOptions)
