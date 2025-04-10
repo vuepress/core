@@ -6,20 +6,20 @@ export const inferRoutePath = (rawPath: string): string => {
   if (!rawPath || rawPath.endsWith('/')) return rawPath
 
   // convert README.md to index.html
-  let routePath = rawPath.replace(/(^|\/)README.md$/i, '$1index.html')
+  let routePath = rawPath.replace(/(^|\/)README.md$/i, '$1index')
 
-  // convert /foo/bar.md to /foo/bar.html
+  // convert /foo/bar.md to /foo/bar
   if (routePath.endsWith('.md')) {
-    routePath = `${routePath.substring(0, routePath.length - 3)}.html`
+    routePath = routePath.substring(0, routePath.length - 3)
   }
-  // convert /foo/bar to /foo/bar.html
-  else if (!routePath.endsWith('.html')) {
-    routePath = `${routePath}.html`
+  // convert /foo/bar.html to /foo/bar
+  else if (routePath.endsWith('.html')) {
+    routePath = routePath.substring(0, routePath.length - 5)
   }
 
-  // convert /foo/index.html to /foo/
-  if (routePath.endsWith('/index.html')) {
-    routePath = routePath.substring(0, routePath.length - 10)
+  // convert /foo/index to /foo/
+  if (routePath.endsWith('/index')) {
+    routePath = routePath.substring(0, routePath.length - 5)
   }
 
   return routePath

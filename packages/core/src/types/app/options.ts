@@ -5,6 +5,27 @@ import type { Bundler } from '../bundler.js'
 import type { PluginConfig } from '../plugin.js'
 import type { Theme } from '../theme.js'
 
+export interface RouteOptions {
+  /**
+   * Whether to use "clean url"
+   */
+  cleanUrl?: boolean
+
+  /**
+   * Patterns to match the markdown files as pages
+   *
+   * @default ['**\/*.md', '!.vuepress', '!node_modules']
+   */
+  pagePatterns?: string[]
+
+  /**
+   * Pattern to generate permalink for pages
+   *
+   * @default null
+   */
+  permalinkPattern?: string | null
+}
+
 /**
  * Vuepress app common config that shared between dev and build
  */
@@ -69,18 +90,9 @@ export interface AppConfigCommon extends Partial<SiteData> {
   markdown?: MarkdownOptions
 
   /**
-   * Patterns to match the markdown files as pages
-   *
-   * @default ['**\/*.md', '!.vuepress', '!node_modules']
+   * Vuepress route options
    */
-  pagePatterns?: string[]
-
-  /**
-   * Pattern to generate permalink for pages
-   *
-   * @default null
-   */
-  permalinkPattern?: string | null
+  route?: RouteOptions
 
   /**
    * Vuepress bundler
@@ -177,11 +189,27 @@ export interface AppConfigBuild {
  *
  * It would be provided by user, typically via a config file.
  */
-export type AppConfig = AppConfigBuild & AppConfigCommon & AppConfigDev
+export type AppConfig = AppConfigBuild &
+  AppConfigCommon &
+  AppConfigDev & {
+    /**
+     * @deprecated use `route.pagePatterns` instead
+     */
+    pagePatterns?: string[]
+
+    /**
+     * @deprecated use `route.permalinkPattern` instead
+     */
+    permalinkPattern?: string | null
+  }
 
 /**
  * Vuepress app options that resolved from user config.
  *
  * It fills all optional fields with a default value.
  */
-export type AppOptions = Required<AppConfig>
+export type AppOptions = Required<
+  AppConfigBuild & AppConfigCommon & AppConfigDev
+> & {
+  route: Required<RouteOptions>
+}

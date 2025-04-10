@@ -60,26 +60,23 @@
 - <RouteLink to="/"><span>text</span></RouteLink>
 - <RouteLink to="/"><span>text</span><span>text2</span></RouteLink>
 
-### Hash and query
+### Query and hash
 
 - <RouteLink to="/README.md#hash">text</RouteLink>
 - <RouteLink to="/README.md?query">text</RouteLink>
 - <RouteLink to="/README.md?query#hash">text</RouteLink>
 - <RouteLink to="/README.md?query=1#hash">text</RouteLink>
 - <RouteLink to="/README.md?query=1&query=2#hash">text</RouteLink>
-- <RouteLink to="/README.md#hash?query=1&query=2">text</RouteLink>
 - <RouteLink to="/#hash">text</RouteLink>
 - <RouteLink to="/?query">text</RouteLink>
 - <RouteLink to="/?query#hash">text</RouteLink>
 - <RouteLink to="/?query=1#hash">text</RouteLink>
 - <RouteLink to="/?query=1&query=2#hash">text</RouteLink>
-- <RouteLink to="/#hash?query=1&query=2">text</RouteLink>
 - <RouteLink to="#hash">text</RouteLink>
 - <RouteLink to="?query">text</RouteLink>
 - <RouteLink to="?query#hash">text</RouteLink>
 - <RouteLink to="?query=1#hash">text</RouteLink>
 - <RouteLink to="?query=1&query=2#hash">text</RouteLink>
-- <RouteLink to="#hash?query=1&query=2">text</RouteLink>
 
 ### Relative
 

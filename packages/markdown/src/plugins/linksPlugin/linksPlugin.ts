@@ -1,10 +1,21 @@
-import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
+import {
+  inferRoutePath,
+  isLinkExternal,
+  resolveRoutePathWithExt,
+} from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { MarkdownEnv } from '../../types.js'
 import { resolvePaths } from './resolvePaths.js'
 
 export interface LinksPluginOptions {
+  /**
+   * Whether use "clean url"
+   *
+   * @default false
+   */
+  cleanUrl?: boolean
+
   /**
    * Additional attributes for external links
    *
@@ -47,6 +58,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   const internalTag = options.internalTag || 'RouteLink'
   const isExternal =
     options.isExternal ?? ((href, env) => isLinkExternal(href, env.base))
+  const cleanUrl = options.cleanUrl ?? false
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -128,14 +140,17 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
           ? absolutePath.replace(new RegExp(`^${base}`), '/')
           : relativePath,
       )
+
       // replace the original href link with the normalized path
-      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
+      hrefAttr[1] = `${cleanUrl ? normalizedPath : resolveRoutePathWithExt(normalizedPath)}${rawHashAndQueries}`
       // set `hasOpenInternalLink` to modify the ending tag
       hasOpenInternalLink = true
     } else {
+      // ext is added here
       const normalizedPath = inferRoutePath(absolutePath ?? relativePath)
+
       // replace the original href link with the normalized path
-      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
+      hrefAttr[1] = `${cleanUrl ? normalizedPath : resolveRoutePathWithExt(normalizedPath)}${rawHashAndQueries}`
     }
 
     // extract internal links for file / page existence check
