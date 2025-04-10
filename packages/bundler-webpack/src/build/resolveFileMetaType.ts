@@ -10,10 +10,10 @@ export const resolveFileMetaType = (extension: string): FileMetaType => {
   if (extension === 'css') {
     return 'style'
   }
-  if (/jpe?g|png|svg|gif|webp|ico/.test(extension)) {
+  if (/jpe?g|png|svg|gif|webp|ico/i.test(extension)) {
     return 'image'
   }
-  if (/woff2?|ttf|otf|eot/.test(extension)) {
+  if (/woff2?|ttf|otf|eot/i.test(extension)) {
     return 'font'
   }
   // not exhausting all possibilities here, but above covers common cases
