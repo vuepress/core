@@ -34,7 +34,6 @@ describe('should work without plugins', () => {
     expect(page.data.lang).toBe('en-US')
     expect(page.data.title).toBe('')
     expect(page.data.frontmatter).toEqual({})
-    expect(page.data.headers).toEqual([])
 
     // base fields
     expect(page.path).toBe('/')

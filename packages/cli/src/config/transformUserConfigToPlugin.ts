@@ -18,16 +18,14 @@ export const transformUserConfigToPlugin = (
 
   // if `clientConfigFile` is not set explicitly,
   // try to load conventional files
-  if (userConfigPlugin.clientConfigFile === undefined) {
-    userConfigPlugin.clientConfigFile = [
-      path.resolve(cwd, 'vuepress.client.ts'),
-      path.resolve(cwd, 'vuepress.client.js'),
-      path.resolve(cwd, 'vuepress.client.mjs'),
-      path.resolve(source, '.vuepress/client.ts'),
-      path.resolve(source, '.vuepress/client.js'),
-      path.resolve(source, '.vuepress/client.mjs'),
-    ].find((item) => fs.pathExistsSync(item))
-  }
+  userConfigPlugin.clientConfigFile ??= [
+    path.resolve(cwd, 'vuepress.client.ts'),
+    path.resolve(cwd, 'vuepress.client.js'),
+    path.resolve(cwd, 'vuepress.client.mjs'),
+    path.resolve(source, '.vuepress/client.ts'),
+    path.resolve(source, '.vuepress/client.js'),
+    path.resolve(source, '.vuepress/client.mjs'),
+  ].find((item) => fs.pathExistsSync(item))
 
   return userConfigPlugin
 }

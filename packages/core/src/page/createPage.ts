@@ -98,7 +98,6 @@ export const createPage = async (
       title,
       lang,
       frontmatter,
-      headers,
     },
 
     // base fields

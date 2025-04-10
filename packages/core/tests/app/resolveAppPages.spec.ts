@@ -53,7 +53,7 @@ it('should process extendsPageOptions hook correctly', async () => {
   app.use({
     name: 'foo',
     extendsPageOptions: (pageOptions) => {
-      if (!pageOptions.frontmatter) pageOptions.frontmatter = {}
+      pageOptions.frontmatter ??= {}
       pageOptions.frontmatter.foo = 'bar'
     },
   })

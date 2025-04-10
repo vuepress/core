@@ -2,7 +2,10 @@ import { defineConfig } from 'taze'
 
 export default defineConfig({
   packageMode: {
-    vite: 'patch',
+    '@types/express': 'minor',
+    'chokidar': 'minor',
+    'express': 'minor',
+    'vite': 'patch',
   },
   recursive: true,
   write: true,
