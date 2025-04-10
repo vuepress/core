@@ -4,6 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    vue:
+      specifier: ^3.5.13
+      version: 3.5.13
+    vue-router:
+      specifier: ^4.5.0
+      version: 4.5.0
+
 importers:
 
   .:
@@ -105,7 +114,7 @@ importers:
         specifier: ^16.0.5
         version: 16.0.5(sass-embedded@1.85.1)(sass@1.85.1)(webpack@5.98.0(esbuild@0.24.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
       vuepress:
         specifier: workspace:*
@@ -160,10 +169,10 @@ importers:
         specifier: ~6.2.0
         version: 6.2.0(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.85.1)(sass@1.85.1)(terser@5.39.0)(yaml@2.7.0)
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
       vue-router:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
     devDependencies:
       '@types/connect-history-api-fallback':
@@ -233,13 +242,13 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.98.0(esbuild@0.24.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
       vue-loader:
         specifier: ^17.4.2
         version: 17.4.2(vue@3.5.13(typescript@5.7.3))(webpack@5.98.0(esbuild@0.24.2))
       vue-router:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
       webpack:
         specifier: ^5.98.0
@@ -269,10 +278,10 @@ importers:
         specifier: workspace:*
         version: link:../utils
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
       vue-router:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
 
   packages/cli:
@@ -315,10 +324,10 @@ importers:
         specifier: workspace:*
         version: link:../shared
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
       vue-router:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
 
   packages/core:
@@ -336,7 +345,7 @@ importers:
         specifier: workspace:*
         version: link:../utils
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
 
   packages/markdown:
@@ -463,7 +472,7 @@ importers:
         specifier: workspace:*
         version: link:../utils
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.7.3)
 
 packages:

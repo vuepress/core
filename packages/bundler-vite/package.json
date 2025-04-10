@@ -47,8 +47,8 @@
     "postcss-load-config": "^6.0.1",
     "rollup": "^4.34.8",
     "vite": "~6.2.0",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "catalog:",
+    "vue-router": "catalog:"
   },
   "devDependencies": {
     "@types/connect-history-api-fallback": "^1.5.4"

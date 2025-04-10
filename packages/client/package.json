@@ -40,8 +40,8 @@
     "@vue/devtools-api": "^7.7.2",
     "@vue/devtools-kit": "^7.7.2",
     "@vuepress/shared": "workspace:*",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "catalog:",
+    "vue-router": "catalog:"
   },
   "publishConfig": {
     "access": "public"
