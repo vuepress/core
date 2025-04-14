@@ -30,8 +30,11 @@ it('should create app options with default values', () => {
     host: '0.0.0.0',
     port: 8080,
     open: false,
-    pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
-    permalinkPattern: null,
+    route: {
+      cleanUrl: false,
+      pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
+      permalinkPattern: null,
+    },
     templateDev: path.normalize(
       require.resolve('@vuepress/client/templates/dev.html'),
     ),

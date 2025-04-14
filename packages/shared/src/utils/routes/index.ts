@@ -1,5 +1,6 @@
 export * from './inferRoutePath'
 export * from './normalizeRoutePath.js'
+export * from './resolveRoutePathWithExt.js'
 export * from './resolveLocalePath.js'
 export * from './resolveRoutePathFromUrl.js'
 export * from './splitPath.js'

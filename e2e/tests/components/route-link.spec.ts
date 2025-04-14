@@ -142,31 +142,28 @@ test('should render slots correctly', async ({ page }) => {
   }
 })
 
-test('should render hash and query correctly', async ({ page }) => {
+test('should render query and hash correctly', async ({ page }) => {
   const CONFIGS = [
     `${BASE}#hash`,
     `${BASE}?query`,
     `${BASE}?query#hash`,
     `${BASE}?query=1#hash`,
     `${BASE}?query=1&query=2#hash`,
-    `${BASE}#hash?query=1&query=2`,
     `${BASE}#hash`,
     `${BASE}?query`,
     `${BASE}?query#hash`,
     `${BASE}?query=1#hash`,
     `${BASE}?query=1&query=2#hash`,
-    `${BASE}#hash?query=1&query=2`,
     `#hash`,
     `?query`,
     `?query#hash`,
     `?query=1#hash`,
     `?query=1&query=2#hash`,
-    `#hash?query=1&query=2`,
   ]
 
   for (const [index, href] of CONFIGS.entries()) {
     await expect(
-      page.locator('.e2e-theme-content #hash-and-query + ul > li a').nth(index),
+      page.locator('.e2e-theme-content #query-and-hash + ul > li a').nth(index),
     ).toHaveAttribute('href', href)
   }
 })
