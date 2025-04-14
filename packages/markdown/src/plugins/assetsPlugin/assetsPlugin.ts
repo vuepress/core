@@ -8,11 +8,6 @@ export interface AssetsPluginOptions {
    * Whether to prepend base to absolute path
    */
   absolutePathPrependBase?: boolean
-
-  /**
-   * Prefix to add to relative assets links
-   */
-  relativePathPrefix?: string
 }
 
 /**
@@ -20,10 +15,7 @@ export interface AssetsPluginOptions {
  */
 export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md,
-  {
-    absolutePathPrependBase = false,
-    relativePathPrefix = '@source',
-  }: AssetsPluginOptions = {},
+  { absolutePathPrependBase = false }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
   const rawImageRule = md.renderer.rules.image!
@@ -35,10 +27,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
     if (link) {
       // replace the original link with resolved link
-      token.attrSet(
-        'src',
-        resolveLink(link, { env, absolutePathPrependBase, relativePathPrefix }),
-      )
+      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase }))
     }
 
     return rawImageRule(tokens, idx, options, env, self)
@@ -57,7 +46,6 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
               absolutePathPrependBase,
-              relativePathPrefix,
               strict: true,
             })}${quote}`,
         )
@@ -74,7 +62,6 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                     `${resolveLink(url.trim(), {
                       env,
                       absolutePathPrependBase,
-                      relativePathPrefix,
                       strict: true,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
