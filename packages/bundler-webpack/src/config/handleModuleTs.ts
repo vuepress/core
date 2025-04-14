@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module'
 import type Config from 'webpack-5-chain'
-import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions.js'
+import { resolveEsbuildLoaderOptions } from './resolveEsbuildLoaderOptions.js'
 
 const require = createRequire(import.meta.url)
 
@@ -14,10 +14,10 @@ export const handleModuleTs = ({ config }: { config: Config }): void => {
     // use esbuild-loader
     .use('esbuild-loader')
     .loader(require.resolve('esbuild-loader'))
-    .options({
-      target: 'es2018',
-      loader: 'tsx',
-      ...resolveEsbuildJsxOptions(),
-    })
+    .options(
+      resolveEsbuildLoaderOptions({
+        loader: 'tsx',
+      }),
+    )
     .end()
 }
