@@ -2,6 +2,7 @@ import { createRequire } from 'node:module'
 import type Config from 'webpack-5-chain'
 import type { WebpackBundlerOptions } from '../types.js'
 import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions.js'
+import { ESBUILD_TARGET } from './target.js'
 
 const require = createRequire(import.meta.url)
 
@@ -52,7 +53,7 @@ export const handleModuleJs = ({
     .use('esbuild-loader')
     .loader(require.resolve('esbuild-loader'))
     .options({
-      target: 'es2015',
+      target: ESBUILD_TARGET,
       ...resolveEsbuildJsxOptions(),
     })
     .end()
