@@ -1,5 +1,5 @@
 import { computed, defineAsyncComponent, defineComponent, h, watch } from 'vue'
-import { usePageComponent, usePageFrontmatter } from '../composables/index.js'
+import { useData } from '../composables/index.js'
 import { contentUpdatedCallbacks } from '../internal/contentUpdatedCallbacks'
 import { resolveRoute } from '../router/index.js'
 import type { ContentUpdatedReason } from '../types/index.js'
@@ -28,7 +28,7 @@ export const Content = defineComponent({
   },
 
   setup(props) {
-    const pageComponent = usePageComponent()
+    const { frontmatter, pageComponent } = useData()
     const ContentComponent = computed(() => {
       if (!props.path) return pageComponent.value
       const route = resolveRoute(props.path)
@@ -37,7 +37,6 @@ export const Content = defineComponent({
       )
     })
 
-    const frontmatter = usePageFrontmatter()
     watch(
       frontmatter,
       () => {

@@ -1,15 +1,11 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import type { App } from 'vue'
 import { watch } from 'vue'
-import type { ClientData } from '../types/index.js'
+import type { Data } from '../types/index.js'
 import * as DEVTOOLS from './constants.js'
-import type {
-  ClientDataKey,
-  ClientDataValue,
-  InspectorNodeConfig,
-} from './types.js'
+import type { DataKey, DataValue, InspectorNodeConfig } from './types.js'
 
-export const setupDevtools = (app: App, clientData: ClientData): void => {
+export const setupDevtools = (app: App, clientData: Data): void => {
   setupDevtoolsPlugin(
     {
       // fix recursive reference
@@ -23,11 +19,11 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
     },
     (api) => {
       const clientDataEntries = Object.entries(clientData) as [
-        ClientDataKey,
-        ClientDataValue,
+        DataKey,
+        DataValue,
       ][]
-      const clientDataKeys = Object.keys(clientData) as ClientDataKey[]
-      const clientDataValues = Object.values(clientData) as ClientDataValue[]
+      const clientDataKeys = Object.keys(clientData) as DataKey[]
+      const clientDataValues = Object.values(clientData) as DataValue[]
 
       // setup component state
       api.on.inspectComponent((payload) => {
@@ -55,7 +51,7 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
           (node) => ({
             id: node.id,
             label: node.label,
-            children: node.keys.map((key: ClientDataKey) => ({
+            children: node.keys.map((key: DataKey) => ({
               id: key,
               label: key,
             })),
@@ -81,12 +77,12 @@ export const setupDevtools = (app: App, clientData: ClientData): void => {
         }
 
         // root nodes children state
-        if (clientDataKeys.includes(payload.nodeId as ClientDataKey)) {
+        if (clientDataKeys.includes(payload.nodeId as DataKey)) {
           payload.state = {
             [DEVTOOLS.INSPECTOR_STATE_SECTION_NAME]: [
               {
                 key: payload.nodeId,
-                value: clientData[payload.nodeId as ClientDataKey].value,
+                value: clientData[payload.nodeId as DataKey].value,
               },
             ],
           }

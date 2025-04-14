@@ -1,13 +1,13 @@
 import type { App } from 'vue'
 import { computed, customRef } from 'vue'
 import type { Router } from 'vue-router'
-import { clientDataSymbol } from './composables/index.js'
+import { dataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
 import { siteData } from './internal/siteData.js'
 import { resolvers } from './resolvers.js'
 import type {
   ClientConfig,
-  ClientData,
+  Data,
   PageChunk,
   PageData,
   PageFrontmatter,
@@ -27,7 +27,7 @@ export const setupGlobalComputed = (
   app: App,
   router: Router,
   clientConfigs: ClientConfig[],
-): ClientData => {
+): Data => {
   // route path of current page
   const routePath = computed(() => router.currentRoute.value.path)
 
@@ -64,58 +64,68 @@ export const setupGlobalComputed = (
   const routeLocale = computed(() =>
     resolvers.resolveRouteLocale(siteData.value.locales, routePath.value),
   )
-  const siteLocaleData = computed(() =>
-    resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
+  const siteLocale = computed(() =>
+    resolvers.resolveSiteLocale(siteData.value, routeLocale.value),
+  )
+  const page = computed(() => pageChunk.value.data)
+  const frontmatter = computed(() => page.value.frontmatter)
+  const lang = computed(() =>
+    resolvers.resolveLang(page.value, siteLocale.value),
+  )
+  const headTitle = computed(() =>
+    resolvers.resolveHeadTitle(page.value, siteLocale.value),
+  )
+  const head = computed(() =>
+    resolvers.resolveHead(headTitle.value, frontmatter.value, siteLocale.value),
   )
   const pageComponent = computed(() => pageChunk.value.comp)
-  const pageData = computed(() => pageChunk.value.data)
-  const pageFrontmatter = computed(() => pageData.value.frontmatter)
-  const pageHeadTitle = computed(() =>
-    resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),
-  )
-  const pageHead = computed(() =>
-    resolvers.resolvePageHead(
-      pageHeadTitle.value,
-      pageFrontmatter.value,
-      siteLocaleData.value,
-    ),
-  )
-  const pageLang = computed(() =>
-    resolvers.resolvePageLang(pageData.value, siteLocaleData.value),
-  )
   const pageLayout = computed(() =>
-    resolvers.resolvePageLayout(pageData.value, layouts.value),
+    resolvers.resolveLayout(page.value, layouts.value),
   )
 
   // provide global computed in clientData
-  const clientData: ClientData = {
-    layouts,
-    pageData,
-    pageComponent,
-    pageFrontmatter,
-    pageHead,
-    pageHeadTitle,
-    pageLang,
-    pageLayout,
+  const clientData: Data = {
+    // site
+    site: siteData,
+    siteLocale,
+
+    // route
+    routes,
     redirects,
     routeLocale,
     routePath,
-    routes,
-    siteData,
-    siteLocaleData,
+
+    // page
+    frontmatter,
+    head,
+    headTitle,
+    lang,
+    page,
+
+    // internal
+    layouts,
+    pageComponent,
+    pageLayout,
   }
-  app.provide(clientDataSymbol, clientData)
+  app.provide(dataSymbol, clientData)
 
   // provide global helpers
   Object.defineProperties(app.config.globalProperties, {
-    $frontmatter: { get: () => pageFrontmatter.value },
-    $head: { get: () => pageHead.value },
-    $headTitle: { get: () => pageHeadTitle.value },
-    $lang: { get: () => pageLang.value },
-    $page: { get: () => pageData.value },
-    $routeLocale: { get: () => routeLocale.value },
+    // site
     $site: { get: () => siteData.value },
-    $siteLocale: { get: () => siteLocaleData.value },
+    $siteLocale: { get: () => siteLocale.value },
+
+    // route
+    // $router and $route are provided by vue-router
+    $routeLocale: { get: () => routeLocale.value },
+
+    // page
+    $frontmatter: { get: () => frontmatter.value },
+    $head: { get: () => head.value },
+    $lang: { get: () => lang.value },
+    $page: { get: () => page.value },
+
+    // helper
     $withBase: { get: () => withBase },
   })
 

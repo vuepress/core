@@ -2,11 +2,7 @@ import type { HeadConfig, VuepressSSRContext } from '@vuepress/shared'
 import { isPlainObject, isString } from '@vuepress/shared'
 import { onMounted, provide, useSSRContext, watch } from 'vue'
 import type { UpdateHead } from './composables/index.js'
-import {
-  updateHeadSymbol,
-  usePageHead,
-  usePageLang,
-} from './composables/index.js'
+import { updateHeadSymbol, useData } from './composables/index.js'
 
 /**
  * Query the matched head element of head config
@@ -76,8 +72,7 @@ export const createHeadElement = ([
  * Auto update head and provide as global util
  */
 export const setupUpdateHead = (): void => {
-  const head = usePageHead()
-  const lang = usePageLang()
+  const { head, lang } = useData()
 
   // ssr-only, extract page meta info to ssrContext
   if (__VUEPRESS_SSR__) {
