@@ -30,7 +30,6 @@ export const usePage = usePageData
 /**
  * Get page frontmatter
  */
-/** Note: suggest using `useFrontmatter` instead */
 export const usePageFrontmatter = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(): PageFrontmatterRef<T> => useData<T>().frontmatter
