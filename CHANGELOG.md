@@ -1,3 +1,22 @@
+# [2.0.0-rc.21](https://github.com/vuepress/core/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2025-04-12)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** allow UPPERCASE file extension ([#1642](https://github.com/vuepress/core/issues/1642)) ([f674742](https://github.com/vuepress/core/commit/f6747421cb36cc668f54101332a9a03b49f7c6b2))
+
+
+### Code Refactoring
+
+* **core:** remove headers field from page data ([#1613](https://github.com/vuepress/core/issues/1613)) ([0a9d26d](https://github.com/vuepress/core/commit/0a9d26d0db042253f1bb67287afe911f89182737))
+
+
+### BREAKING CHANGES
+
+* **core:** the `headers` field has been removed from page data, but it's still available on page object
+
+
+
 # [2.0.0-rc.20](https://github.com/vuepress/core/compare/v2.0.0-rc.19...v2.0.0-rc.20) (2025-02-23)
 
 
