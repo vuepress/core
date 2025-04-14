@@ -17,7 +17,7 @@ const INSPECTOR_NODE_INTERNAL = {
 const INSPECTOR_NODE_SITE = {
   id: 'SITE',
   label: 'Site',
-  keys: ['siteData', 'siteLocaleData'],
+  keys: ['site', 'siteLocale'],
 } as const satisfies InspectorNodeConfig
 
 const INSPECTOR_NODE_ROUTE = {
@@ -30,11 +30,11 @@ const INSPECTOR_NODE_PAGE = {
   id: 'PAGE',
   label: 'Page',
   keys: [
-    'pageData',
-    'pageFrontmatter',
-    'pageLang',
-    'pageHead',
-    'pageHeadTitle',
+    'page',
+    'frontmatter',
+    'lang',
+    'head',
+    'headTitle',
     'pageLayout',
     'pageComponent',
   ],

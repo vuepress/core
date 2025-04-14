@@ -1,10 +1,10 @@
 import type { CustomInspectorNode } from '@vue/devtools-kit'
-import type { ClientData } from '../types/index.js'
+import type { Data } from '../types/index.js'
 
-export type ClientDataKey = keyof ClientData
-export type ClientDataValue = ClientData[ClientDataKey]
+export type DataKey = keyof Data
+export type DataValue = Data[DataKey]
 
 export interface InspectorNodeConfig
   extends Pick<CustomInspectorNode, 'id' | 'label'> {
-  keys: ClientDataKey[]
+  keys: DataKey[]
 }
