@@ -103,20 +103,35 @@ export const setupGlobalComputed = (
     routes,
     siteData,
     siteLocaleData,
+
+    /* Aliases */
+    frontmatter: pageFrontmatter,
+    head: pageHead,
+    headTitle: pageHeadTitle,
+    lang: pageLang,
+    site: siteData,
+    siteLocale: siteLocaleData,
   }
   app.provide(clientDataSymbol, clientData)
 
   // provide global helpers
   Object.defineProperties(app.config.globalProperties, {
+    $pageFrontmatter: { get: () => pageFrontmatter.value },
+    $pageHead: { get: () => pageHead.value },
+    $pageHeadTitle: { get: () => pageHeadTitle.value },
+    $pageLang: { get: () => pageLang.value },
+    $pageData: { get: () => pageData.value },
+    $routeLocale: { get: () => routeLocale.value },
+    $withBase: { get: () => withBase },
+
+    /* Aliases */
     $frontmatter: { get: () => pageFrontmatter.value },
     $head: { get: () => pageHead.value },
     $headTitle: { get: () => pageHeadTitle.value },
     $lang: { get: () => pageLang.value },
     $page: { get: () => pageData.value },
-    $routeLocale: { get: () => routeLocale.value },
     $site: { get: () => siteData.value },
     $siteLocale: { get: () => siteLocaleData.value },
-    $withBase: { get: () => withBase },
   })
 
   return clientData
@@ -124,14 +139,23 @@ export const setupGlobalComputed = (
 
 declare module 'vue' {
   export interface ComponentCustomProperties {
+    $pageFrontmatter: PageFrontmatter
+    $pageHead: PageHead
+    $pageHeadTitle: PageHeadTitle
+    $pageLang: PageLang
+    $pageData: PageData
+    $routeLocale: RouteLocale
+    $siteData: SiteData
+    $siteLocaleData: SiteLocaleData
+    $withBase: typeof withBase
+
+    /* Aliases */
     $frontmatter: PageFrontmatter
     $head: PageHead
     $headTitle: PageHeadTitle
     $lang: PageLang
     $page: PageData
-    $routeLocale: RouteLocale
     $site: SiteData
     $siteLocale: SiteLocaleData
-    $withBase: typeof withBase
   }
 }

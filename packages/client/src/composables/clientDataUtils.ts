@@ -46,3 +46,11 @@ export const useSiteData = (): SiteDataRef => useClientData().siteData
 
 export const useSiteLocaleData = (): SiteLocaleDataRef =>
   useClientData().siteLocaleData
+
+/* Aliases */
+export const useData = useClientData
+export const useFrontmatter = usePageFrontmatter
+export const useHead = usePageHead
+export const useLang = usePageLang
+export const useSite = useSiteData
+export const useSiteLocale = useSiteLocaleData
