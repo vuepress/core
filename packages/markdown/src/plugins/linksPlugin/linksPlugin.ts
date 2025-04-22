@@ -111,7 +111,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // If an anchor starts with a number (e.g., #123), it is replaced with #_number (e.g., #_123)
     // This rule is designed to prevent potential URL conflicts, though manually written anchors like #123 are rare in Markdown—hence the special handling.
     const rawHashAndQueries = (internalLinkMatch[2] || '').replace(
-      /^#(\d+)/,
+      /^#(\d)/,
       '#_$1',
     )
 
