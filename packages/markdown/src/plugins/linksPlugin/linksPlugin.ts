@@ -106,7 +106,14 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // notice that the path and hash are encoded by markdown-it
     const rawPath = internalLinkMatch[1]
-    const rawHashAndQueries = internalLinkMatch[2] || ''
+
+    // The default slugification function processes anchor links (hash fragments)
+    // If an anchor starts with a number (e.g., #123), it is replaced with #_number (e.g., #_123)
+    // This rule is designed to prevent potential URL conflicts, though manually written anchors like #123 are rare in Markdown—hence the special handling.
+    const rawHashAndQueries = (internalLinkMatch[2] || '').replace(
+      /^#(\d+)/,
+      '#_$1',
+    )
 
     // resolve relative and absolute path
     const { relativePath, absolutePath } = resolvePaths(
