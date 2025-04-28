@@ -78,6 +78,7 @@ export interface ClientData<
   head: PageHeadRef
   headTitle: PageHeadTitleRef
   lang: PageLangRef
+  page: PageDataRef<Data>
   site: SiteDataRef
   siteLocale: SiteLocaleDataRef
 }

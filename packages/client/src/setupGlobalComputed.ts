@@ -109,6 +109,7 @@ export const setupGlobalComputed = (
     head: pageHead,
     headTitle: pageHeadTitle,
     lang: pageLang,
+    page: pageData,
     site: siteData,
     siteLocale: siteLocaleData,
   }

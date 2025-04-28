@@ -52,5 +52,6 @@ export const useData = useClientData
 export const useFrontmatter = usePageFrontmatter
 export const useHead = usePageHead
 export const useLang = usePageLang
+export const usePage = usePageData
 export const useSite = useSiteData
 export const useSiteLocale = useSiteLocaleData
