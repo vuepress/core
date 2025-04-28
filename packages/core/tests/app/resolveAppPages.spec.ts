@@ -13,9 +13,9 @@ it('should create two pages with default 404 page', async () => {
   app.markdown = createMarkdown()
 
   const pages = await resolveAppPages(app)
-  const fooPage = pages.find((page) => page.path === '/foo.html')
-  const barPage = pages.find((page) => page.path === '/bar.html')
-  const notFoundPage = pages.find((page) => page.path === '/404.html')
+  const fooPage = pages.find((page) => page.path === '/foo')
+  const barPage = pages.find((page) => page.path === '/bar')
+  const notFoundPage = pages.find((page) => page.path === '/404')
 
   expect(pages).toHaveLength(3)
   expect(fooPage?.filePathRelative).toEqual('foo.md')
@@ -33,9 +33,9 @@ it('should create two pages with custom 404 page', async () => {
   app.markdown = createMarkdown()
 
   const pages = await resolveAppPages(app)
-  const fooPage = pages.find((page) => page.path === '/foo.html')
-  const barPage = pages.find((page) => page.path === '/bar.html')
-  const notFoundPage = pages.find((page) => page.path === '/404.html')
+  const fooPage = pages.find((page) => page.path === '/foo')
+  const barPage = pages.find((page) => page.path === '/bar')
+  const notFoundPage = pages.find((page) => page.path === '/404')
 
   expect(pages).toHaveLength(3)
   expect(fooPage?.filePathRelative).toEqual('foo.md')

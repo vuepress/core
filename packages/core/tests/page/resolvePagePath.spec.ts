@@ -40,7 +40,7 @@ const TEST_CASES: [
         },
       },
     ],
-    '/options.html',
+    '/options',
   ],
   // use permalink
   [
@@ -92,7 +92,7 @@ const TEST_CASES: [
         options: {},
       },
     ],
-    '/inferred.html',
+    '/inferred',
   ],
 ]
 
