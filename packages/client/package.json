@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-rc.21",
+  "version": "2.0.0-rc.22",
   "description": "Client package of VuePress",
   "keywords": [
     "vuepress",

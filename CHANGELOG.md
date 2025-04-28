@@ -1,3 +1,19 @@
+# [2.0.0-rc.22](https://github.com/vuepress/core/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2025-04-28)
+
+
+### Bug Fixes
+
+* **markdown:** avoid leading number in link hash ([#1644](https://github.com/vuepress/core/issues/1644)) ([db4982e](https://github.com/vuepress/core/commit/db4982e93e856cc19eae95390f0754c71de0f12a))
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to 6.3 ([a78ee55](https://github.com/vuepress/core/commit/a78ee55b4dabbaad7cd3ec9e2a0c7bf1eaa15c87))
+* **bundler-webpack:** update target of esbuild-loader ([#1643](https://github.com/vuepress/core/issues/1643)) ([a09e92d](https://github.com/vuepress/core/commit/a09e92d7ca1c7b07cb3ead2d7ad17337c9fcb18c))
+* **client:** provide client data aliases and utils ([#1645](https://github.com/vuepress/core/issues/1645)) ([7a43fae](https://github.com/vuepress/core/commit/7a43fae631baa631929a3f98055d465d86f7469f))
+
+
+
 # [2.0.0-rc.21](https://github.com/vuepress/core/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2025-04-12)
 
 
