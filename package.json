@@ -35,7 +35,7 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/types": "^19.8.0",
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.2",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "^3.1.2",
     "bumpp": "^10.1.0",
@@ -53,11 +53,11 @@
     "tsconfig-vuepress": "^6.0.0",
     "tsup": "^8.4.0",
     "typescript": "~5.8.3",
-    "vite": "~6.3.2",
+    "vite": "~6.3.3",
     "vitest": "^3.1.2",
-    "vue-tsc": "^2.2.8"
+    "vue-tsc": "^2.2.10"
   },
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
