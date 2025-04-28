@@ -2,8 +2,8 @@ import type { Component } from 'vue'
 import type { PageData } from '../types/index.js'
 
 export interface PageChunk {
-  comp: Component
-  data: PageData
+  default: Component
+  _pageData: PageData
 }
 
 export type RouteMeta = Record<string, unknown>
