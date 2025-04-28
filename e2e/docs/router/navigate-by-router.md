@@ -28,10 +28,10 @@ const goHomeWithQueryAndHash = () => {
 }
 
 const go404WithHash = () => {
-  router.push('/404.html#404');
+  router.push('/404.html#_404');
 }
 
 const go404WithHashAndQuery = () => {
-  router.push('/404.html#404?notFound=true');
+  router.push('/404.html#_404?notFound=true');
 }
 </script>
