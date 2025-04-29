@@ -13,6 +13,17 @@ export interface AssetsPluginOptions {
    * Prefix to add to relative assets links
    */
   relativePathPrefix?: string
+
+  /**
+   * The strictness of the determination of relative paths
+   *
+   * - strict: startWith `./` or `../` -> relative path
+   * - half: no startWith `/` or `@` or `<protocol>` (`https?:` `data:`) -> relative path
+   *   At this point, only aliases beginning with `@` are allowed to replace
+   *   relative paths not beginning with `.`
+   * - no: no startWith `/` or `<protocol>` -> relative path
+   */
+  restrictRelativePath?: 'half' | 'no' | 'strict'
 }
 
 /**
@@ -23,6 +34,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   {
     absolutePathPrependBase = false,
     relativePathPrefix = '@source',
+    restrictRelativePath = 'strict',
   }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
@@ -58,7 +70,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
               env,
               absolutePathPrependBase,
               relativePathPrefix,
-              strict: true,
+              strict: restrictRelativePath,
             })}${quote}`,
         )
         // handle srcset
@@ -75,7 +87,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       env,
                       absolutePathPrependBase,
                       relativePathPrefix,
-                      strict: true,
+                      strict: restrictRelativePath,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )
