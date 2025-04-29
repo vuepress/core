@@ -15,15 +15,19 @@ export interface AssetsPluginOptions {
   relativePathPrefix?: string
 
   /**
-   * The strictness of the relative path.
+   * Use aliases for non-strict relative paths.
    *
-   * When different options are set, the criteria for relative paths:
+   * This is a path that does not start
+   * with `./` or `../` or `/` or `<protocol header>`:
+   * `<img src="path1/path2.png" />`
    *
-   * - true:       starting with `./` or `../`
-   * - false:      not starting with `/` or `<protocol header>`
-   * - '@-perfix': not starting with `/` or `@` or `<protocol header>`
+   * - If the option is `true`. `path1` is regarded as an alias.
+   * - If the option is `false`. It is regarded as a relative path.
+   * - If the option is `"@-perfix"`.
+   *   If the path starts with `@`, `path1` is regarded as an alias;
+   *   Otherwise, it is regarded as a relative path.
    */
-  restrictRelativePath?: boolean | '@-perfix'
+  aliasSupport?: boolean | '@-perfix'
 }
 
 /**
@@ -34,7 +38,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   {
     absolutePathPrependBase = false,
     relativePathPrefix = '@source',
-    restrictRelativePath = true,
+    aliasSupport = true,
   }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
@@ -70,7 +74,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
               env,
               absolutePathPrependBase,
               relativePathPrefix,
-              strict: restrictRelativePath,
+              strict: aliasSupport,
             })}${quote}`,
         )
         // handle srcset
@@ -87,7 +91,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       env,
                       absolutePathPrependBase,
                       relativePathPrefix,
-                      strict: restrictRelativePath,
+                      strict: aliasSupport,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )
