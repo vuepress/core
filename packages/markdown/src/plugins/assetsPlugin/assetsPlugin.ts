@@ -17,13 +17,13 @@ export interface AssetsPluginOptions {
   /**
    * The strictness of the determination of relative paths
    *
-   * - strict: startWith `./` or `../` -> relative path
-   * - half: no startWith `/` or `@` or `<protocol>` (`https?:` `data:`) -> relative path
-   *   At this point, only aliases beginning with `@` are allowed to replace
-   *   relative paths not beginning with `.`
-   * - no: no startWith `/` or `<protocol>` -> relative path
+   * When different options are set, the criteria for identifying relative paths are as follows:
+   *
+   * - true:       start with `./` or `../`
+   * - false:      no start with `/` or `<protocol header>`
+   * - '@-perfix': no start with `/` or `@` or `<protocol header>`
    */
-  restrictRelativePath?: 'half' | 'no' | 'strict'
+  restrictRelativePath?: boolean | '@-perfix'
 }
 
 /**
@@ -34,7 +34,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   {
     absolutePathPrependBase = false,
     relativePathPrefix = '@source',
-    restrictRelativePath = 'strict',
+    restrictRelativePath = true,
   }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule

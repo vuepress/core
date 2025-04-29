@@ -6,7 +6,7 @@ interface ResolveLinkOptions {
   env: MarkdownEnv
   absolutePathPrependBase?: boolean
   relativePathPrefix: string
-  strict?: 'half' | 'no' | 'strict'
+  strict?: boolean | '@-perfix'
 }
 
 export const resolveLink = (
@@ -15,7 +15,7 @@ export const resolveLink = (
     env,
     absolutePathPrependBase = false,
     relativePathPrefix,
-    strict = 'no',
+    strict = false,
   }: ResolveLinkOptions,
 ): string => {
   // do not resolve data uri
@@ -26,9 +26,9 @@ export const resolveLink = (
 
   // check if the link is relative path
   const isRelativePath =
-    strict === 'strict'
+    strict === true
       ? /^\.{1,2}\//.test(link)
-      : strict === 'no'
+      : strict === false
         ? !link.startsWith('/') && !/[A-z]+:\/\//.test(link)
         : !link.startsWith('/') &&
           !link.startsWith('@') &&
