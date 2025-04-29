@@ -15,13 +15,13 @@ export interface AssetsPluginOptions {
   relativePathPrefix?: string
 
   /**
-   * The strictness of the determination of relative paths
+   * The strictness of the relative path.
    *
-   * When different options are set, the criteria for identifying relative paths are as follows:
+   * When different options are set, the criteria for relative paths:
    *
-   * - true:       start with `./` or `../`
-   * - false:      no start with `/` or `<protocol header>`
-   * - '@-perfix': no start with `/` or `@` or `<protocol header>`
+   * - true:       starting with `./` or `../`
+   * - false:      not starting with `/` or `<protocol header>`
+   * - '@-perfix': not starting with `/` or `@` or `<protocol header>`
    */
   restrictRelativePath?: boolean | '@-perfix'
 }
