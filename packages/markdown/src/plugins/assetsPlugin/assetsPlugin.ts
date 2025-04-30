@@ -74,7 +74,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
               env,
               absolutePathPrependBase,
               relativePathPrefix,
-              strict: aliasSupport,
+              aliasSupport,
             })}${quote}`,
         )
         // handle srcset
@@ -91,7 +91,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       env,
                       absolutePathPrependBase,
                       relativePathPrefix,
-                      strict: aliasSupport,
+                      aliasSupport,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )
