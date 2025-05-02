@@ -29,10 +29,12 @@ const resolveAlias = async ({
   })
 
   return [
-    ...Object.keys(alias).map((item) => ({
-      find: item,
-      replacement: alias[item],
-    })),
+    ...Object.keys(alias)
+      .sort((a, b) => b.length - a.length)
+      .map((item) => ({
+        find: item,
+        replacement: alias[item],
+      })),
     ...(isServer
       ? []
       : [
