@@ -43,9 +43,9 @@ export type ClientConfigFileHook = Hook<
 
 // alias and define hook
 export type AliasDefineHook = Hook<
-  | Record<string, unknown>
-  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, unknown>>),
-  (app: App, isServer: boolean) => Promise<Record<string, unknown>>
+  | Record<string, string>
+  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, string>>),
+  (app: App, isServer: boolean) => Promise<Record<string, string>>
 >
 
 /**

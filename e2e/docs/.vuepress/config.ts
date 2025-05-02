@@ -83,4 +83,13 @@ export default defineUserConfig({
   },
 
   plugins: [fooPlugin],
+
+  // The alias entries are intentionally ordered by key length to ensure
+  // that more specific aliases (e.g., '@dir/a.js') take precedence over
+  // less specific ones (e.g., '@dir'). Do not reorder these entries.
+  alias: {
+    '@dir/a.js': path.resolve(__dirname, '../../modules/dir2/a.js'),
+    '@dir': path.resolve(__dirname, '../../modules/dir1'),
+    '@dir/b.js': path.resolve(__dirname, '../../modules/dir2/b.js'),
+  },
 })

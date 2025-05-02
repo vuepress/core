@@ -46,7 +46,7 @@ export const handleResolve = async ({
   // set aliases
   aliasResult.forEach((aliasObject) => {
     Object.entries(aliasObject).forEach(([key, value]) => {
-      config.resolve.alias.set(key, value as string)
+      config.resolve.alias.set(key, value)
     })
   })
 }

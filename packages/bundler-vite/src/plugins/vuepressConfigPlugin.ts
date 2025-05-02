@@ -25,9 +25,7 @@ const resolveAlias = async ({
   const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
   aliasResult.forEach((aliasObject) => {
-    Object.entries(aliasObject).forEach(([key, value]) => {
-      alias[key] = value as string
-    })
+    Object.assign(alias, aliasObject)
   })
 
   return [
