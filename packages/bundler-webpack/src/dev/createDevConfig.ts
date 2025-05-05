@@ -1,7 +1,7 @@
 import type { App } from '@vuepress/core'
 import HtmlPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
-import type Config from 'webpack-5-chain'
+import type { Config } from 'webpack-v5-chain'
 import { createClientBaseConfig } from '../config/index.js'
 import type { WebpackBundlerOptions } from '../types.js'
 
