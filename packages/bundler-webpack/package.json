@@ -62,7 +62,7 @@
     "webpack": "^5.99.7",
     "webpack-dev-server": "^5.2.1",
     "webpack-merge": "^6.0.1",
-    "webpack-v5-chain": "^0.0.2"
+    "webpack-v5-chain": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

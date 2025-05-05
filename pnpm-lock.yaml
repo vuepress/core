@@ -260,8 +260,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       webpack-v5-chain:
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^1.0.0
+        version: 1.0.0
 
   packages/bundlerutils:
     dependencies:
@@ -5215,8 +5215,8 @@ packages:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
 
-  webpack-v5-chain@0.0.2:
-    resolution: {integrity: sha512-w8AEy7j+fqLUxlNwD/N+wMgcUrE0anArA539huTD0NDRg3hUhWAFKEdrVX8vaP5gCdRVwz7UVk6rrK/KQxFQQQ==}
+  webpack-v5-chain@1.0.0:
+    resolution: {integrity: sha512-YtFduE7cIRW2v/Ofqmac68UNLk8C8ZnwQTBuClynJfGlMn4LgcDo5utFAx+Y5f8k5aG+yreUmEdXxwTsb3zxYQ==}
     engines: {node: '>=10.13.0'}
 
   webpack@5.99.7:
@@ -10273,7 +10273,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack-v5-chain@0.0.2:
+  webpack-v5-chain@1.0.0:
     dependencies:
       deepmerge: 4.3.1
       javascript-stringify: 2.1.0
