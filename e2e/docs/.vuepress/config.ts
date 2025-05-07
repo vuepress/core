@@ -61,9 +61,32 @@ export default defineUserConfig({
 
   bundler:
     E2E_BUNDLER === 'webpack'
-      ? webpackBundler()
+      ? webpackBundler({
+          chainWebpack(config) {
+            const WEBPACK_DEFAULT_CONDITION_NAMES = [
+              'browser',
+              'import',
+              'default',
+            ]
+
+            config.resolve.set('conditionNames', [
+              'test',
+              ...WEBPACK_DEFAULT_CONDITION_NAMES,
+            ])
+          },
+        })
       : viteBundler({
           viteOptions: {
+            resolve: {
+              conditions: [
+                'test',
+
+                // Vite default condition names
+                'module',
+                'browser',
+                'development|production',
+              ],
+            },
             optimizeDeps: {
               include: ['@vuepress-e2e/conditional-exports'],
             },

@@ -1,3 +1,4 @@
+import str from '@vuepress-e2e/conditional-exports'
 import { defineClientConfig } from 'vuepress/client'
 import ComponentForMarkdownGlobal from './components/ComponentForMarkdownGlobal.vue'
 import OnContentUpdated from './components/OnContentUpdated.vue'
@@ -5,6 +6,8 @@ import RootComponentFromUserConfig from './components/RootComponentFromUserConfi
 
 // static imported styles file
 import '@vuepress-e2e/style-exports/foo.css'
+
+console.log('user client:', str)
 
 export default defineClientConfig({
   async enhance({ app }) {

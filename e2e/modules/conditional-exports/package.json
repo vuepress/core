@@ -4,6 +4,7 @@
   "exports": {
     ".": {
       "types": "./types.d.ts",
+      "test": "./test.mjs",
       "browser": "./browser.mjs",
       "node": "./node.mjs",
       "module": "./node.mjs",
