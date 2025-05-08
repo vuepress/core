@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module'
 import type { App } from '@vuepress/core'
-import type Config from 'webpack-5-chain'
+import type { Config } from 'webpack-v5-chain'
 
 const require = createRequire(import.meta.url)
 

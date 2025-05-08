@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type Config from 'webpack-5-chain'
+import type { Config } from 'webpack-v5-chain'
 
 /**
  * Set webpack resolve
@@ -19,15 +19,10 @@ export const handleResolve = async ({
     .set('@temp', app.dir.temp())
     .set('@internal', app.dir.temp('internal'))
 
-  // extensions
-  config.merge({
-    resolve: {
-      extensionAlias: {
-        '.js': ['.js', '.ts'],
-        '.mjs': ['.mjs', '.mts'],
-      },
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'],
-    },
+  // extensionAlias
+  config.resolve.extensionAlias.merge({
+    '.js': ['.js', '.ts'],
+    '.mjs': ['.mjs', '.mts'],
   })
 
   // extensions

@@ -4,8 +4,8 @@ import type {
   LoaderContext,
   Configuration as WebpackConfiguration,
 } from 'webpack'
-import type WebpackChainConfig from 'webpack-5-chain'
 import type WebpackDevServer from 'webpack-dev-server'
+import type { Config as WebpackChainConfig } from 'webpack-v5-chain'
 
 export type {
   VueLoaderOptions,
@@ -28,7 +28,7 @@ export interface WebpackBundlerOptions extends BundlerOptions {
   ) => WebpackConfiguration | void
 
   /**
-   * use webpack-5-chain to set webpack config
+   * use webpack-v5-chain to set webpack config
    */
   chainWebpack?: (
     config: WebpackChainConfig,
