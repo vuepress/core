@@ -723,3 +723,89 @@ describe('html <img> tag', () => {
     })
   })
 })
+
+// Complex situations are tested by the previous `img tag`.
+// Here, only the situation where the img tag is replaced with other media tags is supplemented.
+//
+// And test `aliasSupport` option.
+describe('html media tag', () => {
+  describe('single-line', () => {
+    const source = [
+      /* src */
+      // relative paths
+      '<audio src="./foo.mp3">',
+      '<video src="./foo.mp4">',
+      '<source src="./foo.mp4">',
+      '<audio src="../foo.mp3">',
+      '<video src="../foo.mp4">',
+      '<source src="../foo.mp4">',
+      // absolute paths
+      '<audio src="/foo.mp3">',
+      '<video src="/foo.mp4">',
+      '<source src="/foo.mp4">',
+      // aliases
+      '<audio src="@alias/foo.mp3">',
+      '<video src="@alias/foo.mp4">',
+      '<source src="@alias/foo.mp4">',
+      // no-prefix paths
+      '<audio src="sub2/foo.mp3">',
+      '<video src="sub2/foo.mp4">',
+      '<source src="sub2/foo.mp4">',
+    ]
+
+    const TEST_CASES: {
+      description: string
+      md: MarkdownIt
+      env: MarkdownEnv
+      expected: string[]
+    }[] = [
+      {
+        description: 'should handle assets link with default options',
+        md: MarkdownIt({ html: true }).use(assetsPlugin, {
+          aliasSupport: '@-perfix',
+        }),
+        env: {
+          filePathRelative: 'sub/foo.md',
+        },
+        expected: [
+          /* src */
+          // relative paths
+          '<audio src="@source/sub/foo.mp3">',
+          '<video src="@source/sub/foo.mp4">',
+          '<source src="@source/sub/foo.mp4">',
+          '<audio src="@source/foo.mp3">',
+          '<video src="@source/foo.mp4">',
+          '<source src="@source/foo.mp4">',
+          // absolute paths
+          '<audio src="/foo.mp3">',
+          '<video src="/foo.mp4">',
+          '<source src="/foo.mp4">',
+          // aliases
+          '<audio src="@alias/foo.mp3">',
+          '<video src="@alias/foo.mp4">',
+          '<source src="@alias/foo.mp4">',
+          // no-prefix paths
+          '<audio src="@source/sub/sub2/foo.mp3">',
+          '<video src="@source/sub/sub2/foo.mp4">',
+          '<source src="@source/sub/sub2/foo.mp4">',
+        ],
+      },
+    ]
+
+    TEST_CASES.forEach(({ description, md, env, expected }) => {
+      it(description, () => {
+        // Note: Media tags are blocks.
+
+        // block
+        expect(md.render(source.join('\n\n'), env)).toEqual(
+          expected.map((item) => item).join('\n'),
+        )
+
+        // block with leading white space
+        expect(
+          md.render(source.map((item) => `   ${item}`).join('\n\n'), env),
+        ).toEqual(expected.map((item) => `   ${item}`).join('\n'))
+      })
+    })
+  })
+})
