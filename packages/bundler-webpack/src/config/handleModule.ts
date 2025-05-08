@@ -1,4 +1,4 @@
-import type Config from 'webpack-5-chain'
+import type { Config } from 'webpack-v5-chain'
 import type { WebpackBundlerOptions } from '../types.js'
 import { handleModuleAssets } from './handleModuleAssets.js'
 import { handleModuleJs } from './handleModuleJs.js'
