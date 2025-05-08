@@ -25,16 +25,17 @@ const resolveAlias = async ({
   const aliasResult = await app.pluginApi.hooks.alias.process(app, isServer)
 
   aliasResult.forEach((aliasObject) => {
-    Object.entries(aliasObject).forEach(([key, value]) => {
-      alias[key] = value as string
-    })
+    Object.assign(alias, aliasObject)
   })
 
   return [
-    ...Object.keys(alias).map((item) => ({
-      find: item,
-      replacement: alias[item],
-    })),
+    ...Object.keys(alias)
+      // sort alias by length in descending order to ensure longer alias is handled first
+      .sort((a, b) => b.length - a.length)
+      .map((item) => ({
+        find: item,
+        replacement: alias[item],
+      })),
     ...(isServer
       ? []
       : [

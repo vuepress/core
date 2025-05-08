@@ -1,5 +1,5 @@
 import { isFunction } from '@vuepress/shared'
-import type { AliasDefineHook } from '../types/index.js'
+import type { AliasHook, DefineHook } from '../types/index.js'
 
 /**
  * Normalize alias and define hook
@@ -7,6 +7,6 @@ import type { AliasDefineHook } from '../types/index.js'
  * @internal
  */
 export const normalizeAliasDefineHook =
-  (hook: AliasDefineHook['exposed']): AliasDefineHook['normalized'] =>
+  <T extends AliasHook | DefineHook>(hook: T['exposed']): T['normalized'] =>
   async (app, isServer) =>
     isFunction(hook) ? hook(app, isServer) : hook
