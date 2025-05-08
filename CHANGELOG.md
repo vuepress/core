@@ -1,3 +1,12 @@
+# [2.0.0-rc.23](https://github.com/vuepress/core/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2025-05-08)
+
+
+### Bug Fixes
+
+* make alias can be overridden properly ([#1648](https://github.com/vuepress/core/issues/1648)) ([13c8c59](https://github.com/vuepress/core/commit/13c8c59818e8cfbb25692ed1eaee04eef90fad1a))
+
+
+
 # [2.0.0-rc.22](https://github.com/vuepress/core/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2025-04-28)
 
 
