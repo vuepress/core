@@ -30,6 +30,7 @@ const resolveAlias = async ({
 
   return [
     ...Object.keys(alias)
+      // sort alias by length in descending order to ensure longer alias is handled first
       .sort((a, b) => b.length - a.length)
       .map((item) => ({
         find: item,

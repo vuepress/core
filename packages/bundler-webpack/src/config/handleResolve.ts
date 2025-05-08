@@ -30,6 +30,7 @@ export const handleResolve = async ({
   // set aliases
   config.resolve.alias.merge(
     Object.fromEntries(
+      // sort alias by length in descending order to ensure longer alias is handled first
       Object.entries(alias).sort(([a], [b]) => b.length - a.length),
     ),
   )
