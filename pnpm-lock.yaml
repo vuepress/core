@@ -253,15 +253,15 @@ importers:
       webpack:
         specifier: ^5.99.7
         version: 5.99.7(esbuild@0.25.3)
-      webpack-5-chain:
-        specifier: ^8.0.2
-        version: 8.0.2
       webpack-dev-server:
         specifier: ^5.2.1
         version: 5.2.1(webpack@5.99.7(esbuild@0.25.3))
       webpack-merge:
         specifier: ^6.0.1
         version: 6.0.1
+      webpack-v5-chain:
+        specifier: ^1.0.0
+        version: 1.0.0
 
   packages/bundlerutils:
     dependencies:
@@ -2291,8 +2291,8 @@ packages:
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
 
-  deepmerge@1.5.2:
-    resolution: {integrity: sha512-95k0GDqvBjZavkuvzx/YqVLv/6YYa17fz6ILMSf7neqQITCPbnfEnQvEgMPNjH4kgobe7+WIL0yJEHku+H3qtQ==}
+  deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
 
   default-browser-id@5.0.0:
@@ -5182,10 +5182,6 @@ packages:
   webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
 
-  webpack-5-chain@8.0.2:
-    resolution: {integrity: sha512-gpzlChffrVUu5YwIw9i240/wdcglw53mSEV/7WoK7L/ddfb6Al8/sRjztyPYV8VgJAmkapH5T1AOUfMFryQ/VA==}
-    engines: {node: '>=10'}
-
   webpack-dev-middleware@7.4.2:
     resolution: {integrity: sha512-xOO8n6eggxnwYpy1NlzUKpvrjfJTvae5/D6WOK0S2LSo7vjmo5gCM1DbLUmFqrMTJP+W/0YZNctm7jasWvLuBA==}
     engines: {node: '>= 18.12.0'}
@@ -5217,6 +5213,10 @@ packages:
 
   webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
+    engines: {node: '>=10.13.0'}
+
+  webpack-v5-chain@1.0.0:
+    resolution: {integrity: sha512-YtFduE7cIRW2v/Ofqmac68UNLk8C8ZnwQTBuClynJfGlMn4LgcDo5utFAx+Y5f8k5aG+yreUmEdXxwTsb3zxYQ==}
     engines: {node: '>=10.13.0'}
 
   webpack@5.99.7:
@@ -7256,7 +7256,7 @@ snapshots:
 
   deep-is@0.1.4: {}
 
-  deepmerge@1.5.2: {}
+  deepmerge@4.3.1: {}
 
   default-browser-id@5.0.0: {}
 
@@ -10211,11 +10211,6 @@ snapshots:
 
   webidl-conversions@4.0.2: {}
 
-  webpack-5-chain@8.0.2:
-    dependencies:
-      deepmerge: 1.5.2
-      javascript-stringify: 2.1.0
-
   webpack-dev-middleware@7.4.2(webpack@5.99.7(esbuild@0.25.3)):
     dependencies:
       colorette: 2.0.20
@@ -10277,6 +10272,11 @@ snapshots:
       source-map: 0.6.1
 
   webpack-sources@3.2.3: {}
+
+  webpack-v5-chain@1.0.0:
+    dependencies:
+      deepmerge: 4.3.1
+      javascript-stringify: 2.1.0
 
   webpack@5.99.7(esbuild@0.25.3):
     dependencies:

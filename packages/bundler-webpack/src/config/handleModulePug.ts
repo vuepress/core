@@ -1,4 +1,4 @@
-import type Config from 'webpack-5-chain'
+import type { Config } from 'webpack-v5-chain'
 
 /**
  * Set webpack module to handle pug files
