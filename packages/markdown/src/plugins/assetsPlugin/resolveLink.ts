@@ -6,7 +6,7 @@ interface ResolveLinkOptions {
   env: MarkdownEnv
   absolutePathPrependBase?: boolean
   relativePathPrefix: string
-  strict?: boolean
+  aliasSupport?: boolean | '@-perfix'
 }
 
 export const resolveLink = (
@@ -15,7 +15,7 @@ export const resolveLink = (
     env,
     absolutePathPrependBase = false,
     relativePathPrefix,
-    strict = false,
+    aliasSupport = false,
   }: ResolveLinkOptions,
 ): string => {
   // do not resolve data uri
@@ -25,11 +25,14 @@ export const resolveLink = (
   let resolvedLink = decode(link)
 
   // check if the link is relative path
-  const isRelativePath = strict
-    ? // in strict mode, only link that starts with `./` or `../` is considered as relative path
-      /^\.{1,2}\//.test(link)
-    : // in non-strict mode, link that does not start with `/` and does not have protocol is considered as relative path
-      !link.startsWith('/') && !/[A-z]+:\/\//.test(link)
+  const isRelativePath =
+    aliasSupport === true
+      ? /^\.{1,2}\//.test(link)
+      : aliasSupport === false
+        ? !link.startsWith('/') && !/[A-z]+:\/\//.test(link)
+        : !link.startsWith('/') &&
+          !link.startsWith('@') &&
+          !/[A-z]+:\/\//.test(link)
 
   // if the link is relative path, and the `env.filePathRelative` exists
   // add `@source` alias to the link
