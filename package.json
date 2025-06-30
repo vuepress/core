@@ -44,7 +44,7 @@
     "eslint-config-vuepress": "^7.0.1",
     "husky": "^9.1.7",
     "jiti": "^2.4.2",
-    "lint-staged": "^15.5.2",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
     "prettier-config-vuepress": "^7.0.1",
     "rimraf": "^6.0.1",
