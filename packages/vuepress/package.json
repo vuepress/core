@@ -71,7 +71,7 @@
     }
   },
   "engines": {
-    "node": "^18.19.0 || >=20.4.0"
+    "node": "^20.9.0 || >=22.0.0"
   },
   "tsup": {
     "clean": true,
@@ -100,7 +100,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2022",
+    "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }
 }
