@@ -1,3 +1,22 @@
+# [2.0.0-rc.24](https://github.com/vuepress/core/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2025-06-30)
+
+
+### Build System
+
+* drop node 18 ([#1655](https://github.com/vuepress/core/issues/1655)) ([afad5d0](https://github.com/vuepress/core/commit/afad5d0cf5bd8e2b978e8d4d6d53a718578aacaa))
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to v7 ([#1656](https://github.com/vuepress/core/issues/1656)) ([d4e58c3](https://github.com/vuepress/core/commit/d4e58c3c28da42b7990e22d6dad540d2484e550c))
+
+
+### BREAKING CHANGES
+
+* drop node 18
+
+
+
 # [2.0.0-rc.23](https://github.com/vuepress/core/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2025-05-08)
 
 
