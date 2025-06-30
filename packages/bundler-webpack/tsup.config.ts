@@ -5,7 +5,7 @@ const shared = defineConfig({
   clean: true,
   outDir: './dist',
   sourcemap: false,
-  target: 'es2022',
+  target: 'es2023',
   tsconfig: '../tsconfig.dts.json',
 }) as Options
 
