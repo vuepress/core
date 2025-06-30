@@ -14,6 +14,7 @@
 ### BREAKING CHANGES
 
 * drop node 18
+* **utils**: `TEMPLATE_RENDERER_OUTLETS` has been replaced with `TemplateRendererOutlet`
 
 
 
