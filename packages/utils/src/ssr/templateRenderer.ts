@@ -1,7 +1,7 @@
 /**
  * HTML outlets of the template renderer
  */
-export const enum TemplateRendererOutlet {
+export enum TemplateRendererOutlet {
   Content = '<!--vuepress-ssr-content-->',
   Head = '<!--vuepress-ssr-head-->',
   Lang = '{{ lang }}',
