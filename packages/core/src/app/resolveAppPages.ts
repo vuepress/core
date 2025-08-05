@@ -1,4 +1,4 @@
-import { debug, globby } from '@vuepress/utils'
+import { debug, glob } from '@vuepress/utils'
 import { createPage } from '../page/index.js'
 import type { App, Page } from '../types/index.js'
 
@@ -13,7 +13,7 @@ export const resolveAppPages = async (app: App): Promise<Page[]> => {
   log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
-  const pageFilePaths = await globby(app.options.pagePatterns, {
+  const pageFilePaths = await glob(app.options.pagePatterns, {
     absolute: true,
     cwd: app.dir.source(),
   })
