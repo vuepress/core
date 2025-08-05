@@ -1,7 +1,7 @@
 import process from 'node:process'
 import type { PluginObject } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
-import type { UserConfig } from './types.js'
+import type { UserConfig } from '../types/index.js'
 
 /**
  * Transform user config to a vuepress plugin

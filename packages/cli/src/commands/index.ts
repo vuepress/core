@@ -1,3 +1,3 @@
-export * from './build/index.js'
+export * from './build.js'
 export * from './dev/index.js'
 export * from './info.js'
