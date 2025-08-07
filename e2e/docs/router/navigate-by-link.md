@@ -13,8 +13,8 @@
 <a :href="$withBase('/404.html')" class="not-found">404</a>
 <a :href="$withBase('/?home=true')" class="home-with-query">Home</a>
 <a :href="$withBase('/?home=true#home')" class="home-with-query-and-hash">Home</a>
-<a :href="$withBase('/404.html#404')" class="not-found-with-hash">404</a>
-<a :href="$withBase('/404.html#404?notFound=true')" class="not-found-with-hash-and-query">404</a>
+<a :href="$withBase('/404.html#_404')" class="not-found-with-hash">404</a>
+<a :href="$withBase('/404.html#_404?notFound=true')" class="not-found-with-hash-and-query">404</a>
 
 ## Markdown Links with html paths
 

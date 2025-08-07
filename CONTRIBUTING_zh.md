@@ -27,12 +27,12 @@ Bundler 及其相关 Packages ：
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 18.16.0+**
-- [pnpm](https://pnpm.io/zh/) **version 9+**
+- [Node.js](http://nodejs.org) **version 20.9.0+**
 
 克隆代码仓库，并安装依赖：
 
 ```bash
+corepack enable
 pnpm install
 ```
 

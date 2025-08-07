@@ -3,7 +3,11 @@ import process from 'node:process'
 import type { AppConfig } from '@vuepress/core'
 import { colors, logger } from '@vuepress/utils'
 import { cac } from 'cac'
-import { createBuild, createDev, info } from './commands/index.js'
+import { build, dev, info } from './commands/index.js'
+import type {
+  BuildCommandCliOptions,
+  DevCommandCliOptions,
+} from './types/index.js'
 
 const require = createRequire(import.meta.url)
 
@@ -37,7 +41,13 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .option('--open', 'Open browser when ready')
     .option('--debug', 'Enable debug mode')
     .option('--no-watch', 'Disable watching page and config files')
-    .action(createDev(defaultAppConfig))
+    .action(async (sourceDir?: string, cliOptions?: DevCommandCliOptions) =>
+      dev({
+        defaultAppConfig,
+        sourceDir,
+        cliOptions,
+      }),
+    )
 
   // register `build` command
   program
@@ -52,7 +62,13 @@ export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
     .option('--clean-temp', 'Clean the temporary files before build')
     .option('--clean-cache', 'Clean the cache files before build')
     .option('--debug', 'Enable debug mode')
-    .action(createBuild(defaultAppConfig))
+    .action(async (sourceDir?: string, cliOptions?: BuildCommandCliOptions) =>
+      build({
+        defaultAppConfig,
+        sourceDir,
+        cliOptions,
+      }),
+    )
 
   // register `info` command
   program.command('info', 'Display environment information').action(info)

@@ -1,7 +1,8 @@
 import { logger, ora } from '@vuepress/utils'
 import envinfo from 'envinfo'
+import type { InfoCommand } from '../types/index.js'
 
-export const info = async (): Promise<void> => {
+export const info: InfoCommand = async () => {
   const spinner = ora()
   spinner.start('Collecting Environment Info')
 

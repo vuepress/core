@@ -72,4 +72,13 @@ export interface ClientData<
   routes: RoutesRef
   siteData: SiteDataRef
   siteLocaleData: SiteLocaleDataRef
+
+  /* Aliases */
+  frontmatter: PageFrontmatterRef<Frontmatter>
+  head: PageHeadRef
+  headTitle: PageHeadTitleRef
+  lang: PageLangRef
+  page: PageDataRef<Data>
+  site: SiteDataRef
+  siteLocale: SiteLocaleDataRef
 }

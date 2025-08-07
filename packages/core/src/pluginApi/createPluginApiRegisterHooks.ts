@@ -1,4 +1,4 @@
-import type { PluginApi } from '../types/index.js'
+import type { AliasHook, DefineHook, PluginApi } from '../types/index.js'
 import { normalizeAliasDefineHook } from './normalizeAliasDefineHook.js'
 import { normalizeClientConfigFileHook } from './normalizeClientConfigFileHook.js'
 
@@ -30,14 +30,14 @@ export const createPluginApiRegisterHooks =
         if (alias) {
           hooks.alias.add({
             pluginName,
-            hook: normalizeAliasDefineHook(alias),
+            hook: normalizeAliasDefineHook<AliasHook>(alias),
           })
         }
 
         if (define) {
           hooks.define.add({
             pluginName,
-            hook: normalizeAliasDefineHook(define),
+            hook: normalizeAliasDefineHook<DefineHook>(define),
           })
         }
 

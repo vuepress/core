@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-rc.21",
+  "version": "2.0.0-rc.24",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",
@@ -34,13 +34,15 @@
     "@types/debug": "^4.1.12",
     "@types/fs-extra": "^11.0.4",
     "@types/hash-sum": "^1.0.2",
+    "@types/picomatch": "^4.0.2",
     "@vuepress/shared": "workspace:*",
-    "debug": "^4.4.0",
+    "debug": "^4.4.1",
     "fs-extra": "^11.3.0",
-    "globby": "^14.1.0",
     "hash-sum": "^2.0.0",
     "ora": "^8.2.0",
     "picocolors": "^1.1.1",
+    "picomatch": "^4.0.3",
+    "tinyglobby": "^0.2.14",
     "upath": "^2.0.1"
   },
   "publishConfig": {
@@ -57,7 +59,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2022",
+    "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

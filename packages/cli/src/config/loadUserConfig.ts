@@ -2,7 +2,7 @@ import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { fs, hash, importFileDefault, path } from '@vuepress/utils'
 import { build } from 'esbuild'
-import type { UserConfig } from './types.js'
+import type { UserConfig } from '../types/index.js'
 
 /**
  * Load user config file

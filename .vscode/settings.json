@@ -20,27 +20,23 @@
   "cSpell.words": [
     "bumpp",
     "bundlerutils",
+    "chokidar",
     "composables",
     "devtool",
-    "docsearch",
     "envinfo",
     "esbuild",
     "frontmatter",
-    "globby",
-    "gtag",
     "lightningcss",
     "mdit",
-    "nprogress",
     "prefetch",
     "preload",
-    "prismjs",
-    "shiki",
     "slugify",
+    "tinyglobby",
     "unmount",
+    "upath",
     "vuejs",
     "vuepress",
-    "vueuse",
-    "zoomable"
+    "vueuse"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

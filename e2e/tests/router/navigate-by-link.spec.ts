@@ -32,13 +32,13 @@ test.describe('markdown links', () => {
 
   test('should preserve hash', async ({ page }) => {
     await page.locator('#markdown-links + ul > li > a').nth(4).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404`)
+    await expect(page).toHaveURL(`${BASE}404.html#_404`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 
   test('should preserve hash and query', async ({ page }) => {
     await page.locator('#markdown-links + ul > li > a').nth(5).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
+    await expect(page).toHaveURL(`${BASE}404.html#_404?notFound=true`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 })
@@ -70,13 +70,13 @@ test.describe('html links', () => {
 
   test('should preserve hash', async ({ page }) => {
     await page.locator('#html-links + p > a').nth(4).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404`)
+    await expect(page).toHaveURL(`${BASE}404.html#_404`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 
   test('should preserve hash and query', async ({ page }) => {
     await page.locator('#html-links + p > a').nth(5).click()
-    await expect(page).toHaveURL(`${BASE}404.html#404?notFound=true`)
+    await expect(page).toHaveURL(`${BASE}404.html#_404?notFound=true`)
     await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
   })
 })

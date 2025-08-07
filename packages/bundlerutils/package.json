@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundlerutils",
-  "version": "2.0.0-rc.21",
+  "version": "2.0.0-rc.24",
   "description": "Utils package of VuePress bundler",
   "keywords": [
     "bundler",
@@ -53,7 +53,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2022",
+    "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

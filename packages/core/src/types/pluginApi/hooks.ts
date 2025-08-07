@@ -41,8 +41,15 @@ export type ClientConfigFileHook = Hook<
   (app: App) => Promise<string>
 >
 
-// alias and define hook
-export type AliasDefineHook = Hook<
+// alias hook
+export type AliasHook = Hook<
+  | Record<string, string>
+  | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, string>>),
+  (app: App, isServer: boolean) => Promise<Record<string, string>>
+>
+
+// define hook
+export type DefineHook = Hook<
   | Record<string, unknown>
   | ((app: App, isServer: boolean) => PromiseOrNot<Record<string, unknown>>),
   (app: App, isServer: boolean) => Promise<Record<string, unknown>>
@@ -62,8 +69,8 @@ export interface Hooks {
   extendsPage: ExtendsHook<Page>
   extendsBundlerOptions: ExtendsHook<BundlerOptions>
   clientConfigFile: ClientConfigFileHook
-  alias: AliasDefineHook
-  define: AliasDefineHook
+  alias: AliasHook
+  define: DefineHook
 }
 
 /**

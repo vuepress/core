@@ -1,3 +1,48 @@
+# [2.0.0-rc.24](https://github.com/vuepress/core/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2025-06-30)
+
+
+### Build System
+
+* drop node 18 ([#1655](https://github.com/vuepress/core/issues/1655)) ([afad5d0](https://github.com/vuepress/core/commit/afad5d0cf5bd8e2b978e8d4d6d53a718578aacaa))
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to v7 ([#1656](https://github.com/vuepress/core/issues/1656)) ([d4e58c3](https://github.com/vuepress/core/commit/d4e58c3c28da42b7990e22d6dad540d2484e550c))
+
+
+### BREAKING CHANGES
+
+* drop node 18
+* **utils**: `TEMPLATE_RENDERER_OUTLETS` has been replaced with `TemplateRendererOutlet`
+
+
+
+# [2.0.0-rc.23](https://github.com/vuepress/core/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2025-05-08)
+
+
+### Bug Fixes
+
+* make alias can be overridden properly ([#1648](https://github.com/vuepress/core/issues/1648)) ([13c8c59](https://github.com/vuepress/core/commit/13c8c59818e8cfbb25692ed1eaee04eef90fad1a))
+
+
+
+# [2.0.0-rc.22](https://github.com/vuepress/core/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2025-04-28)
+
+
+### Bug Fixes
+
+* **markdown:** avoid leading number in link hash ([#1644](https://github.com/vuepress/core/issues/1644)) ([db4982e](https://github.com/vuepress/core/commit/db4982e93e856cc19eae95390f0754c71de0f12a))
+
+
+### Features
+
+* **bundler-vite:** upgrade vite to 6.3 ([a78ee55](https://github.com/vuepress/core/commit/a78ee55b4dabbaad7cd3ec9e2a0c7bf1eaa15c87))
+* **bundler-webpack:** update target of esbuild-loader ([#1643](https://github.com/vuepress/core/issues/1643)) ([a09e92d](https://github.com/vuepress/core/commit/a09e92d7ca1c7b07cb3ead2d7ad17337c9fcb18c))
+* **client:** provide client data aliases and utils ([#1645](https://github.com/vuepress/core/issues/1645)) ([7a43fae](https://github.com/vuepress/core/commit/7a43fae631baa631929a3f98055d465d86f7469f))
+
+
+
 # [2.0.0-rc.21](https://github.com/vuepress/core/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2025-04-12)
 
 

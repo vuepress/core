@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "2.0.0-rc.21",
+  "version": "2.0.0-rc.24",
   "description": "CLI package of VuePress",
   "keywords": [
     "vuepress",
@@ -40,9 +40,9 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "cac": "^6.7.14",
-    "chokidar": "^3.6.0",
+    "chokidar": "^4.0.3",
     "envinfo": "^7.14.0",
-    "esbuild": "^0.25.2"
+    "esbuild": "^0.25.8"
   },
   "devDependencies": {
     "@types/envinfo": "^7.8.4"
@@ -61,7 +61,7 @@
     ],
     "outDir": "./dist",
     "sourcemap": false,
-    "target": "es2022",
+    "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

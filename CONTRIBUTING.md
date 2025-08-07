@@ -27,12 +27,12 @@ Bundler and related packages:
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) **version 18.16.0+**
-- [pnpm](https://pnpm.io/) **version 9+**
+- [Node.js](http://nodejs.org) **version 20.9.0+**
 
 Clone the repo, and install dependencies:
 
 ```bash
+corepack enable
 pnpm install
 ```
 
