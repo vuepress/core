@@ -13,6 +13,21 @@ export interface AssetsPluginOptions {
    * Prefix to add to relative assets links
    */
   relativePathPrefix?: string
+
+  /**
+   * Use aliases for non-strict relative paths.
+   *
+   * This is a path that does not start
+   * with `./` or `../` or `/` or `<protocol header>`:
+   * `<img src="path1/path2.png" />`
+   *
+   * - If the option is `true`. `path1` is regarded as an alias.
+   * - If the option is `false`. It is regarded as a relative path.
+   * - If the option is `"@-perfix"`.
+   *   If the path starts with `@`, `path1` is regarded as an alias;
+   *   Otherwise, it is regarded as a relative path.
+   */
+  aliasSupport?: boolean | '@-perfix'
 }
 
 /**
@@ -23,6 +38,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   {
     absolutePathPrependBase = false,
     relativePathPrefix = '@source',
+    aliasSupport = true,
   }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
@@ -52,19 +68,19 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<img\b.*?src=)(['"])(.*?)\2/gs,
-          (_, prefix: string, quote: string, src: string) =>
+          /(<(img|source|video|audio)\b.*?src=)(['"])(.*?)\3/gs,
+          (_, prefix: string, tagName: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
               absolutePathPrependBase,
               relativePathPrefix,
-              strict: true,
+              aliasSupport,
             })}${quote}`,
         )
         // handle srcset
         .replace(
-          /(<img\b.*?srcset=)(['"])(.*?)\2/gs,
-          (_, prefix: string, quote: string, srcset: string) =>
+          /(<(img|source|video|audio)\b.*?srcset=)(['"])(.*?)\3/gs,
+          (_, prefix: string, tagName: string, quote: string, srcset: string) =>
             `${prefix}${quote}${srcset
               .split(',')
               .map((item) =>
@@ -75,7 +91,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       env,
                       absolutePathPrependBase,
                       relativePathPrefix,
-                      strict: true,
+                      aliasSupport,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )
