@@ -22,6 +22,7 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -31,14 +32,14 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^2.1.4",
-    "@mdit-vue/plugin-frontmatter": "^2.1.4",
-    "@mdit-vue/plugin-headers": "^2.1.4",
-    "@mdit-vue/plugin-sfc": "^2.1.4",
-    "@mdit-vue/plugin-title": "^2.1.4",
-    "@mdit-vue/plugin-toc": "^2.1.4",
-    "@mdit-vue/shared": "^2.1.4",
-    "@mdit-vue/types": "^2.1.4",
+    "@mdit-vue/plugin-component": "^3.0.2",
+    "@mdit-vue/plugin-frontmatter": "^3.0.1",
+    "@mdit-vue/plugin-headers": "^3.0.1",
+    "@mdit-vue/plugin-sfc": "^3.0.1",
+    "@mdit-vue/plugin-title": "^3.0.2",
+    "@mdit-vue/plugin-toc": "^3.0.2",
+    "@mdit-vue/shared": "^3.0.2",
+    "@mdit-vue/types": "^3.0.2",
     "@types/markdown-it": "^14.1.2",
     "@types/markdown-it-emoji": "^3.0.1",
     "@vuepress/shared": "workspace:*",

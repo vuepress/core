@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@mdit-vue/types": "^2.1.4"
+    "@mdit-vue/types": "^3.0.2"
   },
   "publishConfig": {
     "access": "public"
