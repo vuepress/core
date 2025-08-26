@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@mdit-vue/plugin-component": "^3.0.2",
-    "@mdit-vue/plugin-frontmatter": "^3.0.1",
-    "@mdit-vue/plugin-headers": "^3.0.1",
-    "@mdit-vue/plugin-sfc": "^3.0.1",
+    "@mdit-vue/plugin-frontmatter": "^3.0.2",
+    "@mdit-vue/plugin-headers": "^3.0.2",
+    "@mdit-vue/plugin-sfc": "^3.0.2",
     "@mdit-vue/plugin-title": "^3.0.2",
     "@mdit-vue/plugin-toc": "^3.0.2",
     "@mdit-vue/shared": "^3.0.2",
