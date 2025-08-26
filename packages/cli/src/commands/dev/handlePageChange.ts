@@ -1,10 +1,5 @@
 import type { App, Page } from '@vuepress/core'
-import {
-  createPage,
-  preparePageChunk,
-  preparePageComponent,
-  prepareRoutes,
-} from '@vuepress/core'
+import { createPage, preparePageChunk, prepareRoutes } from '@vuepress/core'
 
 /**
  * Event handler for page change event
@@ -25,15 +20,13 @@ export const handlePageChange = async (
   const pageOld = app.pages[pageIndex]
 
   // create a new page from the changed file
-  const pageNew = await createPage(app, {
-    filePath,
-  })
+  const pageNew = await createPage(app, { filePath })
 
   // replace the old page with the new page
   app.pages.splice(pageIndex, 1, pageNew)
+  app.pagesMap[filePath] = pageNew
 
   // prepare page files
-  await preparePageComponent(app, pageNew)
   await preparePageChunk(app, pageNew)
 
   const isPathChanged = pageOld.path !== pageNew.path
