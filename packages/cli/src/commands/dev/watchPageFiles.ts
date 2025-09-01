@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import type { App, Page } from '@vuepress/core'
-import { colors, logger, picomatch } from '@vuepress/utils'
+import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import chokidar from 'chokidar'
 import { handlePageAdd } from './handlePageAdd.js'
@@ -42,18 +42,29 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   })
 
   // watch page files
-  const pagePatternsMatchers = app.options.pagePatterns.map((pattern) =>
-    picomatch(pattern, {
-      cwd: app.dir.source(),
-    }),
-  )
+  const pagePatterns: string[] = []
+  const ignorePatterns: string[] = []
+  for (const pattern of app.options.pagePatterns) {
+    if (pattern.startsWith('!')) {
+      ignorePatterns.push(pattern.slice(1))
+    } else {
+      pagePatterns.push(pattern)
+    }
+  }
+  const sourceDir = app.dir.source()
+  const isPageMatch = picomatch(pagePatterns, {
+    ignore: ignorePatterns,
+    cwd: sourceDir,
+  })
   const pagesWatcher = chokidar.watch('.', {
-    cwd: app.dir.source(),
+    cwd: sourceDir,
     ignored: (filepath, stats) => {
-      // do not ignore non-file paths
-      if (!stats?.isFile()) return false
-      // ignore if the file does not match all patterns
-      return pagePatternsMatchers.some((matcher) => !matcher(filepath))
+      if (filepath.includes('node_modules') || filepath.includes('.vuepress'))
+        return true
+      return (
+        // ignore non-file and non-matched files
+        !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
+      )
     },
     ignoreInitial: true,
   })
