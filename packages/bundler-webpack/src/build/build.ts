@@ -1,6 +1,7 @@
 import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
+import type { MultiConfiguration } from 'webpack'
 import webpack from 'webpack'
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
@@ -40,23 +41,26 @@ export const build = async (
     })
 
     await new Promise<void>((resolve, reject) => {
-      webpack([clientConfig, serverConfig], (err, stats) => {
-        if (err) {
-          reject(err)
-        } else if (stats?.hasErrors()) {
-          stats.toJson().errors?.forEach((item) => {
-            logger.error(item)
-          })
-          reject(new Error('Failed to compile with errors'))
-        } else {
-          if (stats?.hasWarnings()) {
-            stats.toJson().warnings?.forEach((warning) => {
-              logger.warn(warning)
+      webpack(
+        [clientConfig, serverConfig] as MultiConfiguration,
+        (err, stats) => {
+          if (err) {
+            reject(err)
+          } else if (stats?.hasErrors()) {
+            stats.toJson().errors?.forEach((item) => {
+              logger.error(item)
             })
+            reject(new Error('Failed to compile with errors'))
+          } else {
+            if (stats?.hasWarnings()) {
+              stats.toJson().warnings?.forEach((warning) => {
+                logger.warn(warning)
+              })
+            }
+            resolve()
           }
-          resolve()
-        }
-      })
+        },
+      )
     })
   })
   log('compiling finish')

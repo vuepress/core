@@ -20,15 +20,15 @@
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.91.0",
-    "sass-embedded": "^1.91.0",
+    "sass": "^1.93.2",
+    "sass-embedded": "^1.93.2",
     "sass-loader": "^16.0.5",
     "vue": "catalog:",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "cross-env": "^10.0.0",
-    "serve": "^14.2.4"
+    "@playwright/test": "^1.56.0",
+    "cross-env": "^10.1.0",
+    "serve": "^14.2.5"
   }
 }
