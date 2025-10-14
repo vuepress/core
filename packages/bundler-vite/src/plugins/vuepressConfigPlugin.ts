@@ -36,18 +36,6 @@ const resolveAlias = async ({
         find: item,
         replacement: alias[item],
       })),
-    ...(isServer
-      ? []
-      : [
-          {
-            find: /^vue$/,
-            replacement: 'vue/dist/vue.runtime.esm-bundler.js',
-          },
-          {
-            find: /^vue-router$/,
-            replacement: 'vue-router/dist/vue-router.esm-bundler.js',
-          },
-        ]),
   ]
 }
 
