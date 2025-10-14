@@ -52,6 +52,8 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     }
   }
   const sourceDir = app.dir.source()
+  const tempDir = app.dir.temp()
+  const cacheDir = app.dir.cache()
   const isPageMatch = picomatch(pagePatterns, {
     ignore: ignorePatterns,
     cwd: sourceDir,
@@ -59,10 +61,16 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
-      if (filepath.includes('node_modules') || filepath.includes('.vuepress'))
+      // ignore node_modules
+      if (filepath.includes('node_modules')) {
         return true
+      }
+      // ignore internal temp files
+      if (filepath.startsWith(tempDir) || filepath.startsWith(cacheDir)) {
+        return true
+      }
+      // ignore non-matched files
       return (
-        // ignore non-file and non-matched files
         !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
       )
     },
