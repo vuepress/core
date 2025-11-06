@@ -2,5 +2,5 @@ packages:
   - e2e
   - packages/*
 catalog:
-  vue: ^3.5.22
-  vue-router: ^4.6.0
+  vue: ^3.5.23
+  vue-router: ^4.6.3
