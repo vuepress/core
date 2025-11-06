@@ -11,5 +11,6 @@ export const vuepressVuePlugin = ({
   options: ViteBundlerOptions
 }): Plugin =>
   vuePlugin({
+    include: [/\.vue$/, /\.md$/],
     ...options.vuePluginOptions,
   })

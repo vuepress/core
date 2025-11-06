@@ -3,7 +3,6 @@ import type { App } from '../types/index.js'
 import {
   prepareClientConfigs,
   preparePageChunk,
-  preparePageComponent,
   prepareRoutes,
   prepareSiteData,
 } from './prepare/index.js'
@@ -13,7 +12,6 @@ const log = debug('vuepress:core/app')
 /**
  * Prepare files for development or build
  *
- * - page components
  * - page chunks
  * - routes
  * - site data
@@ -25,10 +23,7 @@ export const appPrepare = async (app: App): Promise<void> => {
   log('prepare start')
 
   await Promise.all([
-    ...app.pages.flatMap((page) => [
-      preparePageComponent(app, page),
-      preparePageChunk(app, page),
-    ]),
+    ...app.pages.map(async (page) => preparePageChunk(app, page)),
     prepareRoutes(app),
     prepareSiteData(app),
     prepareClientConfigs(app),

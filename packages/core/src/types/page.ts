@@ -115,16 +115,6 @@ export type Page<
     filePathRelative: string | null
 
     /**
-     * Component file path
-     */
-    componentFilePath: string
-
-    /**
-     * Component file path relative to temp directory
-     */
-    componentFilePathRelative: string
-
-    /**
      * Chunk file path
      */
     chunkFilePath: string

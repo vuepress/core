@@ -2,7 +2,6 @@ import type { App, Page, PageOptions } from '../types/index.js'
 import { inferPagePath } from './inferPagePath.js'
 import { parsePageContent } from './parsePageContent.js'
 import { resolvePageChunkInfo } from './resolvePageChunkInfo.js'
-import { resolvePageComponentInfo } from './resolvePageComponentInfo.js'
 import { resolvePageContent } from './resolvePageContent.js'
 import { resolvePageDate } from './resolvePageDate.js'
 import { resolvePageFilePath } from './resolvePageFilePath.js'
@@ -84,15 +83,13 @@ export const createPage = async (
     path,
   })
 
-  // resolve page component and extract headers & links
-  const { componentFilePath, componentFilePathRelative } =
-    resolvePageComponentInfo({
+  const { chunkFilePath, chunkFilePathRelative, chunkName } =
+    resolvePageChunkInfo({
       app,
+      filePath,
+      filePathRelative,
       htmlFilePathRelative,
     })
-
-  const { chunkFilePath, chunkFilePathRelative, chunkName } =
-    resolvePageChunkInfo({ app, htmlFilePathRelative })
 
   const page: Page = {
     // page data
@@ -127,8 +124,6 @@ export const createPage = async (
     // file info
     filePath,
     filePathRelative,
-    componentFilePath,
-    componentFilePathRelative,
     chunkFilePath,
     chunkFilePathRelative,
     chunkName,

@@ -20,6 +20,7 @@ export const handlePageUnlink = async (
 
   // remove the old page
   app.pages.splice(pageIndex, 1)
+  delete app.pagesMap[filePath]
 
   // re-prepare routes file
   await prepareRoutes(app)
