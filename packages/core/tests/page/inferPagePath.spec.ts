@@ -86,6 +86,7 @@ describe('should infer page path according to relative path of page file', () =>
         inferPagePath({
           app,
           filePathRelative: source,
+          options: {},
         }),
       ).toEqual(expected)
     })
@@ -97,6 +98,7 @@ it('should use `/` as the default locale path', () => {
     inferPagePath({
       app: appWithoutLocales,
       filePathRelative: 'en/foo/bar.md',
+      options: {},
     }),
   ).toEqual({
     pathInferred: '/en/foo/bar.html',
@@ -109,6 +111,7 @@ it('should handle empty file relative path', () => {
     inferPagePath({
       app,
       filePathRelative: null,
+      options: {},
     }),
   ).toEqual({
     pathInferred: null,
