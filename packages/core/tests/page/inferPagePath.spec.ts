@@ -118,3 +118,27 @@ it('should handle empty file relative path', () => {
     pathLocale: '/',
   })
 })
+
+it('should respect options.path', () => {
+  expect(
+    inferPagePath({
+      app,
+      filePathRelative: 'foo/bar.md',
+      options: { path: '/custom/path.html' },
+    }),
+  ).toEqual({
+    pathInferred: '/foo/bar.html',
+    pathLocale: '/',
+  })
+
+  expect(
+    inferPagePath({
+      app,
+      filePathRelative: 'zh/foo/bar.md',
+      options: { path: '/zh/custom/path.html' },
+    }),
+  ).toEqual({
+    pathInferred: '/zh/foo/bar.html',
+    pathLocale: '/zh/',
+  })
+})

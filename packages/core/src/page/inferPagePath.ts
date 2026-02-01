@@ -27,7 +27,9 @@ export const inferPagePath = ({
     const pathLocale = resolveLocalePath(app.siteData.locales, options.path)
 
     return {
-      pathInferred: null,
+      pathInferred: filePathRelative
+        ? inferRoutePath(ensureLeadingSlash(filePathRelative))
+        : null,
       pathLocale,
     }
   }
