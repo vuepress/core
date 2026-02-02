@@ -26,7 +26,7 @@ describe('resolveAppWriteTemp', () => {
     const file = 'foo.txt'
     const content = 'bar'
     await writeTemp(file, content)
-    expect(fs.outputFile).toHaveBeenCalledWith('/temp/foo.txt', 'bar')
+    expect(fs.outputFile).toHaveBeenCalledWith(dir.temp(file), 'bar')
   })
 
   it('should avoid overwriting newer content with older content (race condition)', async () => {
