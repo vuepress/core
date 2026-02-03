@@ -20,21 +20,21 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./bin": "./bin/vuepress.js",
-    "./cli": "./dist/cli.js",
-    "./client": "./dist/client.js",
-    "./client-app": "./dist/client-app.js",
+    ".": "./dist/index.mjs",
+    "./bin": "./bin/vuepress.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./client": "./dist/client.mjs",
+    "./client-app": "./dist/client-app.mjs",
     "./client-types": "./client-types.d.ts",
-    "./core": "./dist/core.js",
-    "./markdown": "./dist/markdown.js",
-    "./shared": "./dist/shared.js",
-    "./utils": "./dist/utils.js",
+    "./core": "./dist/core.mjs",
+    "./markdown": "./dist/markdown.mjs",
+    "./shared": "./dist/shared.mjs",
+    "./utils": "./dist/utils.mjs",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "bin": {
     "vuepress": "./bin/vuepress.js",
     "vuepress-vite": "./bin/vuepress-vite.js",
@@ -46,7 +46,7 @@
     "client-types.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -74,18 +74,8 @@
   "engines": {
     "node": "^20.9.0 || >=22.0.0"
   },
-  "tsup": {
-    "clean": true,
-    "dts": [
-      "./src/index.ts",
-      "./src/cli.ts",
-      "./src/client-app.ts",
-      "./src/client.ts",
-      "./src/core.ts",
-      "./src/markdown.ts",
-      "./src/shared.ts",
-      "./src/utils.ts"
-    ],
+  "tsdown": {
+    "dts": true,
     "entry": [
       "./src/index.ts",
       "./src/cli.ts",
@@ -96,11 +86,7 @@
       "./src/shared.ts",
       "./src/utils.ts"
     ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+    "format": "esm",
     "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }

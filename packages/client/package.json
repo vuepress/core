@@ -18,22 +18,22 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./app": "./dist/app.js",
+    ".": "./dist/index.mjs",
+    "./app": "./dist/app.mjs",
     "./package.json": "./package.json",
     "./templates/*": "./templates/*",
-    "./types": "./types.d.ts"
+    "./types": "./types.d.mts"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist",
     "templates",
     "types.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -46,12 +46,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": [
-      "./src/app.ts",
-      "./src/index.ts"
-    ],
+  "tsdown": {
+    "dts": true,
     "entry": [
       "./src/app.ts",
       "./src/index.ts"
@@ -61,11 +57,8 @@
       "@internal/routes",
       "@internal/siteData"
     ],
-    "format": [
-      "esm"
-    ],
+    "format": "esm",
     "outDir": "./dist",
-    "sourcemap": false,
     "target": "es2023",
     "tsconfig": "./tsconfig.dts.json"
   }

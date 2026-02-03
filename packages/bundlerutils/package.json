@@ -19,17 +19,17 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -43,17 +43,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
     "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
   }

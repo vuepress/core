@@ -1,26 +1,23 @@
-import type { Options } from 'tsup'
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 const shared = defineConfig({
-  clean: true,
-  outDir: './dist',
-  sourcemap: false,
   target: 'es2023',
   tsconfig: '../tsconfig.dts.json',
-}) as Options
+})
 
 export default defineConfig([
   {
     ...shared,
-    dts: './src/index.ts',
-    entry: ['./src/index.ts'],
-    format: ['esm'],
+    dts: true,
+    entry: './src/index.ts',
+    format: 'esm',
   },
   {
     ...shared,
+    dts: false,
     entry: {
       'vuepress-ssr-loader': './src/loaders/vuepressSsrLoader.cts',
     },
-    format: ['cjs'],
+    format: 'cjs',
   },
 ])
