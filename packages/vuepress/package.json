@@ -46,7 +46,7 @@
     "client-types.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -74,18 +74,8 @@
   "engines": {
     "node": "^20.9.0 || >=22.0.0"
   },
-  "tsup": {
-    "clean": true,
-    "dts": [
-      "./src/index.ts",
-      "./src/cli.ts",
-      "./src/client-app.ts",
-      "./src/client.ts",
-      "./src/core.ts",
-      "./src/markdown.ts",
-      "./src/shared.ts",
-      "./src/utils.ts"
-    ],
+  "tsdown": {
+    "dts": true,
     "entry": [
       "./src/index.ts",
       "./src/cli.ts",
@@ -96,12 +86,9 @@
       "./src/shared.ts",
       "./src/utils.ts"
     ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+    "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

@@ -33,7 +33,7 @@
     "types.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -46,12 +46,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": [
-      "./src/app.ts",
-      "./src/index.ts"
-    ],
+  "tsdown": {
+    "dts": true,
     "entry": [
       "./src/app.ts",
       "./src/index.ts"
@@ -61,12 +57,10 @@
       "@internal/routes",
       "@internal/siteData"
     ],
-    "format": [
-      "esm"
-    ],
+    "format": "esm",
     "outDir": "./dist",
-    "sourcemap": false,
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "./tsconfig.dts.json"
   }
 }
