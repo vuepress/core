@@ -1,6 +1,7 @@
 import { defineConfig } from 'tsdown'
 
 const shared = defineConfig({
+  fixedExtension: false,
   target: 'es2023',
   tsconfig: '../tsconfig.dts.json',
 })

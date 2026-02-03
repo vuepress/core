@@ -18,15 +18,15 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.mjs",
-    "./app": "./dist/app.mjs",
+    ".": "./dist/index.js",
+    "./app": "./dist/app.js",
     "./package.json": "./package.json",
     "./templates/*": "./templates/*",
-    "./types": "./types.d.mts"
+    "./types": "./types.d.ts"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "templates",
@@ -60,6 +60,7 @@
     "format": "esm",
     "outDir": "./dist",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "./tsconfig.dts.json"
   }
 }

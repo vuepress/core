@@ -18,13 +18,13 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": "./dist/index.js",
     "./bin": "./dist/vuepress.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "vuepress-cli": "./bin/vuepress.js"
   },
@@ -56,6 +56,7 @@
     "dts": true,
     "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

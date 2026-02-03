@@ -19,12 +19,12 @@
   "author": "meteorlxy",
   "type": "module",
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -48,6 +48,7 @@
     "dts": true,
     "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }
