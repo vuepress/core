@@ -3,8 +3,9 @@ import { routes } from '../internal/routes.js'
 import type { Route, RouteMeta } from '../types/index.js'
 import { resolveRoutePath } from './resolveRoutePath.js'
 
-export interface ResolvedRoute<T extends RouteMeta = RouteMeta>
-  extends Route<T> {
+export interface ResolvedRoute<
+  T extends RouteMeta = RouteMeta,
+> extends Route<T> {
   path: string
   notFound: boolean
 }
