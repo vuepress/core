@@ -5,6 +5,14 @@ import { createBaseApp, createPage } from '../../src/index.js'
 
 describe('should work without plugins', () => {
   const app = createBaseApp({
+    locales: {
+      '/': {
+        lang: 'en-US',
+      },
+      '/zh/': {
+        lang: 'zh-CN',
+      },
+    },
     source: path.resolve(__dirname, 'fake-source'),
     theme: { name: 'test' },
     bundler: {} as Bundler,
@@ -72,6 +80,37 @@ describe('should work without plugins', () => {
     expect(page.filePathRelative).toBeNull()
     expect(page.htmlFilePath).toBe(app.dir.dest(`index.html`))
     expect(page.htmlFilePathRelative).toBe(`index.html`)
+    expect(page.componentFilePath).toBe(
+      app.dir.temp(`pages/${page.htmlFilePathRelative}.vue`),
+    )
+    expect(page.componentFilePathRelative).toBe(
+      `pages/${page.htmlFilePathRelative}.vue`,
+    )
+    expect(page.chunkFilePath).toBe(
+      app.dir.temp(`pages/${page.htmlFilePathRelative}.js`),
+    )
+    expect(page.chunkFilePathRelative).toBe(
+      `pages/${page.htmlFilePathRelative}.js`,
+    )
+    expect(page.chunkName).toBeTruthy()
+  })
+
+  it('should create a zh page', async () => {
+    const page = await createPage(app, {
+      path: '/zh/test.html',
+    })
+
+    // page data
+    expect(page.data.path).toBe('/zh/test.html')
+    expect(page.data.lang).toBe('zh-CN')
+
+    // base fields
+    expect(page.path).toBe('/zh/test.html')
+    expect(page.lang).toBe('zh-CN')
+
+    // file info
+    expect(page.htmlFilePath).toBe(app.dir.dest(`zh/test.html`))
+    expect(page.htmlFilePathRelative).toBe(`zh/test.html`)
     expect(page.componentFilePath).toBe(
       app.dir.temp(`pages/${page.htmlFilePathRelative}.vue`),
     )

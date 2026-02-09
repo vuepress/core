@@ -3,7 +3,7 @@ import {
   inferRoutePath,
   resolveLocalePath,
 } from '@vuepress/shared'
-import type { App } from '../types/index.js'
+import type { App, PageOptions } from '../types/index.js'
 
 /**
  * Infer page path according to file path
@@ -13,13 +13,27 @@ import type { App } from '../types/index.js'
 export const inferPagePath = ({
   app,
   filePathRelative,
+  options,
 }: {
   app: App
   filePathRelative: string | null
+  options: PageOptions
 }): {
   pathInferred: string | null
   pathLocale: string
 } => {
+  // user has explicitly set path in options
+  if (options.path) {
+    const pathLocale = resolveLocalePath(app.siteData.locales, options.path)
+
+    return {
+      pathInferred: filePathRelative
+        ? inferRoutePath(ensureLeadingSlash(filePathRelative))
+        : null,
+      pathLocale,
+    }
+  }
+
   if (!filePathRelative) {
     return {
       pathInferred: null,
