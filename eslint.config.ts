@@ -40,4 +40,10 @@ export default vuepress(
       'prefer-template': 'off',
     },
   },
+  {
+    files: ['.github/**/*.md'],
+    rules: {
+      'markdown/no-missing-label-refs': 'off',
+    },
+  },
 )

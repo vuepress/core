@@ -3,8 +3,8 @@ import { defineConfig } from 'taze'
 export default defineConfig({
   packageMode: {
     '@types/express': 'minor',
+    '@types/node': 'minor',
     'express': 'minor',
-    'vite': 'patch',
   },
   recursive: true,
   write: true,

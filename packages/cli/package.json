@@ -42,7 +42,7 @@
     "@vuepress/utils": "workspace:*",
     "cac": "^6.7.14",
     "chokidar": "^4.0.3",
-    "envinfo": "^7.20.0",
+    "envinfo": "^7.21.0",
     "esbuild": "^0.25.12"
   },
   "devDependencies": {

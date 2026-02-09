@@ -37,8 +37,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.0.3",
-    "@vue/devtools-kit": "^8.0.3",
+    "@vue/devtools-api": "^8.0.6",
+    "@vue/devtools-kit": "^8.0.6",
     "@vuepress/shared": "workspace:*",
     "vue": "catalog:",
     "vue-router": "catalog:"

@@ -28,10 +28,6 @@ export const dev = async (
   // create webpack compiler
   const compiler = webpack(webpackConfig)
 
-  if (!compiler) {
-    throw logger.createError('Failed to create webpack compiler')
-  }
-
   // create webpack-dev-server
   const serverConfig = createDevServerConfig(app, options)
   const server = new WebpackDevServer(serverConfig, compiler)
