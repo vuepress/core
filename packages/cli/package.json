@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "2.0.0-rc.22",
+  "version": "2.0.0-rc.26",
   "description": "CLI package of VuePress",
   "keywords": [
     "vuepress",
@@ -23,6 +23,7 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
     "vuepress-cli": "./bin/vuepress.js"
@@ -32,7 +33,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -40,9 +41,9 @@
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "cac": "^6.7.14",
-    "chokidar": "^3.6.0",
-    "envinfo": "^7.14.0",
-    "esbuild": "^0.25.3"
+    "chokidar": "^5.0.0",
+    "envinfo": "^7.21.0",
+    "esbuild": "^0.27.3"
   },
   "devDependencies": {
     "@types/envinfo": "^7.8.4"
@@ -50,18 +51,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
-    "target": "es2022",
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
+    "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

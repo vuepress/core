@@ -2,6 +2,7 @@ name: release
 
 permissions:
   contents: write
+  id-token: write
 
 on:
   push:
@@ -20,11 +21,29 @@ jobs:
       - name: Push to release branch
         run: git push origin HEAD:release
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          cache: pnpm
           node-version: lts/*
           registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Ensure latest npm
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - name: Release check
+        run: pnpm run release:check
+
+      - name: Publish
+        run: pnpm -r publish --no-git-checks --tag next
 
       - name: Create release changelog
         run: npx changelogithub

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-rc.22",
+  "version": "2.0.0-rc.26",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",
@@ -22,42 +22,39 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
     "@types/debug": "^4.1.12",
     "@types/fs-extra": "^11.0.4",
     "@types/hash-sum": "^1.0.2",
+    "@types/picomatch": "^4.0.2",
     "@vuepress/shared": "workspace:*",
-    "debug": "^4.4.0",
-    "fs-extra": "^11.3.0",
-    "globby": "^14.1.0",
+    "debug": "^4.4.3",
+    "fs-extra": "^11.3.3",
     "hash-sum": "^2.0.0",
-    "ora": "^8.2.0",
+    "ora": "^9.3.0",
     "picocolors": "^1.1.1",
+    "picomatch": "^4.0.3",
+    "tinyglobby": "^0.2.15",
     "upath": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
-    "target": "es2022",
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
+    "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

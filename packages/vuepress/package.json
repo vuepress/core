@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-rc.22",
+  "version": "2.0.0-rc.26",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -33,6 +33,7 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
     "vuepress": "./bin/vuepress.js",
@@ -45,7 +46,7 @@
     "client-types.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -71,20 +72,10 @@
     }
   },
   "engines": {
-    "node": "^18.19.0 || >=20.4.0"
+    "node": "^20.9.0 || >=22.0.0"
   },
-  "tsup": {
-    "clean": true,
-    "dts": [
-      "./src/index.ts",
-      "./src/cli.ts",
-      "./src/client-app.ts",
-      "./src/client.ts",
-      "./src/core.ts",
-      "./src/markdown.ts",
-      "./src/shared.ts",
-      "./src/utils.ts"
-    ],
+  "tsdown": {
+    "dts": true,
     "entry": [
       "./src/index.ts",
       "./src/cli.ts",
@@ -95,12 +86,9 @@
       "./src/shared.ts",
       "./src/utils.ts"
     ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
-    "target": "es2022",
+    "format": "esm",
+    "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

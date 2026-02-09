@@ -1,15 +1,15 @@
 /**
  * HTML outlets of the template renderer
  */
-export const TEMPLATE_RENDERER_OUTLETS = {
-  CONTENT: '<!--vuepress-ssr-content-->',
-  HEAD: '<!--vuepress-ssr-head-->',
-  LANG: '{{ lang }}',
-  PREFETCH: '<!--vuepress-ssr-prefetch-->',
-  PRELOAD: '<!--vuepress-ssr-preload-->',
-  SCRIPTS: '<!--vuepress-ssr-scripts-->',
-  STYLES: '<!--vuepress-ssr-styles-->',
-  VERSION: '{{ version }}',
+export enum TemplateRendererOutlet {
+  Content = '<!--vuepress-ssr-content-->',
+  Head = '<!--vuepress-ssr-head-->',
+  Lang = '{{ lang }}',
+  Prefetch = '<!--vuepress-ssr-prefetch-->',
+  Preload = '<!--vuepress-ssr-preload-->',
+  Scripts = '<!--vuepress-ssr-scripts-->',
+  Styles = '<!--vuepress-ssr-styles-->',
+  Version = '{{ version }}',
 }
 
 /**
@@ -76,11 +76,11 @@ export const templateRenderer: TemplateRenderer = (
     // notice that some special chars in string like `$&` would be recognized by `replace()`,
     // and they won't be html-escaped and will be kept as is when they are inside a code block,
     // so we use a replace function as the second param to avoid those potential issues
-    .replace(TEMPLATE_RENDERER_OUTLETS.CONTENT, () => content)
-    .replace(TEMPLATE_RENDERER_OUTLETS.HEAD, head)
-    .replace(TEMPLATE_RENDERER_OUTLETS.LANG, lang)
-    .replace(TEMPLATE_RENDERER_OUTLETS.PREFETCH, prefetch)
-    .replace(TEMPLATE_RENDERER_OUTLETS.PRELOAD, preload)
-    .replace(TEMPLATE_RENDERER_OUTLETS.SCRIPTS, scripts)
-    .replace(TEMPLATE_RENDERER_OUTLETS.STYLES, styles)
-    .replace(TEMPLATE_RENDERER_OUTLETS.VERSION, version)
+    .replace(TemplateRendererOutlet.Content, () => content)
+    .replace(TemplateRendererOutlet.Head, head)
+    .replace(TemplateRendererOutlet.Lang, lang)
+    .replace(TemplateRendererOutlet.Prefetch, prefetch)
+    .replace(TemplateRendererOutlet.Preload, preload)
+    .replace(TemplateRendererOutlet.Scripts, scripts)
+    .replace(TemplateRendererOutlet.Styles, styles)
+    .replace(TemplateRendererOutlet.Version, version)

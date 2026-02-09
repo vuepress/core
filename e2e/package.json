@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/e2e",
-  "version": "2.0.0-rc.22",
+  "version": "2.0.0-rc.26",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
     "docs:dev:webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
-    "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
+    "docs:serve": "serve -l 9080 docs/.vuepress/dist",
     "e2e:build": "cross-env E2E_COMMAND=build playwright test",
     "e2e:build:webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
     "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
@@ -20,15 +20,15 @@
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.87.0",
-    "sass-embedded": "^1.87.0",
-    "sass-loader": "^16.0.5",
+    "sass": "^1.97.3",
+    "sass-embedded": "^1.97.3",
+    "sass-loader": "^16.0.7",
     "vue": "catalog:",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
-    "anywhere": "^1.6.0",
-    "cross-env": "^7.0.3"
+    "@playwright/test": "^1.58.2",
+    "cross-env": "^10.1.0",
+    "serve": "^14.2.5"
   }
 }
