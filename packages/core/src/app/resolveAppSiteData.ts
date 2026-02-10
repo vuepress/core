@@ -1,3 +1,5 @@
+import type { SiteLocaleData } from '@vuepress/shared'
+import { isEmptyObject } from '@vuepress/shared'
 import type { AppOptions, SiteData } from '../types/index.js'
 
 /**
@@ -7,11 +9,19 @@ import type { AppOptions, SiteData } from '../types/index.js'
  *
  * @internal
  */
-export const resolveAppSiteData = (options: AppOptions): SiteData => ({
-  base: options.base,
-  lang: options.lang,
-  title: options.title,
-  description: options.description,
-  head: options.head,
-  locales: options.locales,
-})
+export const resolveAppSiteData = (options: AppOptions): SiteData => {
+  const rootLocale: Omit<SiteLocaleData, 'head'> = {
+    lang: options.lang,
+    title: options.title,
+    description: options.description,
+  }
+
+  return {
+    base: options.base,
+    ...rootLocale,
+    head: options.head,
+    locales: isEmptyObject(options.locales)
+      ? { '/': rootLocale }
+      : options.locales,
+  }
+}
