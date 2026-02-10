@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module'
+import { isEmptyObject } from '@vuepress/shared'
 import { path, templateRenderer } from '@vuepress/utils'
 import type { AppConfig, AppOptions } from '../types/index.js'
 
@@ -51,7 +52,9 @@ export const resolveAppOptions = ({
   title,
   description,
   head,
-  locales,
+  locales: isEmptyObject(locales)
+    ? { '/': { lang, title, description } }
+    : locales,
   source,
   dest,
   temp,
