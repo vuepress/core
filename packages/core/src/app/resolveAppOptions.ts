@@ -1,5 +1,4 @@
 import { createRequire } from 'node:module'
-import { isEmptyObject } from '@vuepress/shared'
 import { path, templateRenderer } from '@vuepress/utils'
 import type { AppConfig, AppOptions } from '../types/index.js'
 
@@ -46,33 +45,36 @@ export const resolveAppOptions = ({
   permalinkPattern = null,
   plugins = [],
   theme,
-}: AppConfig): AppOptions => ({
-  base,
-  lang,
-  title,
-  description,
-  head,
-  locales: isEmptyObject(locales)
-    ? { '/': { lang, title, description } }
-    : locales,
-  source,
-  dest,
-  temp,
-  cache,
-  public: publicDir,
-  host,
-  port,
-  open,
-  templateDev,
-  shouldPreload,
-  shouldPrefetch,
-  templateBuild,
-  templateBuildRenderer,
-  bundler,
-  debug,
-  markdown,
-  pagePatterns,
-  permalinkPattern,
-  plugins,
-  theme,
-})
+}: AppConfig): AppOptions => {
+  // fallback root locale config
+  locales['/'] ??= { lang, title, description }
+
+  return {
+    base,
+    lang,
+    title,
+    description,
+    head,
+    locales,
+    source,
+    dest,
+    temp,
+    cache,
+    public: publicDir,
+    host,
+    port,
+    open,
+    templateDev,
+    shouldPreload,
+    shouldPrefetch,
+    templateBuild,
+    templateBuildRenderer,
+    bundler,
+    debug,
+    markdown,
+    pagePatterns,
+    permalinkPattern,
+    plugins,
+    theme,
+  }
+}
