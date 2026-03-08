@@ -58,21 +58,33 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     ignore: ignorePatterns,
     cwd: sourceDir,
   })
+  const isDirIgnored =
+    ignorePatterns.length > 0
+      ? picomatch(ignorePatterns, { cwd: sourceDir })
+      : () => false as const
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
+      const relative = path.relative(sourceDir, filepath)
+
       // ignore node_modules
-      if (filepath.includes('node_modules')) {
+      if (relative.includes('node_modules')) {
         return true
       }
-      // ignore internal temp files
+      // ignore .git directory
+      if (relative === '.git' || relative.startsWith('.git/')) {
+        return true
+      }
+      // ignore internal temp and cache directories
       if (filepath.startsWith(tempDir) || filepath.startsWith(cacheDir)) {
         return true
       }
+      // ignore directories matching page ignore patterns (e.g., .vuepress)
+      if (stats?.isDirectory()) {
+        return isDirIgnored(relative)
+      }
       // ignore non-matched files
-      return (
-        !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
-      )
+      return !!stats?.isFile() && !isPageMatch(relative)
     },
     ignoreInitial: true,
   })
