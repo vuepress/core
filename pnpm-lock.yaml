@@ -423,6 +423,9 @@ importers:
       '@vuepress/shared':
         specifier: workspace:*
         version: link:../shared
+      chokidar:
+        specifier: ^5.0.0
+        version: 5.0.0
       debug:
         specifier: ^4.4.3
         version: 4.4.3
