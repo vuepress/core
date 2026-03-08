@@ -57,14 +57,14 @@ export const createFileWatcher = (options?: ChokidarOptions): FileWatcher => {
     },
 
     watch(...paths) {
-      const flatPaths = paths.flat()
+      const flatPaths = paths.flat().filter(Boolean)
       if (flatPaths.length > 0) {
         fsWatcher.add(flatPaths)
       }
     },
 
     unwatch(...paths) {
-      const flatPaths = paths.flat()
+      const flatPaths = paths.flat().filter(Boolean)
       if (flatPaths.length > 0) {
         fsWatcher.unwatch(flatPaths)
       }

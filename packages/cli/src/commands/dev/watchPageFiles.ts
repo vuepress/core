@@ -61,7 +61,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const isDirIgnored =
     ignorePatterns.length > 0
       ? picomatch(ignorePatterns, { cwd: sourceDir })
-      : () => false as const
+      : () => false
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
