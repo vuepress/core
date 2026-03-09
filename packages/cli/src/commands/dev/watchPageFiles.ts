@@ -54,24 +54,25 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const sourceDir = app.dir.source()
   const tempDir = app.dir.temp()
   const cacheDir = app.dir.cache()
-  const isPageMatch = picomatch(pagePatterns, {
-    ignore: ignorePatterns,
-    cwd: sourceDir,
-  })
+  const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
+  const isPageMatch = picomatch(pagePatterns, { cwd: sourceDir })
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
-      // ignore node_modules
-      if (filepath.includes('node_modules')) {
+      // This is important so that folders like node_modules will be ignored immediately without traversing their children
+      if (ignoreMatcher(filepath)) {
         return true
       }
-      // ignore internal temp files
-      if (filepath.startsWith(tempDir) || filepath.startsWith(cacheDir)) {
-        return true
+
+      // ignore internal temp and cache directories
+      if (stats?.isDirectory()) {
+        return filepath === tempDir || filepath === cacheDir
       }
+
       // ignore non-matched files
       return (
-        !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
+        Boolean(stats?.isFile()) &&
+        !isPageMatch(path.relative(sourceDir, filepath))
       )
     },
     ignoreInitial: true,
