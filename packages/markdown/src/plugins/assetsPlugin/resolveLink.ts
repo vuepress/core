@@ -5,7 +5,6 @@ import type { MarkdownEnv } from '../../types.js'
 interface ResolveLinkOptions {
   env: MarkdownEnv
   absolutePathPrependBase?: boolean
-  strict?: boolean
 }
 
 export const resolveLink = (
