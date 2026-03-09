@@ -29,7 +29,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -37,24 +37,18 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "catalog:",
-    "vue-router": "catalog:"
+    "vue": "catalog:vue",
+    "vue-router": "catalog:vue"
   },
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

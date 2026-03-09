@@ -11,6 +11,11 @@ export default vuepress(
         ...PACKAGES.map((item) => path.resolve(ROOT, `packages/${item}`)),
       ],
     },
+    typescript: {
+      overrides: {
+        '@typescript-eslint/no-useless-default-assignment': 'off', // TODO: crash
+      },
+    },
     javascript: {
       overrides: {
         'no-underscore-dangle': [
@@ -26,11 +31,6 @@ export default vuepress(
         ],
       },
     },
-    vue: {
-      overrides: {
-        'no-useless-assignment': 'off', // TODO: false positive in vue sfc
-      },
-    },
   },
   {
     files: ['**/tests/**'],
@@ -38,6 +38,12 @@ export default vuepress(
       'import/no-unresolved': 'off',
       'no-console': 'off',
       'prefer-template': 'off',
+    },
+  },
+  {
+    files: ['.github/**/*.md'],
+    rules: {
+      'markdown/no-missing-label-refs': 'off',
     },
   },
 )

@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -38,9 +38,9 @@
     "@types/picomatch": "^4.0.2",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.4.3",
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.4",
     "hash-sum": "^2.0.0",
-    "ora": "^9.0.0",
+    "ora": "^9.3.0",
     "picocolors": "^1.1.1",
     "picomatch": "^4.0.3",
     "tinyglobby": "^0.2.15",
@@ -49,18 +49,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

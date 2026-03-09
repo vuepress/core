@@ -103,8 +103,10 @@ export type StylePreprocessorOptions<
  *
  * @see https://github.com/webpack-contrib/postcss-loader#options
  */
-export interface PostcssLoaderOptions
-  extends Pick<StylePreprocessorLoaderOptions, 'sourceMap'> {
+export interface PostcssLoaderOptions extends Pick<
+  StylePreprocessorLoaderOptions,
+  'sourceMap'
+> {
   execute?: boolean
   implementation?: string | ((...args: unknown[]) => unknown)
   postcssOptions?: StylePreprocessorOptions

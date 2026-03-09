@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -44,7 +44,7 @@
     "@types/markdown-it-emoji": "^3.0.1",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.1.1",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-emoji": "^3.0.0",
     "mdurl": "^2.0.0"
@@ -55,18 +55,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }
