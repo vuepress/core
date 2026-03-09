@@ -1,7 +1,7 @@
 import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
-import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
+import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
 import type { App as VueApp } from 'vue'
 import type { Router } from 'vue-router'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
@@ -25,7 +25,7 @@ export const renderPage = async ({
   vueApp: VueApp
   vueRouter: Router
   ssrTemplate: string
-  output: RollupOutput['output']
+  output: RolldownOutput['output']
   outputEntryChunk: OutputChunk
   outputCssAsset: OutputAsset | undefined
 }): Promise<void> => {

@@ -1,12 +1,12 @@
 import type { Page } from '@vuepress/core'
-import type { OutputChunk, RollupOutput } from 'rollup'
+import type { OutputChunk, RolldownOutput } from 'rolldown'
 
 export const resolvePageChunkFiles = ({
   page,
   output,
 }: {
   page: Page
-  output: RollupOutput['output']
+  output: RolldownOutput['output']
 }): string[] =>
   output
     .filter(

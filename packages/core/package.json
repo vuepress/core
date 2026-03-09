@@ -36,7 +36,7 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "catalog:"
+    "vue": "catalog:vue"
   },
   "publishConfig": {
     "access": "public"
