@@ -10,7 +10,6 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
-  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -40,5 +39,6 @@
     "vuejs",
     "vuepress",
     "vueuse"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
