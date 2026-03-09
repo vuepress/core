@@ -46,17 +46,6 @@ export const setupGlobalComputed = (
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
-      const isCurrentPage =
-        newPageData.path ===
-        router.currentRoute.value.meta._pageChunk?._pageData.path
-
-      // Set flag synchronously before any async operations, so it is
-      // available when @vitejs/plugin-vue's reload() triggers a
-      // synchronous remount in the next accept callback.
-      if (isCurrentPage) {
-        __VUE_HMR_RUNTIME__.contentUpdated = true
-      }
-
       const oldPageChunk = await routes.value[newPageData.path].loader()
       const newPageChunk: PageChunk = {
         default: oldPageChunk.default,
@@ -64,7 +53,10 @@ export const setupGlobalComputed = (
       }
       routes.value[newPageData.path].loader = async () =>
         Promise.resolve(newPageChunk)
-      if (isCurrentPage) {
+      if (
+        newPageData.path ===
+        router.currentRoute.value.meta._pageChunk?._pageData.path
+      ) {
         pageChunk.value = newPageChunk
       }
     }
