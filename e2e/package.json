@@ -29,6 +29,6 @@
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "cross-env": "^10.1.0",
-    "serve": "^14.2.5"
+    "serve": "^14.2.6"
   }
 }
