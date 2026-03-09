@@ -38,5 +38,13 @@ export const handlePageChange = async (
     await prepareRoutes(app)
   }
 
+  // process onPageUpdated hook
+  await app.pluginApi.hooks.onPageUpdated.process(
+    app,
+    'update',
+    pageNew,
+    pageOld,
+  )
+
   return [pageOld, pageNew]
 }

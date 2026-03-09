@@ -29,5 +29,8 @@ export const handlePageAdd = async (
   // re-prepare routes file
   await prepareRoutes(app)
 
+  // process onPageUpdated hook
+  await app.pluginApi.hooks.onPageUpdated.process(app, 'create', page, null)
+
   return page
 }
