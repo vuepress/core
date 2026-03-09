@@ -18,7 +18,9 @@ it('should create app options with default values', () => {
     title: '',
     description: '',
     head: [],
-    locales: {},
+    locales: {
+      '/': { lang: 'en-US', title: '', description: '' },
+    },
     theme: { name: 'theme' },
     bundler: { name: 'bundler' },
     source,
