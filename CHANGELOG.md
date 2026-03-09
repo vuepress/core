@@ -1,3 +1,31 @@
+# [2.0.0-rc.26](https://github.com/vuepress/core/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2025-10-14)
+
+
+### Bug Fixes
+
+* **cli:** fix dev pages watcher ([#1662](https://github.com/vuepress/core/issues/1662)) ([a3ad908](https://github.com/vuepress/core/commit/a3ad90878f725e9654045eb759f44001c7fdabf2))
+
+
+
+# [2.0.0-rc.25](https://github.com/vuepress/core/compare/v2.0.0-rc.24...v2.0.0-rc.25) (2025-08-26)
+
+
+### Code Refactoring
+
+* **utils:** migrate from globby to tinyglobby ([#1660](https://github.com/vuepress/core/issues/1660)) ([5eea315](https://github.com/vuepress/core/commit/5eea31546e5442f2de0a3eb3872a9208f505106e))
+
+
+### Features
+
+* **cli:** upgrade chokidar to v4 (close [#1605](https://github.com/vuepress/core/issues/1605)) ([#1661](https://github.com/vuepress/core/issues/1661)) ([c2e1521](https://github.com/vuepress/core/commit/c2e15217f86a6c84f5774f4a4420c658d4961b21))
+
+
+### BREAKING CHANGES
+
+* **utils:** the `globby` export has been removed, please use `tinyglobby` instead
+
+
+
 # [2.0.0-rc.24](https://github.com/vuepress/core/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2025-06-30)
 
 

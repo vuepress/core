@@ -17,9 +17,9 @@ For users from VuePress v1, please check out the [migration guide](https://vuepr
 
 ## Contribution
 
-See [Contributing Guide](https://github.com/vuepress/core/blob/main/CONTRIBUTING.md) ([中文版](https://github.com/vuepress/core/blob/main/CONTRIBUTING_zh.md))
+If you are interested in contributing to VuePress, please read the [Contributing Guide](https://github.com/vuepress/core/blob/main/CONTRIBUTING.md) ([中文版](https://github.com/vuepress/core/blob/main/CONTRIBUTING_zh.md)) to understand the development workflow, coding standards, and contribution process.
 
-This is the repository for VuePress core packages.
+This repository contains the core packages of VuePress.
 
 - For plugins, themes and tools, see [vuepress/ecosystem](https://github.com/vuepress/ecosystem)
 - For documentation source code, see [vuepress/docs](https://github.com/vuepress/docs)

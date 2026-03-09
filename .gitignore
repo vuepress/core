@@ -27,3 +27,6 @@ node_modules/
 
 # Typescript build info
 *.tsbuildinfo
+
+# Claude files
+.claude/*

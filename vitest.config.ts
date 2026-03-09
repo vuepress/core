@@ -13,7 +13,6 @@ export default defineConfig({
   },
   test: {
     coverage: {
-      all: true,
       exclude: [
         'packages/bundler*/**',
         'packages/client/**',

@@ -36,18 +36,6 @@ const resolveAlias = async ({
         find: item,
         replacement: alias[item],
       })),
-    ...(isServer
-      ? []
-      : [
-          {
-            find: /^vue$/,
-            replacement: 'vue/dist/vue.runtime.esm-bundler.js',
-          },
-          {
-            find: /^vue-router$/,
-            replacement: 'vue-router/dist/vue-router.esm-bundler.js',
-          },
-        ]),
   ]
 }
 
@@ -158,7 +146,7 @@ export const vuepressConfigPlugin = ({
         outDir: isServer ? app.dir.temp('.server') : app.dir.dest(),
         emptyOutDir: false,
         cssCodeSplit: false,
-        rollupOptions: {
+        rolldownOptions: {
           input: app.dir.client(
             (
               fs.readJsonSync(app.dir.client('package.json')) as {

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/e2e",
-  "version": "2.0.0-rc.24",
+  "version": "2.0.0-rc.26",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,15 +20,15 @@
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.89.2",
-    "sass-embedded": "^1.89.2",
-    "sass-loader": "^16.0.5",
-    "vue": "catalog:",
+    "sass": "^1.97.3",
+    "sass-embedded": "^1.97.3",
+    "sass-loader": "^16.0.7",
+    "vue": "catalog:vue",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
-    "cross-env": "^10.0.0",
-    "serve": "^14.2.4"
+    "@playwright/test": "^1.58.2",
+    "cross-env": "^10.1.0",
+    "serve": "^14.2.6"
   }
 }

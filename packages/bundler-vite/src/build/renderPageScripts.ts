@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type { OutputChunk } from 'rollup'
+import type { OutputChunk } from 'rolldown'
 
 /**
  * Render scripts of current page

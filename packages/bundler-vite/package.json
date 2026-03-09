@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-vite",
-  "version": "2.0.0-rc.24",
+  "version": "2.0.0-rc.26",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",
@@ -25,30 +25,31 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "client.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue": "catalog:vite",
     "@vuepress/bundlerutils": "workspace:*",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.27",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.8",
     "postcss-load-config": "^6.0.1",
-    "rollup": "^4.46.2",
-    "vite": "~7.0.6",
-    "vue": "catalog:",
-    "vue-router": "catalog:"
+    "rolldown": "catalog:vite",
+    "vite": "catalog:vite",
+    "vue": "catalog:vue",
+    "vue-router": "catalog:vue"
   },
   "devDependencies": {
     "@types/connect-history-api-fallback": "^1.5.4"
@@ -56,18 +57,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "tsup": {
-    "clean": true,
-    "dts": "./src/index.ts",
-    "entry": [
-      "./src/index.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "outDir": "./dist",
-    "sourcemap": false,
+  "tsdown": {
+    "entry": "./src/index.ts",
+    "dts": true,
+    "format": "esm",
     "target": "es2023",
+    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

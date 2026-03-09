@@ -1,7 +1,7 @@
 import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, withSpinner } from '@vuepress/utils'
-import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup'
+import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
 import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
@@ -18,8 +18,8 @@ export const build = async (
 
   // vite compile
   log('compiling start')
-  let clientOutput!: RollupOutput
-  let serverOutput!: RollupOutput
+  let clientOutput!: RolldownOutput
+  let serverOutput!: RolldownOutput
   await withSpinner('Compiling with vite')(async () => {
     // create vite config
     const clientConfig = resolveViteConfig({
@@ -36,8 +36,8 @@ export const build = async (
     })
 
     ;[clientOutput, serverOutput] = await Promise.all([
-      viteBuild(clientConfig) as Promise<RollupOutput>,
-      viteBuild(serverConfig) as Promise<RollupOutput>,
+      viteBuild(clientConfig) as Promise<RolldownOutput>,
+      viteBuild(serverConfig) as Promise<RolldownOutput>,
     ])
   })
   log('compiling finish')
