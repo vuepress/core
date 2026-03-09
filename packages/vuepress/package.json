@@ -56,12 +56,12 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "vue": "catalog:"
+    "vue": "catalog:vue"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "vue": "catalog:"
+    "vue": "catalog:vue"
   },
   "peerDependenciesMeta": {
     "@vuepress/bundler-vite": {

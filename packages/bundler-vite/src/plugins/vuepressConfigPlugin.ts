@@ -146,7 +146,7 @@ export const vuepressConfigPlugin = ({
         outDir: isServer ? app.dir.temp('.server') : app.dir.dest(),
         emptyOutDir: false,
         cssCodeSplit: false,
-        rollupOptions: {
+        rolldownOptions: {
           input: app.dir.client(
             (
               fs.readJsonSync(app.dir.client('package.json')) as {
