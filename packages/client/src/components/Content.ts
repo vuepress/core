@@ -41,8 +41,20 @@ export const Content = defineComponent({
       h(ContentComponent.value, {
         onVnodeMounted: () => {
           runContentUpdatedCallbacks('mounted')
+          // When @vitejs/plugin-vue handles HMR for .md files, it calls
+          // reload() instead of rerender(), causing the page component to be
+          // fully unmounted and remounted. In this case onVnodeUpdated never
+          // fires, so we detect the HMR remount via the flag set by
+          // updatePageData and fire 'updated' here instead.
+          if (__VUE_HMR_RUNTIME__.contentUpdated) {
+            __VUE_HMR_RUNTIME__.contentUpdated = false
+            runContentUpdatedCallbacks('updated')
+          }
         },
         onVnodeUpdated: () => {
+          // Consume the flag to prevent double 'updated' firing in bundlers
+          // where onVnodeUpdated fires normally (e.g. webpack).
+          __VUE_HMR_RUNTIME__.contentUpdated = false
           runContentUpdatedCallbacks('updated')
         },
         onVnodeBeforeUnmount: () => {
