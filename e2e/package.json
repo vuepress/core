@@ -16,8 +16,8 @@
     "e2e:dev:webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
-    "@vuepress-e2e/style-exports": "file:./modules/style-exports",
+    "@vuepress-e2e/conditional-exports": "file:modules/conditional-exports",
+    "@vuepress-e2e/style-exports": "file:modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
     "sass": "^1.97.3",
@@ -29,6 +29,6 @@
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "cross-env": "^10.1.0",
-    "serve": "^14.2.5"
+    "serve": "^14.2.6"
   }
 }
