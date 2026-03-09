@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { IS_DEV } from '../../utils/env'
+import { BUNDLER, IS_DEV } from '../../utils/env'
 import { readSourceMarkdown, writeSourceMarkdown } from '../../utils/source'
 
 const updateMarkdownContent = async (): Promise<void> => {
@@ -53,7 +53,7 @@ test('should call content hook on beforeUnmount', async ({ page }) => {
  * Updated hooks are only supported for use in development environments.
  * In CI environments, under both Linux and Windows, using Vite fails to correctly trigger hooks.
  */
-if (IS_DEV) {
+if (IS_DEV && BUNDLER !== 'vite') {
   test('should call content hook on updated', async ({ page }) => {
     await page.goto('composables/on-content-updated.html')
     const updatedLocator = page.locator(
