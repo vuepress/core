@@ -33,6 +33,10 @@ if (import.meta.hot) {
     __VUE_HMR_RUNTIME__.updatePageData?.(m.${PAGE_DATA_CODE_VAR_NAME})
   })
 }
+
+// Tell @vitejs/plugin-vue to use rerender() instead of reload() for HMR,
+// so that the component updates in place and onVnodeUpdated fires correctly.
+export const _rerender_only = true
 `
 
 /**
