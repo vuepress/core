@@ -60,7 +60,11 @@ export const createPage = async (
   const date = resolvePageDate({ frontmatter, filePathRelative })
 
   // infer page path according to file path
-  const { pathInferred, pathLocale } = inferPagePath({ app, filePathRelative })
+  const { pathInferred, pathLocale } = inferPagePath({
+    app,
+    filePathRelative,
+    options,
+  })
 
   // resolve language from frontmatter and site options
   const lang = resolvePageLang({ app, frontmatter, pathLocale })
