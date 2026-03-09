@@ -55,7 +55,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const tempDir = app.dir.temp()
   const cacheDir = app.dir.cache()
   const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
-  const isPageMatch = picomatch(pagePatterns, { cwd: sourceDir })
+  const pageMatcher = picomatch(pagePatterns, { cwd: sourceDir })
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
