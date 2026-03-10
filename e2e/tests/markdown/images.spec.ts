@@ -5,13 +5,25 @@ test('should render images correctly', async ({ page }) => {
 
   await page.goto('markdown/images/images.html')
 
-  await expect(imagesLocator).toHaveCount(6)
+  await expect(imagesLocator).toHaveCount(9)
   await expect(imagesLocator.nth(0)).toHaveAttribute('alt', 'logo-public')
   await expect(imagesLocator.nth(1)).toHaveAttribute('alt', 'logo-relative')
   await expect(imagesLocator.nth(2)).toHaveAttribute('alt', 'logo-alias')
   await expect(imagesLocator.nth(3)).toHaveAttribute('alt', 'img-logo-public')
   await expect(imagesLocator.nth(4)).toHaveAttribute('alt', 'img-logo-relative')
   await expect(imagesLocator.nth(5)).toHaveAttribute('alt', 'img-logo-alias')
+  await expect(imagesLocator.nth(6)).toHaveAttribute(
+    'alt',
+    'img-logo-alias-ext',
+  )
+  await expect(imagesLocator.nth(7)).toHaveAttribute(
+    'alt',
+    'img-logo-alias-path',
+  )
+  await expect(imagesLocator.nth(8)).toHaveAttribute(
+    'alt',
+    'img-logo-relative-path',
+  )
 
   for (const img of await imagesLocator.all()) {
     const [status, naturalWidth] = await img.evaluate(
