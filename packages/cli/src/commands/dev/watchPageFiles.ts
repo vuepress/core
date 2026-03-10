@@ -71,7 +71,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
 
       // ignore non-matched files
       return (
-        !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
+        !!stats?.isFile() && !pageMatcher(path.relative(sourceDir, filepath))
       )
     },
     ignoreInitial: true,
