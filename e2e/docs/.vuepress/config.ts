@@ -95,5 +95,9 @@ export default defineUserConfig({
       __dirname,
       '../markdown/images/logo-relative.png',
     ),
+    'image-alias.png': path.resolve(
+      __dirname,
+      '../markdown/images/logo-relative.png',
+    ),
   },
 })
