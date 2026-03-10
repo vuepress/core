@@ -25,6 +25,7 @@ export default vuepress(
               '__dirname',
               '_context',
               '_pageChunk',
+              '_pageData',
               '_registeredComponents',
             ],
           },
