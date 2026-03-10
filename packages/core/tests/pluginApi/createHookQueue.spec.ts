@@ -271,8 +271,8 @@ describe('client config file hook', () => {
   hookNames.forEach((hookName) => {
     it(hookName, async () => {
       const hook = createHookQueue(hookName)
-      const func1 = vi.fn(async () => Promise.resolve(file1))
-      const func2 = vi.fn(async () => Promise.resolve(file2))
+      const func1 = vi.fn(async () => file1)
+      const func2 = vi.fn(async () => file2)
       hook.add({
         pluginName: 'test1',
         hook: func1,
@@ -298,8 +298,8 @@ describe('bundler hooks', () => {
   hookNames.forEach((hookName) => {
     it(hookName, async () => {
       const hook = createHookQueue(hookName)
-      const func1 = vi.fn(async () => Promise.resolve({ foo: 'foo' }))
-      const func2 = vi.fn(async () => Promise.resolve({ bar: 'bar' }))
+      const func1 = vi.fn(async () => ({ foo: 'foo' }))
+      const func2 = vi.fn(async () => ({ bar: 'bar' }))
       hook.add({
         pluginName: 'test1',
         hook: func1,

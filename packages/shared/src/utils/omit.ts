@@ -1,10 +1,10 @@
 /**
  * Omit properties from an object
  */
-export const omit = <T extends Record<string, unknown>, U extends string[]>(
+export const omit = <T extends Record<string, unknown>, Keys extends string[]>(
   obj: T,
-  ...keys: U
-): Omit<T, U[number]> => {
+  ...keys: Keys
+): Omit<T, Keys[number]> => {
   const result = { ...obj }
   for (const key of keys) {
     delete result[key]

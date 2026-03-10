@@ -17,8 +17,8 @@ export const withSpinner =
       const result = await target(spinner)
       spinner.succeed(`${msg} - done in ${formatMs(Date.now() - start)}`)
       return result
-    } catch (e) {
+    } catch (err) {
       spinner.fail(`${msg} - failed in ${formatMs(Date.now() - start)}`)
-      throw e
+      throw err
     }
   }

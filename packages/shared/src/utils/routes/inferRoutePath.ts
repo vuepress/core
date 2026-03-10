@@ -10,7 +10,7 @@ export const inferRoutePath = (rawPath: string): string => {
 
   // convert /foo/bar.md to /foo/bar.html
   if (routePath.endsWith('.md')) {
-    routePath = `${routePath.substring(0, routePath.length - 3)}.html`
+    routePath = `${routePath.slice(0, -3)}.html`
   }
   // convert /foo/bar to /foo/bar.html
   else if (!routePath.endsWith('.html')) {
@@ -19,7 +19,7 @@ export const inferRoutePath = (rawPath: string): string => {
 
   // convert /foo/index.html to /foo/
   if (routePath.endsWith('/index.html')) {
-    routePath = routePath.substring(0, routePath.length - 10)
+    routePath = routePath.slice(0, -10)
   }
 
   return routePath

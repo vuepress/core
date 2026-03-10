@@ -47,8 +47,10 @@ export const createClientPlugin = (
 
           // get asset modules
           const assetModules = modules.filter(
-            (m): m is Required<Pick<StatsModule, 'assets'>> & StatsModule =>
-              Boolean(m.assets?.length),
+            (
+              module,
+            ): module is Required<Pick<StatsModule, 'assets'>> & StatsModule =>
+              Boolean(module.assets?.length),
           )
 
           // get modules for client manifest
@@ -57,14 +59,14 @@ export const createClientPlugin = (
           const fileToIndex = (file: number | string): number =>
             allFiles.indexOf(file.toString())
 
-          modules.forEach((m) => {
+          modules.forEach((module) => {
             // ignore modules duplicated in multiple chunks
-            if (m.chunks?.length !== 1) {
+            if (module.chunks?.length !== 1) {
               return
             }
 
-            const cid = m.chunks[0]
-            const chunk = chunks.find((c) => c.id === cid)
+            const cid = module.chunks[0]
+            const chunk = chunks.find(({ id }) => id === cid)
 
             if (!chunk?.files) {
               return
@@ -72,10 +74,10 @@ export const createClientPlugin = (
 
             // remove appended hash of module identifier
             // which is the request string of the module
-            const request = m.identifier?.replace(/\|\w+$/, '')
+            const request = module.identifier?.replace(/\|\w+$/, '')
 
             // get chunk files index
-            const files = [...chunk.files.map(fileToIndex)]
+            const files = chunk.files.map(fileToIndex)
 
             // find all asset modules associated with the same chunk
             assetModules.forEach((item) => {

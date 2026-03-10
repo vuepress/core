@@ -545,8 +545,10 @@ describe('html <img> tag', () => {
           `${expected.map((item) => item).join('\n')}\n`,
         )
         // single quote
-        expect(md.render(source.join('\n\n').replace(/"/g, "'"), env)).toEqual(
-          `${expected.map((item) => item.replace(/"/g, "'")).join('\n')}\n`,
+        expect(
+          md.render(source.join('\n\n').replaceAll('"', "'"), env),
+        ).toEqual(
+          `${expected.map((item) => item.replaceAll('"', "'")).join('\n')}\n`,
         )
       })
     })

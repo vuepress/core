@@ -40,7 +40,7 @@ const createTestPage = (partial: Partial<Page> = {}): Page =>
     ...partial,
   }) as Page
 
-describe('renderPageToVue', () => {
+describe(renderPageToVue, () => {
   it('should render basic page with template and no script block', () => {
     const app = createTestApp()
     const page = createTestPage()

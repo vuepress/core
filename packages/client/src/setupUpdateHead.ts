@@ -33,7 +33,7 @@ export const queryHeadElement = ([
     document.querySelectorAll<HTMLElement>(selector),
   )
   const matchedHeadElement = headElements.find(
-    (item) => item.innerText === content,
+    (item) => item.textContent === content,
   )
   return matchedHeadElement ?? null
 }
@@ -66,7 +66,7 @@ export const createHeadElement = ([
 
   // set content
   if (isString(content)) {
-    headElement.appendChild(document.createTextNode(content))
+    headElement.append(document.createTextNode(content))
   }
 
   return headElement
@@ -145,7 +145,9 @@ export const setupUpdateHead = (): void => {
       }
     })
     // append the rest new elements to head
-    newHeadElements.forEach((el) => document.head.appendChild(el))
+    newHeadElements.forEach((el) => {
+      document.head.append(el)
+    })
     // update managed head elements
     managedHeadElements = [
       // filter out empty deleted items

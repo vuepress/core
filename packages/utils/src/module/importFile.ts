@@ -12,4 +12,4 @@ export const importFile = async <T>(filePath: string): Promise<T> =>
  * A wrapper of `importFile` and returns the default export
  */
 export const importFileDefault = async <T>(filePath: string): Promise<T> =>
-  importFile<{ default: T }>(filePath).then((m) => m.default)
+  importFile<{ default: T }>(filePath).then((module) => module.default)

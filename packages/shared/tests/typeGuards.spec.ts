@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { isPlainObject } from '../src/index.js'
 
-describe('isPlainObject', () => {
+describe(isPlainObject, () => {
   const TEST_CASES: [unknown, boolean][] = [
     [true, false],
     [false, false],

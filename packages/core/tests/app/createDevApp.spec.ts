@@ -1,11 +1,11 @@
-import { expect, it } from 'vitest'
+import { expect, expectTypeOf, it } from 'vitest'
 import type { App, Bundler, DevApp } from '../../src/index.js'
 import { createDevApp } from '../../src/index.js'
 
 it('should create dev app correctly', () => {
   const checkApp = (app: App): void => {
     expect(app.env.isDev).toBe(true)
-    expect(typeof (app as DevApp).dev).toBe('function')
+    expectTypeOf((app as DevApp).dev).toBeFunction()
 
     expect(app.env.isBuild).toBe(false)
     expect((app as unknown as { build: never }).build).toBeUndefined()

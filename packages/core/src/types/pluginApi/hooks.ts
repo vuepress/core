@@ -14,10 +14,10 @@ export interface Hook<
   Exposed,
   Normalized = Exposed,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- `any` type is required to infer the result type correctly
-  Result = Normalized extends (...args: any) => infer U
-    ? U extends Promise<infer V>
-      ? V
-      : U
+  Result = Normalized extends (...args: any) => infer Return
+    ? Return extends Promise<infer Value>
+      ? Value
+      : Return
     : never,
 > {
   exposed: Exposed
@@ -85,21 +85,21 @@ export type HooksName = keyof Hooks
  * Exposed hooks API that can be accessed by a plugin
  */
 export type HooksExposed = {
-  [K in HooksName]: Hooks[K]['exposed']
+  [Key in HooksName]: Hooks[Key]['exposed']
 }
 
 /**
  * Normalized hooks
  */
 export type HooksNormalized = {
-  [K in HooksName]: Hooks[K]['normalized']
+  [Key in HooksName]: Hooks[Key]['normalized']
 }
 
 /**
  * Result of hooks
  */
 export type HooksResult = {
-  [K in HooksName]: Hooks[K]['result']
+  [Key in HooksName]: Hooks[Key]['result']
 }
 
 /**
