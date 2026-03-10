@@ -3,31 +3,34 @@
   "version": "2.0.0-rc.27",
   "description": "Utils that shared between VuePress node and client",
   "keywords": [
-    "vuepress",
     "shared",
-    "utils"
+    "utils",
+    "vuepress"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -35,15 +38,12 @@
   "dependencies": {
     "@mdit-vue/types": "^3.0.2"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "tsdown": {
-    "entry": "./src/index.ts",
     "dts": true,
+    "entry": "./src/index.ts",
+    "fixedExtension": false,
     "format": "esm",
     "target": "es2023",
-    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }
