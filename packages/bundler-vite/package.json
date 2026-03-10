@@ -36,20 +36,20 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^6.0.4",
+    "@vitejs/plugin-vue": "catalog:vite",
     "@vuepress/bundlerutils": "workspace:*",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "connect-history-api-fallback": "^2.0.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.8",
     "postcss-load-config": "^6.0.1",
-    "rollup": "^4.57.1",
-    "vite": "^7.3.1",
-    "vue": "catalog:",
-    "vue-router": "catalog:"
+    "rolldown": "catalog:vite",
+    "vite": "catalog:vite",
+    "vue": "catalog:vue",
+    "vue-router": "catalog:vue"
   },
   "devDependencies": {
     "@types/connect-history-api-fallback": "^1.5.4"

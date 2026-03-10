@@ -37,25 +37,27 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.0.6",
-    "@vue/devtools-kit": "^8.0.6",
+    "@vue/devtools-api": "^8.0.7",
+    "@vue/devtools-kit": "^8.0.7",
     "@vuepress/shared": "workspace:*",
-    "vue": "catalog:",
-    "vue-router": "catalog:"
+    "vue": "catalog:vue",
+    "vue-router": "catalog:vue"
   },
   "publishConfig": {
     "access": "public"
   },
   "tsdown": {
+    "deps": {
+      "neverBundle": [
+        "@internal/clientConfigs",
+        "@internal/routes",
+        "@internal/siteData"
+      ]
+    },
     "dts": true,
     "entry": [
       "./src/app.ts",
       "./src/index.ts"
-    ],
-    "external": [
-      "@internal/clientConfigs",
-      "@internal/routes",
-      "@internal/siteData"
     ],
     "format": "esm",
     "outDir": "./dist",

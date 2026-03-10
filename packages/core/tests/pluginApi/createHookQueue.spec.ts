@@ -55,7 +55,7 @@ describe('common', () => {
         pluginName: 'test2',
         hook: func2,
       })
-      await expect(hook.process(app)).rejects.toThrowError(err1)
+      await expect(hook.process(app)).rejects.toThrow(err1)
       expect(console.error).toHaveBeenCalled()
 
       expect(func1).toHaveBeenCalledTimes(1)
