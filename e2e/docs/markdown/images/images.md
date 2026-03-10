@@ -2,24 +2,19 @@
 
 ![logo-relative](./logo-relative.png)
 
-![logo-alias](@image-alias)
+![logo-alias](@source/markdown/images/logo-relative.png)
 
 <img src="/logo.png" alt="img-logo-public">
 
 <img src="./logo-relative.png" alt="img-logo-relative">
 
-<img src="@image-alias" alt="img-logo-alias">
+<img src="@source/markdown/images/logo-relative.png" alt="img-logo-alias">
 
-<img src="image-alias.png" alt="img-logo-alias-ext">
+<img :src="logoRelative" alt="img-logo-import-relative">
 
-<img :src="imageAlias" alt="img-logo-alias-path">
-
-<img :src="logoRelative" alt="img-logo-relative-path">
-
-<!-- FIXME: not supported yet -->
-<!-- ![logo-relative](logo-relative.png) -->
+<img :src="imageAlias" alt="img-logo-import-alias">
 
 <script setup>
-import imageAlias from '@image-alias'
+import imageAlias from '@source/markdown/images/logo-relative.png'
 import logoRelative from './logo-relative.png'
 </script>
