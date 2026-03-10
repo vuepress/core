@@ -15,6 +15,14 @@
 * upgrade to vite 8 and migrate to rolldown ([a59bed2](https://github.com/vuepress/core/commit/a59bed292383b41341bd471f5b05b415732e75bf))
 * upgrade vue-router to v5 ([d777384](https://github.com/vuepress/core/commit/d777384c6c3cd7ccf5989b6ce6f51d71c98c6d69))
 
+
+### BREAKING CHANGES
+
+* Page temp files have been removed. Now page components are loaded by bundler directly. If you rely on watching page temp files in dev mode, you can make use of the new `onPageUpdated` hook instead.
+* **markdown** the `markdown.assets.relativePathPrefix` option has been removed, as it's redundant after removing page temp files.
+
+
+
 # [2.0.0-rc.26](https://github.com/vuepress/core/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2025-10-14)
 
 
