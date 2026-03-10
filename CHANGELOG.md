@@ -9,10 +9,9 @@
 
 ### Features
 
-* **bundler-vite:** upgrade vite to 7.2 ([3d65ecd](https://github.com/vuepress/core/commit/3d65ecd4ba2da679c73f535154d2fbe3a11bb4b5))
 * **core:** avoid race conditions when writing temp files ([#1674](https://github.com/vuepress/core/issues/1674)) ([d89ac9f](https://github.com/vuepress/core/commit/d89ac9f7b313b2b3db0860814d4fbd1cbf902e4c))
 * **core:** optimize default value handling for `options.locales` ([#1676](https://github.com/vuepress/core/issues/1676)) ([b0e36c2](https://github.com/vuepress/core/commit/b0e36c2fc2558cf3d72900c5f517232699f005e6))
-* upgrade to vite 8 and migrate to rolldown ([a59bed2](https://github.com/vuepress/core/commit/a59bed292383b41341bd471f5b05b415732e75bf))
+* **bundler-vite:** upgrade to vite 8 and migrate to rolldown ([a59bed2](https://github.com/vuepress/core/commit/a59bed292383b41341bd471f5b05b415732e75bf))
 * upgrade vue-router to v5 ([d777384](https://github.com/vuepress/core/commit/d777384c6c3cd7ccf5989b6ce6f51d71c98c6d69))
 
 
