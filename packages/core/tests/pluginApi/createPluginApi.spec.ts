@@ -14,6 +14,7 @@ it('should have correct hooks', () => {
     'onInitialized',
     'onPrepared',
     'onWatched',
+    'onCleanup',
     'onGenerated',
     'extendsMarkdownOptions',
     'extendsMarkdown',

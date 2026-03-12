@@ -18,6 +18,7 @@ describe('common', () => {
     'onPrepared',
     'onWatched',
     'onPageUpdated',
+    'onCleanup',
     'onGenerated',
     'extendsMarkdownOptions',
     'extendsMarkdown',
@@ -74,6 +75,7 @@ describe('lifecycle hooks', () => {
     'onPrepared',
     'onWatched',
     'onPageUpdated',
+    'onCleanup',
     'onGenerated',
   ] as const
 

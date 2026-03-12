@@ -65,6 +65,7 @@ export interface Hooks {
   onPageUpdated: LifeCycleHook<
     [type: 'create' | 'delete' | 'update', page: Page, oldPage: Page | null]
   >
+  onCleanup: LifeCycleHook
   onGenerated: LifeCycleHook
   extendsMarkdownOptions: ExtendsHook<MarkdownOptions>
   extendsMarkdown: ExtendsHook<Markdown>
