@@ -36,36 +36,6 @@ export interface PluginObject extends Partial<HooksExposed> {
    * Allow the plugin to be used multiple times or not
    */
   multiple?: boolean
-
-  /**
-   * Custom data store for plugin state.
-   *
-   * Plugins can use this field to attach arbitrary state that is scoped
-   * to the current app lifecycle. The data is automatically discarded when
-   * the app is recreated on dev server restart, avoiding module-level
-   * variable leaks.
-   *
-   * @example
-   * ```ts
-   * const myPlugin = {
-   *   name: 'my-plugin',
-   *   data: {
-   *     watcher: null as FSWatcher | null,
-   *   },
-   *   onCleanup(app, stage) {
-   *     if (stage === 'ready') {
-   *       myPlugin.data.watcher = chokidar.watch('my-files')
-   *     }
-   *     if (stage === 'restart') {
-   *       myPlugin.data.watcher?.close()
-   *     }
-   *   },
-   * }
-   * export default myPlugin
-   * ```
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- allow arbitrary data
-  data?: Record<string, any>
 }
 
 /**

@@ -10,7 +10,7 @@ interface Closable {
 }
 
 /**
- * Stage of the `onCleanup` lifecycle hook.
+ * Stages for the `onCleanup` lifecycle hook.
  *
  * - `'compile-end'` - After build compilation.
  * - `'prepared'` - After all `onPrepared` hooks have completed.
@@ -77,6 +77,9 @@ export interface Hooks {
    * @deprecated Use `onCleanup` with the `stage` parameter for cleanup tasks,
    * and `app.restartDevServer()` to trigger a dev server restart.
    *
+   * Use the plugin function form (`PluginFunction`) to scope state to the
+   * current app lifecycle via closures, avoiding module-level variable leaks.
+   *
    * ### Migration guide
    *
    * **Before (onWatched):**
@@ -91,20 +94,23 @@ export interface Hooks {
    * }
    * ```
    *
-   * **After (onCleanup + app.restartDevServer):**
+   * **After (onCleanup + PluginFunction + app.restartDevServer):**
    * ```ts
-   * let watcher
-   * export default {
-   *   name: 'my-plugin',
-   *   onCleanup(app, stage) {
-   *     if (stage === 'ready') {
-   *       watcher = chokidar.watch('my-files')
-   *       watcher.on('change', () => app.restartDevServer())
-   *     }
-   *     if (stage === 'restart') {
-   *       watcher?.close()
-   *     }
-   *   },
+   * export default (app) => {
+   *   // closure-scoped state: fresh per app instance, no leak on restart
+   *   let watcher
+   *   return {
+   *     name: 'my-plugin',
+   *     onCleanup(app, stage) {
+   *       if (stage === 'ready') {
+   *         watcher = chokidar.watch('my-files')
+   *         watcher.on('change', () => app.restartDevServer())
+   *       }
+   *       if (stage === 'restart') {
+   *         watcher?.close()
+   *       }
+   *     },
+   *   }
    * }
    * ```
    */
