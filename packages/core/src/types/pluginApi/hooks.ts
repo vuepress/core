@@ -9,6 +9,16 @@ interface Closable {
   close(): void
 }
 
+/**
+ * Stage of the `onCleanup` lifecycle hook.
+ *
+ * - `'compile-end'` - After build compilation.
+ * - `'prepared'` - After all `onPrepared` hooks have completed.
+ * - `'ready'` - After the dev server successfully starts.
+ * - `'restart'` - Before the dev server restarts.
+ */
+export type CleanupHookStage = 'compile-end' | 'prepared' | 'ready' | 'restart'
+
 // base hook type
 export interface Hook<
   Exposed,
@@ -61,11 +71,48 @@ export type DefineHook = Hook<
 export interface Hooks {
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
+  /**
+   * Called after the dev server is ready with watchers and restart function.
+   *
+   * @deprecated Use `onCleanup` with the `stage` parameter for cleanup tasks,
+   * and `app.restartDevServer()` to trigger a dev server restart.
+   *
+   * ### Migration guide
+   *
+   * **Before (onWatched):**
+   * ```ts
+   * export default {
+   *   name: 'my-plugin',
+   *   onWatched(app, watchers, restart) {
+   *     const watcher = chokidar.watch('my-files')
+   *     watchers.push(watcher)
+   *     watcher.on('change', () => restart())
+   *   },
+   * }
+   * ```
+   *
+   * **After (onCleanup + app.restartDevServer):**
+   * ```ts
+   * let watcher
+   * export default {
+   *   name: 'my-plugin',
+   *   onCleanup(app, stage) {
+   *     if (stage === 'ready') {
+   *       watcher = chokidar.watch('my-files')
+   *       watcher.on('change', () => app.restartDevServer())
+   *     }
+   *     if (stage === 'restart') {
+   *       watcher?.close()
+   *     }
+   *   },
+   * }
+   * ```
+   */
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onPageUpdated: LifeCycleHook<
     [type: 'create' | 'delete' | 'update', page: Page, oldPage: Page | null]
   >
-  onCleanup: LifeCycleHook
+  onCleanup: LifeCycleHook<[stage: CleanupHookStage]>
   onGenerated: LifeCycleHook
   extendsMarkdownOptions: ExtendsHook<MarkdownOptions>
   extendsMarkdown: ExtendsHook<Markdown>

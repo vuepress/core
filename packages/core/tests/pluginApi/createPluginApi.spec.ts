@@ -73,12 +73,12 @@ it('onCleanup hooks should be registered and processed correctly', async () => {
   })
 
   pluginApi.registerHooks()
-  await pluginApi.hooks.onCleanup.process(app)
+  await pluginApi.hooks.onCleanup.process(app, 'restart')
 
   expect(cleanupFn1).toHaveBeenCalledTimes(1)
-  expect(cleanupFn1).toHaveBeenCalledWith(app)
+  expect(cleanupFn1).toHaveBeenCalledWith(app, 'restart')
   expect(cleanupFn2).toHaveBeenCalledTimes(1)
-  expect(cleanupFn2).toHaveBeenCalledWith(app)
+  expect(cleanupFn2).toHaveBeenCalledWith(app, 'restart')
 })
 
 it('onCleanup hooks should be processed sequentially', async () => {
@@ -102,7 +102,28 @@ it('onCleanup hooks should be processed sequentially', async () => {
   })
 
   pluginApi.registerHooks()
-  await pluginApi.hooks.onCleanup.process(app)
+  await pluginApi.hooks.onCleanup.process(app, 'restart')
 
   expect(order).toEqual([1, 2])
+})
+
+it('onCleanup hooks should receive the correct stage parameter', async () => {
+  const pluginApi = createPluginApi()
+  const stages: string[] = []
+
+  pluginApi.plugins.push({
+    name: 'test-cleanup-stages',
+    onCleanup: (_app, stage) => {
+      stages.push(stage)
+    },
+  })
+
+  pluginApi.registerHooks()
+
+  await pluginApi.hooks.onCleanup.process(app, 'ready')
+  await pluginApi.hooks.onCleanup.process(app, 'restart')
+  await pluginApi.hooks.onCleanup.process(app, 'compile-end')
+  await pluginApi.hooks.onCleanup.process(app, 'prepared')
+
+  expect(stages).toEqual(['ready', 'restart', 'compile-end', 'prepared'])
 })
