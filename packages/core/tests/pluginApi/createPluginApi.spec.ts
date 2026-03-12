@@ -127,3 +127,37 @@ it('onCleanup hooks should receive the correct stage parameter', async () => {
 
   expect(stages).toEqual(['ready', 'restart', 'compile-end', 'prepared'])
 })
+
+it('plugin data field should be accessible and not treated as a hook', async () => {
+  const pluginApi = createPluginApi()
+
+  pluginApi.plugins.push({
+    name: 'test-data-plugin',
+    data: { counter: 0, connection: null },
+    onCleanup: (_app, stage) => {
+      const plugin = pluginApi.plugins.find(
+        (p) => p.name === 'test-data-plugin',
+      )!
+      if (stage === 'ready') {
+        plugin.data!.counter = 42
+      }
+      if (stage === 'restart') {
+        plugin.data!.counter = 0
+      }
+    },
+  })
+
+  pluginApi.registerHooks()
+
+  // data should be accessible on the plugin
+  const plugin = pluginApi.plugins.find((p) => p.name === 'test-data-plugin')!
+  expect(plugin.data).toEqual({ counter: 0, connection: null })
+
+  // data should be modifiable through onCleanup
+  await pluginApi.hooks.onCleanup.process(app, 'ready')
+  expect(plugin.data!.counter).toBe(42)
+
+  // data should be cleanable through onCleanup
+  await pluginApi.hooks.onCleanup.process(app, 'restart')
+  expect(plugin.data!.counter).toBe(0)
+})

@@ -17,6 +17,7 @@ export const createPluginApiRegisterHooks =
       ({
         name: pluginName,
         multiple,
+        data,
 
         alias,
         define,
