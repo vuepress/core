@@ -12,12 +12,11 @@ interface Closable {
 /**
  * Stages for the `onCleanup` lifecycle hook.
  *
- * - `'compile-end'` - After build compilation.
+ * - `'compile-end'` - After build compilation completes, before `onGenerated`.
  * - `'prepared'` - After all `onPrepared` hooks have completed.
- * - `'ready'` - After the dev server successfully starts.
- * - `'restart'` - Before the dev server restarts.
+ * - `'restart'` - Before the dev server restarts (teardown).
  */
-export type CleanupHookStage = 'compile-end' | 'prepared' | 'ready' | 'restart'
+export type CleanupHookStage = 'compile-end' | 'prepared' | 'restart'
 
 // base hook type
 export interface Hook<
@@ -74,45 +73,11 @@ export interface Hooks {
   /**
    * Called after the dev server is ready with watchers and restart function.
    *
-   * @deprecated Use `onCleanup` with the `stage` parameter for cleanup tasks,
-   * and `app.restartDevServer()` to trigger a dev server restart.
+   * Use this hook to set up custom file watchers or perform other
+   * setup tasks that require the dev server to be running.
    *
-   * Use the plugin function form (`PluginFunction`) to scope state to the
-   * current app lifecycle via closures, avoiding module-level variable leaks.
-   *
-   * ### Migration guide
-   *
-   * **Before (onWatched):**
-   * ```ts
-   * export default {
-   *   name: 'my-plugin',
-   *   onWatched(app, watchers, restart) {
-   *     const watcher = chokidar.watch('my-files')
-   *     watchers.push(watcher)
-   *     watcher.on('change', () => restart())
-   *   },
-   * }
-   * ```
-   *
-   * **After (onCleanup + PluginFunction + app.restartDevServer):**
-   * ```ts
-   * export default (app) => {
-   *   // closure-scoped state: fresh per app instance, no leak on restart
-   *   let watcher
-   *   return {
-   *     name: 'my-plugin',
-   *     onCleanup(app, stage) {
-   *       if (stage === 'ready') {
-   *         watcher = chokidar.watch('my-files')
-   *         watcher.on('change', () => app.restartDevServer())
-   *       }
-   *       if (stage === 'restart') {
-   *         watcher?.close()
-   *       }
-   *     },
-   *   }
-   * }
-   * ```
+   * For cleanup/teardown tasks, use `onCleanup` with the `stage` parameter.
+   * For triggering restarts, you can also use `app.restartDevServer()`.
    */
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onPageUpdated: LifeCycleHook<

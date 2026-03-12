@@ -120,10 +120,9 @@ it('onCleanup hooks should receive the correct stage parameter', async () => {
 
   pluginApi.registerHooks()
 
-  await pluginApi.hooks.onCleanup.process(app, 'ready')
   await pluginApi.hooks.onCleanup.process(app, 'restart')
   await pluginApi.hooks.onCleanup.process(app, 'compile-end')
   await pluginApi.hooks.onCleanup.process(app, 'prepared')
 
-  expect(stages).toEqual(['ready', 'restart', 'compile-end', 'prepared'])
+  expect(stages).toEqual(['restart', 'compile-end', 'prepared'])
 })

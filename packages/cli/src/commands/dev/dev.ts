@@ -98,9 +98,6 @@ export const dev: DevCommand = async ({
   // expose restart on the app instance for plugins
   app.restartDevServer = restart
 
-  // process onCleanup hook with 'ready' stage
-  await app.pluginApi.hooks.onCleanup.process(app, 'ready')
-
   // watch page files
   watchers.push(...watchPageFiles(app))
 
