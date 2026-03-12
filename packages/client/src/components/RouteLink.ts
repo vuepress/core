@@ -92,7 +92,7 @@ export const RouteLink = defineComponent({
     const path = computed(() =>
       props.to.startsWith('#') || props.to.startsWith('?')
         ? props.to
-        : `${__VUEPRESS_BASE__}${resolveRouteFullPath(props.to, route.path).substring(1)}`,
+        : `${__VUEPRESS_BASE__}${resolveRouteFullPath(props.to, route.path).slice(1)}`,
     )
 
     return () =>
@@ -103,7 +103,9 @@ export const RouteLink = defineComponent({
           href: path.value,
           onClick: (event: MouseEvent = {} as MouseEvent) => {
             if (guardEvent(event)) {
-              void router.push(props.to).catch()
+              void router.push(props.to).catch(() => {
+                // ignore error here
+              })
             }
           },
         },

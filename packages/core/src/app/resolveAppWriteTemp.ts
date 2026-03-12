@@ -30,20 +30,20 @@ export const resolveAppWriteTemp = (dir: AppDir): AppWriteTemp => {
 
     item.hash = contentHash
 
-    if (!item.current) {
-      item.current = (async () => {
-        await fs.outputFile(filePath, content)
-        // if there is a next writing promise, chain it with the current one
-        item.current = item.next?.()
-        return item.current
-      })()
-    } else {
+    if (item.current) {
       // if there is a current writing promise, save the next writing promise
       item.next = async () => {
         await fs.outputFile(filePath, content)
         item.next = undefined
         item.current = undefined
       }
+    } else {
+      item.current = (async () => {
+        await fs.outputFile(filePath, content)
+        // if there is a next writing promise, chain it with the current one
+        item.current = item.next?.()
+        return item.current
+      })()
     }
     await item.current
     return filePath

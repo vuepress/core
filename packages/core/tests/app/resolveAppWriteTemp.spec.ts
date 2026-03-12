@@ -4,7 +4,7 @@ import { createAppDirFunction } from '../../src/app/resolveAppDir.js'
 import { resolveAppWriteTemp } from '../../src/app/resolveAppWriteTemp.js'
 import type { AppDir } from '../../src/index.js'
 
-vi.mock('@vuepress/utils', async (importOriginal) => {
+vi.mock(import('@vuepress/utils'), async (importOriginal) => {
   // eslint-disable-next-line @typescript-eslint/consistent-type-imports
   const actual = await importOriginal<typeof import('@vuepress/utils')>()
   return {
@@ -16,7 +16,7 @@ vi.mock('@vuepress/utils', async (importOriginal) => {
   }
 })
 
-describe('resolveAppWriteTemp', () => {
+describe(resolveAppWriteTemp, () => {
   const dir = {
     temp: createAppDirFunction('/temp'),
   } as AppDir

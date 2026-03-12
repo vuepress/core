@@ -20,7 +20,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock('ora', () => ({
+vi.mock(import('ora'), () => ({
   default: mocks.ora,
 }))
 

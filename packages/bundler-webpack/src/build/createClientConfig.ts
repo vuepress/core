@@ -54,7 +54,7 @@ export const createClientConfig = async (
       styles: {
         idHint: 'styles',
         // necessary to ensure async chunks are also extracted
-        test: (m: Module) => m.type.includes('css/mini-extract'),
+        test: (module: Module) => module.type.includes('css/mini-extract'),
         chunks: 'all',
         enforce: true,
         reuseExistingChunk: true,

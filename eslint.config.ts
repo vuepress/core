@@ -14,6 +14,8 @@ export default vuepress(
     typescript: {
       overrides: {
         '@typescript-eslint/no-useless-default-assignment': 'off', // TODO: crash
+        // we may need to mark some sync function as async
+        '@typescript-eslint/require-await': 'off',
       },
     },
     javascript: {

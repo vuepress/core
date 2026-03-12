@@ -1,7 +1,14 @@
 import type { HeadConfig } from '../types/index.js'
 
-const TAGS_ALLOWED = ['link', 'meta', 'script', 'style', 'noscript', 'template']
-const TAGS_UNIQUE = ['title', 'base']
+const TAGS_ALLOWED = new Set([
+  'link',
+  'meta',
+  'script',
+  'style',
+  'noscript',
+  'template',
+])
+const TAGS_UNIQUE = new Set(['title', 'base'])
 
 /**
  * Resolve identifier of a tag, to avoid duplicated tags in `<head>`
@@ -10,12 +17,12 @@ export const resolveHeadIdentifier = ([tag, attrs, content]: HeadConfig):
   | string
   | null => {
   // avoid duplicated unique tags
-  if (TAGS_UNIQUE.includes(tag)) {
+  if (TAGS_UNIQUE.has(tag)) {
     return tag
   }
 
   // avoid disallowed tags
-  if (!TAGS_ALLOWED.includes(tag)) {
+  if (!TAGS_ALLOWED.has(tag)) {
     return null
   }
 

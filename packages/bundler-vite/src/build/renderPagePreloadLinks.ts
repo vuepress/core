@@ -54,7 +54,7 @@ export const renderPagePreloadLinks = ({
       }
 
       return `<link rel="preload" href="${app.options.base}${item}"${
-        type !== '' ? ` as="${type}"` : ''
+        type === '' ? '' : ` as="${type}"`
       }>`
     })
     .join('')

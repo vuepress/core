@@ -17,16 +17,19 @@ watch(routePath, () => {
 
 const callback: ContentUpdatedCallback = (reason) => {
   switch (reason) {
-    case 'mounted':
+    case 'mounted': {
       mounted.value = routePath.value
       mountedCount.value++
       break
-    case 'updated':
+    }
+    case 'updated': {
       updatedCount.value++
       break
-    case 'beforeUnmount':
+    }
+    case 'beforeUnmount': {
       beforeUnmount.value = routePath.value
       break
+    }
     default:
   }
 }

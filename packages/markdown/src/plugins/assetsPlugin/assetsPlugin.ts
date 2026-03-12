@@ -40,7 +40,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       // replace the original link with resolved link
       tokens[idx].content = tokens[idx].content
         // handle src
-        .replace(
+        .replaceAll(
           /(<img\b.*?src=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
@@ -49,7 +49,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
             })}${quote}`,
         )
         // handle srcset
-        .replace(
+        .replaceAll(
           /(<img\b.*?srcset=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, srcset: string) =>
             `${prefix}${quote}${srcset
@@ -61,7 +61,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                     `${resolveLink(url.trim(), {
                       env,
                       absolutePathPrependBase,
-                    })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
+                    })}${descriptor.replaceAll(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )
               .join(', ')}${quote}`,

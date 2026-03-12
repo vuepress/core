@@ -37,7 +37,7 @@ export const renderPagePreloadLinks = ({
       }
 
       return `<link rel="preload" href="${app.options.base}${file}"${
-        type !== '' ? ` as="${type}"` : ''
+        type === '' ? '' : ` as="${type}"`
       }${type === 'font' ? ` type="font/${extension}" crossorigin` : ''}>`
     })
     .join('')

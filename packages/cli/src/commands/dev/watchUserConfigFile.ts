@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { colors, logger } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
-import chokidar from 'chokidar'
+import { watch } from 'chokidar'
 
 export const watchUserConfigFile = ({
   userConfigPath,
@@ -14,7 +14,7 @@ export const watchUserConfigFile = ({
 }): FSWatcher[] => {
   const cwd = process.cwd()
 
-  const configWatcher = chokidar.watch(userConfigPath, {
+  const configWatcher = watch(userConfigPath, {
     cwd,
     ignoreInitial: true,
   })
@@ -23,7 +23,7 @@ export const watchUserConfigFile = ({
     void restart()
   })
 
-  const depsWatcher = chokidar.watch(userConfigDependencies, {
+  const depsWatcher = watch(userConfigDependencies, {
     cwd,
     ignoreInitial: true,
   })

@@ -33,7 +33,7 @@ export const Content = defineComponent({
       if (!props.path) return pageComponent.value
       const route = resolveRoute(props.path)
       return defineAsyncComponent(async () =>
-        route.loader().then((m) => m.default),
+        route.loader().then((module) => module.default),
       )
     })
 

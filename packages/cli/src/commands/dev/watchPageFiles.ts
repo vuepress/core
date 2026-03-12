@@ -2,7 +2,7 @@
 import type { App, Page } from '@vuepress/core'
 import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
-import chokidar from 'chokidar'
+import { watch } from 'chokidar'
 import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
@@ -13,7 +13,7 @@ import { createPageDepsHelper } from './pageDepsHelper.js'
  */
 export const watchPageFiles = (app: App): FSWatcher[] => {
   // watch page deps
-  const depsWatcher = chokidar.watch([], {
+  const depsWatcher = watch([], {
     ignoreInitial: true,
   })
   const depsHelper = createPageDepsHelper()
@@ -56,7 +56,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const cacheDir = app.dir.cache()
   const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
   const pageMatcher = picomatch(pagePatterns, { cwd: sourceDir })
-  const pagesWatcher = chokidar.watch('.', {
+  const pagesWatcher = watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
       // This is important so that folders like node_modules will be ignored immediately without traversing their children

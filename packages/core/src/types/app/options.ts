@@ -13,8 +13,6 @@ export interface AppConfigCommon extends Partial<SiteData> {
    * Source directory of the markdown files.
    *
    * Vuepress will load markdown files from this directory.
-   *
-   * @required
    */
   source: string
 
@@ -84,15 +82,11 @@ export interface AppConfigCommon extends Partial<SiteData> {
 
   /**
    * Vuepress bundler
-   *
-   * @required
    */
   bundler: Bundler
 
   /**
    * Vuepress theme
-   *
-   * @required
    */
   theme: Theme
 

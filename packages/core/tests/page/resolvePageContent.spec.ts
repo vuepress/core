@@ -49,7 +49,7 @@ it('should throw error if the file does not exist', async () => {
       filePath: '404',
       options: {},
     })
-  } catch (e) {
-    expect(e).not.toBeUndefined()
+  } catch (err) {
+    expect(err).not.toBeUndefined()
   }
 })

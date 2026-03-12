@@ -14,7 +14,7 @@ export interface PluginApi {
    * All available hooks
    */
   hooks: {
-    [K in HooksName]: HookQueue<K>
+    [Key in HooksName]: HookQueue<Key>
   }
 
   /**
