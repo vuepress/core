@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import type { App, Page } from '@vuepress/core'
 import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
@@ -12,6 +11,13 @@ import { createPageDepsHelper } from './pageDepsHelper.js'
  * Watch page files and deps, return file watchers
  */
 export const watchPageFiles = (app: App): FSWatcher[] => {
+  // promise chain to serialize page handling operations and
+  // avoid racing conditions when multiple file events arrive rapidly
+  let queue: Promise<void> = Promise.resolve()
+  const enqueue = (fn: () => Promise<void>): void => {
+    queue = queue.then(fn, fn)
+  }
+
   // watch page deps
   const depsWatcher = chokidar.watch([], {
     ignoreInitial: true,
@@ -25,13 +31,15 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     const depsToRemove = depsHelper.remove(page)
     depsWatcher.unwatch(depsToRemove)
   }
-  const depsListener = async (dep: string): Promise<void> => {
+  const depsListener = (dep: string): void => {
     const pagePaths = depsHelper.get(dep)
     for (const filePathRelative of pagePaths) {
-      logger.info(
-        `dependency of page ${colors.magenta(filePathRelative)} is modified`,
-      )
-      await handlePageChange(app, app.dir.source(filePathRelative))
+      enqueue(async () => {
+        logger.info(
+          `dependency of page ${colors.magenta(filePathRelative)} is modified`,
+        )
+        await handlePageChange(app, app.dir.source(filePathRelative))
+      })
     }
   }
   depsWatcher.on('add', depsListener)
@@ -76,25 +84,34 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     },
     ignoreInitial: true,
   })
-  pagesWatcher.on('add', async (filePathRelative) => {
-    logger.info(`page ${colors.magenta(filePathRelative)} is created`)
-    const page = await handlePageAdd(app, app.dir.source(filePathRelative))
-    if (page === null) return
-    addDeps(page)
+  pagesWatcher.on('add', (filePathRelative) => {
+    enqueue(async () => {
+      logger.info(`page ${colors.magenta(filePathRelative)} is created`)
+      const page = await handlePageAdd(app, app.dir.source(filePathRelative))
+      if (page === null) return
+      addDeps(page)
+    })
   })
-  pagesWatcher.on('change', async (filePathRelative) => {
-    logger.info(`page ${colors.magenta(filePathRelative)} is modified`)
-    const result = await handlePageChange(app, app.dir.source(filePathRelative))
-    if (result === null) return
-    const [pageOld, pageNew] = result
-    removeDeps(pageOld)
-    addDeps(pageNew)
+  pagesWatcher.on('change', (filePathRelative) => {
+    enqueue(async () => {
+      logger.info(`page ${colors.magenta(filePathRelative)} is modified`)
+      const result = await handlePageChange(
+        app,
+        app.dir.source(filePathRelative),
+      )
+      if (result === null) return
+      const [pageOld, pageNew] = result
+      removeDeps(pageOld)
+      addDeps(pageNew)
+    })
   })
-  pagesWatcher.on('unlink', async (filePathRelative) => {
-    logger.info(`page ${colors.magenta(filePathRelative)} is removed`)
-    const page = await handlePageUnlink(app, app.dir.source(filePathRelative))
-    if (page === null) return
-    removeDeps(page)
+  pagesWatcher.on('unlink', (filePathRelative) => {
+    enqueue(async () => {
+      logger.info(`page ${colors.magenta(filePathRelative)} is removed`)
+      const page = await handlePageUnlink(app, app.dir.source(filePathRelative))
+      if (page === null) return
+      removeDeps(page)
+    })
   })
 
   return [pagesWatcher, depsWatcher]
