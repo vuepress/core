@@ -4,12 +4,12 @@ packages:
 
 catalogs:
   vite:
-    '@vitejs/plugin-vue': ^6.0.4
-    '@vitest/coverage-istanbul': ^4.1.0-beta.6
-    rolldown: ^1.0.0-rc.6
-    tsdown: ^0.21.0
-    vite: ^8.0.0-beta.16
-    vitest: ^4.1.0-beta.6
+    '@vitejs/plugin-vue': ^6.0.5
+    '@vitest/coverage-istanbul': ^4.1.0
+    rolldown: ^1.0.0-rc.9
+    tsdown: ^0.21.2
+    vite: ^8.0.0
+    vitest: ^4.1.0
   vue:
-    vue: ^3.5.29
+    vue: ^3.5.30
     vue-router: ^5.0.3

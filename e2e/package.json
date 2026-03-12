@@ -20,8 +20,8 @@
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.97.3",
-    "sass-embedded": "^1.97.3",
+    "sass": "^1.98.0",
+    "sass-embedded": "^1.98.0",
     "sass-loader": "^16.0.7",
     "vue": "catalog:vue",
     "vuepress": "workspace:*"

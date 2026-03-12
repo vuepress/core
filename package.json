@@ -31,9 +31,9 @@
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^20.4.3",
-    "@commitlint/config-conventional": "^20.4.3",
-    "@commitlint/types": "^20.4.3",
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "@commitlint/types": "^20.4.4",
     "@types/node": "^24.12.0",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "catalog:vite",
@@ -43,7 +43,7 @@
     "eslint-config-vuepress": "^7.1.0",
     "husky": "^9.1.7",
     "jiti": "^2.6.1",
-    "lint-staged": "^16.3.2",
+    "lint-staged": "^16.3.3",
     "prettier": "^3.8.1",
     "prettier-config-vuepress": "^7.1.0",
     "rimraf": "^6.1.3",
@@ -56,7 +56,7 @@
     "vitest": "catalog:vite",
     "vue-tsc": "^3.2.5"
   },
-  "packageManager": "pnpm@10.31.0",
+  "packageManager": "pnpm@10.32.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
