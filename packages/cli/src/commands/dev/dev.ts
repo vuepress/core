@@ -69,6 +69,9 @@ export const dev: DevCommand = async ({
     // process onCleanup hook to allow plugins to clean up side effects
     await app.pluginApi.hooks.onCleanup.process(app)
 
+    // clean up internal app state
+    app.writeTemp.cleanup()
+
     await Promise.all([
       // close all watchers
       ...watchers.map(async (item) => item.close()),
