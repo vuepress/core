@@ -15,7 +15,11 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   // avoid racing conditions when multiple file events arrive rapidly
   let queue: Promise<void> = Promise.resolve()
   const enqueue = (fn: () => Promise<void>): void => {
-    queue = queue.then(fn, fn)
+    queue = queue.then(fn).catch((err: unknown) => {
+      logger.error(
+        err instanceof Error ? err.stack || err.message : String(err),
+      )
+    })
   }
 
   // watch page deps
