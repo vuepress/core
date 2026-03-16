@@ -54,6 +54,15 @@ importers:
       '@vitest/coverage-istanbul':
         specifier: catalog:vite
         version: 4.1.0(vitest@4.1.0(@types/node@24.12.0)(vite@8.0.0(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(yaml@2.8.2)))
+      '@vuepress/eslint-config':
+        specifier: ^8.0.0
+        version: 8.0.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+      '@vuepress/prettier-config':
+        specifier: ^8.0.0
+        version: 8.0.0
+      '@vuepress/tsconfig':
+        specifier: ^8.0.0
+        version: 8.0.0
       bumpp:
         specifier: ^10.4.1
         version: 10.4.1(magicast@0.5.2)
@@ -63,9 +72,6 @@ importers:
       eslint:
         specifier: ^9.39.4
         version: 9.39.4(jiti@2.6.1)
-      eslint-config-vuepress:
-        specifier: ^7.1.0
-        version: 7.1.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -78,9 +84,6 @@ importers:
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
-      prettier-config-vuepress:
-        specifier: ^7.1.0
-        version: 7.1.0
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
@@ -90,9 +93,6 @@ importers:
       taze:
         specifier: ^19.10.0
         version: 19.10.0
-      tsconfig-vuepress:
-        specifier: ^7.0.0
-        version: 7.0.0
       tsdown:
         specifier: catalog:vite
         version: 0.21.2(synckit@0.11.12)(typescript@5.9.3)(vue-tsc@3.2.5(typescript@5.9.3))
@@ -1112,16 +1112,16 @@ packages:
     resolution: {integrity: sha512-00aAZ0F0NLik6I6Yba2emGbHLxv+QYrPH00qQ5dFKXlAo1Ll2RHDXwY7nN2WAfrx2pP+WrvSRFTGFCNGdzBDHw==}
     engines: {node: '>=20.0.0'}
 
-  '@meteorlxy/eslint-config@6.13.0':
-    resolution: {integrity: sha512-xWQzGQReP3W/jKd7FkO3AqAGhnfJSx6dO2VBhEFM23r6wKBF8LJCs+190OJp0fet2VNvuQDpkEpYL7w0li3d/Q==}
+  '@meteorlxy/eslint-config@7.1.0':
+    resolution: {integrity: sha512-dhVO8xCvJmi72hfgzRPi1MDJHOH0edmT9IhCPNdwJIATQGdhCN2HnNThC9HuUVUHduT7F2wVG/EEd7kqK6XoPA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      eslint: ^9.39.2
+      eslint: ^9.39.4
       eslint-plugin-react: ^7.37.5
-      eslint-plugin-react-hooks: ^5.2.0
-      eslint-plugin-react-refresh: ^0.4.19
-      eslint-plugin-vue: ^10.0.0
-      vue-eslint-parser: ^10.1.3
+      eslint-plugin-react-hooks: ^7.0.1
+      eslint-plugin-react-refresh: ^0.5.2
+      eslint-plugin-vue: ^10.8.0
+      vue-eslint-parser: ^10.4.0
     peerDependenciesMeta:
       eslint-plugin-react:
         optional: true
@@ -1831,6 +1831,17 @@ packages:
 
   '@vuepress-e2e/style-exports@file:e2e/modules/style-exports':
     resolution: {directory: e2e/modules/style-exports, type: directory}
+
+  '@vuepress/eslint-config@8.0.0':
+    resolution: {integrity: sha512-++kTORlSP8/A2cc/aaYYMlYExNlNz8yxBBGRxTDcuuY+q3jBChV6P42PIZdZs51rHbqTB8SMwdCSwYm040QnHw==}
+    peerDependencies:
+      eslint: ^9.39.4
+
+  '@vuepress/prettier-config@8.0.0':
+    resolution: {integrity: sha512-cnizGLIKEERQOnfhr7cFGbEAxz757gFI2yd+Vdz8VAj9urLdsPDtj5nVRsqR9lbdRG5vtzIbHhgjwDslDIYapA==}
+
+  '@vuepress/tsconfig@8.0.0':
+    resolution: {integrity: sha512-FPed2UTXvY4CuJAwAYbGYCWTynWSm2R8E5RqeG6/Bim8KC01A5Jyr1Jf9yPNKV3Ps6Brpi2KJQyQNQ5K/HEJUg==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -2720,10 +2731,6 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
-
-  eslint-config-vuepress@7.1.0:
-    resolution: {integrity: sha512-Z7xwxUsDw4h3SFFtAgRZT2FOmEKo3nj6H6VQfXO/HUjIuB46BV6hL/NQDfsGf+Dmksc5e5cHOMC8e28qppF9mw==}
-    engines: {node: '>=20.0.0'}
 
   eslint-import-context@0.1.9:
     resolution: {integrity: sha512-K9Hb+yRaGAGUbwjhFNHvSmmkZs9+zbuoe3kFQ4V1wYjrepUFYM2dZAfNtjbbj3qsPfUfsA68Bx/ICWQMi+C8Eg==}
@@ -4303,10 +4310,6 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-config-vuepress@7.1.0:
-    resolution: {integrity: sha512-+Jf+L3PANzQRVFIyH6JFrOV24MepvLUk1DzbPY2g6PUawLtedWxYx85PnUC2K1EINPljcthEnKheVvtmzCfzeg==}
-    engines: {node: '>=20.0.0'}
-
   prettier@3.8.1:
     resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
     engines: {node: '>=14'}
@@ -4963,9 +4966,6 @@ packages:
     engines: {node: '>=18.12'}
     peerDependencies:
       typescript: '>=4.8.4'
-
-  tsconfig-vuepress@7.0.0:
-    resolution: {integrity: sha512-P3EoKacv1UWp5X30/huXjxUinnj8rl4FcTS29nW4TANflkvoh7JDDiXp2c/Tmcy7Ex4N+3exjr/BjPn7Jadnew==}
 
   tsdown@0.21.2:
     resolution: {integrity: sha512-pP8eAcd1XAWjl5gjosuJs0BAuVoheUe3V8VDHx31QK7YOgXjcCMsBSyFWO3CMh/CSUkjRUzR96JtGH3WJFTExQ==}
@@ -6069,7 +6069,7 @@ snapshots:
 
   '@mdit-vue/types@3.0.2': {}
 
-  '@meteorlxy/eslint-config@6.13.0(eslint-plugin-vue@10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1))))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))':
+  '@meteorlxy/eslint-config@7.1.0(eslint-plugin-vue@10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1))))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))':
     dependencies:
       '@eslint/core': 0.17.0
       '@eslint/markdown': 7.5.1
@@ -6836,6 +6836,29 @@ snapshots:
   '@vuepress-e2e/conditional-exports@file:e2e/modules/conditional-exports': {}
 
   '@vuepress-e2e/style-exports@file:e2e/modules/style-exports': {}
+
+  '@vuepress/eslint-config@8.0.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)':
+    dependencies:
+      '@meteorlxy/eslint-config': 7.1.0(eslint-plugin-vue@10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1))))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))
+      eslint: 9.39.4(jiti@2.6.1)
+      eslint-plugin-vue: 10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))
+      vue-eslint-parser: 10.4.0(eslint@9.39.4(jiti@2.6.1))
+    transitivePeerDependencies:
+      - '@eslint/json'
+      - '@stylistic/eslint-plugin'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-node
+      - eslint-plugin-react
+      - eslint-plugin-react-hooks
+      - eslint-plugin-react-refresh
+      - supports-color
+      - typescript
+
+  '@vuepress/prettier-config@8.0.0':
+    dependencies:
+      prettier: 3.8.1
+
+  '@vuepress/tsconfig@8.0.0': {}
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -7742,24 +7765,6 @@ snapshots:
   eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.4(jiti@2.6.1)
-
-  eslint-config-vuepress@7.1.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3):
-    dependencies:
-      '@meteorlxy/eslint-config': 6.13.0(eslint-plugin-vue@10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1))))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))
-      '@typescript-eslint/utils': 8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
-      eslint-plugin-vue: 10.8.0(@typescript-eslint/parser@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@9.39.4(jiti@2.6.1)))
-      vue-eslint-parser: 10.4.0(eslint@9.39.4(jiti@2.6.1))
-    transitivePeerDependencies:
-      - '@eslint/json'
-      - '@stylistic/eslint-plugin'
-      - '@typescript-eslint/parser'
-      - eslint
-      - eslint-import-resolver-node
-      - eslint-plugin-react
-      - eslint-plugin-react-hooks
-      - eslint-plugin-react-refresh
-      - supports-color
-      - typescript
 
   eslint-import-context@0.1.9(unrs-resolver@1.11.1):
     dependencies:
@@ -9472,8 +9477,6 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-config-vuepress@7.1.0: {}
-
   prettier@3.8.1: {}
 
   pretty-error@4.0.0:
@@ -10138,8 +10141,6 @@ snapshots:
   ts-api-utils@2.4.0(typescript@5.9.3):
     dependencies:
       typescript: 5.9.3
-
-  tsconfig-vuepress@7.0.0: {}
 
   tsdown@0.21.2(synckit@0.11.12)(typescript@5.9.3)(vue-tsc@3.2.5(typescript@5.9.3)):
     dependencies:
