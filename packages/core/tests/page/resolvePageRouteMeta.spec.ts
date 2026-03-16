@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { resolvePageRouteMeta } from '../../src/index.js'
 
 it('should use frontmatter routeMeta', () => {

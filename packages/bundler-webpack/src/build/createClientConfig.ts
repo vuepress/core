@@ -5,6 +5,7 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { Module } from 'webpack'
 import type { Config } from 'webpack-v5-chain'
+
 import { createClientBaseConfig } from '../config/index.js'
 import type { WebpackBundlerOptions } from '../types.js'
 import { createClientPlugin } from './createClientPlugin.js'

@@ -3,6 +3,7 @@ import {
   inferRoutePath,
   resolveLocalePath,
 } from '@vuepress/shared'
+
 import type { App, PageOptions } from '../types/index.js'
 
 /**

@@ -1,5 +1,6 @@
 import { siteData as siteDataRaw } from '@internal/siteData'
 import { shallowRef } from 'vue'
+
 import type { SiteData, SiteDataRef } from '../types/index.js'
 
 /**

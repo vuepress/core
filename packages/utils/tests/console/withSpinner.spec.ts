@@ -1,5 +1,7 @@
 import process from 'node:process'
+
 import { beforeEach, expect, it, vi } from 'vitest'
+
 import { withSpinner } from '../../src/index.js'
 
 const mocks = vi.hoisted(() => {

@@ -1,6 +1,7 @@
 import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
 import type { PluginWithOptions } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
+
 import type { MarkdownEnv } from '../../types.js'
 import { resolvePaths } from './resolvePaths.js'
 

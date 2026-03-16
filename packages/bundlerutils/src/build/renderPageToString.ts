@@ -2,8 +2,8 @@ import type { Page } from '@vuepress/core'
 import type { VuepressSSRContext } from '@vuepress/shared'
 import type { App as VueApp } from 'vue'
 import { ssrContextKey } from 'vue'
-import type { SSRContext } from 'vue/server-renderer'
 import type { Router } from 'vue-router'
+import type { SSRContext } from 'vue/server-renderer'
 
 export type PageSSRContext = SSRContext & VuepressSSRContext
 

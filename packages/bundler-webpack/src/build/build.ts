@@ -3,6 +3,7 @@ import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
 import type { MultiConfiguration } from 'webpack'
 import webpack from 'webpack'
+
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
 import {

@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { isLinkHttp } from '../../src/index.js'
 
 const TEST_CASES: [string, ReturnType<typeof isLinkHttp>][] = [

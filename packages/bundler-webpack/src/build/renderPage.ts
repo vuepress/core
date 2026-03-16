@@ -4,6 +4,7 @@ import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
 import type { App as VueApp } from 'vue'
 import type { Router } from 'vue-router'
+
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
 import { renderPageScripts } from './renderPageScripts.js'

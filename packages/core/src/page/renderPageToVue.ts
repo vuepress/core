@@ -1,5 +1,6 @@
 import { isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
+
 import type { App, Page } from '../types/index.js'
 
 const TEMPLATE_WRAPPER_TAG_OPEN = '<div>'

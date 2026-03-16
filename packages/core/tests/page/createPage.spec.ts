@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
+
 import type { Bundler } from '../../src/index.js'
 import { createBaseApp, createPage } from '../../src/index.js'
 

@@ -1,4 +1,5 @@
 import { debug } from '@vuepress/utils'
+
 import type { App } from '../types/index.js'
 import {
   prepareClientConfigs,

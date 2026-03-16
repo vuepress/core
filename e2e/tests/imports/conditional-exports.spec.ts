@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+
 import { COMMAND } from '../../utils/env'
 
 test('should load different files correctly', async ({ page }) => {

@@ -1,4 +1,5 @@
 import type { Markdown, MarkdownOptions } from '@vuepress/markdown'
+
 import type { App } from '../app/index.js'
 import type { BundlerOptions } from '../bundler.js'
 import type { Page, PageOptions } from '../page.js'

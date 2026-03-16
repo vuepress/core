@@ -3,22 +3,28 @@
   "version": "2.0.0-rc.27",
   "description": "Bundler webpack package of VuePress",
   "keywords": [
-    "vuepress-bundler",
-    "vuepress",
     "bundler",
+    "vuepress",
+    "vuepress-bundler",
     "webpack"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "imports": {
     "#vuepress-markdown-loader": "./dist/vuepress-markdown-loader.cjs",
     "#vuepress-ssr-loader": "./dist/vuepress-ssr-loader.cjs"
@@ -27,12 +33,9 @@
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -64,8 +67,5 @@
     "webpack-dev-server": "^5.2.3",
     "webpack-merge": "^6.0.1",
     "webpack-v5-chain": "^1.1.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

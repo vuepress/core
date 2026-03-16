@@ -1,4 +1,5 @@
 import { normalizeRoutePath } from '@vuepress/shared'
+
 import { redirects, routes } from '../internal/routes.js'
 
 /**

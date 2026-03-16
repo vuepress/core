@@ -1,6 +1,7 @@
 import type { App } from '@vuepress/core'
 import type { InlineConfig } from 'vite'
 import { mergeConfig } from 'vite'
+
 import {
   vuepressBuildPlugin,
   vuepressConfigPlugin,

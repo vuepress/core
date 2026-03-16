@@ -1,4 +1,5 @@
 import type { AppConfig, PluginObject } from '@vuepress/core'
+
 import type { BaseCommandCliOptions } from '../types/index.js'
 import { resolveAppConfig } from './resolveAppConfig.js'
 import { resolveCliAppConfig } from './resolveCliAppConfig.js'

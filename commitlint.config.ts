@@ -1,4 +1,5 @@
 import type { UserConfig } from '@commitlint/types'
+
 import { PACKAGES } from './scripts/constants.js'
 
 export default {

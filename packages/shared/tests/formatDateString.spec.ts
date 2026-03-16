@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { formatDateString } from '../src/index.js'
 
 const TEST_CASES = [

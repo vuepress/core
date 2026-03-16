@@ -1,4 +1,5 @@
 import { debug } from '@vuepress/utils'
+
 import type { UserConfig } from '../types/index.js'
 import { loadUserConfig } from './loadUserConfig.js'
 import { resolveUserConfigConventionalPath } from './resolveUserConfigConventionalPath.js'

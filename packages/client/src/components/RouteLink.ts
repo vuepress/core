@@ -1,6 +1,7 @@
 import type { SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+
 import { resolveRouteFullPath } from '../router/index.js'
 
 /**

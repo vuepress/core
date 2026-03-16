@@ -1,6 +1,8 @@
 import process from 'node:process'
+
 import { createBuildApp } from '@vuepress/core'
 import { debug, formatMs, fs, logger, withSpinner } from '@vuepress/utils'
+
 import { resolveConfig } from '../config/index.js'
 import type { BuildCommand } from '../types/index.js'
 

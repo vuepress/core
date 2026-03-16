@@ -1,5 +1,6 @@
 import vuePlugin from '@vitejs/plugin-vue'
 import type { Plugin } from 'vite'
+
 import type { ViteBundlerOptions } from '../types.js'
 
 /**

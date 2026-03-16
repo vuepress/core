@@ -1,4 +1,5 @@
 import { logger, path } from '@vuepress/utils'
+
 import type { App, PageOptions } from '../types/index.js'
 
 /**

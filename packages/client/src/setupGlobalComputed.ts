@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 import { computed, customRef } from 'vue'
 import type { Router } from 'vue-router'
+
 import { clientDataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
 import { siteData } from './internal/siteData.js'

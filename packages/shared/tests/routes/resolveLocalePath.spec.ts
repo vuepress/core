@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import type { LocaleConfig } from '../../src/index.js'
 import { resolveLocalePath } from '../../src/index.js'
 

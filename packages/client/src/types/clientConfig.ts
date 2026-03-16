@@ -1,5 +1,6 @@
 import type { App, Component } from 'vue'
 import type { Router } from 'vue-router'
+
 import type { Layouts, SiteDataRef } from './clientData.js'
 
 /**

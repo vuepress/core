@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
+
 import { vPrePlugin } from '../../src/index.js'
 
 const CODE_FENCE = '```'

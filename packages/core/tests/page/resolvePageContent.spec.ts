@@ -1,5 +1,6 @@
 import { fs, path } from '@vuepress/utils'
 import { expect, it } from 'vitest'
+
 import { resolvePageContent } from '../../src/index.js'
 
 it('should resolve file content correctly from file path', async () => {

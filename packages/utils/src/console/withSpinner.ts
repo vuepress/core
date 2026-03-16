@@ -1,6 +1,8 @@
 import process from 'node:process'
+
 import type { Ora } from 'ora'
 import ora from 'ora'
+
 import { formatMs } from './formatMs.js'
 
 export const withSpinner =

@@ -1,5 +1,6 @@
 import { logger, ora } from '@vuepress/utils'
 import envinfo from 'envinfo'
+
 import type { InfoCommand } from '../types/index.js'
 
 export const info: InfoCommand = async () => {

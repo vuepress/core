@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { expect, it, vi } from 'vitest'
+
 import type { Bundler, PluginFunction, PluginObject } from '../../src/index.js'
 import { createBaseApp, resolvePluginObject } from '../../src/index.js'
 

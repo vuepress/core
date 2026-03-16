@@ -1,5 +1,6 @@
 import { isString } from '@vuepress/shared'
 import { debug, fs } from '@vuepress/utils'
+
 import type { PageOptions } from '../types/index.js'
 
 const log = debug('vuepress:core/page')

@@ -1,4 +1,5 @@
 import { colors, debug, warn } from '@vuepress/utils'
+
 import type { App, Plugin } from '../types/index.js'
 import { resolvePluginObject } from './resolvePluginObject.js'
 

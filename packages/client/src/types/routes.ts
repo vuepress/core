@@ -1,4 +1,5 @@
 import type { Component } from 'vue'
+
 import type { PageData } from '../types/index.js'
 
 export interface PageChunk {

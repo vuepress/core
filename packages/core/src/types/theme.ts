@@ -1,4 +1,5 @@
 import type { TemplateRenderer } from '@vuepress/utils'
+
 import type {
   Plugin,
   PluginConfig,

@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
+
 import type { MarkdownEnv } from '../../src/index.js'
 import { linksPlugin } from '../../src/index.js'
 

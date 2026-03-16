@@ -1,6 +1,8 @@
 import process from 'node:process'
+
 import type { AppConfig } from '@vuepress/core'
 import { path } from '@vuepress/utils'
+
 import type { BaseCommandCliOptions } from '../types/index.js'
 
 const OPTIONS_COMMON = ['debug', 'open', 'port', 'host'] as const

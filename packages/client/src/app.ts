@@ -1,5 +1,6 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
+
 import { usePageLayout } from './composables/index.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'

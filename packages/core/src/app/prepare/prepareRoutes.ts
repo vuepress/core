@@ -1,4 +1,5 @@
 import { normalizeRoutePath } from '@vuepress/shared'
+
 import type { App, Page } from '../../types/index.js'
 
 const ROUTES_VAR_NAME = 'routes'

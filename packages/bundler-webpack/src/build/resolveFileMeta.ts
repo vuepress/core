@@ -1,4 +1,5 @@
 import { path } from '@vuepress/utils'
+
 import { resolveFileMetaType } from './resolveFileMetaType.js'
 import type { FileMeta } from './types.js'
 

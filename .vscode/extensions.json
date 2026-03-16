@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
+    "oxc.oxc-vscode",
     "ms-playwright.playwright",
     "vitest.explorer",
     "vue.volar"

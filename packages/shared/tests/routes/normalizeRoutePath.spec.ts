@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { normalizeRoutePath } from '../../src/index.js'
 
 const TEST_CASES = [

@@ -3,6 +3,7 @@ import type { App, Page } from '@vuepress/core'
 import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import chokidar from 'chokidar'
+
 import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'

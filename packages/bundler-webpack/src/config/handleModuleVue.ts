@@ -1,8 +1,10 @@
 import { createRequire } from 'node:module'
+
 import type { App } from '@vuepress/core'
 import type { VueLoaderOptions } from 'vue-loader'
 import { VueLoaderPlugin } from 'vue-loader'
 import type { Config } from 'webpack-v5-chain'
+
 import type { VuepressMarkdownLoaderOptions } from '../loaders/vuepressMarkdownLoader'
 import type { WebpackBundlerOptions } from '../types.js'
 

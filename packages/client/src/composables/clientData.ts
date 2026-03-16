@@ -1,5 +1,6 @@
 import type { InjectionKey } from 'vue'
 import { inject } from 'vue'
+
 import type { ClientData } from '../types/index.js'
 
 /**

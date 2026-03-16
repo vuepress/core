@@ -4,6 +4,7 @@ import {
 } from '@internal/routes'
 import type { Ref } from 'vue'
 import { shallowRef } from 'vue'
+
 import type { Redirects, Routes } from '../types/index.js'
 
 /**

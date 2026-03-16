@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+
 import { loadUserConfig } from '../../src/index.js'
 
 const TS_CASES: [string, unknown][] = [

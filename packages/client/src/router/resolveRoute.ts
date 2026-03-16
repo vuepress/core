@@ -1,4 +1,5 @@
 import { splitPath } from '@vuepress/shared'
+
 import { routes } from '../internal/routes.js'
 import type { Route, RouteMeta } from '../types/index.js'
 import { resolveRoutePath } from './resolveRoutePath.js'

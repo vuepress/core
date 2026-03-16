@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import type { App, BuildApp, Bundler } from '../../src/index.js'
 import { createBuildApp } from '../../src/index.js'
 

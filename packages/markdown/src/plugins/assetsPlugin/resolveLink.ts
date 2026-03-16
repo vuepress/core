@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { decode } from 'mdurl'
+
 import type { MarkdownEnv } from '../../types.js'
 
 interface ResolveLinkOptions {

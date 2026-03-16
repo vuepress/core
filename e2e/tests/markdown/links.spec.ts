@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+
 import { BASE } from '../../utils/env'
 
 test('should render links and navigate between pages correctly', async ({

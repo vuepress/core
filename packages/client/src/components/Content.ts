@@ -1,4 +1,5 @@
 import { computed, defineAsyncComponent, defineComponent, h } from 'vue'
+
 import { usePageComponent } from '../composables/index.js'
 import { contentUpdatedCallbacks } from '../internal/contentUpdatedCallbacks'
 import { resolveRoute } from '../router/index.js'

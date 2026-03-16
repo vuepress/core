@@ -1,4 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
+
 import { resolveVPre } from './resolveVPre.js'
 
 export interface VPrePluginOptions {

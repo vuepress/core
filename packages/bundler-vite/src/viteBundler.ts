@@ -1,4 +1,5 @@
 import type { Bundler } from '@vuepress/core'
+
 import { build } from './build/index.js'
 import { dev } from './dev.js'
 import type { ViteBundlerOptions } from './types.js'

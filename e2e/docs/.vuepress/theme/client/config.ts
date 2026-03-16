@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import RootComponentFromTheme from './components/RootComponentFromTheme.vue'
 import CssModulesLayout from './layouts/CssModulesLayout.vue'
 import CustomLayout from './layouts/CustomLayout.vue'

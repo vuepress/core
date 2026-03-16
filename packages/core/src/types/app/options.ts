@@ -1,6 +1,7 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
 import type { SiteData } from '@vuepress/shared'
 import type { TemplateRenderer } from '@vuepress/utils'
+
 import type { Bundler } from '../bundler.js'
 import type { PluginConfig } from '../plugin.js'
 import type { Theme } from '../theme.js'

@@ -1,4 +1,5 @@
 import { debug, tinyglobby } from '@vuepress/utils'
+
 import { createPage } from '../page/index.js'
 import type { App, Page } from '../types/index.js'
 

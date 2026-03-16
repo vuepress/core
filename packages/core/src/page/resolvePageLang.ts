@@ -1,4 +1,5 @@
 import { isString } from '@vuepress/shared'
+
 import type { App, PageFrontmatter } from '../types/index.js'
 
 /**

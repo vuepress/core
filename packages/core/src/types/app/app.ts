@@ -1,5 +1,6 @@
 import type { Markdown } from '@vuepress/markdown'
 import type { SiteData } from '@vuepress/shared'
+
 import type { Bundler } from '../bundler.js'
 import type { Page } from '../page.js'
 import type { Plugin } from '../plugin.js'

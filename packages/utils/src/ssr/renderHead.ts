@@ -1,4 +1,5 @@
 import type { HeadConfig } from '@vuepress/shared'
+
 import { renderHeadAttrs } from './renderHeadAttrs.js'
 
 /**

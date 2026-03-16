@@ -1,4 +1,5 @@
 import { splitPath } from '@vuepress/shared'
+
 import { resolveRoutePath } from './resolveRoutePath.js'
 
 /**

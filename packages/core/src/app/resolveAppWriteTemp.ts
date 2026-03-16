@@ -1,4 +1,5 @@
 import { fs, hash } from '@vuepress/utils'
+
 import type { AppDir, AppWriteTemp } from '../types/index.js'
 
 interface WriteTempCache {
