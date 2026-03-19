@@ -64,7 +64,9 @@ export interface Hooks {
   onPrepared: LifeCycleHook
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onPageUpdated: LifeCycleHook<
-    [type: 'create' | 'delete' | 'update', page: Page, oldPage: Page | null]
+    | [type: 'create', newPage: Page, oldPage: null]
+    | [type: 'delete', newPage: null, oldPage: Page]
+    | [type: 'update', newPage: Page, oldPage: Page]
   >
   onGenerated: LifeCycleHook
   extendsMarkdownOptions: ExtendsHook<MarkdownOptions>
