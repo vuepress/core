@@ -68,6 +68,9 @@ export const dev: DevCommand = async ({
 
   // restart dev command
   const restart = async (): Promise<void> => {
+    // clean up internal app state
+    app.writeTemp.cleanup()
+
     await Promise.all([
       // close all watchers
       ...watchers.map(async (item) => item.close()),
