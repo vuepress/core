@@ -27,7 +27,7 @@ Bundler 及其相关 Packages ：
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 20.9.0+**
+- [Node.js](http://nodejs.org) - 版本遵循 `.node-version` 文件中指定的版本要求
 
 克隆代码仓库，并安装依赖：
 
