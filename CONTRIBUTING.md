@@ -27,7 +27,7 @@ Bundler and related packages:
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) **version 20.9.0+**
+- [Node.js](http://nodejs.org) - Version should follow the requirement specified in `.node-version` file
 
 Clone the repo, and install dependencies:
 
