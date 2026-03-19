@@ -9,6 +9,17 @@ import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
 import { createPageDepsHelper } from './pageDepsHelper.js'
 
+const DEFAULT_IGNORE_PATTERNS = [
+  // package managers
+  '**/node_modules/**',
+  '**/.yarn/**',
+
+  // version controls
+  '**/.git/**',
+  '**/.svn/**',
+  '**/.hg/**',
+]
+
 /**
  * Watch page files and deps, return file watchers
  */
@@ -56,13 +67,16 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const tempDir = app.dir.temp()
   const cacheDir = app.dir.cache()
   const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
-  const pageMatcher = picomatch(pagePatterns, { cwd: sourceDir })
+  const pageMatcher = picomatch(pagePatterns, {
+    cwd: sourceDir,
+    ignore: DEFAULT_IGNORE_PATTERNS,
+  })
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
       const relative = path.relative(sourceDir, filepath)
 
-      // This is important so that folders like node_modules will be ignored immediately without traversing their children
+      // This is important so that huge deep folders will be ignored immediately without traversing their children
       if (ignoreMatcher(relative)) {
         return true
       }
