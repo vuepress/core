@@ -68,7 +68,9 @@ export interface AppWriteTemp {
    * Clean up the internal write temp cache.
    *
    * This should be called when the dev server restarts
-   * to avoid stale cache and in-flight write promises.
+   * to avoid stale cache and to release references to any
+   * in-memory write state so that pending write promises can
+   * complete and be garbage-collected naturally.
    */
   cleanup: () => void
 }
