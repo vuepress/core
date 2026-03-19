@@ -110,8 +110,15 @@ export const watchPageFiles = (
     const existingPromise =
       pagePromises.get(filePathRelative) ?? Promise.resolve()
     const newPromise = (async () => {
-      await existingPromise
-      await processPageEvents(filePathRelative)
+      try {
+        await existingPromise
+        await processPageEvents(filePathRelative)
+      } catch (error) {
+        logger.error(
+          `Error while processing page events for ${colors.magenta(filePathRelative)}:`,
+          error,
+        )
+      }
     })()
     pagePromises.set(filePathRelative, newPromise)
   }
