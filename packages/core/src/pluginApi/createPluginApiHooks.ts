@@ -12,6 +12,7 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   onPrepared: createHookQueue('onPrepared'),
   onWatched: createHookQueue('onWatched'),
   onPageUpdated: createHookQueue('onPageUpdated'),
+  onCleanup: createHookQueue('onCleanup'),
   onGenerated: createHookQueue('onGenerated'),
 
   // extends hooks

@@ -59,6 +59,9 @@ export const build: BuildCommand = async ({
   // build
   await app.build()
 
+  // plugin hook: onCleanup with 'compile-end' stage
+  await app.pluginApi.hooks.onCleanup.process(app, 'compile-end')
+
   // plugin hook: onGenerated
   await app.pluginApi.hooks.onGenerated.process(app)
 

@@ -55,6 +55,9 @@ export const dev: DevCommand = async ({
     await app.prepare()
   })
 
+  // process onCleanup hook with 'prepared' stage
+  await app.pluginApi.hooks.onCleanup.process(app, 'prepared')
+
   // start dev server
   const close = await app.dev()
 
@@ -68,6 +71,12 @@ export const dev: DevCommand = async ({
 
   // restart dev command
   const restart = async (): Promise<void> => {
+    // process onCleanup hook with 'restart' stage
+    await app.pluginApi.hooks.onCleanup.process(app, 'restart')
+
+    // clean up internal app state
+    app.writeTemp.cleanup()
+
     await Promise.all([
       // close all watchers
       ...watchers.map(async (item) => item.close()),
@@ -87,6 +96,9 @@ export const dev: DevCommand = async ({
     })
     logger.tip(`dev server has restarted, please refresh your browser`)
   }
+
+  // expose restart on the app instance for plugins
+  app.restartDevServer = restart
 
   // watch page files
   watchers.push(...watchPageFiles(app))
