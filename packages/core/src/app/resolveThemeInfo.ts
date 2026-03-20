@@ -30,5 +30,6 @@ export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
       themeObject.templateBuildRenderer ??
       parentThemeInfo.templateBuildRenderer,
     templateDev: themeObject.templateDev ?? parentThemeInfo.templateDev,
+    userStyle: themeObject.userStyle ?? parentThemeInfo.userStyle,
   }
 }
