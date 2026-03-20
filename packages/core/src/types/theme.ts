@@ -51,6 +51,11 @@ export interface ThemeObject extends Omit<PluginObject, 'multiple'> {
    * Allow overriding default templateDev
    */
   templateDev?: string
+
+  /**
+   * Allow specifying user styles, which will be injected into client at the bottom
+   */
+  userStyle?: string
 }
 
 /**
@@ -76,4 +81,9 @@ export interface ThemeInfo {
    * Default dev template
    */
   templateDev?: string
+
+  /**
+   * Allow specifying user styles, which will be injected into client at the bottom
+   */
+  userStyle?: string
 }
