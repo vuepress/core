@@ -595,17 +595,17 @@ describe('html media tag', () => {
           aliasSupport: '@-perfix',
         }),
         env: {
-          filePathRelative: 'sub/foo.md',
+          base: '/base/',
         },
         expected: [
           /* src */
           // relative paths
-          '<audio src="@source/sub/foo.mp3">',
-          '<video src="@source/sub/foo.mp4">',
-          '<source src="@source/sub/foo.mp4">',
-          '<audio src="@source/foo.mp3">',
-          '<video src="@source/foo.mp4">',
-          '<source src="@source/foo.mp4">',
+          '<audio src="./foo.mp3">',
+          '<video src="./foo.mp4">',
+          '<source src="./foo.mp4">',
+          '<audio src="../foo.mp3">',
+          '<video src="../foo.mp4">',
+          '<source src="../foo.mp4">',
           // absolute paths
           '<audio src="/foo.mp3">',
           '<video src="/foo.mp4">',
@@ -615,9 +615,9 @@ describe('html media tag', () => {
           '<video src="@alias/foo.mp4">',
           '<source src="@alias/foo.mp4">',
           // no-prefix paths
-          '<audio src="@source/sub/sub2/foo.mp3">',
-          '<video src="@source/sub/sub2/foo.mp4">',
-          '<source src="@source/sub/sub2/foo.mp4">',
+          '<audio src="./sub2/foo.mp3">',
+          '<video src="./sub2/foo.mp4">',
+          '<source src="./sub2/foo.mp4">',
         ],
       },
     ]

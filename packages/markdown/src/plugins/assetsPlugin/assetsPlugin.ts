@@ -9,6 +9,21 @@ export interface AssetsPluginOptions {
    * Whether to prepend base to absolute path
    */
   absolutePathPrependBase?: boolean
+
+  /**
+   * Use aliases for non-strict relative paths.
+   *
+   * This is a path that does not start
+   * with `./` or `../` or `/` or `<protocol header>`:
+   * `<img src="path1/path2.png" />`
+   *
+   * - If the option is `true`. `path1` is regarded as an alias.
+   * - If the option is `false`. It is regarded as a relative path.
+   * - If the option is `"@-prefix"`.
+   *   If the path starts with `@`, `path1` is regarded as an alias;
+   *   Otherwise, it is regarded as a relative path.
+   */
+  aliasSupport?: boolean | '@-prefix'
 }
 
 /**
@@ -16,7 +31,10 @@ export interface AssetsPluginOptions {
  */
 export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md,
-  { absolutePathPrependBase = false }: AssetsPluginOptions = {},
+  {
+    absolutePathPrependBase = false,
+    aliasSupport = true,
+  }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
   const rawImageRule = md.renderer.rules.image!
@@ -47,6 +65,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
               absolutePathPrependBase,
+              aliasSupport,
             })}${quote}`,
         )
         // handle srcset
