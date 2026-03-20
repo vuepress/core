@@ -46,7 +46,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
     if (link) {
       // replace the original link with resolved link
-      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase }))
+      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase, aliasSupport }))
     }
 
     return rawImageRule(tokens, idx, options, env, self)
@@ -81,6 +81,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                     `${resolveLink(url.trim(), {
                       env,
                       absolutePathPrependBase,
+                      aliasSupport,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )

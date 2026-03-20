@@ -25,13 +25,13 @@ export const resolveLink = (
 
   // handle alias support
   if (aliasSupport !== true) {
-    const hasPrefix = link.startsWith('/') || link.startsWith('./') || link.startsWith('../') || /[A-z]+:\/\//.test(link)
+    const hasPrefix = link.startsWith('/') || link.startsWith('./') || link.startsWith('../') || /[A-Za-z]+:\/\//.test(link)
     if (!hasPrefix) {
       if (aliasSupport === false) {
-        resolvedLink = `./${link}`
+        resolvedLink = `./${resolvedLink}`
       }
       else if (!link.startsWith('@')) {
-        resolvedLink = `./${link}`
+        resolvedLink = `./${resolvedLink}`
       }
     }
   }
