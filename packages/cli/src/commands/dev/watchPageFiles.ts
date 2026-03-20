@@ -110,17 +110,21 @@ export const watchPageFiles = (
     const existingPromise =
       pagePromises.get(filePathRelative) ?? Promise.resolve()
     const newPromise = (async () => {
+      await existingPromise
       try {
-        await existingPromise
+        await processPageEvents(filePathRelative)
       } catch (error) {
         logger.error(
           `Error while processing page events for ${colors.magenta(filePathRelative)}:`,
           error,
         )
-      } finally {
-        await processPageEvents(filePathRelative)
       }
-    })().finally(() => pagePromises.delete(filePathRelative))
+    })()
+      // Only delete if this promise is still the current one (compare by identity)
+      .finally(() => {
+        if (pagePromises.get(filePathRelative) === newPromise)
+          pagePromises.delete(filePathRelative)
+      })
     pagePromises.set(filePathRelative, newPromise)
   }
 
@@ -187,7 +191,7 @@ export const watchPageFiles = (
     pageEventHandler(filePathRelative, 'unlink')
   })
 
-  // flush all pending page operations and reset
+  // cancel queued page events, wait for in-flight operations to finish, and reset
   const cleanup = async (): Promise<void> => {
     // clear pending events
     pendingEvents.clear()
