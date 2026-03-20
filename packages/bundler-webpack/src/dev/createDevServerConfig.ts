@@ -1,7 +1,9 @@
 import { sep } from 'node:path'
+
 import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import type WebpackDevServer from 'webpack-dev-server'
+
 import type { WebpackBundlerOptions } from '../types.js'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 

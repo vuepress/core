@@ -1,6 +1,7 @@
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 import { expect, it } from 'vitest'
+
 import type { Bundler } from '../../src/index.js'
 import { createBaseApp, resolveAppPages } from '../../src/index.js'
 
@@ -12,7 +13,7 @@ it('should create two pages with default 404 page', async () => {
   })
   app.markdown = createMarkdown()
 
-  const pages = await resolveAppPages(app)
+  const { pages } = await resolveAppPages(app)
   const fooPage = pages.find((page) => page.path === '/foo.html')
   const barPage = pages.find((page) => page.path === '/bar.html')
   const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -32,7 +33,7 @@ it('should create two pages with custom 404 page', async () => {
   })
   app.markdown = createMarkdown()
 
-  const pages = await resolveAppPages(app)
+  const { pages } = await resolveAppPages(app)
   const fooPage = pages.find((page) => page.path === '/foo.html')
   const barPage = pages.find((page) => page.path === '/bar.html')
   const notFoundPage = pages.find((page) => page.path === '/404.html')
@@ -60,7 +61,7 @@ it('should process extendsPageOptions hook correctly', async () => {
   app.pluginApi.registerHooks()
   app.markdown = createMarkdown()
 
-  const pages = await resolveAppPages(app)
+  const { pages } = await resolveAppPages(app)
 
   pages.forEach((page) => {
     expect(page.frontmatter.foo).toBe('bar')
@@ -83,7 +84,7 @@ it('should process extendsPage hook correctly', async () => {
   app.pluginApi.registerHooks()
   app.markdown = createMarkdown()
 
-  const pages = await resolveAppPages(app)
+  const { pages } = await resolveAppPages(app)
 
   pages.forEach((page) => {
     expect(page.frontmatter.foo).toBe('baz')

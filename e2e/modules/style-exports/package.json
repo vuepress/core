@@ -1,6 +1,9 @@
 {
   "name": "@vuepress-e2e/style-exports",
   "type": "module",
+  "main": "./index.css",
+  "module": "./index.css",
+  "types": "./types.d.ts",
   "exports": {
     ".": {
       "types": "./types.d.ts",
@@ -10,8 +13,5 @@
       "types": "./types.d.ts",
       "default": "./foo.css"
     }
-  },
-  "main": "./index.css",
-  "module": "./index.css",
-  "types": "./types.d.ts"
+  }
 }

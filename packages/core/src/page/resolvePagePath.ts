@@ -1,4 +1,5 @@
 import { logger, sanitizeFileName } from '@vuepress/utils'
+
 import type { PageOptions } from '../types/index.js'
 
 /**

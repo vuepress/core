@@ -1,7 +1,9 @@
 import { createRequire } from 'node:module'
+
 import type { App, Bundler } from '@vuepress/core'
 import { colors, fs } from '@vuepress/utils'
 import { createServer } from 'vite'
+
 import { resolveViteConfig } from './resolveViteConfig.js'
 import type { ViteBundlerOptions } from './types.js'
 

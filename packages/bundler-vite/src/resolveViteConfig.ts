@@ -1,10 +1,12 @@
 import type { App } from '@vuepress/core'
 import type { InlineConfig } from 'vite'
 import { mergeConfig } from 'vite'
+
 import {
   vuepressBuildPlugin,
   vuepressConfigPlugin,
   vuepressDevPlugin,
+  vuepressMarkdownPlugin,
   vuepressUserConfigPlugin,
   vuepressVuePlugin,
 } from './plugins/index.js'
@@ -31,6 +33,7 @@ export const resolveViteConfig = ({
       },
       plugins: [
         vuepressConfigPlugin({ app, isBuild, isServer }),
+        vuepressMarkdownPlugin({ app }),
         vuepressDevPlugin({ app }),
         vuepressBuildPlugin({ isServer }),
         vuepressVuePlugin({ options }),

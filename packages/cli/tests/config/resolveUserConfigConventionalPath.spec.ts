@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+
 import { resolveUserConfigConventionalPath } from '../../src/index.js'
 
 const resolveFixtures = (str: string): string =>

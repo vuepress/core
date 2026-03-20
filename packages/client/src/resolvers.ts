@@ -1,5 +1,6 @@
 import { dedupeHead, isString, resolveLocalePath } from '@vuepress/shared'
 import { reactive } from 'vue'
+
 import { LANG_DEFAULT, LAYOUT_NAME_DEFAULT } from './constants.js'
 import type {
   ClientConfig,

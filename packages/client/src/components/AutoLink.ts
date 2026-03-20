@@ -2,6 +2,7 @@ import { isLinkWithProtocol } from '@vuepress/shared'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h, toRef } from 'vue'
 import { useRoute } from 'vue-router'
+
 import { useSiteData } from '../composables/index.js'
 import { RouteLink } from './RouteLink.js'
 

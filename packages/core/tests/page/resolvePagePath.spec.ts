@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
+
 import { resolvePagePath } from '../../src/index.js'
 
 const TEST_CASES: [

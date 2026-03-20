@@ -1,8 +1,10 @@
 import process from 'node:process'
+
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
+
 import { fooPlugin } from './plugins/foo/fooPlugin.js'
 import { e2eTheme } from './theme/node/e2eTheme.js'
 

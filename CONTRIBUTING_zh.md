@@ -27,7 +27,7 @@ Bundler 及其相关 Packages ：
 
 开发要求：
 
-- [Node.js](http://nodejs.org) **version 20.9.0+**
+- [Node.js](http://nodejs.org) - 版本遵循 `.node-version` 文件中指定的版本要求
 
 克隆代码仓库，并安装依赖：
 
@@ -45,7 +45,7 @@ pnpm build
 ### 主要工具
 
 - [TypeScript](https://www.typescriptlang.org/) 作为开发语言
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) 用于代码检查和格式化
+- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) 用于代码检查和格式化
 - [Vitest](https://vitest.dev/) 用于单元测试
 - [Playwright](https://playwright.dev/) 用于端到端测试
 
@@ -65,7 +65,7 @@ pnpm build
 
 #### `pnpm format`
 
-`format` 命令使用 Prettier 来格式化所有源文件。
+`format` 命令使用 Oxfmt 来格式化所有源文件。
 
 #### `pnpm lint`
 

@@ -1,4 +1,5 @@
 import { isFunction } from '@vuepress/shared'
+
 import type { AliasHook, DefineHook } from '../types/index.js'
 
 /**

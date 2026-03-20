@@ -1,5 +1,7 @@
 import path from 'node:path'
-import { vuepress } from 'eslint-config-vuepress'
+
+import { vuepress } from '@vuepress/eslint-config'
+
 import { PACKAGES, ROOT } from './scripts/constants.js'
 
 export default vuepress(
@@ -25,6 +27,7 @@ export default vuepress(
               '__dirname',
               '_context',
               '_pageChunk',
+              '_pageData',
               '_registeredComponents',
             ],
           },

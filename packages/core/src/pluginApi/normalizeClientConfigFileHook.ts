@@ -1,5 +1,6 @@
 import { isFunction } from '@vuepress/shared'
 import { fs, logger } from '@vuepress/utils'
+
 import type { ClientConfigFileHook } from '../types/index.js'
 
 /**

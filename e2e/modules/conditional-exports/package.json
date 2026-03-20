@@ -1,6 +1,9 @@
 {
   "name": "@vuepress-e2e/conditional-exports",
   "type": "module",
+  "main": "cjs.js",
+  "module": "esm.js",
+  "types": "types.d.ts",
   "exports": {
     ".": {
       "types": "./types.d.ts",
@@ -12,8 +15,5 @@
       "default": "./node.cjs"
     },
     "./*": "./*"
-  },
-  "main": "cjs.js",
-  "module": "esm.js",
-  "types": "types.d.ts"
+  }
 }

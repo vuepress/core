@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { expect, it, vi } from 'vitest'
+
 import type { AliasHook, Bundler, DefineHook } from '../../src/index.js'
 import { createBaseApp, normalizeAliasDefineHook } from '../../src/index.js'
 

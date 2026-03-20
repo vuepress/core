@@ -1,7 +1,9 @@
 import process from 'node:process'
+
 import { createDevApp } from '@vuepress/core'
 import { debug, fs, logger, withSpinner } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
+
 import { resolveConfig } from '../../config/index.js'
 import type { DevCommand } from '../../types/index.js'
 import { watchPageFiles } from './watchPageFiles.js'

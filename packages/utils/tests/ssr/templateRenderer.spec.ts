@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import type { TemplateRendererContext } from '../../src/index.js'
 import { templateRenderer } from '../../src/index.js'
 

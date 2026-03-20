@@ -1,5 +1,6 @@
 import type { Page } from '@vuepress/core'
 import { expect, it } from 'vitest'
+
 import { createPageDepsHelper } from '../../../src/index.js'
 
 const createMockPage = ({

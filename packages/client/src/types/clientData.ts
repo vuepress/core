@@ -7,6 +7,7 @@ import type {
   SiteLocaleData,
 } from '@vuepress/shared'
 import type { Component, ComputedRef, Ref } from 'vue'
+
 import type {
   LAYOUT_NAME_DEFAULT,
   LAYOUT_NAME_NOT_FOUND,

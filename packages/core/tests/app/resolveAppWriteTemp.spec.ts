@@ -1,5 +1,6 @@
 import { fs } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
+
 import { createAppDirFunction } from '../../src/app/resolveAppDir.js'
 import { resolveAppWriteTemp } from '../../src/app/resolveAppWriteTemp.js'
 import type { AppDir } from '../../src/index.js'

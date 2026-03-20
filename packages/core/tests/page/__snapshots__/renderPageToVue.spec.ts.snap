@@ -1,0 +1,132 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderPageToVue > should include custom blocks 1`] = `
+"<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>
+<i18n>
+{"en": {"hello": "Hello"}}
+</i18n>"
+`;
+
+exports[`renderPageToVue > should include scriptSetup content 1`] = `
+"<template><div><p>hello</p></div></template>
+<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>
+<script setup>
+const msg = "hello"
+</script>"
+`;
+
+exports[`renderPageToVue > should include style blocks 1`] = `
+"<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>
+<style scoped>
+.foo { color: red; }
+</style>"
+`;
+
+exports[`renderPageToVue > should inject HMR code in dev mode 1`] = `
+"<template><div><p>foobar</p>
+</div></template>
+<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  __VUE_HMR_RUNTIME__.updatePageData?.(_pageData)
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept((m) => {
+    __VUE_HMR_RUNTIME__.updatePageData?.(m._pageData)
+  })
+}
+
+</script>"
+`;
+
+exports[`renderPageToVue > should preserve existing script block with default export 1`] = `
+"<script>
+
+export default { data() { return {} } }
+
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+</script>"
+`;
+
+exports[`renderPageToVue > should preserve existing script block with named default export 1`] = `
+"<script>
+
+export { foo as default }
+
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+</script>"
+`;
+
+exports[`renderPageToVue > should render a complete vue SFC with all blocks in dev mode 1`] = `
+"<template><div><p>hello</p></div></template>
+<script lang="ts">
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  __VUE_HMR_RUNTIME__.updatePageData?.(_pageData)
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept((m) => {
+    __VUE_HMR_RUNTIME__.updatePageData?.(m._pageData)
+  })
+}
+
+</script>
+<script setup lang="ts">
+const msg = "hello"
+</script>
+<style>.foo { color: red; }</style>
+<i18n>{"en": {}}</i18n>"
+`;
+
+exports[`renderPageToVue > should render basic page with template and no script block 1`] = `
+"<template><div><p>foobar</p>
+</div></template>
+<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>"
+`;
+
+exports[`renderPageToVue > should render page without template block 1`] = `
+"<script>
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>"
+`;
+
+exports[`renderPageToVue > should use <script lang="ts"> when scriptSetup uses typescript 1`] = `
+"<script lang="ts">
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>
+<script setup lang="ts">
+const msg = "hello"
+</script>"
+`;
+
+exports[`renderPageToVue > should use existing script tag open when script block exists 1`] = `
+"<script lang="ts">
+
+const foo = 1
+
+export const _pageData = JSON.parse("{\\"path\\":\\"/foo.html\\",\\"title\\":\\"Foo\\",\\"lang\\":\\"en-US\\",\\"frontmatter\\":{}}")
+export default { name: "foo.html.js" }
+</script>"
+`;

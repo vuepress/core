@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import type { HeadConfig } from '../src/index.js'
 import { resolveHeadIdentifier } from '../src/index.js'
 

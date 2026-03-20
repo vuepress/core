@@ -1,5 +1,6 @@
 import type { App } from '@vuepress/core'
 import { Config } from 'webpack-v5-chain'
+
 import type { WebpackBundlerOptions } from '../types.js'
 import { handleDevtool } from './handleDevtool.js'
 import { handleEntry } from './handleEntry.js'
@@ -52,7 +53,7 @@ export const createBaseConfig = async ({
   /**
    * module
    */
-  handleModule({ options, config, isBuild, isServer })
+  handleModule({ app, options, config, isBuild, isServer })
 
   /**
    * plugins

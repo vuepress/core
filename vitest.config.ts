@@ -1,5 +1,7 @@
 import path from 'node:path'
+
 import { defineConfig } from 'vitest/config'
+
 import { PACKAGES, ROOT } from './scripts/constants.js'
 
 export default defineConfig({

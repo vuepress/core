@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { createMarkdown } from '../src/index.js'
 
 const md = createMarkdown()

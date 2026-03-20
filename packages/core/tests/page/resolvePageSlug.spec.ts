@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { resolvePageSlug } from '../../src/index.js'
 
 it('should return empty string', () => {

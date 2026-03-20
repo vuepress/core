@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { ensureEndingSlash } from '../src/index.js'
 
 const TEST_CASES = [

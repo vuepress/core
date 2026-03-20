@@ -5,6 +5,7 @@ import type {
   MarkdownSfcBlocks,
 } from '@vuepress/markdown'
 import { omit } from '@vuepress/shared'
+
 import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 
 /**

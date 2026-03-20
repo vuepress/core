@@ -17,6 +17,7 @@ export default defineConfig([
     ...shared,
     dts: false,
     entry: {
+      'vuepress-markdown-loader': './src/loaders/vuepressMarkdownLoader.cts',
       'vuepress-ssr-loader': './src/loaders/vuepressSsrLoader.cts',
     },
     format: 'cjs',

@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-rc.26",
+  "version": "2.0.0-rc.27",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -12,13 +12,26 @@
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "bin": {
+    "vuepress": "./bin/vuepress.js",
+    "vuepress-vite": "./bin/vuepress-vite.js",
+    "vuepress-webpack": "./bin/vuepress-webpack.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "client-types.d.ts"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./bin": "./bin/vuepress.js",
@@ -32,19 +45,6 @@
     "./utils": "./dist/utils.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "bin": {
-    "vuepress": "./bin/vuepress.js",
-    "vuepress-vite": "./bin/vuepress-vite.js",
-    "vuepress-webpack": "./bin/vuepress-webpack.js"
-  },
-  "files": [
-    "bin",
-    "dist",
-    "client-types.d.ts"
-  ],
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -71,9 +71,6 @@
       "optional": true
     }
   },
-  "engines": {
-    "node": "^20.9.0 || >=22.18.0"
-  },
   "tsdown": {
     "dts": true,
     "entry": [
@@ -86,9 +83,12 @@
       "./src/shared.ts",
       "./src/utils.ts"
     ],
+    "fixedExtension": false,
     "format": "esm",
     "target": "es2023",
-    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
+  },
+  "engines": {
+    "node": "^20.9.0 || >=22.18.0"
   }
 }

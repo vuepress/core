@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import ComponentForMarkdownGlobal from './components/ComponentForMarkdownGlobal.vue'
 import OnContentUpdated from './components/OnContentUpdated.vue'
 import RootComponentFromUserConfig from './components/RootComponentFromUserConfig.vue'

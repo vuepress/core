@@ -1,8 +1,10 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
+
 import type { AppConfig } from '@vuepress/core'
 import { colors, logger } from '@vuepress/utils'
 import { cac } from 'cac'
+
 import { build, dev, info } from './commands/index.js'
 import type {
   BuildCommandCliOptions,

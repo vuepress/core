@@ -1,4 +1,5 @@
 import { onUnmounted } from 'vue'
+
 import { contentUpdatedCallbacks } from '../internal/contentUpdatedCallbacks'
 import type { ContentUpdatedCallback } from '../types/index.js'
 

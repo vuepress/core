@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { formatMs } from '../../src/index.js'
 
 const TEST_CASES: [source: number, expected: string][] = [

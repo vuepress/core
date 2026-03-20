@@ -1,6 +1,7 @@
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+
 import type { Bundler } from '../../src/index.js'
 import { createBaseApp, parsePageContent } from '../../src/index.js'
 

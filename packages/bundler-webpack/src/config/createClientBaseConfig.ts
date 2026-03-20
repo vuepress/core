@@ -1,5 +1,6 @@
 import type { App } from '@vuepress/core'
 import type { Config } from 'webpack-v5-chain'
+
 import type { WebpackBundlerOptions } from '../types.js'
 import { createBaseConfig } from './createBaseConfig.js'
 

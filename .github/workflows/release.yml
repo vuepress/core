@@ -40,7 +40,7 @@ jobs:
           npm --version
 
       - name: Release check
-        run: pnpm run release:check
+        run: pnpm clean && pnpm build && pnpm check-types && pnpm lint && pnpm test:unit
 
       - name: Publish
         run: pnpm -r publish --no-git-checks --tag next

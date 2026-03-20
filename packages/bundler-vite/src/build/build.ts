@@ -3,6 +3,7 @@ import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
 import { build as viteBuild } from 'vite'
+
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
 import { renderPage } from './renderPage.js'

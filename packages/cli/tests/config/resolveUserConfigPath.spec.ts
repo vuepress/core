@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { expect, it, vi } from 'vitest'
+
 import { resolveUserConfigPath } from '../../src/index.js'
 
 const resolveFixtures = (str: string): string =>

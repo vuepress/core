@@ -2,6 +2,7 @@ import type { App, Bundler } from '@vuepress/core'
 import { colors, logger, ora } from '@vuepress/utils'
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
+
 import { resolveWebpackConfig } from '../resolveWebpackConfig.js'
 import type { WebpackBundlerOptions } from '../types.js'
 import { createDevConfig } from './createDevConfig.js'

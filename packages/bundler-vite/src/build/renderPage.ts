@@ -4,6 +4,7 @@ import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
 import type { App as VueApp } from 'vue'
 import type { Router } from 'vue-router'
+
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
 import { renderPageScripts } from './renderPageScripts.js'

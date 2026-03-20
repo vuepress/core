@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { removeLeadingSlash } from 'vuepress/shared'
+
 import { BASE } from '../../utils/env'
 
 test('should support visiting non-ASCII paths directly', async ({ page }) => {

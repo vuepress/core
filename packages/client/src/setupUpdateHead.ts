@@ -1,6 +1,7 @@
 import type { HeadConfig, VuepressSSRContext } from '@vuepress/shared'
 import { isPlainObject, isString } from '@vuepress/shared'
 import { onMounted, provide, useSSRContext, watch } from 'vue'
+
 import type { UpdateHead } from './composables/index.js'
 import {
   updateHeadSymbol,

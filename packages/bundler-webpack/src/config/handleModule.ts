@@ -1,4 +1,6 @@
+import type { App } from '@vuepress/core'
 import type { Config } from 'webpack-v5-chain'
+
 import type { WebpackBundlerOptions } from '../types.js'
 import { handleModuleAssets } from './handleModuleAssets.js'
 import { handleModuleJs } from './handleModuleJs.js'
@@ -11,11 +13,13 @@ import { handleModuleVue } from './handleModuleVue.js'
  * Set webpack module
  */
 export const handleModule = ({
+  app,
   options,
   config,
   isBuild,
   isServer,
 }: {
+  app: App
   options: WebpackBundlerOptions
   config: Config
   isBuild: boolean
@@ -27,7 +31,7 @@ export const handleModule = ({
   )
 
   // vue files
-  handleModuleVue({ options, config, isServer })
+  handleModuleVue({ app, options, config, isBuild, isServer })
 
   // pug files, for templates
   handleModulePug({ config })

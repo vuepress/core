@@ -1,3 +1,27 @@
+# [2.0.0-rc.27](https://github.com/vuepress/core/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2026-03-10)
+
+
+### Bug Fixes
+
+* **cli:** use a separate ignore matcher to ignore watched files ([#1681](https://github.com/vuepress/core/issues/1681)) ([1ab52b6](https://github.com/vuepress/core/commit/1ab52b65c6906d655c7ea3ea6b7d075ce9c7d5b0))
+* **core:** page creation should respect page options ([#1673](https://github.com/vuepress/core/issues/1673)) ([b713ef4](https://github.com/vuepress/core/commit/b713ef4ccec14afb70d400f5d216b09255c98495))
+
+
+### Features
+
+* **core:** avoid race conditions when writing temp files ([#1674](https://github.com/vuepress/core/issues/1674)) ([d89ac9f](https://github.com/vuepress/core/commit/d89ac9f7b313b2b3db0860814d4fbd1cbf902e4c))
+* **core:** optimize default value handling for `options.locales` ([#1676](https://github.com/vuepress/core/issues/1676)) ([b0e36c2](https://github.com/vuepress/core/commit/b0e36c2fc2558cf3d72900c5f517232699f005e6))
+* **bundler-vite:** upgrade to vite 8 and migrate to rolldown ([a59bed2](https://github.com/vuepress/core/commit/a59bed292383b41341bd471f5b05b415732e75bf))
+* upgrade vue-router to v5 ([d777384](https://github.com/vuepress/core/commit/d777384c6c3cd7ccf5989b6ce6f51d71c98c6d69))
+
+
+### BREAKING CHANGES
+
+* Page temp files have been removed. Now page components are loaded by bundler directly. If you rely on watching page temp files in dev mode, you can make use of the new `onPageUpdated` hook instead.
+* **markdown** the `markdown.assets.relativePathPrefix` option has been removed, as it's redundant after removing page temp files.
+
+
+
 # [2.0.0-rc.26](https://github.com/vuepress/core/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2025-10-14)
 
 

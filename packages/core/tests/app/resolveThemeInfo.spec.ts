@@ -1,5 +1,6 @@
 import { importFileDefault, path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+
 import type { App, Bundler, Theme, ThemeObject } from '../../src/index.js'
 import { createBaseApp, resolveThemeInfo } from '../../src/index.js'
 

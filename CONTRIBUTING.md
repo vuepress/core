@@ -27,7 +27,7 @@ Bundler and related packages:
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) **version 20.9.0+**
+- [Node.js](http://nodejs.org) - Version should follow the requirement specified in `.node-version` file
 
 Clone the repo, and install dependencies:
 
@@ -45,7 +45,7 @@ pnpm build
 ### Tools
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for code linting and formatting
+- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) for code linting and formatting
 - [Vitest](https://vitest.dev/) for unit testing
 - [Playwright](https://playwright.dev/) for end-to-end testing
 
@@ -65,7 +65,7 @@ It's used before you want to re-build source files from a clean / initial state.
 
 #### `pnpm format`
 
-The `format` script uses Prettier to format all source files.
+The `format` script uses Oxfmt to format all source files.
 
 #### `pnpm lint`
 

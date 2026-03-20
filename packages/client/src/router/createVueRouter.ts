@@ -6,6 +6,7 @@ import {
   createRouter,
   createWebHistory,
 } from 'vue-router'
+
 import type { PageChunk } from '../types/index.js'
 import { resolveRoute } from './resolveRoute.js'
 

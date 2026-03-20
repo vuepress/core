@@ -1,6 +1,7 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import type { App } from 'vue'
 import { watch } from 'vue'
+
 import type { ClientData } from '../types/index.js'
 import * as DEVTOOLS from './constants.js'
 import type {

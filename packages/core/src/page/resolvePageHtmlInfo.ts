@@ -1,4 +1,5 @@
 import { removeLeadingSlash } from '@vuepress/shared'
+
 import type { App } from '../types/index.js'
 
 /**

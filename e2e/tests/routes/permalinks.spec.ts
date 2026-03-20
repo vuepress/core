@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { removeEndingSlash, removeLeadingSlash } from 'vuepress/shared'
+
 import { BASE } from '../../utils/env'
 
 const PERMALINK_PREFIX = removeEndingSlash(BASE)

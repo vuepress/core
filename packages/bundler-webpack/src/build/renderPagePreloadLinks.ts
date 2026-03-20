@@ -1,4 +1,5 @@
 import type { App } from '@vuepress/core'
+
 import type { FileMeta } from './types.js'
 
 /**

@@ -1,5 +1,6 @@
 import { fs } from '@vuepress/utils'
 import type { StatsModule, WebpackPluginInstance } from 'webpack'
+
 import type { ClientManifest } from './types.js'
 
 const isJS = (file: string): boolean => /\.js(\?[^.]+)?$/.test(file)

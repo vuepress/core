@@ -1,5 +1,7 @@
 import { createRequire } from 'node:module'
+
 import type { Config } from 'webpack-v5-chain'
+
 import type { WebpackBundlerOptions } from '../types.js'
 import { resolveEsbuildLoaderOptions } from './resolveEsbuildLoaderOptions.js'
 

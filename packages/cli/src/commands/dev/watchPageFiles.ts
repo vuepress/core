@@ -3,6 +3,7 @@ import type { App, Page } from '@vuepress/core'
 import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import chokidar from 'chokidar'
+
 import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
@@ -54,25 +55,25 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   const sourceDir = app.dir.source()
   const tempDir = app.dir.temp()
   const cacheDir = app.dir.cache()
-  const isPageMatch = picomatch(pagePatterns, {
-    ignore: ignorePatterns,
-    cwd: sourceDir,
-  })
+  const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
+  const pageMatcher = picomatch(pagePatterns, { cwd: sourceDir })
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
-      // ignore node_modules
-      if (filepath.includes('node_modules')) {
+      const relative = path.relative(sourceDir, filepath)
+
+      // This is important so that folders like node_modules will be ignored immediately without traversing their children
+      if (ignoreMatcher(relative)) {
         return true
       }
-      // ignore internal temp files
-      if (filepath.startsWith(tempDir) || filepath.startsWith(cacheDir)) {
+
+      // ignore internal temp and cache directories
+      if (filepath === tempDir || filepath === cacheDir) {
         return true
       }
+
       // ignore non-matched files
-      return (
-        !!stats?.isFile() && !isPageMatch(path.relative(sourceDir, filepath))
-      )
+      return !!stats?.isFile() && !pageMatcher(relative)
     },
     ignoreInitial: true,
   })

@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 import { computed, customRef } from 'vue'
 import type { Router } from 'vue-router'
+
 import { clientDataSymbol } from './composables/index.js'
 import { redirects, routes } from './internal/routes.js'
 import { siteData } from './internal/siteData.js'
@@ -47,12 +48,15 @@ export const setupGlobalComputed = (
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
       const oldPageChunk = await routes.value[newPageData.path].loader()
-      const newPageChunk = { comp: oldPageChunk.comp, data: newPageData }
+      const newPageChunk: PageChunk = {
+        default: oldPageChunk.default,
+        _pageData: newPageData,
+      }
       routes.value[newPageData.path].loader = async () =>
         Promise.resolve(newPageChunk)
       if (
         newPageData.path ===
-        router.currentRoute.value.meta._pageChunk?.data.path
+        router.currentRoute.value.meta._pageChunk?._pageData.path
       ) {
         pageChunk.value = newPageChunk
       }
@@ -67,8 +71,8 @@ export const setupGlobalComputed = (
   const siteLocaleData = computed(() =>
     resolvers.resolveSiteLocaleData(siteData.value, routeLocale.value),
   )
-  const pageComponent = computed(() => pageChunk.value.comp)
-  const pageData = computed(() => pageChunk.value.data)
+  const pageComponent = computed(() => pageChunk.value.default)
+  const pageData = computed(() => pageChunk.value._pageData)
   const pageFrontmatter = computed(() => pageData.value.frontmatter)
   const pageHeadTitle = computed(() =>
     resolvers.resolvePageHeadTitle(pageData.value, siteLocaleData.value),

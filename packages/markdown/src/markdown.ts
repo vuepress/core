@@ -1,6 +1,7 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
 import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
+
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,

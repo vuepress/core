@@ -1,33 +1,36 @@
 {
   "name": "@vuepress/bundlerutils",
-  "version": "2.0.0-rc.26",
+  "version": "2.0.0-rc.27",
   "description": "Utils package of VuePress bundler",
   "keywords": [
     "bundler",
-    "vuepress",
-    "utils"
+    "utils",
+    "vuepress"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -40,15 +43,12 @@
     "vue": "catalog:vue",
     "vue-router": "catalog:vue"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "tsdown": {
-    "entry": "./src/index.ts",
     "dts": true,
+    "entry": "./src/index.ts",
+    "fixedExtension": false,
     "format": "esm",
     "target": "es2023",
-    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

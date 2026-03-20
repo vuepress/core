@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { expect, it } from 'vitest'
+
 import type { Bundler } from '../../src/index.js'
 import { createBaseApp, resolvePageLang } from '../../src/index.js'
 

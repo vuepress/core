@@ -2,6 +2,7 @@ import type { MarkdownOptions } from '@vuepress/markdown'
 import { createMarkdown } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
+
 import type { Bundler, Hooks, PageOptions } from '../../src/index.js'
 import { createBaseApp, createHookQueue, createPage } from '../../src/index.js'
 
@@ -17,6 +18,7 @@ describe('common', () => {
     'onInitialized',
     'onPrepared',
     'onWatched',
+    'onPageUpdated',
     'onGenerated',
     'extendsMarkdownOptions',
     'extendsMarkdown',
@@ -72,6 +74,7 @@ describe('lifecycle hooks', () => {
     'onInitialized',
     'onPrepared',
     'onWatched',
+    'onPageUpdated',
     'onGenerated',
   ] as const
 

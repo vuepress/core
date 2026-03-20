@@ -1,5 +1,6 @@
 import vuePlugin from '@vitejs/plugin-vue'
 import type { Plugin } from 'vite'
+
 import type { ViteBundlerOptions } from '../types.js'
 
 /**
@@ -11,5 +12,6 @@ export const vuepressVuePlugin = ({
   options: ViteBundlerOptions
 }): Plugin =>
   vuePlugin({
+    include: [/\.vue$/, /\.md$/],
     ...options.vuePluginOptions,
   })

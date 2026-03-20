@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { isChildPath } from '../../src/index.js'
 
 const TEST_CASES: [[string, string], boolean][] = [

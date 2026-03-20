@@ -1,22 +1,30 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-rc.26",
+  "version": "2.0.0-rc.27",
   "description": "Client package of VuePress",
   "keywords": [
-    "vuepress",
-    "client"
+    "client",
+    "vuepress"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "dist",
+    "templates",
+    "types.d.ts"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./app": "./dist/app.js",
@@ -24,14 +32,9 @@
     "./templates/*": "./templates/*",
     "./types": "./types.d.ts"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "templates",
-    "types.d.ts"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -42,9 +45,6 @@
     "@vuepress/shared": "workspace:*",
     "vue": "catalog:vue",
     "vue-router": "catalog:vue"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "tsdown": {
     "deps": {
@@ -59,10 +59,10 @@
       "./src/app.ts",
       "./src/index.ts"
     ],
+    "fixedExtension": false,
     "format": "esm",
     "outDir": "./dist",
     "target": "es2023",
-    "fixedExtension": false,
     "tsconfig": "./tsconfig.dts.json"
   }
 }

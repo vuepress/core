@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import type { Bundler } from '../../src/index.js'
 import { resolveAppEnv, resolveAppOptions } from '../../src/index.js'
 

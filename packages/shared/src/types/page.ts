@@ -1,4 +1,5 @@
 import type { MarkdownItHeader } from '@mdit-vue/types'
+
 import type { HeadConfig } from './head.js'
 
 /**

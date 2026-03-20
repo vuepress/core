@@ -1,36 +1,39 @@
 {
   "name": "@vuepress/bundler-vite",
-  "version": "2.0.0-rc.26",
+  "version": "2.0.0-rc.27",
   "description": "Bundler vite package of VuePress",
   "keywords": [
-    "vuepress-bundler",
-    "vuepress",
     "bundler",
-    "vite"
+    "vite",
+    "vuepress",
+    "vuepress-bundler"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/core/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/core.git"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "dist",
+    "client.d.ts"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./client": "./client.d.ts",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "client.d.ts"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "clean": "rimraf dist"
@@ -54,15 +57,12 @@
   "devDependencies": {
     "@types/connect-history-api-fallback": "^1.5.4"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "tsdown": {
-    "entry": "./src/index.ts",
     "dts": true,
+    "entry": "./src/index.ts",
+    "fixedExtension": false,
     "format": "esm",
     "target": "es2023",
-    "fixedExtension": false,
     "tsconfig": "../../tsconfig.dts.json"
   }
 }

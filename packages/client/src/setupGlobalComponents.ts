@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+
 import { ClientOnly, Content, RouteLink } from './components/index.js'
 
 /**

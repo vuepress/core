@@ -1,4 +1,5 @@
 import { debug } from '@vuepress/utils'
+
 import type { App } from '../types/index.js'
 import { resolveAppMarkdown } from './resolveAppMarkdown.js'
 import { resolveAppPages } from './resolveAppPages.js'
@@ -24,7 +25,9 @@ export const appInit = async (app: App): Promise<void> => {
   app.markdown = await resolveAppMarkdown(app)
 
   // create pages
-  app.pages = await resolveAppPages(app)
+  const { pages, pagesMap } = await resolveAppPages(app)
+  app.pages = pages
+  app.pagesMap = pagesMap
 
   // plugin hook: onInitialized
   await app.pluginApi.hooks.onInitialized.process(app)

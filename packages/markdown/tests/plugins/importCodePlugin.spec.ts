@@ -9,6 +9,7 @@ import {
   it,
   vi,
 } from 'vitest'
+
 import type { MarkdownEnv } from '../../src/index.js'
 import { importCodePlugin, vPrePlugin } from '../../src/index.js'
 

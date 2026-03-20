@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it, vi } from 'vitest'
+
 import type { Bundler, ClientConfigFileHook } from '../../src/index.js'
 import {
   createBaseApp,

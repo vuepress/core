@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module'
+
 import type { App } from '@vuepress/core'
 import type { Config } from 'webpack-v5-chain'
 

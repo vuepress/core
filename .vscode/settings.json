@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
@@ -35,6 +35,7 @@
     "tinyglobby",
     "unmount",
     "upath",
+    "vnode",
     "vuejs",
     "vuepress",
     "vueuse"
