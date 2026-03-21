@@ -590,7 +590,7 @@ describe('html media tag', () => {
       expected: string[]
     }[] = [
       {
-        description: 'should handle assets link with default options',
+        description: 'should respect `aliasSupport` option',
         md: MarkdownIt({ html: true }).use(assetsPlugin, {
           aliasSupport: '@-prefix',
         }),

@@ -22,6 +22,8 @@ export interface AssetsPluginOptions {
    * - If the option is `"@-prefix"`.
    *   If the path starts with `@`, `path1` is regarded as an alias;
    *   Otherwise, it is regarded as a relative path.
+   *
+   * @default true
    */
   aliasSupport?: boolean | '@-prefix'
 }
@@ -60,7 +62,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<(?:img|source|video|audio)\b.*?src=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?\bsrc=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
@@ -70,7 +72,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
         )
         // handle srcset
         .replace(
-          /(<(?:img|source|video|audio)\b.*?srcset=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?\bsrcset=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, srcset: string) =>
             `${prefix}${quote}${srcset
               .split(',')
