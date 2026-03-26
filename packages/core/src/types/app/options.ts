@@ -72,7 +72,9 @@ export interface AppConfigCommon extends Partial<SiteData> {
   /**
    * Patterns to match the markdown files as pages
    *
-   * @default ['**\/*.md', '!.vuepress', '!node_modules']
+   * Note: folders like node_modules and .git will be ignored anyway
+   *
+   * @default ['**\/*.md', '!.vuepress']
    */
   pagePatterns?: string[]
 
