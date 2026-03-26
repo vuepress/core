@@ -94,6 +94,11 @@ export interface AppPropertiesInitialized {
    * Only available after initialization
    */
   pagesMap: Record<string, Page | undefined>
+
+  /**
+   * Allow specifying user styles, which will be injected into client at the bottom
+   */
+  userStyle?: string
 }
 
 /**
