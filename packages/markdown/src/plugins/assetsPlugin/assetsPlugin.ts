@@ -9,6 +9,23 @@ export interface AssetsPluginOptions {
    * Whether to prepend base to absolute path
    */
   absolutePathPrependBase?: boolean
+
+  /**
+   * Use aliases for non-strict relative paths.
+   *
+   * This is a path that does not start
+   * with `./` or `../` or `/` or `<protocol header>`:
+   * `<img src="path1/path2.png" />`
+   *
+   * - If the option is `true`. `path1` is regarded as an alias.
+   * - If the option is `false`. It is regarded as a relative path.
+   * - If the option is `"@-prefix"`.
+   *   If the path starts with `@`, `path1` is regarded as an alias;
+   *   Otherwise, it is regarded as a relative path.
+   *
+   * @default true
+   */
+  aliasSupport?: boolean | '@-prefix'
 }
 
 /**
@@ -16,7 +33,10 @@ export interface AssetsPluginOptions {
  */
 export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   md,
-  { absolutePathPrependBase = false }: AssetsPluginOptions = {},
+  {
+    absolutePathPrependBase = false,
+    aliasSupport = true,
+  }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
   const rawImageRule = md.renderer.rules.image!
@@ -28,7 +48,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
     if (link) {
       // replace the original link with resolved link
-      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase }))
+      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase, aliasSupport }))
     }
 
     return rawImageRule(tokens, idx, options, env, self)
@@ -42,16 +62,17 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<img\b.*?src=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?\bsrc=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
               absolutePathPrependBase,
+              aliasSupport,
             })}${quote}`,
         )
         // handle srcset
         .replace(
-          /(<img\b.*?srcset=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?\bsrcset=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, srcset: string) =>
             `${prefix}${quote}${srcset
               .split(',')
@@ -62,6 +83,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                     `${resolveLink(url.trim(), {
                       env,
                       absolutePathPrependBase,
+                      aliasSupport,
                     })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
                 ),
               )

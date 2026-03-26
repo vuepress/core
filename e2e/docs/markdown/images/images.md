@@ -2,11 +2,15 @@
 
 ![logo-relative](./logo-relative.png)
 
+<!--![logo-unprefix](logo-relative.png)-->
+
 ![logo-alias](@source/markdown/images/logo-relative.png)
 
 <img src="/logo.png" alt="img-logo-public">
 
 <img src="./logo-relative.png" alt="img-logo-relative">
+
+<!--<img src="logo-relative.png" alt="img-logo-unprefix">-->
 
 <img src="@source/markdown/images/logo-relative.png" alt="img-logo-alias">
 
