@@ -10,6 +10,15 @@ interface Closable {
   close(): void
 }
 
+/**
+ * Stages for the `onCleanup` lifecycle hook.
+ *
+ * - `'compile-end'` - After build compilation completes, before `onGenerated`.
+ * - `'prepared'` - After all `onPrepared` hooks have completed.
+ * - `'restart'` - Before the dev server restarts (teardown).
+ */
+export type CleanupHookStage = 'compile-end' | 'prepared' | 'restart'
+
 // base hook type
 export interface Hook<
   Exposed,
@@ -62,10 +71,20 @@ export type DefineHook = Hook<
 export interface Hooks {
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
+  /**
+   * Called after the dev server is ready with watchers and restart function.
+   *
+   * Use this hook to set up custom file watchers or perform other
+   * setup tasks that require the dev server to be running.
+   *
+   * For cleanup/teardown tasks, use `onCleanup` with the `stage` parameter.
+   * For triggering restarts, you can also use `app.restartDevServer()`.
+   */
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onPageUpdated: LifeCycleHook<
     [type: 'create' | 'delete' | 'update', page: Page, oldPage: Page | null]
   >
+  onCleanup: LifeCycleHook<[stage: CleanupHookStage]>
   onGenerated: LifeCycleHook
   extendsMarkdownOptions: ExtendsHook<MarkdownOptions>
   extendsMarkdown: ExtendsHook<Markdown>

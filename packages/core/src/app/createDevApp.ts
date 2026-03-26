@@ -12,6 +12,9 @@ export const createDevApp = (config: AppConfig): DevApp => {
   app.env.isDev = true
   app.dev = async () => app.options.bundler.dev(app)
 
+  // will be set after the dev server starts
+  app.restartDevServer = () => Promise.resolve()
+
   // setup theme and plugins
   setupAppThemeAndPlugins(app, config)
 

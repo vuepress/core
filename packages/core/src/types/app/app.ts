@@ -111,6 +111,14 @@ export interface DevApp extends App {
    * Should be called after `app.prepare()`.
    */
   dev: () => ReturnType<Bundler['dev']>
+
+  /**
+   * Restart the dev server.
+   *
+   * This is set after the dev server starts. Plugins can call this
+   * to trigger a dev server restart (e.g., from a custom file watcher).
+   */
+  restartDevServer: () => Promise<void>
 }
 
 /**

@@ -15,7 +15,7 @@ interface WriteTempCache {
 export const resolveAppWriteTemp = (dir: AppDir): AppWriteTemp => {
   const cache = new Map<string, WriteTempCache>()
 
-  const writeTemp: AppWriteTemp = async (file: string, content: string) => {
+  const writeTemp = (async (file: string, content: string) => {
     const filePath = dir.temp(file)
     const contentHash = hash(content)
 
@@ -48,6 +48,10 @@ export const resolveAppWriteTemp = (dir: AppDir): AppWriteTemp => {
     }
     await item.current
     return filePath
+  }) as AppWriteTemp
+
+  writeTemp.cleanup = (): void => {
+    cache.clear()
   }
 
   return writeTemp
