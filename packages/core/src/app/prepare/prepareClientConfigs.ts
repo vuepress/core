@@ -14,10 +14,10 @@ export const prepareClientConfigs = async (app: App): Promise<void> => {
   const content = `\
 ${clientConfigFiles
   .map(
-    (filePath, index) => `import * as clientConfig${index} from '${filePath}'`,
+    (filePath, index) => `import * as clientConfig${index} from ${JSON.stringify(filePath)}`,
   )
   .join('\n')}
-${app.userStyle ? `\nimport '${app.userStyle}'` : ''}
+${app.userStyle ? `\nimport ${JSON.stringify(app.userStyle)}` : ''}
 
 export const clientConfigs = [
 ${clientConfigFiles.map((_, index) => `  clientConfig${index},`).join('\n')}
