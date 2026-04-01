@@ -15,7 +15,7 @@ export default vuepress(
     },
     typescript: {
       overrides: {
-        '@typescript-eslint/no-useless-default-assignment': 'off', // TODO: crash
+        '@typescript-eslint/no-unnecessary-type-arguments': 'off', // TODO: lots of false positives
       },
     },
     javascript: {

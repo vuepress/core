@@ -5,11 +5,11 @@ packages:
 catalogs:
   vite:
     '@vitejs/plugin-vue': ^6.0.5
-    '@vitest/coverage-istanbul': ^4.1.1
+    '@vitest/coverage-istanbul': ^4.1.2
     rolldown: ^1.0.0-rc.12
-    tsdown: ^0.21.5
+    tsdown: ^0.21.7
     vite: ^8.0.3
-    vitest: ^4.1.1
+    vitest: ^4.1.2
   vue:
     vue: ^3.5.31
     vue-router: ^5.0.4
