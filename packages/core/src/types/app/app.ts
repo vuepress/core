@@ -68,6 +68,11 @@ export interface AppPropertiesBase {
    * Util to write temp file
    */
   writeTemp: AppWriteTemp
+
+  /**
+   * Allow specifying user styles, which will be injected into client at the bottom
+   */
+  userStyle?: string
 }
 
 /**

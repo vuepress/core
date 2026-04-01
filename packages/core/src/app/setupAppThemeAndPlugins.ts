@@ -18,6 +18,7 @@ export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
     config.templateBuildRenderer ??
     themeInfo.templateBuildRenderer ??
     app.options.templateBuildRenderer
+  app.userStyle = themeInfo.userStyle
   // use options plugins after theme plugins, allowing user to override theme plugins
   ;[...themeInfo.plugins, ...app.options.plugins]
     .flat()
