@@ -32,13 +32,11 @@ export const resolveAppPages = async (
   log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
-  const pageFilePaths = await tinyglobby.glob(
-    [...app.options.pagePatterns, ...BUILTIN_IGNORE_PATTERNS],
-    {
-      absolute: true,
-      cwd: app.dir.source(),
-    },
-  )
+  const pageFilePaths = await tinyglobby.glob(app.options.pagePatterns, {
+    absolute: true,
+    cwd: app.dir.source(),
+    ignore: BUILTIN_IGNORE_PATTERNS,
+  })
 
   let hasNotFoundPage = false as boolean
 
