@@ -74,6 +74,23 @@ describe('resolveAppWriteTemp', () => {
     expect(fs.outputFile).toHaveBeenCalledTimes(2)
   })
 
+  it('should re-write file after cleanup even if content is unchanged', async () => {
+    vi.mocked(fs.outputFile).mockClear()
+    const writeTemp = resolveAppWriteTemp(dir)
+    const file = 'cleanup.txt'
+    const content = 'foo'
+
+    await writeTemp(file, content)
+    expect(fs.outputFile).toHaveBeenCalledTimes(1)
+
+    // cleanup should clear the cache
+    writeTemp.cleanup()
+
+    // same content should be written again after cleanup
+    await writeTemp(file, content)
+    expect(fs.outputFile).toHaveBeenCalledTimes(2)
+  })
+
   it('should skip intermediate writes', async () => {
     vi.mocked(fs.outputFile).mockClear()
     const writeTemp = resolveAppWriteTemp(dir)

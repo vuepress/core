@@ -80,6 +80,9 @@ export const dev: DevCommand = async ({
     ])
     // flush pending page file operations and cleanup
     await pageCleanup()
+    // clean up internal app state after all watchers and server are closed
+    app.writeTemp.cleanup()
+
     // restart dev command
     await dev({
       defaultAppConfig,

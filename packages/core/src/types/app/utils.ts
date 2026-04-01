@@ -61,4 +61,16 @@ export interface AppEnv {
 /**
  * Write temp file util
  */
-export type AppWriteTemp = (file: string, content: string) => Promise<string>
+export interface AppWriteTemp {
+  (file: string, content: string): Promise<string>
+
+  /**
+   * Clean up the internal write temp cache.
+   *
+   * This should be called when the dev server restarts
+   * to avoid stale cache and to release references to any
+   * in-memory write state so that pending write promises can
+   * complete and be garbage-collected naturally.
+   */
+  cleanup: () => void
+}
