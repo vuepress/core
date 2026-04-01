@@ -5,6 +5,22 @@ import type { App, Page } from '../types/index.js'
 
 const log = debug('vuepress:core/app')
 
+export const BUILTIN_IGNORE_PATTERNS = [
+  // package managers
+  '**/node_modules',
+  '**/node_modules/**',
+  '**/.yarn',
+  '**/.yarn/**',
+
+  // version controls
+  '**/.git',
+  '**/.git/**',
+  '**/.svn',
+  '**/.svn/**',
+  '**/.hg',
+  '**/.hg/**',
+]
+
 /**
  * Resolve pages for vuepress app
  *
@@ -16,10 +32,13 @@ export const resolveAppPages = async (
   log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
-  const pageFilePaths = await tinyglobby.glob(app.options.pagePatterns, {
-    absolute: true,
-    cwd: app.dir.source(),
-  })
+  const pageFilePaths = await tinyglobby.glob(
+    [...app.options.pagePatterns, ...BUILTIN_IGNORE_PATTERNS],
+    {
+      absolute: true,
+      cwd: app.dir.source(),
+    },
+  )
 
   let hasNotFoundPage = false as boolean
 

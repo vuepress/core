@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import type { App, Page } from '@vuepress/core'
+import { BUILTIN_IGNORE_PATTERNS } from '@vuepress/core'
 import { colors, logger, path, picomatch } from '@vuepress/utils'
 import type { FSWatcher } from 'chokidar'
 import chokidar from 'chokidar'
@@ -44,7 +45,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
 
   // watch page files
   const pagePatterns: string[] = []
-  const ignorePatterns: string[] = []
+  const ignorePatterns: string[] = [...BUILTIN_IGNORE_PATTERNS]
   for (const pattern of app.options.pagePatterns) {
     if (pattern.startsWith('!')) {
       ignorePatterns.push(pattern.slice(1))
@@ -62,7 +63,7 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
     ignored: (filepath, stats) => {
       const relative = path.relative(sourceDir, filepath)
 
-      // This is important so that folders like node_modules will be ignored immediately without traversing their children
+      // This is important so that huge deep folders will be ignored immediately without traversing their children
       if (ignoreMatcher(relative)) {
         return true
       }
