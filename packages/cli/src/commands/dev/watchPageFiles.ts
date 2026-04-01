@@ -8,6 +8,7 @@ import { handlePageAdd } from './handlePageAdd.js'
 import { handlePageChange } from './handlePageChange.js'
 import { handlePageUnlink } from './handlePageUnlink.js'
 import { createPageDepsHelper } from './pageDepsHelper.js'
+import { processPagePatterns } from './processPagePatterns.js'
 
 /**
  * Watch page files and deps, return file watchers
@@ -43,20 +44,14 @@ export const watchPageFiles = (app: App): FSWatcher[] => {
   })
 
   // watch page files
-  const pagePatterns: string[] = []
-  const ignorePatterns: string[] = []
-  for (const pattern of app.options.pagePatterns) {
-    if (pattern.startsWith('!')) {
-      ignorePatterns.push(pattern.slice(1))
-    } else {
-      pagePatterns.push(pattern)
-    }
-  }
+  const { matchPatterns, ignorePatterns } = processPagePatterns(
+    app.options.pagePatterns,
+  )
   const sourceDir = app.dir.source()
   const tempDir = app.dir.temp()
   const cacheDir = app.dir.cache()
-  const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
-  const pageMatcher = picomatch(pagePatterns, { cwd: sourceDir })
+  const ignoreMatcher = picomatch(ignorePatterns)
+  const pageMatcher = picomatch(matchPatterns, { ignore: ignorePatterns })
   const pagesWatcher = chokidar.watch('.', {
     cwd: sourceDir,
     ignored: (filepath, stats) => {
