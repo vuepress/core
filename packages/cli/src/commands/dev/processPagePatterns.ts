@@ -32,9 +32,13 @@ export const processPagePatterns = (
   // expand directory patterns with `/**` suffix for picomatch compatibility:
   // - `**/node_modules` matches the directory itself (for directory exclusion)
   // - `**/node_modules/**` matches files inside (for file-level filtering)
-  const expandedIgnorePatterns = ignorePatterns.flatMap((p) =>
-    p.endsWith('**') ? [p] : [p, `${p}/**`],
-  )
+  const expandedIgnorePatterns = ignorePatterns.flatMap((p) => {
+    // pattern like `dist/**` needs the base `dist` for directory exclusion
+    if (p.endsWith('/**')) {
+      return [p.slice(0, -3), p]
+    }
+    return p.endsWith('**') ? [p] : [p, `${p}/**`]
+  })
 
   return {
     matchPatterns,

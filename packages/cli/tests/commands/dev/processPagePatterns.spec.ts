@@ -33,9 +33,10 @@ describe('processPagePatterns', () => {
     expect(result.ignorePatterns).toContain('**/.git/**')
   })
 
-  it('should not double-expand patterns already ending with **', () => {
+  it('should include base directory pattern for patterns ending with /**', () => {
     const result = processPagePatterns(['**/*.md', '!dist/**'])
 
+    expect(result.ignorePatterns).toContain('dist')
     expect(result.ignorePatterns.filter((p) => p === 'dist/**')).toHaveLength(1)
   })
 
