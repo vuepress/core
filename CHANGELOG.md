@@ -1,3 +1,21 @@
+# [2.0.0-rc.28](https://github.com/vuepress/core/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2026-04-01)
+
+
+### Bug Fixes
+
+* **cli:** cleanup writeTemp on dev server restart ([#1693](https://github.com/vuepress/core/issues/1693)) ([ab6eada](https://github.com/vuepress/core/commit/ab6eada211a41704e826f01b9aa1c811fae1466c))
+* **cli:** pagesWatcher should ignore files based on relative path ([#1689](https://github.com/vuepress/core/issues/1689)) ([2e164f5](https://github.com/vuepress/core/commit/2e164f56eb50c6cbdaa49dbb04e38208777b0050))
+
+
+### Code Refactoring
+
+* **core:** update onPageUpdated hook params for delete event ([#1692](https://github.com/vuepress/core/issues/1692)) ([206e99e](https://github.com/vuepress/core/commit/206e99ec9e2dab67ae60b5d0fa0fe6dc51395d5f))
+
+
+### BREAKING CHANGES
+
+* **core:** The `onPageUpdated` hook swaps the parameter order for `delete` type from `('delete', page, null)` to `('delete', null, page)`.
+
 # [2.0.0-rc.27](https://github.com/vuepress/core/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2026-03-10)
 
 
