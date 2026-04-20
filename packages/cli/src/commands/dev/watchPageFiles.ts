@@ -13,8 +13,9 @@ type PageEventType = 'add' | 'change' | 'unlink'
 
 /**
  * Merge pending events into final operation.
+ * Exported for testing purposes.
  */
-const mergeEvents = (events: PageEventType[]): PageEventType | null => {
+export const mergeEvents = (events: PageEventType[]): PageEventType | null => {
   if (events.length === 0) return null
 
   if (events.length === 1) return events[0]
