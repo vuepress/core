@@ -89,6 +89,6 @@
     "tsconfig": "../../tsconfig.dts.json"
   },
   "engines": {
-    "node": "^20.9.0 || >=22.18.0"
+    "node": ">=22.18.0"
   }
 }
