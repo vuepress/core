@@ -97,3 +97,43 @@ describe('extends', () => {
     })
   })
 })
+
+describe('userStyle', () => {
+  describe('should resolve userStyle for theme with no parent', () => {
+    THEME_ENTRY_TYPES.forEach((item) => {
+      it(item, async () => {
+        const themePath = fixtures(`themes/${item}-user-style-parent.js`)
+        const app = await createTestApp(themePath)
+        expect(resolveThemeInfo(app, app.options.theme).userStyle).toBe(
+          'parent-user-style',
+        )
+      })
+    })
+  })
+
+  describe('should resolve userStyle when child overrides parent', () => {
+    THEME_ENTRY_TYPES.forEach((item) => {
+      it(item, async () => {
+        const themePath = fixtures(
+          `themes/${item}-user-style-child-override.js`,
+        )
+        const app = await createTestApp(themePath)
+        expect(resolveThemeInfo(app, app.options.theme).userStyle).toBe(
+          'child-user-style-override',
+        )
+      })
+    })
+  })
+
+  describe('should resolve userStyle when child inherits from parent', () => {
+    THEME_ENTRY_TYPES.forEach((item) => {
+      it(item, async () => {
+        const themePath = fixtures(`themes/${item}-user-style-child-inherit.js`)
+        const app = await createTestApp(themePath)
+        expect(resolveThemeInfo(app, app.options.theme).userStyle).toBe(
+          'parent-user-style',
+        )
+      })
+    })
+  })
+})

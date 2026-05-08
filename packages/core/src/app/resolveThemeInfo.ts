@@ -14,6 +14,7 @@ export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
     templateBuild: themeObject.templateBuild,
     templateBuildRenderer: themeObject.templateBuildRenderer,
     templateDev: themeObject.templateDev,
+    userStyle: themeObject.userStyle,
   }
 
   // return if current theme does not have a parent theme
@@ -30,5 +31,6 @@ export const resolveThemeInfo = (app: App, theme: Theme): ThemeInfo => {
       themeObject.templateBuildRenderer ??
       parentThemeInfo.templateBuildRenderer,
     templateDev: themeObject.templateDev ?? parentThemeInfo.templateDev,
+    userStyle: themeObject.userStyle ?? parentThemeInfo.userStyle,
   }
 }

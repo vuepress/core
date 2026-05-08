@@ -35,6 +35,7 @@ it('should create app options with default values', () => {
     open: false,
     pagePatterns: ['**/*.md', '!.vuepress'],
     permalinkPattern: null,
+    userStyle: null,
     templateDev: path.normalize(
       require.resolve('@vuepress/client/templates/dev.html'),
     ),

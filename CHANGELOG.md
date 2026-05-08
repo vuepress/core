@@ -1,3 +1,16 @@
+# [2.0.0-rc.29](https://github.com/vuepress/core/compare/v2.0.0-rc.28...v2.0.0-rc.29) (2026-05-08)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** update esbuild target option ([925e63a](https://github.com/vuepress/core/commit/925e63a7f68355a71e3c1222940010d625b4dd7e))
+
+
+### Features
+
+* **cli:** fix page file update racing problems and avoid middle state processing ([#1691](https://github.com/vuepress/core/issues/1691)) ([da12787](https://github.com/vuepress/core/commit/da1278789ee88a7ab2665c23bdfa2425124fc8c0))
+* **core:** add userStyle option to ensure highest css priority (close [#1110](https://github.com/vuepress/core/issues/1110)) ([#1695](https://github.com/vuepress/core/issues/1695)) ([071cc21](https://github.com/vuepress/core/commit/071cc2156ccb01972c5a2448816fd77e79976017))
+
 # [2.0.0-rc.28](https://github.com/vuepress/core/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2026-04-01)
 
 
