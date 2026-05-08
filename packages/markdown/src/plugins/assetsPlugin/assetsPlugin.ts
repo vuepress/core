@@ -48,7 +48,10 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
     if (link) {
       // replace the original link with resolved link
-      token.attrSet('src', resolveLink(link, { env, absolutePathPrependBase, aliasSupport }))
+      token.attrSet(
+        'src',
+        resolveLink(link, { env, absolutePathPrependBase, aliasSupport }),
+      )
     }
 
     return rawImageRule(tokens, idx, options, env, self)
