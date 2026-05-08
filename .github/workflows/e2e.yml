@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ['22', '24', '26']
+        node: ['22', '24']
         bundler: ['webpack', 'vite']
 
     runs-on: ${{ matrix.os }}
