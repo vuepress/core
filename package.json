@@ -64,5 +64,6 @@
       "version": "24.15.0",
       "onFail": "error"
     }
-  }
+  },
+  "packageManager": "pnpm@11.0.8"
 }
