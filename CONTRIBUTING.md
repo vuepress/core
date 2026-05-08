@@ -27,7 +27,7 @@ Bundler and related packages:
 
 Pre-requirement:
 
-- [Node.js](http://nodejs.org) - Version should follow the requirement specified in `.node-version` file
+- [Node.js](http://nodejs.org) - Version should follow the requirement specified in `devEngines.runtime.version` field in `package.json` file
 
 Clone the repo, and install dependencies:
 
