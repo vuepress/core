@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "declaration": false,
     "jsx": "preserve",
     "paths": {
@@ -9,7 +8,7 @@
       "@vuepress/*": ["./packages/*/src"],
       "vuepress": ["./packages/vuepress/src"]
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["node", "webpack-env", "vite/client"]
   },
   "include": [
     "**/.vuepress/**/*",

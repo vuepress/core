@@ -66,6 +66,10 @@ export const dev: DevCommand = async ({
   // all watchers
   const watchers: FSWatcher[] = []
 
+  const { watchers: pageWatchers, cleanup: pageCleanup } = watchPageFiles(app)
+  // watch page files
+  watchers.push(...pageWatchers)
+
   // restart dev command
   const restart = async (): Promise<void> => {
     await Promise.all([
@@ -74,7 +78,8 @@ export const dev: DevCommand = async ({
       // close current dev server
       close(),
     ])
-
+    // flush pending page file operations and cleanup
+    await pageCleanup()
     // clean up internal app state after all watchers and server are closed
     app.writeTemp.cleanup()
 
@@ -91,9 +96,6 @@ export const dev: DevCommand = async ({
     })
     logger.tip(`dev server has restarted, please refresh your browser`)
   }
-
-  // watch page files
-  watchers.push(...watchPageFiles(app))
 
   // watch user config file
   if (userConfigPath) {

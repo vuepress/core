@@ -20,6 +20,7 @@ export default vuepress(
     },
     javascript: {
       overrides: {
+        '@eslint-community/eslint-comments/require-description': 'off',
         'no-underscore-dangle': [
           'warn',
           {

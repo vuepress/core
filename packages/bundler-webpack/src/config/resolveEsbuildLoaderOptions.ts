@@ -8,7 +8,7 @@ export const resolveEsbuildLoaderOptions = (
    *
    * @see https://vite.dev/config/build-options.html#build-target
    */
-  target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+  target: ['es2023', 'chrome111', 'edge111', 'firefox114', 'safari16.4'],
 
   /**
    * jsx options
