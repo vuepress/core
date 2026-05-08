@@ -26,7 +26,7 @@ export const handlePageUnlink = async (
   await prepareRoutes(app)
 
   // process onPageUpdated hook
-  await app.pluginApi.hooks.onPageUpdated.process(app, 'delete', page, null)
+  await app.pluginApi.hooks.onPageUpdated.process(app, 'delete', null, page)
 
   return page
 }

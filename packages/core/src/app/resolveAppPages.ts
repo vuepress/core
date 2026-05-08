@@ -1,5 +1,6 @@
 import { debug, tinyglobby } from '@vuepress/utils'
 
+import { DEFAULT_IGNORE_PATTERNS } from '../constants.js'
 import { createPage } from '../page/index.js'
 import type { App, Page } from '../types/index.js'
 
@@ -19,6 +20,7 @@ export const resolveAppPages = async (
   const pageFilePaths = await tinyglobby.glob(app.options.pagePatterns, {
     absolute: true,
     cwd: app.dir.source(),
+    ignore: DEFAULT_IGNORE_PATTERNS,
   })
 
   let hasNotFoundPage = false as boolean

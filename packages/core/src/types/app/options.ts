@@ -72,7 +72,7 @@ export interface AppConfigCommon extends Partial<SiteData> {
   /**
    * Patterns to match the markdown files as pages
    *
-   * @default ['**\/*.md', '!.vuepress', '!node_modules']
+   * @default ['**\/*.md', '!.vuepress']
    */
   pagePatterns?: string[]
 
@@ -82,6 +82,11 @@ export interface AppConfigCommon extends Partial<SiteData> {
    * @default null
    */
   permalinkPattern?: string | null
+
+  /**
+   * Allow specifying user styles, which will be injected into client at the bottom
+   */
+  userStyle?: string | null
 
   /**
    * Vuepress bundler

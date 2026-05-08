@@ -9,6 +9,7 @@ import { resolveThemeInfo } from './resolveThemeInfo.js'
 export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
   // recursively resolve theme info
   const themeInfo = resolveThemeInfo(app, app.options.theme)
+
   // set up app templates
   app.options.templateDev =
     config.templateDev ?? themeInfo.templateDev ?? app.options.templateDev
@@ -18,6 +19,11 @@ export const setupAppThemeAndPlugins = (app: App, config: AppConfig): void => {
     config.templateBuildRenderer ??
     themeInfo.templateBuildRenderer ??
     app.options.templateBuildRenderer
+
+  // set up user style
+  app.options.userStyle =
+    config.userStyle ?? themeInfo.userStyle ?? app.options.userStyle
+
   // use options plugins after theme plugins, allowing user to override theme plugins
   ;[...themeInfo.plugins, ...app.options.plugins]
     .flat()

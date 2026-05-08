@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-rc.27",
+  "version": "2.0.0-rc.29",
   "description": "Client package of VuePress",
   "keywords": [
     "client",
@@ -40,8 +40,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.0.7",
-    "@vue/devtools-kit": "^8.0.7",
+    "@vue/devtools-api": "^8.1.1",
+    "@vue/devtools-kit": "^8.1.1",
     "@vuepress/shared": "workspace:*",
     "vue": "catalog:vue",
     "vue-router": "catalog:vue"

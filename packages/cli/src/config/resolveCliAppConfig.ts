@@ -27,12 +27,13 @@ export const resolveCliAppConfig = (
   // notice that we do not want to override user config unless it is set explicitly via cli
   OPTIONS_COMMON.forEach((name) => {
     if (cliOptions[name] !== undefined) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- the types should always match
       appConfig[name] = cliOptions[name]
     }
   })
   OPTIONS_DIRECTORY.forEach((name) => {
     if (cliOptions[name] !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- the directory options are always string
       appConfig[name] = path.resolve(cwd, cliOptions[name])
     }
   })
