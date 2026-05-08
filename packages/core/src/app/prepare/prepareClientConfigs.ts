@@ -17,7 +17,7 @@ ${clientConfigFiles
     (filePath, index) => `import * as clientConfig${index} from '${filePath}'`,
   )
   .join('\n')}
-${app.userStyle ? `\nimport '${app.userStyle}'` : ''}
+${app.options.userStyle ? `\nimport '${app.options.userStyle}'` : ''}
 
 export const clientConfigs = [
 ${clientConfigFiles.map((_, index) => `  clientConfig${index},`).join('\n')}
