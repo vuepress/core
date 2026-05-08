@@ -27,10 +27,7 @@ export const resolveLink = (
   if (aliasSupport === false || aliasSupport === '@-prefix') {
     const hasPrefix = link.startsWith('/') || link.startsWith('./') || link.startsWith('../') || /[A-Za-z]+:\/\//.test(link)
     if (!hasPrefix) {
-      if (aliasSupport === false) {
-        resolvedLink = `./${resolvedLink}`
-      }
-      else if (!link.startsWith('@')) {
+      if (aliasSupport === false || !link.startsWith('@')) {
         resolvedLink = `./${resolvedLink}`
       }
     }
