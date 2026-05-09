@@ -51,7 +51,8 @@
       "neverBundle": [
         "@internal/clientConfigs",
         "@internal/routes",
-        "@internal/siteData"
+        "@internal/siteData",
+        "@internal/userStyle"
       ]
     },
     "dts": true,
