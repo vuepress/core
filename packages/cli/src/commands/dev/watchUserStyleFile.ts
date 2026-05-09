@@ -10,13 +10,13 @@ export const watchUserStyleFile = (app: App): FSWatcher => {
     ignoreInitial: true,
   })
 
-  styleWatcher.on('add', (configFile) => {
-    logger.info(`style ${colors.magenta(configFile)} is created`)
+  styleWatcher.on('add', (styleFile) => {
+    logger.info(`style ${colors.magenta(styleFile)} is created`)
     void prepareUserStyle(app, true)
   })
 
-  styleWatcher.on('unlink', (configFile) => {
-    logger.info(`style ${colors.magenta(configFile)} is deleted`)
+  styleWatcher.on('unlink', (styleFile) => {
+    logger.info(`style ${colors.magenta(styleFile)} is deleted`)
     void prepareUserStyle(app, false)
   })
 
