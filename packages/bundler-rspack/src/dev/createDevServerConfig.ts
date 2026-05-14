@@ -1,8 +1,8 @@
 import { sep } from 'node:path'
 
+import type { Configuration, RspackDevServer } from '@rspack/dev-server'
 import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import type WebpackDevServer from 'webpack-dev-server'
 
 import type { RspackBundlerOptions } from '../types.js'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
@@ -10,7 +10,7 @@ import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 export const createDevServerConfig = (
   app: App,
   options: RspackBundlerOptions,
-): WebpackDevServer.Configuration => ({
+): Configuration => ({
   allowedHosts: 'all',
   compress: true,
   devMiddleware: {
@@ -27,7 +27,7 @@ export const createDevServerConfig = (
   },
   host: app.options.host,
   hot: true,
-  setupMiddlewares: (middlewares, devServer) => {
+  setupMiddlewares: (middlewares, devServer: RspackDevServer) => {
     devServer.app?.use(trailingSlashMiddleware)
     return (
       options.devServerSetupMiddlewares?.(middlewares, devServer) ?? middlewares

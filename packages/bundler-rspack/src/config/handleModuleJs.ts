@@ -8,7 +8,7 @@ import { resolveEsbuildLoaderOptions } from './resolveEsbuildLoaderOptions.js'
 const require = createRequire(import.meta.url)
 
 /**
- * Set webpack module to handle js files
+ * Set rspack module to handle js files
  */
 export const handleModuleJs = ({
   options,

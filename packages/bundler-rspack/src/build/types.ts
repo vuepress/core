@@ -29,7 +29,7 @@ export type FileMetaType = '' | 'font' | 'image' | 'script' | 'style'
 export type ModuleFilesMetaMap = Record<string, FileMeta[]>
 
 /**
- * Client manifest that collected from webpack stats
+ * Client manifest that collected from rspack stats
  */
 export interface ClientManifest {
   all: string[]

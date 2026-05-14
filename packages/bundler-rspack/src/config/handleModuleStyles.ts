@@ -12,7 +12,7 @@ import type {
 const require = createRequire(import.meta.url)
 
 /**
- * Set webpack module to handle style files
+ * Set rspack module to handle style files
  */
 export const handleModuleStyles = ({
   options,

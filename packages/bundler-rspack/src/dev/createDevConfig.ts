@@ -1,6 +1,5 @@
-import { HotModuleReplacementPlugin } from '@rspack/core'
+import { HotModuleReplacementPlugin, HtmlRspackPlugin } from '@rspack/core'
 import type { App } from '@vuepress/core'
-import HtmlPlugin from 'html-webpack-plugin'
 import type { RspackChain } from 'rspack-chain'
 
 import { createClientBaseConfig } from '../config/index.js'
@@ -16,7 +15,7 @@ export const createDevConfig = async (
     isBuild: false,
   })
 
-  config.plugin('html').use(HtmlPlugin, [
+  config.plugin('html').use(HtmlRspackPlugin, [
     {
       template: app.options.templateDev,
     },

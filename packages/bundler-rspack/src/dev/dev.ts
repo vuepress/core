@@ -1,7 +1,7 @@
+import { rspack } from '@rspack/core'
+import { RspackDevServer } from '@rspack/dev-server'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, logger, ora } from '@vuepress/utils'
-import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
 
 import { resolveRspackConfig } from '../resolveRspackConfig.js'
 import type { RspackBundlerOptions } from '../types.js'
@@ -9,7 +9,7 @@ import { createDevConfig } from './createDevConfig.js'
 import { createDevServerConfig } from './createDevServerConfig.js'
 
 /**
- * Create the dev method of webpack bundler
+ * Create the dev method of rspack bundler
  */
 export const dev = async (
   options: RspackBundlerOptions,
@@ -18,26 +18,26 @@ export const dev = async (
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
 
-  // create webpack config
-  const webpackConfig = resolveRspackConfig({
+  // create rspack config
+  const rspackConfig = resolveRspackConfig({
     config: await createDevConfig(app, options),
     options,
     isServer: false,
     isBuild: false,
   })
 
-  // create webpack compiler
-  const compiler = webpack(webpackConfig)
+  // create rspack compiler
+  const compiler = rspack(rspackConfig)
 
-  // create webpack-dev-server
+  // create rspack-dev-server
   const serverConfig = createDevServerConfig(app, options)
-  const server = new WebpackDevServer(serverConfig, compiler)
+  const server = new RspackDevServer(serverConfig, compiler)
 
   const [, close] = await Promise.all([
-    // wait for webpack-dev-server to start
+    // wait for rspack-dev-server to start
     server.start(),
 
-    // wait for webpack compilation to complete
+    // wait for rspack compilation to complete
     new Promise<() => Promise<void>>((resolve, reject) => {
       // create spinner
       const spinner = ora()
@@ -49,7 +49,7 @@ export const dev = async (
         if (hasStarted) return
         hasStarted = true
 
-        spinner.start('Compiling with webpack...')
+        spinner.start('Compiling with rspack...')
       })
 
       // stop spinner, show compilation time and print url after first compilation
@@ -57,14 +57,18 @@ export const dev = async (
         if (hasFinished) return
         hasFinished = true
 
-        spinner.succeed(`Compilation finished in ${endTime - startTime}ms`)
+        spinner.succeed(
+          endTime && startTime
+            ? `Compilation finished in ${endTime - startTime}ms`
+            : 'Compilation finished',
+        )
 
         // replace `0.0.0.0` with `localhost` as `0.0.0.0` is not available on windows
         const url = `http://${
           serverConfig.host === '0.0.0.0' ? 'localhost' : serverConfig.host
         }:${serverConfig.port}${app.options.base}`
         logger.success(
-          `VuePress webpack dev server is listening at ${colors.cyan(url)}`,
+          `VuePress rspack dev server is listening at ${colors.cyan(url)}`,
         )
 
         // resolve the close function

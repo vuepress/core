@@ -2,7 +2,7 @@ import type { App } from '@vuepress/core'
 import type { RspackChain } from 'rspack-chain'
 
 /**
- * Set webpack devtool
+ * Set rspack devtool
  */
 export const handleDevtool = ({
   app,

@@ -76,7 +76,7 @@ export interface RspackBundlerOptions extends BundlerOptions {
 }
 
 /**
- * Common options for style preprocessor webpack loaders
+ * Common options for style preprocessor rspack loaders
  */
 export interface StylePreprocessorLoaderOptions {
   additionalData?:
@@ -86,7 +86,6 @@ export interface StylePreprocessorLoaderOptions {
         loaderContext: LoaderContext<Record<string, unknown>>,
       ) => string)
   sourceMap?: boolean
-  webpackImporter?: boolean
 }
 
 /**

@@ -1,8 +1,8 @@
+import { rspack } from '@rspack/core'
+import type { MultiRspackOptions } from '@rspack/core'
 import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
-import type { MultiConfiguration } from 'webpack'
-import webpack from 'webpack'
 
 import { resolveRspackConfig } from '../resolveRspackConfig.js'
 import type { RspackBundlerOptions } from '../types.js'
@@ -15,7 +15,7 @@ import { renderPage } from './renderPage.js'
 import { resolveClientManifestMeta } from './resolveClientManifestMeta.js'
 import type { ClientManifest } from './types.js'
 
-const log = debug('vuepress:bundler-webpack/build')
+const log = debug('vuepress:bundler-rspack/build')
 
 export const build = async (
   options: RspackBundlerOptions,
@@ -24,10 +24,10 @@ export const build = async (
   // plugin hook: extendsBundlerOptions
   await app.pluginApi.hooks.extendsBundlerOptions.process(options, app)
 
-  // webpack compile
+  // rspack compile
   log('compiling start')
-  await withSpinner('Compiling with webpack')(async () => {
-    // create webpack config
+  await withSpinner('Compiling with rspack')(async () => {
+    // create rspack config
     const clientConfig = resolveRspackConfig({
       config: await createClientConfig(app, options),
       options,
@@ -42,22 +42,26 @@ export const build = async (
     })
 
     await new Promise<void>((resolve, reject) => {
-      webpack(
-        [clientConfig, serverConfig] as MultiConfiguration,
+      rspack(
+        [clientConfig, serverConfig] as MultiRspackOptions,
         (err, stats) => {
           if (err) {
             reject(err)
-          } else if (stats?.hasErrors()) {
-            stats.toJson().errors?.forEach((item) => {
-              logger.error(item)
-            })
-            reject(new Error('Failed to compile with errors'))
           } else {
-            if (stats?.hasWarnings()) {
-              stats.toJson().warnings?.forEach((warning) => {
+            if (stats) {
+              const { warnings, errors } = stats.toJson('errors-warnings')
+
+              errors?.forEach((item) => {
+                logger.error(item)
+              })
+              warnings?.forEach((warning) => {
                 logger.warn(warning)
               })
+
+              if (stats.hasErrors())
+                reject(new Error('Failed to compile with errors'))
             }
+
             resolve()
           }
         },

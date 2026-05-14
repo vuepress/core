@@ -3,10 +3,10 @@ import {
   CssExtractRspackPlugin,
   LightningCssMinimizerRspackPlugin,
 } from '@rspack/core'
+import type { Module } from '@rspack/core'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
-import type { Module } from 'webpack'
-import type { Config } from 'webpack-v5-chain'
+import type { RspackChain } from 'rspack-chain'
 
 import { createClientBaseConfig } from '../config/index.js'
 import type { RspackBundlerOptions } from '../types.js'
@@ -20,7 +20,7 @@ export const CLIENT_MANIFEST_FILENAME = '.server/client-manifest.json'
 export const createClientConfig = async (
   app: App,
   options: RspackBundlerOptions,
-): Promise<Config> => {
+): Promise<RspackChain> => {
   const config = await createClientBaseConfig({
     app,
     options,

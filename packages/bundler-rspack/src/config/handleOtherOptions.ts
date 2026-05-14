@@ -44,8 +44,9 @@ export const handleOtherOptions = ({
       ).version,
       'vue-loader': (require('vue-loader/package.json') as { version: string })
         .version,
-      'webpack': (require('webpack/package.json') as { version: string })
-        .version,
+      '@rspack/core': (
+        require('@rspack/core/package.json') as { version: string }
+      ).version,
     }),
   })
 }

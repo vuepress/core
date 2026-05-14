@@ -12,7 +12,7 @@ import { renderPageStyles } from './renderPageStyles.js'
 import { resolvePageClientFilesMeta } from './resolvePageClientFilesMeta.js'
 import type { FileMeta, ModuleFilesMetaMap } from './types.js'
 
-interface WebpackPageSSRContext extends PageSSRContext {
+interface RspackPageSSRContext extends PageSSRContext {
   /**
    * Injected by vuepress-ssr-loader
    *
@@ -45,7 +45,7 @@ export const renderPage = async ({
 }): Promise<void> => {
   // render current page to string
   const { ssrContext, ssrString } =
-    await renderPageToString<WebpackPageSSRContext>({
+    await renderPageToString<RspackPageSSRContext>({
       page,
       vueApp,
       vueRouter,

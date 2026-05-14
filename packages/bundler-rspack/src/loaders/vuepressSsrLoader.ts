@@ -1,7 +1,7 @@
-import type { LoaderDefinitionFunction } from 'webpack'
+import type { LoaderDefinitionFunction } from '@rspack/core'
 
 /**
- * A webpack loader to handle SSR dependencies
+ * A rspack loader to handle SSR dependencies
  *
  * This loader will only take effect in server bundle
  * because we only replace `ssrRender` code

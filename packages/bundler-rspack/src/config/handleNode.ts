@@ -1,7 +1,7 @@
 import type { RspackChain } from 'rspack-chain'
 
 /**
- * Set webpack node config
+ * Set rspack node config
  */
 export const handleNode = ({ config }: { config: RspackChain }): void => {
   // do not polyfill or mock node globals and modules

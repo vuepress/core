@@ -1,12 +1,12 @@
+import type { LoaderDefinitionFunction } from '@rspack/core'
 import type { App } from '@vuepress/core'
-import type { LoaderDefinitionFunction } from 'webpack'
 
 export interface VuepressMarkdownLoaderOptions {
   app: App
 }
 
 /**
- * A webpack loader to transform markdown content to vue component
+ * A rspack loader to transform markdown content to vue component
  */
 export const vuepressMarkdownLoader: LoaderDefinitionFunction<VuepressMarkdownLoaderOptions> =
   async function vuepressMarkdownLoader(source) {

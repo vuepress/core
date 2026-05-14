@@ -157,9 +157,6 @@ importers:
       '@rspack/dev-server':
         specifier: ^2.0.1
         version: 2.0.1(@rspack/core@2.0.3)(selfsigned@5.5.0)
-      '@types/express':
-        specifier: ^4.17.25
-        version: 4.17.25
       '@vuepress/bundlerutils':
         specifier: workspace:*
         version: link:../bundlerutils
@@ -184,12 +181,6 @@ importers:
       esbuild-loader:
         specifier: ~4.4.3
         version: 4.4.3(webpack@5.106.2(esbuild@0.28.0))
-      express:
-        specifier: ^4.22.1
-        version: 4.22.1
-      html-webpack-plugin:
-        specifier: ^5.6.7
-        version: 5.6.7(@rspack/core@2.0.3)(webpack@5.106.2(esbuild@0.28.0))
       postcss:
         specifier: ^8.5.14
         version: 8.5.14
@@ -214,6 +205,10 @@ importers:
       vue-router:
         specifier: catalog:vue
         version: 5.0.6(@vue/compiler-sfc@3.5.34)(vue@3.5.34(typescript@6.0.3))
+    devDependencies:
+      connect-next:
+        specifier: ^4.0.1
+        version: 4.0.1
 
   packages/bundler-vite:
     dependencies:
@@ -307,7 +302,7 @@ importers:
         version: 4.22.1
       html-webpack-plugin:
         specifier: ^5.6.7
-        version: 5.6.7(@rspack/core@2.0.3)(webpack@5.106.2(esbuild@0.28.0))
+        version: 5.6.7(webpack@5.106.2(esbuild@0.28.0))
       lightningcss:
         specifier: ^1.32.0
         version: 1.32.0
@@ -2848,6 +2843,10 @@ packages:
   connect-history-api-fallback@2.0.0:
     resolution: {integrity: sha512-U73+6lQFmfiNPrYbXqr6kZ1i1wiRqXnp2nhMsINseWXO8lDau0LGEffJ8kQi4EjLZympVgRdvqjAgiZ1tgzDDA==}
     engines: {node: '>=0.8'}
+
+  connect-next@4.0.1:
+    resolution: {integrity: sha512-nkHJWto78sXAooScrgvRt9E9omtwHBUTjCWRgxe3NbwNVC9cW4Lu0il0m2O867pgzJV66YXi2tXtSPtZy3Zmeg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   constantinople@4.0.1:
     resolution: {integrity: sha512-vCrqcSIq4//Gx74TXXCGnHpulY1dskqLTFGDmhrGxzeXL8lF8kvXv6mpNWlJj1uD4DW23D4ljAqbY4RRaaUZIw==}
@@ -8214,6 +8213,8 @@ snapshots:
 
   connect-history-api-fallback@2.0.0: {}
 
+  connect-next@4.0.1: {}
+
   constantinople@4.0.1:
     dependencies:
       '@babel/parser': 7.29.3
@@ -9094,7 +9095,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.46.2
 
-  html-webpack-plugin@5.6.7(@rspack/core@2.0.3)(webpack@5.106.2(esbuild@0.28.0)):
+  html-webpack-plugin@5.6.7(webpack@5.106.2(esbuild@0.28.0)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -9102,7 +9103,6 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      '@rspack/core': 2.0.3
       webpack: 5.106.2(esbuild@0.28.0)
 
   htmlparser2@6.1.0:

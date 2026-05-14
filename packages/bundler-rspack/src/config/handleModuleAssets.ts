@@ -1,7 +1,7 @@
 import type { RspackChain } from 'rspack-chain'
 
 /**
- * Set webpack config to handle assets files
+ * Set rspack config to handle assets files
  */
 export const handleModuleAssets = ({
   config,

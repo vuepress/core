@@ -1,5 +1,5 @@
+import type { RspackPluginInstance, StatsModule } from '@rspack/core'
 import { fs } from '@vuepress/utils'
-import type { StatsModule, WebpackPluginInstance } from 'webpack'
 
 import type { ClientManifest } from './types.js'
 
@@ -10,17 +10,17 @@ const isCSS = (file: string): boolean => /\.css(\?[^.]+)?$/.test(file)
 /**
  * Vuepress client plugin
  *
- * Collecting webpack bundled files info for SSR
+ * Collecting rspack bundled files info for SSR
  */
 export const createClientPlugin = (
   outputFile: string,
-): WebpackPluginInstance => {
-  const clientPlugin: WebpackPluginInstance = {
+): RspackPluginInstance => {
+  const clientPlugin: RspackPluginInstance = {
     apply(compiler) {
       compiler.hooks.emit.tapPromise(
         'vuepress-client-plugin',
         async (compilation) => {
-          // get webpack stats object
+          // get rspack stats object
           const {
             assets = [],
             modules = [],

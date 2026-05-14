@@ -1,5 +1,5 @@
 import type { App } from '@vuepress/core'
-import type { Config } from 'webpack-v5-chain'
+import type { RspackChain } from 'rspack-chain'
 
 import { createBaseConfig } from '../config/index.js'
 import type { RspackBundlerOptions } from '../types.js'
@@ -7,7 +7,7 @@ import type { RspackBundlerOptions } from '../types.js'
 export const createServerConfig = async (
   app: App,
   options: RspackBundlerOptions,
-): Promise<Config> => {
+): Promise<RspackChain> => {
   const isBuild = true
   const isServer = true
 
@@ -24,7 +24,7 @@ export const createServerConfig = async (
     .path(app.dir.temp('.server'))
     .filename('app.cjs')
     .publicPath(app.options.base)
-    .libraryTarget('commonjs2')
+    .library({ type: 'commonjs2' })
 
   // set target to node
   // vue-loader will use compiler-ssr internally

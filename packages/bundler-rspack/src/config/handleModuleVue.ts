@@ -11,7 +11,7 @@ import type { RspackBundlerOptions } from '../types.js'
 const require = createRequire(import.meta.url)
 
 /**
- * Set webpack module to handle vue files
+ * Set rspack module to handle vue files
  */
 export const handleModuleVue = ({
   app,
