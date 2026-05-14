@@ -1,7 +1,7 @@
+import { HotModuleReplacementPlugin } from '@rspack/core'
 import type { App } from '@vuepress/core'
 import HtmlPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
-import type { Config } from 'webpack-v5-chain'
+import type { RspackChain } from 'rspack-chain'
 
 import { createClientBaseConfig } from '../config/index.js'
 import type { RspackBundlerOptions } from '../types.js'
@@ -9,7 +9,7 @@ import type { RspackBundlerOptions } from '../types.js'
 export const createDevConfig = async (
   app: App,
   options: RspackBundlerOptions,
-): Promise<Config> => {
+): Promise<RspackChain> => {
   const config = await createClientBaseConfig({
     app,
     options,
@@ -22,7 +22,7 @@ export const createDevConfig = async (
     },
   ])
 
-  config.plugin('hmr').use(webpack.HotModuleReplacementPlugin)
+  config.plugin('hmr').use(HotModuleReplacementPlugin)
 
   return config
 }
