@@ -6,6 +6,7 @@ import {
   preparePageChunk,
   prepareRoutes,
   prepareSiteData,
+  prepareUserStyle,
 } from './prepare/index.js'
 
 const log = debug('vuepress:core/app')
@@ -28,6 +29,7 @@ export const appPrepare = async (app: App): Promise<void> => {
     prepareRoutes(app),
     prepareSiteData(app),
     prepareClientConfigs(app),
+    prepareUserStyle(app),
   ])
 
   // plugin hook: onPrepared

@@ -1,3 +1,11 @@
+# [2.0.0-rc.30](https://github.com/vuepress/core/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2026-05-14)
+
+
+### Features
+
+* **core:** prepare user style separately ([#1700](https://github.com/vuepress/core/issues/1700)) ([0080107](https://github.com/vuepress/core/commit/00801071d8c444a599e2f9b5f6c9ca7f35319194))
+* **markdown:** add aliasSupport option for assetsPlugin (close [#1646](https://github.com/vuepress/core/issues/1646)) ([#1647](https://github.com/vuepress/core/issues/1647)) ([d4f9180](https://github.com/vuepress/core/commit/d4f918041e6e61e5491e29f81e0d6f132ab2eadc))
+
 # [2.0.0-rc.29](https://github.com/vuepress/core/compare/v2.0.0-rc.28...v2.0.0-rc.29) (2026-05-08)
 
 

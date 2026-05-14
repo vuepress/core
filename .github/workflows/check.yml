@@ -30,7 +30,7 @@ jobs:
           node-version-file: '.node-version'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm ci
 
       - name: Build
         run: pnpm build

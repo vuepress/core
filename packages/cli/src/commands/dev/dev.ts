@@ -8,6 +8,7 @@ import { resolveConfig } from '../../config/index.js'
 import type { DevCommand } from '../../types/index.js'
 import { watchPageFiles } from './watchPageFiles.js'
 import { watchUserConfigFile } from './watchUserConfigFile.js'
+import { watchUserStyleFile } from './watchUserStyleFile.js'
 
 const log = debug('vuepress:cli/dev')
 
@@ -95,6 +96,10 @@ export const dev: DevCommand = async ({
       },
     })
     logger.tip(`dev server has restarted, please refresh your browser`)
+  }
+
+  if (app.options.userStyle) {
+    watchers.push(watchUserStyleFile(app))
   }
 
   // watch user config file

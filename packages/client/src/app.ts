@@ -9,6 +9,8 @@ import { setupGlobalComputed } from './setupGlobalComputed.js'
 import { setupUpdateHead } from './setupUpdateHead.js'
 import type { CreateVueAppFunction } from './types/index.js'
 
+import '@internal/userStyle'
+
 /**
  * - use `createApp` in dev mode
  * - use `createSSRApp` in build mode

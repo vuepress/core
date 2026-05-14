@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-rc.29",
+  "version": "2.0.0-rc.30",
   "description": "Client package of VuePress",
   "keywords": [
     "client",
@@ -51,7 +51,8 @@
       "neverBundle": [
         "@internal/clientConfigs",
         "@internal/routes",
-        "@internal/siteData"
+        "@internal/siteData",
+        "@internal/userStyle"
       ]
     },
     "dts": true,
