@@ -1,0 +1,28 @@
+import type { App } from '@vuepress/core'
+import HtmlPlugin from 'html-webpack-plugin'
+import webpack from 'webpack'
+import type { Config } from 'webpack-v5-chain'
+
+import { createClientBaseConfig } from '../config/index.js'
+import type { RspackBundlerOptions } from '../types.js'
+
+export const createDevConfig = async (
+  app: App,
+  options: RspackBundlerOptions,
+): Promise<Config> => {
+  const config = await createClientBaseConfig({
+    app,
+    options,
+    isBuild: false,
+  })
+
+  config.plugin('html').use(HtmlPlugin, [
+    {
+      template: app.options.templateDev,
+    },
+  ])
+
+  config.plugin('hmr').use(webpack.HotModuleReplacementPlugin)
+
+  return config
+}

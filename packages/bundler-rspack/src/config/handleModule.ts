@@ -1,0 +1,48 @@
+import type { App } from '@vuepress/core'
+import type { RspackChain } from 'rspack-chain'
+
+import type { RspackBundlerOptions } from '../types.js'
+import { handleModuleAssets } from './handleModuleAssets.js'
+import { handleModuleJs } from './handleModuleJs.js'
+import { handleModulePug } from './handleModulePug.js'
+import { handleModuleStyles } from './handleModuleStyles.js'
+import { handleModuleTs } from './handleModuleTs.js'
+import { handleModuleVue } from './handleModuleVue.js'
+
+/**
+ * Set rspack module
+ */
+export const handleModule = ({
+  app,
+  options,
+  config,
+  isBuild,
+  isServer,
+}: {
+  app: App
+  options: RspackBundlerOptions
+  config: RspackChain
+  isBuild: boolean
+  isServer: boolean
+}): void => {
+  // noParse
+  config.module.noParse(/(^(vue|vue-router)$)|(^@vue\/[^/]*$)/)
+
+  // vue files
+  handleModuleVue({ app, options, config, isBuild, isServer })
+
+  // pug files, for templates
+  handleModulePug({ config })
+
+  // images & media & fonts
+  handleModuleAssets({ config })
+
+  // js files
+  handleModuleJs({ options, config, isBuild, isServer })
+
+  // ts files
+  handleModuleTs({ config })
+
+  // styles files
+  handleModuleStyles({ options, config, isBuild, isServer })
+}

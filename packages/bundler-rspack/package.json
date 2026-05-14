@@ -1,0 +1,66 @@
+{
+  "name": "@vuepress/bundler-rspack",
+  "version": "2.0.0-rc.29",
+  "description": "Bundler rspack package of VuePress",
+  "keywords": [
+    "bundler",
+    "rspack",
+    "vuepress",
+    "vuepress-bundler"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/core/issues"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/core.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "imports": {
+    "#vuepress-markdown-loader": "./dist/vuepress-markdown-loader.cjs",
+    "#vuepress-ssr-loader": "./dist/vuepress-ssr-loader.cjs"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@rspack/core": "^2.0.3",
+    "@rspack/dev-server": "^2.0.1",
+    "@types/express": "^4.17.25",
+    "@vuepress/bundlerutils": "workspace:*",
+    "@vuepress/client": "workspace:*",
+    "@vuepress/core": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*",
+    "autoprefixer": "^10.5.0",
+    "css-loader": "^7.1.4",
+    "esbuild-loader": "~4.4.3",
+    "express": "^4.22.1",
+    "html-webpack-plugin": "^5.6.7",
+    "postcss": "^8.5.14",
+    "postcss-loader": "^8.2.1",
+    "rspack-chain": "^2.0.1",
+    "rspack-merge": "^0.1.1",
+    "style-loader": "^4.0.0",
+    "vue": "catalog:vue",
+    "vue-loader": "^17.4.2",
+    "vue-router": "catalog:vue"
+  }
+}
