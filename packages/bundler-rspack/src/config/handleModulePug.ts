@@ -7,6 +7,6 @@ export const handleModulePug = ({ config }: { config: RspackChain }): void => {
   config.module
     .rule('pug')
     .test(/\.pug$/)
-    .use('pug-loader')
-    .loader('@rsbuild/plugin-pug')
+    .use('pug-plain-loader')
+    .loader('pug-plain-loader')
 }
