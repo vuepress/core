@@ -22,20 +22,25 @@ export const createClientPlugin = (
         async (compilation) => {
           // get rspack stats object
           const {
-            assets = [],
             modules = [],
             entrypoints = {},
             chunks = [],
-          } = compilation.getStats().toJson()
+          } = compilation.getStats().toJson({
+            all: false,
+            modules: true,
+            entrypoints: true,
+            chunks: true,
+            chunkModules: true,
+          })
 
-          // get all files
-          const allFiles = assets.map((a) => a.name)
+          // get all js/css files from all chunks
+          const allFiles = chunks.flatMap((c) => c.files ?? [])
 
           // get initial entry files
           const initialFiles = Object.keys(entrypoints)
             .flatMap(
-              (name) =>
-                entrypoints[name].assets?.map((item) => item.name) ?? [],
+              (entry) =>
+                entrypoints[entry].assets?.map(({ name }) => name) ?? [],
             )
             .filter((file) => isJS(file) || isCSS(file))
 

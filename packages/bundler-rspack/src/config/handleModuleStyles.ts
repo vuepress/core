@@ -36,7 +36,8 @@ export const handleModuleStyles = ({
     loaderName?: string
     loaderOptions?: StylePreprocessorLoaderOptions
   }): void => {
-    const rule = config.module.rule(lang).test(test)
+    // override rspack's native CSS type so CssExtractRspackPlugin + css-loader can process it
+    const rule = config.module.rule(lang).test(test).type('javascript/auto')
 
     if (!isServer) {
       if (isBuild) {
