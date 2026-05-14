@@ -114,6 +114,9 @@ importers:
       '@vuepress-e2e/style-exports':
         specifier: file:./modules/style-exports
         version: file:e2e/modules/style-exports
+      '@vuepress/bundler-rspack':
+        specifier: workspace:*
+        version: link:../packages/bundler-rspack
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../packages/bundler-vite
@@ -530,6 +533,9 @@ importers:
 
   packages/vuepress:
     dependencies:
+      '@vuepress/bundler-rspack':
+        specifier: workspace:*
+        version: link:../bundler-rspack
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../bundler-vite

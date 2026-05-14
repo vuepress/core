@@ -1,11 +1,7 @@
-import { createRequire } from 'node:module'
-
 import type { RspackChain } from 'rspack-chain'
 
 import type { RspackBundlerOptions } from '../types.js'
-import { resolveEsbuildLoaderOptions } from './resolveEsbuildLoaderOptions.js'
-
-const require = createRequire(import.meta.url)
+import { resolveSwcLoaderOptions } from './resolveSwcLoaderOptions.js'
 
 /**
  * Set rspack module to handle js files
@@ -50,9 +46,9 @@ export const handleModuleJs = ({
       return filePath.includes('node_modules')
     })
     .end()
-    // use esbuild-loader
-    .use('esbuild-loader')
-    .loader(require.resolve('esbuild-loader'))
-    .options(resolveEsbuildLoaderOptions())
+    // use swc-loader
+    .use('swc-loader')
+    .loader('builtin:swc-loader')
+    .options(resolveSwcLoaderOptions())
     .end()
 }
