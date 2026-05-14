@@ -33,7 +33,7 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm ci
 
       - name: Build source code
         run: pnpm build
