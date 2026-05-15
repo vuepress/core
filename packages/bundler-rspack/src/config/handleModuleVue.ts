@@ -5,7 +5,7 @@ import type { RspackChain } from 'rspack-chain'
 import type { VueLoaderOptions } from 'vue-loader'
 import { VueLoaderPlugin } from 'vue-loader'
 
-import type { VuepressMarkdownLoaderOptions } from '../loaders/vuepressMarkdownLoader'
+import type { VuepressMarkdownLoaderOptions } from '../loaders/vuepressMarkdownLoader.js'
 import type { RspackBundlerOptions } from '../types.js'
 
 const require = createRequire(import.meta.url)

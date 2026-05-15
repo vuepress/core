@@ -1,7 +1,7 @@
 import type { SwcLoaderJscConfig, SwcLoaderOptions } from '@rspack/core'
 
 export const resolveSwcLoaderOptions = (
-  options: SwcLoaderOptions = {},
+  { env, jsc = {}, ...rest }: SwcLoaderOptions = {},
   isTypescript = false,
 ): SwcLoaderOptions => ({
   env: {
@@ -16,7 +16,7 @@ export const resolveSwcLoaderOptions = (
       firefox: '114',
       safari: '16.4',
     },
-    ...options.env,
+    ...env,
   },
 
   jsc: {
@@ -24,12 +24,12 @@ export const resolveSwcLoaderOptions = (
       ? {
           syntax: 'typescript',
           tsx: true,
-          ...options.jsc?.parser,
+          ...jsc.parser,
         }
       : {
           syntax: 'ecmascript',
           jsx: true,
-          ...options.jsc?.parser,
+          ...jsc.parser,
         },
 
     transform: {
@@ -38,15 +38,15 @@ export const resolveSwcLoaderOptions = (
         pragma: 'jsx',
         pragmaFrag: 'Fragment',
         development: false,
-        ...options.jsc?.transform?.react,
+        ...jsc.transform?.react,
       },
-      ...options.jsc?.transform,
+      ...jsc.transform,
     },
-    ...(options.jsc as SwcLoaderJscConfig),
+    ...(jsc as SwcLoaderJscConfig),
   },
 
   /**
    * overrides
    */
-  ...options,
+  ...rest,
 })
