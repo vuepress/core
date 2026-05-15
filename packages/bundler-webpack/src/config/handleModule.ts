@@ -26,10 +26,7 @@ export const handleModule = ({
   isServer: boolean
 }): void => {
   // noParse
-  config.module.noParse(
-    /(^(vue|vue-router|vuex|vuex-router-sync)$)|(^@vue\/[^/]*$)/,
-  )
-
+  config.module.noParse(/^(?:vue|vue-router|(?:@vue\/[^/]+))$/)
   // vue files
   handleModuleVue({ app, options, config, isBuild, isServer })
 
