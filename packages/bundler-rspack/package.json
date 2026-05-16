@@ -62,5 +62,8 @@
   },
   "devDependencies": {
     "connect-next": "^4.0.1"
+  },
+  "engines": {
+    "node": "^22.18.0 || ^24.0.0 || ^26.0.0"
   }
 }
