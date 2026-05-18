@@ -56,13 +56,6 @@ export default defineUserConfig({
     },
   },
 
-  markdown: {
-    assets: {
-      absolutePathPrependBase:
-        E2E_BUNDLER === 'webpack' || E2E_BUNDLER === 'rspack',
-    },
-  },
-
   bundler:
     E2E_BUNDLER === 'rspack'
       ? rspackBundler()
