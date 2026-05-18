@@ -32,7 +32,7 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
     'foo.md',
     {
-      pathInferred: '/foo.html',
+      pathInferred: '/foo',
       pathLocale: '/',
     },
   ],
@@ -46,7 +46,7 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
     'en/foo.md',
     {
-      pathInferred: '/en/foo.html',
+      pathInferred: '/en/foo',
       pathLocale: '/en/',
     },
   ],
@@ -60,7 +60,7 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
     'zh/foo.md',
     {
-      pathInferred: '/zh/foo.html',
+      pathInferred: '/zh/foo',
       pathLocale: '/zh/',
     },
   ],
@@ -74,7 +74,7 @@ const TEST_CASES: [string, ReturnType<typeof inferPagePath>][] = [
   [
     '中文/foo.md',
     {
-      pathInferred: '/中文/foo.html',
+      pathInferred: '/中文/foo',
       pathLocale: '/中文/',
     },
   ],
@@ -102,7 +102,7 @@ it('should use `/` as the default locale path', () => {
       options: {},
     }),
   ).toEqual({
-    pathInferred: '/en/foo/bar.html',
+    pathInferred: '/en/foo/bar',
     pathLocale: '/',
   })
 })

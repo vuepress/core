@@ -149,7 +149,7 @@ export const watchPageFiles = (
 
   // watch page files
   const { matchPatterns, ignorePatterns } = processPagePatterns(
-    app.options.pagePatterns,
+    app.options.route.pagePatterns,
   )
   const sourceDir = app.dir.source()
   const tempDir = app.dir.temp()

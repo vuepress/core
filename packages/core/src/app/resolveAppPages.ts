@@ -17,7 +17,7 @@ export const resolveAppPages = async (
   log('resolveAppPages start')
 
   // resolve page absolute file paths according to the page patterns
-  const pageFilePaths = await tinyglobby.glob(app.options.pagePatterns, {
+  const pageFilePaths = await tinyglobby.glob(app.options.route.pagePatterns, {
     absolute: true,
     cwd: app.dir.source(),
     ignore: DEFAULT_IGNORE_PATTERNS,
@@ -35,7 +35,7 @@ export const resolveAppPages = async (
         pagesMap[page.filePath] = page
       }
       // if there is a 404 page, set the default layout to NotFound
-      if (page.path === '/404.html') {
+      if (page.path === '/404') {
         page.frontmatter.layout ??= 'NotFound'
         hasNotFoundPage = true
       }
@@ -47,7 +47,7 @@ export const resolveAppPages = async (
   if (!hasNotFoundPage) {
     pages.push(
       await createPage(app, {
-        path: '/404.html',
+        path: '/404',
         frontmatter: { layout: 'NotFound' },
         content: '404 Not Found',
       }),

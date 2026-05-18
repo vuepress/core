@@ -43,8 +43,18 @@ export const resolveAppOptions = ({
   bundler,
   debug = false,
   markdown = {},
-  pagePatterns = ['**/*.md', '!.vuepress'],
-  permalinkPattern = null,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  pagePatterns: _pagePatterns,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  permalinkPattern: _permalinkPattern,
+  route: {
+    cleanUrl = false,
+    pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
+    permalinkPattern = null,
+  } = {
+    pagePatterns: _pagePatterns,
+    permalinkPattern: _permalinkPattern,
+  },
   userStyle = null,
   plugins = [],
   theme,
@@ -75,8 +85,11 @@ export const resolveAppOptions = ({
     bundler,
     debug,
     markdown,
-    pagePatterns,
-    permalinkPattern,
+    route: {
+      cleanUrl,
+      pagePatterns,
+      permalinkPattern,
+    },
     userStyle,
     plugins,
     theme,

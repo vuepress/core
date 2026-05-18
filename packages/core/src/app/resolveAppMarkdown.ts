@@ -9,6 +9,13 @@ import type { App } from '../types/index.js'
  * @internal
  */
 export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
+  // links plugin is not disabled
+  if (app.options.markdown.links !== false) {
+    app.options.markdown.links ??= {}
+    // set the cleanUrl option
+    app.options.markdown.links.cleanUrl = app.options.route.cleanUrl
+  }
+
   // plugin hook: extendsMarkdownOptions
   await app.pluginApi.hooks.extendsMarkdownOptions.process(
     app.options.markdown,

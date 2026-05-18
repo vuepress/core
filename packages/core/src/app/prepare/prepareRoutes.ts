@@ -1,4 +1,4 @@
-import { normalizeRoutePath } from '@vuepress/shared'
+import { normalizeRouteKey } from '@vuepress/shared'
 
 import type { App, Page } from '../../types/index.js'
 
@@ -31,7 +31,7 @@ const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
 
   // redirect from inferred path, notice that the inferred path is not uri-encoded
   if (pathInferred !== null) {
-    const normalizedPathInferred = normalizeRoutePath(pathInferred)
+    const normalizedPathInferred = normalizeRouteKey(pathInferred)
     const encodedPathInferred = encodeURI(normalizedPathInferred)
 
     // add redirect to the set when the redirect could not be normalized & encoded to the page path
