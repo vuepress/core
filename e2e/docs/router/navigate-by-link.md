@@ -5,7 +5,7 @@
 - [Home with query](/README.md?home=true)
 - [Home with query and hash](/README.md?home=true#home)
 - [404 with hash](/404.md#404)
-- [404 with hash and query](/404.md#404?notFound=true)
+- [404 with complex hash](/404.md#/404?lang=en)
 
 ## HTML Links
 
@@ -23,6 +23,6 @@
 - [Home with query](/?home=true)
 - [Home with query and hash](/?home=true#home)
 - [404 with hash](/404.html#404)
-- [404 with hash and query](/404.html#404?notFound=true)
+- [404 with complex hash](/404.html#/404?lang=en)
 
 > Non-recommended usage. HTML paths could not be prepended with `base` correctly.

@@ -36,8 +36,8 @@ test('should preserve hash', async ({ page }) => {
   await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
 })
 
-test('should preserve hash and query', async ({ page }) => {
-  await page.locator('#not-found-with-hash-and-query').click()
-  await expect(page).toHaveURL(`${BASE}404.html#_404?notFound=true`)
+test('should preserve complex hash', async ({ page }) => {
+  await page.locator('#not-found-with-complex-hash').click()
+  await expect(page).toHaveURL(`${BASE}404.html#/404?lang=en`)
   await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
 })
