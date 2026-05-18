@@ -128,7 +128,7 @@ it('should respect options.path', () => {
       options: { path: '/custom/path.html' },
     }),
   ).toEqual({
-    pathInferred: '/foo/bar.html',
+    pathInferred: '/foo/bar',
     pathLocale: '/',
   })
 
@@ -139,7 +139,7 @@ it('should respect options.path', () => {
       options: { path: '/zh/custom/path.html' },
     }),
   ).toEqual({
-    pathInferred: '/zh/foo/bar.html',
+    pathInferred: '/zh/foo/bar',
     pathLocale: '/zh/',
   })
 })

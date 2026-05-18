@@ -49,7 +49,7 @@ export const resolveAppOptions = ({
   permalinkPattern: _permalinkPattern,
   route: {
     cleanUrl = false,
-    pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
+    pagePatterns = ['**/*.md', '!.vuepress'],
     permalinkPattern = null,
   } = {
     pagePatterns: _pagePatterns,

@@ -96,11 +96,11 @@ describe('should work without plugins', () => {
     })
 
     // page data
-    expect(page.data.path).toBe('/zh/test.html')
+    expect(page.data.path).toBe('/zh/test')
     expect(page.data.lang).toBe('zh-CN')
 
     // base fields
-    expect(page.path).toBe('/zh/test.html')
+    expect(page.path).toBe('/zh/test')
     expect(page.lang).toBe('zh-CN')
 
     // file info

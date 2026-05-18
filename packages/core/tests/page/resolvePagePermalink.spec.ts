@@ -166,11 +166,11 @@ describe('permalink pattern', () => {
       },
       slug: 'foo-bar',
       date: '2020-10-07',
-      pathInferred: '/raw.html',
+      pathInferred: '/raw',
       pathLocale: '/en/',
     })
 
-    expect(resolved).toBe('/en/2020/10/07/foo-bar/raw.html')
+    expect(resolved).toBe('/en/2020/10/07/foo-bar/raw')
   })
 })
 
