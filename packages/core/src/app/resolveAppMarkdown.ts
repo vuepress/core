@@ -15,6 +15,7 @@ export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
     app,
   )
 
+  // some bundlers require prepending base to absolute paths
   if (app.options.markdown.assets !== false) {
     app.options.markdown.assets ??= {}
     app.options.markdown.assets.absolutePathPrependBase ??=
