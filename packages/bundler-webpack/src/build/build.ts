@@ -1,3 +1,4 @@
+import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
 import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
@@ -78,6 +79,16 @@ export const build = async (
     const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
       resolveClientManifestMeta(clientManifest)
 
+    // build page path -> chunk files map for 'as-needed' strategy
+    const pageChunkFilesMap: PageChunkFilesMap = new Map()
+    for (const page of app.pages) {
+      const pageFileNames = clientManifest.chunks[page.chunkName] ?? []
+
+      if (pageFileNames.length) {
+        pageChunkFilesMap.set(page.path, pageFileNames)
+      }
+    }
+
     // create vue ssr app and get ssr template
     const { vueApp, vueRouter } = await createVueServerApp(
       app.dir.temp('.server/app.cjs'),
@@ -98,6 +109,7 @@ export const build = async (
         initialFilesMeta,
         asyncFilesMeta,
         moduleFilesMetaMap,
+        pageChunkFilesMap,
       })
     }
   })

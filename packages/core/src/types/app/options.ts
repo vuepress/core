@@ -153,7 +153,10 @@ export interface AppConfigBuild {
    *
    * @default true
    */
-  shouldPreload?: boolean | ((file: string, type: string) => boolean)
+  shouldPreload?:
+    | boolean
+    | 'as-needed'
+    | ((file: string, type: string) => boolean)
 
   /**
    * Determine what resource files should be prefetched. Use boolean value to
@@ -161,7 +164,10 @@ export interface AppConfigBuild {
    *
    * @default true
    */
-  shouldPrefetch?: boolean | ((file: string, type: string) => boolean)
+  shouldPrefetch?:
+    | boolean
+    | 'as-needed'
+    | ((file: string, type: string) => boolean)
 
   /**
    * Specify the path of the HTML template to be used for build

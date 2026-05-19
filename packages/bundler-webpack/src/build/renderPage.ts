@@ -1,4 +1,4 @@
-import type { PageSSRContext } from '@vuepress/bundlerutils'
+import type { PageChunkFilesMap, PageSSRContext } from '@vuepress/bundlerutils'
 import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
@@ -33,6 +33,7 @@ export const renderPage = async ({
   initialFilesMeta,
   asyncFilesMeta,
   moduleFilesMetaMap,
+  pageChunkFilesMap,
 }: {
   app: App
   page: Page
@@ -42,6 +43,7 @@ export const renderPage = async ({
   initialFilesMeta: FileMeta[]
   asyncFilesMeta: FileMeta[]
   moduleFilesMetaMap: ModuleFilesMetaMap
+  pageChunkFilesMap: PageChunkFilesMap
 }): Promise<void> => {
   // render current page to string
   const { ssrContext, ssrString } =
@@ -67,11 +69,15 @@ export const renderPage = async ({
       app,
       asyncFilesMeta,
       pageClientFilesMeta,
+      page,
+      pageChunkFilesMap,
     }),
     preload: renderPagePreloadLinks({
       app,
       initialFilesMeta,
       pageClientFilesMeta,
+      page,
+      pageChunkFilesMap,
     }),
     scripts: renderPageScripts({ app, initialFilesMeta, pageClientFilesMeta }),
     styles: renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta }),

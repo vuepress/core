@@ -1,3 +1,4 @@
+import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
 import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
@@ -20,6 +21,7 @@ export const renderPage = async ({
   output,
   outputEntryChunk,
   outputCssAsset,
+  pageChunkFilesMap,
 }: {
   app: App
   page: Page
@@ -29,6 +31,7 @@ export const renderPage = async ({
   output: RolldownOutput['output']
   outputEntryChunk: OutputChunk
   outputCssAsset: OutputAsset | undefined
+  pageChunkFilesMap: PageChunkFilesMap
 }): Promise<void> => {
   // render current page to string
   const { ssrContext, ssrString } = await renderPageToString({
@@ -49,11 +52,15 @@ export const renderPage = async ({
       app,
       outputEntryChunk,
       pageChunkFiles,
+      page,
+      pageChunkFilesMap,
     }),
     preload: renderPagePreloadLinks({
       app,
       outputEntryChunk,
       pageChunkFiles,
+      page,
+      pageChunkFilesMap,
     }),
     scripts: renderPageScripts({ app, outputEntryChunk }),
     styles: renderPageStyles({ app, outputCssAsset }),
