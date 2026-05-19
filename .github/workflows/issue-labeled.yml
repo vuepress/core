@@ -13,21 +13,30 @@ jobs:
     if: github.event.label.name == 'invalid'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'close-issue, create-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}. This issue is marked as `invalid` and closed. Please follow the issue template.
+      - name: Comment and close invalid issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf 'Hello @%s. This issue is marked as `invalid` and closed. Please follow the issue template.\n' "${ISSUE_AUTHOR}" > "${RUNNER_TEMP}/invalid-comment.md"
+
+          gh issue comment "${ISSUE_NUMBER}" --repo "${GH_REPO}" --body-file "${RUNNER_TEMP}/invalid-comment.md"
+          gh issue close "${ISSUE_NUMBER}" --repo "${GH_REPO}"
 
   issue-need-reproduction:
     name: need reproduction
     if: github.event.label.name == 'need reproduction'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'create-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}. Please provide a [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) using a GitHub repository or [vuepress.vuejs.org/new](https://vuepress.vuejs.org/new). Issues marked with `need reproduction` will be closed if they have no activity within 7 days.
+      - name: Comment on need reproduction issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf 'Hello @%s. Please provide a [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) using a GitHub repository or [vuepress.vuejs.org/new](https://vuepress.vuejs.org/new). Issues marked with `need reproduction` will be closed if they have no activity within 7 days.\n' "${ISSUE_AUTHOR}" > "${RUNNER_TEMP}/need-reproduction-comment.md"
+
+          gh issue comment "${ISSUE_NUMBER}" --repo "${GH_REPO}" --body-file "${RUNNER_TEMP}/need-reproduction-comment.md"
