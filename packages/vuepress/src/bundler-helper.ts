@@ -1,1 +1,1 @@
-export * from '@vuepress/bundler-helper'
+export * from '@vuepress/bundlerhelper'

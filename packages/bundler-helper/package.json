@@ -1,5 +1,5 @@
 {
-  "name": "@vuepress/bundler-helper",
+  "name": "@vuepress/bundlerhelper",
   "version": "2.0.0-rc.30",
   "description": "Helper package of VuePress bundlers",
   "keywords": [

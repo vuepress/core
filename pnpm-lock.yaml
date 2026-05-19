@@ -488,15 +488,15 @@ importers:
 
   packages/vuepress:
     dependencies:
-      '@vuepress/bundler-helper':
-        specifier: workspace:*
-        version: link:../bundler-helper
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../bundler-vite
       '@vuepress/bundler-webpack':
         specifier: workspace:*
         version: link:../bundler-webpack
+      '@vuepress/bundlerhelper':
+        specifier: workspace:*
+        version: link:../bundler-helper
       '@vuepress/cli':
         specifier: workspace:*
         version: link:../cli
