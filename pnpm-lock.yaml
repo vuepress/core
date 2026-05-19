@@ -146,6 +146,28 @@ importers:
         specifier: ^14.2.6
         version: 14.2.6
 
+  packages/bundler-helper:
+    dependencies:
+      '@vuepress/bundler-vite':
+        specifier: workspace:*
+        version: link:../bundler-vite
+      '@vuepress/bundler-webpack':
+        specifier: workspace:*
+        version: link:../bundler-webpack
+      '@vuepress/core':
+        specifier: workspace:*
+        version: link:../core
+      '@vuepress/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@vuepress/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@types/connect':
+        specifier: ^3.4.38
+        version: 3.4.38
+
   packages/bundler-vite:
     dependencies:
       '@vitejs/plugin-vue':
@@ -466,6 +488,9 @@ importers:
 
   packages/vuepress:
     dependencies:
+      '@vuepress/bundler-helper':
+        specifier: workspace:*
+        version: link:../bundler-helper
       '@vuepress/bundler-vite':
         specifier: workspace:*
         version: link:../bundler-vite
@@ -6872,7 +6897,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.6.0
+      '@types/node': 24.12.3
 
   '@types/debug@4.1.13':
     dependencies:

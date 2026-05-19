@@ -1,0 +1,66 @@
+{
+  "name": "@vuepress/bundler-helper",
+  "version": "2.0.0-rc.30",
+  "description": "Helper package of VuePress bundlers",
+  "keywords": [
+    "bundler",
+    "utils",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/core/issues"
+  },
+  "license": "MIT",
+  "author": "Mister-Hope",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/core.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@vuepress/core": "workspace:*",
+    "@vuepress/shared": "workspace:*",
+    "@vuepress/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/connect": "^3.4.38"
+  },
+  "peerDependencies": {
+    "@vuepress/bundler-vite": "workspace:*",
+    "@vuepress/bundler-webpack": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@vuepress/bundler-vite": {
+      "optional": true
+    },
+    "@vuepress/bundler-webpack": {
+      "optional": true
+    }
+  },
+  "tsdown": {
+    "dts": true,
+    "entry": "./src/index.ts",
+    "fixedExtension": false,
+    "format": "esm",
+    "target": "es2023",
+    "tsconfig": "../../tsconfig.dts.json"
+  }
+}

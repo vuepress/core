@@ -11,4 +11,5 @@ export { debug, colors, fs, hash, ora, path, picomatch, tinyglobby }
 
 export * from './console/index.js'
 export * from './module/index.js'
+export * from './packageManager/index.js'
 export * from './ssr/index.js'
