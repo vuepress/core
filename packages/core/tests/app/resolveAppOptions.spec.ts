@@ -43,8 +43,8 @@ it('should create app options with default values', () => {
       require.resolve('@vuepress/client/templates/build.html'),
     ),
     templateBuildRenderer: templateRenderer,
-    shouldPreload: true,
-    shouldPrefetch: true,
+    shouldPreload: 'as-needed',
+    shouldPrefetch: 'as-needed',
     markdown: {},
     plugins: [],
   })
