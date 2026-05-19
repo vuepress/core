@@ -4,14 +4,19 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  issues: write
+
 jobs:
   issue-commented:
     name: remove stale on commented
     if: contains(github.event.issue.labels.*.name, 'stale')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'remove-labels'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'stale'
+      - name: Remove stale label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh api --method DELETE "repos/${GH_REPO}/issues/${ISSUE_NUMBER}/labels/stale"
