@@ -151,7 +151,7 @@ export interface AppConfigBuild {
    * Determine what resource files should be preloaded. Use boolean value to
    * totally enable / disable.
    *
-   * @default true
+   * @default 'as-needed'
    */
   shouldPreload?:
     | boolean
@@ -162,7 +162,7 @@ export interface AppConfigBuild {
    * Determine what resource files should be prefetched. Use boolean value to
    * totally enable / disable.
    *
-   * @default true
+   * @default 'as-needed'
    */
   shouldPrefetch?:
     | boolean
