@@ -31,6 +31,7 @@
     "mdit",
     "prefetch",
     "preload",
+    "rspack",
     "slugify",
     "tinyglobby",
     "unmount",

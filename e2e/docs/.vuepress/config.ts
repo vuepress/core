@@ -1,5 +1,6 @@
 import process from 'node:process'
 
+import { rspackBundler } from '@vuepress/bundler-rspack'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defineUserConfig } from 'vuepress'
@@ -56,15 +57,17 @@ export default defineUserConfig({
   },
 
   bundler:
-    E2E_BUNDLER === 'webpack'
-      ? webpackBundler()
-      : viteBundler({
-          viteOptions: {
-            optimizeDeps: {
-              include: ['@vuepress-e2e/conditional-exports'],
+    E2E_BUNDLER === 'rspack'
+      ? rspackBundler()
+      : E2E_BUNDLER === 'webpack'
+        ? webpackBundler()
+        : viteBundler({
+            viteOptions: {
+              optimizeDeps: {
+                include: ['@vuepress-e2e/conditional-exports'],
+              },
             },
-          },
-        }),
+          }),
 
   theme: e2eTheme(),
 

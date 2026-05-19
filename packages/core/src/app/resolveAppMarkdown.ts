@@ -19,6 +19,7 @@ export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
   if (app.options.markdown.assets !== false) {
     app.options.markdown.assets ??= {}
     app.options.markdown.assets.absolutePathPrependBase ??=
+      app.options.bundler.name === '@vuepress/bundler-rspack' ||
       app.options.bundler.name === '@vuepress/bundler-webpack'
   }
 
