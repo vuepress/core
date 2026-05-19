@@ -22,8 +22,9 @@ export const resolveViteConfig = ({
   options: ViteBundlerOptions
   isBuild: boolean
   isServer: boolean
-}): InlineConfig =>
-  mergeConfig(
+}): InlineConfig => {
+  // generate base vite config
+  let viteConfig = mergeConfig(
     {
       clearScreen: false,
       configFile: false,
@@ -43,3 +44,18 @@ export const resolveViteConfig = ({
     // some vite options would not take effect inside a plugin, so we still need to merge them here in addition to userConfigPlugin
     options.viteOptions ?? {},
   )
+
+  // allow modifying vite config via `configureVite`
+  const configureViteResult = options.configureVite?.(
+    viteConfig,
+    isServer,
+    isBuild,
+  )
+
+  // if `configureVite` returns a configuration object, use vite's mergeConfig to merge it
+  if (configureViteResult) {
+    viteConfig = mergeConfig(viteConfig, configureViteResult)
+  }
+
+  return viteConfig
+}

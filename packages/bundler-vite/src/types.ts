@@ -8,4 +8,9 @@ import type { InlineConfig } from 'vite'
 export interface ViteBundlerOptions extends BundlerOptions {
   viteOptions?: InlineConfig
   vuePluginOptions?: VuePluginOptions
+  configureVite?: (
+    config: InlineConfig,
+    isServer: boolean,
+    isBuild: boolean,
+  ) => InlineConfig | void
 }
