@@ -12,34 +12,72 @@ jobs:
     name: label stale issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'check-inactive'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          inactive-day: 15
-          inactive-label: 'stale'
-          exclude-labels: 'bug, documentation, enhancement, feature, help wanted, need reproduction, need review, stale'
-          body: |
-            This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 7 days.
+      - name: Label inactive issues as stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          cutoff="$(date -u -d '15 days ago' '+%Y-%m-%d')"
+          query="repo:${GH_REPO} is:issue is:open updated:<${cutoff}"
+          excluded_labels=(
+            "bug"
+            "documentation"
+            "enhancement"
+            "feature"
+            "help wanted"
+            "need reproduction"
+            "need review"
+            "stale"
+          )
+
+          for label in "${excluded_labels[@]}"; do
+            query="${query} -label:\"${label}\""
+          done
+
+          printf 'This issue is marked as `stale` because it has not had recent activity. Issues marked with `stale` will be closed if they have no activity within 7 days.\n' > "${RUNNER_TEMP}/stale-comment.md"
+
+          gh api --method GET --paginate /search/issues -f q="${query}" -f per_page=100 --jq '.items[].number' |
+            while read -r issue_number; do
+              gh issue edit "${issue_number}" --repo "${GH_REPO}" --add-label "stale"
+              gh issue comment "${issue_number}" --repo "${GH_REPO}" --body-file "${RUNNER_TEMP}/stale-comment.md"
+            done
 
   issue-close-stale:
     name: close stale issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'close-issues'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'stale'
-          inactive-day: 7
+      - name: Close inactive stale issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          cutoff="$(date -u -d '7 days ago' '+%Y-%m-%d')"
+          query="repo:${GH_REPO} is:issue is:open label:\"stale\" updated:<${cutoff}"
+
+          gh api --method GET --paginate /search/issues -f q="${query}" -f per_page=100 --jq '.items[].number' |
+            while read -r issue_number; do
+              gh issue close "${issue_number}" --repo "${GH_REPO}"
+            done
 
   issue-close-need-reproduction:
     name: close need-reproduction issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'close-issues'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'need reproduction'
-          inactive-day: 7
+      - name: Close inactive need-reproduction issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          cutoff="$(date -u -d '7 days ago' '+%Y-%m-%d')"
+          query="repo:${GH_REPO} is:issue is:open label:\"need reproduction\" updated:<${cutoff}"
+
+          gh api --method GET --paginate /search/issues -f q="${query}" -f per_page=100 --jq '.items[].number' |
+            while read -r issue_number; do
+              gh issue close "${issue_number}" --repo "${GH_REPO}"
+            done
