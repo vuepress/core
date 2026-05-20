@@ -25,7 +25,11 @@ export interface WebpackBundlerOptions extends BundlerOptions {
     config: WebpackConfiguration,
     isServer: boolean,
     isBuild: boolean,
-  ) => WebpackConfiguration | void
+    mergeConfig: <Config extends object>(
+      firstConfiguration: Config,
+      ...configurations: Config[]
+    ) => Config,
+  ) => WebpackConfiguration | undefined
 
   /**
    * use webpack-v5-chain to set webpack config

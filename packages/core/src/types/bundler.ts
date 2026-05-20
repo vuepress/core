@@ -1,4 +1,5 @@
 import type { App } from './app/index.js'
+import type { DeepPartial } from './helpers.js'
 
 /**
  * Vuepress bundler
@@ -22,6 +23,15 @@ export interface Bundler {
    * Method to run vuepress app in build mode, generating static pages and assets
    */
   build: (app: App) => Promise<void>
+
+  /**
+   * Merge helper for current bundler.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mergeConfig: <Config extends Record<string, any> = Record<string, any>>(
+    currentConfig: Config,
+    newConfig: DeepPartial<Config>,
+  ) => Config
 }
 
 export type BundlerOptions = Record<string, unknown>
