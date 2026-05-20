@@ -55,12 +55,6 @@ export default defineUserConfig({
     },
   },
 
-  markdown: {
-    assets: {
-      absolutePathPrependBase: E2E_BUNDLER === 'webpack',
-    },
-  },
-
   bundler:
     E2E_BUNDLER === 'webpack'
       ? webpackBundler()
