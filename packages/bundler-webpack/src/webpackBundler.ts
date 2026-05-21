@@ -9,6 +9,7 @@ export const webpackBundler = (
   options: WebpackBundlerOptions = {},
 ): Bundler => ({
   name: '@vuepress/bundler-webpack',
+  type: 'webpack',
   dev: async (app) => dev(options, app),
   build: async (app) => build(options, app),
   mergeConfig: merge,

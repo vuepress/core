@@ -15,6 +15,11 @@ export interface Bundler {
   name: string
 
   /**
+   * Type of the bundler, e.g. 'vite' or 'webpack'
+   */
+  type: string
+
+  /**
    * Method to run vuepress app in dev mode, starting dev server
    */
   dev: (app: App) => Promise<() => Promise<void>>
