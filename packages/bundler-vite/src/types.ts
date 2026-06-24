@@ -21,7 +21,7 @@ export interface ViteBundlerOptions extends BundlerOptions {
    * @param isServer - Whether it is server bundle
    * @param isBuild - Whether in build mode
    * @param mergeConfig - Vite's mergeConfig function, in case you want to use it to merge config
-   * @returns New Vite config
+   * @returns optional whole new Vite config
    */
   configureVite?: (
     config: InlineConfig,
