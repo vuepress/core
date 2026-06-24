@@ -79,7 +79,7 @@ export const build = async (
     const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
       resolveClientManifestMeta(clientManifest)
 
-    // build page path -> chunk files map for 'as-needed' strategy
+    // build page path -> chunk files map for preload & prefetch
     const pageChunkFilesMap: PageChunkFilesMap = new Map()
     for (const page of app.pages) {
       const pageFileNames = clientManifest.chunks[page.chunkName] ?? []
