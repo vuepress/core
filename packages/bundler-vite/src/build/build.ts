@@ -67,7 +67,7 @@ export const build = async (
     )
     const ssrTemplate = await getSsrTemplate(app)
 
-    // build page path -> chunk files map for 'as-needed' strategy
+    // build page path -> chunk files map for preload & prefetch
     const pageChunkFilesMap: PageChunkFilesMap = new Map()
     for (const page of app.pages) {
       pageChunkFilesMap.set(
