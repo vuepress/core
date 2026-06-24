@@ -24,7 +24,7 @@ export interface WebpackBundlerOptions extends BundlerOptions {
   * use webpack-merge to set webpack config
   * 
   *
-  * @param config - Vite config
+  * @param config - Webpack config
   * @param isServer - Whether it is server bundle
   * @param isBuild - Whether in build mode
   * @param mergeConfig -  merge function from webpack-merge, in case you want to use it to merge config
