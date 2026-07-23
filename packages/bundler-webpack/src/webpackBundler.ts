@@ -1,5 +1,4 @@
 import type { Bundler } from '@vuepress/core'
-import { merge } from 'webpack-merge'
 
 import { build } from './build/index.js'
 import { dev } from './dev/index.js'
@@ -12,5 +11,4 @@ export const webpackBundler = (
   type: 'webpack',
   dev: async (app) => dev(options, app),
   build: async (app) => build(options, app),
-  mergeConfig: merge as Bundler['mergeConfig'],
 })
