@@ -10,10 +10,12 @@ export interface ViteBundlerOptions extends BundlerOptions {
    * Vite options
    */
   viteOptions?: InlineConfig
+
   /**
    * Options for @vitejs/plugin-vue
    */
   vuePluginOptions?: VuePluginOptions
+
   /**
    * Modify Vite config
    *
