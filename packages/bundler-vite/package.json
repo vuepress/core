@@ -64,5 +64,8 @@
     "format": "esm",
     "target": "es2023",
     "tsconfig": "../../tsconfig.dts.json"
+  },
+  "engines": {
+    "node": "^22.18.0 || ^24 || >=26"
   }
 }

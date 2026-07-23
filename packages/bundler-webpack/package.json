@@ -67,5 +67,8 @@
     "webpack-dev-server": "^5.2.3",
     "webpack-merge": "^6.0.1",
     "webpack-v5-chain": "^1.1.0"
+  },
+  "engines": {
+    "node": "^22.18.0 || ^24 || >=26"
   }
 }
