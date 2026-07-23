@@ -1,5 +1,4 @@
 import type { Configuration } from 'webpack'
-import { merge } from 'webpack-merge'
 import type { Config } from 'webpack-v5-chain'
 
 import type { WebpackBundlerOptions } from './types.js'
@@ -26,7 +25,6 @@ export const resolveWebpackConfig = ({
     webpackConfig,
     isServer,
     isBuild,
-    merge,
   )
 
   // if `configureWebpack` returns a configuration object, use this object as the new webpack config

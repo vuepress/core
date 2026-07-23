@@ -50,7 +50,6 @@ export const resolveViteConfig = ({
     viteConfig,
     isServer,
     isBuild,
-    mergeConfig,
   )
 
   // if `configureVite` returns a configuration object, use it as the new vite config

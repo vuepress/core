@@ -12,5 +12,5 @@ export const webpackBundler = (
   type: 'webpack',
   dev: async (app) => dev(options, app),
   build: async (app) => build(options, app),
-  mergeConfig: merge,
+  mergeConfig: merge as Bundler['mergeConfig'],
 })

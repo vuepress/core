@@ -20,25 +20,17 @@ export type {
 export interface WebpackBundlerOptions extends BundlerOptions {
   /**
    * use webpack-merge to set webpack config
-/**
-  * use webpack-merge to set webpack config
-  * 
-  *
-  * @param config - Webpack config
-  * @param isServer - Whether it is server bundle
-  * @param isBuild - Whether in build mode
-  * @param mergeConfig -  merge function from webpack-merge, in case you want to use it to merge config
-  * @returns optional whole new webpack config
-  */
+   *
+   * @param config - Webpack config
+   * @param isServer - Whether it is server bundle
+   * @param isBuild - Whether in build mode
+   * @returns if returns a configuration object, it will be used as the new webpack config, otherwise the original config object will be used
+   */
   configureWebpack?: (
     config: WebpackConfiguration,
     isServer: boolean,
     isBuild: boolean,
-    mergeConfig: <Config extends object>(
-      firstConfiguration: Config,
-      ...configurations: Config[]
-    ) => Config,
-  ) => WebpackConfiguration | undefined
+  ) => WebpackConfiguration | void
 
   /**
    * use webpack-v5-chain to set webpack config

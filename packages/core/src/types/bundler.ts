@@ -32,8 +32,9 @@ export interface Bundler {
   /**
    * Merge helper for current bundler.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mergeConfig: <Config extends Record<string, any> = Record<string, any>>(
+  mergeConfig: <
+    Config extends Record<string, unknown> = Record<string, unknown>,
+  >(
     currentConfig: Config,
     newConfig: DeepPartial<Config>,
   ) => Config
