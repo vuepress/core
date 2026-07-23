@@ -19,7 +19,7 @@ export type {
  */
 export interface WebpackBundlerOptions extends BundlerOptions {
   /**
-   * use webpack-merge to set webpack config
+   * Edit the internal Webpack config.
    *
    * @param config - Webpack config
    * @param isServer - Whether it is server bundle

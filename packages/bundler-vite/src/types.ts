@@ -17,7 +17,7 @@ export interface ViteBundlerOptions extends BundlerOptions {
   vuePluginOptions?: VuePluginOptions
 
   /**
-   * Modify Vite config
+   * Edit the internal Vite config.
    *
    * @param config - Vite config
    * @param isServer - Whether it is server bundle
