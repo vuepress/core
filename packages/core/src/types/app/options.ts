@@ -148,16 +148,26 @@ export interface AppConfigDev {
  */
 export interface AppConfigBuild {
   /**
-   * Determine what resource files should be preloaded. Use boolean value to
-   * totally enable / disable.
+   * Determine what resource files should be preloaded.
+   *
+   * - `false` disables preloading.
+   * - `true` preloads script and style resource files used by the current page.
+   * - A function preloads a candidate file when it returns `true`. It receives
+   *   the output file name and inferred resource type.
    *
    * @default true
    */
   shouldPreload?: boolean | ((file: string, type: string) => boolean)
 
   /**
-   * Determine what resource files should be prefetched. Use boolean value to
-   * totally enable / disable.
+   * Determine what resource files should be prefetched.
+   *
+   * - `false` disables prefetching.
+   * - `true` prefetches all async resource files not used by the current page.
+   * - `'as-needed'` prefetches async resource files only for pages linked from
+   *   the current page's Markdown content.
+   * - A function prefetches a candidate file when it returns `true`. It receives
+   *   the output file name and inferred resource type.
    *
    * @default 'as-needed'
    */
