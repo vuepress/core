@@ -1,3 +1,4 @@
+import { inferRouteKey } from '@vuepress/shared'
 import { logger, sanitizeFileName } from '@vuepress/utils'
 
 import type { PageOptions } from '../types/index.js'
@@ -16,7 +17,9 @@ export const resolvePagePath = ({
   pathInferred: string | null
   options: PageOptions
 }): string => {
-  const pagePath = options.path || permalink || pathInferred
+  const pagePath = options.path
+    ? inferRouteKey(options.path)
+    : permalink || pathInferred
 
   if (!pagePath) {
     throw logger.createError(
@@ -24,5 +27,9 @@ export const resolvePagePath = ({
     )
   }
 
-  return encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
+  return (
+    encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
+      // get clean format
+      .replace(/\.html$/, '')
+  )
 }

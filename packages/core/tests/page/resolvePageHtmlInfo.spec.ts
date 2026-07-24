@@ -12,11 +12,7 @@ const app = createBaseApp({
 
 const TEST_CASES: [string, string][] = [
   ['/foo', 'foo.html'],
-  ['/foo.html', 'foo.html'],
-  ['/foo/bar.html', 'foo/bar.html'],
   ['/foo/bar', 'foo/bar.html'],
-  ['/foo/index.html', 'foo/index.html'],
-  ['/foo/bar/index.html', 'foo/bar/index.html'],
   ['/foo/', 'foo/index.html'],
   ['/foo/bar/', 'foo/bar/index.html'],
 ]
