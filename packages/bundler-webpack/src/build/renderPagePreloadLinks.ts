@@ -1,6 +1,4 @@
-import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
-import { resolveLinkRoutePath } from '@vuepress/bundlerutils'
-import type { App, Page } from '@vuepress/core'
+import type { App } from '@vuepress/core'
 
 import { resolveFileMeta } from './resolveFileMeta.js'
 import type { FileMeta } from './types.js'
@@ -11,15 +9,13 @@ import type { FileMeta } from './types.js'
 export const renderPagePreloadLinks = ({
   app,
   initialFilesMeta,
+  linkedPageChunkFiles,
   pageClientFilesMeta,
-  page,
-  pageChunkFilesMap,
 }: {
   app: App
   initialFilesMeta: FileMeta[]
+  linkedPageChunkFiles: Set<string>
   pageClientFilesMeta: FileMeta[]
-  page: Page
-  pageChunkFilesMap: PageChunkFilesMap
 }): string => {
   // shouldPreload option
   const { shouldPreload } = app.options
@@ -34,20 +30,10 @@ export const renderPagePreloadLinks = ({
 
   // when 'as-needed', also add linked pages' chunk files
   if (shouldPreload === 'as-needed') {
-    const linkedFileNames = new Set<string>()
-    for (const link of page.links) {
-      const routePath = resolveLinkRoutePath(link.absolute, app.options.base)
-      if (routePath) {
-        const targetChunks = pageChunkFilesMap.get(routePath)
-        if (targetChunks) {
-          for (const file of targetChunks) {
-            linkedFileNames.add(file)
-          }
-        }
-      }
-    }
-    for (const fileName of linkedFileNames) {
-      if (!preloadFilesMeta.some((f) => f.file === fileName)) {
+    const preloadFileNames = new Set(preloadFilesMeta.map(({ file }) => file))
+    for (const fileName of linkedPageChunkFiles) {
+      if (!preloadFileNames.has(fileName)) {
+        preloadFileNames.add(fileName)
         preloadFilesMeta.push(resolveFileMeta(fileName))
       }
     }

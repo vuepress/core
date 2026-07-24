@@ -1,6 +1,4 @@
-import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
-import { resolveLinkRoutePath } from '@vuepress/bundlerutils'
-import type { App, Page } from '@vuepress/core'
+import type { App } from '@vuepress/core'
 import type { OutputChunk } from 'rolldown'
 
 /**
@@ -8,16 +6,14 @@ import type { OutputChunk } from 'rolldown'
  */
 export const renderPagePreloadLinks = ({
   app,
+  linkedPageChunkFiles,
   outputEntryChunk,
   pageChunkFiles,
-  page,
-  pageChunkFilesMap,
 }: {
   app: App
+  linkedPageChunkFiles: Set<string>
   outputEntryChunk: OutputChunk
   pageChunkFiles: string[]
-  page: Page
-  pageChunkFilesMap: PageChunkFilesMap
 }): string => {
   // shouldPreload option
   const { shouldPreload } = app.options
@@ -28,32 +24,20 @@ export const renderPagePreloadLinks = ({
   }
 
   // dedupe entry chunks and page chunks
-  const preloadFiles = Array.from(
-    new Set([
-      outputEntryChunk.fileName,
-      ...outputEntryChunk.imports,
-      ...pageChunkFiles,
-    ]),
-  )
+  const preloadFiles = new Set([
+    outputEntryChunk.fileName,
+    ...outputEntryChunk.imports,
+    ...pageChunkFiles,
+  ])
 
   // when 'as-needed', also add linked pages' chunk files
   if (shouldPreload === 'as-needed') {
-    for (const link of page.links) {
-      const routePath = resolveLinkRoutePath(link.absolute, app.options.base)
-      if (routePath) {
-        const targetChunks = pageChunkFilesMap.get(routePath)
-        if (targetChunks) {
-          for (const file of targetChunks) {
-            if (!preloadFiles.includes(file)) {
-              preloadFiles.push(file)
-            }
-          }
-        }
-      }
+    for (const file of linkedPageChunkFiles) {
+      preloadFiles.add(file)
     }
   }
 
-  return preloadFiles
+  return Array.from(preloadFiles)
     .map((item) => {
       // resolve file type
       const type = item.endsWith('.js')

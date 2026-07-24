@@ -1,5 +1,8 @@
 import type { PageChunkFilesMap, PageSSRContext } from '@vuepress/bundlerutils'
-import { renderPageToString } from '@vuepress/bundlerutils'
+import {
+  renderPageToString,
+  resolveLinkedPageChunkFiles,
+} from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
 import type { App as VueApp } from 'vue'
@@ -59,6 +62,11 @@ export const renderPage = async ({
     moduleRequests: Array.from(ssrContext._registeredComponents),
     moduleFilesMetaMap,
   })
+  const linkedPageChunkFiles = resolveLinkedPageChunkFiles({
+    base: app.options.base,
+    page,
+    pageChunkFilesMap,
+  })
 
   // generate html string
   const html = await app.options.templateBuildRenderer(ssrTemplate, {
@@ -68,16 +76,14 @@ export const renderPage = async ({
     prefetch: renderPagePrefetchLinks({
       app,
       asyncFilesMeta,
+      linkedPageChunkFiles,
       pageClientFilesMeta,
-      page,
-      pageChunkFilesMap,
     }),
     preload: renderPagePreloadLinks({
       app,
       initialFilesMeta,
+      linkedPageChunkFiles,
       pageClientFilesMeta,
-      page,
-      pageChunkFilesMap,
     }),
     scripts: renderPageScripts({ app, initialFilesMeta, pageClientFilesMeta }),
     styles: renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta }),
