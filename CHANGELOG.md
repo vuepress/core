@@ -1,3 +1,24 @@
+# [2.0.0-rc.31](https://github.com/vuepress/core/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2026-07-24)
+
+* feat(core)!: add as-needed prefetch strategy (#1711) ([7d3da21](https://github.com/vuepress/core/commit/7d3da21681439dc4a620a4ebddba7438e1d69bcc)), closes [#1711](https://github.com/vuepress/core/issues/1711)
+* feat(core)!: refine bundler options (#1714) ([7ced1d9](https://github.com/vuepress/core/commit/7ced1d979035c0f563e5fefb4492e0e5fa718e80)), closes [#1714](https://github.com/vuepress/core/issues/1714)
+
+### Bug Fixes
+
+* **bundler-webpack:** remove vuex from module.noParse ([#1702](https://github.com/vuepress/core/issues/1702)) ([894ade0](https://github.com/vuepress/core/commit/894ade0ee27c752c4dba6814d60531221f1032dc))
+* **client:** fix client data injection failure caused by HMR (close [#1715](https://github.com/vuepress/core/issues/1715)) ([#1716](https://github.com/vuepress/core/issues/1716)) ([2d2d8db](https://github.com/vuepress/core/commit/2d2d8db1b09dd926d88ee0108f2f6b66750a7df5))
+* **core:** update default value for absolutePathPrependBase ([#1706](https://github.com/vuepress/core/issues/1706)) ([9a6e677](https://github.com/vuepress/core/commit/9a6e677de38d83937e6d779f3f1e422683d001e4))
+
+### Features
+
+* **cli:** replace esbuild with rolldown ([#1712](https://github.com/vuepress/core/issues/1712)) ([f64c208](https://github.com/vuepress/core/commit/f64c2087d81126a0e7b03828d1dad8cba8d52d5c))
+
+### BREAKING CHANGES
+
+* `shouldPrefetch` now defaults to `'as-needed'` instead of `true`. Builds no longer prefetch every asynchronous page chunk by default. Set `shouldPrefetch: true` to retain the previous behavior.
+* bundler-webpack - `configureWebpack` return value now replaces the config object directly. Use the `webpackMergeConfig` helper to merge configs manually instead.
+* core - `Bundler `interface now requires `type` and `mergeConfig`.
+
 # [2.0.0-rc.30](https://github.com/vuepress/core/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2026-05-14)
 
 
