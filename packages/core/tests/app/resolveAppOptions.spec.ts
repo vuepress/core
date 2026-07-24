@@ -44,7 +44,7 @@ it('should create app options with default values', () => {
     ),
     templateBuildRenderer: templateRenderer,
     shouldPreload: true,
-    shouldPrefetch: true,
+    shouldPrefetch: 'as-needed',
     markdown: {},
     plugins: [],
   })

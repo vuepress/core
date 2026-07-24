@@ -1,4 +1,8 @@
-import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
+import {
+  createPageChunkFilesMap,
+  createVueServerApp,
+  getSsrTemplate,
+} from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
@@ -7,6 +11,7 @@ import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
 import { renderPage } from './renderPage.js'
+import { resolvePageChunkFiles } from './resolvePageChunkFiles.js'
 
 const log = debug('vuepress:bundler-vite/build')
 
@@ -65,6 +70,13 @@ export const build = async (
     )
     const ssrTemplate = await getSsrTemplate(app)
 
+    // build page path -> chunk files map for preload & prefetch
+    const pageChunkFilesMap = createPageChunkFilesMap({
+      pages: app.pages,
+      resolvePageChunkFiles: (page) =>
+        resolvePageChunkFiles({ page, output: clientOutput.output }),
+    })
+
     // pre-render pages to html files
     for (const page of app.pages) {
       if (spinner) spinner.text = `Rendering pages ${colors.magenta(page.path)}`
@@ -77,6 +89,7 @@ export const build = async (
         output: clientOutput.output,
         outputEntryChunk: clientEntryChunk,
         outputCssAsset: clientCssAsset,
+        pageChunkFilesMap,
       })
     }
   })

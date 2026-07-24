@@ -90,12 +90,21 @@ export const createClientPlugin = (
             if (request) manifestModules[request] = files
           })
 
+          // build chunk group name -> file names mapping
+          const chunkFiles = Object.fromEntries(
+            Array.from(compilation.namedChunkGroups, ([name, chunkGroup]) => [
+              name,
+              chunkGroup.getFiles(),
+            ]),
+          )
+
           // generate client manifest json file
           const clientManifest: ClientManifest = {
             all: allFiles,
             initial: initialFiles,
             async: asyncFiles,
             modules: manifestModules,
+            chunks: chunkFiles,
           }
 
           const clientManifestJson = JSON.stringify(clientManifest, null, 2)
