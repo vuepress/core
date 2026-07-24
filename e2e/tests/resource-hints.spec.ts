@@ -53,6 +53,10 @@ const LINKED_PAGE_CASES = [
     name: 'with a permalink',
     path: 'resource-hints/linked-permalink/',
   },
+  {
+    name: 'with an exact path that collides with a redirect',
+    path: 'resource-hints/redirect-collision.html',
+  },
 ] as const
 
 if (IS_PROD) {
