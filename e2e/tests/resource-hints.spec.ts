@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
-import { IS_PROD } from '../utils/env'
+import { BUNDLER, IS_PROD } from '../utils/env'
 
 interface PageResourceInfo {
   prefetch: string[]
@@ -44,6 +44,8 @@ const collectPageResourceInfo = async (
 const difference = (values: string[], otherValues: string[]): string[] =>
   values.filter((value) => !otherValues.includes(value))
 
+const EXTRACTED_CSS_PAGE_PATH = 'styles/css-container.html'
+
 const LINKED_PAGE_CASES = [
   {
     name: 'without a permalink',
@@ -56,6 +58,10 @@ const LINKED_PAGE_CASES = [
   {
     name: 'with an exact path that collides with a redirect',
     path: 'resource-hints/redirect-collision.html',
+  },
+  {
+    name: 'with extracted CSS',
+    path: EXTRACTED_CSS_PAGE_PATH,
   },
 ] as const
 
@@ -144,6 +150,19 @@ if (IS_PROD) {
         })
       })
     })
+
+    if (BUNDLER === 'webpack') {
+      test('should prefetch extracted CSS required by a linked page', () => {
+        const cssFiles = (
+          linkedPageFiles.get(EXTRACTED_CSS_PAGE_PATH) ?? []
+        ).filter((file) => file.endsWith('.css'))
+
+        expect(cssFiles.length).toBeGreaterThan(0)
+        cssFiles.forEach((file) => {
+          expect(sourceInfo.prefetch).toContain(file)
+        })
+      })
+    }
 
     test('should not preload unlinked page files', () => {
       expect(unlinkedPageFiles.length).toBeGreaterThan(0)
