@@ -19,7 +19,12 @@ export type {
  */
 export interface WebpackBundlerOptions extends BundlerOptions {
   /**
-   * use webpack-merge to set webpack config
+   * Edit the internal Webpack config.
+   *
+   * @param config - Webpack config
+   * @param isServer - Whether it is server bundle
+   * @param isBuild - Whether in build mode
+   * @returns if returns a configuration object, it will be used as the new webpack config, otherwise the original config object will be used
    */
   configureWebpack?: (
     config: WebpackConfiguration,
