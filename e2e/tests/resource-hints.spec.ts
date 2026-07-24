@@ -44,20 +44,35 @@ const collectPageResourceInfo = async (
 const difference = (values: string[], otherValues: string[]): string[] =>
   values.filter((value) => !otherValues.includes(value))
 
+const LINKED_PAGE_CASES = [
+  {
+    name: 'without a permalink',
+    path: 'resource-hints/linked.html',
+  },
+  {
+    name: 'with a permalink',
+    path: 'resource-hints/linked-permalink/',
+  },
+] as const
+
 if (IS_PROD) {
   test.describe('as-needed resource hints', () => {
+    let allLinkedPageFiles: string[]
+    let linkedPageFiles: Map<string, string[]>
     let sourceInfo: PageResourceInfo
-    let linkedPageFiles: string[]
     let sourcePageFiles: string[]
     let unlinkedPageFiles: string[]
 
     test.beforeAll(async ({ browser }) => {
       const page = await browser.newPage()
 
-      const linkedInfo = await collectPageResourceInfo(
-        page,
-        'resource-hints/linked.html',
-      )
+      const linkedInfos = new Map<string, PageResourceInfo>()
+      for (const linkedPageCase of LINKED_PAGE_CASES) {
+        linkedInfos.set(
+          linkedPageCase.path,
+          await collectPageResourceInfo(page, linkedPageCase.path),
+        )
+      }
       const unlinkedInfo = await collectPageResourceInfo(
         page,
         'resource-hints/unlinked.html',
@@ -67,27 +82,57 @@ if (IS_PROD) {
         'resource-hints/source.html',
       )
 
-      linkedPageFiles = difference(linkedInfo.resources, unlinkedInfo.resources)
+      const allLinkedPageResources = [
+        ...new Set(
+          [...linkedInfos.values()].flatMap(({ resources }) => resources),
+        ),
+      ]
+      linkedPageFiles = new Map(
+        [...linkedInfos].map(([path, { resources }]) => [
+          path,
+          difference(resources, unlinkedInfo.resources),
+        ]),
+      )
+      allLinkedPageFiles = difference(
+        allLinkedPageResources,
+        unlinkedInfo.resources,
+      )
       unlinkedPageFiles = difference(
         unlinkedInfo.resources,
-        linkedInfo.resources,
+        allLinkedPageResources,
       )
       sourcePageFiles = sourceInfo.resources.filter(
         (file) =>
-          !linkedInfo.resources.includes(file) &&
+          !allLinkedPageResources.includes(file) &&
           !unlinkedInfo.resources.includes(file),
       )
 
       await page.close()
     })
 
-    test('should only preload linked page files', () => {
-      expect(linkedPageFiles.length).toBeGreaterThan(0)
+    LINKED_PAGE_CASES.forEach((linkedPageCase) => {
+      test(`should preload linked page files ${linkedPageCase.name}`, () => {
+        const pageFiles = linkedPageFiles.get(linkedPageCase.path) ?? []
+
+        expect(pageFiles.length).toBeGreaterThan(0)
+        pageFiles.forEach((file) => {
+          expect(sourceInfo.preload).toContain(file)
+        })
+      })
+
+      test(`should prefetch linked page files ${linkedPageCase.name}`, () => {
+        const pageFiles = linkedPageFiles.get(linkedPageCase.path) ?? []
+
+        expect(pageFiles.length).toBeGreaterThan(0)
+        pageFiles.forEach((file) => {
+          expect(sourceInfo.prefetch).toContain(file)
+        })
+      })
+    })
+
+    test('should not preload unlinked page files', () => {
       expect(unlinkedPageFiles.length).toBeGreaterThan(0)
 
-      linkedPageFiles.forEach((file) => {
-        expect(sourceInfo.preload).toContain(file)
-      })
       unlinkedPageFiles.forEach((file) => {
         expect(sourceInfo.preload).not.toContain(file)
       })
@@ -97,9 +142,6 @@ if (IS_PROD) {
       expect(sourcePageFiles.length).toBeGreaterThan(0)
       expect(sourceInfo.prefetch.length).toBeGreaterThan(0)
 
-      linkedPageFiles.forEach((file) => {
-        expect(sourceInfo.prefetch).toContain(file)
-      })
       sourcePageFiles.forEach((file) => {
         expect(sourceInfo.prefetch).not.toContain(file)
       })
@@ -107,7 +149,7 @@ if (IS_PROD) {
         expect(sourceInfo.prefetch).not.toContain(file)
       })
       sourceInfo.prefetch.forEach((file) => {
-        expect(linkedPageFiles).toContain(file)
+        expect(allLinkedPageFiles).toContain(file)
       })
     })
   })

@@ -1,5 +1,8 @@
-import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
-import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
+import {
+  createPageChunkFilesMap,
+  createVueServerApp,
+  getSsrTemplate,
+} from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, withSpinner } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
@@ -68,13 +71,11 @@ export const build = async (
     const ssrTemplate = await getSsrTemplate(app)
 
     // build page path -> chunk files map for preload & prefetch
-    const pageChunkFilesMap: PageChunkFilesMap = new Map()
-    for (const page of app.pages) {
-      pageChunkFilesMap.set(
-        page.path,
+    const pageChunkFilesMap = createPageChunkFilesMap({
+      pages: app.pages,
+      resolvePageChunkFiles: (page) =>
         resolvePageChunkFiles({ page, output: clientOutput.output }),
-      )
-    }
+    })
 
     // pre-render pages to html files
     for (const page of app.pages) {
