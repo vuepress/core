@@ -1,10 +1,13 @@
-import type { Page } from '@vuepress/core'
+import type { Bundler, Page } from '@vuepress/core'
+import { createBaseApp, createPage as createVuePressPage } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 import { expect, test } from 'vitest'
 
 import type { PageChunkFilesMap } from '../../src/index.js'
 import { resolveLinkedPageChunkFiles } from '../../src/index.js'
 
-const createPage = (links: Page['links']): Page => ({ links }) as Page
+const createPage = (links: Page['links'], pagePath = '/current.html'): Page =>
+  ({ links, path: pagePath }) as Page
 
 test('should resolve and dedupe linked page chunk files', () => {
   const page = createPage([
@@ -38,11 +41,49 @@ test('should resolve and dedupe linked page chunk files', () => {
   ).toEqual(new Set(['foo.js', 'shared.js', 'bar.js']))
 })
 
+test('should resolve relative links from virtual pages against the current route', async () => {
+  const app = createBaseApp({
+    source: path.resolve(__dirname, 'fake-source'),
+    theme: { name: 'test' },
+    bundler: {} as Bundler,
+  })
+  await app.init()
+
+  const page = await createVuePressPage(app, {
+    path: '/guide/virtual.html',
+    content: ['[foo](./foo.md)', '[bar](../bar/README.md)'].join('\n\n'),
+  })
+  const pageChunkFilesMap: PageChunkFilesMap = new Map([
+    ['/guide/foo.html', ['foo.js', 'shared.js']],
+    ['/bar/', ['bar.js', 'shared.js']],
+  ])
+
+  expect(page.links).toEqual([
+    {
+      raw: './foo.md',
+      relative: 'foo.md',
+      absolute: null,
+    },
+    {
+      raw: '../bar/README.md',
+      relative: '../bar/README.md',
+      absolute: null,
+    },
+  ])
+  expect(
+    resolveLinkedPageChunkFiles({
+      base: '/',
+      page,
+      pageChunkFilesMap,
+    }),
+  ).toEqual(new Set(['foo.js', 'shared.js', 'bar.js']))
+})
+
 test('should ignore unresolvable links and links without mapped chunks', () => {
   const page = createPage([
     {
-      raw: './virtual.md',
-      relative: 'virtual.md',
+      raw: '',
+      relative: '',
       absolute: null,
     },
     {

@@ -18,7 +18,11 @@ export const resolveLinkedPageChunkFiles = ({
   const linkedPageChunkFiles = new Set<string>()
 
   for (const link of page.links) {
-    const routePath = resolveLinkRoutePath(link.absolute, base)
+    const routePath = resolveLinkRoutePath({
+      base,
+      current: page.path,
+      link,
+    })
     if (routePath) {
       const targetChunks = pageChunkFilesMap.get(routePath)
       if (targetChunks) {

@@ -62,6 +62,8 @@ if (IS_PROD) {
     let sourceInfo: PageResourceInfo
     let sourcePageFiles: string[]
     let unlinkedPageFiles: string[]
+    let virtualSourceInfo: PageResourceInfo
+    let virtualSourcePageFiles: string[]
 
     test.beforeAll(async ({ browser }) => {
       const page = await browser.newPage()
@@ -80,6 +82,10 @@ if (IS_PROD) {
       sourceInfo = await collectPageResourceInfo(
         page,
         'resource-hints/source.html',
+      )
+      virtualSourceInfo = await collectPageResourceInfo(
+        page,
+        'resource-hints/virtual-source.html',
       )
 
       const allLinkedPageResources = [
@@ -102,6 +108,11 @@ if (IS_PROD) {
         allLinkedPageResources,
       )
       sourcePageFiles = sourceInfo.resources.filter(
+        (file) =>
+          !allLinkedPageResources.includes(file) &&
+          !unlinkedInfo.resources.includes(file),
+      )
+      virtualSourcePageFiles = virtualSourceInfo.resources.filter(
         (file) =>
           !allLinkedPageResources.includes(file) &&
           !unlinkedInfo.resources.includes(file),
@@ -149,6 +160,32 @@ if (IS_PROD) {
         expect(sourceInfo.prefetch).not.toContain(file)
       })
       sourceInfo.prefetch.forEach((file) => {
+        expect(allLinkedPageFiles).toContain(file)
+      })
+    })
+
+    test('should not preload linked page files from a virtual page', () => {
+      expect(allLinkedPageFiles.length).toBeGreaterThan(0)
+
+      allLinkedPageFiles.forEach((file) => {
+        expect(virtualSourceInfo.preload).not.toContain(file)
+      })
+    })
+
+    test('should only prefetch linked page files from a virtual page', () => {
+      expect(virtualSourcePageFiles.length).toBeGreaterThan(0)
+      expect(virtualSourceInfo.prefetch.length).toBeGreaterThan(0)
+
+      allLinkedPageFiles.forEach((file) => {
+        expect(virtualSourceInfo.prefetch).toContain(file)
+      })
+      virtualSourcePageFiles.forEach((file) => {
+        expect(virtualSourceInfo.prefetch).not.toContain(file)
+      })
+      unlinkedPageFiles.forEach((file) => {
+        expect(virtualSourceInfo.prefetch).not.toContain(file)
+      })
+      virtualSourceInfo.prefetch.forEach((file) => {
         expect(allLinkedPageFiles).toContain(file)
       })
     })

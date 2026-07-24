@@ -287,6 +287,9 @@ importers:
       '@vuepress/core':
         specifier: workspace:*
         version: link:../core
+      '@vuepress/markdown':
+        specifier: workspace:*
+        version: link:../markdown
       '@vuepress/shared':
         specifier: workspace:*
         version: link:../shared

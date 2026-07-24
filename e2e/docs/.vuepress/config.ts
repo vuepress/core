@@ -2,7 +2,7 @@ import process from 'node:process'
 
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
-import { defineUserConfig } from 'vuepress'
+import { createPage, defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
 
 import { fooPlugin } from './plugins/foo/fooPlugin.js'
@@ -76,6 +76,19 @@ export default defineUserConfig({
         ...page.routeMeta,
       }
     }
+  },
+
+  onInitialized: async (app) => {
+    app.pages.push(
+      await createPage(app, {
+        path: '/resource-hints/virtual-source.html',
+        content: [
+          '# Virtual Resource Hints Source',
+          '[Linked page without a permalink](./linked.md)',
+          '[Linked page with a permalink](./linked-permalink.md)',
+        ].join('\n\n'),
+      }),
+    )
   },
 
   plugins: [fooPlugin],
