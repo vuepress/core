@@ -1,6 +1,5 @@
 import type { App } from '@vuepress/core'
 
-import { resolveFileMeta } from './resolveFileMeta.js'
 import type { FileMeta } from './types.js'
 
 /**
@@ -9,12 +8,10 @@ import type { FileMeta } from './types.js'
 export const renderPagePreloadLinks = ({
   app,
   initialFilesMeta,
-  linkedPageChunkFiles,
   pageClientFilesMeta,
 }: {
   app: App
   initialFilesMeta: FileMeta[]
-  linkedPageChunkFiles: Set<string>
   pageClientFilesMeta: FileMeta[]
 }): string => {
   // shouldPreload option
@@ -28,17 +25,6 @@ export const renderPagePreloadLinks = ({
   // initial files and files used by current page should be preload
   const preloadFilesMeta = [...initialFilesMeta, ...pageClientFilesMeta]
 
-  // when 'as-needed', also add linked pages' chunk files
-  if (shouldPreload === 'as-needed') {
-    const preloadFileNames = new Set(preloadFilesMeta.map(({ file }) => file))
-    for (const fileName of linkedPageChunkFiles) {
-      if (!preloadFileNames.has(fileName)) {
-        preloadFileNames.add(fileName)
-        preloadFilesMeta.push(resolveFileMeta(fileName))
-      }
-    }
-  }
-
   return preloadFilesMeta
     .map(({ file, extension, type }) => {
       // by default, we only preload scripts or css
@@ -47,11 +33,7 @@ export const renderPagePreloadLinks = ({
       }
 
       // user wants to explicitly control what to preload
-      if (
-        shouldPreload !== true &&
-        shouldPreload !== 'as-needed' &&
-        !shouldPreload(file, type)
-      ) {
+      if (shouldPreload !== true && !shouldPreload(file, type)) {
         return ''
       }
 

@@ -1,8 +1,5 @@
 import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
-import {
-  renderPageToString,
-  resolveLinkedPageChunkFiles,
-} from '@vuepress/bundlerutils'
+import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
 import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
@@ -45,11 +42,6 @@ export const renderPage = async ({
 
   // resolve page chunks
   const pageChunkFiles = resolvePageChunkFiles({ page, output })
-  const linkedPageChunkFiles = resolveLinkedPageChunkFiles({
-    base: app.options.base,
-    page,
-    pageChunkFilesMap,
-  })
 
   // generate html string
   const html = await app.options.templateBuildRenderer(ssrTemplate, {
@@ -58,13 +50,13 @@ export const renderPage = async ({
     lang: ssrContext.lang,
     prefetch: renderPagePrefetchLinks({
       app,
-      linkedPageChunkFiles,
       outputEntryChunk,
+      page,
       pageChunkFiles,
+      pageChunkFilesMap,
     }),
     preload: renderPagePreloadLinks({
       app,
-      linkedPageChunkFiles,
       outputEntryChunk,
       pageChunkFiles,
     }),

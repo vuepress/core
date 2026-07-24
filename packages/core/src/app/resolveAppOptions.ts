@@ -33,7 +33,7 @@ export const resolveAppOptions = ({
     require.resolve('@vuepress/client/templates/dev.html'),
   ),
   // build config
-  shouldPreload = 'as-needed',
+  shouldPreload = true,
   shouldPrefetch = 'as-needed',
   templateBuild = path.normalize(
     require.resolve('@vuepress/client/templates/build.html'),

@@ -6,12 +6,10 @@ import type { OutputChunk } from 'rolldown'
  */
 export const renderPagePreloadLinks = ({
   app,
-  linkedPageChunkFiles,
   outputEntryChunk,
   pageChunkFiles,
 }: {
   app: App
-  linkedPageChunkFiles: Set<string>
   outputEntryChunk: OutputChunk
   pageChunkFiles: string[]
 }): string => {
@@ -24,20 +22,15 @@ export const renderPagePreloadLinks = ({
   }
 
   // dedupe entry chunks and page chunks
-  const preloadFiles = new Set([
-    outputEntryChunk.fileName,
-    ...outputEntryChunk.imports,
-    ...pageChunkFiles,
-  ])
+  const preloadFiles = Array.from(
+    new Set([
+      outputEntryChunk.fileName,
+      ...outputEntryChunk.imports,
+      ...pageChunkFiles,
+    ]),
+  )
 
-  // when 'as-needed', also add linked pages' chunk files
-  if (shouldPreload === 'as-needed') {
-    for (const file of linkedPageChunkFiles) {
-      preloadFiles.add(file)
-    }
-  }
-
-  return Array.from(preloadFiles)
+  return preloadFiles
     .map((item) => {
       // resolve file type
       const type = item.endsWith('.js')
@@ -52,11 +45,7 @@ export const renderPagePreloadLinks = ({
       }
 
       // user wants to explicitly control what to preload
-      if (
-        shouldPreload !== true &&
-        shouldPreload !== 'as-needed' &&
-        !shouldPreload(item, type)
-      ) {
+      if (shouldPreload !== true && !shouldPreload(item, type)) {
         return ''
       }
 

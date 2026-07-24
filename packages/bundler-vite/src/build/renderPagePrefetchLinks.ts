@@ -1,4 +1,6 @@
-import type { App } from '@vuepress/core'
+import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
+import { resolveLinkedPageChunkFiles } from '@vuepress/bundlerutils'
+import type { App, Page } from '@vuepress/core'
 import type { OutputChunk } from 'rolldown'
 
 /**
@@ -6,14 +8,16 @@ import type { OutputChunk } from 'rolldown'
  */
 export const renderPagePrefetchLinks = ({
   app,
-  linkedPageChunkFiles,
   outputEntryChunk,
+  page,
   pageChunkFiles,
+  pageChunkFilesMap,
 }: {
   app: App
-  linkedPageChunkFiles: Set<string>
   outputEntryChunk: OutputChunk
+  page: Page
   pageChunkFiles: string[]
+  pageChunkFilesMap: PageChunkFilesMap
 }): string => {
   // shouldPrefetch option
   const { shouldPrefetch } = app.options
@@ -26,6 +30,12 @@ export const renderPagePrefetchLinks = ({
   let candidateFiles: string[]
 
   if (shouldPrefetch === 'as-needed') {
+    const linkedPageChunkFiles = resolveLinkedPageChunkFiles({
+      base: app.options.base,
+      page,
+      pageChunkFilesMap,
+    })
+
     // dynamic imports excluding current page chunks
     // filtered to only linked pages' chunk files
     candidateFiles = outputEntryChunk.dynamicImports.filter(

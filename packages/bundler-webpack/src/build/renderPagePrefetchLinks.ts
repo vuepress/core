@@ -1,4 +1,6 @@
-import type { App } from '@vuepress/core'
+import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
+import { resolveLinkedPageChunkFiles } from '@vuepress/bundlerutils'
+import type { App, Page } from '@vuepress/core'
 
 import type { FileMeta } from './types.js'
 
@@ -8,13 +10,15 @@ import type { FileMeta } from './types.js'
 export const renderPagePrefetchLinks = ({
   app,
   asyncFilesMeta,
-  linkedPageChunkFiles,
+  page,
   pageClientFilesMeta,
+  pageChunkFilesMap,
 }: {
   app: App
   asyncFilesMeta: FileMeta[]
-  linkedPageChunkFiles: Set<string>
+  page: Page
   pageClientFilesMeta: FileMeta[]
+  pageChunkFilesMap: PageChunkFilesMap
 }): string => {
   // shouldPrefetch option
   const { shouldPrefetch } = app.options
@@ -27,6 +31,12 @@ export const renderPagePrefetchLinks = ({
   let prefetchFilesMeta: FileMeta[]
 
   if (shouldPrefetch === 'as-needed') {
+    const linkedPageChunkFiles = resolveLinkedPageChunkFiles({
+      base: app.options.base,
+      page,
+      pageChunkFilesMap,
+    })
+
     // async files excluding files used by current page
     // filtered to only linked pages' chunk files
     prefetchFilesMeta = asyncFilesMeta.filter(

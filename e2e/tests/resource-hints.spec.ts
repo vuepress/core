@@ -56,7 +56,7 @@ const LINKED_PAGE_CASES = [
 ] as const
 
 if (IS_PROD) {
-  test.describe('as-needed resource hints', () => {
+  test.describe('default resource hints', () => {
     let allLinkedPageFiles: string[]
     let linkedPageFiles: Map<string, string[]>
     let sourceInfo: PageResourceInfo
@@ -111,12 +111,12 @@ if (IS_PROD) {
     })
 
     LINKED_PAGE_CASES.forEach((linkedPageCase) => {
-      test(`should preload linked page files ${linkedPageCase.name}`, () => {
+      test(`should not preload linked page files ${linkedPageCase.name}`, () => {
         const pageFiles = linkedPageFiles.get(linkedPageCase.path) ?? []
 
         expect(pageFiles.length).toBeGreaterThan(0)
         pageFiles.forEach((file) => {
-          expect(sourceInfo.preload).toContain(file)
+          expect(sourceInfo.preload).not.toContain(file)
         })
       })
 
