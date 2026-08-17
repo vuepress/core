@@ -33,9 +33,11 @@ export const resolveRoutePath = (
   }
 
   // fallback to the directory route
-  // when the normalized path ends with `.html` but no matching `.html` route exists,
+  // when the raw path has no extension and the normalized `.html` route does not exist,
   // try to match the directory route instead, e.g. `/foo` -> `/foo.html` -> `/foo/`
-  if (normalizedRoutePath.endsWith('.html')) {
+  // the same-named file route is prioritized, so `/foo` will resolve to `/foo.html`
+  // when `foo.md` exists, and only fallback to `/foo/` when it does not
+  if (normalizedRoutePath.endsWith('.html') && !pathname.includes('.')) {
     const directoryRoutePath = `${normalizedRoutePath.slice(
       0,
       -'.html'.length,
