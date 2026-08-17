@@ -32,6 +32,20 @@ export const resolveRoutePath = (
     return redirectedRoutePath
   }
 
+  // fallback to the directory route
+  // when the normalized path ends with `.html` but no matching `.html` route exists,
+  // try to match the directory route instead, e.g. `/foo` -> `/foo.html` -> `/foo/`
+  if (normalizedRoutePath.endsWith('.html')) {
+    const directoryRoutePath = `${normalizedRoutePath.slice(
+      0,
+      -'.html'.length,
+    )}/`
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
+    if (routes.value[directoryRoutePath]) {
+      return directoryRoutePath
+    }
+  }
+
   // default to normalized route path
   return normalizedRoutePath
 }
