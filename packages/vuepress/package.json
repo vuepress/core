@@ -59,12 +59,16 @@
     "vue": "catalog:vue"
   },
   "peerDependencies": {
+    "@vuepress/bundler-rspack": "workspace:*",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
     "vue": "catalog:vue"
   },
   "peerDependenciesMeta": {
     "@vuepress/bundler-vite": {
+      "optional": true
+    },
+    "@vuepress/bundler-rspack": {
       "optional": true
     },
     "@vuepress/bundler-webpack": {
