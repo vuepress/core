@@ -13,6 +13,9 @@ export interface LinksPluginOptions {
   /**
    * Whether use "clean url"
    *
+   * @internal this is injected by `@vuepress/core` from the global
+   * `route.cleanUrl` config. Users should not configure it directly.
+   *
    * @default false
    */
   cleanUrl?: boolean

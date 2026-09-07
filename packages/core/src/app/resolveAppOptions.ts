@@ -47,14 +47,7 @@ export const resolveAppOptions = ({
   pagePatterns: _pagePatterns,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   permalinkPattern: _permalinkPattern,
-  route: {
-    cleanUrl = false,
-    pagePatterns = ['**/*.md', '!.vuepress'],
-    permalinkPattern = null,
-  } = {
-    pagePatterns: _pagePatterns,
-    permalinkPattern: _permalinkPattern,
-  },
+  route: userRoute = {},
   userStyle = null,
   plugins = [],
   theme,
@@ -86,9 +79,16 @@ export const resolveAppOptions = ({
     debug,
     markdown,
     route: {
-      cleanUrl,
-      pagePatterns,
-      permalinkPattern,
+      // each `route` field falls back to the deprecated top-level config first,
+      // then to the built-in default, so that a partial `route` object does not
+      // silently drop the legacy `pagePatterns` / `permalinkPattern`
+      cleanUrl: userRoute.cleanUrl ?? false,
+      pagePatterns: userRoute.pagePatterns ??
+        _pagePatterns ?? ['**/*.md', '!.vuepress'],
+      permalinkPattern:
+        userRoute.permalinkPattern === undefined
+          ? (_permalinkPattern ?? null)
+          : userRoute.permalinkPattern,
     },
     userStyle,
     plugins,

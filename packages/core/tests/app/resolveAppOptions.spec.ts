@@ -52,3 +52,46 @@ it('should create app options with default values', () => {
     plugins: [],
   })
 })
+
+it('should fall back to deprecated top-level config for unset `route` fields', () => {
+  const source = '/foo'
+
+  expect(
+    resolveAppOptions({
+      source,
+      theme: { name: 'theme' },
+      bundler: { name: 'bundler', type: 'vite' } as Bundler,
+      pagePatterns: ['foo/**/*.md'],
+      permalinkPattern: '/:slug',
+      route: {
+        cleanUrl: true,
+      },
+    }).route,
+  ).toEqual({
+    cleanUrl: true,
+    pagePatterns: ['foo/**/*.md'],
+    permalinkPattern: '/:slug',
+  })
+})
+
+it('should let `route` fields override the deprecated top-level config', () => {
+  const source = '/foo'
+
+  expect(
+    resolveAppOptions({
+      source,
+      theme: { name: 'theme' },
+      bundler: { name: 'bundler', type: 'vite' } as Bundler,
+      pagePatterns: ['foo/**/*.md'],
+      permalinkPattern: '/:slug',
+      route: {
+        pagePatterns: ['bar/**/*.md'],
+        permalinkPattern: null,
+      },
+    }).route,
+  ).toEqual({
+    cleanUrl: false,
+    pagePatterns: ['bar/**/*.md'],
+    permalinkPattern: null,
+  })
+})

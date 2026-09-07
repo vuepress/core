@@ -14,15 +14,15 @@ export const createPageChunkFilesMap = ({
   resolvePageChunkFiles: (page: Page) => string[]
 }): PageChunkFilesMap => {
   const pageChunkFilesMap: PageChunkFilesMap = new Map()
-  const pagePaths = new Set(pages.map((page) => page.path))
+  const pageRouteKeys = new Set(pages.map((page) => page.routeKey))
 
   for (const page of pages) {
     const pageChunkFiles = resolvePageChunkFiles(page)
 
-    pageChunkFilesMap.set(page.path, pageChunkFiles)
+    pageChunkFilesMap.set(page.routeKey, pageChunkFiles)
     for (const redirect of resolvePageRedirects(page)) {
-      // Exact page paths take precedence over redirects in the client router.
-      if (!pagePaths.has(redirect)) {
+      // Exact page route keys take precedence over redirects in the client router.
+      if (!pageRouteKeys.has(redirect)) {
         pageChunkFilesMap.set(redirect, pageChunkFiles)
       }
     }

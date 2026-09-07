@@ -18,12 +18,12 @@ const TEST_CASES: [string, string][] = [
 ]
 
 describe('should resolve page html file path correctly', () => {
-  TEST_CASES.forEach(([source, expected]) => {
-    it(JSON.stringify(source), () => {
+  TEST_CASES.forEach(([routeKey, expected]) => {
+    it(JSON.stringify(routeKey), () => {
       expect(
         resolvePageHtmlInfo({
           app,
-          path: source,
+          routeKey,
         }),
       ).toEqual({
         htmlFilePath: app.dir.dest(expected),

@@ -20,7 +20,7 @@ export const resolveLinkedPageChunkFiles = ({
   for (const link of page.links) {
     const routeKey = resolveLinkRouteKey({
       base,
-      current: page.path,
+      current: page.routeKey,
       link,
     })
     if (routeKey) {

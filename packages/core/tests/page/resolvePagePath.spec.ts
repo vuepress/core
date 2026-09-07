@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { resolvePagePath } from '../../src/index.js'
 
@@ -6,94 +6,43 @@ const TEST_CASES: [
   Parameters<typeof resolvePagePath>,
   ReturnType<typeof resolvePagePath>,
 ][] = [
-  // use options.path
+  // clean url disabled: append `.html` unless the route key ends with a slash
   [
     [
       {
-        permalink: '/permalink',
-        pathInferred: '/inferred',
-        options: {
-          path: '/options',
-        },
+        routeKey: '/foo',
+        cleanUrl: false,
       },
     ],
-    '/options',
+    '/foo.html',
   ],
   [
     [
       {
-        permalink: '/permalink/',
-        pathInferred: '/inferred/',
-        options: {
-          path: '/options/',
-        },
+        routeKey: '/foo/bar/',
+        cleanUrl: false,
       },
     ],
-    '/options/',
+    '/foo/bar/',
+  ],
+  // clean url enabled: keep the clean route key
+  [
+    [
+      {
+        routeKey: '/foo',
+        cleanUrl: true,
+      },
+    ],
+    '/foo',
   ],
   [
     [
       {
-        permalink: '/permalink.html',
-        pathInferred: '/inferred.html',
-        options: {
-          path: '/options.html',
-        },
+        routeKey: '/foo/',
+        cleanUrl: true,
       },
     ],
-    '/options',
-  ],
-  // use permalink
-  [
-    [
-      {
-        permalink: '/permalink',
-        pathInferred: '/inferred',
-        options: {},
-      },
-    ],
-    '/permalink',
-  ],
-  [
-    [
-      {
-        permalink: '/permalink/',
-        pathInferred: '/inferred/',
-        options: {},
-      },
-    ],
-    '/permalink/',
-  ],
-  // user pathInferred
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: '/inferred',
-        options: {},
-      },
-    ],
-    '/inferred',
-  ],
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: '/inferred/',
-        options: {},
-      },
-    ],
-    '/inferred/',
-  ],
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: '/inferred.html',
-        options: {},
-      },
-    ],
-    '/inferred',
+    '/foo/',
   ],
 ]
 
@@ -103,20 +52,4 @@ describe('should resolve page path correctly', () => {
       expect(resolvePagePath(...input)).toEqual(expected)
     })
   })
-})
-
-it('should throw an error', () => {
-  const consoleError = console.error
-  console.error = vi.fn()
-
-  expect(() =>
-    resolvePagePath({
-      permalink: null,
-      pathInferred: null,
-      options: {},
-    }),
-  ).toThrow()
-  expect(console.error).toHaveBeenCalled()
-
-  console.error = consoleError
 })

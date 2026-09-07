@@ -35,7 +35,7 @@ export const resolveAppPages = async (
         pagesMap[page.filePath] = page
       }
       // if there is a 404 page, set the default layout to NotFound
-      if (page.path === '/404') {
+      if (page.routeKey === '/404') {
         page.frontmatter.layout ??= 'NotFound'
         hasNotFoundPage = true
       }

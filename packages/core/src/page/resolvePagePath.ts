@@ -1,35 +1,16 @@
-import { inferRouteKey } from '@vuepress/shared'
-import { logger, sanitizeFileName } from '@vuepress/utils'
-
-import type { PageOptions } from '../types/index.js'
-
 /**
- * Resolve the final route path of a page
+ * Resolve the actual route path of a page in the current mode
+ *
+ * It is the canonical route key with the `.html` suffix appended, unless
+ * `cleanUrl` is enabled or the route key already ends with a trailing slash.
  *
  * @internal
  */
 export const resolvePagePath = ({
-  permalink,
-  pathInferred,
-  options,
+  routeKey,
+  cleanUrl,
 }: {
-  permalink: string | null
-  pathInferred: string | null
-  options: PageOptions
-}): string => {
-  const pagePath = options.path
-    ? inferRouteKey(options.path)
-    : permalink || pathInferred
-
-  if (!pagePath) {
-    throw logger.createError(
-      `page path is empty, page options: ${JSON.stringify(options, null, 2)}`,
-    )
-  }
-
-  return (
-    encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
-      // get clean format
-      .replace(/\.html$/, '')
-  )
-}
+  routeKey: string
+  cleanUrl: boolean
+}): string =>
+  cleanUrl || routeKey.endsWith('/') ? routeKey : `${routeKey}.html`

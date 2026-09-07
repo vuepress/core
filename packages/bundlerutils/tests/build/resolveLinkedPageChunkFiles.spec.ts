@@ -6,8 +6,8 @@ import { expect, test } from 'vitest'
 import type { PageChunkFilesMap } from '../../src/index.js'
 import { resolveLinkedPageChunkFiles } from '../../src/index.js'
 
-const createPage = (links: Page['links'], pagePath = '/current'): Page =>
-  ({ links, path: pagePath }) as Page
+const createPage = (links: Page['links'], routeKey = '/current'): Page =>
+  ({ links, routeKey }) as Page
 
 test('should resolve and dedupe linked page chunk files', () => {
   const page = createPage([
