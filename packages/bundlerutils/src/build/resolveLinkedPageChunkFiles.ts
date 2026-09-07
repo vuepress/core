@@ -1,6 +1,6 @@
 import type { Page } from '@vuepress/core'
 
-import { resolveLinkRoutePath } from './resolveLinkRoutePath.js'
+import { resolveLinkRouteKey } from './resolveLinkRouteKey.js'
 import type { PageChunkFilesMap } from './types.js'
 
 /**
@@ -18,13 +18,13 @@ export const resolveLinkedPageChunkFiles = ({
   const linkedPageChunkFiles = new Set<string>()
 
   for (const link of page.links) {
-    const routePath = resolveLinkRoutePath({
+    const routeKey = resolveLinkRouteKey({
       base,
       current: page.path,
       link,
     })
-    if (routePath) {
-      const targetChunks = pageChunkFilesMap.get(routePath)
+    if (routeKey) {
+      const targetChunks = pageChunkFilesMap.get(routeKey)
       if (targetChunks) {
         for (const file of targetChunks) {
           linkedPageChunkFiles.add(file)

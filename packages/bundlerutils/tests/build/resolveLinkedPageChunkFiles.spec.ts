@@ -6,7 +6,7 @@ import { expect, test } from 'vitest'
 import type { PageChunkFilesMap } from '../../src/index.js'
 import { resolveLinkedPageChunkFiles } from '../../src/index.js'
 
-const createPage = (links: Page['links'], pagePath = '/current.html'): Page =>
+const createPage = (links: Page['links'], pagePath = '/current'): Page =>
   ({ links, path: pagePath }) as Page
 
 test('should resolve and dedupe linked page chunk files', () => {
@@ -28,7 +28,7 @@ test('should resolve and dedupe linked page chunk files', () => {
     },
   ])
   const pageChunkFilesMap: PageChunkFilesMap = new Map([
-    ['/guide/foo.html', ['foo.js', 'shared.js']],
+    ['/guide/foo', ['foo.js', 'shared.js']],
     ['/guide/bar/', ['bar.js', 'shared.js']],
   ])
 
@@ -54,7 +54,7 @@ test('should resolve relative links from virtual pages against the current route
     content: ['[foo](./foo.md)', '[bar](../bar/README.md)'].join('\n\n'),
   })
   const pageChunkFilesMap: PageChunkFilesMap = new Map([
-    ['/guide/foo.html', ['foo.js', 'shared.js']],
+    ['/guide/foo', ['foo.js', 'shared.js']],
     ['/bar/', ['bar.js', 'shared.js']],
   ])
 

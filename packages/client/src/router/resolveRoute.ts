@@ -23,9 +23,10 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
 
   // resolve the route path
   const cleanRoutePath = resolveRouteCleanPath(pathname, currentPath)
-  const routeFullPath = __VUEPRESS_CLEAN_URL__
-    ? cleanRoutePath
-    : resolveRoutePathWithExt(cleanRoutePath) + hashAndQueries
+  const routeFullPath =
+    (__VUEPRESS_CLEAN_URL__
+      ? cleanRoutePath
+      : resolveRoutePathWithExt(cleanRoutePath)) + hashAndQueries
 
   // the route not found
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access

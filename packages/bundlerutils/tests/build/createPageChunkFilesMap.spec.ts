@@ -21,12 +21,12 @@ test('should map final paths and inferred route aliases to page chunks', () => {
     }),
     createPage({
       chunkName: 'regular',
-      path: '/regular.html',
+      path: '/regular',
       pathInferred: '/regular.md',
     }),
     createPage({
       chunkName: 'virtual',
-      path: '/virtual.html',
+      path: '/virtual',
       pathInferred: null,
     }),
   ]
@@ -39,18 +39,18 @@ test('should map final paths and inferred route aliases to page chunks', () => {
   ).toEqual(
     new Map([
       ['/permalink/', ['permalink.js']],
-      ['/posts/foo.html', ['permalink.js']],
+      ['/posts/foo', ['permalink.js']],
       ['/custom/', ['custom-path.js']],
       ['/%E4%B8%AD%E6%96%87/', ['custom-path.js']],
-      ['/regular.html', ['regular.js']],
-      ['/virtual.html', ['virtual.js']],
+      ['/regular', ['regular.js']],
+      ['/virtual', ['virtual.js']],
     ]),
   )
 })
 
 const exactPage = createPage({
   chunkName: 'exact',
-  path: '/legacy.html',
+  path: '/legacy',
   pathInferred: null,
 })
 const redirectingPage = createPage({
@@ -73,7 +73,7 @@ test.for([
       createPageChunkFilesMap({
         pages,
         resolvePageChunkFiles,
-      }).get('/legacy.html'),
+      }).get('/legacy'),
     ).toEqual(['exact.js'])
     expect(resolvePageChunkFiles).toHaveBeenCalledTimes(pages.length)
   },
