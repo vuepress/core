@@ -1,4 +1,8 @@
-import { createVueServerApp, getSsrTemplate } from '@vuepress/bundlerutils'
+import {
+  createPageChunkFilesMap,
+  createVueServerApp,
+  getSsrTemplate,
+} from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, logger, withSpinner } from '@vuepress/utils'
 import type { MultiConfiguration } from 'webpack'
@@ -78,6 +82,13 @@ export const build = async (
     const { initialFilesMeta, asyncFilesMeta, moduleFilesMetaMap } =
       resolveClientManifestMeta(clientManifest)
 
+    // build page path -> chunk files map for preload & prefetch
+    const pageChunkFilesMap = createPageChunkFilesMap({
+      pages: app.pages,
+      resolvePageChunkFiles: (page) =>
+        clientManifest.chunks[page.chunkName] ?? [],
+    })
+
     // create vue ssr app and get ssr template
     const { vueApp, vueRouter } = await createVueServerApp(
       app.dir.temp('.server/app.cjs'),
@@ -98,6 +109,7 @@ export const build = async (
         initialFilesMeta,
         asyncFilesMeta,
         moduleFilesMetaMap,
+        pageChunkFilesMap,
       })
     }
   })

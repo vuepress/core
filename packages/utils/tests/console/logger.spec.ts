@@ -12,10 +12,12 @@ const METHODS = [
 
 METHODS.forEach(([method, innerMethod]) => {
   it(method, () => {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const stored = console[innerMethod]
     console[innerMethod] = vi.fn()
 
     logger[method]('foo')
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(console[innerMethod]).toHaveBeenCalledWith(expect.any(String), 'foo')
 
     console[innerMethod] = stored

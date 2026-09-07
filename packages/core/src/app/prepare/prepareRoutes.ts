@@ -25,7 +25,10 @@ if (import.meta.hot) {
  *
  * @internal
  */
-const resolvePageRedirects = ({ path, pathInferred }: Page): string[] => {
+export const resolvePageRedirects = ({
+  path,
+  pathInferred,
+}: Page): string[] => {
   // paths that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 

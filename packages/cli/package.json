@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "2.0.0-rc.30",
+  "version": "2.0.0-rc.31",
   "description": "CLI package of VuePress",
   "keywords": [
     "cli",
@@ -46,7 +46,7 @@
     "cac": "^7.0.0",
     "chokidar": "^5.0.0",
     "envinfo": "^7.21.0",
-    "esbuild": "^0.28.0"
+    "rolldown": "catalog:vite"
   },
   "devDependencies": {
     "@types/envinfo": "^7.8.4"

@@ -1,3 +1,7 @@
+export * from './createPageChunkFilesMap'
 export * from './createVueServerApp'
 export * from './getSsrTemplate'
 export * from './renderPageToString'
+export * from './resolveLinkRoutePath'
+export * from './resolveLinkedPageChunkFiles'
+export type * from './types'
