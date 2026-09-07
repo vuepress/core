@@ -17,7 +17,12 @@ export type { VueLoaderOptions, RspackConfiguration, RspackDevServer }
  */
 export interface RspackBundlerOptions extends BundlerOptions {
   /**
-   * use rspack-merge to set rspack config
+   * Edit the internal Rspack config.
+   *
+   * @param config - Rspack config
+   * @param isServer - Whether it is server bundle
+   * @param isBuild - Whether in build mode
+   * @returns if returns a configuration object, it will be used as the new rspack config, otherwise the original config object will be used
    */
   configureRspack?: (
     config: RspackConfiguration,
