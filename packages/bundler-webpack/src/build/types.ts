@@ -36,4 +36,8 @@ export interface ClientManifest {
   initial: string[]
   async: string[]
   modules: Record<string, number[]>
+  /**
+   * Chunk name to output file names mapping
+   */
+  chunks: Record<string, string[]>
 }

@@ -1,6 +1,7 @@
 import path from 'node:path'
 
 import { vuepress } from '@vuepress/eslint-config'
+import { createNodeResolver } from 'eslint-plugin-import-x'
 
 import { PACKAGES, ROOT } from './scripts/constants.js'
 
@@ -34,6 +35,11 @@ export default vuepress(
           },
         ],
       },
+    },
+  },
+  {
+    settings: {
+      'import-x/resolver-next': [createNodeResolver()],
     },
   },
   {

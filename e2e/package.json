@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/e2e",
-  "version": "2.0.0-rc.30",
+  "version": "2.0.0-rc.31",
   "private": true,
   "type": "module",
   "scripts": {
@@ -25,14 +25,14 @@
     "@vuepress/bundler-rspack": "workspace:*",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.99.0",
-    "sass-embedded": "^1.99.0",
-    "sass-loader": "^16.0.7",
+    "sass": "^1.101.6",
+    "sass-embedded": "^1.100.0",
+    "sass-loader": "^17.0.0",
     "vue": "catalog:vue",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.59.1",
+    "@playwright/test": "^1.61.1",
     "cross-env": "^10.1.0",
     "serve": "^14.2.6"
   }

@@ -11,7 +11,7 @@ it('should create app options with default values', () => {
     resolveAppOptions({
       source,
       theme: { name: 'theme' },
-      bundler: { name: 'bundler' } as Bundler,
+      bundler: { name: 'bundler', type: 'vite' } as Bundler,
     }),
   ).toEqual({
     base: '/',
@@ -23,7 +23,7 @@ it('should create app options with default values', () => {
       '/': { lang: 'en-US', title: '', description: '' },
     },
     theme: { name: 'theme' },
-    bundler: { name: 'bundler' },
+    bundler: { name: 'bundler', type: 'vite' },
     source,
     dest: path.resolve(source, '.vuepress/dist'),
     temp: path.resolve(source, '.vuepress/.temp'),
@@ -44,7 +44,7 @@ it('should create app options with default values', () => {
     ),
     templateBuildRenderer: templateRenderer,
     shouldPreload: true,
-    shouldPrefetch: true,
+    shouldPrefetch: 'as-needed',
     markdown: {},
     plugins: [],
   })

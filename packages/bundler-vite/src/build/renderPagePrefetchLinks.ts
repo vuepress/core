@@ -1,4 +1,6 @@
-import type { App } from '@vuepress/core'
+import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
+import { resolveLinkedPageChunkFiles } from '@vuepress/bundlerutils'
+import type { App, Page } from '@vuepress/core'
 import type { OutputChunk } from 'rolldown'
 
 /**
@@ -7,11 +9,15 @@ import type { OutputChunk } from 'rolldown'
 export const renderPagePrefetchLinks = ({
   app,
   outputEntryChunk,
+  page,
   pageChunkFiles,
+  pageChunkFilesMap,
 }: {
   app: App
   outputEntryChunk: OutputChunk
+  page: Page
   pageChunkFiles: string[]
+  pageChunkFilesMap: PageChunkFilesMap
 }): string => {
   // shouldPrefetch option
   const { shouldPrefetch } = app.options
@@ -21,12 +27,30 @@ export const renderPagePrefetchLinks = ({
     return ''
   }
 
-  // dynamic imports excluding current page chunks
-  const prefetchFiles = outputEntryChunk.dynamicImports.filter(
-    (item) => !pageChunkFiles.some((file) => file === item),
-  )
+  let candidateFiles: string[]
 
-  return prefetchFiles
+  if (shouldPrefetch === 'as-needed') {
+    const linkedPageChunkFiles = resolveLinkedPageChunkFiles({
+      base: app.options.base,
+      page,
+      pageChunkFilesMap,
+    })
+
+    // dynamic imports excluding current page chunks
+    // filtered to only linked pages' chunk files
+    candidateFiles = outputEntryChunk.dynamicImports.filter(
+      (item) =>
+        linkedPageChunkFiles.has(item) &&
+        !pageChunkFiles.some((file) => file === item),
+    )
+  } else {
+    // dynamic imports excluding current page chunks
+    candidateFiles = outputEntryChunk.dynamicImports.filter(
+      (item) => !pageChunkFiles.some((file) => file === item),
+    )
+  }
+
+  return candidateFiles
     .map((item) => {
       // resolve file type
       const type = item.endsWith('.js')
@@ -36,7 +60,11 @@ export const renderPagePrefetchLinks = ({
           : ''
 
       // user wants to explicitly control what to prefetch
-      if (shouldPrefetch !== true && !shouldPrefetch(item, type)) {
+      if (
+        shouldPrefetch !== true &&
+        shouldPrefetch !== 'as-needed' &&
+        !shouldPrefetch(item, type)
+      ) {
         return ''
       }
       return `<link rel="prefetch" href="${app.options.base}${item}" as="${type}">`

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundlerutils",
-  "version": "2.0.0-rc.30",
+  "version": "2.0.0-rc.31",
   "description": "Utils package of VuePress bundler",
   "keywords": [
     "bundler",
@@ -38,6 +38,7 @@
   "dependencies": {
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
+    "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
     "vue": "catalog:vue",

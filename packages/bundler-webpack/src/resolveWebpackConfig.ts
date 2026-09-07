@@ -1,5 +1,4 @@
 import type { Configuration } from 'webpack'
-import { merge } from 'webpack-merge'
 import type { Config } from 'webpack-v5-chain'
 
 import type { WebpackBundlerOptions } from './types.js'
@@ -19,7 +18,7 @@ export const resolveWebpackConfig = ({
   options.chainWebpack?.(config, isServer, isBuild)
 
   // generate webpack config from webpack-v5-chain
-  const webpackConfig = config.toConfig()
+  let webpackConfig = config.toConfig()
 
   // allow modifying webpack config via `configureWebpack`
   const configureWebpackResult = options.configureWebpack?.(
@@ -28,10 +27,9 @@ export const resolveWebpackConfig = ({
     isBuild,
   )
 
-  // if `configureWebpack` returns a configuration object,
-  // use webpack-merge to merge it
+  // if `configureWebpack` returns a configuration object, use this object as the new webpack config
   if (configureWebpackResult) {
-    return merge(webpackConfig, configureWebpackResult)
+    webpackConfig = configureWebpackResult
   }
 
   return webpackConfig

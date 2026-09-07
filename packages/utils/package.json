@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-rc.30",
+  "version": "2.0.0-rc.31",
   "description": "Utils package of VuePress",
   "keywords": [
     "utils",
@@ -41,13 +41,13 @@
     "@types/picomatch": "^4.0.3",
     "@vuepress/shared": "workspace:*",
     "debug": "^4.4.3",
-    "fs-extra": "^11.3.5",
+    "fs-extra": "^11.3.6",
     "hash-sum": "^2.0.0",
-    "ora": "^9.4.0",
+    "ora": "^9.4.1",
     "picocolors": "^1.1.1",
-    "picomatch": "^4.0.4",
-    "tinyglobby": "^0.2.16",
-    "upath": "^3.0.7"
+    "picomatch": "^4.0.5",
+    "tinyglobby": "^0.2.17",
+    "upath": "^3.0.8"
   },
   "tsdown": {
     "dts": true,
