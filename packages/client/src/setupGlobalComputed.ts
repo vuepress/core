@@ -47,16 +47,16 @@ export const setupGlobalComputed = (
   // handle page data HMR
   if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
     __VUE_HMR_RUNTIME__.updatePageData = async (newPageData: PageData) => {
-      const oldPageChunk = await routes.value[newPageData.path].loader()
+      const oldPageChunk = await routes.value[newPageData.routeKey].loader()
       const newPageChunk: PageChunk = {
         default: oldPageChunk.default,
         _pageData: newPageData,
       }
-      routes.value[newPageData.path].loader = async () =>
+      routes.value[newPageData.routeKey].loader = async () =>
         Promise.resolve(newPageChunk)
       if (
-        newPageData.path ===
-        router.currentRoute.value.meta._pageChunk?._pageData.path
+        newPageData.routeKey ===
+        router.currentRoute.value.meta._pageChunk?._pageData.routeKey
       ) {
         pageChunk.value = newPageChunk
       }

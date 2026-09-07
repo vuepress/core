@@ -4,29 +4,29 @@ import { expect, test, vi } from 'vitest'
 import { createPageChunkFilesMap } from '../../src/index.js'
 
 const createPage = (
-  page: Pick<Page, 'chunkName' | 'path' | 'pathInferred'>,
+  page: Pick<Page, 'chunkName' | 'pathInferred' | 'routeKey'>,
 ): Page => page as Page
 
-test('should map final paths and inferred route aliases to page chunks', () => {
+test('should map final route keys and inferred route aliases to page chunks', () => {
   const pages = [
     createPage({
       chunkName: 'permalink',
-      path: '/permalink/',
+      routeKey: '/permalink/',
       pathInferred: '/posts/foo.md',
     }),
     createPage({
       chunkName: 'custom-path',
-      path: '/custom/',
+      routeKey: '/custom/',
       pathInferred: '/中文/README.md',
     }),
     createPage({
       chunkName: 'regular',
-      path: '/regular.html',
+      routeKey: '/regular',
       pathInferred: '/regular.md',
     }),
     createPage({
       chunkName: 'virtual',
-      path: '/virtual.html',
+      routeKey: '/virtual',
       pathInferred: null,
     }),
   ]
@@ -39,23 +39,23 @@ test('should map final paths and inferred route aliases to page chunks', () => {
   ).toEqual(
     new Map([
       ['/permalink/', ['permalink.js']],
-      ['/posts/foo.html', ['permalink.js']],
+      ['/posts/foo', ['permalink.js']],
       ['/custom/', ['custom-path.js']],
       ['/%E4%B8%AD%E6%96%87/', ['custom-path.js']],
-      ['/regular.html', ['regular.js']],
-      ['/virtual.html', ['virtual.js']],
+      ['/regular', ['regular.js']],
+      ['/virtual', ['virtual.js']],
     ]),
   )
 })
 
 const exactPage = createPage({
   chunkName: 'exact',
-  path: '/legacy.html',
+  routeKey: '/legacy',
   pathInferred: null,
 })
 const redirectingPage = createPage({
   chunkName: 'permalink',
-  path: '/permalink/',
+  routeKey: '/permalink/',
   pathInferred: '/legacy.md',
 })
 
@@ -63,7 +63,7 @@ test.for([
   { name: 'before', pages: [exactPage, redirectingPage] },
   { name: 'after', pages: [redirectingPage, exactPage] },
 ])(
-  'should prioritize an exact page path when it appears $name its redirect alias',
+  'should prioritize an exact page route key when it appears $name its redirect alias',
   ({ pages }) => {
     const resolvePageChunkFiles = vi.fn((page: Page) => [
       `${page.chunkName}.js`,
@@ -73,7 +73,7 @@ test.for([
       createPageChunkFilesMap({
         pages,
         resolvePageChunkFiles,
-      }).get('/legacy.html'),
+      }).get('/legacy'),
     ).toEqual(['exact.js'])
     expect(resolvePageChunkFiles).toHaveBeenCalledTimes(pages.length)
   },

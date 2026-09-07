@@ -12,14 +12,28 @@ export interface PageBase<
   >,
 > {
   /**
-   * Route path of the page
+   * Canonical route key of the page
    *
-   * Firstly inferred from the file path
+   * It is always in the "clean" format, i.e. without the trailing `.html`
+   * suffix. It is used as the key of the client route map and as the
+   * canonical identity of the page across routes and redirects.
    *
-   * Might be overridden by permalink
+   * @example '/guide'
+   * @example '/2020/02/02/hello-world'
+   * @example '/guide/'
+   */
+  routeKey: string
+
+  /**
+   * Path of the page in the current mode
    *
-   * @example '/guide/index.html'
-   * @example '/2020/02/02/hello-world.html'
+   * It is the actual route path that should be used to link the page. It
+   * equals the `routeKey` when `route.cleanUrl` is enabled, or the `routeKey`
+   * plus the `.html` suffix otherwise (the default behavior).
+   *
+   * @example '/guide.html'
+   * @example '/guide'
+   * @example '/guide/'
    */
   path: string
 
