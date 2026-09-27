@@ -32,7 +32,25 @@ export const createVueRouter = (): Router => {
     ],
     scrollBehavior: (to, _from, savedPosition) => {
       if (savedPosition) return savedPosition
-      if (to.hash) return { el: to.hash }
+      if (to.hash) {
+        const id = decodeURIComponent(to.hash).slice(1)
+
+        // scroll with `scrollIntoView` instead of letting vue-router resolve
+        // the element, so that `scroll-margin-top` is honored. Themes rely on
+        // it to keep anchor targets clear of a fixed navbar.
+        //
+        // It is also deferred to the next frame, because the target element of
+        // a hash link pointing to another page has not been rendered yet when
+        // the scroll behavior is called.
+        requestAnimationFrame(() => {
+          // `getElementById` is used instead of `querySelector`, as an id may
+          // contain characters that are invalid in a CSS selector, e.g. the
+          // space in `#foo bar` or the `:` in `#foo:1`
+          document.getElementById(id)?.scrollIntoView({ block: 'start' })
+        })
+
+        return false
+      }
       return { top: 0 }
     },
   })
