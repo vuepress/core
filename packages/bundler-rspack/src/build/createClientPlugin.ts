@@ -96,12 +96,14 @@ export const createClientPlugin = (
           })
 
           // build chunk name -> output file names mapping
+          // chunk groups may contain more than one chunk (e.g. a js chunk
+          // and its extracted css chunk), so we collect files from the group
+          // to keep all files of a page together
           const chunkFiles = Object.fromEntries(
-            chunks
-              .filter((chunk) => chunk.names?.length)
-              .flatMap((chunk) =>
-                (chunk.names ?? []).map((name) => [name, chunk.files ?? []]),
-              ),
+            Array.from(compilation.namedChunkGroups, ([name, chunkGroup]) => [
+              name,
+              chunkGroup.getFiles(),
+            ]),
           )
 
           // generate client manifest json file
