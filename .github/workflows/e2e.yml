@@ -20,7 +20,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: ['22', '24']
-        bundler: ['webpack', 'vite']
+        bundler: ['rspack', 'webpack', 'vite']
 
     runs-on: ${{ matrix.os }}
 
