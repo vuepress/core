@@ -9,6 +9,15 @@ import type { App } from '../types/index.js'
  * @internal
  */
 export const resolveAppMarkdown = async (app: App): Promise<Markdown> => {
+  // links plugin is not disabled
+  if (app.options.markdown.links !== false) {
+    app.options.markdown.links ??= {}
+    // inject the global `route.cleanUrl` option into the links plugin
+    // `markdown.links.cleanUrl` is an internal option and should not be
+    // configured by users, `route.cleanUrl` is the single source of truth
+    app.options.markdown.links.cleanUrl = app.options.route.cleanUrl
+  }
+
   // plugin hook: extendsMarkdownOptions
   await app.pluginApi.hooks.extendsMarkdownOptions.process(
     app.options.markdown,

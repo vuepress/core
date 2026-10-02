@@ -1,6 +1,6 @@
 import {
   ensureLeadingSlash,
-  inferRoutePath,
+  inferRouteKey,
   resolveLocalePath,
 } from '@vuepress/shared'
 
@@ -29,7 +29,7 @@ export const inferPagePath = ({
 
     return {
       pathInferred: filePathRelative
-        ? inferRoutePath(ensureLeadingSlash(filePathRelative))
+        ? inferRouteKey(ensureLeadingSlash(filePathRelative))
         : null,
       pathLocale,
     }
@@ -44,7 +44,7 @@ export const inferPagePath = ({
 
   // infer page route path from file path
   // foo/bar.md -> /foo/bar.html
-  const pathInferred = inferRoutePath(ensureLeadingSlash(filePathRelative))
+  const pathInferred = inferRouteKey(ensureLeadingSlash(filePathRelative))
 
   // resolve page locale path
   const pathLocale = resolveLocalePath(app.siteData.locales, pathInferred)

@@ -9,6 +9,7 @@ import { resolvePageHtmlInfo } from './resolvePageHtmlInfo.js'
 import { resolvePageLang } from './resolvePageLang.js'
 import { resolvePagePath } from './resolvePagePath.js'
 import { resolvePagePermalink } from './resolvePagePermalink.js'
+import { resolvePageRouteKey } from './resolvePageRouteKey.js'
 import { resolvePageRouteMeta } from './resolvePageRouteMeta.js'
 import { resolvePageSlug } from './resolvePageSlug.js'
 
@@ -78,13 +79,19 @@ export const createPage = async (
     pathLocale,
   })
 
-  // resolve page path
-  const path = resolvePagePath({ permalink, pathInferred, options })
+  // resolve the canonical route key of the page
+  const routeKey = resolvePageRouteKey({ permalink, pathInferred, options })
+
+  // resolve the actual route path of the page in the current mode
+  const path = resolvePagePath({
+    routeKey,
+    cleanUrl: app.options.route.cleanUrl,
+  })
 
   // resolve page rendered html file path
   const { htmlFilePath, htmlFilePathRelative } = resolvePageHtmlInfo({
     app,
-    path,
+    routeKey,
   })
 
   const { chunkFilePath, chunkFilePathRelative, chunkName } =
@@ -99,6 +106,7 @@ export const createPage = async (
     // page data
     data: {
       path,
+      routeKey,
       title,
       lang,
       frontmatter,
@@ -106,6 +114,7 @@ export const createPage = async (
 
     // base fields
     path,
+    routeKey,
     title,
     lang,
     frontmatter,

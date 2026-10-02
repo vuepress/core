@@ -33,8 +33,11 @@ it('should create app options with default values', () => {
     host: '0.0.0.0',
     port: 8080,
     open: false,
-    pagePatterns: ['**/*.md', '!.vuepress'],
-    permalinkPattern: null,
+    route: {
+      cleanUrl: false,
+      pagePatterns: ['**/*.md', '!.vuepress'],
+      permalinkPattern: null,
+    },
     userStyle: null,
     templateDev: path.normalize(
       require.resolve('@vuepress/client/templates/dev.html'),
@@ -47,5 +50,48 @@ it('should create app options with default values', () => {
     shouldPrefetch: 'as-needed',
     markdown: {},
     plugins: [],
+  })
+})
+
+it('should fall back to deprecated top-level config for unset `route` fields', () => {
+  const source = '/foo'
+
+  expect(
+    resolveAppOptions({
+      source,
+      theme: { name: 'theme' },
+      bundler: { name: 'bundler', type: 'vite' } as Bundler,
+      pagePatterns: ['foo/**/*.md'],
+      permalinkPattern: '/:slug',
+      route: {
+        cleanUrl: true,
+      },
+    }).route,
+  ).toEqual({
+    cleanUrl: true,
+    pagePatterns: ['foo/**/*.md'],
+    permalinkPattern: '/:slug',
+  })
+})
+
+it('should let `route` fields override the deprecated top-level config', () => {
+  const source = '/foo'
+
+  expect(
+    resolveAppOptions({
+      source,
+      theme: { name: 'theme' },
+      bundler: { name: 'bundler', type: 'vite' } as Bundler,
+      pagePatterns: ['foo/**/*.md'],
+      permalinkPattern: '/:slug',
+      route: {
+        pagePatterns: ['bar/**/*.md'],
+        permalinkPattern: null,
+      },
+    }).route,
+  ).toEqual({
+    cleanUrl: false,
+    pagePatterns: ['bar/**/*.md'],
+    permalinkPattern: null,
   })
 })

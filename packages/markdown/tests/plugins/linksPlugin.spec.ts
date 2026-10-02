@@ -732,6 +732,112 @@ describe('internal links', () => {
   })
 })
 
+describe('internal links with clean url', () => {
+  const source = [
+    '[a](foo.md)',
+    '[b](foo/bar.md)',
+    '[c](foo/README.md)',
+    '[d](../bar.md)',
+    '[e](index.md)',
+  ].join('\n\n')
+
+  const expectLinks = [
+    {
+      raw: 'foo.md',
+      relative: 'foo.md',
+      absolute: null,
+    },
+    {
+      raw: 'foo/bar.md',
+      relative: 'foo/bar.md',
+      absolute: null,
+    },
+    {
+      raw: 'foo/README.md',
+      relative: 'foo/README.md',
+      absolute: null,
+    },
+    {
+      raw: '../bar.md',
+      relative: '../bar.md',
+      absolute: null,
+    },
+    {
+      raw: 'index.md',
+      relative: 'index.md',
+      absolute: null,
+    },
+  ]
+
+  it('should drop `.html` suffix with cleanUrl', () => {
+    const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      cleanUrl: true,
+    })
+    const env: MarkdownEnv = {}
+
+    const rendered = md.render(source, env)
+
+    expect(rendered).toEqual(
+      [
+        '<RouteLink to="foo">a</RouteLink>',
+        '<RouteLink to="foo/bar">b</RouteLink>',
+        '<RouteLink to="foo/">c</RouteLink>',
+        '<RouteLink to="../bar">d</RouteLink>',
+        '<RouteLink to="index">e</RouteLink>',
+      ]
+        .map((a) => `<p>${a}</p>`)
+        .join('\n') + '\n',
+    )
+
+    expect(env.links).toEqual(expectLinks)
+  })
+
+  it('should keep `.html` suffix without cleanUrl', () => {
+    const md = MarkdownIt({ html: true }).use(linksPlugin)
+    const env: MarkdownEnv = {}
+
+    const rendered = md.render(source, env)
+
+    expect(rendered).toEqual(
+      [
+        '<RouteLink to="foo.html">a</RouteLink>',
+        '<RouteLink to="foo/bar.html">b</RouteLink>',
+        '<RouteLink to="foo/">c</RouteLink>',
+        '<RouteLink to="../bar.html">d</RouteLink>',
+        '<RouteLink to="index.html">e</RouteLink>',
+      ]
+        .map((a) => `<p>${a}</p>`)
+        .join('\n') + '\n',
+    )
+
+    expect(env.links).toEqual(expectLinks)
+  })
+
+  it('should preserve hash and queries with cleanUrl', () => {
+    const sourceWithHashAndQuery = [
+      '[hash](foo.md#hash)',
+      '[query](foo.md?a=1&amp;b=2)',
+      '[hash-and-query](foo.md?a=1&amp;b=2#hash)',
+    ].join('\n\n')
+    const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      cleanUrl: true,
+    })
+    const env: MarkdownEnv = {}
+
+    const rendered = md.render(sourceWithHashAndQuery, env)
+
+    expect(rendered).toEqual(
+      [
+        '<RouteLink to="foo#hash">hash</RouteLink>',
+        '<RouteLink to="foo?a=1&amp;b=2">query</RouteLink>',
+        '<RouteLink to="foo?a=1&amp;b=2#hash">hash-and-query</RouteLink>',
+      ]
+        .map((a) => `<p>${a}</p>`)
+        .join('\n') + '\n',
+    )
+  })
+})
+
 describe('empty links', () => {
   it('should render correctly', () => {
     const md = MarkdownIt({ html: true }).use(linksPlugin)
