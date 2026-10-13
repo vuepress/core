@@ -17,4 +17,4 @@ catalogs:
     vitest: ^4.1.10
   vue:
     vue: ^3.5.40
-    vue-router: ^5.2.0
+    vue-router: ^5.4.0
