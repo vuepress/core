@@ -1,5 +1,12 @@
 import { clientConfigs } from '@internal/clientConfigs'
-import { createApp, createSSRApp, h } from 'vue'
+import { createApp, createSSRApp, h, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import {
+  SCROLL_RESTORATION_CAPTURE_DEFAULT,
+  SCROLL_RESTORATION_RESTORE_DEFAULT,
+  ScrollRestoration,
+  useScrollRestoration,
+} from 'vue-router/experimental'
 
 import { usePageLayout } from './composables/index.js'
 import { siteData } from './internal/siteData.js'
@@ -40,6 +47,24 @@ export const createVueApp: CreateVueAppFunction = async () => {
       // get page layout
       const pageLayout = usePageLayout()
 
+      // restore the scroll position once the new page has been rendered
+      //
+      // vuepress renders the page layout directly instead of wrapping it in a
+      // `<RouterView>`, so the restoration provided by `onRouteRendered` would
+      // run before the new page is rendered. It is thus triggered manually
+      // after mounting and after each route change instead.
+      const { scroll } = useScrollRestoration({ manual: true })
+      const route = useRoute()
+
+      onMounted(scroll)
+      watch(
+        () => route.fullPath,
+        () => {
+          scroll()
+        },
+        { flush: 'post' },
+      )
+
       // render layout and root components
       return () => [h(pageLayout.value), clientRootComponents]
     },
@@ -63,11 +88,18 @@ export const createVueApp: CreateVueAppFunction = async () => {
     await clientConfig.enhance?.({ app, router, siteData })
   }
 
+  // enable scroll restoration before installing the router
+  // https://router.vuejs.org/experimental/scroll-restoration.html
+  app.use(ScrollRestoration, {
+    router,
+    // use the default capture and restore implementations
+    capture: SCROLL_RESTORATION_CAPTURE_DEFAULT,
+    restore: SCROLL_RESTORATION_RESTORE_DEFAULT,
+  })
+
   // vue-router will start to initialize once it is installed
   // via `app.use()`, but users might make some modifications
   // to router in client enhance, so we install it after that.
-  // this can also avoid the `scrollBehavior` issue on initial
-  // navigation.
   app.use(router)
 
   return {
