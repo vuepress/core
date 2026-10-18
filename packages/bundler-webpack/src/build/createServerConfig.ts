@@ -33,7 +33,9 @@ export const createServerConfig = async (
   // set externals
   // externalize vue in ssr mode, because we need to import `'vue/server-renderer'` in node side
   // for ssr usage, then we also need vue as peer-dependency when using pnpm
-  config.externals(['vue'])
+  // subpaths like `'vue/server-renderer'` should also be externalized, otherwise
+  // a second vue runtime would be bundled into the server bundle
+  config.externals([/^vue($|\/)/])
 
   // devtool
   config.devtool('source-map')
