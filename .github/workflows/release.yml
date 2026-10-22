@@ -21,15 +21,10 @@ jobs:
       - name: Push to release branch
         run: git push origin HEAD:release
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Setup pnpm
+        uses: pnpm/setup@v3
         with:
-          cache: pnpm
-          node-version: lts/*
-          registry-url: https://registry.npmjs.org/
+          runtime: node@^24.22.1
 
       - name: Install dependencies
         run: pnpm ci
