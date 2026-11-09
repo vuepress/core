@@ -5,17 +5,17 @@
 
 ## Links
 
-- [Another page target](./scroll-to-hash-target.md#target)
+- [Another page target](./scroll-to-hash-target.md#hash-target)
 
 <div class="spacer"></div>
 
-## Target
+## Hash Target
 
 Target content
 
 <div class="spacer"></div>
 
-<h2 id="target:1">Target with a complex id</h2>
+<h2 id="hash-target:1">Target with a complex id</h2>
 
 Target content
 
@@ -27,15 +27,15 @@ import { useRouter } from 'vuepress/client';
 const router = useRouter();
 
 const goSamePageTarget = () => {
-  router.push('#target');
+  router.push('#hash-target');
 }
 
 const goSamePageComplexTarget = () => {
-  router.push('#target:1');
+  router.push('#hash-target:1');
 }
 
 const goAnotherPageTarget = () => {
-  router.push('/router/scroll-to-hash-target.html#target');
+  router.push('/router/scroll-to-hash-target.html#hash-target');
 }
 
 const goAnotherPage = () => {
@@ -48,8 +48,8 @@ const goAnotherPage = () => {
   height: 1000px;
 }
 
-#target,
-#target\:1 {
+#hash-target,
+#hash-target\:1 {
   /* keep the anchor target away from the top of the viewport */
   scroll-margin-top: 100px;
 }

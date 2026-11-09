@@ -1,4 +1,4 @@
-## Target
+## Hash Target
 
 Target content
 
@@ -9,7 +9,7 @@ Target content
   height: 1000px;
 }
 
-#target {
+#hash-target {
   /* keep the anchor target away from the top of the viewport */
   scroll-margin-top: 100px;
 }

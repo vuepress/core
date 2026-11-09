@@ -34,8 +34,8 @@ test('should honor scroll-margin-top when navigating to a hash on the same page'
 }) => {
   await page.locator('#same-page-target').click()
 
-  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#target`)
-  await expectTargetTop(page, 'target')
+  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#hash-target`)
+  await expectTargetTop(page, 'hash-target')
 })
 
 test('should honor scroll-margin-top when the hash contains special characters', async ({
@@ -43,8 +43,10 @@ test('should honor scroll-margin-top when the hash contains special characters',
 }) => {
   await page.locator('#same-page-complex-target').click()
 
-  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#target:1`)
-  await expectTargetTop(page, 'target:1')
+  await expect(page).toHaveURL(
+    `${BASE}router/scroll-to-hash.html#hash-target:1`,
+  )
+  await expectTargetTop(page, 'hash-target:1')
 })
 
 test('should honor scroll-margin-top when navigating to a hash on another page', async ({
@@ -53,9 +55,9 @@ test('should honor scroll-margin-top when navigating to a hash on another page',
   await page.locator('#another-page-target').click()
 
   await expect(page).toHaveURL(
-    `${BASE}router/scroll-to-hash-target.html#target`,
+    `${BASE}router/scroll-to-hash-target.html#hash-target`,
   )
-  await expectTargetTop(page, 'target')
+  await expectTargetTop(page, 'hash-target')
 })
 
 test('should honor scroll-margin-top when navigating by a markdown link', async ({
@@ -64,16 +66,16 @@ test('should honor scroll-margin-top when navigating by a markdown link', async 
   await page.locator('#links + ul > li > a').click()
 
   await expect(page).toHaveURL(
-    `${BASE}router/scroll-to-hash-target.html#target`,
+    `${BASE}router/scroll-to-hash-target.html#hash-target`,
   )
-  await expectTargetTop(page, 'target')
+  await expectTargetTop(page, 'hash-target')
 })
 
 test('should scroll to the top when navigating to another page without a hash', async ({
   page,
 }) => {
   await page.locator('#same-page-target').click()
-  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#target`)
+  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#hash-target`)
 
   await page.locator('#another-page').click()
   await expect(page).toHaveURL(`${BASE}router/scroll-to-hash-target.html`)
