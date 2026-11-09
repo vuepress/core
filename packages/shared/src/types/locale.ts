@@ -14,4 +14,4 @@ export type LocaleConfig<T extends LocaleData = LocaleData> = Record<
 /**
  * Locales data
  */
-export type LocaleData = Record<never, never>
+export type LocaleData = object
