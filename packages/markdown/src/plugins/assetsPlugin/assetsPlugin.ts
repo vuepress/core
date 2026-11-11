@@ -1,7 +1,6 @@
-import type { PluginWithOptions } from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
+import type { MarkdownItPlugin } from '@mdit-vue/types'
+import type { RendererRule } from 'markdown-it'
 
-import type { MarkdownEnv } from '../../types.js'
 import { resolveLink } from './resolveLink.js'
 
 export interface AssetsPluginOptions {
@@ -31,7 +30,7 @@ export interface AssetsPluginOptions {
 /**
  * Plugin to handle assets links
  */
-export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
+export const assetsPlugin: MarkdownItPlugin<AssetsPluginOptions> = (
   md,
   {
     absolutePathPrependBase = false,
@@ -39,8 +38,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
   }: AssetsPluginOptions = {},
 ) => {
   // wrap raw image renderer rule
-  const rawImageRule = md.renderer.rules.image!
-  md.renderer.rules.image = (tokens, idx, options, env: MarkdownEnv, self) => {
+  const rawImageRule = md.renderer.rules.image
+  md.renderer.rules.image = (tokens, idx, options, env = {}, self) => {
     const token = tokens[idx]
 
     // get the image link
@@ -50,7 +49,11 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       // replace the original link with resolved link
       token.attrSet(
         'src',
-        resolveLink(link, { env, absolutePathPrependBase, aliasSupport }),
+        resolveLink(String(link), {
+          env,
+          absolutePathPrependBase,
+          aliasSupport,
+        }),
       )
     }
 
@@ -59,8 +62,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
   // wrap raw html renderer rule
   const createHtmlRule =
-    (rawHtmlRule: RenderRule): RenderRule =>
-    (tokens, idx, options, env: MarkdownEnv, self) => {
+    (rawHtmlRule: RendererRule): RendererRule =>
+    (tokens, idx, options, env = {}, self) => {
       // replace the original link with resolved link
       tokens[idx].content = tokens[idx].content
         // handle src
@@ -95,8 +98,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
 
       return rawHtmlRule(tokens, idx, options, env, self)
     }
-  const rawHtmlBlockRule = md.renderer.rules.html_block!
-  const rawHtmlInlineRule = md.renderer.rules.html_inline!
+  const rawHtmlBlockRule = md.renderer.rules.html_block
+  const rawHtmlInlineRule = md.renderer.rules.html_inline
   md.renderer.rules.html_block = createHtmlRule(rawHtmlBlockRule)
   md.renderer.rules.html_inline = createHtmlRule(rawHtmlInlineRule)
 }

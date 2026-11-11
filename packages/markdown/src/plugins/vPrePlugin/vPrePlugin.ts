@@ -1,4 +1,4 @@
-import type { PluginWithOptions } from 'markdown-it'
+import type { MarkdownItPlugin } from '@mdit-vue/types'
 
 import { resolveVPre } from './resolveVPre.js'
 
@@ -17,11 +17,11 @@ export interface VPrePluginOptions {
 /**
  * v-pre plugin
  */
-export const vPrePlugin: PluginWithOptions<VPrePluginOptions> = (
+export const vPrePlugin: MarkdownItPlugin<VPrePluginOptions> = (
   md,
   { inline = true, block = true }: VPrePluginOptions = {},
 ) => {
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
     const token = tokens[idx]
@@ -38,7 +38,7 @@ export const vPrePlugin: PluginWithOptions<VPrePluginOptions> = (
   }
 
   if (inline) {
-    const rawInlineCodeRule = md.renderer.rules.code_inline!
+    const rawInlineCodeRule = md.renderer.rules.code_inline
     md.renderer.rules.code_inline = (...args) => {
       const result = rawInlineCodeRule(...args)
       return `<code v-pre${result.slice('<code'.length)}`

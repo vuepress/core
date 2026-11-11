@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+import type { MarkdownIt as MarkdownItInstance } from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import type { MarkdownEnv } from '../../src/index.js'
@@ -40,13 +41,13 @@ describe('markdown image syntax', () => {
 
   const TEST_CASES: {
     description: string
-    md: MarkdownIt
+    md: MarkdownItInstance
     env: MarkdownEnv
     expected: string[]
   }[] = [
     {
       description: 'should handle assets link with default options',
-      md: MarkdownIt().use(assetsPlugin),
+      md: new MarkdownIt().use(assetsPlugin),
       env: {
         base: '/base/',
       },
@@ -85,7 +86,7 @@ describe('markdown image syntax', () => {
     },
     {
       description: 'should respect `absolutePathPrependBase` option',
-      md: MarkdownIt().use(assetsPlugin, {
+      md: new MarkdownIt().use(assetsPlugin, {
         absolutePathPrependBase: true,
       }),
       env: {
@@ -213,13 +214,13 @@ describe('html <img> tag', () => {
 
     const TEST_CASES: {
       description: string
-      md: MarkdownIt
+      md: MarkdownItInstance
       env: MarkdownEnv
       expected: string[]
     }[] = [
       {
         description: 'should handle assets link with default options',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
+        md: new MarkdownIt({ html: true }).use(assetsPlugin),
         env: {
           base: '/base/',
         },
@@ -300,7 +301,7 @@ describe('html <img> tag', () => {
       },
       {
         description: 'should respect `absolutePathPrependBase` option',
-        md: MarkdownIt({ html: true }).use(assetsPlugin, {
+        md: new MarkdownIt({ html: true }).use(assetsPlugin, {
           absolutePathPrependBase: true,
         }),
         env: {
@@ -491,13 +492,13 @@ describe('html <img> tag', () => {
 
     const TEST_CASES: {
       description: string
-      md: MarkdownIt
+      md: MarkdownItInstance
       env: MarkdownEnv
       expected: string[]
     }[] = [
       {
         description: 'should handle assets link with default options',
-        md: MarkdownIt({ html: true }).use(assetsPlugin),
+        md: new MarkdownIt({ html: true }).use(assetsPlugin),
         env: {
           base: '/base/',
         },
@@ -517,7 +518,7 @@ describe('html <img> tag', () => {
       },
       {
         description: 'should respect `absolutePathPrependBase` option',
-        md: MarkdownIt({ html: true }).use(assetsPlugin, {
+        md: new MarkdownIt({ html: true }).use(assetsPlugin, {
           absolutePathPrependBase: true,
         }),
         env: {
@@ -585,13 +586,13 @@ describe('html media tag', () => {
 
     const TEST_CASES: {
       description: string
-      md: MarkdownIt
+      md: MarkdownItInstance
       env: MarkdownEnv
       expected: string[]
     }[] = [
       {
         description: 'should respect `aliasSupport` option',
-        md: MarkdownIt({ html: true }).use(assetsPlugin, {
+        md: new MarkdownIt({ html: true }).use(assetsPlugin, {
           aliasSupport: '@-prefix',
         }),
         env: {

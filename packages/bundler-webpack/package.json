@@ -41,7 +41,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@types/express": "^4.17.25",
+    "@types/express": "^5.0.6",
     "@types/webpack-env": "^1.18.8",
     "@vuepress/bundlerutils": "workspace:*",
     "@vuepress/client": "workspace:*",
@@ -53,7 +53,7 @@
     "css-loader": "^7.1.5",
     "css-minimizer-webpack-plugin": "^8.0.0",
     "esbuild-loader": "~4.5.0",
-    "express": "^4.22.2",
+    "express": "^5.3.0",
     "html-webpack-plugin": "^5.6.8",
     "lightningcss": "^1.33.0",
     "mini-css-extract-plugin": "^2.10.2",
@@ -64,7 +64,7 @@
     "vue-loader": "^17.4.2",
     "vue-router": "catalog:vue",
     "webpack": "^5.112.2",
-    "webpack-dev-server": "^5.2.6",
+    "webpack-dev-server": "^6.1.0",
     "webpack-merge": "^6.0.1",
     "webpack-v5-chain": "^2.1.0"
   }

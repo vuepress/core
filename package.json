@@ -25,7 +25,7 @@
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@commitlint/types": "^21.2.3",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "catalog:vite",
     "@vuepress/eslint-config": "^8.2.1",
@@ -34,11 +34,11 @@
     "bumpp": "^12.3.0",
     "conventional-changelog": "^8.1.3",
     "eslint": "^10.14.0",
-    "eslint-plugin-import-x": "^4.18.0",
+    "eslint-plugin-import-x": "^4.18.1",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
     "lint-staged": "^17.6.0",
-    "oxfmt": "^0.77.0",
+    "oxfmt": "^0.78.0",
     "rimraf": "^6.1.4",
     "taze": "^21.3.0",
     "tsdown": "catalog:vite",
@@ -54,5 +54,14 @@
       "oxfmt --no-error-on-unmatched-pattern"
     ]
   },
-  "packageManager": "pnpm@12.18.0"
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "26.13.0"
+    }
+  }
 }
