@@ -41,19 +41,19 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@rspack/core": "^2.0.3",
-    "@rspack/dev-server": "^2.0.1",
+    "@rspack/core": "^2.3.2",
+    "@rspack/dev-server": "^2.2.2",
     "@vuepress/bundlerutils": "workspace:*",
     "@vuepress/client": "workspace:*",
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.5.0",
-    "css-loader": "^7.1.4",
+    "autoprefixer": "^10.6.2",
+    "css-loader": "^7.1.5",
     "esbuild-loader": "~4.4.3",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.32",
     "postcss-loader": "^8.2.1",
-    "rspack-chain": "^2.0.1",
+    "rspack-chain": "^2.3.2",
     "rspack-merge": "^0.1.1",
     "style-loader": "^4.0.0",
     "vue": "catalog:vue",
@@ -61,7 +61,7 @@
     "vue-router": "catalog:vue"
   },
   "devDependencies": {
-    "connect-next": "^4.0.1"
+    "connect-next": "^5.0.0"
   },
   "engines": {
     "node": "^22.18.0 || ^24 || >=26"
