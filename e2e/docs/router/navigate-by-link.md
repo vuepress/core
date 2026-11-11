@@ -14,7 +14,16 @@
 <a :href="$withBase('/?home=true')" class="home-with-query">Home</a>
 <a :href="$withBase('/?home=true#home')" class="home-with-query-and-hash">Home</a>
 <a :href="$withBase('/404.html#_404')" class="not-found-with-hash">404</a>
-<a :href="$withBase('/404.html#_404?notFound=true')" class="not-found-with-hash-and-query">404</a>
+<a :href="$withBase('/404.html#/404?lang=en')" class="not-found-with-complex-hash">404</a>
+
+## HTML Clean Links
+
+<a :href="$withBase('/')" class="home">Home</a>
+<a :href="$withBase('/404')" class="not-found">404</a>
+<a :href="$withBase('/?home=true')" class="home-with-query">Home</a>
+<a :href="$withBase('/?home=true#home')" class="home-with-query-and-hash">Home</a>
+<a :href="$withBase('/404#_404')" class="not-found-with-hash">404</a>
+<a :href="$withBase('/404#/404?lang=en')" class="not-found-with-complex-hash">404</a>
 
 ## Markdown Links with html paths
 
@@ -22,7 +31,18 @@
 - [404](/404.html)
 - [Home with query](/?home=true)
 - [Home with query and hash](/?home=true#home)
-- [404 with hash](/404.html#404)
+- [404 with hash](/404.html#_404)
 - [404 with complex hash](/404.html#/404?lang=en)
+
+> Non-recommended usage. HTML paths could not be prepended with `base` correctly.
+
+## Markdown Clean Links
+
+- [Home](/)
+- [404](/404)
+- [Home with query](/?home=true)
+- [Home with query and hash](/?home=true#home)
+- [404 with hash](/404#_404)
+- [404 with complex hash](/404#/404?lang=en)
 
 > Non-recommended usage. HTML paths could not be prepended with `base` correctly.

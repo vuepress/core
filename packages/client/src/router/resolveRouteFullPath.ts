@@ -1,6 +1,6 @@
-import { splitPath } from '@vuepress/shared'
+import { resolveRoutePathWithExt, splitPath } from '@vuepress/shared'
 
-import { resolveRoutePath } from './resolveRoutePath.js'
+import { resolveRouteCleanPath } from './resolveRouteCleanPath.js'
 
 /**
  * Resolve route full path with given raw path
@@ -10,5 +10,11 @@ export const resolveRouteFullPath = (
   currentPath?: string,
 ): string => {
   const { pathname, hashAndQueries } = splitPath(path)
-  return resolveRoutePath(pathname, currentPath) + hashAndQueries
+  const routeCleanPath = resolveRouteCleanPath(pathname, currentPath)
+
+  return (
+    (__VUEPRESS_CLEAN_URL__
+      ? routeCleanPath
+      : resolveRoutePathWithExt(routeCleanPath)) + hashAndQueries
+  )
 }

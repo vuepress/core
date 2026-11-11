@@ -1,16 +1,16 @@
-import { normalizeRoutePath } from '@vuepress/shared'
+import { normalizeRouteKey } from '@vuepress/shared'
 
 import { redirects, routes } from '../internal/routes.js'
 
 /**
  * Resolve route path with given raw path
  */
-export const resolveRoutePath = (
+export const resolveRouteCleanPath = (
   pathname: string,
   currentPath?: string,
 ): string => {
   // normalized path
-  const normalizedRoutePath = normalizeRoutePath(pathname, currentPath)
+  const normalizedRoutePath = normalizeRouteKey(pathname, currentPath)
 
   // check if the normalized path is in routes
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access

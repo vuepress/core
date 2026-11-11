@@ -1,13 +1,13 @@
 import type { MarkdownLink } from '@vuepress/markdown'
-import { inferRoutePath, normalizeRoutePath } from '@vuepress/shared'
+import { inferRouteKey, normalizeRouteKey } from '@vuepress/shared'
 
 /**
- * Normalize a MarkdownLink to a route path
+ * Normalize a MarkdownLink to a route key
  * that can be matched against Page.path.
  *
  * Returns null if the link is unresolvable.
  */
-export const resolveLinkRoutePath = ({
+export const resolveLinkRouteKey = ({
   base,
   current,
   link,
@@ -17,7 +17,7 @@ export const resolveLinkRoutePath = ({
   link: MarkdownLink
 }): string | null => {
   if (!link.absolute) {
-    return link.relative ? normalizeRoutePath(link.relative, current) : null
+    return link.relative ? normalizeRouteKey(link.relative, current) : null
   }
 
   // Strip base prefix, ensuring leading slash
@@ -25,5 +25,5 @@ export const resolveLinkRoutePath = ({
     ? `/${link.absolute.slice(base.length)}`
     : link.absolute
 
-  return inferRoutePath(pathWithoutBase)
+  return inferRouteKey(pathWithoutBase)
 }
