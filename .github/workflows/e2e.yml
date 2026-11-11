@@ -27,17 +27,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-
-      - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: ${{ matrix.node }}
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm ci
+          runtime: node@${{ matrix.node }}
+          cache: true
+          require-lockfile: true
 
       - name: Install playwright chromium
         working-directory: ./e2e
