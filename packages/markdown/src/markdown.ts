@@ -2,18 +2,6 @@ import { slugify as defaultSlugify } from '@mdit-vue/shared'
 import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
 
-import type {
-  AnchorPluginOptions,
-  AssetsPluginOptions,
-  EmojiPluginOptions,
-  FrontmatterPluginOptions,
-  HeadersPluginOptions,
-  ImportCodePluginOptions,
-  LinksPluginOptions,
-  SfcPluginOptions,
-  TocPluginOptions,
-  VPrePluginOptions,
-} from './plugins.js'
 import {
   anchorPlugin,
   assetsPlugin,
@@ -52,7 +40,7 @@ export const createMarkdown = ({
   ...markdownItOptions
 }: MarkdownOptions = {}): Markdown => {
   // create raw markdown-it instance
-  const md = MarkdownIt({
+  const md = new MarkdownIt({
     ...markdownItOptions,
     // should always enable html option
     html: true,
@@ -64,7 +52,7 @@ export const createMarkdown = ({
 
   // add anchor to headers
   if (anchor !== false) {
-    md.use<AnchorPluginOptions>(anchorPlugin, {
+    md.use(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
       permalink: anchorPlugin.permalink.headerLink({
@@ -82,7 +70,7 @@ export const createMarkdown = ({
 
   // replace relative link of assets with absolute link
   if (assets !== false) {
-    md.use<AssetsPluginOptions>(assetsPlugin, assets)
+    md.use(assetsPlugin, assets)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- deprecation warning
@@ -99,12 +87,12 @@ export const createMarkdown = ({
 
   // parse emoji
   if (emoji !== false) {
-    md.use<EmojiPluginOptions>(emojiPlugin, emoji)
+    md.use(emojiPlugin, emoji)
   }
 
   // extract frontmatter into env
   if (frontmatter !== false) {
-    md.use<FrontmatterPluginOptions>(frontmatterPlugin, {
+    md.use(frontmatterPlugin, {
       ...frontmatter,
       grayMatterOptions: {
         excerpt: false,
@@ -115,7 +103,7 @@ export const createMarkdown = ({
 
   // extract headers into env
   if (headers !== false) {
-    md.use<HeadersPluginOptions>(headersPlugin, {
+    md.use(headersPlugin, {
       level: [2, 3],
       slugify,
       ...headers,
@@ -124,22 +112,22 @@ export const createMarkdown = ({
 
   // handle import_code syntax
   if (importCode !== false) {
-    md.use<ImportCodePluginOptions>(importCodePlugin, importCode)
+    md.use(importCodePlugin, importCode)
   }
 
   // process external and internal links
   if (links !== false) {
-    md.use<LinksPluginOptions>(linksPlugin, links)
+    md.use(linksPlugin, links)
   }
 
   // extract vue SFC blocks into env
   if (sfc !== false) {
-    md.use<SfcPluginOptions>(sfcPlugin, sfc)
+    md.use(sfcPlugin, sfc)
   }
 
   // allow toc syntax
   if (toc !== false) {
-    md.use<TocPluginOptions>(tocPlugin, {
+    md.use(tocPlugin, {
       level: [2, 3],
       slugify,
       linkTag: 'router-link',
@@ -154,7 +142,7 @@ export const createMarkdown = ({
 
   // add v-pre to `<pre>` and `<code>`
   if (vPre !== false) {
-    md.use<VPrePluginOptions>(vPrePlugin, vPre)
+    md.use(vPrePlugin, vPre)
   }
 
   return md

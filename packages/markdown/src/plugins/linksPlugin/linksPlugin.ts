@@ -1,6 +1,6 @@
+import type { MarkdownItPlugin } from '@mdit-vue/types'
 import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
-import type { PluginWithOptions } from 'markdown-it'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { Token } from 'markdown-it'
 
 import type { MarkdownEnv } from '../../types.js'
 import { resolvePaths } from './resolvePaths.js'
@@ -40,7 +40,7 @@ export interface LinksPluginOptions {
  * - internal links: convert `<a>` tag into internalTag
  * - external links: add extra attrs
  */
-export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
+export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
   md,
   options: LinksPluginOptions = {},
 ): void => {
@@ -77,7 +77,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
 
     // if `href` attr exists, `token.attrs` is not `null`
     const hrefAttr = token.attrs![hrefIndex]
-    const hrefLink: string = hrefAttr[1]
+    const hrefLink = String(hrefAttr[1])
 
     // get `base` and `filePathRelative` from `env`
     const { base = '/', filePathRelative = null } = env
@@ -154,12 +154,12 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     })
   }
 
-  md.renderer.rules.link_open = (tokens, idx, opts, env: MarkdownEnv, self) => {
+  md.renderer.rules.link_open = (tokens, idx, opts, env = {}, self) => {
     handleLinkOpen(tokens, idx, env)
     return self.renderToken(tokens, idx, opts)
   }
 
-  md.renderer.rules.link_close = (tokens, idx, opts, _env, self) => {
+  md.renderer.rules.link_close = (tokens, idx, opts, env, self) => {
     // convert ending tag of internal link
     if (hasOpenInternalLink) {
       hasOpenInternalLink = false
