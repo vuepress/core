@@ -14,25 +14,25 @@ ${CODE_FENCE}
 \`inline\`
 `
   it('should process code with default options', () => {
-    const md = MarkdownIt().use(vPrePlugin)
+    const md = new MarkdownIt().use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `block`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `inline`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { inline: false })
+    const md = new MarkdownIt().use(vPrePlugin, { inline: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `block` and `inline`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false, inline: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false, inline: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
@@ -69,13 +69,13 @@ const a = 1
 ${CODE_FENCE}
 `
   it('should work if `block` is enabled by default', () => {
-    const md = MarkdownIt().use(vPrePlugin)
+    const md = new MarkdownIt().use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should work if `block` is disabled', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
@@ -117,7 +117,7 @@ ${CODE_FENCE}
         `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
     )
 
-    const md = MarkdownIt({ highlight }).use(vPrePlugin)
+    const md = new MarkdownIt({ highlight }).use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
     expect(highlight).toHaveBeenCalledTimes(7)
@@ -127,7 +127,7 @@ ${CODE_FENCE}
     const highlight = vi.fn(
       (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
     )
-    const md = MarkdownIt({ highlight }).use(vPrePlugin)
+    const md = new MarkdownIt({ highlight }).use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
     expect(highlight).toHaveBeenCalledTimes(7)

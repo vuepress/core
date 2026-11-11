@@ -17,6 +17,7 @@ export { tocPlugin, type TocPluginOptions } from '@mdit-vue/plugin-toc'
 export {
   anchorPlugin,
   type AnchorPluginOptions,
+  type MarkdownItAnchorEnv,
 } from './plugins/anchorPlugin.js'
 export {
   assetsPlugin,

@@ -56,4 +56,10 @@ export default vuepress(
       'markdown/no-missing-label-refs': 'off',
     },
   },
+  {
+    files: ['packages/markdown/src/**'],
+    rules: {
+      '@typescript-eslint/default-param-last': 'off',
+    },
+  },
 )
