@@ -32,7 +32,12 @@ const msg = 'msg'
     frontmatter: {},
     headers: [],
     links: [],
-    markdownEnv: { excerpt: '' },
+    markdownEnv: {
+      excerpt: '',
+      markdownItAnchor: {
+        slugs: {},
+      },
+    },
     sfcBlocks: {
       template: {
         type: 'template',

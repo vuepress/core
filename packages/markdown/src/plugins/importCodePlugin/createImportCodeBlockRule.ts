@@ -1,5 +1,5 @@
+import type { MarkdownItBlockRule } from '@mdit-vue/types'
 import { path } from '@vuepress/utils'
-import type { RuleBlock } from 'markdown-it/lib/parser_block.mjs'
 
 import type { ImportCodePluginOptions } from './importCodePlugin.js'
 import type { ImportCodeTokenMeta } from './types.js'
@@ -21,7 +21,9 @@ const parseLineNumber = (line: string | undefined): number | undefined =>
   line ? Number.parseInt(line, 10) : undefined
 
 export const createImportCodeBlockRule =
-  ({ handleImportPath = (str) => str }: ImportCodePluginOptions): RuleBlock =>
+  ({
+    handleImportPath = (str) => str,
+  }: ImportCodePluginOptions): MarkdownItBlockRule =>
   (state, startLine, endLine, silent): boolean => {
     // if it's indented more than 3 spaces, it should be a code block
     /* istanbul ignore if */
