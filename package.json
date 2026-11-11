@@ -25,7 +25,7 @@
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@commitlint/types": "^21.2.3",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "catalog:vite",
     "@vuepress/eslint-config": "^8.2.1",

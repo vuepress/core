@@ -2,7 +2,7 @@ import { sep } from 'node:path'
 
 import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import type WebpackDevServer from 'webpack-dev-server'
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 
 import type { WebpackBundlerOptions } from '../types.js'
 import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
@@ -10,7 +10,7 @@ import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 export const createDevServerConfig = (
   app: App,
   options: WebpackBundlerOptions,
-): WebpackDevServer.Configuration => ({
+): WebpackDevServerConfiguration => ({
   allowedHosts: 'all',
   compress: true,
   devMiddleware: {
