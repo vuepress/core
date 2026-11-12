@@ -44,13 +44,11 @@ it('should use content from page options and ignore file path', async () => {
   expect(resolved).toBe(expected)
 })
 
-it('should throw error if the file does not exist', async () => {
-  try {
-    await resolvePageContent({
-      filePath: '404',
-      options: {},
-    })
-  } catch (e) {
-    expect(e).not.toBeUndefined()
-  }
+it('should return empty string if the file does not exist', async () => {
+  const resolved = await resolvePageContent({
+    filePath: '404',
+    options: {},
+  })
+
+  expect(resolved).toBe('')
 })

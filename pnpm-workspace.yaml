@@ -18,3 +18,8 @@ catalogs:
   vue:
     vue: ^3.5.45
     vue-router: ^5.4.0
+
+minimumReleaseAgeExclude:
+  - '@vuepress/oxfmt-config'
+  - '@vuepress/oxlint-config'
+  - '@vuepress/tsconfig'

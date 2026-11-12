@@ -10,14 +10,6 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "markdown",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
   "cSpell.words": [
     "bumpp",
     "bundlerutils",

@@ -1,7 +1,7 @@
 // https://datatracker.ietf.org/doc/html/rfc2396
 // https://github.com/rollup/rollup/blob/dd1a6bee7b1b436113594d3de1b0fff37ea96eb6/src/utils/sanitizeFileName.ts
 
-// eslint-disable-next-line no-control-regex
+// oxlint-disable-next-line no-control-regex
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$%&*+,:;<=>?[\]^`{|}\u007F]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
 

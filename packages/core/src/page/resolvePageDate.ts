@@ -47,7 +47,6 @@ export const resolvePageDate = ({
     const matches = filename.match(FILENAME_DATE_RE)
     if (matches) {
       return formatDateString(
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
         DEFAULT_DATE,
       )
@@ -60,7 +59,6 @@ export const resolvePageDate = ({
     const matches = dirname.match(DIRNAME_DATE_RE)
     if (matches) {
       return formatDateString(
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
         DEFAULT_DATE,
       )

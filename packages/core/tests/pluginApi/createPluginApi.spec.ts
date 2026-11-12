@@ -1,7 +1,7 @@
 import { path } from '@vuepress/utils'
 import { expect, it, vi } from 'vitest'
 
-import type { Bundler, HooksName } from '../../src/index.js'
+import type { Bundler, Hooks, HooksName } from '../../src/index.js'
 import { createBaseApp, createPluginApi } from '../../src/index.js'
 
 const app = createBaseApp({
@@ -35,7 +35,7 @@ it('should have correct hooks', () => {
 it('hooks should only take effect after `registerHooks` is called', async () => {
   const pluginApi = createPluginApi()
 
-  const hookFn = vi.fn()
+  const hookFn = vi.fn<Hooks['onInitialized']['exposed']>()
 
   pluginApi.plugins.push({
     name: 'test',

@@ -23,9 +23,9 @@ const CLIENT_CONFIG_FILE_NON_EXISTENT = path.resolve(
 
 describe('should keep function as is', () => {
   it('return value is string', async () => {
-    const rawHook: ClientConfigFileHook['exposed'] = vi.fn(
-      () => CLIENT_CONFIG_FILE,
-    )
+    const rawHook: ClientConfigFileHook['exposed'] = vi.fn<
+      Exclude<ClientConfigFileHook['exposed'], string>
+    >(() => CLIENT_CONFIG_FILE)
     const normalizedHook = normalizeClientConfigFileHook(rawHook)
     expect(await normalizedHook(app)).toEqual(CLIENT_CONFIG_FILE)
     expect(rawHook).toHaveBeenCalledTimes(1)
@@ -34,12 +34,14 @@ describe('should keep function as is', () => {
 
   it('should throw an error if file does not exist', async () => {
     const consoleError = console.error
-    console.error = vi.fn()
+    console.error = vi.fn<typeof console.error>()
 
     const rawHook: ClientConfigFileHook['exposed'] =
       CLIENT_CONFIG_FILE_NON_EXISTENT
     const normalizedHook = normalizeClientConfigFileHook(rawHook)
-    await expect(normalizedHook(app)).rejects.toThrow()
+    await expect(normalizedHook(app)).rejects.toThrow(
+      /client config file does not exist/,
+    )
     expect(console.error).toHaveBeenCalled()
 
     console.error = consoleError
@@ -55,12 +57,14 @@ describe('should wrap raw value with a function', () => {
 
   it('should throw an error if file does not exist', async () => {
     const consoleError = console.error
-    console.error = vi.fn()
+    console.error = vi.fn<typeof console.error>()
 
     const rawHook: ClientConfigFileHook['exposed'] =
       CLIENT_CONFIG_FILE_NON_EXISTENT
     const normalizedHook = normalizeClientConfigFileHook(rawHook)
-    await expect(normalizedHook(app)).rejects.toThrow()
+    await expect(normalizedHook(app)).rejects.toThrow(
+      /client config file does not exist/,
+    )
     expect(console.error).toHaveBeenCalled()
 
     console.error = consoleError
