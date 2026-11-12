@@ -11,6 +11,7 @@ import {
 import { usePageLayout } from './composables/index.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
+import { restoreScroll } from './scrollRestoration.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
 import { setupGlobalComputed } from './setupGlobalComputed.js'
 import { setupUpdateHead } from './setupUpdateHead.js'
@@ -53,7 +54,10 @@ export const createVueApp: CreateVueAppFunction = async () => {
       // `<RouterView>`, so the restoration provided by `onRouteRendered` would
       // run before the new page is rendered. It is thus triggered manually
       // after mounting and after each route change instead.
-      const { scroll } = useScrollRestoration({ manual: true })
+      const { scroll } = useScrollRestoration({
+        manual: true,
+        restore: restoreScroll,
+      })
       const route = useRoute()
 
       onMounted(scroll)
