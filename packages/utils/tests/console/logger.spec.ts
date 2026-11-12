@@ -12,12 +12,10 @@ const METHODS = [
 
 METHODS.forEach(([method, innerMethod]) => {
   it(method, () => {
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     const stored = console[innerMethod]
-    console[innerMethod] = vi.fn()
+    console[innerMethod] = vi.fn<(typeof console)[typeof innerMethod]>()
 
     logger[method]('foo')
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(console[innerMethod]).toHaveBeenCalledWith(expect.any(String), 'foo')
 
     console[innerMethod] = stored
@@ -26,7 +24,7 @@ METHODS.forEach(([method, innerMethod]) => {
 
 it('creteError', () => {
   const stored = console.error
-  console.error = vi.fn()
+  console.error = vi.fn<typeof console.error>()
 
   expect(logger.createError()).toBeInstanceOf(Error)
   expect(console.error).toHaveBeenCalled()

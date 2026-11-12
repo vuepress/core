@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention, no-underscore-dangle */
+/* oxlint-disable no-redeclare,no-underscore-dangle */
 declare const __VUEPRESS_VERSION__: string
 declare const __VUEPRESS_BASE__: string
 declare const __VUEPRESS_DEV__: boolean

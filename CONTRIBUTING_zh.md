@@ -45,7 +45,7 @@ pnpm build
 ### 主要工具
 
 - [TypeScript](https://www.typescriptlang.org/) 作为开发语言
-- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) 用于代码检查和格式化
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) 用于代码检查和格式化
 - [Vitest](https://vitest.dev/) 用于单元测试
 - [Playwright](https://playwright.dev/) 用于端到端测试
 
@@ -69,7 +69,7 @@ pnpm build
 
 #### `pnpm lint`
 
-`lint` 命令使用 ESLint 来检查所有源文件。
+`lint` 命令使用 Oxlint 来检查所有源文件。
 
 #### `pnpm test`
 

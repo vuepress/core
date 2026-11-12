@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import colors from 'picocolors'
 
 export const info = (...args: unknown[]): void => {

@@ -39,14 +39,14 @@ describe('common', () => {
 
     it('should throw error from the first item', async () => {
       const consoleError = console.error
-      console.error = vi.fn()
+      console.error = vi.fn<typeof console.error>()
 
       const err1 = new Error('err1')
       const err2 = new Error('err2')
-      const func1 = vi.fn(() => {
+      const func1 = vi.fn<Hooks[typeof hookName]['normalized']>(() => {
         throw err1
       })
-      const func2 = vi.fn(() => {
+      const func2 = vi.fn<Hooks[typeof hookName]['normalized']>(() => {
         throw err2
       })
       hook.add({
@@ -81,8 +81,8 @@ describe('lifecycle hooks', () => {
   hookNames.forEach((hookName) => {
     it(hookName, async () => {
       const hook = createHookQueue(hookName)
-      const func1 = vi.fn()
-      const func2 = vi.fn()
+      const func1 = vi.fn<Hooks[typeof hookName]['normalized']>()
+      const func2 = vi.fn<Hooks[typeof hookName]['normalized']>()
       hook.add({
         pluginName: 'test1',
         hook: func1,
@@ -138,8 +138,8 @@ describe('extends hooks', () => {
     const hookName = 'extendsMarkdown'
 
     const hook = createHookQueue(hookName)
-    const func1 = vi.fn()
-    const func2 = vi.fn()
+    const func1 = vi.fn<Hooks['extendsMarkdown']['normalized']>()
+    const func2 = vi.fn<Hooks['extendsMarkdown']['normalized']>()
     hook.add({
       pluginName: 'test1',
       hook: func1,
@@ -272,8 +272,12 @@ describe('client config file hook', () => {
   hookNames.forEach((hookName) => {
     it(hookName, async () => {
       const hook = createHookQueue(hookName)
-      const func1 = vi.fn(async () => Promise.resolve(file1))
-      const func2 = vi.fn(async () => Promise.resolve(file2))
+      const func1 = vi.fn<Hooks['clientConfigFile']['normalized']>(async () =>
+        Promise.resolve(file1),
+      )
+      const func2 = vi.fn<Hooks['clientConfigFile']['normalized']>(async () =>
+        Promise.resolve(file2),
+      )
       hook.add({
         pluginName: 'test1',
         hook: func1,
@@ -299,8 +303,12 @@ describe('bundler hooks', () => {
   hookNames.forEach((hookName) => {
     it(hookName, async () => {
       const hook = createHookQueue(hookName)
-      const func1 = vi.fn(async () => Promise.resolve({ foo: 'foo' }))
-      const func2 = vi.fn(async () => Promise.resolve({ bar: 'bar' }))
+      const func1 = vi.fn<Hooks[typeof hookName]['normalized']>(async () =>
+        Promise.resolve({ foo: 'foo' }),
+      )
+      const func2 = vi.fn<Hooks[typeof hookName]['normalized']>(async () =>
+        Promise.resolve({ bar: 'bar' }),
+      )
       hook.add({
         pluginName: 'test1',
         hook: func1,

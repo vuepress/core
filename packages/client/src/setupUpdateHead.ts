@@ -136,7 +136,7 @@ export const setupUpdateHead = (): void => {
       // remove the non-intersection from old elements
       if (matchedIndex === -1) {
         oldEl.remove()
-        // eslint-disable-next-line @typescript-eslint/no-array-delete -- use delete to make the index consistent
+        // oxlint-disable-next-line typescript/no-array-delete -- use delete to make the index consistent
         delete managedHeadElements[oldIndex]
       }
       // keep the intersection in old elements, and remove it from new elements

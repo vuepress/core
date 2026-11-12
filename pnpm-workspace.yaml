@@ -5,7 +5,6 @@ packages:
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
-  unrs-resolver: true
 
 catalogs:
   vite:
@@ -18,3 +17,8 @@ catalogs:
   vue:
     vue: ^3.5.45
     vue-router: ^5.4.0
+
+minimumReleaseAgeExclude:
+  - '@mdit-vue/*'
+  - '@meteorlxy/*'
+  - '@vuepress/*'

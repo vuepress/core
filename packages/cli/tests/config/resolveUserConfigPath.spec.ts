@@ -20,11 +20,11 @@ it('should resolve relative file path correctly', () => {
 
 it('should throw an error if file does not exist', () => {
   const consoleError = console.error
-  console.error = vi.fn()
+  console.error = vi.fn<typeof console.error>()
 
   expect(() => {
     resolveUserConfigPath('4-0-4')
-  }).toThrow()
+  }).toThrow(/config file does not exist/)
   expect(console.error).toHaveBeenCalled()
 
   console.error = consoleError

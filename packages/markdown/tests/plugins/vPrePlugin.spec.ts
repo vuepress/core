@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+import type { MarkdownItOptions } from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 
 import { vPrePlugin } from '../../src/index.js'
@@ -112,7 +113,7 @@ const a = 1
 ${CODE_FENCE}
 `
   it('should work highlighted code is wrapped with `<pre>`', () => {
-    const highlight = vi.fn(
+    const highlight = vi.fn<NonNullable<MarkdownItOptions['highlight']>>(
       (code, lang) =>
         `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
     )
@@ -124,7 +125,7 @@ ${CODE_FENCE}
   })
 
   it('should work if highlighted code is not wrapped with `<pre>`', () => {
-    const highlight = vi.fn(
+    const highlight = vi.fn<NonNullable<MarkdownItOptions['highlight']>>(
       (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
     )
     const md = new MarkdownIt({ highlight }).use(vPrePlugin)

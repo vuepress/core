@@ -1,21 +1,24 @@
 import process from 'node:process'
 
+import type { Ora } from 'ora'
 import { beforeEach, expect, it, vi } from 'vitest'
 
 import { withSpinner } from '../../src/index.js'
 
 const mocks = vi.hoisted(() => {
-  const start = vi.fn()
-  const succeed = vi.fn()
-  const fail = vi.fn()
-  const ora = vi.fn().mockReturnValue({
-    start,
-    succeed,
-    fail,
-  })
+  const start = vi.fn<Ora['start']>()
+  const succeed = vi.fn<Ora['succeed']>()
+  const fail = vi.fn<Ora['fail']>()
+  const oraMock = vi
+    .fn<() => Pick<Ora, 'fail' | 'start' | 'succeed'>>()
+    .mockReturnValue({
+      start,
+      succeed,
+      fail,
+    })
 
   return {
-    ora,
+    ora: oraMock,
     start,
     succeed,
     fail,
@@ -33,7 +36,9 @@ beforeEach(() => {
 it('should skip spinner if DEBUG env is set', async () => {
   process.env.DEBUG = 'msg'
 
-  const target = vi.fn().mockResolvedValue('result')
+  const target = vi
+    .fn<(spinner?: Ora) => Promise<string>>()
+    .mockResolvedValue('result')
 
   const result = await withSpinner('msg')(target)
 
@@ -45,7 +50,9 @@ it('should skip spinner if DEBUG env is set', async () => {
 })
 
 it('should call target with spinner.succeed', async () => {
-  const target = vi.fn().mockResolvedValue('result')
+  const target = vi
+    .fn<(spinner?: Ora) => Promise<string>>()
+    .mockResolvedValue('result')
 
   const result = await withSpinner('msg')(target)
 
@@ -59,7 +66,9 @@ it('should call target with spinner.succeed', async () => {
 
 it('should call target with spinner.fail', async () => {
   const error = new Error('mock error')
-  const target = vi.fn().mockRejectedValue(error)
+  const target = vi
+    .fn<(spinner?: Ora) => Promise<string>>()
+    .mockRejectedValue(error)
 
   await expect(async () => withSpinner('msg')(target)).rejects.toThrow(error)
 

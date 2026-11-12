@@ -24,7 +24,6 @@ import type { Markdown, MarkdownOptions } from './types.js'
 export const createMarkdown = ({
   anchor,
   assets,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   code,
   vPre,
   component,
@@ -73,7 +72,6 @@ export const createMarkdown = ({
     md.use(assetsPlugin, assets)
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- deprecation warning
   if (code) {
     logger.warn(
       `\`markdown.code\` option has been removed, please use '@vuepress/plugin-shiki' or '@vuepress/plugin-prismjs' instead.\n See https://vuepress.vuejs.org/reference/config.html#markdown-code`,
