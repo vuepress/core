@@ -19,6 +19,6 @@ catalogs:
     vue-router: ^5.4.0
 
 minimumReleaseAgeExclude:
-  - '@vuepress/oxfmt-config'
-  - '@vuepress/oxlint-config'
-  - '@vuepress/tsconfig'
+  - '@mdit-vue/*'
+  - '@meteorlxy/*'
+  - '@vuepress/*'
