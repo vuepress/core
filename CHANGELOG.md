@@ -1,3 +1,26 @@
+# [2.0.0-rc.32](https://github.com/vuepress/core/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2026-11-12)
+
+* feat(markdown)!: upgrade markdown-it to v15 (#1729) ([f2c2a2e](https://github.com/vuepress/core/commit/f2c2a2ea3f5b898fcafed0a2c3c9756899088876)), closes [#1729](https://github.com/vuepress/core/issues/1729)
+* refactor(client)!: replace deprecated scrollBehavior with ScrollRestoration (#1727) (close #1726) ([5b5cb0a](https://github.com/vuepress/core/commit/5b5cb0aa76d602c2429f146fe31de529b13337c4)), closes [#1727](https://github.com/vuepress/core/issues/1727) [#1726](https://github.com/vuepress/core/issues/1726)
+
+### Bug Fixes
+
+* **bundler-webpack:** externalize vue subpaths in ssr bundle (close [#1718](https://github.com/vuepress/core/issues/1718)) ([#1725](https://github.com/vuepress/core/issues/1725)) ([e748f7c](https://github.com/vuepress/core/commit/e748f7cb9bbe075711a4090107575226872dcf46))
+* **client:** avoid retaining onContentUpdated callbacks during ssr ([#1722](https://github.com/vuepress/core/issues/1722)) ([7b284ba](https://github.com/vuepress/core/commit/7b284bac2206c7d61d0c5be38d96449b8ebd14a6))
+* **vuepress:** set NODE_ENV before loading bundler in bin shorthands ([#1723](https://github.com/vuepress/core/issues/1723)) ([c7234f9](https://github.com/vuepress/core/commit/c7234f9f91e0f4b8adc9f1e0134d7d02b483c7bc))
+
+### Features
+
+* **bundler-rspack:** add rspack bundler ([#1703](https://github.com/vuepress/core/issues/1703)) ([d73230c](https://github.com/vuepress/core/commit/d73230ccaede01bd2e24bc3133e7446191162a3e))
+* **bundler-webpack:** upgrade webpack-dev-server to v6 ([2650db7](https://github.com/vuepress/core/commit/2650db78690a8fc87f9111ece02b80646dcfce25))
+
+### BREAKING CHANGES
+
+* `router.options.scrollBehavior` is no longer set. Packages
+  that read or wrap it, e.g. to defer the scroll until their page transition is
+  done, need to be migrated.
+* upgrade `markdown-it` to v15 and `@mdit-vue` to v4. Plugins using legacy types, internal `markdown-it/lib/*` imports, or `MarkdownItEnv` must migrate to the bundled types and augment `markdown-it.Env`.
+
 # [2.0.0-rc.31](https://github.com/vuepress/core/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2026-07-24)
 
 * feat(core)!: add as-needed prefetch strategy (#1711) ([7d3da21](https://github.com/vuepress/core/commit/7d3da21681439dc4a620a4ebddba7438e1d69bcc)), closes [#1711](https://github.com/vuepress/core/issues/1711)
