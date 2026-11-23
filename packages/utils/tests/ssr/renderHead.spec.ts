@@ -100,6 +100,11 @@ const TEST_CASES: [HeadConfig, string][] = [
     ['noscript', {}, `<p>please enable javascript & reload</p>`],
     `<noscript><p>please enable javascript & reload</p></noscript>`,
   ],
+  [['title', {}, 123 as unknown as string], `<title>123</title>`],
+  [
+    ['meta', { name: 'description', content: 42 as unknown as string }],
+    `<meta name="description" content="42">`,
+  ],
 ]
 
 TEST_CASES.forEach(([source, expected]) => {

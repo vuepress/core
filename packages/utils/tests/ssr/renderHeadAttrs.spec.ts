@@ -43,6 +43,18 @@ const TEST_CASES: [HeadAttrsConfig, string][] = [
     },
     ` foo="foo" async`,
   ],
+  [
+    {
+      content: 123 as unknown as string,
+    },
+    ` content="123"`,
+  ],
+  [
+    {
+      content: null as unknown as string,
+    },
+    ` content="null"`,
+  ],
 ]
 
 TEST_CASES.forEach(([source, expected]) => {
