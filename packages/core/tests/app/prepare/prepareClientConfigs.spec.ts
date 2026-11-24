@@ -1,9 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import { prepareClientConfigs } from '../../../src/app/prepare/prepareClientConfigs.js'
-import type { App } from '../../../src/index.js'
-
-type WriteTemp = (file: string, content: string) => Promise<string>
+import type { App, AppWriteTemp } from '../../../src/index.js'
 
 const createTestApp = (clientConfigFiles: string[]): App =>
   ({
@@ -14,7 +12,9 @@ const createTestApp = (clientConfigFiles: string[]): App =>
         },
       },
     },
-    writeTemp: vi.fn<WriteTemp>(() => Promise.resolve('')),
+    writeTemp: vi.fn<
+      (...args: Parameters<AppWriteTemp>) => ReturnType<AppWriteTemp>
+    >(() => Promise.resolve('')),
   }) as unknown as App
 
 describe('prepareClientConfigs', () => {
