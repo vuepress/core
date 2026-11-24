@@ -41,6 +41,16 @@ export interface RouteLinkProps {
   activeClass?: string
 
   /**
+   * The `rel` attribute
+   */
+  rel?: string
+
+  /**
+   * The `target` attribute
+   */
+  target?: string
+
+  /**
    * The route path to link to
    */
   to: string
@@ -79,6 +89,20 @@ export const RouteLink = defineComponent({
       type: String,
       default: 'route-link-active',
     },
+
+    /**
+     * The `rel` attribute
+     */
+    rel: {
+      type: String,
+    },
+
+    /**
+     * The `target` attribute
+     */
+    target: {
+      type: String,
+    },
   },
 
   slots: Object as SlotsType<{
@@ -101,6 +125,8 @@ export const RouteLink = defineComponent({
         {
           class: ['route-link', { [props.activeClass]: props.active }],
           href: path.value,
+          rel: props.rel,
+          target: props.target,
           onClick: (event: MouseEvent = {} as MouseEvent) => {
             if (guardEvent(event)) {
               void router.push(props.to).catch(() => {})

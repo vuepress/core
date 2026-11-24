@@ -81,10 +81,9 @@ export const AutoLink = defineComponent({
     // If the `target` attr is "_blank"
     const isBlankTarget = computed(() => linkTarget.value === '_blank')
 
-    // Whether the link is internal
-    const isInternal = computed(
-      () => !withProtocol.value && !isBlankTarget.value,
-    )
+    // Whether the link is internal, which only depends on the link format.
+    // The `target` and `rel` attrs should not affect the link type.
+    const isInternal = computed(() => !withProtocol.value)
 
     // Resolve the `rel` attr
     const linkRel = computed(
@@ -149,6 +148,8 @@ export const AutoLink = defineComponent({
               'to': config.value.link,
               'active': isActive.value,
               'aria-label': linkAriaLabel.value,
+              'rel': linkRel.value ?? undefined,
+              'target': linkTarget.value,
             },
             () => content,
           )
