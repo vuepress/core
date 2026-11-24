@@ -131,9 +131,13 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       // normalize markdown file path to route path
       // we are removing the `base` from absolute path because it should not be
       // passed to `<RouteLink>` or `<RouterLink>`
+      // use string prefix check instead of a `RegExp`, because `base` is a URL
+      // path that may contain regexp special characters, e.g. `(` or `+`
       const normalizedPath = inferRoutePath(
         absolutePath
-          ? absolutePath.replace(new RegExp(`^${base}`), '/')
+          ? absolutePath.startsWith(base)
+            ? `/${absolutePath.slice(base.length)}`
+            : absolutePath
           : relativePath,
       )
       // replace the original href link with the normalized path
