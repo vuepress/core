@@ -79,3 +79,39 @@ test('should restore scroll position when reloading', async ({ page }) => {
 
   expect(await getScrollY(page)).toBe(bottom)
 })
+
+test('should skip the scroll restoration when requested by the history state', async ({
+  page,
+}) => {
+  await page.goto('router/scroll-restoration.html')
+  await expect(page.locator('h1')).toHaveText('Scroll Restoration')
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 300)
+  })
+
+  expect(await getScrollY(page)).toBe(300)
+
+  await page.evaluate(() => {
+    document
+      .querySelector<HTMLButtonElement>('#skip-scroll-restoration')
+      ?.click()
+  })
+  await page.waitForTimeout(200)
+
+  expect(new URL(page.url()).hash).toBe('#target')
+  expect(await getScrollY(page)).toBe(300)
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 0)
+  })
+  await page.locator('a[href="#target-2"]').first().click()
+  await page.waitForTimeout(200)
+
+  expect(await getScrollY(page)).toBeGreaterThan(0)
+  expect(
+    await page.evaluate(
+      () => document.getElementById('target-2')?.getBoundingClientRect().top,
+    ),
+  ).toBeLessThan(5)
+})

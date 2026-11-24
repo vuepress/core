@@ -1,6 +1,6 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import {
   SCROLL_RESTORATION_CAPTURE_DEFAULT,
   SCROLL_RESTORATION_RESTORE_DEFAULT,
@@ -9,6 +9,7 @@ import {
 } from 'vue-router/experimental'
 
 import { usePageLayout } from './composables/index.js'
+import { consumeScrollRestorationSkip } from './composables/skipScrollRestoration.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
@@ -55,11 +56,14 @@ export const createVueApp: CreateVueAppFunction = async () => {
       // after mounting and after each route change instead.
       const { scroll } = useScrollRestoration({ manual: true })
       const route = useRoute()
+      const router = useRouter()
 
       onMounted(scroll)
       watch(
         () => route.fullPath,
         () => {
+          if (consumeScrollRestorationSkip(router)) return
+
           scroll()
         },
         { flush: 'post' },
