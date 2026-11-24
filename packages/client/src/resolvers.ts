@@ -15,6 +15,7 @@ import type {
   SiteData,
   SiteLocaleData,
 } from './types/index.js'
+import { decodeRoutePath } from './utils/decodeRoutePath.js'
 
 /**
  * Resolver methods to get global computed
@@ -98,7 +99,7 @@ export const resolvers = reactive({
   resolveRouteLocale: (
     locales: SiteData['locales'],
     routePath: string,
-  ): RouteLocale => resolveLocalePath(locales, decodeURI(routePath)),
+  ): RouteLocale => resolveLocalePath(locales, decodeRoutePath(routePath)),
 
   /**
    * Resolve site data for specific locale
