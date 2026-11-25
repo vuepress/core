@@ -1,17 +1,16 @@
-import anchorPlugin from 'markdown-it-anchor'
+import type { AnchorEnv, AnchorOptions } from '@mdit/plugin-anchor'
+import { anchor as anchorPlugin } from '@mdit/plugin-anchor'
 
-export interface MarkdownItAnchorEnv {
-  slugs: Record<string, true>
-}
+export type MarkdownItAnchorEnv = AnchorEnv
 
 declare module 'markdown-it' {
   interface Env {
     /**
-     * Slugs registered by markdown-it-anchor
+     * Slugs registered by @mdit/plugin-anchor
      */
     markdownItAnchor?: MarkdownItAnchorEnv
   }
 }
 
-export type AnchorPluginOptions = anchorPlugin.AnchorOptions
+export type AnchorPluginOptions = AnchorOptions
 export { anchorPlugin }
