@@ -1,6 +1,8 @@
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
+import { BASE } from '../../utils/env'
+
 const getScrollY = (page: Page): Promise<number> =>
   page.evaluate(() => window.scrollY)
 
@@ -65,6 +67,26 @@ test('should scroll to the anchor target', async ({ page }) => {
   await page.waitForTimeout(200)
 
   expect(await getTargetTop(page)).toBeLessThan(5)
+})
+
+test('should scroll to the anchor target after navigating to another page', async ({
+  page,
+}) => {
+  await page.goto('router/navigate-by-router.html')
+  const timeOrigin = await page.evaluate(() => performance.timeOrigin)
+
+  await page.getByRole('link', { name: 'Cross-page scroll target' }).click()
+  await expect(page).toHaveURL(`${BASE}router/scroll-restoration.html#target-2`)
+  expect(await page.evaluate(() => performance.timeOrigin)).toBe(timeOrigin)
+
+  const target = page.locator('#target-2')
+  await expect
+    .poll(() =>
+      target.evaluate((element) =>
+        Math.abs(element.getBoundingClientRect().top),
+      ),
+    )
+    .toBeLessThan(5)
 })
 
 test('should restore scroll position when reloading', async ({ page }) => {
