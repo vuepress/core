@@ -1,3 +1,4 @@
+import { resolvePostcssPlugins } from '@vuepress/bundlerutils'
 import type { App } from '@vuepress/core'
 import { Config } from 'webpack-v5-chain'
 
@@ -51,9 +52,17 @@ export const createBaseConfig = async ({
   await handleResolve({ app, config, isServer })
 
   /**
+   * postcss plugins
+   *
+   * resolve from the site source directory, so that vite, webpack and rspack
+   * share the same PostCSS config resolution semantics
+   */
+  const postcssPlugins = await resolvePostcssPlugins(app)
+
+  /**
    * module
    */
-  handleModule({ app, options, config, isBuild, isServer })
+  handleModule({ app, options, config, isBuild, isServer, postcssPlugins })
 
   /**
    * plugins

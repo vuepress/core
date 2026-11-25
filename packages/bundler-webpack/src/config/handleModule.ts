@@ -1,4 +1,5 @@
 import type { App } from '@vuepress/core'
+import type { AcceptedPlugin } from 'postcss'
 import type { Config } from 'webpack-v5-chain'
 
 import type { WebpackBundlerOptions } from '../types.js'
@@ -18,12 +19,14 @@ export const handleModule = ({
   config,
   isBuild,
   isServer,
+  postcssPlugins,
 }: {
   app: App
   options: WebpackBundlerOptions
   config: Config
   isBuild: boolean
   isServer: boolean
+  postcssPlugins: AcceptedPlugin[]
 }): void => {
   // noParse
   config.module.noParse(/^(?:vue|vue-router|(?:@vue\/[^/]+))$/)
@@ -43,5 +46,5 @@ export const handleModule = ({
   handleModuleTs({ config })
 
   // styles files
-  handleModuleStyles({ options, config, isBuild, isServer })
+  handleModuleStyles({ options, config, isBuild, isServer, postcssPlugins })
 }
