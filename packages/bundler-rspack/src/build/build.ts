@@ -62,8 +62,9 @@ export const build = async (
                 logger.warn(warning)
               })
 
-              if (stats.hasErrors())
+              if (stats.hasErrors()) {
                 reject(new Error('Failed to compile with errors'))
+              }
             }
 
             resolve()

@@ -739,6 +739,52 @@ describe('internal links', () => {
       ])
     })
   })
+
+  describe('base with regexp special characters', () => {
+    const source = [
+      '[relative](./foo.md)',
+      '[absolute](/path/to/index.md)',
+    ].join('\n\n')
+
+    // `(` and `+` make `new RegExp('^' + base)` throw a `SyntaxError`,
+    // while `$` silently fails to match the literal prefix,
+    // and `.` only works by coincidence (it matches the literal dot)
+    const TEST_CASES = ['/a(b/', '/c++/', '/d$/', '/a.b/']
+
+    for (const base of TEST_CASES) {
+      it(`should render internal links correctly with base "${base}"`, () => {
+        const md = new MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          base,
+          filePathRelative: 'path/to/file.md',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<RouteLink to="/path/to/foo.html">relative</RouteLink>',
+            '<RouteLink to="/path/to/">absolute</RouteLink>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n',
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: './foo.md',
+            relative: 'path/to/foo.md',
+            absolute: `${base}path/to/foo.md`,
+          },
+          {
+            raw: '/path/to/index.md',
+            relative: 'path/to/index.md',
+            absolute: `${base}path/to/index.md`,
+          },
+        ])
+      })
+    }
+  })
 })
 
 describe('empty links', () => {

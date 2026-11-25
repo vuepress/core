@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-rspack",
-  "version": "2.0.0-rc.29",
+  "version": "2.0.0-rc.32",
   "description": "Bundler rspack package of VuePress",
   "keywords": [
     "bundler",

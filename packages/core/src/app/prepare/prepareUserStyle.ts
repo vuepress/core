@@ -18,8 +18,9 @@ export const prepareUserStyle = async (
   if (userStyle) {
     const userStylePath = app.dir.source(userStyle)
 
-    if (fileExists ?? (await fs.pathExists(userStylePath)))
+    if (fileExists ?? (await fs.pathExists(userStylePath))) {
       content += `import ${JSON.stringify(userStylePath)}\n`
+    }
   }
 
   await app.writeTemp('internal/userStyle.js', content)

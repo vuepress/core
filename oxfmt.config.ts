@@ -1,5 +1,8 @@
 import { vuepress } from '@vuepress/oxfmt-config'
+import type { OxfmtConfig } from 'oxfmt'
 
-export default vuepress({
+const config: OxfmtConfig = vuepress({
   ignorePatterns: ['CHANGELOG.md', '*.html'],
 })
+
+export default config

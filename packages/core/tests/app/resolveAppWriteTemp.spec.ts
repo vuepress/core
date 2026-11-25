@@ -6,13 +6,13 @@ import { resolveAppWriteTemp } from '../../src/app/resolveAppWriteTemp.js'
 import type { AppDir } from '../../src/index.js'
 
 vi.mock('@vuepress/utils', async (importOriginal) => {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
+  // oxlint-disable-next-line typescript/consistent-type-imports
   const actual = await importOriginal<typeof import('@vuepress/utils')>()
   return {
     ...actual,
     fs: {
       ...actual.fs,
-      outputFile: vi.fn(),
+      outputFile: vi.fn<typeof actual.fs.outputFile>(),
     },
   }
 })
@@ -35,7 +35,6 @@ describe('resolveAppWriteTemp', () => {
     const file = 'race.txt'
     const log: string[] = []
 
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     vi.mocked(fs.outputFile).mockImplementation(async (_f, c) => {
       const content = c as string
       // Simulate delay: '1' is slow, '2' is fast
@@ -97,7 +96,6 @@ describe('resolveAppWriteTemp', () => {
     const file = 'skip.txt'
     const log: string[] = []
 
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     vi.mocked(fs.outputFile).mockImplementation(async (_f, c) => {
       const content = c as string
       // Simulate delay to ensure queuing

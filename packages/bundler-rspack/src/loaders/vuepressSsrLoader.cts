@@ -1,3 +1,4 @@
-const { vuepressSsrLoader } = require('./vuepressSsrLoader.js')
+const loader =
+  require('./vuepressSsrLoader.js') as typeof import('./vuepressSsrLoader.js')
 
-module.exports = vuepressSsrLoader
+module.exports = loader.vuepressSsrLoader

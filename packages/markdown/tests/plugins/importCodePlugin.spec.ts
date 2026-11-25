@@ -21,7 +21,7 @@ const JS_FIXTURE_CONTENT = fs.readFileSync(JS_FIXTURE_PATH).toString()
 const MD_FIXTURE_CONTENT = fs.readFileSync(MD_FIXTURE_PATH).toString()
 
 const consoleError = console.error
-const mockConsoleError = vi.fn()
+const mockConsoleError = vi.fn<typeof console.error>()
 
 beforeAll(() => {
   console.error = mockConsoleError
@@ -316,7 +316,7 @@ ${JS_FIXTURE_CONTENT}\
 \`\`\`
 `),
     )
-    expect(rendered1).toMatchSnapshot()
+    expect(rendered1).toMatchSnapshot('JavaScript fixture')
     expect(env1.importedFiles).toEqual([JS_FIXTURE_PATH])
 
     const env2: MarkdownEnv = {
@@ -332,7 +332,7 @@ ${MD_FIXTURE_CONTENT}\
 \`\`\`
 `),
     )
-    expect(rendered2).toMatchSnapshot()
+    expect(rendered2).toMatchSnapshot('Markdown fixture')
     expect(env2.importedFiles).toEqual([MD_FIXTURE_PATH])
   })
 
@@ -352,7 +352,7 @@ ${MD_FIXTURE_CONTENT}\
     const rendered1 = md.render(source1, env)
     const rendered2 = md.render(source2, env)
 
-    expect(rendered1).to.contain('v-pre')
-    expect(rendered2).to.not.contain(' v-pre')
+    expect(rendered1).toContain('v-pre')
+    expect(rendered2).not.toContain(' v-pre')
   })
 })

@@ -1,17 +1,15 @@
 import { clientConfigs } from '@internal/clientConfigs'
-import { createApp, createSSRApp, h, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { createApp, createSSRApp, h } from 'vue'
 import {
   SCROLL_RESTORATION_CAPTURE_DEFAULT,
   SCROLL_RESTORATION_RESTORE_DEFAULT,
   ScrollRestoration,
-  useScrollRestoration,
 } from 'vue-router/experimental'
 
 import { usePageLayout } from './composables/index.js'
+import { createScrollRestorationSetup } from './createScrollRestorationSetup.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
-import { restoreScroll } from './scrollRestoration.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
 import { setupGlobalComputed } from './setupGlobalComputed.js'
 import { setupUpdateHead } from './setupUpdateHead.js'
@@ -26,6 +24,11 @@ import '@internal/userStyle'
 const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 
 export const createVueApp: CreateVueAppFunction = async () => {
+  // create vue-router instance and observe navigations before client plugins
+  // can register their own hooks
+  const router = createVueRouter()
+  const setupScrollRestoration = createScrollRestorationSetup(router)
+
   // create vue app
   const app = appCreator({
     name: 'Vuepress',
@@ -48,34 +51,13 @@ export const createVueApp: CreateVueAppFunction = async () => {
       // get page layout
       const pageLayout = usePageLayout()
 
-      // restore the scroll position once the new page has been rendered
-      //
-      // vuepress renders the page layout directly instead of wrapping it in a
-      // `<RouterView>`, so the restoration provided by `onRouteRendered` would
-      // run before the new page is rendered. It is thus triggered manually
-      // after mounting and after each route change instead.
-      const { scroll } = useScrollRestoration({
-        manual: true,
-        restore: restoreScroll,
-      })
-      const route = useRoute()
-
-      onMounted(scroll)
-      watch(
-        () => route.fullPath,
-        () => {
-          scroll()
-        },
-        { flush: 'post' },
-      )
+      // restore the scroll position after the page has rendered
+      setupScrollRestoration()
 
       // render layout and root components
       return () => [h(pageLayout.value), clientRootComponents]
     },
   })
-
-  // create vue-router instance
-  const router = createVueRouter()
 
   // global components and computed
   setupGlobalComponents(app)

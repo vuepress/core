@@ -65,7 +65,7 @@ test.for([
 ])(
   'should prioritize an exact page path when it appears $name its redirect alias',
   ({ pages }) => {
-    const resolvePageChunkFiles = vi.fn((page: Page) => [
+    const resolvePageChunkFiles = vi.fn<(page: Page) => string[]>((page) => [
       `${page.chunkName}.js`,
     ])
 

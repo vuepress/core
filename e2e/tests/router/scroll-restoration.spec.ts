@@ -1,6 +1,8 @@
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
+import { BASE } from '../../utils/env'
+
 const getScrollY = (page: Page): Promise<number> =>
   page.evaluate(() => window.scrollY)
 
@@ -67,6 +69,26 @@ test('should scroll to the anchor target', async ({ page }) => {
   expect(await getTargetTop(page)).toBeLessThan(5)
 })
 
+test('should scroll to the anchor target after navigating to another page', async ({
+  page,
+}) => {
+  await page.goto('router/navigate-by-router.html')
+  const timeOrigin = await page.evaluate(() => performance.timeOrigin)
+
+  await page.getByRole('link', { name: 'Cross-page scroll target' }).click()
+  await expect(page).toHaveURL(`${BASE}router/scroll-restoration.html#target-2`)
+  expect(await page.evaluate(() => performance.timeOrigin)).toBe(timeOrigin)
+
+  const target = page.locator('#target-2')
+  await expect
+    .poll(() =>
+      target.evaluate((element) =>
+        Math.abs(element.getBoundingClientRect().top),
+      ),
+    )
+    .toBeLessThan(5)
+})
+
 test('should restore scroll position when reloading', async ({ page }) => {
   await page.goto('router/scroll-restoration.html')
   await expect(page.locator('h1')).toHaveText('Scroll Restoration')
@@ -78,4 +100,76 @@ test('should restore scroll position when reloading', async ({ page }) => {
   await page.waitForTimeout(200)
 
   expect(await getScrollY(page)).toBe(bottom)
+})
+
+test('should skip scroll restoration only for the decorated navigation', async ({
+  page,
+}) => {
+  await page.goto('router/scroll-restoration.html')
+  await expect(page.locator('h1')).toHaveText('Scroll Restoration')
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 300)
+  })
+
+  expect(await getScrollY(page)).toBe(300)
+
+  await page.evaluate(() => {
+    document.querySelector<HTMLButtonElement>('#skip-replace')?.click()
+  })
+  await page.waitForTimeout(200)
+
+  expect(new URL(page.url()).hash).toBe('#target')
+  expect(await getScrollY(page)).toBe(300)
+  expect(
+    await page.evaluate(
+      () => (window.history.state as { e2eState?: unknown } | null)?.e2eState,
+    ),
+  ).toBe('preserved')
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 0)
+  })
+  await page.locator('#restore-replace').click()
+  await page.waitForTimeout(200)
+
+  expect(await getScrollY(page)).toBeGreaterThan(0)
+  expect(
+    await page.evaluate(
+      () => document.getElementById('target-2')?.getBoundingClientRect().top,
+    ),
+  ).toBeLessThan(5)
+})
+
+test('should restore normally when returning to a skipped history entry', async ({
+  page,
+}) => {
+  await page.goto('router/scroll-restoration.html')
+  await expect(page.locator('h1')).toHaveText('Scroll Restoration')
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 300)
+    document.querySelector<HTMLButtonElement>('#skip-push')?.click()
+  })
+  await page.waitForTimeout(200)
+
+  expect(new URL(page.url()).hash).toBe('#target')
+  expect(await getScrollY(page)).toBe(300)
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 400)
+    document.querySelector<HTMLAnchorElement>('a[href="#target-2"]')?.click()
+  })
+  await page.waitForTimeout(200)
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 0)
+  })
+  expect(await getScrollY(page)).toBe(0)
+
+  await page.goBack()
+  await page.waitForTimeout(200)
+
+  expect(new URL(page.url()).hash).toBe('#target')
+  expect(await getScrollY(page)).toBeGreaterThan(0)
 })

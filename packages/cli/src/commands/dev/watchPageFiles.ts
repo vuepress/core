@@ -124,8 +124,9 @@ export const watchPageFiles = (
     })()
       // Only delete if this promise is still the current one (compare by identity)
       .finally(() => {
-        if (pagePromises.get(filePathRelative) === newPromise)
+        if (pagePromises.get(filePathRelative) === newPromise) {
           pagePromises.delete(filePathRelative)
+        }
       })
     pagePromises.set(filePathRelative, newPromise)
   }
