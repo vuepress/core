@@ -6,14 +6,15 @@ import type { OutputAsset } from 'rolldown'
  */
 export const renderPageStyles = ({
   app,
-  outputCssAsset,
+  outputCssAssets,
 }: {
   app: App
-  outputCssAsset: OutputAsset | undefined
+  outputCssAssets: OutputAsset[]
 }): string =>
-  outputCssAsset
-    ? [
-        `<link rel="preload" href="${app.options.base}${outputCssAsset.fileName}" as="style">`,
-        `<link rel="stylesheet" href="${app.options.base}${outputCssAsset.fileName}">`,
-      ].join('')
-    : ''
+  // dedupe by file name to avoid duplicated links, keeping the output order
+  [...new Set(outputCssAssets.map(({ fileName }) => fileName))]
+    .flatMap((fileName) => [
+      `<link rel="preload" href="${app.options.base}${fileName}" as="style">`,
+      `<link rel="stylesheet" href="${app.options.base}${fileName}">`,
+    ])
+    .join('')

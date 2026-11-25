@@ -5,12 +5,13 @@ import {
 } from '@vuepress/bundlerutils'
 import type { App, Bundler } from '@vuepress/core'
 import { colors, debug, fs, withSpinner } from '@vuepress/utils'
-import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
+import type { OutputChunk, RolldownOutput } from 'rolldown'
 import { build as viteBuild } from 'vite'
 
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
 import { renderPage } from './renderPage.js'
+import { resolveCssAssets } from './resolveCssAssets.js'
 import { resolvePageChunkFiles } from './resolvePageChunkFiles.js'
 
 const log = debug('vuepress:bundler-vite/build')
@@ -50,14 +51,11 @@ export const build = async (
 
   // render pages
   await withSpinner(`Rendering ${app.pages.length} pages`)(async (spinner) => {
-    // get client bundle entry chunk and css asset
+    // get client bundle entry chunk and css assets
     const clientEntryChunk = clientOutput.output.find(
       (item) => item.type === 'chunk' && item.isEntry,
     ) as OutputChunk
-    const clientCssAsset = clientOutput.output.find(
-      (item): item is OutputAsset =>
-        item.type === 'asset' && item.fileName.endsWith('.css'),
-    )
+    const clientCssAssets = resolveCssAssets(clientOutput.output)
 
     // get server bundle entry chunk
     const serverEntryChunk = serverOutput.output.find(
@@ -88,7 +86,7 @@ export const build = async (
         ssrTemplate,
         output: clientOutput.output,
         outputEntryChunk: clientEntryChunk,
-        outputCssAsset: clientCssAsset,
+        outputCssAssets: clientCssAssets,
         pageChunkFilesMap,
       })
     }

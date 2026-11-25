@@ -20,7 +20,7 @@ export const renderPage = async ({
   ssrTemplate,
   output,
   outputEntryChunk,
-  outputCssAsset,
+  outputCssAssets,
   pageChunkFilesMap,
 }: {
   app: App
@@ -30,7 +30,7 @@ export const renderPage = async ({
   ssrTemplate: string
   output: RolldownOutput['output']
   outputEntryChunk: OutputChunk
-  outputCssAsset: OutputAsset | undefined
+  outputCssAssets: OutputAsset[]
   pageChunkFilesMap: PageChunkFilesMap
 }): Promise<void> => {
   // render current page to string
@@ -61,7 +61,7 @@ export const renderPage = async ({
       pageChunkFiles,
     }),
     scripts: renderPageScripts({ app, outputEntryChunk }),
-    styles: renderPageStyles({ app, outputCssAsset }),
+    styles: renderPageStyles({ app, outputCssAssets }),
     version: app.version,
   })
 
