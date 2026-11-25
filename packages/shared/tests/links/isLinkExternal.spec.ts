@@ -39,6 +39,31 @@ const TEST_CASES: [
   [['/foo/bar/baz.html'], false],
   [['/foo/bar/baz.html', '/base/'], true],
   [['/foo/bar/baz.html', '/foo/'], false],
+  [['/'], false],
+  [['/', '/base/'], true],
+
+  // absolute links whose path merely ends with `md`
+  [['/cmd', '/base/'], true],
+  [['/xmd', '/base/'], true],
+  [['/aXmd?y', '/base/'], true],
+  [['/foo.html', '/base/'], true],
+
+  // markdown document links
+  [['/doc.md', '/base/'], false],
+  [['/doc.md?x=1', '/base/'], false],
+  [['/doc.md#anchor', '/base/'], false],
+  [['doc.md', '/base/'], false],
+  [['http://x/a.md', '/base/'], true],
+
+  // `.md` must be terminated by `?`, `#` or the end of the link
+  [['/README.md', '/base/'], false],
+  [['/README.md#a', '/base/'], false],
+  [['/README.md?x', '/base/'], false],
+  [['/README.md?x#y', '/base/'], false],
+  [['/x.md#/a.mdx', '/base/'], false],
+  [['/README.md/extra', '/base/'], true],
+  [['/README.md.html', '/base/'], true],
+  [['/READMExmd', '/base/'], true],
 
   // relative links
   [['foobar.com'], false],

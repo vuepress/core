@@ -1,6 +1,6 @@
 import { isLinkWithProtocol } from './isLinkWithProtocol.js'
 
-const markdownLinkRegexp = /.md((\?|#).*)?$/
+const markdownLinkRegexp = /\.md(?:[?#]|$)/
 
 /**
  * Determine a link is external or not
