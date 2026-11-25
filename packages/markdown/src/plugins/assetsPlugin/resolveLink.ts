@@ -3,7 +3,7 @@ import { decode } from 'mdurl'
 
 import type { MarkdownEnv } from '../../types.js'
 
-interface ResolveLinkOptions {
+export interface ResolveLinkOptions {
   env: MarkdownEnv
   absolutePathPrependBase?: boolean
   aliasSupport?: boolean | '@-prefix'
