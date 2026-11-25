@@ -656,6 +656,112 @@ describe('internal links', () => {
     })
   })
 
+  describe('markdown extension case', () => {
+    it('should render uppercase relative markdown links with base correctly', () => {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
+      const env: MarkdownEnv = {
+        base: '/base/',
+        filePathRelative: 'path/to/file.md',
+      }
+      const source = [
+        '[foo](Foo.MD)',
+        '[bar](foo/Bar.MD)',
+        '[readme](README.MD)',
+        '[dir-readme](Dir/README.MD)',
+        '[hash](Foo.MD#hash)',
+        '[query](Foo.MD?x=1)',
+      ].join('\n\n')
+
+      const rendered = md.render(source, env)
+
+      expect(rendered).toEqual(
+        [
+          '<RouteLink to="/path/to/Foo.html">foo</RouteLink>',
+          '<RouteLink to="/path/to/foo/Bar.html">bar</RouteLink>',
+          '<RouteLink to="/path/to/">readme</RouteLink>',
+          '<RouteLink to="/path/to/Dir/">dir-readme</RouteLink>',
+          '<RouteLink to="/path/to/Foo.html#hash">hash</RouteLink>',
+          '<RouteLink to="/path/to/Foo.html?x=1">query</RouteLink>',
+        ]
+          .map((a) => `<p>${a}</p>`)
+          .join('\n') + '\n',
+      )
+
+      expect(env.links).toEqual([
+        {
+          raw: 'Foo.MD',
+          relative: 'path/to/Foo.MD',
+          absolute: '/base/path/to/Foo.MD',
+        },
+        {
+          raw: 'foo/Bar.MD',
+          relative: 'path/to/foo/Bar.MD',
+          absolute: '/base/path/to/foo/Bar.MD',
+        },
+        {
+          raw: 'README.MD',
+          relative: 'path/to/README.MD',
+          absolute: '/base/path/to/README.MD',
+        },
+        {
+          raw: 'Dir/README.MD',
+          relative: 'path/to/Dir/README.MD',
+          absolute: '/base/path/to/Dir/README.MD',
+        },
+        {
+          raw: 'Foo.MD#hash',
+          relative: 'path/to/Foo.MD',
+          absolute: '/base/path/to/Foo.MD',
+        },
+        {
+          raw: 'Foo.MD?x=1',
+          relative: 'path/to/Foo.MD',
+          absolute: '/base/path/to/Foo.MD',
+        },
+      ])
+    })
+
+    it('should resolve absolute uppercase markdown links with base correctly', () => {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
+      const env: MarkdownEnv = {
+        base: '/base/',
+      }
+
+      const rendered = md.render('[md](/base/path/to/Foo.MD)', env)
+
+      expect(rendered).toEqual(
+        '<p><RouteLink to="/base/path/to/Foo.html">md</RouteLink></p>\n',
+      )
+
+      expect(env.links).toEqual([
+        {
+          raw: '/base/path/to/Foo.MD',
+          relative: 'base/path/to/Foo.MD',
+          absolute: '/base/base/path/to/Foo.MD',
+        },
+      ])
+    })
+
+    it('should resolve root absolute uppercase markdown links correctly', () => {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
+      const env: MarkdownEnv = {}
+
+      const rendered = md.render('[md](/foo.MD)', env)
+
+      expect(rendered).toEqual(
+        '<p><RouteLink to="/foo.html">md</RouteLink></p>\n',
+      )
+
+      expect(env.links).toEqual([
+        {
+          raw: '/foo.MD',
+          relative: 'foo.MD',
+          absolute: '/foo.MD',
+        },
+      ])
+    })
+  })
+
   describe('absolute links', () => {
     const source = [
       '[md](/path/to/index.md)',

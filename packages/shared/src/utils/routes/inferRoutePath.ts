@@ -9,7 +9,8 @@ export const inferRoutePath = (rawPath: string): string => {
   let routePath = rawPath.replace(/(^|\/)README.md$/i, '$1index.html')
 
   // convert /foo/bar.md to /foo/bar.html
-  if (routePath.endsWith('.md')) {
+  // the markdown extension is matched case-insensitively, e.g. `/foo/bar.MD`
+  if (/\.md$/i.test(routePath)) {
     routePath = `${routePath.substring(0, routePath.length - 3)}.html`
   }
   // convert /foo/bar to /foo/bar.html

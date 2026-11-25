@@ -92,8 +92,9 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
     }
 
     // check if a link is an internal link
+    // the markdown extension is matched case-insensitively, e.g. `foo.MD`
     const internalLinkMatch = hrefLink.match(
-      /^([^#?]*?(?:\/|\.md|\.html))([#?].*)?$/,
+      /^([^#?]*?(?:\/|\.[mM][dD]|\.html))([#?].*)?$/,
     )
 
     if (!internalLinkMatch) {
