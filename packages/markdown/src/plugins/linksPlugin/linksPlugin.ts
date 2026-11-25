@@ -56,23 +56,14 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
     ...options.externalAttrs,
   }
 
-  let hasOpenInternalLink = false
-
-  const handleLinkOpen = (
-    tokens: Token[],
-    idx: number,
-    env: MarkdownEnv,
-  ): void => {
-    // get current token
-    const token = tokens[idx]
-
+  const handleLinkOpen = (token: Token, env: MarkdownEnv): boolean => {
     // get `href` attr index
     const hrefIndex = token.attrIndex('href')
 
     // if `href` attr does not exist, skip
     /* istanbul ignore if */
     if (hrefIndex < 0) {
-      return
+      return false
     }
 
     // if `href` attr exists, `token.attrs` is not `null`
@@ -88,7 +79,7 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       Object.entries(externalAttrs).forEach(([key, val]) => {
         token.attrSet(key, val)
       })
-      return
+      return false
     }
 
     // check if a link is an internal link
@@ -97,7 +88,7 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
     )
 
     if (!internalLinkMatch) {
-      return
+      return false
     }
 
     // convert
@@ -123,6 +114,9 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       filePathRelative,
     )
 
+    // whether the opening tag is converted into an internal link component
+    let isConverted = false
+
     if (['RouterLink', 'RouteLink'].includes(internalTag)) {
       // convert starting tag of internal link to `internalTag`
       token.tag = internalTag
@@ -142,8 +136,7 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       )
       // replace the original href link with the normalized path
       hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
-      // set `hasOpenInternalLink` to modify the ending tag
-      hasOpenInternalLink = true
+      isConverted = true
     } else {
       const normalizedPath = inferRoutePath(absolutePath ?? relativePath)
       // replace the original href link with the normalized path
@@ -156,19 +149,43 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       relative: relativePath,
       absolute: absolutePath,
     })
+
+    return isConverted
   }
 
-  md.renderer.rules.link_open = (tokens, idx, opts, env = {}, self) => {
-    handleLinkOpen(tokens, idx, env)
-    return self.renderToken(tokens, idx, opts)
+  // Rewrite links of a single inline token in one pass over its children.
+  //
+  // The traversal only relies on the flat order of `link_open` / `link_close`
+  // tokens, which is public markdown-it token semantics, instead of on the
+  // identity of the internal token array. All the state lives in the local
+  // stack below, so nothing can be shared across renders: a render that throws
+  // in the middle of a link can never corrupt a later render.
+  const rewriteInlineLinks = (children: Token[], env: MarkdownEnv): void => {
+    // whether each opened link has been converted into an internal link
+    const openInternalLinks: boolean[] = []
+
+    children.forEach((token) => {
+      if (token.type === 'link_open') {
+        openInternalLinks.push(handleLinkOpen(token, env))
+      } else if (token.type === 'link_close') {
+        // rewrite the ending tag only when the matching opening tag has been
+        // converted, otherwise keep the original tag
+        if (openInternalLinks.pop() === true) {
+          token.tag = internalTag
+        }
+      }
+    })
   }
 
-  md.renderer.rules.link_close = (tokens, idx, opts, env, self) => {
-    // convert ending tag of internal link
-    if (hasOpenInternalLink) {
-      hasOpenInternalLink = false
-      tokens[idx].tag = internalTag
-    }
-    return self.renderToken(tokens, idx, opts)
-  }
+  // Rewrite links once the `inline` and `linkify` core rules have created all
+  // link tokens. Pushing the rule appends it after markdown-it's built-in core
+  // rules (normalize, block, inline, linkify, ..., text_join), and all state
+  // stays within the render that `state` belongs to.
+  md.core.ruler.push('vuepress_links', (state) => {
+    state.tokens.forEach((token) => {
+      if (token.type === 'inline' && token.children) {
+        rewriteInlineLinks(token.children, state.env ?? {})
+      }
+    })
+  })
 }
