@@ -45,7 +45,7 @@ pnpm build
 ### Tools
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
-- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) for code linting and formatting
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) for code linting and formatting
 - [Vitest](https://vitest.dev/) for unit testing
 - [Playwright](https://playwright.dev/) for end-to-end testing
 
@@ -69,7 +69,7 @@ The `format` script uses Oxfmt to format all source files.
 
 #### `pnpm lint`
 
-The `lint` script uses ESLint to check all source files.
+The `lint` script uses Oxlint to check all source files.
 
 #### `pnpm test`
 

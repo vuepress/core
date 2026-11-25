@@ -39,7 +39,7 @@ it('should resolve path correctly if filePath is absolute', () => {
 
 it('should throw if filePath is relative', () => {
   const consoleError = console.error
-  console.error = vi.fn()
+  console.error = vi.fn<typeof console.error>()
 
   expect(() =>
     resolvePageFilePath({
@@ -48,7 +48,7 @@ it('should throw if filePath is relative', () => {
         filePath: RELATIVE_FILE_PATH,
       },
     }),
-  ).toThrow()
+  ).toThrow(/filePath is not absolute file path/)
 
   expect(console.error).toHaveBeenCalled()
 

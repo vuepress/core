@@ -107,7 +107,7 @@ describe('should resolve page route key correctly', () => {
 
 it('should throw an error', () => {
   const consoleError = console.error
-  console.error = vi.fn()
+  console.error = vi.fn<typeof console.error>()
 
   expect(() =>
     resolvePageRouteKey({
@@ -115,7 +115,7 @@ it('should throw an error', () => {
       pathInferred: null,
       options: {},
     }),
-  ).toThrow()
+  ).toThrow(/page path is empty/)
   expect(console.error).toHaveBeenCalled()
 
   console.error = consoleError

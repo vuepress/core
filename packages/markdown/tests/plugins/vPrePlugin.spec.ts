@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+import type { MarkdownItOptions } from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 
 import { vPrePlugin } from '../../src/index.js'
@@ -14,25 +15,25 @@ ${CODE_FENCE}
 \`inline\`
 `
   it('should process code with default options', () => {
-    const md = MarkdownIt().use(vPrePlugin)
+    const md = new MarkdownIt().use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `block`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `inline`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { inline: false })
+    const md = new MarkdownIt().use(vPrePlugin, { inline: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should disable `block` and `inline`', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false, inline: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false, inline: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
@@ -69,13 +70,13 @@ const a = 1
 ${CODE_FENCE}
 `
   it('should work if `block` is enabled by default', () => {
-    const md = MarkdownIt().use(vPrePlugin)
+    const md = new MarkdownIt().use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
   })
 
   it('should work if `block` is disabled', () => {
-    const md = MarkdownIt().use(vPrePlugin, { block: false })
+    const md = new MarkdownIt().use(vPrePlugin, { block: false })
 
     expect(md.render(source)).toMatchSnapshot()
   })
@@ -112,22 +113,22 @@ const a = 1
 ${CODE_FENCE}
 `
   it('should work highlighted code is wrapped with `<pre>`', () => {
-    const highlight = vi.fn(
+    const highlight = vi.fn<NonNullable<MarkdownItOptions['highlight']>>(
       (code, lang) =>
         `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
     )
 
-    const md = MarkdownIt({ highlight }).use(vPrePlugin)
+    const md = new MarkdownIt({ highlight }).use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
     expect(highlight).toHaveBeenCalledTimes(7)
   })
 
   it('should work if highlighted code is not wrapped with `<pre>`', () => {
-    const highlight = vi.fn(
+    const highlight = vi.fn<NonNullable<MarkdownItOptions['highlight']>>(
       (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
     )
-    const md = MarkdownIt({ highlight }).use(vPrePlugin)
+    const md = new MarkdownIt({ highlight }).use(vPrePlugin)
 
     expect(md.render(source)).toMatchSnapshot()
     expect(highlight).toHaveBeenCalledTimes(7)

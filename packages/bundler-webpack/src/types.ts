@@ -4,14 +4,16 @@ import type {
   LoaderContext,
   Configuration as WebpackConfiguration,
 } from 'webpack'
-import type WebpackDevServer from 'webpack-dev-server'
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 import type { Config as WebpackChainConfig } from 'webpack-v5-chain'
+
+export type { default as WebpackDevServer } from 'webpack-dev-server'
 
 export type {
   VueLoaderOptions,
   WebpackConfiguration,
   WebpackChainConfig,
-  WebpackDevServer,
+  WebpackDevServerConfiguration,
 }
 
 /**
@@ -44,7 +46,7 @@ export interface WebpackBundlerOptions extends BundlerOptions {
   /**
    * `setupMiddlewares` config of webpack-dev-server
    */
-  devServerSetupMiddlewares?: WebpackDevServer.Configuration['setupMiddlewares']
+  devServerSetupMiddlewares?: WebpackDevServerConfiguration['setupMiddlewares']
 
   /**
    * vue-loader options

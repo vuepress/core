@@ -16,6 +16,10 @@
   <button class="not-found-with-complex-hash" @click="go404WithComplexHash">404</button>
 </div>
 
+<ClientOnly>
+  <RouteLink to="/router/scroll-restoration.html#target-2">Cross-page scroll target</RouteLink>
+</ClientOnly>
+
 <script setup lang="ts">
 import { useRouter } from 'vuepress/client';
 

@@ -21,7 +21,7 @@ const JS_FIXTURE_CONTENT = fs.readFileSync(JS_FIXTURE_PATH).toString()
 const MD_FIXTURE_CONTENT = fs.readFileSync(MD_FIXTURE_PATH).toString()
 
 const consoleError = console.error
-const mockConsoleError = vi.fn()
+const mockConsoleError = vi.fn<typeof console.error>()
 
 beforeAll(() => {
   console.error = mockConsoleError
@@ -45,7 +45,7 @@ it('should not be parsed as import code syntax', () => {
     '@[coda](/path/to/foo.js',
   ]
 
-  const md = MarkdownIt().use(importCodePlugin)
+  const md = new MarkdownIt().use(importCodePlugin)
   const env: MarkdownEnv = {
     filePath: __filename,
   }
@@ -73,7 +73,7 @@ ${MD_FIXTURE_CONTENT}\
 </code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -114,7 +114,7 @@ ${MD_FIXTURE_CONTENT.split('\n').slice(4, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -144,7 +144,7 @@ describe('code language', () => {
 <pre><code class="language-ts">File not found</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -165,7 +165,7 @@ describe('code language', () => {
 <pre><code class="language-md">File not found</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -188,7 +188,7 @@ describe('path resolving', () => {
 <pre><code class="language-js">File not found</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -212,7 +212,7 @@ describe('path resolving', () => {
 <pre><code class="language-js">Error when resolving path</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: null,
     }
@@ -233,7 +233,7 @@ ${JS_FIXTURE_CONTENT}\
 </code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin, {
+    const md = new MarkdownIt().use(importCodePlugin, {
       handleImportPath: (str: string): string =>
         str.replace(/^@fixtures/, path.resolve(__dirname, '../__fixtures__')),
     })
@@ -258,7 +258,7 @@ foo
 <pre><code class="language-js">File not found</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -281,7 +281,7 @@ foo
 <pre><code class="language-js">File not found</code></pre>
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -302,7 +302,7 @@ describe('compatibility with otherPlugin', () => {
 @[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${MD_FIXTURE_PATH_RELATIVE})
 `
 
-    const md = MarkdownIt().use(importCodePlugin)
+    const md = new MarkdownIt().use(importCodePlugin)
     const env1: MarkdownEnv = {
       filePath: __filename,
     }
@@ -316,7 +316,7 @@ ${JS_FIXTURE_CONTENT}\
 \`\`\`
 `),
     )
-    expect(rendered1).toMatchSnapshot()
+    expect(rendered1).toMatchSnapshot('JavaScript fixture')
     expect(env1.importedFiles).toEqual([JS_FIXTURE_PATH])
 
     const env2: MarkdownEnv = {
@@ -332,7 +332,7 @@ ${MD_FIXTURE_CONTENT}\
 \`\`\`
 `),
     )
-    expect(rendered2).toMatchSnapshot()
+    expect(rendered2).toMatchSnapshot('Markdown fixture')
     expect(env2.importedFiles).toEqual([MD_FIXTURE_PATH])
   })
 
@@ -344,7 +344,7 @@ ${MD_FIXTURE_CONTENT}\
 @[code md:no-line-numbers:no-v-pre title="no-line-numbers.md"](${MD_FIXTURE_PATH_RELATIVE})
 `
 
-    const md = MarkdownIt().use(importCodePlugin).use(vPrePlugin)
+    const md = new MarkdownIt().use(importCodePlugin).use(vPrePlugin)
     const env: MarkdownEnv = {
       filePath: __filename,
     }
@@ -352,7 +352,7 @@ ${MD_FIXTURE_CONTENT}\
     const rendered1 = md.render(source1, env)
     const rendered2 = md.render(source2, env)
 
-    expect(rendered1).to.contain('v-pre')
-    expect(rendered2).to.not.contain(' v-pre')
+    expect(rendered1).toContain('v-pre')
+    expect(rendered2).not.toContain(' v-pre')
   })
 })

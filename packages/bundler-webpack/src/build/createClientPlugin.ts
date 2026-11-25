@@ -76,7 +76,7 @@ export const createClientPlugin = (
             const request = m.identifier?.replace(/\|\w+$/, '')
 
             // get chunk files index
-            const files = [...chunk.files.map(fileToIndex)]
+            const files = chunk.files.map(fileToIndex)
 
             // find all asset modules associated with the same chunk
             assetModules.forEach((item) => {

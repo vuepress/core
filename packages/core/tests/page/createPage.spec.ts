@@ -25,9 +25,9 @@ describe('should work without plugins', () => {
 
   it('should throw an error', async () => {
     const consoleError = console.error
-    console.error = vi.fn()
+    console.error = vi.fn<typeof console.error>()
 
-    await expect(createPage(app, {})).rejects.toThrow()
+    await expect(createPage(app, {})).rejects.toThrow(/page path is empty/)
     expect(console.error).toHaveBeenCalled()
 
     console.error = consoleError

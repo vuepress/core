@@ -19,7 +19,9 @@ it('should wrap object with a function', async () => {
 })
 
 it('should keep function as is', async () => {
-  const rawHook: DefineHook['exposed'] = vi.fn((_app, isServer: boolean) => ({
+  const rawHook: DefineHook['exposed'] = vi.fn<
+    Exclude<DefineHook['exposed'], Record<string, unknown>>
+  >((_app, isServer) => ({
     foo: 'bar',
     isServer,
   }))

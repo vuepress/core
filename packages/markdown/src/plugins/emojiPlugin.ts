@@ -1,5 +1,10 @@
-import type { Options } from 'markdown-it-emoji'
-import { full as emojiPlugin } from 'markdown-it-emoji'
+import type { MarkdownItPlugin } from '@mdit-vue/types'
+import { full } from 'markdown-it-emoji'
 
-export type EmojiPluginOptions = Options
-export { emojiPlugin }
+export interface EmojiPluginOptions {
+  defs: Record<string, string>
+  enabled: string[]
+  shortcuts: Record<string, string[] | string>
+}
+
+export const emojiPlugin: MarkdownItPlugin<Partial<EmojiPluginOptions>> = full

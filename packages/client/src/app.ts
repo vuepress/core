@@ -1,7 +1,13 @@
 import { clientConfigs } from '@internal/clientConfigs'
 import { createApp, createSSRApp, h } from 'vue'
+import {
+  SCROLL_RESTORATION_CAPTURE_DEFAULT,
+  SCROLL_RESTORATION_RESTORE_DEFAULT,
+  ScrollRestoration,
+} from 'vue-router/experimental'
 
 import { usePageLayout } from './composables/index.js'
+import { createScrollRestorationSetup } from './createScrollRestorationSetup.js'
 import { siteData } from './internal/siteData.js'
 import { createVueRouter } from './router/createVueRouter.js'
 import { setupGlobalComponents } from './setupGlobalComponents.js'
@@ -18,6 +24,11 @@ import '@internal/userStyle'
 const appCreator = __VUEPRESS_DEV__ ? createApp : createSSRApp
 
 export const createVueApp: CreateVueAppFunction = async () => {
+  // create vue-router instance and observe navigations before client plugins
+  // can register their own hooks
+  const router = createVueRouter()
+  const setupScrollRestoration = createScrollRestorationSetup(router)
+
   // create vue app
   const app = appCreator({
     name: 'Vuepress',
@@ -40,13 +51,13 @@ export const createVueApp: CreateVueAppFunction = async () => {
       // get page layout
       const pageLayout = usePageLayout()
 
+      // restore the scroll position after the page has rendered
+      setupScrollRestoration()
+
       // render layout and root components
       return () => [h(pageLayout.value), clientRootComponents]
     },
   })
-
-  // create vue-router instance
-  const router = createVueRouter()
 
   // global components and computed
   setupGlobalComponents(app)
@@ -63,11 +74,18 @@ export const createVueApp: CreateVueAppFunction = async () => {
     await clientConfig.enhance?.({ app, router, siteData })
   }
 
+  // enable scroll restoration before installing the router
+  // https://router.vuejs.org/experimental/scroll-restoration.html
+  app.use(ScrollRestoration, {
+    router,
+    // use the default capture and restore implementations
+    capture: SCROLL_RESTORATION_CAPTURE_DEFAULT,
+    restore: SCROLL_RESTORATION_RESTORE_DEFAULT,
+  })
+
   // vue-router will start to initialize once it is installed
   // via `app.use()`, but users might make some modifications
   // to router in client enhance, so we install it after that.
-  // this can also avoid the `scrollBehavior` issue on initial
-  // navigation.
   app.use(router)
 
   return {

@@ -1,0 +1,14 @@
+import type { Bundler } from '@vuepress/core'
+import { merge } from 'rspack-merge'
+
+import { build } from './build/index.js'
+import { dev } from './dev/index.js'
+import type { RspackBundlerOptions } from './types.js'
+
+export const rspackBundler = (options: RspackBundlerOptions = {}): Bundler => ({
+  name: '@vuepress/bundler-rspack',
+  type: 'rspack',
+  dev: async (app) => dev(options, app),
+  build: async (app) => build(options, app),
+  mergeConfig: merge as Bundler['mergeConfig'],
+})

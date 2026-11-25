@@ -1,8 +1,6 @@
 import type { MarkdownSfcBlocks } from '@mdit-vue/plugin-sfc'
-import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { PageFrontmatter, PageHeader } from '@vuepress/shared'
-import type MarkdownIt from 'markdown-it'
-import type { Options } from 'markdown-it'
+import type { Env, MarkdownIt, MarkdownItOptions } from 'markdown-it'
 
 import type {
   AnchorPluginOptions,
@@ -20,7 +18,7 @@ import type {
 export type Markdown = MarkdownIt
 export type { MarkdownSfcBlocks }
 
-export interface MarkdownOptions extends Options {
+export interface MarkdownOptions extends MarkdownItOptions {
   anchor?: AnchorPluginOptions | false
   assets?: AssetsPluginOptions | false
   component?: false
@@ -56,47 +54,47 @@ export interface MarkdownLink {
   absolute: string | null
 }
 
+declare module 'markdown-it' {
+  interface Env {
+    // Input
+
+    /**
+     * Base / publicPath of current site
+     */
+    base?: string
+
+    /**
+     * Absolute file path of the markdown file
+     */
+    filePath?: string | null
+
+    /**
+     * Relative file path of the markdown file
+     */
+    filePathRelative?: string | null
+
+    // Output
+
+    /**
+     * Imported file that extracted by importCodePlugin
+     */
+    importedFiles?: string[]
+
+    /**
+     * Links that extracted by linksPlugin
+     */
+    links?: MarkdownLink[]
+  }
+}
+
 /**
  * The `env` object to be passed to markdown-it render function
- *
- * Input some meta data for markdown file parsing and rendering
- *
- * Output some resources from the markdown file
  */
-export interface MarkdownEnv extends MarkdownItEnv {
-  // Input
-
-  /**
-   * Base / publicPath of current site
-   */
-  base?: string
-
-  /**
-   * Absolute file path of the markdown file
-   */
-  filePath?: string | null
-
-  /**
-   * Relative file path of the markdown file
-   */
-  filePathRelative?: string | null
-
+export interface MarkdownEnv extends Env {
   /**
    * Frontmatter of the markdown file
    */
   frontmatter?: PageFrontmatter
-
-  // Output
-
-  /**
-   * Imported file that extracted by importCodePlugin
-   */
-  importedFiles?: string[]
-
-  /**
-   * Links that extracted by linksPlugin
-   */
-  links?: MarkdownLink[]
 }
 
 /**

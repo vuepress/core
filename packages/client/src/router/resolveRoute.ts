@@ -29,7 +29,6 @@ export const resolveRoute = <T extends RouteMeta = RouteMeta>(
       : resolveRoutePathWithExt(cleanRoutePath)) + hashAndQueries
 
   // the route not found
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- unsafe indexed access
   if (!routes.value[cleanRoutePath]) {
     return {
       ...routes.value['/404'],

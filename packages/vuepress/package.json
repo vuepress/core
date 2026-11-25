@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.32",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -59,12 +59,16 @@
     "vue": "catalog:vue"
   },
   "peerDependencies": {
+    "@vuepress/bundler-rspack": "workspace:*",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
     "vue": "catalog:vue"
   },
   "peerDependenciesMeta": {
     "@vuepress/bundler-vite": {
+      "optional": true
+    },
+    "@vuepress/bundler-rspack": {
       "optional": true
     },
     "@vuepress/bundler-webpack": {
@@ -89,6 +93,6 @@
     "tsconfig": "../../tsconfig.dts.json"
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.22.0"
   }
 }

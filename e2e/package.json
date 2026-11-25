@@ -1,34 +1,39 @@
 {
   "name": "@vuepress/e2e",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.32",
   "private": true,
   "type": "module",
   "scripts": {
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
+    "docs:build:rspack": "cross-env E2E_BUNDLER=rspack pnpm docs:build",
     "docs:build:webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
+    "docs:dev:rspack": "cross-env E2E_BUNDLER=rspack pnpm docs:dev",
     "docs:dev:webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "serve -l 9080 docs/.vuepress/dist",
     "e2e:build": "cross-env E2E_COMMAND=build playwright test",
+    "e2e:build:rspack": "cross-env E2E_COMMAND=build E2E_BUNDLER=rspack playwright test",
     "e2e:build:webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
     "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
+    "e2e:dev:rspack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=rspack playwright test",
     "e2e:dev:webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
     "@vuepress-e2e/conditional-exports": "file:./modules/conditional-exports",
     "@vuepress-e2e/style-exports": "file:./modules/style-exports",
+    "@vuepress/bundler-rspack": "workspace:*",
     "@vuepress/bundler-vite": "workspace:*",
     "@vuepress/bundler-webpack": "workspace:*",
-    "sass": "^1.101.6",
-    "sass-embedded": "^1.100.0",
-    "sass-loader": "^17.0.0",
+    "sass": "^1.108.1",
+    "sass-embedded": "^1.108.1",
+    "sass-loader": "^17.1.0",
     "vue": "catalog:vue",
     "vuepress": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.65.0",
     "cross-env": "^10.1.0",
-    "serve": "^14.2.6"
+    "serve": "^14.2.7"
   }
 }

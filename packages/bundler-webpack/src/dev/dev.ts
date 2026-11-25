@@ -30,7 +30,7 @@ export const dev = async (
   const compiler = webpack(webpackConfig)
 
   // create webpack-dev-server
-  const serverConfig = createDevServerConfig(app)
+  const serverConfig = createDevServerConfig(app, options)
   const server = new WebpackDevServer(serverConfig, compiler)
 
   const [, close] = await Promise.all([

@@ -20,7 +20,7 @@ it('should work with plugin object', () => {
 })
 
 it('should work with plugin function', () => {
-  const pluginFunction: PluginFunction = vi.fn(() => ({
+  const pluginFunction: PluginFunction = vi.fn<PluginFunction>(() => ({
     name: 'plugin-function',
   }))
 

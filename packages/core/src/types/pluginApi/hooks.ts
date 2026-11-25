@@ -14,7 +14,6 @@ interface Closable {
 export interface Hook<
   Exposed,
   Normalized = Exposed,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- `any` type is required to infer the result type correctly
   Result = Normalized extends (...args: any) => infer U
     ? U extends Promise<infer V>
       ? V

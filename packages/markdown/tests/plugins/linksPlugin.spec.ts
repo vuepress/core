@@ -1,8 +1,17 @@
 import MarkdownIt from 'markdown-it'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, test } from 'vitest'
 
 import type { MarkdownEnv } from '../../src/index.js'
 import { linksPlugin } from '../../src/index.js'
+
+test('should render with an undefined env', () => {
+  const md = new MarkdownIt().use(linksPlugin)
+  const tokens = md.parse('[foo](./foo.md)', {})
+
+  expect(md.renderer.render(tokens, md.options, undefined)).toBe(
+    '<p><RouteLink to="foo.html">foo</RouteLink></p>\n',
+  )
+})
 
 describe('external links', () => {
   describe('protocol links', () => {
@@ -21,7 +30,7 @@ describe('external links', () => {
     ].join('\n\n')
 
     it('should render default attrs', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {}
 
       const rendered = md.render(source, env)
@@ -47,7 +56,7 @@ describe('external links', () => {
     })
 
     it('should add extra attrs', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin, {
         externalAttrs: {
           foo: 'bar',
         },
@@ -76,7 +85,7 @@ describe('external links', () => {
     })
 
     it('should override default attrs', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin, {
         externalAttrs: {
           rel: 'foobar',
         },
@@ -113,7 +122,7 @@ describe('external links', () => {
     ].join('\n\n')
 
     it('should render default attrs', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {
         base: '/base/',
       }
@@ -234,7 +243,7 @@ describe('internal links', () => {
     ])
 
     it('should render to <a> tag correctly', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin, {
         internalTag: 'a',
       })
       const env: MarkdownEnv = {}
@@ -275,7 +284,7 @@ describe('internal links', () => {
     })
 
     it('should render relative links correctly', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {}
 
       const rendered = md.render(source, env)
@@ -314,7 +323,7 @@ describe('internal links', () => {
     })
 
     it('should convert to absolute links correctly', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {
         filePathRelative: 'path/to/file.md',
       }
@@ -424,7 +433,7 @@ describe('internal links', () => {
     })
 
     it('should convert to absolute links correctly if the file path contains non-ASCII characters', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {
         filePathRelative: '中/文/路径.md',
       }
@@ -536,7 +545,7 @@ describe('internal links', () => {
     })
 
     it('should not conflict with base', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {
         base: '/path/',
         filePathRelative: 'path/to/file.md',
@@ -655,7 +664,7 @@ describe('internal links', () => {
     ].join('\n\n')
 
     it('should resolve to internal links correctly', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin)
+      const md = new MarkdownIt({ html: true }).use(linksPlugin)
       const env: MarkdownEnv = {
         base: '/base/',
       }
@@ -692,7 +701,7 @@ describe('internal links', () => {
     })
 
     it('should render to <a> tag correctly', () => {
-      const md = MarkdownIt({ html: true }).use(linksPlugin, {
+      const md = new MarkdownIt({ html: true }).use(linksPlugin, {
         internalTag: 'a',
       })
       const env: MarkdownEnv = {
@@ -729,6 +738,52 @@ describe('internal links', () => {
         },
       ])
     })
+  })
+
+  describe('base with regexp special characters', () => {
+    const source = [
+      '[relative](./foo.md)',
+      '[absolute](/path/to/index.md)',
+    ].join('\n\n')
+
+    // `(` and `+` make `new RegExp('^' + base)` throw a `SyntaxError`,
+    // while `$` silently fails to match the literal prefix,
+    // and `.` only works by coincidence (it matches the literal dot)
+    const TEST_CASES = ['/a(b/', '/c++/', '/d$/', '/a.b/']
+
+    for (const base of TEST_CASES) {
+      it(`should render internal links correctly with base "${base}"`, () => {
+        const md = new MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          base,
+          filePathRelative: 'path/to/file.md',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<RouteLink to="/path/to/foo.html">relative</RouteLink>',
+            '<RouteLink to="/path/to/">absolute</RouteLink>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n',
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: './foo.md',
+            relative: 'path/to/foo.md',
+            absolute: `${base}path/to/foo.md`,
+          },
+          {
+            raw: '/path/to/index.md',
+            relative: 'path/to/index.md',
+            absolute: `${base}path/to/index.md`,
+          },
+        ])
+      })
+    }
   })
 })
 
@@ -840,7 +895,7 @@ describe('internal links with clean url', () => {
 
 describe('empty links', () => {
   it('should render correctly', () => {
-    const md = MarkdownIt({ html: true }).use(linksPlugin)
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
     const env: MarkdownEnv = {}
 
     const rendered = md.render('[empty]()', env)

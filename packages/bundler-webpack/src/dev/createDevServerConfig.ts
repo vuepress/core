@@ -2,11 +2,14 @@ import { sep } from 'node:path'
 
 import type { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import type WebpackDevServer from 'webpack-dev-server'
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
+
+import type { WebpackBundlerOptions } from '../types.js'
 
 export const createDevServerConfig = (
   app: App,
-): WebpackDevServer.Configuration => ({
+  options: WebpackBundlerOptions,
+): WebpackDevServerConfiguration => ({
   allowedHosts: 'all',
   compress: true,
   devMiddleware: {
@@ -25,6 +28,7 @@ export const createDevServerConfig = (
   hot: true,
   open: app.options.open,
   port: app.options.port,
+  setupMiddlewares: options.devServerSetupMiddlewares,
   static: {
     // `static.directory` will fail on Windows if we do not replace / with \
     directory: app.dir.public().replace('/', sep),

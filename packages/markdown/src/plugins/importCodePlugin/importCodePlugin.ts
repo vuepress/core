@@ -1,6 +1,5 @@
-import type { PluginWithOptions } from 'markdown-it'
+import type { MarkdownItPlugin } from '@mdit-vue/types'
 
-import type { MarkdownEnv } from '../../types.js'
 import { createImportCodeBlockRule } from './createImportCodeBlockRule.js'
 import { resolveImportCode } from './resolveImportCode.js'
 import type { ImportCodeTokenMeta } from './types.js'
@@ -12,7 +11,7 @@ export interface ImportCodePluginOptions {
   handleImportPath?: (str: string) => string
 }
 
-export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
+export const importCodePlugin: MarkdownItPlugin<ImportCodePluginOptions> = (
   md,
   options = {},
 ): void => {
@@ -27,13 +26,7 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
   )
 
   // add import_code renderer rule
-  md.renderer.rules.import_code = (
-    tokens,
-    idx,
-    opts,
-    env: MarkdownEnv,
-    slf,
-  ) => {
+  md.renderer.rules.import_code = (tokens, idx, opts, env = {}, slf) => {
     const token = tokens[idx]
 
     // use imported code as token content
@@ -49,6 +42,6 @@ export const importCodePlugin: PluginWithOptions<ImportCodePluginOptions> = (
     }
 
     // render the import_code token as a fence token
-    return md.renderer.rules.fence!(tokens, idx, opts, env, slf)
+    return md.renderer.rules.fence(tokens, idx, opts, env, slf)
   }
 }

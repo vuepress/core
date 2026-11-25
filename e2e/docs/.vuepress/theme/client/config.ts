@@ -17,14 +17,14 @@ export default defineClientConfig({
     // ...
   },
 
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment -- vue sfc type info is not available in eslint scope */
+  /* oxlint-disable typescript/no-unsafe-assignment -- Vue SFC type information is not available to Oxlint */
   layouts: {
     CssModulesLayout,
     CustomLayout,
     Layout,
     NotFound,
   },
-  /* eslint-enable @typescript-eslint/no-unsafe-assignment */
+  /* oxlint-enable typescript/no-unsafe-assignment */
 
   rootComponents: [RootComponentFromTheme],
 })
