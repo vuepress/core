@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, test } from 'vitest'
+import { parse } from 'vue/compiler-sfc'
 
 import type { App, Bundler, Page } from '../../src/index.js'
 import { createBaseApp, renderPageToVue } from '../../src/index.js'
@@ -290,5 +291,27 @@ describe('renderPageToVue', () => {
     const result = renderPageToVue(app, page)
 
     expect(result).toMatchSnapshot()
+  })
+
+  test('should round-trip page data and component names in the script block', () => {
+    const componentName = 'foo<$&$$.html.vue'
+    const page = createTestPage({ chunkFilePath: `/pages/${componentName}` })
+    page.data = {
+      ...page.data,
+      title: 'a < b <!-- comment --> </ScRiPt> "$&" $$',
+      frontmatter: { literal: '\\u003c', replacementPatterns: "$` $'" },
+    }
+
+    const result = renderPageToVue(createTestApp(), page)
+    const { descriptor, errors } = parse(result)
+    const script = descriptor.script?.content ?? ''
+
+    expect(errors).toEqual([])
+    expect(script).not.toContain('<')
+
+    const pageDataLiteral = /JSON\.parse\((.*)\)/.exec(script)?.[1] ?? ''
+    const componentNameLiteral = /name: (.*) \}/.exec(script)?.[1] ?? ''
+    expect(JSON.parse(JSON.parse(pageDataLiteral) as string)).toEqual(page.data)
+    expect(JSON.parse(componentNameLiteral)).toBe(componentName)
   })
 })

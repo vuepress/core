@@ -1,5 +1,5 @@
 import { isString } from '@vuepress/shared'
-import { path } from '@vuepress/utils'
+import { path, stringifyScriptString } from '@vuepress/utils'
 
 import type { App, Page } from '../types/index.js'
 
@@ -16,12 +16,7 @@ const SCRIPT_DEFAULT_EXPORT_REGEX = /((?:^|\n|;)\s*)export(\s*)default/
 const SCRIPT_DEFAULT_NAMED_EXPORT_REGEX =
   /((?:^|\n|;)\s*)export(.+)as(\s*)default/
 
-const SCRIPT_DEFAULT_EXPORT_CODE_TEMPLATE_OUTLET = '__SCRIPT_DEFAULT_EXPORT__'
-const SCRIPT_DEFAULT_EXPORT_CODE_TEMPLATE = `export default { name: ${SCRIPT_DEFAULT_EXPORT_CODE_TEMPLATE_OUTLET} }`
-
 const PAGE_DATA_CODE_VAR_NAME = '_pageData'
-const PAGE_DATA_CODE_TEMPLATE_OUTLET = '__PAGE_DATA__'
-const PAGE_DATA_CODE_TEMPLATE = `export const ${PAGE_DATA_CODE_VAR_NAME} = JSON.parse(${PAGE_DATA_CODE_TEMPLATE_OUTLET})`
 
 const HMR_CODE = `
 if (import.meta.webpackHot) {
@@ -55,19 +50,13 @@ const resolveScriptTagOpen = (page: Page): string => {
  * Util to resolve the default export code
  */
 const resolveDefaultExportCode = (page: Page): string =>
-  SCRIPT_DEFAULT_EXPORT_CODE_TEMPLATE.replace(
-    SCRIPT_DEFAULT_EXPORT_CODE_TEMPLATE_OUTLET,
-    JSON.stringify(path.basename(page.chunkFilePath)),
-  )
+  `export default { name: ${stringifyScriptString(path.basename(page.chunkFilePath))} }`
 
 /**
  * Util to resolve the page data code
  */
 const resolvePageDataCode = (page: Page): string =>
-  PAGE_DATA_CODE_TEMPLATE.replace(
-    PAGE_DATA_CODE_TEMPLATE_OUTLET,
-    JSON.stringify(JSON.stringify(page.data)),
-  )
+  `export const ${PAGE_DATA_CODE_VAR_NAME} = JSON.parse(${stringifyScriptString(JSON.stringify(page.data))})`
 
 /**
  * Resolve the stripped content of script block
