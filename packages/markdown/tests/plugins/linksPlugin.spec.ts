@@ -798,3 +798,169 @@ describe('empty links', () => {
     expect(env.links).toBeUndefined()
   })
 })
+
+describe('render state isolation', () => {
+  const externalLink = (label: string, href: string): string =>
+    `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`
+
+  it('should not leak internal link state when a render throws', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+    let shouldThrow = true
+
+    // Throw after `link_open` but before `link_close`, which leaves the
+    // internal link state of this render unclosed
+    md.renderer.rules.strong_open = (tokens, idx, opts, _env, self) => {
+      if (shouldThrow) {
+        throw new Error('renderer rule failed in the middle of a link')
+      }
+      return self.renderToken(tokens, idx, opts)
+    }
+
+    expect(() => md.render('[internal **bold**](./foo.md)', {})).toThrow(
+      'renderer rule failed in the middle of a link',
+    )
+
+    shouldThrow = false
+
+    const env: MarkdownEnv = {}
+    const rendered = md.render('[external](https://example.com)', env)
+
+    expect(rendered).toBe(
+      `<p>${externalLink('external', 'https://example.com')}</p>\n`,
+    )
+    expect(rendered).not.toContain('</RouteLink>')
+    expect(env.links).toBeUndefined()
+  })
+
+  it('should render internal and external links correctly in consecutive renders', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    expect(md.render('[internal](./foo.md)')).toBe(
+      '<p><RouteLink to="foo.html">internal</RouteLink></p>\n',
+    )
+    expect(md.render('[external](https://example.com)')).toBe(
+      `<p>${externalLink('external', 'https://example.com')}</p>\n`,
+    )
+    expect(md.render('[internal](./bar.md)')).toBe(
+      '<p><RouteLink to="bar.html">internal</RouteLink></p>\n',
+    )
+  })
+
+  it('should pair open and close tags of mixed links in a single render', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    const rendered = md.render(
+      [
+        '[internal1](./foo.md) and [external1](https://example.com)',
+        '',
+        '[external2](https://example.org) and [internal2](./bar.md)',
+        '',
+        '[internal3](./baz.md)',
+      ].join('\n'),
+    )
+
+    expect(rendered).toBe(
+      [
+        `<p><RouteLink to="foo.html">internal1</RouteLink> and ${externalLink('external1', 'https://example.com')}</p>`,
+        `<p>${externalLink('external2', 'https://example.org')} and <RouteLink to="bar.html">internal2</RouteLink></p>`,
+        '<p><RouteLink to="baz.html">internal3</RouteLink></p>',
+      ].join('\n') + '\n',
+    )
+  })
+
+  it('should render nested markup inside internal links correctly', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    expect(md.render('[**bold** and *italic*](./foo.md)')).toBe(
+      '<p><RouteLink to="foo.html"><strong>bold</strong> and <em>italic</em></RouteLink></p>\n',
+    )
+    expect(md.render('[external **bold**](https://example.com)')).toBe(
+      `<p>${externalLink('external <strong>bold</strong>', 'https://example.com')}</p>\n`,
+    )
+  })
+
+  it('should keep rendering <a> tag with internalTag "a"', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin, {
+      internalTag: 'a',
+    })
+
+    const rendered = md.render(
+      '[internal](./foo.md) and [external](https://example.com)',
+    )
+
+    expect(rendered).toBe(
+      `<p><a href="foo.html">internal</a> and ${externalLink('external', 'https://example.com')}</p>\n`,
+    )
+    expect(rendered).not.toContain('RouteLink')
+  })
+
+  it('should not reuse env.links from a previous render', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    const env1: MarkdownEnv = {}
+    md.render('[internal](./foo.md)', env1)
+
+    expect(env1.links).toEqual([
+      { raw: './foo.md', relative: 'foo.md', absolute: null },
+    ])
+
+    const env2: MarkdownEnv = {}
+    const rendered = md.render('[external](https://example.com)', env2)
+
+    expect(rendered).toBe(
+      `<p>${externalLink('external', 'https://example.com')}</p>\n`,
+    )
+    expect(rendered).not.toContain('</RouteLink>')
+    expect(env2.links).toBeUndefined()
+  })
+
+  it('should rewrite multiple links in renderInline correctly', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    expect(md.renderInline('[*a*](./a.md) 与 [c](./c.md)')).toBe(
+      '<RouteLink to="a.html"><em>a</em></RouteLink> 与 <RouteLink to="c.html">c</RouteLink>',
+    )
+  })
+
+  it('should only add external attrs to external links', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+
+    const rendered = md.render(
+      '[internal](./foo.md) and [external](https://example.com)',
+    )
+
+    expect(rendered).toContain('<RouteLink to="foo.html">internal</RouteLink>')
+    expect(rendered).not.toMatch(/<RouteLink[^>]*(?:target|rel)=/)
+    expect(rendered).toContain(externalLink('external', 'https://example.com'))
+  })
+
+  it('should collect internal links in document order', () => {
+    const md = new MarkdownIt({ html: true }).use(linksPlugin)
+    const env: MarkdownEnv = {}
+
+    md.render(
+      [
+        '[a](./a.md) and [external](https://example.com)',
+        '',
+        '[b](../b.md) and [plain](plain)',
+      ].join('\n'),
+      env,
+    )
+
+    expect(env.links).toEqual([
+      { raw: './a.md', relative: 'a.md', absolute: null },
+      { raw: '../b.md', relative: '../b.md', absolute: null },
+    ])
+  })
+
+  it('should add external attrs to autolinks and linkified links', () => {
+    const md = new MarkdownIt({ html: true, linkify: true }).use(linksPlugin)
+
+    expect(md.render('<https://github.com>')).toBe(
+      `<p>${externalLink('https://github.com', 'https://github.com')}</p>\n`,
+    )
+    expect(md.render('https://example.com/foo')).toBe(
+      `<p>${externalLink('https://example.com/foo', 'https://example.com/foo')}</p>\n`,
+    )
+  })
+})
