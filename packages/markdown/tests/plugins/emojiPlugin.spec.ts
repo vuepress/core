@@ -22,20 +22,20 @@ describe('emoji plugin', () => {
     expect(md.render(':not-an-emoji:\n')).toBe('<p>:not-an-emoji:</p>\n')
   })
 
-  it('should support the custom `defs` option', () => {
-    const md = new MarkdownIt().use(emojiPlugin, { defs: { foo: 'FOO' } })
+  it('should support the custom `definitions` option', () => {
+    const md = createMarkdown({ emoji: { definitions: { foo: 'FOO' } } })
 
-    // custom defs replace the built-in full definitions
+    // Custom definitions replace the built-in full definitions.
     expect(md.render(':foo: :smile:\n')).toBe('<p>FOO :smile:</p>\n')
   })
 
   it('should support the `enabled` option', () => {
     const md = new MarkdownIt().use(emojiPlugin, {
-      defs: { cry: '😢', smile: '😄' },
-      enabled: ['smile'],
+      definitions: { foo: 'FOO', bar: 'BAR' },
+      enabled: ['foo'],
     })
 
-    expect(md.render(':smile: :cry:\n')).toBe('<p>😄 :cry:</p>\n')
+    expect(md.render(':foo: :bar:\n')).toBe('<p>FOO :bar:</p>\n')
   })
 
   it('should support the custom `shortcuts` option', () => {
