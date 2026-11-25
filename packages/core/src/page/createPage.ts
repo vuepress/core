@@ -76,6 +76,7 @@ export const createPage = async (
     date,
     pathInferred,
     pathLocale,
+    filePathRelative,
   })
 
   // resolve page path
