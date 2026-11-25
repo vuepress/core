@@ -19,6 +19,12 @@
   <AutoLink download="example-test.png" :config="{ text: 'text3', link: 'https://example.com/test.png' }" />
 </div>
 
+<div id="internal-link-with-target">
+  <AutoLink :config="{ text: 'text1', link: '/', target: '_blank' }" />
+  <AutoLink :config="{ text: 'text2', link: '/components/route-link.md', target: '_blank' }" />
+  <AutoLink :config="{ text: 'text3', link: '/', target: '_blank', rel: 'nofollow' }" />
+</div>
+
 <div id="slots">
   <AutoLink :config="{ text: 'text1', link: '/', ariaLabel: 'label', icon: 'icon1' }">
     slot-text

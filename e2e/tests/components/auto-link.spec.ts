@@ -67,6 +67,33 @@ test('should append attrs correctly', async ({ page }) => {
   await expect(locator.nth(2)).toHaveAttribute('download', 'example-test.png')
 })
 
+test('should render internal links with target correctly', async ({ page }) => {
+  const locator = page.locator(
+    '.e2e-theme-content #internal-link-with-target a',
+  )
+
+  await expect(locator.nth(0)).toHaveText('text1')
+  await expect(locator.nth(0)).toHaveAttribute('class', /route-link/)
+  await expect(locator.nth(0)).toHaveAttribute('href', BASE)
+  await expect(locator.nth(0)).toHaveAttribute('target', '_blank')
+  await expect(locator.nth(0)).toHaveAttribute('rel', 'noopener noreferrer')
+
+  await expect(locator.nth(1)).toHaveText('text2')
+  await expect(locator.nth(1)).toHaveAttribute('class', /route-link/)
+  await expect(locator.nth(1)).toHaveAttribute(
+    'href',
+    `${BASE}components/route-link.html`,
+  )
+  await expect(locator.nth(1)).toHaveAttribute('target', '_blank')
+  await expect(locator.nth(1)).toHaveAttribute('rel', 'noopener noreferrer')
+
+  await expect(locator.nth(2)).toHaveText('text3')
+  await expect(locator.nth(2)).toHaveAttribute('class', /route-link/)
+  await expect(locator.nth(2)).toHaveAttribute('href', BASE)
+  await expect(locator.nth(2)).toHaveAttribute('target', '_blank')
+  await expect(locator.nth(2)).toHaveAttribute('rel', 'nofollow')
+})
+
 test('should render slots correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #slots a')
 
