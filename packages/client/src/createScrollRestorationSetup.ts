@@ -32,16 +32,23 @@ export const createScrollRestorationSetup = (router: Router): (() => void) => {
   return () => {
     // VuePress renders its layout without a RouterView, so restore manually
     // once the root is mounted or has rendered the new route.
-    const { scroll } = useScrollRestoration({ manual: true, restore: restoreScroll })
+    //
+    // A custom `restore` implementation is used to honor `scroll-margin-top`
+    // and `scroll-padding-top` for hash targets, which themes rely on to keep
+    // anchor targets clear of a fixed navbar.
+    const { scroll } = useScrollRestoration({
+      manual: true,
+      restore: restoreScroll,
+    })
     const route = useRoute()
 
-    const restoreScroll = (): void => {
+    const restoreIfNeeded = (): void => {
       if (skippedRoutes.has(router.currentRoute.value)) return
 
       scroll()
     }
 
-    onMounted(restoreScroll)
-    watch(() => route.fullPath, restoreScroll, { flush: 'post' })
+    onMounted(restoreIfNeeded)
+    watch(() => route.fullPath, restoreIfNeeded, { flush: 'post' })
   }
 }
