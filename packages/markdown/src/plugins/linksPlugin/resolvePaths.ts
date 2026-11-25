@@ -18,7 +18,8 @@ export const resolvePaths = (
   // if raw path is absolute
   if (rawPath.startsWith('/')) {
     // if raw path is a link to markdown file
-    if (rawPath.endsWith('.md')) {
+    // the markdown extension is matched case-insensitively, e.g. `/foo/bar.MD`
+    if (/\.md$/i.test(rawPath)) {
       // prepend `base` to the link
       absolutePath = path.join(base, rawPath)
       relativePath = removeLeadingSlash(rawPath)

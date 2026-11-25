@@ -46,6 +46,27 @@ const TEST_CASES = [
   ['foo/bar.md', 'foo/bar.html'],
   ['foo/bar.html', 'foo/bar.html'],
 
+  // markdown extension should be case-insensitive
+  ['/README.MD', '/'],
+  ['README.MD', 'index.html'],
+  ['/foo/README.MD', '/foo/'],
+  ['foo/README.MD', 'foo/'],
+  ['Dir/README.MD', 'Dir/'],
+  ['/foo.MD', '/foo.html'],
+  ['foo.MD', 'foo.html'],
+  ['/foo/bar.MD', '/foo/bar.html'],
+  ['foo/bar.MD', 'foo/bar.html'],
+  ['/foo/Bar.MD', '/foo/Bar.html'],
+  ['.MD', '.html'],
+  ['/foo/.MD', '/foo/.html'],
+
+  // only the trailing extension is recognized, so hash and query
+  // are kept as is, the same as their lowercase counterparts
+  ['foo.MD#anchor', 'foo.MD#anchor.html'],
+  ['foo.MD?x=1', 'foo.MD?x=1.html'],
+  ['foo.md#anchor', 'foo.md#anchor.html'],
+  ['foo.md?x=1', 'foo.md?x=1.html'],
+
   // unexpected corner cases
   ['', ''],
   ['.md', '.html'],
