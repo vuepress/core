@@ -36,6 +36,26 @@ const TEST_CASES: [
     ],
     '0000-00-00',
   ],
+  // `frontmatter.data` matches the date pattern but is not a real calendar date
+  [
+    [
+      {
+        frontmatter: { date: '2020-13-45' },
+        filePathRelative: null,
+      },
+    ],
+    '0000-00-00',
+  ],
+  // filename date prefix matches the date pattern but is not a real calendar date
+  [
+    [
+      {
+        frontmatter: {},
+        filePathRelative: '2020-02-31-foo.md',
+      },
+    ],
+    '0000-00-00',
+  ],
   // `frontmatter.data` is `undefined`, and relative file path is `null`
   [
     [
