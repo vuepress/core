@@ -1,3 +1,25 @@
+# [2.0.0-rc.33](https://github.com/vuepress/core/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2026-11-25)
+
+* refactor(markdown)!: migrate to @mdit/plugin-anchor and @mdit/plugin-emoji (#1751), closes [#1751](https://github.com/vuepress/core/issues/1751)
+
+### Bug Fixes
+
+* **client:** register missing site data globals ([#1753](https://github.com/vuepress/core/issues/1753)) ([27cb1b9](https://github.com/vuepress/core/commit/27cb1b97022956d08972bb4e32e7968eb5994300))
+* **core:** escape client config file paths in temp file ([#1731](https://github.com/vuepress/core/issues/1731)) ([a2f0290](https://github.com/vuepress/core/commit/a2f0290b17b0952eb2c0bc27e3a013e2cff07b57))
+* **core:** escape strings in generated vue scripts ([#1756](https://github.com/vuepress/core/issues/1756)) ([283f926](https://github.com/vuepress/core/commit/283f9263b78a5121772b3e647d1824f9bdf542b6))
+* **markdown:** strip base from internal links without regexp ([#1734](https://github.com/vuepress/core/issues/1734)) ([f8b08d6](https://github.com/vuepress/core/commit/f8b08d6c9fca10fcd70ac0a7b12270af464a2544))
+* **shared:** make link protocol detection case-insensitive ([#1739](https://github.com/vuepress/core/issues/1739)) ([2949df5](https://github.com/vuepress/core/commit/2949df56e52898083c6a12eb7a03b8038be70e0d))
+
+### Features
+
+* **client:** add per-navigation scroll restoration control ([#1738](https://github.com/vuepress/core/issues/1738)) ([f5a3628](https://github.com/vuepress/core/commit/f5a36283ce8cfda5a6130e0afaf0a648afec3e0d))
+
+### BREAKING CHANGES
+
+* Rename `markdown.emoji.defs` to `markdown.emoji.definitions` in VuePress config.
+
+  ---------
+
 # [2.0.0-rc.32](https://github.com/vuepress/core/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2026-11-12)
 
 * feat(markdown)!: upgrade markdown-it to v15 (#1729) ([f2c2a2e](https://github.com/vuepress/core/commit/f2c2a2ea3f5b898fcafed0a2c3c9756899088876)), closes [#1729](https://github.com/vuepress/core/issues/1729)
