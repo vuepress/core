@@ -2,8 +2,8 @@ import { formatDateString, isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 
 import type { PageFrontmatter } from '../types/index.js'
+import { parseFilenameDate } from './parseFilenameDate.js'
 
-const FILENAME_DATE_RE = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?-(.*)$/
 const DIRNAME_DATE_RE = /(\d{4})\/(\d{1,2})(?:\/(\d{1,2}))?(\/|$)/
 const DEFAULT_DATE = '0000-00-00'
 
@@ -44,12 +44,9 @@ export const resolvePageDate = ({
   const filename = path.parse(filePathRelative).name
 
   if (filename) {
-    const matches = filename.match(FILENAME_DATE_RE)
-    if (matches) {
-      return formatDateString(
-        `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
-        DEFAULT_DATE,
-      )
+    const filenameDate = parseFilenameDate(filename)
+    if (filenameDate !== null) {
+      return formatDateString(filenameDate.date, DEFAULT_DATE)
     }
   }
 
