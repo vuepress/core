@@ -1,5 +1,19 @@
 import { expect, test } from '@playwright/test'
 
+import { BASE } from '../utils/env'
+
+test('site data is available in templates and follows locale navigation', async ({
+  page,
+}) => {
+  await page.goto('')
+  const content = page.getByRole('main')
+  await expect(content).toHaveAttribute('data-site-base', BASE)
+  await expect(content).toHaveAttribute('data-site-locale-lang', 'en-US')
+
+  await page.getByRole('link', { name: 'zh-CN', exact: true }).click()
+  await expect(content).toHaveAttribute('data-site-locale-lang', 'zh-CN')
+})
+
 test.describe('en-US', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('')
