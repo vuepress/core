@@ -41,6 +41,9 @@
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "postcss-load-config": "^6.0.1",
     "vue": "catalog:vue",
     "vue-router": "catalog:vue"
   },

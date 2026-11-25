@@ -333,9 +333,6 @@ importers:
       '@vuepress/utils':
         specifier: workspace:*
         version: link:../utils
-      autoprefixer:
-        specifier: ^10.6.2
-        version: 10.6.2(postcss@8.5.32)
       css-loader:
         specifier: ^7.1.5
         version: 7.1.5(@rspack/core@2.3.2)(webpack@5.112.2(clean-css@5.3.3)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(svgo@4.1.0))
@@ -391,18 +388,9 @@ importers:
       '@vuepress/utils':
         specifier: workspace:*
         version: link:../utils
-      autoprefixer:
-        specifier: ^10.6.2
-        version: 10.6.2(postcss@8.5.32)
       connect-history-api-fallback:
         specifier: ^2.0.0
         version: 2.0.0
-      postcss:
-        specifier: ^8.5.32
-        version: 8.5.32
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@2.7.0)(postcss@8.5.32)(yaml@2.9.1)
       rolldown:
         specifier: catalog:vite
         version: 1.3.1
@@ -443,9 +431,6 @@ importers:
       '@vuepress/utils':
         specifier: workspace:*
         version: link:../utils
-      autoprefixer:
-        specifier: ^10.6.2
-        version: 10.6.2(postcss@8.5.32)
       copy-webpack-plugin:
         specifier: ^14.0.0
         version: 14.0.0(webpack@5.112.2(clean-css@5.3.3)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.32)(svgo@4.1.0))
@@ -518,6 +503,15 @@ importers:
       '@vuepress/utils':
         specifier: workspace:*
         version: link:../utils
+      autoprefixer:
+        specifier: ^10.6.2
+        version: 10.6.2(postcss@8.5.32)
+      postcss:
+        specifier: ^8.5.32
+        version: 8.5.32
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@2.7.0)(postcss@8.5.32)(yaml@2.9.1)
       vue:
         specifier: catalog:vue
         version: 3.5.45(typescript@7.0.2)

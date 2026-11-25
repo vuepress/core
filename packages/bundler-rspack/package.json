@@ -48,7 +48,6 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "autoprefixer": "^10.6.2",
     "css-loader": "^7.1.5",
     "esbuild-loader": "~4.5.0",
     "postcss": "^8.5.32",

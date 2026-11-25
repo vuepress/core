@@ -1,8 +1,6 @@
+import { resolvePostcssPlugins } from '@vuepress/bundlerutils'
 import type { App } from '@vuepress/core'
 import { fs, sanitizeFileName } from '@vuepress/utils'
-import autoprefixer from 'autoprefixer'
-import type { AcceptedPlugin } from 'postcss'
-import postcssrc from 'postcss-load-config'
 import type { AliasOptions, Plugin, UserConfig } from 'vite'
 
 /**
@@ -108,13 +106,10 @@ export const vuepressConfigPlugin = ({
         .map(({ name }) => name),
     ]
 
-    let postcssPlugins: AcceptedPlugin[]
-    try {
-      const postcssConfigResult = await postcssrc()
-      postcssPlugins = postcssConfigResult.plugins
-    } catch {
-      postcssPlugins = [autoprefixer]
-    }
+    // keep the same PostCSS config resolution as the webpack / rspack
+    // bundlers: search from the site source directory, and always append the
+    // built-in autoprefixer after the plugins from user config
+    const postcssPlugins = await resolvePostcssPlugins(app)
 
     return {
       root: app.dir.source(),
@@ -128,7 +123,9 @@ export const vuepressConfigPlugin = ({
       },
       css: {
         postcss: {
-          plugins: isServer ? [] : postcssPlugins,
+          // apply PostCSS plugins in both client and SSR builds, consistent
+          // with the webpack / rspack bundlers
+          plugins: postcssPlugins,
         },
         preprocessorOptions: {
           scss: { charset: false },

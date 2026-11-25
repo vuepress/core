@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 
-import autoprefixer from 'autoprefixer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import type { AcceptedPlugin } from 'postcss'
 import type { Config } from 'webpack-v5-chain'
 
 import type {
@@ -19,11 +19,13 @@ export const handleModuleStyles = ({
   config,
   isBuild,
   isServer,
+  postcssPlugins,
 }: {
   options: WebpackBundlerOptions
   config: Config
   isBuild: boolean
   isServer: boolean
+  postcssPlugins: AcceptedPlugin[]
 }): void => {
   const handleStyle = ({
     lang,
@@ -67,7 +69,10 @@ export const handleModuleStyles = ({
       .loader(require.resolve('postcss-loader'))
       .options({
         postcssOptions: {
-          plugins: [autoprefixer],
+          plugins: postcssPlugins,
+          // disable implicit config file searching, the config is resolved
+          // from the site source directory by `resolvePostcssPlugins`
+          config: false,
         },
         ...options.postcss,
       })
