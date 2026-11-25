@@ -1,5 +1,6 @@
 import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import { parse } from 'vue/compiler-sfc'
 
 import type { App, Bundler, Page } from '../../src/index.js'
 import { createBaseApp, renderPageToVue } from '../../src/index.js'
@@ -40,6 +41,25 @@ const createTestPage = (partial: Partial<Page> = {}): Page =>
     },
     ...partial,
   }) as Page
+
+const createTestPageWithPageData = (
+  partialData: Record<string, unknown> = {},
+): Page => {
+  const page = createTestPage()
+  page.data = { ...page.data, ...partialData }
+  return page
+}
+
+const PAGE_DATA_JSON_REGEX = /JSON\.parse\(("(?:[^"\\]|\\.)*")\)/
+
+const extractPageData = (vue: string): Page['data'] => {
+  const literal = vue.match(PAGE_DATA_JSON_REGEX)?.[1]
+  if (!literal) {
+    throw new Error('page data code not found in generated vue file')
+  }
+  // first parse the JS string literal, then parse the serialized page data
+  return JSON.parse(JSON.parse(literal) as string) as Page['data']
+}
 
 describe('renderPageToVue', () => {
   it('should render basic page with template and no script block', () => {
@@ -290,5 +310,66 @@ describe('renderPageToVue', () => {
     const result = renderPageToVue(app, page)
 
     expect(result).toMatchSnapshot()
+  })
+
+  it('should generate a parseable SFC when page data contains script tags', () => {
+    const title = '</script><script>alert(1)</script>'
+    const page = createTestPageWithPageData({ title })
+    const result = renderPageToVue(createTestApp(), page)
+
+    const { errors } = parse(result, { filename: 'foo.html.vue' })
+
+    expect(errors).toEqual([])
+    expect(result.match(/<\/script/gi)).toHaveLength(1)
+  })
+
+  it('should round-trip page data unchanged after escaping', () => {
+    const title = '</script><script>alert(1)</script>'
+    const page = createTestPageWithPageData({ title })
+    const result = renderPageToVue(createTestApp(), page)
+    const pageData = extractPageData(result)
+
+    expect(pageData).toEqual(page.data)
+    expect(pageData.title).toBe(title)
+    expect(pageData.title).toContain('</script>')
+    expect(result).not.toContain(title)
+  })
+
+  it('should escape edge cases of `<` in page data', () => {
+    const edgeCases = [
+      '<script>',
+      '</script>',
+      '<!--',
+      '-->',
+      'a < b',
+      '<',
+      '<<',
+      '</SCRIPT >',
+      '< /script>',
+      '</script><script>alert(1)</script>',
+    ]
+
+    for (const title of edgeCases) {
+      const page = createTestPageWithPageData({ title })
+      const result = renderPageToVue(createTestApp(), page)
+      const pageData = extractPageData(result)
+      const pageDataJson = result.match(PAGE_DATA_JSON_REGEX)?.[1]
+
+      expect(pageData.title).toBe(title)
+      expect(pageDataJson).toBeDefined()
+      expect(pageDataJson).not.toContain('<')
+      expect(parse(result, { filename: 'foo.html.vue' }).errors).toEqual([])
+    }
+  })
+
+  it('should escape every `<` in the serialized page data', () => {
+    const title = '</script><script>alert(1)</script><!-- comment -->'
+    const page = createTestPageWithPageData({ title })
+    const result = renderPageToVue(createTestApp(), page)
+    const pageDataJson = result.match(PAGE_DATA_JSON_REGEX)?.[1]
+
+    expect(pageDataJson).toBeDefined()
+    expect(pageDataJson).not.toContain('<')
+    expect(JSON.parse(pageDataJson as string)).not.toContain('<')
   })
 })

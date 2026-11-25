@@ -63,11 +63,16 @@ const resolveDefaultExportCode = (page: Page): string =>
 /**
  * Util to resolve the page data code
  */
-const resolvePageDataCode = (page: Page): string =>
-  PAGE_DATA_CODE_TEMPLATE.replace(
+const resolvePageDataCode = (page: Page): string => {
+  // escape `<` in the serialized page data as `\u003c` to prevent
+  // author-controlled content (e.g. `</script>`) from terminating the
+  // script block early and breaking the SFC parsing
+  const pageDataJson = JSON.stringify(page.data).replace(/</g, '\\u003c')
+  return PAGE_DATA_CODE_TEMPLATE.replace(
     PAGE_DATA_CODE_TEMPLATE_OUTLET,
-    JSON.stringify(JSON.stringify(page.data)),
+    JSON.stringify(pageDataJson),
   )
+}
 
 /**
  * Resolve the stripped content of script block
