@@ -15,7 +15,11 @@ const siteData = useSiteData()
       </ul>
     </nav>
 
-    <main class="e2e-theme-content">
+    <main
+      class="e2e-theme-content"
+      :data-site-base="$siteData?.base"
+      :data-site-locale-lang="$siteLocaleData?.lang"
+    >
       <Content />
     </main>
   </div>

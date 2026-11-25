@@ -127,6 +127,8 @@ export const setupGlobalComputed = (
     $pageLang: { get: () => pageLang.value },
     $pageData: { get: () => pageData.value },
     $routeLocale: { get: () => routeLocale.value },
+    $siteData: { get: () => siteData.value },
+    $siteLocaleData: { get: () => siteLocaleData.value },
     $withBase: { get: () => withBase },
 
     /* Aliases */
