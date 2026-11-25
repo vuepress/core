@@ -1,6 +1,7 @@
 import { debug } from '@vuepress/utils'
 
 import type { App } from '../types/index.js'
+import { assertUniquePagePaths } from './assertUniquePagePaths.js'
 import { resolveAppMarkdown } from './resolveAppMarkdown.js'
 import { resolveAppPages } from './resolveAppPages.js'
 
@@ -31,6 +32,11 @@ export const appInit = async (app: App): Promise<void> => {
 
   // plugin hook: onInitialized
   await app.pluginApi.hooks.onInitialized.process(app)
+
+  // check the integrity of the page graph, it must happen after all pages
+  // are resolved (plugins may change page paths in `extendsPage`) and before
+  // any temp file or output file is written
+  assertUniquePagePaths(app.pages)
 
   log('init finish')
 }
