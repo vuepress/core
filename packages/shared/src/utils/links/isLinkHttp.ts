@@ -6,4 +6,4 @@
  * - //github.com
  */
 export const isLinkHttp = (link: string): boolean =>
-  /^(https?:)?\/\//.test(link)
+  /^(https?:)?\/\//i.test(link)

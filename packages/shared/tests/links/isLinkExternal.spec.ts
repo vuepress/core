@@ -20,6 +20,15 @@ const TEST_CASES: [
   [['//foobar.com/base/README.md'], true],
   [['//foobar.com/base/README.md', '/base/'], true],
 
+  // links with upper/mixed case protocols
+  [['HTTPS://foobar.com'], true],
+  [['HTTP://foobar.com/base/README.md'], true],
+  [['Mailto:a@b'], true],
+
+  // windows drive letter paths are not links with protocol
+  [['C:\\docs\\a.md'], false],
+  [['c:/docs'], false],
+
   // links with other protocols
   [['mailto:foobar', '/base/'], true],
   [['tel:foobar', '/base/'], true],
