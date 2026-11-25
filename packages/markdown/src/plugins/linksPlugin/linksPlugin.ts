@@ -1,11 +1,25 @@
 import type { MarkdownItPlugin } from '@mdit-vue/types'
-import { inferRoutePath, isLinkExternal } from '@vuepress/shared'
+import {
+  inferRouteKey,
+  isLinkExternal,
+  resolveRoutePathWithExt,
+} from '@vuepress/shared'
 import type { Token } from 'markdown-it'
 
 import type { MarkdownEnv } from '../../types.js'
 import { resolvePaths } from './resolvePaths.js'
 
 export interface LinksPluginOptions {
+  /**
+   * Whether use "clean url"
+   *
+   * @internal this is injected by `@vuepress/core` from the global
+   * `route.cleanUrl` config. Users should not configure it directly.
+   *
+   * @default false
+   */
+  cleanUrl?: boolean
+
   /**
    * Additional attributes for external links
    *
@@ -48,6 +62,7 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
   const internalTag = options.internalTag || 'RouteLink'
   const isExternal =
     options.isExternal ?? ((href, env) => isLinkExternal(href, env.base))
+  const cleanUrl = options.cleanUrl ?? false
 
   // attrs that going to be added to external links
   const externalAttrs = {
@@ -133,21 +148,24 @@ export const linksPlugin: MarkdownItPlugin<LinksPluginOptions> = (
       // passed to `<RouteLink>` or `<RouterLink>`
       // use string prefix check instead of a `RegExp`, because `base` is a URL
       // path that may contain regexp special characters, e.g. `(` or `+`
-      const normalizedPath = inferRoutePath(
+      const routeKey = inferRouteKey(
         absolutePath
           ? absolutePath.startsWith(base)
             ? `/${absolutePath.slice(base.length)}`
             : absolutePath
           : relativePath,
       )
+
       // replace the original href link with the normalized path
-      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
+      hrefAttr[1] = `${cleanUrl ? routeKey : resolveRoutePathWithExt(routeKey)}${rawHashAndQueries}`
       // set `hasOpenInternalLink` to modify the ending tag
       hasOpenInternalLink = true
     } else {
-      const normalizedPath = inferRoutePath(absolutePath ?? relativePath)
+      // ext is added here
+      const routeKey = inferRouteKey(absolutePath ?? relativePath)
+
       // replace the original href link with the normalized path
-      hrefAttr[1] = `${normalizedPath}${rawHashAndQueries}`
+      hrefAttr[1] = `${cleanUrl ? routeKey : resolveRoutePathWithExt(routeKey)}${rawHashAndQueries}`
     }
 
     // extract internal links for file / page existence check

@@ -2,6 +2,9 @@ import { vuepress } from '@vuepress/oxlint-config'
 import type { OxlintConfig } from 'oxlint'
 
 const config: OxlintConfig = vuepress({
+  globals: {
+    __VUEPRESS_CLEAN_URL__: 'readonly',
+  },
   options: {
     typeAware: true,
   },

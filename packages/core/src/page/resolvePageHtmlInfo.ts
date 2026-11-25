@@ -5,28 +5,27 @@ import type { App } from '../types/index.js'
 /**
  * Resolve page rendered html file path
  *
+ * The html file path is derived from the canonical route key of the page,
+ * so that it stays the same no matter `cleanUrl` is enabled or not.
+ *
  * @internal
  */
 export const resolvePageHtmlInfo = ({
   app,
-  path: pagePath,
+  routeKey,
 }: {
   app: App
-  path: string
+  routeKey: string
 }): {
   htmlFilePath: string
   htmlFilePathRelative: string
 } => {
-  const path = decodeURI(pagePath)
+  const routePath = decodeURI(routeKey)
 
-  // /foo.html -> foo.html
+  // /foo -> foo.html
   // /foo/ -> foo/index.html
   const htmlFilePathRelative = removeLeadingSlash(
-    path.endsWith('/')
-      ? `${path}index.html`
-      : path.endsWith('.html')
-        ? path
-        : `${path}.html`,
+    routePath.endsWith('/') ? `${routePath}index.html` : `${routePath}.html`,
   )
   const htmlFilePath = app.dir.dest(htmlFilePathRelative)
 

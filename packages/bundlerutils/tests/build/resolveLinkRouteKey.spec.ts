@@ -1,23 +1,18 @@
 import type { MarkdownLink } from '@vuepress/markdown'
 import { expect, test } from 'vitest'
 
-import { resolveLinkRoutePath } from '../../src/index.js'
+import { resolveLinkRouteKey } from '../../src/index.js'
 
 const TEST_CASES = [
   [{ absolute: null, relative: '' }, '/', '/', null],
-  [{ absolute: '/foo.md', relative: 'foo.md' }, '/', '/', '/foo.html'],
+  [{ absolute: '/foo.md', relative: 'foo.md' }, '/', '/', '/foo'],
   [
     { absolute: '/foo/README.md', relative: 'foo/README.md' },
     '/',
     '/',
     '/foo/',
   ],
-  [
-    { absolute: '/base/foo.md', relative: 'foo.md' },
-    '/base/',
-    '/',
-    '/foo.html',
-  ],
+  [{ absolute: '/base/foo.md', relative: 'foo.md' }, '/base/', '/', '/foo'],
   [
     { absolute: '/base/foo/index.html', relative: 'foo/index.html' },
     '/base/',
@@ -28,20 +23,20 @@ const TEST_CASES = [
     { absolute: '/base/base/foo.md', relative: 'base/foo.md' },
     '/base/',
     '/',
-    '/base/foo.html',
+    '/base/foo',
   ],
-  [{ absolute: '/foo.md', relative: 'foo.md' }, '/base/', '/', '/foo.html'],
+  [{ absolute: '/foo.md', relative: 'foo.md' }, '/base/', '/', '/foo'],
   [
     { absolute: null, relative: 'foo.md' },
     '/base/',
     '/virtual/page.html',
-    '/virtual/foo.html',
+    '/virtual/foo',
   ],
   [
     { absolute: null, relative: '../foo.md' },
     '/',
     '/virtual/page.html',
-    '/foo.html',
+    '/foo',
   ],
   [
     { absolute: null, relative: 'foo/README.md' },
@@ -54,6 +49,6 @@ const TEST_CASES = [
 test.for(TEST_CASES)(
   'should resolve $0 with base $1 and current route $2 to $3',
   ([link, base, current, expected]) => {
-    expect(resolveLinkRoutePath({ base, current, link })).toBe(expected)
+    expect(resolveLinkRouteKey({ base, current, link })).toBe(expected)
   },
 )

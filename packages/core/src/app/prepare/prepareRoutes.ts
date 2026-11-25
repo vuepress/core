@@ -1,4 +1,4 @@
-import { normalizeRoutePath } from '@vuepress/shared'
+import { normalizeRouteKey } from '@vuepress/shared'
 
 import type { App, Page } from '../../types/index.js'
 
@@ -26,19 +26,22 @@ if (import.meta.hot) {
  * @internal
  */
 export const resolvePageRedirects = ({
-  path,
+  routeKey,
   pathInferred,
 }: Page): string[] => {
-  // paths that should redirect to this page, use set to dedupe
+  // route keys that should redirect to this page, use set to dedupe
   const redirectsSet = new Set<string>()
 
   // redirect from inferred path, notice that the inferred path is not uri-encoded
   if (pathInferred !== null) {
-    const normalizedPathInferred = normalizeRoutePath(pathInferred)
+    const normalizedPathInferred = normalizeRouteKey(pathInferred)
     const encodedPathInferred = encodeURI(normalizedPathInferred)
 
-    // add redirect to the set when the redirect could not be normalized & encoded to the page path
-    if (normalizedPathInferred !== path && encodedPathInferred !== path) {
+    // add redirect to the set when the redirect could not be normalized & encoded to the page route key
+    if (
+      normalizedPathInferred !== routeKey &&
+      encodedPathInferred !== routeKey
+    ) {
       redirectsSet.add(encodedPathInferred)
     }
   }
@@ -56,7 +59,10 @@ export const ${REDIRECTS_VAR_NAME} = JSON.parse(${JSON.stringify(
     JSON.stringify(
       Object.fromEntries(
         app.pages.flatMap((page) =>
-          resolvePageRedirects(page).map((redirect) => [redirect, page.path]),
+          resolvePageRedirects(page).map((redirect) => [
+            redirect,
+            page.routeKey,
+          ]),
         ),
       ),
     ),
@@ -65,8 +71,8 @@ export const ${REDIRECTS_VAR_NAME} = JSON.parse(${JSON.stringify(
 export const ${ROUTES_VAR_NAME} = Object.fromEntries([
 ${app.pages
   .map(
-    ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
+    ({ chunkFilePath, chunkName, routeKey, routeMeta }) =>
+      `  [${JSON.stringify(routeKey)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
   )
   .join('\n')}
 ]);

@@ -12,22 +12,18 @@ const app = createBaseApp({
 
 const TEST_CASES: [string, string][] = [
   ['/foo', 'foo.html'],
-  ['/foo.html', 'foo.html'],
-  ['/foo/bar.html', 'foo/bar.html'],
   ['/foo/bar', 'foo/bar.html'],
-  ['/foo/index.html', 'foo/index.html'],
-  ['/foo/bar/index.html', 'foo/bar/index.html'],
   ['/foo/', 'foo/index.html'],
   ['/foo/bar/', 'foo/bar/index.html'],
 ]
 
 describe('should resolve page html file path correctly', () => {
-  TEST_CASES.forEach(([source, expected]) => {
-    it(JSON.stringify(source), () => {
+  TEST_CASES.forEach(([routeKey, expected]) => {
+    it(JSON.stringify(routeKey), () => {
       expect(
         resolvePageHtmlInfo({
           app,
-          path: source,
+          routeKey,
         }),
       ).toEqual({
         htmlFilePath: app.dir.dest(expected),

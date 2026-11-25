@@ -5,7 +5,6 @@ import { path } from '@vuepress/utils'
 import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 
 import type { WebpackBundlerOptions } from '../types.js'
-import { trailingSlashMiddleware } from './trailingSlashMiddleware.js'
 
 export const createDevServerConfig = (
   app: App,
@@ -27,14 +26,9 @@ export const createDevServerConfig = (
   },
   host: app.options.host,
   hot: true,
-  setupMiddlewares: (middlewares, devServer) => {
-    devServer.app?.use(trailingSlashMiddleware)
-    return (
-      options.devServerSetupMiddlewares?.(middlewares, devServer) ?? middlewares
-    )
-  },
   open: app.options.open,
   port: app.options.port,
+  setupMiddlewares: options.devServerSetupMiddlewares,
   static: {
     // `static.directory` will fail on Windows if we do not replace / with \
     directory: app.dir.public().replace('/', sep),
