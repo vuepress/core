@@ -2,6 +2,7 @@ import type { MarkdownItPlugin } from '@mdit-vue/types'
 import type { RendererRule } from 'markdown-it'
 
 import { resolveLink } from './resolveLink.js'
+import { resolveSrcset } from './resolveSrcset.js'
 
 export interface AssetsPluginOptions {
   /**
@@ -68,7 +69,7 @@ export const assetsPlugin: MarkdownItPlugin<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<(?:img|source|video|audio)\b.*?\bsrc=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?(?<![\w-])src=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, src: string) =>
             `${prefix}${quote}${resolveLink(src.trim(), {
               env,
@@ -78,22 +79,13 @@ export const assetsPlugin: MarkdownItPlugin<AssetsPluginOptions> = (
         )
         // handle srcset
         .replace(
-          /(<(?:img|source|video|audio)\b.*?\bsrcset=)(['"])(.*?)\2/gs,
+          /(<(?:img|source|video|audio)\b.*?(?<![\w-])srcset=)(['"])(.*?)\2/gs,
           (_, prefix: string, quote: string, srcset: string) =>
-            `${prefix}${quote}${srcset
-              .split(',')
-              .map((item) =>
-                item.trim().replace(
-                  /^([^ ]*?)([ \n].*)?$/,
-                  (__, url: string, descriptor: string | undefined = '') =>
-                    `${resolveLink(url.trim(), {
-                      env,
-                      absolutePathPrependBase,
-                      aliasSupport,
-                    })}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`,
-                ),
-              )
-              .join(', ')}${quote}`,
+            `${prefix}${quote}${resolveSrcset(srcset, {
+              env,
+              absolutePathPrependBase,
+              aliasSupport,
+            })}${quote}`,
         )
 
       return rawHtmlRule(tokens, idx, options, env, self)

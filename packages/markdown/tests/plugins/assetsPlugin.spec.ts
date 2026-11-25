@@ -555,6 +555,102 @@ describe('html <img> tag', () => {
   })
 })
 
+describe('html <img> srcset parsing', () => {
+  const TEST_CASES: {
+    description: string
+    md: MarkdownItInstance
+    env: MarkdownEnv
+    source: string[]
+    expected: string[]
+  }[] = [
+    {
+      description: 'should keep data uri candidates intact',
+      md: new MarkdownIt({ html: true }).use(assetsPlugin),
+      env: {
+        base: '/base/',
+      },
+      source: [
+        '<img srcset="data:image/png;base64,AAAA 1x, ./foo.png 2x">',
+        '<img srcset="data:image/png;base64,AAAA, ./foo.png 2x">',
+        "<img srcset='data:image/png;base64,AAAA 1x, ./foo.png 2x'>",
+      ],
+      expected: [
+        '<img srcset="data:image/png;base64,AAAA 1x, ./foo.png 2x">',
+        '<img srcset="data:image/png;base64,AAAA, ./foo.png 2x">',
+        "<img srcset='data:image/png;base64,AAAA 1x, ./foo.png 2x'>",
+      ],
+    },
+    {
+      description: 'should resolve every srcset candidate url',
+      md: new MarkdownIt({ html: true }).use(assetsPlugin, {
+        aliasSupport: '@-prefix',
+      }),
+      env: {
+        base: '/base/',
+      },
+      source: [
+        '<img srcset="a.png 1x, b.png 2x">',
+        '<img srcset="a.png 100w,b.png 2x">',
+        '<img srcset="data:image/png;base64,AAAA 1x, foo.png 2x">',
+        '<img srcset="/absolute.png 1x, @alias/foo.png 2x">',
+        '<img src="./x.png">',
+        '<img src="x.png">',
+      ],
+      expected: [
+        '<img srcset="./a.png 1x, ./b.png 2x">',
+        '<img srcset="./a.png 100w, ./b.png 2x">',
+        '<img srcset="data:image/png;base64,AAAA 1x, ./foo.png 2x">',
+        '<img srcset="/absolute.png 1x, @alias/foo.png 2x">',
+        '<img src="./x.png">',
+        '<img src="./x.png">',
+      ],
+    },
+    {
+      description: 'should not resolve `data-src` and `data-srcset` attributes',
+      md: new MarkdownIt({ html: true }).use(assetsPlugin, {
+        aliasSupport: '@-prefix',
+      }),
+      env: {
+        base: '/base/',
+      },
+      source: [
+        '<img data-src="x.png">',
+        '<img data-srcset="x.png 1x">',
+        '<img data-src="x.png" src="y.png">',
+        '<img alt="attrs" data-srcset="x.png 1x" width="100px">',
+      ],
+      expected: [
+        '<img data-src="x.png">',
+        '<img data-srcset="x.png 1x">',
+        '<img data-src="x.png" src="./y.png">',
+        '<img alt="attrs" data-srcset="x.png 1x" width="100px">',
+      ],
+    },
+    {
+      description:
+        'should respect `absolutePathPrependBase` for srcset candidates',
+      md: new MarkdownIt({ html: true }).use(assetsPlugin, {
+        absolutePathPrependBase: true,
+      }),
+      env: {
+        base: '/base/',
+      },
+      source: [
+        '<img srcset="data:image/png;base64,AAAA 1x, /foo.png 2x, ../bar.png 3x">',
+      ],
+      expected: [
+        '<img srcset="data:image/png;base64,AAAA 1x, /base/foo.png 2x, ../bar.png 3x">',
+      ],
+    },
+  ]
+
+  TEST_CASES.forEach(({ description, md, env, source, expected }) => {
+    it(description, () => {
+      expect(md.render(source.join('\n\n'), env)).toEqual(expected.join('\n'))
+    })
+  })
+})
+
 // Complex situations are tested by the previous `img tag`.
 // Here, only the situation where the img tag is replaced with other media tags is supplemented.
 //
