@@ -1,7 +1,7 @@
 const PROTOCOL_REGEXP = /^[a-z][a-z0-9+.-]*:/i
 
-// Windows drive letter path, e.g. `C:\docs` or `c:/docs`
-const DRIVE_LETTER_REGEXP = /^[a-z]:[\\/]/i
+// Windows drive letter paths have a backslash or a single forward slash after the colon.
+const DRIVE_LETTER_REGEXP = /^[a-z]:(?:\\|\/(?!\/))/i
 
 /**
  * Determine a link has protocol or not
