@@ -1,4 +1,5 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
+import { headerLink } from '@mdit/plugin-anchor'
 import { logger } from '@vuepress/utils'
 import MarkdownIt from 'markdown-it'
 
@@ -54,7 +55,7 @@ export const createMarkdown = ({
     md.use(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
-      permalink: anchorPlugin.permalink.headerLink({
+      permalink: headerLink({
         class: 'header-anchor',
         // Add a span inside the link so Safari shows headings in reader view.
         safariReaderFix: true,
