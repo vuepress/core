@@ -41,3 +41,14 @@ test('should preserve complex hash', async ({ page }) => {
   await expect(page).toHaveURL(`${BASE}404.html#/404?lang=en`)
   await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
 })
+
+test('should not crash when navigating to a malformed url', async ({
+  page,
+}) => {
+  await page.locator('#malformed-url').click()
+  // the 404 route is still redirected to the inferred `*.html` path, while
+  // the malformed percent sequence must not break the 404 page rendering
+  await expect(page).toHaveURL(/100%(25)?\.html$/)
+  await expect(page.locator('.e2e-theme-not-found')).toHaveText('404 Not Found')
+  await expect(page.locator('#notfound-h2')).toHaveText('NotFound H2')
+})

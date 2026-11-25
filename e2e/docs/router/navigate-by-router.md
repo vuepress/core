@@ -10,6 +10,8 @@
   <RouteLink to="/router/scroll-restoration.html#target-2">Cross-page scroll target</RouteLink>
 </ClientOnly>
 
+<button id="malformed-url" @click="goMalformedUrl">Malformed URL</button>
+
 <script setup lang="ts">
 import { useRouter } from 'vuepress/client';
 
@@ -37,5 +39,9 @@ const go404WithHash = () => {
 
 const go404WithComplexHash = () => {
   router.push('/404.html#/404?lang=en');
+}
+
+const goMalformedUrl = () => {
+  router.push('/100%');
 }
 </script>
