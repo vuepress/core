@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises'
+
 import { expect, test } from '@playwright/test'
 
 import { BASE } from '../../utils/env'
@@ -187,4 +189,33 @@ test('should render relative links correctly', async ({ page }) => {
       page.locator('.e2e-theme-content #relative + ul > li a').nth(index),
     ).toHaveAttribute('href', href)
   }
+})
+
+test('should open the route in a named frame', async ({ page }) => {
+  const frame = page.locator('iframe[name=route-link-preview]')
+
+  await expect(frame).toBeVisible()
+  const originalUrl = page.url()
+  await page.getByRole('link', { name: 'Open in preview' }).click()
+
+  await expect(frame.contentFrame().locator('#native-links')).toBeVisible()
+  await expect(page).toHaveURL(originalUrl)
+})
+
+test('should download a file with an empty download attribute', async ({
+  page,
+}) => {
+  const link = page.getByRole('link', { name: 'Download file' })
+
+  await expect(link).toHaveAttribute('href', `${BASE}route-link-download.html`)
+  await expect(link).toHaveAttribute('download', '')
+  const originalUrl = page.url()
+  const downloadPromise = page.waitForEvent('download')
+
+  await link.click()
+  const download = await downloadPromise
+
+  const contents = await readFile(await download.path(), 'utf8')
+  expect(contents).toContain('RouteLink download fixture.')
+  await expect(page).toHaveURL(originalUrl)
 })

@@ -19,6 +19,16 @@
   <AutoLink download="example-test.png" :config="{ text: 'text3', link: 'https://example.com/test.png' }" />
 </div>
 
+<div id="native-links">
+  <AutoLink :config="{ text: 'Open in new tab', link: '/components/route-link.md?source=auto-link#query-and-hash', target: '_blank', rel: 'nofollow', activeMatch: '^/components/auto-link' }" />
+  <AutoLink target="auto-link-preview" :config="{ text: 'Open in preview', link: 'route-link.md', target: '_blank' }" />
+  <AutoLink :config="{ text: 'Static file', link: '/assets/manual.pdf', target: '_blank' }" />
+  <AutoLink :config="{ text: 'Based page', link: $withBase('/components/route-link.html'), target: '_blank' }" />
+  <ClientOnly>
+    <iframe name="auto-link-preview" title="AutoLink preview"></iframe>
+  </ClientOnly>
+</div>
+
 <div id="slots">
   <AutoLink :config="{ text: 'text1', link: '/', ariaLabel: 'label', icon: 'icon1' }">
     slot-text

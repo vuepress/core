@@ -67,6 +67,64 @@ test('should append attrs correctly', async ({ page }) => {
   await expect(locator.nth(2)).toHaveAttribute('download', 'example-test.png')
 })
 
+test('should open a resolved page in a new tab', async ({ page }) => {
+  const link = page.getByRole('link', { name: 'Open in new tab' })
+  const href = `${BASE}components/route-link.html?source=auto-link#query-and-hash`
+
+  await expect(link).toHaveAttribute('href', href)
+  await expect(link).toHaveAttribute('target', '_blank')
+  await expect(link).toHaveAttribute('rel', 'nofollow')
+  await expect(link).toHaveClass(/\bexternal-link\b/)
+  await expect(link).not.toHaveClass(/\broute-link-active\b/)
+  await expect(page.locator('iframe[name=auto-link-preview]')).toBeVisible()
+  const originalUrl = page.url()
+
+  const popupPromise = page.waitForEvent('popup')
+  await link.click()
+  const popup = await popupPromise
+
+  const destination = new URL(href, originalUrl)
+  await expect(popup).toHaveURL(
+    (url) =>
+      url.pathname === destination.pathname && url.hash === destination.hash,
+  )
+  await expect(popup.locator('#query-and-hash')).toBeVisible()
+  await expect(page).toHaveURL(originalUrl)
+})
+
+test('should use the target attribute to open a resolved page in a named frame', async ({
+  page,
+}) => {
+  const link = page.getByRole('link', { name: 'Open in preview' })
+  const frame = page.locator('iframe[name=auto-link-preview]')
+
+  await expect(frame).toBeVisible()
+  const originalUrl = page.url()
+  await expect(link).toHaveAttribute(
+    'href',
+    `${BASE}components/route-link.html`,
+  )
+  await expect(link).toHaveAttribute('target', 'auto-link-preview')
+  await expect(link).not.toHaveAttribute('rel')
+  await link.click()
+
+  await expect(frame.contentFrame().locator('#home-page')).toBeVisible()
+  await expect(page).toHaveURL(originalUrl)
+})
+
+test('should preserve native links to static files and already based URLs', async ({
+  page,
+}) => {
+  await expect(page.getByRole('link', { name: 'Static file' })).toHaveAttribute(
+    'href',
+    '/assets/manual.pdf',
+  )
+  await expect(page.getByRole('link', { name: 'Based page' })).toHaveAttribute(
+    'href',
+    `${BASE}components/route-link.html`,
+  )
+})
+
 test('should render slots correctly', async ({ page }) => {
   const locator = page.locator('.e2e-theme-content #slots a')
 

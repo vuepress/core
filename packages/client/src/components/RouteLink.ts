@@ -2,6 +2,7 @@ import type { SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { isSelfTarget } from '../helpers/isSelfTarget.js'
 import { resolveRouteFullPath } from '../router/index.js'
 
 /**
@@ -14,10 +15,15 @@ const guardEvent = (event: MouseEvent): boolean | void => {
   if (event.defaultPrevented) return
   // don't redirect on right click
   if (event.button !== undefined && event.button !== 0) return
-  // don't redirect if `target="_blank"`
+  // Let the browser handle downloads and navigation to other browsing contexts.
   if (event.currentTarget) {
-    const target = (event.currentTarget as HTMLElement).getAttribute('target')
-    if (target?.match(/\b_blank\b/i)) return
+    const link = event.currentTarget as HTMLAnchorElement
+    if (
+      link.hasAttribute('download') ||
+      !isSelfTarget(link.getAttribute('target'))
+    ) {
+      return
+    }
   }
   event.preventDefault()
   return true
