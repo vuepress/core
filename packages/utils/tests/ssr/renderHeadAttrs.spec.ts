@@ -17,6 +17,44 @@ const TEST_CASES: [HeadAttrsConfig, string][] = [
     },
     ` foo="foo" foo-bar="foo-bar"`,
   ],
+  [
+    {
+      content: 'He said "hi"',
+    },
+    ` content="He said &quot;hi&quot;"`,
+  ],
+  [
+    {
+      content: 'a & b < c > d',
+    },
+    ` content="a &amp; b &lt; c &gt; d"`,
+  ],
+  [
+    {
+      'data-foo': 'a&amp;b"c<d>e',
+    },
+    ` data-foo="a&amp;amp;b&quot;c&lt;d&gt;e"`,
+  ],
+  [
+    {
+      disabled: false,
+      foo: 'foo',
+      async: true,
+    },
+    ` foo="foo" async`,
+  ],
+  [
+    {
+      content: 123 as unknown as string,
+    },
+    ` content="123"`,
+  ],
+  [
+    {
+      content: null as unknown as string,
+    },
+    ` content="null"`,
+  ],
 ]
 
 TEST_CASES.forEach(([source, expected]) => {

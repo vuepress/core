@@ -66,21 +66,60 @@ export type TemplateRenderer = (
 ) => Promise<string> | string
 
 /**
+ * Escape special chars of a string to be used in a regular expression
+ */
+const escapeRegExp = (value: string): string =>
+  value.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+/**
  * The default template renderer implementation
+ *
+ * Notice that all the outlets are replaced in a single pass:
+ *
+ * - The replacements are only applied to the original template, so the outlet
+ *   markers contained in the rendered values (e.g. the scripts marker in the
+ *   page content) won't be replaced again.
+ * - An outlet that appears multiple times in the template will be replaced
+ *   every time.
+ * - The replacement function is used to keep special chars like `$&` and `$1`
+ *   in the rendered values as-is, otherwise they would be recognized by
+ *   `String.prototype.replace()` as replacement patterns.
+ * - Outlets without a corresponding value are kept as-is, so that custom
+ *   templates with only a part of the outlets can still be rendered.
  */
 export const templateRenderer: TemplateRenderer = (
   template: string,
   { content, head, lang, prefetch, preload, scripts, styles, version },
-): string =>
-  template
-    // notice that some special chars in string like `$&` would be recognized by `replace()`,
-    // and they won't be html-escaped and will be kept as is when they are inside a code block,
-    // so we use a replace function as the second param to avoid those potential issues
-    .replace(TemplateRendererOutlet.Content, () => content)
-    .replace(TemplateRendererOutlet.Head, head)
-    .replace(TemplateRendererOutlet.Lang, lang)
-    .replace(TemplateRendererOutlet.Prefetch, prefetch)
-    .replace(TemplateRendererOutlet.Preload, preload)
-    .replace(TemplateRendererOutlet.Scripts, scripts)
-    .replace(TemplateRendererOutlet.Styles, styles)
-    .replace(TemplateRendererOutlet.Version, version)
+): string => {
+  const outletEntries: [TemplateRendererOutlet, string | undefined][] = [
+    [TemplateRendererOutlet.Content, content],
+    [TemplateRendererOutlet.Head, head],
+    [TemplateRendererOutlet.Lang, lang],
+    [TemplateRendererOutlet.Prefetch, prefetch],
+    [TemplateRendererOutlet.Preload, preload],
+    [TemplateRendererOutlet.Scripts, scripts],
+    [TemplateRendererOutlet.Styles, styles],
+    [TemplateRendererOutlet.Version, version],
+  ]
+
+  const outletMap = new Map<string, string>(
+    outletEntries.filter(
+      (entry): entry is [TemplateRendererOutlet, string] =>
+        typeof entry[1] === 'string',
+    ),
+  )
+
+  if (outletMap.size === 0) {
+    return template
+  }
+
+  const outletPattern = new RegExp(
+    [...outletMap.keys()].map(escapeRegExp).join('|'),
+    'g',
+  )
+
+  return template.replace(
+    outletPattern,
+    (outlet) => outletMap.get(outlet) ?? outlet,
+  )
+}
