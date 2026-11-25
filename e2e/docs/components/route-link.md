@@ -94,6 +94,6 @@
 
 <ClientOnly>
   <RouteLink to="/components/auto-link.md" target="route-link-preview">Open in preview</RouteLink>
-  <RouteLink to="/components/auto-link.md" download>Download page</RouteLink>
+  <RouteLink to="/route-link-download.html" download>Download file</RouteLink>
   <iframe name="route-link-preview" title="RouteLink preview"></iframe>
 </ClientOnly>

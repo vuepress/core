@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises'
+
 import { expect, test } from '@playwright/test'
 
 import { BASE } from '../../utils/env'
@@ -200,18 +202,20 @@ test('should open the route in a named frame', async ({ page }) => {
   await expect(page).toHaveURL(originalUrl)
 })
 
-test('should download the route with an empty download attribute', async ({
+test('should download a file with an empty download attribute', async ({
   page,
 }) => {
-  const link = page.getByRole('link', { name: 'Download page' })
+  const link = page.getByRole('link', { name: 'Download file' })
 
-  await expect(link).toHaveAttribute('href', `${BASE}components/auto-link.html`)
+  await expect(link).toHaveAttribute('href', `${BASE}route-link-download.html`)
+  await expect(link).toHaveAttribute('download', '')
   const originalUrl = page.url()
   const downloadPromise = page.waitForEvent('download')
 
   await link.click()
   const download = await downloadPromise
 
-  expect(await download.failure()).toBeNull()
+  const contents = await readFile(await download.path(), 'utf8')
+  expect(contents).toContain('RouteLink download fixture.')
   await expect(page).toHaveURL(originalUrl)
 })
