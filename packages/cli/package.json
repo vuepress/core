@@ -43,7 +43,7 @@
     "@vuepress/core": "workspace:*",
     "@vuepress/shared": "workspace:*",
     "@vuepress/utils": "workspace:*",
-    "cac": "^7.1.0",
+    "cac": "^7.1.1",
     "chokidar": "^6.0.0",
     "envinfo": "^7.21.0",
     "rolldown": "catalog:vite"
