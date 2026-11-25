@@ -1,7 +1,30 @@
+import type { ServerResponse } from 'node:http'
+
 import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { fs, logger } from '@vuepress/utils'
 import history from 'connect-history-api-fallback'
 import type { Connect, Plugin } from 'vite'
+
+const getErrorMessage = (error: unknown): string =>
+  error instanceof Error ? error.message : String(error)
+
+/**
+ * End the response only once, even if the connection has already been closed
+ */
+const endResponse = (
+  res: ServerResponse,
+  statusCode: number,
+  contentType: string,
+  body: string,
+): void => {
+  if (res.headersSent || res.writableEnded) {
+    return
+  }
+
+  res.statusCode = statusCode
+  res.setHeader('Content-Type', contentType)
+  res.end(body)
+}
 
 /**
  * Configure dev command for vuepress
@@ -38,19 +61,35 @@ import 'vuepress/client-app'
         )
         // serve virtual `/index.html`
         .use((req, res, next) => {
-          if (!req.url?.endsWith('.html')) {
+          const { url } = req
+
+          if (!url?.endsWith('.html')) {
             next()
             return
           }
 
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'text/html')
+          const respondWithIndexHtml = async (): Promise<void> => {
+            try {
+              const result = await server.transformIndexHtml(
+                url,
+                indexHtml,
+                req.originalUrl,
+              )
 
-          void server
-            .transformIndexHtml(req.url, indexHtml, req.originalUrl)
-            .then((result) => {
-              res.end(result)
-            })
+              endResponse(res, 200, 'text/html', result)
+            } catch (error) {
+              logger.error(`Failed to transform index html for ${url}:`, error)
+
+              endResponse(
+                res,
+                500,
+                'text/plain; charset=utf-8',
+                `Failed to transform ${url}: ${getErrorMessage(error)}`,
+              )
+            }
+          }
+
+          void respondWithIndexHtml()
         })
     }
   },
