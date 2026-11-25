@@ -3,6 +3,7 @@ import { computed, customRef } from 'vue'
 import type { Router } from 'vue-router'
 
 import { clientDataSymbol } from './composables/index.js'
+import { withBase } from './helpers/index.js'
 import { redirects, routes } from './internal/routes.js'
 import { siteData } from './internal/siteData.js'
 import { resolvers } from './resolvers.js'
@@ -19,7 +20,6 @@ import type {
   SiteData,
   SiteLocaleData,
 } from './types/index.js'
-import { withBase } from './utils/index.js'
 
 /**
  * Create and provide global computed
