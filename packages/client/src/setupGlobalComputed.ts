@@ -143,6 +143,15 @@ export const setupGlobalComputed = (
 }
 
 declare module 'vue' {
+  /**
+   * Only globals that are actually defined at runtime are declared here.
+   *
+   * The runtime registers these via `Object.defineProperties(app.config.globalProperties)`
+   * earlier in this file. Note that `$siteData` / `$siteLocaleData` were never registered (only the
+   * `$site` / `$siteLocale` aliases are), so they must not be declared in the type
+   * augmentation either — declaring them made `this.$siteData` type-check while being
+   * `undefined` at runtime.
+   */
   export interface ComponentCustomProperties {
     $pageFrontmatter: PageFrontmatter
     $pageHead: PageHead
@@ -150,8 +159,6 @@ declare module 'vue' {
     $pageLang: PageLang
     $pageData: PageData
     $routeLocale: RouteLocale
-    $siteData: SiteData
-    $siteLocaleData: SiteLocaleData
     $withBase: typeof withBase
 
     /* Aliases */
