@@ -188,3 +188,30 @@ test('should render relative links correctly', async ({ page }) => {
     ).toHaveAttribute('href', href)
   }
 })
+
+test('should open the route in a named frame', async ({ page }) => {
+  const frame = page.locator('iframe[name=route-link-preview]')
+
+  await expect(frame).toBeVisible()
+  const originalUrl = page.url()
+  await page.getByRole('link', { name: 'Open in preview' }).click()
+
+  await expect(frame.contentFrame().locator('#native-links')).toBeVisible()
+  await expect(page).toHaveURL(originalUrl)
+})
+
+test('should download the route with an empty download attribute', async ({
+  page,
+}) => {
+  const link = page.getByRole('link', { name: 'Download page' })
+
+  await expect(link).toHaveAttribute('href', `${BASE}components/auto-link.html`)
+  const originalUrl = page.url()
+  const downloadPromise = page.waitForEvent('download')
+
+  await link.click()
+  const download = await downloadPromise
+
+  expect(await download.failure()).toBeNull()
+  await expect(page).toHaveURL(originalUrl)
+})

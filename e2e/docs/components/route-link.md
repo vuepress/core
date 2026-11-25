@@ -89,3 +89,11 @@
 - <RouteLink to="../">text</RouteLink>
 - <RouteLink to="../404.html">text</RouteLink>
 - <RouteLink to="not-exist.html">text</RouteLink>
+
+### Named target
+
+<ClientOnly>
+  <RouteLink to="/components/auto-link.md" target="route-link-preview">Open in preview</RouteLink>
+  <RouteLink to="/components/auto-link.md" download>Download page</RouteLink>
+  <iframe name="route-link-preview" title="RouteLink preview"></iframe>
+</ClientOnly>

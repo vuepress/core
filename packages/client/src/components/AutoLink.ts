@@ -1,9 +1,16 @@
-import { isLinkWithProtocol } from '@vuepress/shared'
+import {
+  isLinkWithProtocol,
+  removeEndingSlash,
+  splitPath,
+} from '@vuepress/shared'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h, toRef } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useSiteData } from '../composables/index.js'
+import { isSelfTarget } from '../helpers/isSelfTarget.js'
+import { withBase } from '../helpers/withBase.js'
+import { resolveRoute } from '../router/index.js'
 import { RouteLink } from './RouteLink.js'
 
 export interface AutoLinkConfig {
@@ -44,10 +51,7 @@ export interface AutoLinkConfig {
 }
 
 /**
- * Component to render a link automatically according to the link type
- *
- * - If the link is internal, it will be rendered as a `<RouteLink>`
- * - If the link is external, it will be rendered as a normal `<a>` tag
+ * Render a VuePress navigation link as `<RouteLink>` or an `<a>` for native navigation.
  */
 export const AutoLink = defineComponent({
   name: 'AutoLink',
@@ -65,33 +69,32 @@ export const AutoLink = defineComponent({
     after?: (config: AutoLinkConfig) => VNode | VNode[] | null
   }>,
 
-  setup(props, { slots }) {
+  setup(props, { attrs, slots }) {
     const config = toRef(props, 'config')
     const route = useRoute()
     const siteData = useSiteData()
 
-    // If the link has non-http protocol
     const withProtocol = computed(() => isLinkWithProtocol(config.value.link))
 
-    // Resolve the `target` attr
-    const linkTarget = computed(
-      () => config.value.target || (withProtocol.value ? '_blank' : undefined),
-    )
+    const nativeHref = computed(() => {
+      const { link } = config.value
+      if (withProtocol.value) return link
 
-    // If the `target` attr is "_blank"
-    const isBlankTarget = computed(() => linkTarget.value === '_blank')
+      const { pathname } = splitPath(link)
+      if (!pathname) return link
 
-    // Whether the link is internal
-    const isInternal = computed(
-      () => !withProtocol.value && !isBlankTarget.value,
-    )
+      // A link that already includes the base is an explicit browser URL.
+      if (
+        __VUEPRESS_BASE__ !== '/' &&
+        (pathname.startsWith(__VUEPRESS_BASE__) ||
+          pathname === removeEndingSlash(__VUEPRESS_BASE__))
+      ) {
+        return link
+      }
 
-    // Resolve the `rel` attr
-    const linkRel = computed(
-      () =>
-        config.value.rel ||
-        (isBlankTarget.value ? 'noopener noreferrer' : null),
-    )
+      const { path, notFound } = resolveRoute(link, route.path)
+      return notFound ? link : withBase(path)
+    })
 
     // Resolve the `aria-label` attr
     const linkAriaLabel = computed(
@@ -114,8 +117,6 @@ export const AutoLink = defineComponent({
 
     // If this link is active
     const isActive = computed(() => {
-      if (!isInternal.value) return false
-
       if (config.value.activeMatch) {
         return (
           config.value.activeMatch instanceof RegExp
@@ -134,6 +135,19 @@ export const AutoLink = defineComponent({
 
     return () => {
       const { before, after, default: defaultSlot } = slots
+      const target = Object.hasOwn(attrs, 'target')
+        ? attrs.target
+        : config.value.target || (withProtocol.value ? '_blank' : undefined)
+      const isBlankTarget =
+        typeof target === 'string' && target.toLowerCase() === '_blank'
+      const isRouteLink =
+        !withProtocol.value && isSelfTarget(target) && attrs.download == null
+      const anchorProps = {
+        'aria-label': linkAriaLabel.value,
+        'rel':
+          config.value.rel || (isBlankTarget ? 'noopener noreferrer' : null),
+        target,
+      }
 
       const content = defaultSlot?.(config.value) ?? [
         before?.(config.value),
@@ -141,25 +155,26 @@ export const AutoLink = defineComponent({
         after?.(config.value),
       ]
 
-      return isInternal.value
+      return isRouteLink
         ? h(
             RouteLink,
             {
-              'class': 'auto-link',
-              'to': config.value.link,
-              'active': isActive.value,
-              'aria-label': linkAriaLabel.value,
+              ...anchorProps,
+              class: 'auto-link',
+              to: config.value.link,
+              active: isActive.value,
             },
             () => content,
           )
         : h(
             'a',
             {
-              'class': 'auto-link external-link',
-              'href': config.value.link,
-              'aria-label': linkAriaLabel.value,
-              'rel': linkRel.value,
-              'target': linkTarget.value,
+              ...anchorProps,
+              class: [
+                'auto-link',
+                { 'external-link': withProtocol.value || isBlankTarget },
+              ],
+              href: nativeHref.value,
             },
             content,
           )
