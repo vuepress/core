@@ -169,7 +169,6 @@ export const vuepressConfigPlugin = ({
         exclude: clientPackages,
       },
       ssr: {
-        format: 'esm',
         noExternal: clientPackages,
       },
     }
