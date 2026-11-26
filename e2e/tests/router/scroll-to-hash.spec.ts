@@ -4,10 +4,26 @@ import { expect, test } from '@playwright/test'
 import { BASE } from '../../utils/env'
 
 /**
- * The target elements of these pages have a `scroll-margin-top` of `100px`, so
- * scrolling to them should leave them `100px` below the top of the viewport.
+ * The scroll margin targets of these pages have a `scroll-margin-top` of
+ * `100px`, so scrolling to them should leave them `100px` below the top of the
+ * viewport.
  */
 const SCROLL_MARGIN_TOP = 100
+
+/**
+ * The hash target page renders a fixed header whose height equals the
+ * `scroll-margin-top` of its targets, mimicking a theme with a fixed navbar.
+ * With the scroll margin honored, the header ends exactly where the target
+ * starts, otherwise the target would be covered by the header.
+ */
+const FIXED_HEADER_HEIGHT = SCROLL_MARGIN_TOP
+
+interface FixedHeaderRect {
+  position: string
+  top: number
+  bottom: number
+  height: number
+}
 
 const getTargetTop = (page: Page, id: string): Promise<number> =>
   page.evaluate(
@@ -15,6 +31,22 @@ const getTargetTop = (page: Page, id: string): Promise<number> =>
       document.getElementById(targetId)!.getBoundingClientRect().top,
     id,
   )
+
+const getFixedHeaderRect = (page: Page): Promise<FixedHeaderRect | null> =>
+  page.evaluate(() => {
+    const header = document.querySelector<HTMLElement>('.e2e-fixed-header')
+
+    if (!header) return null
+
+    const rect = header.getBoundingClientRect()
+
+    return {
+      position: getComputedStyle(header).position,
+      top: rect.top,
+      bottom: rect.bottom,
+      height: rect.height,
+    }
+  })
 
 /**
  * The scroll is deferred to the next frame, so the assertion has to wait for it
@@ -60,6 +92,29 @@ test('should honor scroll-margin-top when navigating to a hash on another page',
   await expectTargetTop(page, 'hash-target')
 })
 
+test('should keep the hash target clear of a fixed header', async ({
+  page,
+}) => {
+  await page.locator('#another-page-target').click()
+
+  await expect(page).toHaveURL(
+    `${BASE}router/scroll-to-hash-target.html#hash-target`,
+  )
+
+  const header = await getFixedHeaderRect(page)
+
+  expect(header).not.toBeNull()
+  expect(header!.position).toBe('fixed')
+  expect(header!.top).toBe(0)
+  expect(header!.height).toBe(FIXED_HEADER_HEIGHT)
+
+  // the target starts right below the fixed header instead of being covered by
+  // it, `1px` is the tolerance for sub-pixel scroll offsets
+  await expect
+    .poll(async () => Math.round(await getTargetTop(page, 'hash-target')))
+    .toBeGreaterThanOrEqual(Math.floor(header!.bottom) - 1)
+})
+
 test('should honor scroll-margin-top when navigating by a markdown link', async ({
   page,
 }) => {
@@ -69,6 +124,17 @@ test('should honor scroll-margin-top when navigating by a markdown link', async 
     `${BASE}router/scroll-to-hash-target.html#hash-target`,
   )
   await expectTargetTop(page, 'hash-target')
+})
+
+test('should align a hash target without a scroll margin with the viewport top', async ({
+  page,
+}) => {
+  await page.locator('#same-page-plain-target').click()
+
+  await expect(page).toHaveURL(`${BASE}router/scroll-to-hash.html#plain-target`)
+  await expect
+    .poll(async () => Math.round(await getTargetTop(page, 'plain-target')))
+    .toBe(0)
 })
 
 test('should scroll to the top when navigating to another page without a hash', async ({

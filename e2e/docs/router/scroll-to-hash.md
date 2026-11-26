@@ -2,6 +2,7 @@
 <button id="same-page-complex-target" @click="goSamePageComplexTarget">Same page target with a complex id</button>
 <button id="another-page-target" @click="goAnotherPageTarget">Another page target</button>
 <button id="another-page" @click="goAnotherPage">Another page without a hash</button>
+<button id="same-page-plain-target" @click="goSamePagePlainTarget">Same page target without a scroll margin</button>
 
 ## Links
 
@@ -21,6 +22,12 @@ Target content
 
 <div class="spacer"></div>
 
+<h2 id="plain-target">Target without a scroll margin</h2>
+
+Plain target content
+
+<div class="spacer"></div>
+
 <script setup lang="ts">
 import { useRouter } from 'vuepress/client';
 
@@ -32,6 +39,10 @@ const goSamePageTarget = () => {
 
 const goSamePageComplexTarget = () => {
   router.push('#hash-target:1');
+}
+
+const goSamePagePlainTarget = () => {
+  router.push('#plain-target');
 }
 
 const goAnotherPageTarget = () => {
