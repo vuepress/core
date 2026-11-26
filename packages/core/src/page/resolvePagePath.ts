@@ -1,4 +1,4 @@
-import { logger, sanitizeFileName } from '@vuepress/utils'
+import { logger, path, sanitizePathSegment } from '@vuepress/utils'
 
 import type { PageOptions } from '../types/index.js'
 
@@ -24,5 +24,14 @@ export const resolvePagePath = ({
     )
   }
 
-  return encodeURI(pagePath.split('/').map(sanitizeFileName).join('/'))
+  // normalize the path first, so that dot segments (`.`, `..`) are resolved
+  // before each segment is sanitized, and then sanitize every segment to avoid
+  // invalid characters and nested path segments
+  const segments = path.normalize(pagePath).split('/')
+
+  return encodeURI(
+    segments
+      .map((segment) => (segment === '' ? '' : sanitizePathSegment(segment)))
+      .join('/'),
+  )
 }

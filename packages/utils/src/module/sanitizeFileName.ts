@@ -5,6 +5,17 @@
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$%&*+,:;<=>?[\]^`{|}\u007F]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
 
+/**
+ * Sanitize a file name, following Rollup's `output.sanitizeFileName` semantics
+ *
+ * This is only meant for plain file names: it keeps drive letters (`C:`), dot
+ * segments (`..`) and separators as-is, and strips leading underscores. Using it
+ * to build a single path segment can therefore produce path traversal or nested
+ * segments — use `sanitizePathSegment` for that instead.
+ *
+ * This is not a security boundary: callers must validate file system paths
+ * separately (e.g. with `isChildPath`).
+ */
 export const sanitizeFileName = (name: string): string => {
   const driveLetter = DRIVE_LETTER_REGEX.exec(name)?.[0] || ''
 
