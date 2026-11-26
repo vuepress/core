@@ -2,7 +2,7 @@ import type { PageChunkFilesMap } from '@vuepress/bundlerutils'
 import { renderPageToString } from '@vuepress/bundlerutils'
 import type { App, Page } from '@vuepress/core'
 import { fs, renderHead } from '@vuepress/utils'
-import type { OutputAsset, OutputChunk, RolldownOutput } from 'rolldown'
+import type { OutputAsset, OutputChunk } from 'rolldown'
 import type { App as VueApp } from 'vue'
 import type { Router } from 'vue-router'
 
@@ -10,7 +10,6 @@ import { renderPagePrefetchLinks } from './renderPagePrefetchLinks.js'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks.js'
 import { renderPageScripts } from './renderPageScripts.js'
 import { renderPageStyles } from './renderPageStyles.js'
-import { resolvePageChunkFiles } from './resolvePageChunkFiles.js'
 
 export const renderPage = async ({
   app,
@@ -18,7 +17,7 @@ export const renderPage = async ({
   vueApp,
   vueRouter,
   ssrTemplate,
-  output,
+  pageChunkFiles,
   outputEntryChunk,
   outputCssAsset,
   pageChunkFilesMap,
@@ -28,7 +27,7 @@ export const renderPage = async ({
   vueApp: VueApp
   vueRouter: Router
   ssrTemplate: string
-  output: RolldownOutput['output']
+  pageChunkFiles: string[]
   outputEntryChunk: OutputChunk
   outputCssAsset: OutputAsset | undefined
   pageChunkFilesMap: PageChunkFilesMap
@@ -39,9 +38,6 @@ export const renderPage = async ({
     vueApp,
     vueRouter,
   })
-
-  // resolve page chunks
-  const pageChunkFiles = resolvePageChunkFiles({ page, output })
 
   // generate html string
   const html = await app.options.templateBuildRenderer(ssrTemplate, {
