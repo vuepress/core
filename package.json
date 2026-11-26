@@ -18,6 +18,7 @@
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:e2e": "pnpm --filter e2e e2e:dev && pnpm --filter e2e e2e:build",
     "test:e2e:webpack": "pnpm --filter e2e e2e:dev:webpack && pnpm --filter e2e e2e:build:webpack",
+    "test:e2e:rspack": "pnpm --filter e2e e2e:dev:rspack && pnpm --filter e2e e2e:build:rspack",
     "test:unit": "vitest run",
     "test:unit:cov": "vitest run --coverage"
   },
