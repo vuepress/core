@@ -38,7 +38,9 @@
     "@vuepress/client": "workspace:*",
     "@vuepress/markdown": "workspace:*",
     "@vuepress/shared": "workspace:*",
-    "@vuepress/utils": "workspace:*",
+    "@vuepress/utils": "workspace:*"
+  },
+  "devDependencies": {
     "vue": "catalog:vue"
   },
   "tsdown": {

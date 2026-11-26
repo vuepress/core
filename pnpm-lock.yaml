@@ -585,6 +585,7 @@ importers:
       '@vuepress/utils':
         specifier: workspace:*
         version: link:../utils
+    devDependencies:
       vue:
         specifier: catalog:vue
         version: 3.5.46(typescript@7.0.2)
