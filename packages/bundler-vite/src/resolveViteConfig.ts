@@ -29,9 +29,6 @@ export const resolveViteConfig = ({
       clearScreen: false,
       configFile: false,
       logLevel: !isBuild || app.env.isDebug ? 'info' : 'warn',
-      esbuild: {
-        charset: 'utf8',
-      },
       plugins: [
         vuepressConfigPlugin({ app, isBuild, isServer }),
         vuepressMarkdownPlugin({ app }),
