@@ -29,7 +29,6 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./bin": "./dist/vuepress.js",
     "./package.json": "./package.json"
   },
   "publishConfig": {
