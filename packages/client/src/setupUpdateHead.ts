@@ -162,6 +162,9 @@ export const setupUpdateHead = (): void => {
     if (!__VUEPRESS_DEV__) {
       takeOverHeadElements()
     }
-    watch(head, updateHead, { immediate: __VUEPRESS_DEV__ })
+    // watch `lang` as well: `<html lang>` can change while the resolved head
+    // config keeps the same reference (e.g. with a custom or memoizing
+    // `resolvers.resolvePageHead`), and the attribute must not stay stale.
+    watch([head, lang], updateHead, { immediate: __VUEPRESS_DEV__ })
   })
 }
