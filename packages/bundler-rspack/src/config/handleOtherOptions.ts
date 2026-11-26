@@ -39,9 +39,6 @@ export const handleOtherOptions = ({
       isServer,
       'version': app.version,
       // dependencies
-      'esbuild-loader': (
-        require('esbuild-loader/package.json') as { version: string }
-      ).version,
       'vue-loader': (require('vue-loader/package.json') as { version: string })
         .version,
       '@rspack/core': (
