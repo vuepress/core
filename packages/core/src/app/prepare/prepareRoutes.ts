@@ -1,4 +1,5 @@
 import { normalizeRoutePath } from '@vuepress/shared'
+import { stringifyScriptString } from '@vuepress/utils'
 
 import type { App, Page } from '../../types/index.js'
 
@@ -52,7 +53,7 @@ export const resolvePageRedirects = ({
 export const prepareRoutes = async (app: App): Promise<void> => {
   // routes file content
   let content = `\
-export const ${REDIRECTS_VAR_NAME} = JSON.parse(${JSON.stringify(
+export const ${REDIRECTS_VAR_NAME} = JSON.parse(${stringifyScriptString(
     JSON.stringify(
       Object.fromEntries(
         app.pages.flatMap((page) =>
@@ -66,7 +67,7 @@ export const ${ROUTES_VAR_NAME} = Object.fromEntries([
 ${app.pages
   .map(
     ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  [${JSON.stringify(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${JSON.stringify(chunkFilePath)}), meta: ${JSON.stringify(routeMeta)} }],`,
+      `  [${stringifyScriptString(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${stringifyScriptString(chunkFilePath)}), meta: ${stringifyScriptString(JSON.stringify(routeMeta))} }],`,
   )
   .join('\n')}
 ]);
