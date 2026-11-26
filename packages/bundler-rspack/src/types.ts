@@ -10,7 +10,13 @@ import type { BundlerOptions } from '@vuepress/core'
 import type { RspackChain } from 'rspack-chain'
 import type { VueLoaderOptions } from 'vue-loader'
 
-export type { VueLoaderOptions, RspackConfiguration, RspackDevServer }
+export type {
+  VueLoaderOptions,
+  RspackChain,
+  RspackConfiguration,
+  RspackDevServer,
+  RspackDevServerConfiguration,
+}
 
 /**
  * Options for bundler-rspack
