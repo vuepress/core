@@ -11,7 +11,7 @@ import { build as viteBuild } from 'vite'
 import { resolveViteConfig } from '../resolveViteConfig.js'
 import type { ViteBundlerOptions } from '../types.js'
 import { renderPage } from './renderPage.js'
-import { resolvePageChunkFiles } from './resolvePageChunkFiles.js'
+import { createPageChunkFilesResolver } from './resolvePageChunkFiles.js'
 
 const log = debug('vuepress:bundler-vite/build')
 
@@ -71,26 +71,41 @@ export const build = async (
     const ssrTemplate = await getSsrTemplate(app)
 
     // build page path -> chunk files map for preload & prefetch
+    const resolvePageChunkFiles = createPageChunkFilesResolver(
+      clientOutput.output,
+    )
     const pageChunkFilesMap = createPageChunkFilesMap({
       pages: app.pages,
-      resolvePageChunkFiles: (page) =>
-        resolvePageChunkFiles({ page, output: clientOutput.output }),
+      resolvePageChunkFiles,
     })
+
+    // count pages whose chunk files can not be resolved, e.g. because the page
+    // chunk is merged into another chunk by a custom chunk splitting config
+    let missingPageChunkFilesCount = 0
 
     // pre-render pages to html files
     for (const page of app.pages) {
       if (spinner) spinner.text = `Rendering pages ${colors.magenta(page.path)}`
+      const pageChunkFiles = resolvePageChunkFiles(page)
+      if (pageChunkFiles.length === 0) missingPageChunkFilesCount++
       await renderPage({
         app,
         page,
         vueApp,
         vueRouter,
         ssrTemplate,
-        output: clientOutput.output,
+        pageChunkFiles,
         outputEntryChunk: clientEntryChunk,
         outputCssAsset: clientCssAsset,
         pageChunkFilesMap,
       })
+    }
+
+    if (missingPageChunkFilesCount > 0) {
+      log(
+        `chunk files not resolved for ${missingPageChunkFilesCount} page(s), ` +
+          'preload and prefetch links may be incomplete',
+      )
     }
   })
 
