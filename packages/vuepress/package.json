@@ -93,6 +93,6 @@
     "tsconfig": "../../tsconfig.dts.json"
   },
   "engines": {
-    "node": ">=22.22.0"
+    "node": "^22.22.0 || ^24.0.0 || ^26.0.0"
   }
 }
