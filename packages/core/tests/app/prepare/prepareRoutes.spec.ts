@@ -40,8 +40,25 @@ describe('prepareRoutes', () => {
     const content = getRoutesContent(app)
     expect(content).not.toContain('</script>')
     expect(content).toContain(
-      `[${stringifyScriptString(page.path)}, { loader: () => import(/* webpackChunkName: "foo" */${stringifyScriptString(page.chunkFilePath)}), meta: ${stringifyScriptString(JSON.stringify(page.routeMeta))} }],`,
+      `[${stringifyScriptString(page.path)}, { loader: () => import(/* webpackChunkName: "foo" */${stringifyScriptString(page.chunkFilePath)}), meta: JSON.parse(${stringifyScriptString(JSON.stringify(page.routeMeta))}) }],`,
     )
+  })
+
+  it('should keep route meta as an object after escaping', async () => {
+    const page = createTestPage({ routeMeta: { title: '</script>' } })
+    const app = createTestApp([page])
+
+    await prepareRoutes(app)
+
+    const content = getRoutesContent(app)
+    expect(content).toContain('meta: JSON.parse(')
+    expect(content).not.toContain('meta: "')
+
+    // the escaped literal is still resolved to the route meta object at runtime
+    const metaLiteral =
+      /meta: JSON\.parse\(("(?:[^"\\]|\\.)*")\)/.exec(content)?.[1] ?? ''
+    const metaJson = JSON.parse(metaLiteral) as string
+    expect(JSON.parse(metaJson)).toEqual(page.routeMeta)
   })
 
   it('should escape redirect targets', async () => {

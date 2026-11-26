@@ -67,7 +67,7 @@ export const ${ROUTES_VAR_NAME} = Object.fromEntries([
 ${app.pages
   .map(
     ({ chunkFilePath, chunkName, path, routeMeta }) =>
-      `  [${stringifyScriptString(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${stringifyScriptString(chunkFilePath)}), meta: ${stringifyScriptString(JSON.stringify(routeMeta))} }],`,
+      `  [${stringifyScriptString(path)}, { loader: () => import(${chunkName ? `/* webpackChunkName: "${chunkName}" */` : ''}${stringifyScriptString(chunkFilePath)}), meta: JSON.parse(${stringifyScriptString(JSON.stringify(routeMeta))}) }],`,
   )
   .join('\n')}
 ]);
