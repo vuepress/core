@@ -21,13 +21,14 @@ Bundler 及其相关 Packages ：
 
 - `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
 - `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
+- `bundler-rspack`: 基于 Rspack 的 Bundler 模块。使用 Rspack 对 VuePress App 执行 `dev` 和 `build` 操作。
 - `bundlerutils`: 供 Bundler 模块使用的工具函数模块。
 
 ## 开发配置
 
 开发要求：
 
-- [Node.js](http://nodejs.org) - 版本遵循 `.node-version` 文件中指定的版本要求
+- [Node.js](http://nodejs.org) - 版本遵循 `package.json` 中 `devEngines` 字段指定的版本要求
 
 克隆代码仓库，并安装依赖：
 
@@ -53,7 +54,7 @@ pnpm build
 
 #### `pnpm build`
 
-`build` 命令会使用 `tsup` 将 TypeScript 源文件编译为 JavaScript 文件。
+`build` 命令会使用 `tsdown` 将 TypeScript 源文件编译为 JavaScript 文件。
 
 你在克隆代码仓库后，可能需要先执行该命令来确保项目代码可以顺利运行，因为编译后的输出目录被 `.gitignore` 排除在仓库以外了。
 
@@ -69,7 +70,7 @@ pnpm build
 
 #### `pnpm lint`
 
-`lint` 命令使用 Oxlint 来检查所有源文件。
+`lint` 命令使用 Oxlint 来检查所有源文件，并使用 Oxfmt 来检查代码格式。
 
 #### `pnpm test`
 
@@ -106,6 +107,23 @@ pnpm docs:serve
 pnpm e2e:dev
 # 在构建模式下运行 e2e 测试
 pnpm e2e:build
+```
+
+默认使用 vite 与 `/` base 。你可以通过环境变量覆盖默认值：
+
+- `E2E_COMMAND`：`dev` 或 `build`，默认为 `dev`
+- `E2E_BUNDLER`：`vite`、`webpack` 或 `rspack`，默认为 `vite`
+- `E2E_BASE`：e2e 站点的 base 路径，默认为 `/`
+
+其他 Bundler 也提供了便捷脚本：
+
+```bash
+# 使用 webpack 运行 e2e 测试
+pnpm e2e:dev:webpack
+pnpm e2e:build:webpack
+# 使用 rspack 运行 e2e 测试
+pnpm e2e:dev:rspack
+pnpm e2e:build:rspack
 ```
 
 ## 项目仓库
