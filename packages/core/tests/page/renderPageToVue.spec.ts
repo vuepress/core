@@ -42,6 +42,24 @@ const createTestPage = (partial: Partial<Page> = {}): Page =>
     ...partial,
   }) as Page
 
+const createPageWithScript = (contentStripped: string): Page =>
+  createTestPage({
+    sfcBlocks: {
+      template: null,
+      script: {
+        type: 'script',
+        content: `<script>${contentStripped}</script>`,
+        contentStripped,
+        tagClose: '</script>',
+        tagOpen: '<script>',
+      },
+      scriptSetup: null,
+      scripts: [],
+      styles: [],
+      customBlocks: [],
+    },
+  })
+
 describe('renderPageToVue', () => {
   it('should render basic page with template and no script block', () => {
     const app = createTestApp()
@@ -113,6 +131,39 @@ describe('renderPageToVue', () => {
     const result = renderPageToVue(app, page)
 
     expect(result).toMatchSnapshot()
+  })
+
+  it('should detect default export after a semicolon on the same line', () => {
+    const app = createTestApp()
+    const page = createPageWithScript('const foo = 1;export default { foo }')
+    const result = renderPageToVue(app, page)
+
+    expect(result).not.toContain('export default { name:')
+  })
+
+  it('should detect aliased default export without spaces', () => {
+    const app = createTestApp()
+    const page = createPageWithScript('const foo = 1\nexport{foo as default}')
+    const result = renderPageToVue(app, page)
+
+    expect(result).not.toContain('export default { name:')
+  })
+
+  it('should not treat export keywords in strings as default export', () => {
+    const app = createTestApp()
+    const page = createPageWithScript('const foo = "export default"')
+    const result = renderPageToVue(app, page)
+
+    expect(result).toContain('export default { name:')
+  })
+
+  it('should handle long script content without catastrophic backtracking', () => {
+    const app = createTestApp()
+    const page = createPageWithScript(`${'\n'.repeat(50_000)}const foo = 1`)
+    const result = renderPageToVue(app, page)
+
+    expect(result).toContain('const foo = 1')
+    expect(result).toContain('export default { name:')
   })
 
   it('should use existing script tag open when script block exists', () => {
